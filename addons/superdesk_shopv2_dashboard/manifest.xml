@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="0.6,0.7,0.8">
+	<application setting="false">
+		<name><![CDATA[超级前台-商城-仪表盘]]></name>
+		<identifie><![CDATA[superdesk_shopv2_dashboard]]></identifie>
+		<version><![CDATA[2.7.5]]></version>
+		<type><![CDATA[business]]></type>
+		<ability><![CDATA[超级前台-商城-仪表盘]]></ability>
+		<description><![CDATA[超级前台-商城-仪表盘]]></description>
+		<author><![CDATA[前海超级前台（深圳）信息技术有限公司]]></author>
+		<url><![CDATA[http://www.avic-s.com/]]></url>
+	</application>
+	<platform>
+		<subscribes>
+		</subscribes>
+		<handles>
+		</handles>
+		<rule embed="false" />
+		<card embed="false" />
+	</platform>
+	<bindings>
+		<menu>
+			<entry title="重复商品清除" do="cc_superdesk_shop_goods_cc_sku" state="" direct="false"/>
+		</menu>
+	</bindings>
+	<permissions>
+	</permissions>
+	<install><![CDATA[]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

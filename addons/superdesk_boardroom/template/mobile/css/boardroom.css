@@ -1,0 +1,43 @@
+/* 
+* @Author: anchen
+* @Date:   2017-07-20 10:33:18
+* @Last Modified by:   anchen
+* @Last Modified time: 2017-07-24 15:01:46
+*/
+@charset "utf-8";
+
+.addresstime {width: 100%; margin-bottom: 0.4rem; background-color: #fff;}
+.timesel {width: 100%; height: 2.5rem; padding: 0 0.75rem; border-bottom: 1px solid #c8c8c8;}
+.timesel span {float: left; font-size: .7rem; color:#666666; line-height: 2.5rem;}
+.timesel em {float:right; width: 65%; text-align: right; font-size: .7rem; color:#333; line-height: 2.5rem;}
+.timesel input {float:right; width: 65%; text-align: right; font-size: .7rem; color:#333; line-height: 2.5rem; background-color: rgba(0, 0, 0, 0);}
+.addresstime .timesel:last-child {border-bottom: 0;}
+.arrow-right {float: right; width: 1.1rem; height: 2.5rem; background: url("../images/xiangyou.png") right center no-repeat; background-size: 1.1rem 1.1rem;}
+.boardroomwrap {width: 100%;}
+.boardroomwrap .boardroomlist {width: 100%;}
+.boardroomitem {width: 100%; padding: 0.5rem .75rem; border-bottom: 1px solid #c8c8c8; background-color: #fff;;}
+.boardroominfo {position: relative; width: 100%;}
+.roomimg {float: left; width: 3.5rem; height: 3.5rem; margin-right: .5rem;}
+.roomname {float: left; width: 50%; font-size: .7rem; font-weight: 600; line-height: 1rem; color:#333333; margin-bottom: 0.5rem;}
+.roomprice {float: right; font-size:.7rem; line-height: 1rem; margin-bottom: 0.5rem; color:#333333;}
+.roominfo {float: left;}
+.roominfo em {display: block; font-size: .6rem; line-height: 0.85rem; color:#666666;}
+.roominfo em:nth-child(1){margin-bottom: 0.5rem;}
+
+.room-reserve {position: absolute; bottom: 0; right: 0; width: 3.1rem; height: 1.5rem; border-radius: 4px; color: #fff; line-height: 1.5rem; text-align: center; background-color: #1b37a8; font-size: .7rem;}
+.boardroomtime {width: 100%; margin-top: 0.5rem;}
+.boardroomtimebar {width: 100%;}
+.boardroomtimebar li {float: left; width: 7.69%; height: .9rem;  box-shadow: 0 1px 2px 0 #fff;}
+.roomtime {position: relative; background-color: #eee;}
+.roomtime i {float: left; width: 50%; height: .9rem;}
+.roomtime span {position: absolute; top: 0; left: 0; display: block; width: 100%; height: .9rem; text-align: center; line-height: .9rem; color: #333; font-size: .6rem;}
+.roomtimeam {background: #cadaf3 url("../images/am.png") center center no-repeat; background-size: 100% auto;}
+.roomtimepm {background: #cadaf3 url("../images/pm.png") center center no-repeat; background-size: 100% auto;}
+.occupygrid {background-color: #c8c8c8;}
+
+.myfootertext {position: fixed; bottom: 0; width: 100%; min-width: 320px; max-width: 750px; padding: .5rem 0 1rem; background-color: #f6f6f6;}
+.mytwoText {width: 8rem; margin: .5rem auto 0;}
+.mytwoText a {float: left; font-size:.6rem; color:#1450af;}
+.mytwoText a:nth-child(1) {padding-right: 1rem; border-right: 1px solid #c8c8c8;}
+.mytwoText a:nth-child(2) {padding-left: 1rem;}
+.mytwoText .mytext {color: #666;}

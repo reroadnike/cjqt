@@ -1,0 +1,463 @@
+{template 'common/header'}
+
+<link rel="stylesheet" href="{MODULE_URL}static/js/dist/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<style>
+
+    ul.ztree {
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        /*background: #ffffff;*/
+        width: 100%;
+        height: 700px;
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+
+    #goods_list{
+        margin-top: 10px;
+        padding-top: 10px;
+        border: 1px solid #ddd;
+        /*background: #ffffff;*/
+        width: 100%;
+        height: 700px;
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+
+    .sku_name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    ul.log{
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        /*background: #ffffff;*/
+        width: 0;
+        height: 0;
+        overflow-y: scroll;
+        overflow-x: auto;
+        list-style: none;
+        padding-left: .4rem;
+    }
+    ul.log li {
+    }
+
+    ul.log li.dark {
+        background-color: #E3E3E3;
+    }
+
+</style>
+
+<div class="main">
+    <div class="row">
+
+        <div class="col-xs-3 col-sm-3" style="padding: 0;">
+            [ <span id="alert_tips">初始化 ...</span> ]
+            <br/>
+            [ <a id="sync_batch_page_num_sku" href="#" title="批量同步" onclick="return false;">批量同步</a> ]
+            [ <a id="expandAllBtn" href="#" title="展开" onclick="return false;">展开</a> ]
+            [ <a id="collapseAllBtn" href="#" title="折叠" onclick="return false;">折叠</a> ]
+            [ <a id="test_select_tree_node" href="#" title="测试选中" onclick="return false;">测试选中</a> ]
+        </div>
+        <div class="col-xs-9 col-sm-9">
+            [ 商品池 <span id="page_num_name">待机 ...</span> 共 <span id="page_num_total"> 0 </span> 个 ] <br>
+            [ <a id="sync_one_page_num_sku" href="#" title="单池同步" onclick="return false;">单池同步</a> ] 状态 : [ <span id="showContent">待机 ...</span> ]
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-xs-3 col-sm-3" style="padding: 0;">
+            <ul id="areaTree" class="ztree"></ul>
+        </div>
+        <div class="col-xs-9 col-sm-9">
+            <div id="goods_list"></div>
+        </div>
+
+    </div>
+</div>
+
+<ul id="log" class="log"></ul>
+
+
+<SCRIPT type="text/javascript">
+
+    var zNodes = {$zNodes};
+    var zTree = $("#areaTree");
+    var zTreeObj;
+
+    var log, className = "dark";
+    var showNodeCount = 0;
+
+    var core_tpl;
+    var version = +new Date();
+
+    var setting = {
+        view: {
+            fontCss: getFontCss
+        },
+        check: {
+            enable: true
+        },
+        data: {
+            simpleData: {
+                enable: true,
+                idKey: "id",
+                pIdKey: "pId",
+                rootPId: 0
+            }
+        },
+        callback: {
+            onNodeCreated: onNodeCreated,
+            beforeClick: beforeClick,
+            onClick: onClick
+        }
+    };
+
+
+    function beforeClick(treeId, treeNode, clickFlag) {
+        className = (className === "dark" ? "":"dark");
+        return (treeNode.click != false);
+    }
+    function onClick(event, treeId, treeNode, clickFlag) {
+        console.log(treeNode);
+
+        $("#page_num_name").html(treeNode.name);
+        api_product_get_sku_one(treeNode['page_num'],false);
+
+    }
+    function onNodeCreated(event, treeId, treeNode) {
+        showNodeCount++;
+    }
+    function createTree() {
+//        console.log(zNodes);
+        showNodeCount = 0;
+        zTree.empty();
+//        console.log($.fn.zTree);
+        var time1 = new Date();
+        $.fn.zTree.init(zTree, setting, zNodes);
+
+        zTreeObj = $.fn.zTree.getZTreeObj("areaTree");
+        var time2 = new Date();
+
+        $("#alert_tips").html("节点共 " + zNodes.length + " 个, 初始化节点共 " + showNodeCount + " 个"
+                + "初始化共耗时: " + (time2.getTime() - time1.getTime()) + " ms");
+    }
+    function expandNode(e) {
+        var type = e.data.type;
+        var nodes = zTreeObj.getSelectedNodes();
+        if (type.indexOf("All") < 0 && nodes.length == 0) {
+            alert("请先选择一个父节点");
+        }
+
+        if (type == "expandAll") {
+            zTreeObj.expandAll(true);
+        } else if (type == "collapseAll") {
+            zTreeObj.expandAll(false);
+        } else {
+            var callbackFlag = $("#callbackTrigger").attr("checked");
+            for (var i = 0, l = nodes.length; i < l; i++) {
+
+                zTreeObj.setting.view.fontCss = {};
+
+                if (type == "expand") {
+                    zTreeObj.expandNode(nodes[i], true, null, null, callbackFlag);
+                } else if (type == "collapse") {
+                    zTreeObj.expandNode(nodes[i], false, null, null, callbackFlag);
+                } else if (type == "toggle") {
+                    zTreeObj.expandNode(nodes[i], null, null, null, callbackFlag);
+                } else if (type == "expandSon") {
+                    zTreeObj.expandNode(nodes[i], true, true, null, callbackFlag);
+                } else if (type == "collapseSon") {
+                    zTreeObj.expandNode(nodes[i], false, true, null, callbackFlag);
+                }
+            }
+        }
+    }
+    function getFontCss(treeId, treeNode) { //高亮样式
+        return (treeNode.highlight) ? { color: "#A60000", "font-weight": "bold"} : { color: "#333", "font-weight": "normal" };
+    }
+    var ruler = {
+        doc: null,
+        ruler: null,
+        cursor: null,
+        minCount: 50000,
+        count: 50000,
+        stepCount: 500,
+        minWidth: 30,
+        maxWidth: 215,
+        init: function () {
+            ruler.doc = $(document);
+//            ruler.ruler = $("#ruler");
+//            ruler.cursor = $("#cursor");
+            if (ruler.ruler) {
+                ruler.ruler.bind("mousedown", ruler.onMouseDown);
+
+            }
+        },
+        onMouseDown: function (e) {
+            ruler.drawRuler(e, true);
+            ruler.doc.bind("mousemove", ruler.onMouseMove);
+            ruler.doc.bind("mouseup", ruler.onMouseUp);
+            ruler.doc.bind("selectstart", ruler.onSelect);
+            $("body").css("cursor", "pointer");
+        },
+        onMouseMove: function (e) {
+            ruler.drawRuler(e);
+            return false;
+        },
+        onMouseUp: function (e) {
+            $("body").css("cursor", "auto");
+            ruler.doc.unbind("mousemove", ruler.onMouseMove);
+            ruler.doc.unbind("mouseup", ruler.onMouseUp);
+            ruler.doc.unbind("selectstart", ruler.onSelect);
+            ruler.drawRuler(e);
+        },
+        onSelect: function (e) {
+            return false;
+        },
+        getCount: function (end) {
+            var start = ruler.ruler.offset().left + 1;
+            var c = Math.max((end - start), ruler.minWidth);
+            c = Math.min(c, ruler.maxWidth);
+            return {width: c, count: (c - ruler.minWidth) * ruler.stepCount + ruler.minCount};
+        },
+        drawRuler: function (e, animate) {
+            var c = ruler.getCount(e.clientX);
+            ruler.cursor.stop();
+            if ($.browser.msie || !animate) {
+                ruler.cursor.css({width: c.width});
+            } else {
+                ruler.cursor.animate({width: c.width}, {duration: "fast", easing: "swing", complete: null});
+            }
+            ruler.count = c.count;
+            ruler.cursor.text(c.count);
+        }
+    };
+
+    var api_product_get_sku_one = function (page_num,isThen/*为了兼容批量与手动*/) {
+        $("#showContent").html("待机 ...");
+        return $.ajax({
+            type: "POST",
+            url: "{php echo $this->createAngularJsUrl('api_product_get_sku_one');}",
+            data: {
+                page_num: page_num
+            },
+            success: function (data) {
+
+                console.log(data);
+                var obj = JSON.parse(data);
+//                console.log(obj);
+
+                if (obj.status == 0) {
+                    $("#showContent").html(obj.result.message);
+                    $("#page_num_total").html("0");
+                    $("#goods_list").empty();
+                } else if (obj.status == 1) {
+
+                    $("#page_num_total").html(obj.result.total);
+                    core_tpl('#goods_list', 'tpl_goods_list', obj.result);
+                }
+
+
+            }
+        }).then(function () {
+            if(isThen){
+                return sync_one_page_num_sku();
+            }
+
+        });
+    };
+
+
+    var sync_one_page_num_sku = function () {
+
+        var defer = $.Deferred();//这一步必须要写，要不然下面的then无法使用
+        defer.resolve($("#showContent").html("开始执行同步..."));
+
+        $("#goods_list > div").each(function (index,element) {
+
+            var that = this;
+            var page_num = $(that).data('page_num');
+            var sku = $(that).data('sku');
+
+            console.log($(that).data('page_num') + " :: " + $(that).data('sku'));
+
+            defer = defer.then(function () {
+                return $.ajax({
+                    type: "POST",
+                    url: "{php echo $this->createAngularJsUrl('api_product_get_detail_one');}",
+                    data:{
+                        overwrite : 1,
+                        page_num : page_num,
+                        sku : sku
+                    },
+                    beforeSend : function () {
+
+                        $("#showContent").html("正在执行第 " + index + " 个任务");
+                        // TODO scroll
+                    },
+                    success: function (data) {
+
+                        console.log(data);
+
+                        var row_tmp_01 = (index % 17);
+
+                        if(row_tmp_01 == 0){
+                            $("#goods_list").scrollTop( index / 17 * 680);
+                        }
+
+                        var obj = JSON.parse(data);
+//                        console.log(obj);
+
+                        if(obj.status == 1){
+                            $(that).find(".progress-bar").attr("aria-valuenow",100);
+                            $(that).find(".sku_name").html(obj.result.result.name);
+                        }
+                    }
+                });
+            });
+
+        });
+
+        defer.done(function(){
+            $("#showContent").html("结束执行同步.");
+        });
+
+        return defer.promise();
+
+    };
+
+    var sync_batch_page_num_sku = function () {
+
+        test_select_tree_node();
+//        var zTreeNodes =zTreeObj.getNodes();
+//        console.log(zTreeNodes);
+//        return;
+
+        var defer = $.Deferred();
+        defer.resolve($("#showContent").html("开始执行批量同步..."));
+
+        $.each(checkzTreeNodes,function (index,element) {
+
+            var that = this;//{id: "840", pId: "0", name: "个护健康", page_num: "0"}
+
+            if(that.page_num == 0 ) {
+                return true;// 如果return false 相当于break 如果return true 相当于 continure
+            }
+
+            defer = defer.then(function () {
+                $("#page_num_name").html(that.name);
+                var zTreeNode = zTreeObj.getNodeByParam('id',that.id);
+                zTreeNode.cheched= true;
+                zTreeObj.selectNode(zTreeNode);
+                console.log(zTreeNode);
+                return api_product_get_sku_one(that.page_num,true);
+            });
+        });
+
+        defer.done(function(){
+            $("#showContent").html("结束执行批量同步.");
+        });
+    };
+
+
+    var checkzTreeNodes;
+    var test_select_tree_node = function () {
+
+//      selectzTreeNodes = zTreeObj.getSelectedNodes();// 有bug 这个是点击选中
+        checkzTreeNodes = zTreeObj.getCheckedNodes(true);
+
+        if(checkzTreeNodes.length <= 0){
+            checkzTreeNodes = zTreeObj.transformToArray(zTreeObj.getNodes());
+        }
+
+    };
+
+    require(['{MODULE_URL}static/js/dist/tmodjs.js'],function (template) {
+        core_tpl = function (containerid, templateid, data, append) {
+            if (typeof append === undefined) {
+                append = false;
+            }
+            var html = template(templateid, data);//            console.log(html);
+
+            if (append) {
+                $(containerid).append(html);
+            } else {
+                $(containerid).html(html);
+            }
+            setTimeout(function () {
+                $("#goods_list").scrollTop(0);
+            }, 10);
+        };
+    });
+
+    require([
+        '{MODULE_URL}static/js/dist/zTree_v3/js/jquery.ztree.all.min.js'
+    ], function () {
+        ruler.init("ruler");
+        createTree();
+    });
+
+
+
+
+    $(document).ready(function () {
+
+        $("#sync_one_page_num_sku").bind("click", sync_one_page_num_sku);
+        $("#sync_batch_page_num_sku").bind("click", sync_batch_page_num_sku);
+        $("#test_select_tree_node").bind("click", test_select_tree_node);
+
+
+
+        $("#expandBtn").bind("click", {type:"expand"}, expandNode);
+        $("#collapseBtn").bind("click", {type:"collapse"}, expandNode);
+        $("#toggleBtn").bind("click", {type:"toggle"}, expandNode);
+        $("#expandSonBtn").bind("click", {type:"expandSon"}, expandNode);
+        $("#collapseSonBtn").bind("click", {type:"collapseSon"}, expandNode);
+
+        $("#expandAllBtn").bind("click", {type:"expandAll"}, expandNode);
+        $("#collapseAllBtn").bind("click", {type:"collapseAll"}, expandNode);
+
+//        $("#goods_list").height();     // 获取：区块的本身高度
+//        $("#goods_list").outerHeight();    // 获取：区块的高度+padding高度+border高度
+//        $("#goods_list").outerHeight(true);    // 获取：区块的高度+padding高度+border高度+margin的高度
+
+
+    });
+</SCRIPT>
+
+<script type='text/html' id='tpl_goods_list'>
+    <%each list as g%>
+    <div class="row" data-sku="<%g%>" data-page_num="<%page_num%>">
+        <div class="col-xs-10 sku_name"><%g%></div>
+        <div class="col-xs-2">
+            <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                <span class="sr-only">0%</span>
+            </div>
+            </div>
+        </div>
+    </div>
+    <%/each%>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{template 'common/footer'}

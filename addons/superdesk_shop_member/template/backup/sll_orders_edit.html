@@ -1,0 +1,242 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('sll_orders', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('sll_orders', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="orders_id" class="form-control" value="{$item['orders_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="fansid" class="form-control" value="{$item['fansid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="openid" class="form-control" value="{$item['openid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="tel" class="form-control" value="{$item['tel']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">付款方式,0：表示微信，1：货到付款，2：来电支付，3：银行卡</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="payconf" class="form-control" value="{$item['payconf']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">下单时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="ctime" class="form-control" value="{$item['ctime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="orderPrice" class="form-control" value="{$item['orderPrice']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否支付 0:未支付  1：已支付 ,2:已退款</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="isPay" class="form-control" value="{$item['isPay']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">1：未配送，2：配送中，3：表示已配送 ,4:确认收货 0:取消订单</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="state" class="form-control" value="{$item['state']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">0 : 微信  1：后台</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="type" class="form-control" value="{$item['type']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">预定时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="scheduleTime" class="form-control" value="{$item['scheduleTime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">配送时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="handletime" class="form-control" value="{$item['handletime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">确认收货时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="endTime" class="form-control" value="{$item['endTime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">联系人姓名</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="linkname" class="form-control" value="{$item['linkname']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">用户地址</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="address" class="form-control" value="{$item['address']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">配送人id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="trackingname" class="form-control" value="{$item['trackingname']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">支付时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="paytime" class="form-control" value="{$item['paytime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">订单ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="orderid" class="form-control" value="{$item['orderid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">支付流水号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="payNumber" class="form-control" value="{$item['payNumber']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">备注</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="remark" class="form-control" value="{$item['remark']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">客服备注</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="kfRemark" class="form-control" value="{$item['kfRemark']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="user_id" class="form-control" value="{$item['user_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">市级id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="wx_users_id" class="form-control" value="{$item['wx_users_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">1：新订单，未点击过。0：点击过</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="isNew" class="form-control" value="{$item['isNew']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">主订单的订单id（非自增长id）</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_id" class="form-control" value="{$item['main_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">退款返回信息</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="returnMsg" class="form-control" value="{$item['returnMsg']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">优惠券优惠金额</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="order_coupin_price" class="form-control" value="{$item['order_coupin_price']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">订单原始金额</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="order_original_price" class="form-control" value="{$item['order_original_price']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">积分优惠金额</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="order_integral_price" class="form-control" value="{$item['order_integral_price']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="jdorderid" class="form-control" value="{$item['jdorderid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">0：待扫描，1：已扫描,2:京东下单失败</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="jdstate" class="form-control" value="{$item['jdstate']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">取消时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="cancelTime" class="form-control" value="{$item['cancelTime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">运费</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="freight" class="form-control" value="{$item['freight']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">调取京东运费接口返回数据</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="freight_result" class="form-control" value="{$item['freight_result']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">项目id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_id" class="form-control" value="{$item['e_id']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

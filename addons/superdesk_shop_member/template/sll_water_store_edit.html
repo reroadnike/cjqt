@@ -1,0 +1,206 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('sll_water_store', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('sll_water_store', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_id" class="form-control" value="{$item['store_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">上班时间:</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="beginStoreTime" class="form-control" value="{$item['beginStoreTime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">结束时间(到期时间)</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="endTime" class="form-control" value="{$item['endTime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">店名</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_name" class="form-control" value="{$item['store_name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">水店地址</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_address" class="form-control" value="{$item['store_address']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">水店编号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_code" class="form-control" value="{$item['store_code']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="ctime" class="form-control" value="{$item['ctime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">0:正常1:到期2:暂停400:删除</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="status" class="form-control" value="{$item['status']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">外键/市级ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="userid" class="form-control" value="{$item['userid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属城市</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_city" class="form-control" value="{$item['store_city']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">水店账号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_account" class="form-control" value="{$item['store_account']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">电话</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="phone" class="form-control" value="{$item['phone']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">店主</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_user" class="form-control" value="{$item['store_user']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">银行账号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="bank_card_number" class="form-control" value="{$item['bank_card_number']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">开户行</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="bank_name" class="form-control" value="{$item['bank_name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">开户人</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="bank_account" class="form-control" value="{$item['bank_account']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">联系方式</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="phone_type" class="form-control" value="{$item['phone_type']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属省</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_province" class="form-control" value="{$item['store_province']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">下班时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="endStoreTime" class="form-control" value="{$item['endStoreTime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">密码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_pwd" class="form-control" value="{$item['store_pwd']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">门店图片</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_imageUrl1" class="form-control" value="{$item['store_imageUrl1']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">门店图片</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_imageUrl2" class="form-control" value="{$item['store_imageUrl2']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">门店图片</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_imageUrl3" class="form-control" value="{$item['store_imageUrl3']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">二维码url</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_codeUrl1" class="form-control" value="{$item['store_codeUrl1']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">固定电话</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="telmunber" class="form-control" value="{$item['telmunber']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属区县</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_district" class="form-control" value="{$item['store_district']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属街道</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_street" class="form-control" value="{$item['store_street']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">地址外键</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_addre_id" class="form-control" value="{$item['store_addre_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">数据格式</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_json" class="form-control" value="{$item['store_json']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

@@ -1,0 +1,29 @@
+
+{
+  "result": {
+    "baseData": {
+      "availQuota": 270835.01,
+      "occQuota": 229164.99,
+      "quota": 500000,
+      "quotaType": "3002",
+      "sumAmt": 188016.69,
+      "sumNrDefer": 0,
+      "sumNrDelin": 0,
+      "sumNrPri": 188016.69,
+      "sumOverAmt": 0
+    },
+    "orderDetail": {
+      "orderNo": "86689331215",
+      "billNo": "201902071200169883",
+      "orderAmount": 149.9,
+      "settleDate": "",
+      "settleStatus": "2500",
+      "sumRefundAmount": 0,
+      "customerName": ""
+    }
+  },
+  "success": true,
+  "resultMessage": "",
+  "resultCode": "9000",
+  "code": 200
+}

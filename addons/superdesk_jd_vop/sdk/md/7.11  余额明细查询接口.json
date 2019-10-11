@@ -1,0 +1,258 @@
+{"success":true,"resultMessage":"\u64cd\u4f5c\u6210\u529f","resultCode":"0000","result":{"total":1723,"pageSize":20,"pageNo":1,"pageCount":87,"data":[{"id":1690280398,"accountType":1,"amount":-617.84,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70198411991","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-04 16:34:42","notePub":"\u8ba2\u5355:70198411991,\u6d88\u8d39\u4f59\u989d\uff1a617.84","tradeNo":2720228866},{"id":1690255791,"accountType":1,"amount":-295,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70150579934","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-04 16:28:13","notePub":"\u8ba2\u5355:70150579934,\u6d88\u8d39\u4f59\u989d\uff1a295","tradeNo":2720216662},{"id":1690099610,"accountType":1,"amount":-596.3,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70921785349","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-04 14:37:50","notePub":"\u8ba2\u5355:70921785349,\u6d88\u8d39\u4f59\u989d\uff1a596.3","tradeNo":2719986917},{"id":1689842422,"accountType":1,"amount":-290.03,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70198757875","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-04 12:01:49","notePub":"\u8ba2\u5355:70198757875,\u6d88\u8d39\u4f59\u989d\uff1a290.03","tradeNo":2719740247},{"id":1688824847,"accountType":1,"amount":-175.45,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70913977188","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-03 19:06:41","notePub":"\u8ba2\u5355:70913977188,\u6d88\u8d39\u4f59\u989d\uff1a175.45","tradeNo":2718922104},{"id":1688629712,"accountType":1,"amount":-235,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70902216962","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-03 16:02:50","notePub":"\u8ba2\u5355:70902216962,\u6d88\u8d39\u4f59\u989d\uff1a235","tradeNo":2718588320},{"id":1688630545,"accountType":1,"amount":-101.68,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70902129388","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-03 16:02:41","notePub":"\u8ba2\u5355:70902129388,\u6d88\u8d39\u4f59\u989d\uff1a101.68","tradeNo":2718588298},{"id":1688352671,"accountType":1,"amount":-1130.86,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70901685514","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-03 14:48:12","notePub":"\u8ba2\u5355:70901685514,\u6d88\u8d39\u4f59\u989d\uff1a1130.86","tradeNo":2718447389},{"id":1688448220,"accountType":1,"amount":-552.13,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70908833795","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-03 14:47:12","notePub":"\u8ba2\u5355:70908833795,\u6d88\u8d39\u4f59\u989d\uff1a552.13","tradeNo":2718445453},{"id":1687930379,"accountType":1,"amount":-96.89,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70174044695","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-03 10:49:12","notePub":"\u8ba2\u5355:70174044695,\u6d88\u8d39\u4f59\u989d\uff1a96.89","tradeNo":2717997071},{"id":1686799404,"accountType":1,"amount":-368.81,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70160474256","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-02 16:22:50","notePub":"\u8ba2\u5355:70160474256,\u6d88\u8d39\u4f59\u989d\uff1a368.81","tradeNo":2716901770},{"id":1686752075,"accountType":1,"amount":-699,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70892262663","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-02 15:47:42","notePub":"\u8ba2\u5355:70892262663,\u6d88\u8d39\u4f59\u989d\uff1a699","tradeNo":2716810519},{"id":1686608598,"accountType":1,"amount":-118.48,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70891992068","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-02 15:35:50","notePub":"\u8ba2\u5355:70891992068,\u6d88\u8d39\u4f59\u989d\uff1a118.48","tradeNo":2716786732},{"id":1686656205,"accountType":1,"amount":-266.7,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70890609991","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-02 15:18:50","notePub":"\u8ba2\u5355:70890609991,\u6d88\u8d39\u4f59\u989d\uff1a266.7","tradeNo":2716744830},{"id":1686496921,"accountType":1,"amount":-423.26,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70889849967","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-02 15:15:11","notePub":"\u8ba2\u5355:70889849967,\u6d88\u8d39\u4f59\u989d\uff1a423.26","tradeNo":2716736476},{"id":1686426155,"accountType":1,"amount":-348.84,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70890831680","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-02 13:31:43","notePub":"\u8ba2\u5355:70890831680,\u6d88\u8d39\u4f59\u989d\uff1a348.84","tradeNo":2716526896},{"id":1686349349,"accountType":1,"amount":-220,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70800223051","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-02 12:32:12","notePub":"\u8ba2\u5355:70800223051,\u6d88\u8d39\u4f59\u989d\uff1a220","tradeNo":2716413456},{"id":1686347607,"accountType":1,"amount":-24.9,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70890492772","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2018-01-02 12:30:50","notePub":"\u8ba2\u5355:70890492772,\u6d88\u8d39\u4f59\u989d\uff1a24.9","tradeNo":2716411447},{"id":1681794592,"accountType":1,"amount":-153,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70830886476","tradeType":1209,"tradeTypeName":"\u5b9e\u7269\/\u793c\u54c1\u5361\u4f59\u989d\u652f\u4ed8","createdDate":"2017-12-30 17:03:14","notePub":"\u8ba2\u5355:70830886476,\u6d88\u8d39\u4f59\u989d\uff1a153","tradeNo":2712182547},{"id":1681053393,"accountType":1,"amount":0,"pin":"\u4e2d\u822a\u7269\u4e1aVOP","orderId":"70044130836","tradeType":416,"tradeTypeName":"\u9000\u6b3e-\u552e\u540e\u539f\u8fd4\uff08\u8001\uff09\u5199\u4f59\u989d","createdDate":"2017-12-30 09:41:31","notePub":"\u9000\u8d27\u8fd4\u6b3e:\u8ba2\u5355\u53f7:70044130836,\u5546\u54c1\u7f16\u53f7:3724205,\u5546\u54c1\u540d\u79f0:\u5f97\u5370\uff08befon\uff09LQ630K\u9ed1\u8272\u8272\u5e26\u67b6\u5341\u652f\u88c5 C13S015583 \u542b\u8272\u5e26\u82af\uff08\u9002\u7528\u7231\u666e\u751fLQ-630K 635k 730K\uff09,\u7533\u8bf7\u7406\u7531:null,\u9000\u6b3e\u91d1\u989d:66.000,\u670d\u52a1\u5355:377305034,\u9000\u6b3e\u65b9\u5f0f\uff1a\u539f\u8fd4","tradeNo":2711367534}]},"code":200}
+
+
+
+{
+  "success": true,
+  "resultMessage": "操作成功",
+  "resultCode": "0000",
+  "result": {
+    "total": 1723,
+    "pageSize": 20,
+    "pageNo": 1,
+    "pageCount": 87,
+    "data": [
+      {
+        "id": 1690280398,
+        "accountType": 1,
+        "amount": -617.84,
+        "pin": "中航物业VOP",
+        "orderId": "70198411991",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-04 16:34:42",
+        "notePub": "订单:70198411991,消费余额：617.84",
+        "tradeNo": 2720228866
+      },
+      {
+        "id": 1690255791,
+        "accountType": 1,
+        "amount": -295,
+        "pin": "中航物业VOP",
+        "orderId": "70150579934",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-04 16:28:13",
+        "notePub": "订单:70150579934,消费余额：295",
+        "tradeNo": 2720216662
+      },
+      {
+        "id": 1690099610,
+        "accountType": 1,
+        "amount": -596.3,
+        "pin": "中航物业VOP",
+        "orderId": "70921785349",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-04 14:37:50",
+        "notePub": "订单:70921785349,消费余额：596.3",
+        "tradeNo": 2719986917
+      },
+      {
+        "id": 1689842422,
+        "accountType": 1,
+        "amount": -290.03,
+        "pin": "中航物业VOP",
+        "orderId": "70198757875",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-04 12:01:49",
+        "notePub": "订单:70198757875,消费余额：290.03",
+        "tradeNo": 2719740247
+      },
+      {
+        "id": 1688824847,
+        "accountType": 1,
+        "amount": -175.45,
+        "pin": "中航物业VOP",
+        "orderId": "70913977188",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-03 19:06:41",
+        "notePub": "订单:70913977188,消费余额：175.45",
+        "tradeNo": 2718922104
+      },
+      {
+        "id": 1688629712,
+        "accountType": 1,
+        "amount": -235,
+        "pin": "中航物业VOP",
+        "orderId": "70902216962",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-03 16:02:50",
+        "notePub": "订单:70902216962,消费余额：235",
+        "tradeNo": 2718588320
+      },
+      {
+        "id": 1688630545,
+        "accountType": 1,
+        "amount": -101.68,
+        "pin": "中航物业VOP",
+        "orderId": "70902129388",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-03 16:02:41",
+        "notePub": "订单:70902129388,消费余额：101.68",
+        "tradeNo": 2718588298
+      },
+      {
+        "id": 1688352671,
+        "accountType": 1,
+        "amount": -1130.86,
+        "pin": "中航物业VOP",
+        "orderId": "70901685514",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-03 14:48:12",
+        "notePub": "订单:70901685514,消费余额：1130.86",
+        "tradeNo": 2718447389
+      },
+      {
+        "id": 1688448220,
+        "accountType": 1,
+        "amount": -552.13,
+        "pin": "中航物业VOP",
+        "orderId": "70908833795",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-03 14:47:12",
+        "notePub": "订单:70908833795,消费余额：552.13",
+        "tradeNo": 2718445453
+      },
+      {
+        "id": 1687930379,
+        "accountType": 1,
+        "amount": -96.89,
+        "pin": "中航物业VOP",
+        "orderId": "70174044695",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-03 10:49:12",
+        "notePub": "订单:70174044695,消费余额：96.89",
+        "tradeNo": 2717997071
+      },
+      {
+        "id": 1686799404,
+        "accountType": 1,
+        "amount": -368.81,
+        "pin": "中航物业VOP",
+        "orderId": "70160474256",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-02 16:22:50",
+        "notePub": "订单:70160474256,消费余额：368.81",
+        "tradeNo": 2716901770
+      },
+      {
+        "id": 1686752075,
+        "accountType": 1,
+        "amount": -699,
+        "pin": "中航物业VOP",
+        "orderId": "70892262663",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-02 15:47:42",
+        "notePub": "订单:70892262663,消费余额：699",
+        "tradeNo": 2716810519
+      },
+      {
+        "id": 1686608598,
+        "accountType": 1,
+        "amount": -118.48,
+        "pin": "中航物业VOP",
+        "orderId": "70891992068",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-02 15:35:50",
+        "notePub": "订单:70891992068,消费余额：118.48",
+        "tradeNo": 2716786732
+      },
+      {
+        "id": 1686656205,
+        "accountType": 1,
+        "amount": -266.7,
+        "pin": "中航物业VOP",
+        "orderId": "70890609991",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-02 15:18:50",
+        "notePub": "订单:70890609991,消费余额：266.7",
+        "tradeNo": 2716744830
+      },
+      {
+        "id": 1686496921,
+        "accountType": 1,
+        "amount": -423.26,
+        "pin": "中航物业VOP",
+        "orderId": "70889849967",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-02 15:15:11",
+        "notePub": "订单:70889849967,消费余额：423.26",
+        "tradeNo": 2716736476
+      },
+      {
+        "id": 1686426155,
+        "accountType": 1,
+        "amount": -348.84,
+        "pin": "中航物业VOP",
+        "orderId": "70890831680",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-02 13:31:43",
+        "notePub": "订单:70890831680,消费余额：348.84",
+        "tradeNo": 2716526896
+      },
+      {
+        "id": 1686349349,
+        "accountType": 1,
+        "amount": -220,
+        "pin": "中航物业VOP",
+        "orderId": "70800223051",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-02 12:32:12",
+        "notePub": "订单:70800223051,消费余额：220",
+        "tradeNo": 2716413456
+      },
+      {
+        "id": 1686347607,
+        "accountType": 1,
+        "amount": -24.9,
+        "pin": "中航物业VOP",
+        "orderId": "70890492772",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2018-01-02 12:30:50",
+        "notePub": "订单:70890492772,消费余额：24.9",
+        "tradeNo": 2716411447
+      },
+      {
+        "id": 1681794592,
+        "accountType": 1,
+        "amount": -153,
+        "pin": "中航物业VOP",
+        "orderId": "70830886476",
+        "tradeType": 1209,
+        "tradeTypeName": "实物/礼品卡余额支付",
+        "createdDate": "2017-12-30 17:03:14",
+        "notePub": "订单:70830886476,消费余额：153",
+        "tradeNo": 2712182547
+      },
+      {
+        "id": 1681053393,
+        "accountType": 1,
+        "amount": 0,
+        "pin": "中航物业VOP",
+        "orderId": "70044130836",
+        "tradeType": 416,
+        "tradeTypeName": "退款-售后原返（老）写余额",
+        "createdDate": "2017-12-30 09:41:31",
+        "notePub": "退货返款:订单号:70044130836,商品编号:3724205,商品名称:得印（befon）LQ630K黑色色带架十支装 C13S015583 含色带芯（适用爱普生LQ-630K 635k 730K）,申请理由:null,退款金额:66.000,服务单:377305034,退款方式：原返",
+        "tradeNo": 2711367534
+      }
+    ]
+  },
+  "code": 200
+}

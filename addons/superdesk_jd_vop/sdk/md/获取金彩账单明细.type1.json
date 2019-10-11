@@ -1,0 +1,50 @@
+
+{
+  "result": {
+    "baseData": {
+      "availQuota": 270937.74,
+      "occQuota": 229062.26,
+      "quota": 500000,
+      "quotaType": "3002",
+      "sumAmt": 188016.69,
+      "sumNrDefer": 0,
+      "sumNrDelin": 0,
+      "sumNrPri": 188016.69,
+      "sumOverAmt": 0
+    },
+    "billInfo": {
+      "pageNo": 1,
+      "pageSize": 10,
+      "totalPage": 1,
+      "totalRecord": 2,
+      "results": [
+        {
+          "billAmount": 188016.69,
+          "billEndDate": 1550851200000,
+          "billNo": "201902071200169883",
+          "billStartDate": 1549468800000,
+          "nrRepayPri": 188016.69,
+          "overAmount": 0,
+          "overDays": 0,
+          "repayDate": 1550851200000,
+          "repayStatus": "5001"
+        },
+        {
+          "billAmount": 219519.62,
+          "billEndDate": 1548432000000,
+          "billNo": "201901101200122793",
+          "billStartDate": 1547049600000,
+          "nrRepayPri": 0,
+          "overAmount": 0,
+          "overDays": 0,
+          "repayDate": 1548432000000,
+          "repayStatus": "5004"
+        }
+      ]
+    }
+  },
+  "success": true,
+  "resultMessage": "",
+  "resultCode": "9000",
+  "code": 200
+}

@@ -1,0 +1,15 @@
+<div id="main">
+    <ul>
+        {data func="site_navs" item="row" }
+        <li>
+            <div class="main-list">
+                <a href="{$row['url']}">
+                    <span><img src="{php echo tomedia($row['icon'])}"/></span>
+                    <span class="main-list-name">{$row['name']}</span>
+                </a>
+            </div>
+        </li>
+        {/data}
+    </ul>
+</div>
+<!-- 功能模块 end -->

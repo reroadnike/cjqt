@@ -1,0 +1,282 @@
+
+{template 'common/header'}
+
+
+
+<style>
+    .contact-box {
+        background-color: #ffffff;
+        border: 1px solid #e7eaec;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .views-number {
+        font-size: 24px;
+        line-height: 18px;
+        font-weight: 400;
+    }
+    .forum-info {
+        text-align: center;
+    }
+
+</style>
+
+
+<div class="main">
+    <div class="alert alert-info" >
+        <div class="row">
+            <div class="col-sm-12">
+                账单还款状态:<br/>
+                <ol>
+                    <li>正常 | 延期 | 逾期 | 已结清 | 延期已结清 | 逾期已结清</li>
+                </ol>
+            </div>
+            <div class="col-sm-12">
+                订单还款状态:<br/>
+                <ol>
+                    <li>未结清 | 已结清</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="contact-box" style="border: 1px solid #e7eaec">
+        <div class="forum-item">
+            <div class="row">
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$billDetail['billNo']}
+                        </span>
+                        <div>
+                            <small>账单编号</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$billDetail['billType']}
+                        </span>
+                        <div>
+                            <small>账单类型</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$billDetail['status']}
+                        </span>
+                        <div>
+                            <small>状态</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$billDetail['execRate']}
+                        </span>
+                        <div>
+                            <small>服务费率（执行利率）</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$billDetail['repayDate']}
+                        </span>
+                        <div>
+                            <small>还款日期（应还款日）</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$billDetail['delinDate']}
+                        </span>
+                        <div>
+                            <small>违约开始日期</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="row" style="margin-top: 1rem;">
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$billDetail['sumPri']}
+                        </span>
+                        <div>
+                            <small>已还本金</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$billDetail['sumNrPri']}
+                        </span>
+                        <div>
+                            <small>未还本金</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$billDetail['sumDefer']}
+                        </span>
+                        <div>
+                            <small>已还延期服务费</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$billDetail['sumNrDefer']}
+                        </span>
+                        <div>
+                            <small>未还延期服务费</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$billDetail['sumDelin']}
+                        </span>
+                        <div>
+                            <small>已还违约服务费</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$billDetail['sumNrDelin']}
+                        </span>
+                        <div>
+                            <small>未还违约服务费</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">筛选</div>
+        <div class="panel-body">
+            <form action="./index.php" method="get" class="form-horizontal" role="form">
+                <input type="hidden" name="c" value="site"/>
+                <input type="hidden" name="a" value="entry"/>
+                <input type="hidden" name="m" value="superdesk_jd_vop"/>
+                <input type="hidden" name="do" value="jd_vop_jincai_get_bill_detail"/>
+                <input type="hidden" name="op" value="billDetail"/>
+                <input type="hidden" name="overwrite" value="1"/>
+                <input type="hidden" name="billId" value="{$billDetail['billNo']}"/>
+
+                <div class="form-group">
+
+                    <label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label" >还款状态</label>
+                    <div class="col-sm-2 col-lg-2">
+                        <select class="form-control" name="search[settleStatus]">
+                            <option value="-1" {if -1 == $search['settleStatus'] || !isset($search['settleStatus'])}selected="selected"{/if}>还款状态</option>
+                            {loop $orderStatus $statusKey $statusValue}
+                            <option value="{$statusKey}" {if isset($search['settleStatus']) && $statusKey == $search['settleStatus']}selected="selected"{/if}>{$statusValue}</option>
+                            {/loop}
+                        </select>
+                    </div>
+
+                    <label class="col-xs-12 col-sm-4 col-md-4 col-lg-2 control-label" >金额正确性</label>
+                    <div class="col-sm-2 col-lg-2">
+                        <select class="form-control" name="search[isRight]">
+                            <option value="-1" {if -1 == $search['isRight'] || !isset($search['isRight'])}selected="selected"{/if}>金额正确性</option>
+                            {loop $isRightAll $isRightKey $isRightValue}
+                            <option value="{$isRightKey}" {if isset($search['isRight']) && $isRightKey == $search['isRight']}selected="selected"{/if}>{$isRightValue['text']}</option>
+                            {/loop}
+                        </select>
+                    </div>
+
+                    <div class="col-sm-1 col-lg-1">
+                        <button class="btn btn-default"><i class="fa fa-at"></i> 搜索</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                订单列表
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th class="text-center" style="width: 10rem;">订单号</th>
+                        <th class="text-center" style="width: 14rem;">账单编号</th>
+                        <th class="text-center">还款状态</th>
+                        <th class="text-center">结算时间</th>
+                        <th class="text-center">结算单位</th>
+                        <th class="text-center">订单金额</th>
+                        <th class="text-center">总退款金额</th>
+                        <th class="text-center" style="width: 17rem;">商城订单编号</th>
+                        <th class="text-center">商城金额</th>
+                        <th class="text-center">运费</th>
+                        <th class="text-center">商城状态</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $orderList $item}
+                    <tr>
+                        <td class="text-center">{$item['orderNo']}</td>
+                        <td class="text-center">{$item['billNo']}</td>
+                        <td class="text-center">{$item['settleStatus']}</td>
+                        <td class="text-center">{$item['settleDate']}</td>
+                        <td class="text-center">{$item['customerName']}</td>
+                        <td class="text-center">{$item['orderAmount']}</td>
+                        <td class="text-center">{$item['sumRefundAmount']}</td>
+                        <td class="text-center">{$item['shopOrderSn']}</td>
+                        <td class="text-center">{$item['shopOrderPrice']}</td>
+                        <td class="text-center">{$item['orderFreight']}</td>
+                        <td class="text-center">{$item['shopOrderStatus']}</td>
+                        <td class="text-center" style="color:{$item['isRight']['css']}">{$item['isRight']['text']}</td>
+                        <td class="text-center">
+                            <a href="{php echo $this->createWebUrl('jd_vop_jincai_get_bill_detail', array('billId' => $billDetail['billNo'], 'orderId' => $item['orderNo'], 'op' => 'orderDetail'));}"
+                               class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="订单明细">
+                                <i class="fa fa-pencil">&nbsp;订单明细</i>
+                            </a>
+                        </td>
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td >
+                            <input type="hidden" name="token" value="{$_W['token']}" />
+                            共 {$total}
+                        </td>
+                        <td colspan="8">
+                            {$pager}
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{template 'common/footer'}

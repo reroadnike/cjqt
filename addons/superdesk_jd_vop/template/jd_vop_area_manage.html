@@ -1,0 +1,533 @@
+{template 'common/header'}
+
+<link rel="stylesheet" href="{MODULE_URL}static/js/dist/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<style>
+
+    ul.ztree {
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        /*background: #ffffff;*/
+        width: 100%;
+        height: 700px;
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+
+    #goods_list{
+        margin-top: 10px;
+        padding-top: 10px;
+        border: 1px solid #ddd;
+        /*background: #ffffff;*/
+        width: 100%;
+        height: 700px;
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+
+    .sku_name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    ul.log{
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        /*background: #ffffff;*/
+        width: 0;
+        height: 0;
+        overflow-y: scroll;
+        overflow-x: auto;
+        list-style: none;
+        padding-left: .4rem;
+    }
+    ul.log li {
+    }
+
+    ul.log li.dark {
+        background-color: #E3E3E3;
+    }
+</style>
+
+<div class="main">
+    <div class="row">
+
+        <div class="col-xs-4 col-sm-4" style="padding: 0;">
+            [ <span id="alert_tips">初始化 ...</span> ]
+            [ <a id="expandAllBtn" href="#" title="展开" onclick="return false;">展开</a> ]
+            [ <a id="collapseAllBtn" href="#" title="折叠" onclick="return false;">折叠</a> ]
+            <br/>
+            [ <a id="check_province_01" href="#" title="零级较正" onclick="return false;">零级较正</a> ]
+            [ <a id="check_city_02_by_province_01" href="#" title="二级地址" onclick="return false;">一级较正</a> ]
+            [ <a id="check_county_03_by_city_02" href="#" title="三级地址" onclick="return false;">二级较正</a> ]
+            [ <a id="check_town_04_by_county_03" href="#" title="四级地址" onclick="return false;">三级较正</a> ]
+            <!--[ <a id="check_xx_05_by_town_04" href="#" title="四级较正" onclick="return false;">四级较正</a> ]-->
+
+            <!--$("#check_province_01").bind("click", check_province_01);-->
+            <!--api_area_01_get_province-->
+
+            <!--$("#check_city_02_by_province_01").bind("click", check_city_02_by_province_01);-->
+            <!--api_area_02_get_city-->
+
+            <!--$("#check_county_03_by_city_02").bind("click", check_county_03_by_city_02);-->
+            <!--api_area_03_get_county-->
+
+            <!--$("#check_town_04_by_county_03").bind("click", check_town_04_by_county_03);-->
+            <!--api_area_04_get_town-->
+
+        </div>
+        <div class="col-xs-8 col-sm-8">
+            [ 主要是用于数据较验 ] 状态 : [ <span id="showContent">待机 ...</span> ]
+            <br/>
+            [ 此四级地址库一般不会更新 ]
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-xs-4 col-sm-4" style="padding: 0;">
+            <ul id="areaTree" class="ztree"></ul>
+        </div>
+        <div class="col-xs-8 col-sm-8">
+            <div id="goods_list"></div>
+        </div>
+    </div>
+</div>
+
+
+<SCRIPT type="text/javascript">
+
+    var zNodes = {$zNodes};
+    var zTree = $("#areaTree");
+    var zTreeObj;
+
+    var core_tpl;
+    var version = +new Date();
+
+    var setting = {
+        check: {
+            enable: true
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        callback: {
+            beforeClick: beforeClick,
+            onClick: onClick,
+            onNodeCreated: onNodeCreated
+
+        }
+    };
+
+    var ruler = {
+        doc: null,
+        ruler: null,
+        cursor: null,
+        minCount: 50000,
+        count: 50000,
+        stepCount: 500,
+        minWidth: 30,
+        maxWidth: 215,
+        init: function () {
+            ruler.doc = $(document);
+//            ruler.ruler = $("#ruler");
+//            ruler.cursor = $("#cursor");
+            if (ruler.ruler) {
+                ruler.ruler.bind("mousedown", ruler.onMouseDown);
+
+            }
+        },
+        onMouseDown: function (e) {
+            ruler.drawRuler(e, true);
+            ruler.doc.bind("mousemove", ruler.onMouseMove);
+            ruler.doc.bind("mouseup", ruler.onMouseUp);
+            ruler.doc.bind("selectstart", ruler.onSelect);
+            $("body").css("cursor", "pointer");
+        },
+        onMouseMove: function (e) {
+            ruler.drawRuler(e);
+            return false;
+        },
+        onMouseUp: function (e) {
+            $("body").css("cursor", "auto");
+            ruler.doc.unbind("mousemove", ruler.onMouseMove);
+            ruler.doc.unbind("mouseup", ruler.onMouseUp);
+            ruler.doc.unbind("selectstart", ruler.onSelect);
+            ruler.drawRuler(e);
+        },
+        onSelect: function (e) {
+            return false;
+        },
+        getCount: function (end) {
+            var start = ruler.ruler.offset().left + 1;
+            var c = Math.max((end - start), ruler.minWidth);
+            c = Math.min(c, ruler.maxWidth);
+            return {width: c, count: (c - ruler.minWidth) * ruler.stepCount + ruler.minCount};
+        },
+        drawRuler: function (e, animate) {
+            var c = ruler.getCount(e.clientX);
+            ruler.cursor.stop();
+            if ($.browser.msie || !animate) {
+                ruler.cursor.css({width: c.width});
+            } else {
+                ruler.cursor.animate({width: c.width}, {duration: "fast", easing: "swing", complete: null});
+            }
+            ruler.count = c.count;
+            ruler.cursor.text(c.count);
+        }
+    };
+    var showNodeCount = 0;
+
+    function beforeClick(treeId, treeNode, clickFlag) {
+        return (treeNode.click != false);
+    }
+    function onClick(event, treeId, treeNode, clickFlag) {
+        console.log(treeNode);
+
+//        $("#page_num_name").html(treeNode.name);
+//        api_product_get_sku_one(treeNode['page_num'],false);
+
+    }
+    function onNodeCreated(event, treeId, treeNode) {
+        showNodeCount++;
+    }
+
+
+
+    function createTree() {
+
+        showNodeCount = 0;
+        zTree.empty();
+        var time1 = new Date();
+        $.fn.zTree.init(zTree, setting, zNodes);
+        var time2 = new Date();
+
+        zTreeObj = $.fn.zTree.getZTreeObj("areaTree");
+
+        $("#alert_tips").html("节点共 " + zNodes.length + " 个, 初始化节点共 " + showNodeCount + " 个"
+                + "初始化共耗时: " + (time2.getTime() - time1.getTime()) + " ms");
+    }
+    function expandNode(e) {
+        var type = e.data.type;
+        var nodes = zTreeObj.getSelectedNodes();
+        if (type.indexOf("All") < 0 && nodes.length == 0) {
+            alert("请先选择一个父节点");
+        }
+
+        if (type == "expandAll") {
+            zTreeObj.expandAll(true);
+        } else if (type == "collapseAll") {
+            zTreeObj.expandAll(false);
+        } else {
+            var callbackFlag = $("#callbackTrigger").attr("checked");
+            for (var i = 0, l = nodes.length; i < l; i++) {
+
+                zTreeObj.setting.view.fontCss = {};
+
+                if (type == "expand") {
+                    zTreeObj.expandNode(nodes[i], true, null, null, callbackFlag);
+                } else if (type == "collapse") {
+                    zTreeObj.expandNode(nodes[i], false, null, null, callbackFlag);
+                } else if (type == "toggle") {
+                    zTreeObj.expandNode(nodes[i], null, null, null, callbackFlag);
+                } else if (type == "expandSon") {
+                    zTreeObj.expandNode(nodes[i], true, true, null, callbackFlag);
+                } else if (type == "collapseSon") {
+                    zTreeObj.expandNode(nodes[i], false, true, null, callbackFlag);
+                }
+            }
+        }
+    }
+    var checkzTreeNodes;
+    var test_select_tree_node = function () {
+
+        checkzTreeNodes = zTreeObj.getCheckedNodes(true);
+
+        if(checkzTreeNodes.length <= 0){
+            checkzTreeNodes = zTreeObj.transformToArray(zTreeObj.getNodes());
+        }
+
+        console.log(checkzTreeNodes);
+
+    };
+    var api_area_01_get_province = function (isThen) {
+        $("#showContent").html("待机 ...");
+        return $.ajax({
+            type: "POST",
+            url: "{php echo $this->createAngularJsUrl('api_area_01_get_province');}",
+            data: {
+//                code : code
+            },
+            success: function (data) {
+
+                console.log(data);
+                var obj = JSON.parse(data);
+//                console.log(obj);
+                if (obj.status == 0) {
+                    $("#showContent").html(obj.result.message);
+//                    $("#page_num_total").html("0");
+                    $("#goods_list").empty();
+                } else if (obj.status == 1) {
+//                    $("#page_num_total").html(obj.result.total);
+                    core_tpl('#goods_list', 'tpl_goods_list', obj.result);
+                }
+            }
+        }).then(function () {
+            if(isThen){ }
+        });
+    };
+    var api_area_02_get_city = function (code , isThen) {
+        $("#showContent").html("待机 ...");
+        return $.ajax({
+            type: "POST",
+            url: "{php echo $this->createAngularJsUrl('api_area_02_get_city');}",
+            data: {
+                code : code
+            },
+            success: function (data) {
+
+                console.log(data);
+                var obj = JSON.parse(data);
+//                console.log(obj);
+
+                if (obj.status == 0) {
+                    $("#showContent").html(obj.result.message);
+//                    $("#page_num_total").html("0");
+                    $("#goods_list").empty();
+                } else if (obj.status == 1) {
+
+//                    $("#page_num_total").html(obj.result.total);
+                    core_tpl('#goods_list', 'tpl_goods_list', obj.result);
+                }
+
+
+            }
+        }).then(function () {
+            if(isThen){
+
+            }
+
+        });
+    };
+    var api_area_03_get_county = function (code , isThen) {
+        $("#showContent").html("待机 ...");
+        return $.ajax({
+            type: "POST",
+            url: "{php echo $this->createAngularJsUrl('api_area_03_get_county');}",
+            data: {
+                code : code
+            },
+            success: function (data) {
+
+                console.log(data);
+                var obj = JSON.parse(data);
+//                console.log(obj);
+
+                if (obj.status == 0) {
+                    $("#showContent").html(obj.result.message);
+//                    $("#page_num_total").html("0");
+                    $("#goods_list").empty();
+                } else if (obj.status == 1) {
+
+//                    $("#page_num_total").html(obj.result.total);
+                    core_tpl('#goods_list', 'tpl_goods_list', obj.result);
+                }
+
+
+            }
+        }).then(function () {
+            if(isThen){
+
+            }
+
+        });
+    };
+    var api_area_04_get_town = function (code , isThen) {
+        $("#showContent").html("待机 ...");
+        return $.ajax({
+            type: "POST",
+            url: "{php echo $this->createAngularJsUrl('api_area_04_get_town');}",
+            data: {
+                code : code
+            },
+            success: function (data) {
+
+                console.log(data);
+                var obj = JSON.parse(data);
+//                console.log(obj);
+
+                if (obj.status == 0) {
+                    $("#showContent").html(obj.result.message);
+//                    $("#page_num_total").html("0");
+                    $("#goods_list").empty();
+                } else if (obj.status == 1) {
+
+//                    $("#page_num_total").html(obj.result.total);
+                    core_tpl('#goods_list', 'tpl_goods_list', obj.result);
+                }
+            }
+        }).then(function () {
+            if(isThen){ }
+        });
+    };
+
+    // 较正省
+    var check_province_01 = function () {
+        api_area_01_get_province(false);
+    };
+    // 较正市
+    var check_city_02_by_province_01 = function () {
+        var province_nodes = zTreeObj.getNodesByParam("level", 0, null);
+//        console.log(province_nodes);
+
+        var defer = $.Deferred();
+        defer.resolve($("#showContent").html("开始执行较正..."));
+
+        $.each(province_nodes,function (index,element) {
+
+            var that = this;//{id: "840", pId: "0", name: "个护健康", page_num: "0"}
+
+
+            defer = defer.then(function () {
+
+                zTreeObj.selectNode(that);
+                console.log(that);
+                return api_area_02_get_city(that.id,false);
+            });
+        });
+
+        defer.done(function(){
+            $("#showContent").html("结束执行较正.");
+        });
+    };
+
+    // 较正区县
+    var check_county_03_by_city_02 = function () {
+        var city_nodes = zTreeObj.getNodesByParam("level", 1, null);
+//        console.log(city_nodes);
+        var defer = $.Deferred();
+        defer.resolve($("#showContent").html("开始执行较正..."));
+
+        $.each(city_nodes,function (index,element) {
+
+            var that = this;//{id: "840", pId: "0", name: "个护健康", page_num: "0"}
+
+
+            defer = defer.then(function () {
+
+                zTreeObj.selectNode(that);
+                console.log(that);
+                return api_area_03_get_county(that.id,false);
+            });
+        });
+
+        defer.done(function(){
+            $("#showContent").html("结束执行较正.");
+        });
+    };
+
+    // 较正街道镇
+    var check_town_04_by_county_03 = function () {
+        var county_nodes = zTreeObj.getNodesByParam("level", 2, null);
+//        console.log(county_nodes);
+
+        var defer = $.Deferred();
+        defer.resolve($("#showContent").html("开始执行较正..."));
+
+        $.each(county_nodes,function (index,element) {
+
+            var that = this;//{id: "840", pId: "0", name: "个护健康", page_num: "0"}
+
+
+            defer = defer.then(function () {
+
+                zTreeObj.selectNode(that);
+                console.log(that);
+                return api_area_04_get_town(that.id,false);
+            });
+        });
+
+        defer.done(function(){
+            $("#showContent").html("结束执行较正.");
+        });
+    };
+
+    // 这个没有下级了
+    var check_xx_05_by_town_04 = function () {
+        var town_nodes = zTreeObj.getNodesByParam("level", 3, null);
+        console.log(town_nodes);
+    };
+
+
+    require(['{MODULE_URL}static/js/dist/zTree_v3/js/jquery.ztree.all.min.js'], function () {
+        ruler.init("ruler");
+        createTree();
+    });
+    require(['{MODULE_URL}static/js/dist/tmodjs.js'],function (template) {
+        core_tpl = function (containerid, templateid, data, append) {
+            if (typeof append === undefined) {
+                append = false;
+            }
+            var html = template(templateid, data);//            console.log(html);
+
+            if (append) {
+                $(containerid).append(html);
+            } else {
+                $(containerid).html(html);
+            }
+            setTimeout(function () {
+                $("#goods_list").scrollTop(0);
+            }, 10);
+        };
+    });
+
+    $(document).ready(function () {
+
+        $("#check_province_01").bind("click", check_province_01);
+        $("#check_city_02_by_province_01").bind("click", check_city_02_by_province_01);
+        $("#check_county_03_by_city_02").bind("click", check_county_03_by_city_02);
+        $("#check_town_04_by_county_03").bind("click", check_town_04_by_county_03);
+        $("#check_xx_05_by_town_04").bind("click", check_xx_05_by_town_04);
+
+
+
+        $("#expandAllBtn").bind("click", {type:"expandAll"}, expandNode);
+        $("#collapseAllBtn").bind("click", {type:"collapseAll"}, expandNode);
+
+    });
+</SCRIPT>
+<script type='text/html' id='tpl_goods_list'>
+    <%each list as area%>
+    <div class="row" data-code="<%area.code%>" data-parent_code="<%area.parent_code%>">
+        <div class="col-xs-10 sku_name"><%area.text%></div>
+        <div class="col-xs-2">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                    <span class="sr-only">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%/each%>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{template 'common/footer'}

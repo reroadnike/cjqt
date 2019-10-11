@@ -1,0 +1,158 @@
+{template '__header'}
+<link href="{$_W['siteroot']}/app/resource/css/font-awesome.min.css" rel="stylesheet">
+<style>
+    .item_div{
+        margin: 0rem 0rem;
+        padding: 0.8rem;
+    }
+    .item_background {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    .item_background p{
+        text-align: center;
+    }
+</style>
+<!-- container-fluid -->
+<div class="container" style="background-image: url({MODULE_URL}template/mobile/img/bg@3x.png);background-size: cover;">
+    <link rel="stylesheet" href="{MODULE_URL}static/js/dist/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+    <style>
+        .btn-tags{
+            margin-bottom: 0.5rem;
+        }
+        .tt-input,.tt-hint{
+            line-height: 3.7rem;
+            height: 3.7rem;
+            color: black;
+        }
+
+        .bootstrap-tagsinput .tag{
+            height: 3.7rem;
+            line-height: 3.7rem;
+            color: black;
+            font-size: 1.8rem;
+            padding-left: 1rem;
+        }
+        .big{
+            height: 3.7rem;
+        }
+
+        .bootstrap-tagsinput {
+            background-color: #fff;
+             border: 1px solid #C9B793;
+             box-shadow: none;
+            display: inline-block;
+            padding: 4px 6px;
+            color: #555;
+            vertical-align: middle;
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            max-width: 100%;
+            line-height: 22px;
+            cursor: text;
+            height: 4.45rem;
+            width: 100%;
+        }
+        .bootstrap-tagsinput input{
+            width: 100%;
+        }
+
+        .tt-menu{
+            width: 38rem;
+            background-color:#C9B793;/* IE6和部分IE7内核的浏览器(如QQ浏览器)下颜色被覆盖 */
+            background-color:rgba(201,183,147,0.7); /* IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂，但解析为透明 */
+            border-radius: 4px;
+            margin: .5rem -.5rem 0rem -.5rem;
+        }
+        .tt-selectable{
+            /*width: 100%;*/
+            /*float: left;*/
+            /*text-align: left;*/
+            font-size: 1.8rem;
+            padding: 1rem;
+        }
+
+    </style>
+    <div class="row" style="margin-top: 1rem;">
+
+        <div class="input-group col-md-12">
+            <input type="text" class="form-control input-lg" placeholder="请输入医生名称" name="search_doctor_name" id="search_doctor_name" value=""/>
+            <span class="input-group-btn">
+                <button class="btn btn-lg" type="button" id="btn_submit" style="background-color: #C9B793;color: white;">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="{MODULE_URL}static/js/dist/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+    <script type="text/javascript" src="{MODULE_URL}static/js/dist/bootstrap-tagsinput/lib/typeahead.js/bloodhound.js"></script>
+    <script type="text/javascript" src="{MODULE_URL}static/js/dist/bootstrap-tagsinput/lib/typeahead.js/typeahead.bundle.min.js"></script>
+
+
+    <script>
+
+        var cities = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            prefetch: '{$url_api_query_doctor}'
+        });
+        cities.initialize();
+
+        $('#search_doctor_name').tagsinput({
+            maxTags: 1,
+            tagClass: 'big',
+            itemValue: 'value',
+            itemText: 'text',
+            typeaheadjs: {
+                name: 'cities',
+                displayKey: 'text',
+                source: cities.ttAdapter()
+            }
+        });
+
+        $('#search_doctor_name').on('itemAdded', function(event) {
+            var tag = event.item;
+            console.log('itemAdded'+JSON.stringify(tag));
+            $('.tt-input').hide();
+            window.location.href="{php echo murl('entry' , array('m'=>'business_dongyuantang' , 'do'=>'doctor_detail'))}"+"&doctor_sn="+tag.value;
+        });
+
+        $('#search_doctor_name').on('itemRemoved', function(event) {
+            $('.tt-input').show();
+        });
+    </script>
+
+
+
+    <div class="row">
+        {loop $list $item}
+        <!--<a href="{php echo murl('entry' , array('m'=>'business_dongyuantang' , 'do'=>'doctor_list','department_sn'=>$item['department_sn']))}">-->
+        <a href="{php echo murl('entry' , array('m'=>'business_dongyuantang' , 'do'=>'doctor_list','department_sn'=>$item['department_sn'],'department_name'=>base64_encode($item['department_name'])))}">
+            <div class="col-xs-6 col-sm-6 item_div">
+                <img class="img-responsive" src="{php echo tomedia($item['thumb'])}" onerror="this.src='{MODULE_URL}template/mobile/img/kuang@3x.png'"/>
+                <div class="item_background">
+
+                    {if empty($item['thumb'])}
+                    {php $department_names = explode("，",$item['department_name']);}
+                    {loop $department_names $iitem}
+                    <p style="color: #483A31;font-size: 1.75rem;margin-bottom: 0.1rem;">{$iitem}</p>
+                    {/loop}
+                    {else}
+                    &nbsp;
+                    {/if}
+                </div>
+            </div>
+        </a>
+        {/loop}
+    </div>
+    <div class="row">
+        <div class="col-xs-12" style="height: 6rem;">&nbsp;</div>
+    </div>
+</div>
+{template '__nav'}
+{template '__footer'}

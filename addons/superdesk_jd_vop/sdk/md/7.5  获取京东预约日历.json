@@ -1,0 +1,150 @@
+参数名称 | 类型 | 意义 
+success | boolean | 接口是否正常响应;true表示正常处理请求
+resultCode | String | 业务处理结果编码，详细参见：【11.错误码】
+resultMessage | String | 对resultCode的简要说明
+result | JSON | 获取到的预约日历结果,json字符串
+
+
+获取到的预约日历结果的json字符串，包括三个节点，skuClassifyResult、calendarListResult、laCalendarListResult;
+JSON结构：
+
+
+{
+        "result":{
+"skuClassifyResult": 展开
+"calendarListResult": 展开
+"calendarListResult": 展开
+}
+}
+
+
+
+下面是各个节点的详细说明：
+
+
+
+skuClassifyResult：表示将sku进行大类型区分的结果
+
+内部结构如下;
+skuClassifyResult节点说明：
+
+
+{
+        "skuClassifyResult":{
+        "resultCode": 1,
+        "resultMessage":"Ok",
+        "skuClassifyMaps": {
+          "100780": 1, // 100780表示sku;1表示类型（1具体指中小件）
+          “1000116": 2// 1000116表示sku;2表示类型（2具体指大家电）
+        }
+  }
+}
+
+参数名称 | 类型 | 意义 
+resultCode | Int | 状态，只有1表示处理成功
+resultMessage | String | 对resultCode的简要说明
+skuClassifyMaps | Map<Long,Integer> | 详细区分结果，
+                                      "skuClassifyMaps": {
+                                      "100780": 1, // 100780表示sku;1表示类型（1具体指中小件）
+                                      “1000116": 2// 1000116表示sku;2表示类型（2具体指大家电）
+                                      }
+                                    key表示sku编码;
+                                    value表示sku类型，1：表示中小件，2：表示大家电
+
+
+
+calendarListResult：表示中小件的预约日历结果
+
+内部结构如下;
+calendarListResult节点说明：
+
+{
+    "calendarListResult":{
+        "resultCode":1,
+        "resultMessage":null,
+        "promiseTime":{
+            "3":"3月11日（周五）"
+        },
+        "tipMsg":null,
+        "calendarList":[
+            {
+                "dateStr":"2016-3-10",
+                "week":4,
+                "timeList":[
+                    {
+                        "timeRange":"9:00-15:00",
+                        "enable":false,
+                        "selected":false,
+                        "timeRangeCode":1
+                    },
+                    {
+                        "timeRange":"15:00-21:00",
+                        "enable":false,
+                        "selected":false,
+                        "timeRangeCode":2
+                    }
+                ],
+                "today":true
+            }
+        ]
+    }
+}
+
+
+参数名称 | 类型 | 意义 
+resultCode | Int | 状态，只有1表示处理成功
+resultMessage | String | 对resultCode的简要说明
+calendarList | List | 中小件预约日历的详细信息：
+                      [
+                       {
+                          "dateStr":"2016-3-10",//预约日期，格式：yyyy-MM-dd
+                          "week":4,// dateStr是周几，1：表示周1，7:表示周日
+                          "timeList":[ //dateStr这天的预约时间段
+                             {
+                              "timeRange":"9:00-15:00", //可预约的时间段
+                              "enable":false,  //这个时间段是否可以选择预约
+                              "selected":false, //是否为默认系统选中的时间段
+                              "timeRangeCode":1 //时间段timeRange的编码
+                              },
+                              { …… } //一天可有多个时间段可选这里省略了
+                          ],
+                         "today":true  // 今天是否就是dateStr
+                        },
+                      {。。。。。。} //可以有多天可以选择，这里省略了
+                      ]
+说明：只有timeList里的enable为true时，该时间段才可以选择预约，false不可以预约;
+
+
+
+
+laCalendarListResult：表示大家电的预约日历结果
+
+内部结构如下;  laCalendarListResult节点说明：
+{
+    "laCalendarListResult":{
+        "resultCode":1,
+        "resultMessage":null,
+        "supportInstall":true,
+        "supportShip":true,
+        "reservingDateList":[
+            10, 12, 16, 17, 19
+        ],
+        "reservingInstallDateMap":{
+            "10":[12, 16, 17, 19],
+            "12":[16, 17, 19, 21]
+        }
+    }
+}
+
+
+参数名称 | 类型 | 意义 
+resultCode | Int | 状态，只有1表示处理成功
+resultMessage | String | 对resultCode的简要说明
+supportShip | boolean | 是否支持配送
+supportInstall | Boolean | 是否支持安装
+reservingDateList | List<Interger> | 可选的预约配送时间,只有supportShip为true时才会有值。
+reservingInstallDateMap | Map< Interger ,List<Interger>> | 可选的预约安装时间，只有supportInstall为true时才会有值;
+
+
+说明：reservingDateList里的数字表示，与今天的偏移量;
+以今天为起始点，如：今天=0，明天=1，后天=2

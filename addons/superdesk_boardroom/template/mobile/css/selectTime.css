@@ -1,0 +1,24 @@
+/* 
+* @Author: anchen
+* @Date:   2017-07-21 10:15:02
+* @Last Modified by:   anchen
+* @Last Modified time: 2017-07-21 15:32:29
+*/
+@charset "utf-8";
+body {padding-bottom: 3.25rem;}
+.meeting-number {width: 100%; height: 2.5rem; padding: 0.5rem 0.75rem; background-color: #fff; border-bottom: 1px solid #c8c8c8;}
+.meeting-number span {float: left; font-size: .7rem; color:#666666; line-height: 1.5rem;}
+.additional {display: block; width: 100%; height: 2.5rem; padding: 0 0.75rem; line-height: 2.5rem; background-color: #fff;}
+.additional span {float: left; font-size: .7rem; color:#666666;}
+.subtitseltime {width: 100%; padding: 0.5rem .75rem .25rem; line-height: .9rem; font-size: .6rem; color:#666666;}
+.selecttimelist {width: 100%;}
+.selecttimebar {width: 100%; padding: 0 0.75rem; height: 2.2rem; box-shadow: 0 1px 0 0 #c8c8c8; background-color: #fff; line-height: 2.2rem;}
+.selecttimelist li:last-child {box-shadow: 0 0 0 0 #c8c8c8;}
+.circletime {display: inline-block; width: 0.8rem; height: .8rem; background: #e8e8e8 url("../images/ok_icon.png") center center no-repeat; background-size: 100% auto; vertical-align: middle; border-radius: 50%;}
+.selecttimebar em {display: inline-block; font-size: .8rem; color:#666; margin-left: .25rem; vertical-align: middle;}
+.statustext {display: none; float: right; line-height: 2.2rem; font-size: .8rem; color:#999;}
+.noselecttime .circletime {background: #999 url("../images/ok_icon.png") center center no-repeat; background-size: 100% auto;}
+.noselecttime em {color: #999;}
+.noselecttime .statustext {display: block;}
+.yesselecttime .circletime {background: #1b37a8 url("../images/ok_icon.png") center center no-repeat; background-size: 100% auto;}
+.additional em {float: right; font-size:.7rem; color:#333333;}

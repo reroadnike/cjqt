@@ -1,0 +1,163 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="{php echo $this->createWebUrl('tb_user', array('op' => 'list'))}">企业人员管理</a></li>
+    <li><a href="{php echo $this->createWebUrl('tb_user', array('op' => 'edit'))}">添加企业人员</a></li>
+    <li><a href="{php echo $this->createMyJsUrl('sync_th_user_all')}" target="_blank">全量同步</a></li>
+</ul>
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-info">
+            <div class="panel-heading">筛选</div>
+            <div class="panel-body">
+                <!--<form action="{$url_search}" method="post" class="form-horizontal" role="form">-->
+                <!--<form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">-->
+                <form action="" method="get" class="form-horizontal form" id="form1">
+                    <input type="hidden" name="page" value="1"/>
+                    <div class="form-group">
+                        <label class="col-sm-1 col-md-1 col-lg-1 control-label">关键字</label>
+                        <div class="col-sm-2 col-lg-2">
+                            <input class="form-control" name="keywords" type="text" value="{$_GPC['keywords']}" placeholder="姓名/昵称/手机号码"/>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-lg-3" style="text-align: right;">
+                            <button class="btn btn-default"><i class="fa fa-search"></i> 搜索</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                企业人员管理
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:5%;">ID</th>
+                        <th style="width:10%;">姓名/昵称<br/>手机号码</th>
+                        <!--<th style="width:10%;">用户类型</th>-->
+                        <!--<th style="width:10%;">性别</th>-->
+                        <!--<th style="width:10%;">学生号/身份证</th>-->
+                        <!--<th style="width:10%;">生日</th>-->
+                        <!--<th style="width:10%;">头像</th>-->
+                        <!--<th style="width:10%;">密码</th>-->
+
+                        <th style="width:20%;">审核建议<br/>详细地址</th>
+                        <!--<th style="width:10%;">证件照片1</th>-->
+                        <!--<th style="width:10%;">证件照片2</th>-->
+                        <!--<th style="width:10%;">证件照片3</th>-->
+                        <th style="width:5%;">项目ID<br/>企业ID</th>
+                        <th style="width:8%;">部门ID<br/>职位名称<br/>员工编号</th>
+                        <!--<th style="width:10%;">入司时间</th>-->
+                        <!--<th style="width:10%;">face++用户唯一标识</th>-->
+                        <th style="width:6%;">
+                            用户角色
+                            <!--<br/>1-管理员<br/>2-普通用户-->
+                        </th>
+                        <th style="width:6%;" title="(0-不接收，关;1-接收，开)">是否接受<br/>审核通知</th>
+                        <!--<th style="width:10%;">创建者</th>-->
+                        <th style="width:8%;">创建时间<br/>修改时间</th>
+                        <!--<th style="width:10%;">修改人</th>-->
+                        <th style="width:4%;" title="(0-未审核;1-已认证;2-未认证)">认证<br/>状态</th>
+                        <th style="width:4%;">可用<br/>状态</th>
+                        <!--<th style="width:10%;">是否同步内购网</th>-->
+                        <th style="text-align:right; width:8%;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+                        <td>{$item['id']}</td>
+                        <td>
+                            {if empty($item['userName'])}--/--{else}{$item['userName']}{/if}
+                            <br/>
+                            {if empty($item['nickName'])}--/--{else}{$item['nickName']}{/if}
+                            <br/>
+                            {if empty($item['userMobile'])}--/--{else}{$item['userMobile']}{/if}
+                        </td>
+                        <!-- SELECT count(0) FROM super_reception_real.tb_user where userType is null; 4076 全为空
+                        <td>{$item['userType']}</td>
+                        -->
+                        <!-- SELECT count(0) FROM super_reception_real.tb_user where userSex is null; 4076 全为空
+                        <td>{$item['userSex']}</td>
+                        -->
+                        <!-- SELECT count(0) FROM super_reception_real.tb_user where userCardNo is null; 4076 全为空
+                        <td>{$item['userCardNo']}</td>
+                        -->
+                        <!-- SELECT count(0) FROM super_reception_real.tb_user where birthday is null; 4076 全为空
+                        <td>{$item['birthday']}</td>-->
+                        <!-- SELECT count(0) FROM super_reception_real.tb_user where userPhotoUrl is null; 4076 全为空
+                        <td>{$item['userPhotoUrl']}</td>-->
+                        <!--
+                        <td>{$item['password']}</td>-->
+
+                        <td>
+                            {if empty($item['suggestion'])}--/--{else}{$item['suggestion']}{/if}
+                            <br/>
+                            {if empty($item['address'])}--/--{else}{$item['address']}{/if}
+                        </td>
+                        <!--<td>{$item['imageUrl01']}</td>-->
+                        <!--<td>{$item['imageUrl02']}</td>-->
+                        <!--<td>{$item['imageUrl03']}</td>-->
+                        <td>
+                            {if empty($item['organizationId'])}--/--{else}{$item['organizationId']}{/if}
+                            <br/>
+                            {if empty($item['virtualArchId'])}--/--{else}{$item['virtualArchId']}{/if}
+                        </td>
+                        <td>
+                            {if empty($item['departmentId'])}--/--{else}{$item['departmentId']}{/if}
+                            <br/>
+                            {if empty($item['positionName'])}--/--{else}{$item['positionName']}{/if}
+                            <br/>
+                            {if empty($item['userNumber'])}--/--{else}{$item['userNumber']}{/if}
+                        </td>
+                        <!--<td>{$item['enteringTime']}</td>-->
+
+                        <!--
+                        <td>{$item['facePlusUserId']}</td>-->
+                        <td>
+                            {if $item['roleType'] == 1}管理员{else if $item['roleType'] == 2}普通用户{else}--/--{/if}
+                        </td>
+                        <td>{if $item['noticePower'] == 1}接受{elseif $item['noticePower'] == 0}不接受{/if}</td>
+                        <!--<td>{$item['creator']}</td>-->
+                        <td>
+                            {if empty($item['createTime'])}--/--{else}{$item['createTime']}{/if}
+                            <br/>
+                            {if empty($item['modifyTime'])}--/--{else}{$item['modifyTime']}{/if}
+                        </td>
+                        <!--<td>{$item['modifier']}</td>-->
+                        <td>{if $item['status'] == 0}未审核{elseif $item['status'] == 1}已认证{elseif $item['status'] == 2}未认证{/if}</td>
+                        <td>{if $item['isEnabled'] == 1}可用{elseif $item['isEnabled'] == 0}删除{/if}</td>
+                        <!--<td>{$item['isSyncNeigou']}</td>-->
+                        <td style="text-align:right;">
+                            <a href="{php echo $this->createWebUrl('tb_user', array('id' => $item['id'], 'op' => 'edit'));}"
+                               class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="编辑"><i
+                                    class="fa fa-pencil">&nbsp;编辑</i></a>
+
+                            <!-- $do, $query = array(), $m = '', $noredirect = true, $addhost = true -->
+                            <a href="{php echo $this->createMyJsUrl('mobile', array('userMobile' => $item['userMobile'], 'core_user' => $item['id'],'core_organization' => $item['organizationId'],'core_enterprise' => $item['virtualArchId']),'superdesk_shopv2',true,true);}"
+                               class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="编辑"><i
+                                    class="fa fa-pencil">&nbsp;登陆</i></a>
+
+
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            共{$total}
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                        </td>
+                        <td colspan="10">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

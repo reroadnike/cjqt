@@ -1,0 +1,331 @@
+{template '_header'}
+<style type='text/css'>
+    .trhead td {  background:#efefef;text-align: center}
+    .trbody td {  text-align: center; vertical-align:top;border-left:1px solid #f2f2f2;overflow: hidden; font-size:12px;}
+    .trorder { background:#f8f8f8;border:1px solid #f2f2f2;text-align:left;}
+    .ops { border-right:1px solid #f2f2f2; text-align: center;}
+</style>
+
+<div class="page-heading">
+
+    <h2>订单财务管理</h2>
+    <span>订单数:  <span class='text-danger'>{$total}</span> 订单金额:  <span class='text-danger'>{$totalmoney}</span> </span>
+
+</div>
+
+<form action="./index.php" method="get" class="form-horizontal table-search" role="form">
+    <input type="hidden" name="c" value="site" />
+    <input type="hidden" name="a" value="entry" />
+    <input type="hidden" name="m" value="superdesk_shopv2" />
+    <input type="hidden" name="do" value="web" />
+    <input type="hidden" name="r" value="order.finance{$st}" />
+    <input type="hidden" name="status" value="{$status}" />
+
+    <div class="page-toolbar row m-b-sm m-t-sm">
+        <div class="col-sm-6">
+            <!-- 批量开票 -->
+            {ifp 'order.finance.editMore'}
+            <button class="btn btn-default" type="button" data-toggle='batch-redirect'  data-href="{php echo webUrl('order/finance/editMore')}"><i class='fa fa-user-o'></i> 确认开票</button>
+
+            {/if}
+        </div>
+    </div>
+
+    <div class="page-toolbar row m-b-sm m-t-sm">
+        <div class="col-sm-12" style="margin-bottom: 1rem;padding-left: 2.5rem">
+
+            {if $st == '.status3'}
+            <select name='press_type'  class='form-control  input-sm select-md'   style="width:95px;padding:0 5px;"  >
+
+                <option value='-1' {if $_GPC['press_type']=='-1'}selected{/if}>催款状态</option>
+                <option value='0' {if $_GPC['press_type']=='0'}selected{/if}>未催款</option>
+                <option value='1' {if $_GPC['press_type']=='1'}selected{/if}>业务催款</option>
+                <option value='2' {if $_GPC['press_type']=='2'}selected{/if}>财务催款</option>
+            </select>
+            {/if}
+
+            <select name='order'  class='form-control  input-sm select-md'   style="width:90px;padding:0 5px;"  >
+                <option value=''>排序方式</option>
+                <option value='1' {if $_GPC['order']=='1'}selected{/if}>下单时间</option>
+                <option value='2' {if $_GPC['order']=='2'}selected{/if}>回款时间</option>
+            </select>
+
+            <select name='searchtime'  class='form-control  input-sm select-md'   style="width:90px;padding:0 5px;"  >
+                <option value=''>不按时间</option>
+                <option value='createtime' {if $_GPC['searchtime']=='createtime'}selected{/if}>下单时间</option>
+                <option value='create_invoice_time' {if $_GPC['searchtime']=='create_invoice_time'}selected{/if}>开票时间</option>
+            </select>
+
+            {php echo tpl_form_field_daterange('time', array('starttime'=>date('Y-m-d H:i', $starttime),'endtime'=>date('Y-m-d H:i', $endtime)),true);}
+        </div>
+
+        <!--<div class="col-sm-3">-->
+
+            <!--&lt;!&ndash; 企业 &ndash;&gt;-->
+            <!--<select name="enterprise_id" class='form-control input-sm select-md select2'>-->
+                <!--<option value="">请选择企业</option>-->
+                <!--{loop $selector_virtuals $row}-->
+                <!--<option value="{$row['id']}" {if $_GPC['enterprise_id'] == $row['id']}selected = selected {/if}>{$row['id']} - {$row['enterprise_name']}</option>-->
+                <!--{/loop}-->
+
+                <!--&lt;!&ndash;<option value="{$row['id']}" {if $_GPC['enterprise_id'] == $row['id']}selected = selected {/if}>{$row['organizationId']} - {$row['id']} - {$row['name']}</option>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;TODO 修正接口　name as enterprise_name&ndash;&gt;-->
+
+            <!--</select>-->
+        <!--</div>-->
+
+        <!--<div class="col-sm-2">-->
+
+
+            <!--&lt;!&ndash; 用户 &ndash;&gt;-->
+            <!--<select name="member_id" class='form-control input-sm select-md select2'>-->
+                <!--<option value="">请选择买家</option>-->
+                <!--{loop $selector_member $row}-->
+                <!--<option value="{$row['openid']}" {if $_GPC['member_id'] == $row['openid']}selected = selected {/if}>{$row['id']} - {$row['realname']}</option>-->
+                <!--{/loop}-->
+
+            <!--</select>-->
+        <!--</div>-->
+
+
+        <div class="col-sm-12" style="margin-bottom: 1rem;">
+            <div class="col-sm-2">
+                <input type="text" class="form-control input-sm"  name="invoice_title" value="{$_GPC['invoice_title']}" placeholder="请输入发票抬头"/>
+            </div>
+
+            <div class="col-sm-2">
+                <input type="text" class="form-control input-sm"  name="merchant_name" value="{$_GPC['merchant_name']}" placeholder="请输入商户名称"/>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="col-sm-2">
+                <input type="text" class="form-control input-sm"  name="enterprise_name" value="{$_GPC['enterprise_name']}" placeholder="请输入企业名称"/>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" class="form-control input-sm"  name="member_info" value="{$_GPC['member_info']}" placeholder="请输入采购人信息(买家信息)"/>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" class="form-control input-sm"  name="address_info" value="{$_GPC['address_info']}" placeholder="请输入收件人信息"/>
+            </div>
+
+            <div class="col-sm-4 pull-right">
+
+                <select name='searchfield'  class='form-control  input-sm select-md'   style="width:95px;padding:0 5px;"  >
+
+                    <option value='ordersn' {if $_GPC['searchfield']=='ordersn'}selected{/if}>订单编号</option>
+                    <option value='invoice_sn' {if $_GPC['searchfield']=='invoice_sn'}selected{/if}>发票号</option>
+                    <option value='price' {if $_GPC['searchfield']=='price'}selected{/if}>订单金额</option>
+                    <!--<option value='enterprise_name' {if $_GPC['searchfield']=='enterprise_name'}selected{/if}>企业名称</option>-->
+                    <!--<option value='member' {if $_GPC['searchfield']=='member'}selected{/if}>会员信息</option>-->
+                    <!--<option value='address' {if $_GPC['searchfield']=='address'}selected{/if}>收件人信息</option>-->
+                </select>
+                <div class="input-group">
+                    <input type="text" class="form-control input-sm"  name="keyword" value="{$_GPC['keyword']}" placeholder="请输入关键字"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-sm btn-primary" type="submit">搜索</button>
+                    <button type="submit" name="export" value="1" class="btn btn-success btn-sm">导出</button>
+                </span>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+</form>
+
+
+{if count($list)>0}
+<table class='table table-responsive' style='table-layout: fixed;'>
+    <thead class="navbar-inner">
+    <tr style='background:#f8f8f8'>
+        <th style="width:30px;text-align: center;"><input type='checkbox' /></th>
+        <th style='width:120px;text-align: center;border-left:1px solid #f2f2f2;'>订单编号</th>
+        <th style='width:70px;text-align: center;border-left:1px solid #f2f2f2;'>商户名称</th>
+        <th style='width:140px;text-align: center;'>
+            企业名称
+            <br/>
+            采购员信息/会员信息
+        </th>
+        <th style='width:60px;text-align: center;'>收件人信息</th>
+        <th style='width:50px;text-align: center;'>订单金额</th>
+        <th  style='width:50px;text-align: center;'>时间</th>
+        <th style='width:50px;text-align: center;'>支付方式</th>
+        <th style='width:40px;text-align: center;'>配送方式</th>
+        <th style='width:40px;text-align: center'>状态</th>
+        <th style='width:50px;text-align: center'>操作</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {loop $list $item}
+    <tr class='trbody'>
+
+        <td>
+            <input type='checkbox'   value="{$item['id']}"/>
+        </td>
+        <td>
+            <a href="{php echo webUrl('order/finance/detail',array('id'=>$item['orderid']))}"> {$item['ordersn']}</a>
+            {if $item['express'] == 'jd'} {if !empty($item['expresssn'])} <br/>京东单号:{$item['expresssn']} {/if} {/if}
+
+            {if !empty($item['invoice_sn'])}<br/>发票号：{$item['invoice_sn']}{/if}
+
+            {if $item['ofi_expressid'] || $item['ofi_express']}
+            <br/>
+            <a class='btn btn-default btn-sm' data-toggle="ajaxModal" href="{php echo webUrl('util/express', array('id' => $item['ofi_expressid'],'express'=>$item['ofi_express'],'expresssn'=>$item['ofi_expresssn']))}"><i class='fa fa-truck'></i> 邮寄发票</a>
+            {/if}
+        </td>
+
+        <td>
+            {$item['merchname']}
+        </td>
+
+        <td>
+            {$item['enterprise_name']}
+            <br/>
+            {$item['mrealname']}
+            <br/>
+            {$item['mmobile']}
+        </td>
+
+        <td>
+            {$item['addressdata']['realname']}<br/>
+            {$item['addressdata']['mobile']}
+        </td>
+
+        <td>
+            ￥{$item['price']}
+        </td>
+
+        <td>
+            创建时间：<br/>
+            {php echo date('Y-m-d', $item['createtime'])}<br/>
+            {php echo date('H:i:s', $item['createtime'])}
+            {if !empty($item['finishtime'])}
+            <br/>完成时间:<br/>
+            {php echo date('Y-m-d', $item['finishtime'])}<br/>
+            {php echo date('H:i:s', $item['finishtime'])}
+            {/if}
+        </td>
+
+        <td>
+            {if $item['statusvalue'] > 0}
+            <label class='label label-{$item['css']}'>{$item['paytype']}</label>
+            {else if $item['statusvalue'] == 0}
+            {if $item['paytypevalue']!=3}
+            <label class='label label-default'>未支付</label>
+            {else}
+            <label class='label label-default'>企业月结</label>
+            {/if}
+            {else if $item['statusvalue'] == -1}
+            <label class='label label-default'>{$item['paytype']}</label>
+            {/if}
+        </td>
+
+        <td>
+            <span style='margin-top:5px;display:block;'>{$item['dispatchname']}</span>
+        </td>
+
+        <td>
+            <span class='text-{$item['statuscss']}'>{$item['status']}</span>
+        </td>
+
+        <td>
+            {ifp 'order.finance.edit'}
+            <a class='btn btn-default btn-sm' href="{php echo webUrl('order/finance/edit', array('id' => $item['id']))}" title="编辑"><i class='fa fa-edit'></i> 编辑</a>
+            {/if}
+        </td>
+    </tr>
+    {/loop}
+    </tbody>
+</table>
+<div style="text-align:right;width:100%;">
+    {$pager}
+</div>
+{else}
+
+<div class='panel panel-default'>
+    <div class='panel-body' style='text-align: center;padding:30px;'>
+        暂时没有任何财务信息!
+    </div>
+</div>
+{/if}
+
+<script language="javascript">
+
+    require(['bootstrap'], function () {
+        $(document).on('change', 'select[name="organization_id"]',
+                function () {
+
+                    var organization_id = $('select[name="organization_id"]').val();
+
+                    console.log(organization_id);
+
+                    if (organization_id != '') {
+
+                        $.getJSON(
+                                "{php echo webUrl('merch/enterprise/ajax')}",
+                                {organization_id: organization_id},
+                                function (data) {
+
+                                    console.log(data);
+
+                                    var content = "";
+
+                                    for (var index in data) {
+
+                                        content += "<option value=" + data[index].id + " >" + data[index].organizationId + " - " + data[index].id + " - " + data[index].name + "</option>";
+                                        console.log(content);
+                                    }
+                                    $('select[name="enterprise_id"]').empty();
+                                    $('select[name="enterprise_id"]').append("<option value=''>请选择企业</option>");
+                                    $('select[name="enterprise_id"]').append(content);
+
+                                    $('select[name="enterprise_id"]').select2({});
+                                });
+                    } else {
+                    }
+                });
+
+
+        $(document).on('change', 'select[name="enterprise_id"]',function(){
+            var enterprise_id = $('select[name="enterprise_id"]').val();
+
+            console.log(enterprise_id);
+
+            if (enterprise_id != '') {
+
+                $.getJSON(
+                        "{php echo webUrl('member/list/ajaxMember')}",
+                        {enterprise_id: enterprise_id},
+                        function (data) {
+
+                            console.log(data.result.member);
+                            data = data.result.member;
+
+                            var content = "";
+
+                            for (var index in data) {
+
+                                content += "<option value=" + data[index].openid + " >" + data[index].id + " - " + data[index].realname + "</option>";
+                                console.log(content);
+                            }
+                            $('select[name="member_id"]').empty();
+                            $('select[name="member_id"]').append("<option value=''>请选择买家</option>");
+                            $('select[name="member_id"]').append(content);
+
+                            $('select[name="member_id"]').select2({});
+                        });
+            } else {
+            }
+        });
+    });
+
+</script>
+
+{template '_footer'}

@@ -1,0 +1,260 @@
+{template '_header'}
+<script>document.title = "{php echo $this->set['texts']['center']}"; </script>
+
+{template 'commission/common'}
+
+
+
+<style>
+
+    .fui-header:after{
+        border: 0;
+    }
+    .fui-header a.back:before {
+        content: " ";
+        display: inline-block;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        height: 0.5rem;
+        width: 0.5rem;
+        border-width: 0 0 2px 2px;
+        border-color: #999;
+        border-style: none;
+        position: relative;
+        top: 0;
+
+    }
+
+    .fui-header a.back {
+        /* content: " "; */
+        /* display: inline-block; */
+        height: 1rem;
+        width: 1rem;
+        /* border-width: 0 0 2px 2px; */
+        /* border-color: #999; */
+        /* border-style: none; */
+        /* position: relative; */
+        top: 50%;
+        background-size: cover;
+        background-image: url(../addons/superdesk_shopv2/template/mobile/seven/static/images/back@2x.png);
+        transform: translateY(50%);
+    }
+
+    .btn-tx{
+        position: absolute;
+        right: 0;
+        width: 4rem;
+        font-size: .7rem;
+        padding: .2rem;
+    }
+    .item-box{
+        /*height: 3rem;*/
+    }
+    .fui-block-group .fui-block-child .icon {
+        height: 3.4rem;
+    }
+
+    .fui-navbar .nav-item.active, .fui-navbar .nav-item:active {
+        color: #3559A8;
+    }
+</style>
+
+<div class="fui-page fui-page-current page-commission-index ">
+
+    <div class='fui-content navbar'>
+	<div class="headinfo">
+
+        <div class="fui-header" style="background: transparent;">
+            <div class="fui-header-left">
+                <a class="back" onclick='location.back()'></a>
+            </div>
+            <div class="title" style="color: white;">{php echo $this->set['texts']['center']}</div>
+            <div class="fui-header-right"></div>
+        </div>
+
+	    <div class="userinfo" style="padding-top: 2.2rem;">
+            <div class='fui-list'>
+                <div class='fui-list-media'><img src="{$member['avatar']}" /></div>
+                <div class='fui-list-info'>
+                <div class='title'>{$member['nickname']} </div>
+                <div style="display: none;" class='subtitle' {if $this->set['levelurl']!=''}onclick='location.href="{php echo $this->set['levelurl']}"'{/if}>
+                    &lt;{php echo empty($level) ? ( empty($this->set['levelname'])?'普通等级':$this->set['levelname'] ) : $level['levelname']}&gt;
+                    {if $this->set['levelurl']!=''}<i class='icon icon-question' style='font-size:8px;'></i>{/if}
+                </div>
+                <div class='text' style="display: none;">{php echo $this->set['texts']['up']}: {if empty($up)}总店{else}{$up['nickname']}{/if}</div>
+		    </div>
+		</div>
+		{if empty($this->set['closemyshop'])}
+			<a class="setbtn" href="{php echo mobileUrl('commission/myshop/set')}"><i class="icon icon-settings"></i></a>
+		{/if}
+	    </div>
+	    <div class="userblock">
+            <div class="line total">
+                <div class="title">{php //echo $this->set['texts']['commission_pay']}{php //echo "(".$this->set['texts']['yuan'].")";}</div>
+                <div class="num">{php //echo number_format($member['commission_pay'],2)}</div>
+            </div>
+            <div class="line total">
+                {if $cansettle}
+                <!--<a class="btn" href="{php echo mobileUrl('commission/withdraw')}">{php echo $this->set['texts']['commission']}{php echo $this->set['texts']['withdraw']}</a>-->
+                {else}
+                <!-- 积分提现 -->
+                <!--<div class="btn-tx disabled" onclick="FoxUI.toast.show('满 {php echo $this->set['withdraw']} {php echo $this->set['texts']['yuan']}才能易置!')">{php echo $this->set['texts']['commission']}{php echo $this->set['texts']['withdraw']}</div>-->
+                {/if}
+                <div class="title">{php //echo $this->set['texts']['commission_ok']}{php //echo "(".$this->set['texts']['yuan'].")";}</div>
+                <div class="num">{php //echo number_format( $member['commission_ok'],2)}</div>
+            </div>
+	    </div>
+	</div>
+
+	<div class="fui-block-group col-3" style='margin-top:0; overflow: hidden;'>
+        <!--<i class="icon icon-money"></i>-->
+        <a class="fui-block-child" href="{php echo mobileUrl('commission/withdraw')}">
+            <div class="icon item-box text-yellow item-box">
+                <img style="height: 2rem;width: 2rem;" src="../addons/superdesk_shopv2/plugin/commission/template/mobile/seven/static/images/fenxiao/yongjin@2x.png" />
+            </div>
+            <div class="title">{php echo $this->set['texts']['commission1']}</div>
+            <div class="text"><span>{php echo number_format($member['commission_total'],2)}</span> {php echo $this->set['texts']['yuan']}</div>
+        </a>
+
+        <!--<i class="icon icon-list"></i>-->
+        <a class="fui-block-child" href="{php echo mobileUrl('commission/order')}">
+            <div class="icon item-box text-blue">
+                <img style="height: 2rem;width: 2rem;" src="../addons/superdesk_shopv2/plugin/commission/template/mobile/seven/static/images/fenxiao/dingdan@2x.png" />
+            </div>
+            <div class="title">{php echo $this->set['texts']['order']}</div>
+            <div class="text"><span>{php echo number_format($member['ordercount0'],0)}</span> 笔</div>
+        </a>
+
+        <!--<i class="icon icon-manageorder"></i>-->
+        <a class="fui-block-child" href="{php echo mobileUrl('commission/log')}">
+            <div class="icon item-box text-orange">
+                <img style="height: 2rem;width: 2rem;" src="../addons/superdesk_shopv2/plugin/commission/template/mobile/seven/static/images/fenxiao/tixian@2x.png" />
+            </div>
+            <div class="title">{php echo $this->set['texts']['commission_detail']}</div>
+            <div class="text"><span>{php echo number_format($member['applycount'],0)}</span> 笔</div>
+        </a>
+        <!--<i class="icon icon-group"></i>-->
+        <!-- 我的下线-->
+        <a class="fui-block-child" href="{php echo mobileUrl('commission/down')}">
+            <div class="icon item-box text-orange">
+                <img style="height: 2rem;width: 2rem;" src="../addons/superdesk_shopv2/plugin/commission/template/mobile/seven/static/images/fenxiao/xiaxian@2x.png" />
+            </div>
+            <div class="title">{php echo $this->set['texts']['mydown']}</div>
+            <div class="text"><span>{php echo number_format($member['downcount'],0)}</span>人</div>
+        </a>
+
+
+		{if $hasglobonus}
+        <!--<i class="icon icon-profile"></i>-->
+		<a class="fui-block-child" href="{php echo mobileUrl('globonus')}">
+			<div class="icon item-box text-yellow">
+                <img style="height: 2rem;width: 2rem;" src="../addons/superdesk_shopv2/plugin/commission/template/mobile/seven/static/images/fenxiao/yongjin@2x.png" />
+            </div>
+			<div class="title">{$plugin_globonus_set['texts']['center']}</div>
+			<div class="text"></div>
+		</a>
+		{/if}
+
+
+		{if $hasabonus}
+        <!--<i class="icon icon-shengfen"></i>-->
+		<a class="fui-block-child" href="{php echo mobileUrl('abonus')}">
+			<div class="icon item-box text-orange">
+                <img style="height: 2rem;width: 2rem;" src="../addons/superdesk_shopv2/plugin/commission/template/mobile/seven/static/images/fenxiao/yongjin@2x.png" />
+            </div>
+			<div class="title">{$plugin_abonus_set['texts']['center']}</div>
+			<div class="text"></div>
+		</a>
+		{/if}
+
+		{if $hasauthor}
+        <!--<i class="icon icon-profile"></i>-->
+		<a class="fui-block-child" href="{php echo mobileUrl('author')}">
+			<div class="icon item-box text-orange">
+                <img style="height: 2rem;width: 2rem;" src="../addons/superdesk_shopv2/plugin/commission/template/mobile/seven/static/images/fenxiao/yongjin@2x.png" />
+            </div>
+			<div class="title">{$plugin_author_set['texts']['center']}</div>
+			<div class="text"></div>
+		</a>
+		{if $team_money>0}
+        <!--<i class="icon icon-money"></i>-->
+		<a class="fui-block-child">
+			<div class="icon item-box text-blue">
+                <img style="height: 2rem;width: 2rem;" src="../addons/superdesk_shopv2/plugin/commission/template/mobile/seven/static/images/fenxiao/yongjin@2x.png" />
+            </div>
+			<div class="title">已获团队奖励</div>
+			<div class="text"><span>{$team_money}</span> 元</div>
+		</a>
+		{/if}
+		{/if}
+
+		{if !empty($plugin_author_set['team_open'])}
+        <!--<i class="icon icon-people2"></i>-->
+		<a class="fui-block-child" href="{php echo mobileUrl('author/team')}">
+			<div class="icon item-box text-red">
+                <img style="height: 2rem;width: 2rem;" src="../addons/superdesk_shopv2/plugin/commission/template/mobile/seven/static/images/fenxiao/yongjin@2x.png" />
+            </div>
+			<div class="title">{$plugin_author_set['texts']['bonus_team']}</div>
+			<div class="text"></div>
+		</a>
+		{/if}
+
+		{if !$this->set['closed_qrcode']}
+        <!--<i class="icon icon-qrcode"></i>-->
+        <!-- 推广二维码 -->
+        <a class="fui-block-child" href="{php echo mobileUrl('commission/qrcode')}">
+            <div class="icon item-box text-yellow">
+                <img style="height: 2rem;width: 2rem;" src="../addons/superdesk_shopv2/plugin/commission/template/mobile/seven/static/images/fenxiao/erweima@2x.png" />
+            </div>
+            <div class="title">推广二维码</div>
+            <div class="text"></div>
+        </a>
+
+		{/if}
+
+
+	    {if empty($this->set['closemyshop'])}
+        <!-- 小店设置
+	    <a class="fui-block-child" href="{php echo mobileUrl('commission/myshop/set')}">
+            <div class="icon item-box text-blue">
+                <img style="height: 2rem;width: 2rem;" src="../addons/superdesk_shopv2/plugin/commission/template/mobile/seven/static/images/fenxiao/xiaodian@2x.png" />
+            </div>
+            <div class="title">小店设置</div>
+            <div class="text"></div>
+	    </a>
+	    -->
+	    {if $this->set['openselect']}
+        <!--<i class="icon icon-apps"></i>-->
+        <!--
+	    <a class="fui-block-child" href="{php echo mobileUrl('commission/myshop/select')}">
+		<div class="icon item-box text-blue">
+            <img style="height: 2rem;width: 2rem;" src="../addons/superdesk_shopv2/plugin/commission/template/mobile/seven/static/images/fenxiao/yongjin@2x.png" />
+
+        </div>
+		<div class="title">自选商品</div>
+		<div class="text"></div>
+	    </a>
+	    -->
+	    {/if}
+	    {/if}
+	    {if !empty($this->set['rank']['status'])}
+        <!--<i class="icon icon-rank"></i>-->
+        <!-- 排名-->
+        <a class="fui-block-child" href="{php echo mobileUrl('commission/rank');}">
+            <div class="icon text-orange">
+                <img style="height: 2rem;width: 2rem;" src="../addons/superdesk_shopv2/plugin/commission/template/mobile/seven/static/images/fenxiao/yongjin@2x.png" />
+            </div>
+            <div class="title">{php echo $this->set['texts']['commission']}排名</div>
+            <div class="text"></div>
+		 </a>
+
+        {/if}
+
+	</div>
+		{template '_copyright'}
+    </div>
+
+    {php //echo $this->footerMenus()}
+</div>
+{template '_footer'}

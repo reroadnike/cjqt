@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>购物车</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="手机端" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-489.000000, -2308.000000)" stroke="#E21F1F" stroke-width="2">
+            <g id="Group-5" transform="translate(1.000000, 2291.000000)">
+                <g id="购物车" transform="translate(489.000000, 18.000000)">
+                    <polyline id="Path-9" stroke-linecap="round" points="0.213467685 0.775481468 4.69487304 0.775481468 8.94793146 30.4488554 36.4630994 30.4488554"></polyline>
+                    <ellipse id="Oval-3" cx="14.7954545" cy="38.5813953" rx="3.34090909" ry="3.41860465"></ellipse>
+                    <ellipse id="Oval-3-Copy" cx="31.9772727" cy="38.5813953" rx="3.34090909" ry="3.41860465"></ellipse>
+                    <path d="M6.25115412,7.7939226 L40.0148177,7.7939226 C40.7992196,7.7939226 41.435103,8.42980597 41.435103,9.21420785 L41.435103,10.2307362 C41.435103,10.4972194 41.3818482,10.7610158 41.278467,11.0066286 L37.4284098,20.153588 C37.1556136,20.8016969 36.5625004,21.2589307 35.866308,21.3578197 L9.15394176,25.1521166" id="Path-10"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

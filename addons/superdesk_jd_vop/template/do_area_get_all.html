@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>选择城市</title>
+    <meta name="keywords" content="水来了后台">
+    <meta name="description" content="水来了后台管理系统">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="http://www.avic-s.com/memberShop-admin/admin_Shuilaile/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="http://www.avic-s.com/memberShop-admin/admin_Shuilaile/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+    <link href="http://www.avic-s.com/memberShop-admin/admin_Shuilaile/css/animate.min.css" rel="stylesheet">
+    <link href="http://www.avic-s.com/memberShop-admin/admin_Shuilaile/css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+    <link href="http://www.avic-s.com/memberShop-admin/admin_Shuilaile/css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+
+<body class="gray-bg">
+<div id="aaaTest" style="height: 96%;overflow-y:scroll ;">
+    <div class="row wrapper wrapper-content animated fadeInRight">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>事件</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="col-sm-6">
+                        <div id="treeview11" class="test"></div>
+                    </div>
+                    <div class="col-sm-6" id="changeDiv">
+                        <h5>已选择街道：</h5>
+                        <hr>
+                        <div id="event_output"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type='text/javascript' src='http://www.avic-s.com/memberShop-admin/public/basePath.js' charset='utf-8'></script>
+<script src="http://www.avic-s.com/memberShop-admin/admin_Shuilaile/js/jquery.min.js?v=2.1.4"></script>
+<script src="http://www.avic-s.com/memberShop-admin/admin_Shuilaile/layer/layer.js"></script>
+<script src="http://www.avic-s.com/memberShop-admin/admin_Shuilaile/js/bootstrap.min.js?v=3.3.5"></script>
+<script src="http://www.avic-s.com/memberShop-admin/admin_Shuilaile/js/content.min.js?v=1.0.0"></script>
+<script src="http://www.avic-s.com/memberShop-admin/admin_Shuilaile/js/plugins/treeview/bootstrap-treeview.js"></script>
+<script src="http://www.avic-s.com/memberShop-admin/admin_Shuilaile/js/cityTree.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#aaaTest").scroll(function(){
+            $("#changeDiv").css("margin-top",$("#aaaTest").scrollTop());
+        })
+    })
+</script>
+
+</body>
+
+</html>

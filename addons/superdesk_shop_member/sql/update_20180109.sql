@@ -1,0 +1,1 @@
+UPDATE ims_superdesk_shop_category set advimg = '' WHERE advimg is NOT NULL

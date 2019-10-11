@@ -1,0 +1,92 @@
+
+{
+  "result": {
+    "baseData": {
+      "availQuota": 270937.74,
+      "occQuota": 229062.26,
+      "quota": 500000,
+      "quotaType": "3002",
+      "sumAmt": 188016.69,
+      "sumNrDefer": 0,
+      "sumNrDelin": 0,
+      "sumNrPri": 188016.69,
+      "sumOverAmt": 0
+    },
+    "billDetail": {
+      "billNo": "201902071200169883",
+      "delinDate": 1556121600000,
+      "sumDelin": 0,
+      "status": "5001",
+      "billType": "5102",
+      "execRate": 0,
+      "sumPri": 0,
+      "sumNrPri": 188016.69,
+      "sumDefer": 0,
+      "sumNrDefer": 0,
+      "sumNrDelin": 0,
+      "repayDate": 1550851200000
+    },
+    "orderStatusDetail": {
+      "pageNo": 1,
+      "pageSize": 10,
+      "totalRecord": 1183,
+      "totalPage": 119,
+      "results": [
+        {
+          "orderNo": "86750389742",
+          "repayStatus": "2500",
+          "customerName": ""
+        },
+        {
+          "orderNo": "86689331215",
+          "repayStatus": "2500",
+          "customerName": ""
+        },
+        {
+          "orderNo": "83638321342",
+          "repayStatus": "2500",
+          "customerName": ""
+        },
+        {
+          "orderNo": "83628299997",
+          "repayStatus": "2500",
+          "customerName": ""
+        },
+        {
+          "orderNo": "83634675832",
+          "repayStatus": "2500",
+          "customerName": ""
+        },
+        {
+          "orderNo": "83627035676",
+          "repayStatus": "2500",
+          "customerName": ""
+        },
+        {
+          "orderNo": "83629324913",
+          "repayStatus": "2500",
+          "customerName": ""
+        },
+        {
+          "orderNo": "86636114532",
+          "repayStatus": "2500",
+          "customerName": ""
+        },
+        {
+          "orderNo": "83625682552",
+          "repayStatus": "2500",
+          "customerName": ""
+        },
+        {
+          "orderNo": "86582924642",
+          "repayStatus": "2500",
+          "customerName": ""
+        }
+      ]
+    }
+  },
+  "success": true,
+  "resultMessage": "",
+  "resultCode": "9000",
+  "code": 200
+}

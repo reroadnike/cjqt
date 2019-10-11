@@ -1,0 +1,80 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('shop_jd_logs', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('shop_jd_logs', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="jd_logs_id" class="form-control" value="{$item['jd_logs_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">camp-on : 表示预占事件，put-order :确认下单 ，cancle-order:取消订单</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="jd_logs_event" class="form-control" value="{$item['jd_logs_event']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">操作时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="jd_logs_ctime" class="form-control" value="{$item['jd_logs_ctime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">发送的报文</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="jd_logs_sendData" class="form-control" value="{$item['jd_logs_sendData']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">接收到的报文</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="jd_logs_receiveData" class="form-control" value="{$item['jd_logs_receiveData']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">发送的地址</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="jd_logs_url" class="form-control" value="{$item['jd_logs_url']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">京东订单号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="jd_logs_jdorderid" class="form-control" value="{$item['jd_logs_jdorderid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">本系统订单号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="jd_logs_orderid" class="form-control" value="{$item['jd_logs_orderid']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

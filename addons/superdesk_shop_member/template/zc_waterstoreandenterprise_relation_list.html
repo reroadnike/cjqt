@@ -1,0 +1,137 @@
+{template 'common/header'}
+
+{template '__nav-tabs_system__'}
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="text-align: right;">
+                <span id="showContent"></span>
+
+                <a class="btn btn-sm btn-default btn-mapping"><i class="fa fa-cog">&nbsp;&nbsp;映射企业商户</i></a>
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <!--<th style="width:10%;"></th>-->
+
+                        <th style="width:8%;">企业id</th>
+                        <th style="width:30%;">供销商id</th>
+                        <th style="width:8%;">导入=>企业ID</th>
+                        <th style="width:30%;">导入=>商户ID</th>
+
+                        <!--<th style="width:10%;">创建时间</th>-->
+                        <!--<th style="width:10%;">状态（预留字段）</th>-->
+                        <th style="width:10%;">处理状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+                        <!--<td>{$item['w_e_id']}</td>-->
+
+                        <td>{$item['e_id']}</td>
+                        <td>{$item['w_id']}</td>
+
+                        <td>{$item['enterprise_id']}</td>
+                        <td>{$item['merchid']}</td>
+
+                        <!--<td>{$item['w_e_ctime']}</td>-->
+                        <!--
+                        <td>{$item['w_e_status']} 查过为空
+                            SELECT count(0) FROM membershop.zc_waterstoreandenterprise_relation where w_e_status is null
+                        </td>
+                        -->
+                        <td class="for_mapping tips_{$item['enterprise_id']}_{$item['merchid']}"
+                            data-enterprise_id="{$item['enterprise_id']}"
+                            data-merchid="{$item['merchid']}">
+
+                        </td>
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            <!--<input name="submit" type="submit" class="btn btn-primary" value="提交">-->
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                            {$total}
+                        </td>
+                        <td colspan="4">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="application/javascript">
+
+
+    // 映射商品分类 start
+    var js_update_shop_mapping2merch_x_enterprise = function (enterprise_id, merchid, isThen) {
+
+
+        return $.ajax({
+            type   : "POST",
+            url    : "{php echo $this->createMyJsUrl('js_update_shop_mapping2merch_x_enterprise',array(),'superdesk_shop_member');}",
+            data   : {
+                enterprise_id: enterprise_id,
+                merchid      : merchid
+            },
+            success: function (data) {
+
+                console.log(data);
+                var obj = JSON.parse(data);
+                if (obj.status == 0) {
+                    $(".tips_" + enterprise_id + "_" + merchid).html(obj.result.message);
+                } else if (obj.status == 1) {
+                    $(".tips_" + enterprise_id + "_" + merchid).html(obj.result.message);
+                }
+            }
+        }).then(function () {
+            if (isThen) {
+            }
+        });
+    };
+
+    var sync_batch_mapping2merch_x_enterprise = function () {
+
+        var defer = $.Deferred();
+
+        defer.resolve($("#showContent").html("开始映射执行 ..."));
+
+        $('.for_mapping').each(function (index) {
+
+            var enterprise_id = $(this).data('enterprise_id');
+            var merchid = $(this).data('merchid');
+
+            if (enterprise_id == 0 || merchid == 0) {
+                $(".tips_" + enterprise_id + "_" + merchid).html("disregard");
+                return true;// 如果return false 相当于break 如果return true 相当于 continure
+            }
+
+
+            defer = defer.then(function () {
+                return js_update_shop_mapping2merch_x_enterprise(enterprise_id, merchid, false);
+            });
+        });
+
+        defer.done(function () {
+            $("#showContent").html("结束映射执行 .");
+        });
+    };
+
+
+    // 映射商品分类 end
+
+    $(document).ready(function () {
+        $(".btn-mapping").bind("click", sync_batch_mapping2merch_x_enterprise);
+
+    });
+
+</script>
+
+{template 'common/footer'}

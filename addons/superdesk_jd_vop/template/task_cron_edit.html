@@ -1,0 +1,79 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('task_cron', array('op' => 'list'))}">京东计划任务</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('task_cron', array('op' => 'edit'))}">{if
+        isset($item['name'])}编辑{else}添加{/if}计划任务</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item['name'])}编辑{else}添加{/if}计划任务
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">任务名称<br/>唯一，不能有中文</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="name" class="form-control" value="{$item['name']}" {if isset($item['name'])}readonly{/if}/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">任务文件<br/>基准目录为云签到根目录，开头不需要带/</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="file" class="form-control" value="{$item['file']}"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">任务描述<br/>描述这个任务</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <textarea class="form-control" name="desc">{$item['desc']}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">忽略任务</label>
+                    <div class="col-sm-9 col-xs-12">
+
+                        <input type="radio" name="no" value="0" required="" {if !isset($item['name']) || $item['no'] != '1'} checked {/if} /> 否&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" name="no" value="1" required="" {if isset($item['name']) && $item['no'] == '1'} checked {/if} /> 是
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">执行间隔<br/>单位为秒，0为始终执行</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="number" name="freq" class="form-control" value="{$item['freq']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">上次执行<br/>Unix 时间戳</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="number" name="lastdo" class="form-control" value="{if isset($item['lastdo'])}{$item['lastdo']}{else}{php echo time();}{/if}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">执行日志<br/><br/>系统会自动写入</label>
+                    <div class="col-sm-9 col-xs-12">
+
+                        <textarea name="log" class="form-control" style="height:100px">{$item['log']}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

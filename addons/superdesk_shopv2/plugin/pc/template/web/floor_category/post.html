@@ -1,0 +1,82 @@
+{template '_header'}
+<div class="page-heading"> 
+	<span class='pull-right'>
+		{ifp 'pc.floor_category.add'}
+			<a class="btn btn-primary btn-sm" href="{php echo webUrl('pc/floor_category/add')}">添加新楼层分类</a>
+		{/if}
+		<a class="btn btn-default  btn-sm" href="{php echo webUrl('pc/floor_category')}">返回列表</a>
+               
+	</span>
+	<h2>{if !empty($item['id'])}编辑{else}添加{/if}楼层分类 <small>{if !empty($item['id'])}修改【{$item['floor_categoryname']}】{/if}</small></h2>
+</div>
+ 
+    <form {ife 'pc.floor_category' $item}action="" method="post"{/if} class="form-horizontal form-validate" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{$item['id']}" />
+ 
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">排序</label>
+                    <div class="col-sm-9 col-xs-12">
+                        {ife 'pc.floor_category' $item}
+                                <input type="text" name="displayorder" class="form-control" value="{$item['displayorder']}" />
+                                <span class='help-block'>数字越大，排名越靠前</span>
+                        {else}
+                            <div class='form-control-static'>{$item['displayorder']}</div>
+                        {/if}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label must">分类</label>
+                    <div class="col-sm-9 col-xs-12 ">
+                         {ife 'pc.floor_category' $item}
+                            <select class="form-control" name="category_id" id="category_id" >
+                                {loop $category $row}
+                                    <option value="{$row['id']}" {if $item['category_id'] == $row['id'] } selected {/if} >{$row['name']}</option>
+                                {/loop}
+                            </select>
+                         {else}
+                            {loop $category $row}
+                                <div class='form-control-static'>{if $item['category_id'] == $row['id'] } {$row['name']} {/if}</div>
+                            {/loop}
+                         {/if}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">状态</label>
+                    <div class="col-sm-9 col-xs-12">
+                    	{ife 'pc.floor_category' $item}
+	                        <label class='radio-inline'>
+	                            <input type='radio' name='enabled' value=1' {if $item['enabled']==1}checked{/if} /> 显示
+	                        </label>
+	                        <label class='radio-inline'>
+	                            <input type='radio' name='enabled' value=0' {if $item['enabled']==0}checked{/if} /> 隐藏
+	                        </label>
+	                    {else}
+                            <div class='form-control-static'>{if empty($item['enabled'])}隐藏{else}显示{/if}</div>
+                        {/if}
+                    </div>
+                </div>
+            
+            <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                    	{ife 'pc.floor_category' $item}
+                    		<input type="submit" value="提交" class="btn btn-primary"  />
+                    	{/if}
+                       <input type="button" name="back" onclick='history.back()' {ifp 'pc.floor_category.add|pc.floor_category.edit'}style='margin-left:10px;'{/if} value="返回列表" class="btn btn-default" />
+                    </div>
+            </div>
+ 
+    </form>
+ 
+
+<script language='javascript'>
+    function formcheck() {
+        if ($("#category_id").isEmpty()) {
+            Tip.focus("category_id", "请选择分类!");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+{template '_footer'}

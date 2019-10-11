@@ -1,0 +1,38 @@
+{
+    "data": [
+        {
+            "ID": "ID",
+            "type": "类型(1-代表省份，2-代表城市)",
+            "name": "省份\/城市名称",
+            "provinceCode": "省份编码",
+            "cityCode": "城市编码",
+            "description": "名称首字母",
+            "creator": "创建人",
+            "createTime": "创建时间",
+            "modifier": "修改人",
+            "modifyTime": "修改时间",
+            "isEnabled": "是否可用",
+            "createtime_": "创建时间",
+            "updatetime": "修改时间",
+            "enabled": "是否可用或删除",
+            "uniacid": "uniacid"
+        },
+        {
+            "ID": "ID",
+            "type": "类型(1-代表省份，2-代表城市)",
+            "name": "省份\/城市名称",
+            "provinceCode": "省份编码",
+            "cityCode": "城市编码",
+            "description": "名称首字母",
+            "creator": "创建人",
+            "createTime": "创建时间",
+            "modifier": "修改人",
+            "modifyTime": "修改时间",
+            "isEnabled": "是否可用",
+            "createtime_": "创建时间",
+            "updatetime": "修改时间",
+            "enabled": "是否可用或删除",
+            "uniacid": "uniacid"
+        }
+    ]
+}

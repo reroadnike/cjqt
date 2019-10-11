@@ -1,0 +1,209 @@
+<!doctype html>
+<html class="no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>{if !empty($title)}{$title} - {elseif !empty($_W['page']['title'])}{$_W['page']['title']} - {/if}{if !empty($_W['page']['sitename'])}{$_W['page']['sitename']}{else}{$_W['account']['name']}{/if}{if IMS_FAMILY != 'x'}{/if}</title>
+
+	<!-- Set render engine for 360 browser -->
+	<meta name="renderer" content="webkit">
+
+	<!-- No Baidu Siteapp-->
+	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+	<link rel="icon" type="image/png" href="assets/i/favicon.png">
+
+	<!-- Add to homescreen for Chrome on Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
+
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+	<link rel="apple-touch-icon-precomposed" href="{$_W['siteroot']}app/themes/yt_index/assets/i/app-icon72x72@2x.png">
+
+	<!-- Tile icon for Win8 (144x144 + tile color) -->
+	<meta name="msapplication-TileImage" content="{$_W['siteroot']}app/themes/yt_index/assets/i/app-icon72x72@2x.png">
+	<meta name="msapplication-TileColor" content="#0e90d2">
+
+	<link rel="stylesheet" href="{$_W['siteroot']}app/themes/yt_index/assets/css/amazeui.min.css">
+	<link rel="stylesheet" href="{$_W['siteroot']}app/themes/yt_index/assets/css/index.css">
+	<script src="{$_W['siteroot']}app/themes/yt_index/assets/js/jquery.min.js"></script>
+	<script src="{$_W['siteroot']}app/themes/yt_index/assets/js/handlebars.min.js"></script>
+	<script src="{$_W['siteroot']}app/themes/yt_index/assets/js/amazeui.min.js"></script>
+	<script>
+		var api_heat_compute
+
+	</script>
+
+</head>
+<body>
+<!--头部-->
+<header data-am-widget="header" class="am-header am-header-default headerBgcolor" id="header">
+	<div id="back" class="am-header-left am-header-nav">
+		<a><img src="{$_W['siteroot']}app/themes/yt_index/assets/i/sweep.png"/></a>
+	</div>
+	<h1 class="am-header-title">
+		<a class="title">广州羊城同创汇</a>
+		<img src="{$_W['siteroot']}app/themes/yt_index/assets/i/index/header_01.png"/>
+	</h1>
+	<div class="am-header-right am-header-nav">
+		<a><img src="{$_W['siteroot']}app/themes/yt_index/assets/i/search.png"/></a>
+	</div>
+</header>
+
+<!-- 轮播广告 start -->
+{template 'home/part_site_slides'}
+<!-- 功能模块 start -->
+{template 'home/part_site_navs'}
+<hr/>
+<!-- 附近商铺 start -->
+{template 'home/part_fujinshuangpu'}
+<!-- 界面页脚 start-->
+{template 'common/footer'}
+
+<script>
+
+	// window.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0bb6f27e0bbc54fa&redirect_uri=http%3A%2F%2Fwww.xinspace.com.cn%2Fcom%2Fevents%2Franking%2Fyczhsh%2Findex.html&response_type=code&scope=snsapi_userinfo&state=0&connect_redirect=wechat_redirect';
+
+	var indexStore = $.AMUI.store;
+
+	if (!indexStore.enabled) {
+		alert('Local storage is not supported by your browser. Please disable "Private Mode", or upgrade to a modern browser.');
+	}
+
+
+	$("#list .m-info").width(function(){
+		return $("#list ul li").width() - $("#list .m-img").outerWidth(true);
+	});
+
+	//头部 bannre
+	setImg("w","#entrance-slider ul li img",320,150);
+	//入口图片 ico
+	setImg("w","#main .main-list span img",35,35);
+	//list
+	//setImg("w","#list .list-info  img",320,111);
+	//底部
+	setImg("w",".footer .footer-list span img",17.5,23);
+	setImg("w",".footer .footer-list:eq(2) span img",22.5,23);
+	//基于苹果4宽度320*480
+	function setImg(wh,obj,w,h){//1 wh:w/h  2 obj:容器  3 w:基于苹果4的图片宽  4 基于苹果4的图片高
+		var basisW = 320;
+		var basisH = 480;
+
+		if(wh=="w"){
+			var winW = $(window).width();
+			//图片hand在苹果4下的宽高比率
+			var imgRatio = 1/(w/h);
+			//图片hand与窗口在苹果4下的宽比率
+			var winRatio = 1/(w/basisW);
+			//相对于苹果4窗口宽度的比率
+			var wr = (winW-basisW)/basisW + 1;
+			//设置hand图片的宽高
+			$(obj).width(w*wr);
+			$(obj).height(w*wr*imgRatio);
+
+		}else if(wh=="h"){
+			var winH = $(window).height();
+			//图片hand在苹果4下的宽高比率
+			var imgRatio = 1/(h/w);
+			//图片hand与窗口在苹果4下的高比率
+			var winRatio = 1/(h/basisH);
+			//相对于苹果4窗口高度的比率
+			var hr = (winH-basisH)/basisH + 1;
+			//设置hand图片的宽高
+			$(obj).width(h*hr);
+			$(obj).height(h*hr*imgRatio);
+		}
+	}
+
+	$.ajax({
+		type:"post",
+		url:"{php echo murl('entry',array('do'=>'apiHeatCompute','m'=>'site_mess'),false)}",
+//		url:"./index.php?i=6&c=entry&do=apiHeatCompute&m=site_mess",
+		dataType:"json",
+		success: function(result) {
+			console.log(result);
+//			result = JSON.parse(result);
+			var data = result.data;
+			console.log(data);
+
+			for(var index in data){
+				$('.list-info ul li:eq('+index+') div:eq(2) div:eq(1) div').attr('style','width:'+data[index]+'%');
+				$('.list-info ul li:eq('+index+') span:eq(1) ').html(data[index]+'%');
+			}
+		},
+		error:function() {
+			alert('网络错误!');
+		}
+	});
+
+	var openid,indexUrl = location.href;
+	var arr= new Array();
+	arr=location.search.slice(1).split("&");
+
+	// userinfo ,如果没,再转去https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0bb6f27e0bbc54fa&redirect_uri=http%3A%2F%2Fwww.xinspace.com.cn/lab/nns/wanruen/weixin/zhuce.html&response_type=code&scope=snsapi_userinfo&;state=0&connect_redirect=1#wechat_redirect
+	if(arr[0].split("=")[0]=="code"&& arr[0].split("=")[1]){
+		code  =	arr[0].split("=")[1];
+		state =	Number(arr[1].split("=")[1]);
+
+		$.ajax({
+			type:"post",
+			data: {code:code},
+			url:"http://www.xinspace.com.cn/yt_manage/wxoption/wr_getjifen",
+			success: function(result) {
+
+				var msg=result;
+				var msgArr= new Array();
+				msgArr=msg.split(",");
+
+				openid=msgArr[0];
+				openid = openid;
+				indexStore.set("openid",openid);
+				indexStore.set("indexUrl",indexUrl);
+
+				// 不明用途变量
+				var isr   =	msgArr[1];
+				// gamekitid =	msgArr[2];
+				// name      =	msgArr[3];
+				// tel       =	msgArr[4];
+				// nickname  =	msgArr[5];
+				// headimgurl=	msgArr[6];
+
+				indexStore.set("childrenname",nickname);
+				// load();
+				if(isr!="1"){
+					location.href="http://www.xinspace.com.cn/skycloud/gamekit/wr_web_zhuce";
+				}
+			},
+			error:function(){
+				if(!indexStore.get("openid")){
+					// load();
+					alert("openid不存在，页面将重新加载");
+					location.reload();//当本地存储被清除时，页面重新加载
+				}
+			}
+		});
+	}else{
+		// if(indexStore.get("openid")){
+		// 	alert(indexStore.get("openid"))
+		// 			load();
+		// 		}else{
+		// 			alert("msg:openid不存在，页面将重新加载");
+		// 			location.reload();//当本地存储被清除时，页面重新加载
+		// 		}
+		//pc调试用
+		//alert("pc调试用");
+		// openid = openid?openid:"oybt5t74G60HEI1ZMw-jWYbsxo1M";
+		// indexStore.set("openid",openid);
+		// indexStore.set("indexUrl",indexUrl);
+		// load();
+	}
+</script>
+</body>
+</html>

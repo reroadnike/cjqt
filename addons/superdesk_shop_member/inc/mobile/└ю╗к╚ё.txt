@@ -1,0 +1,5 @@
+SELECT * FROM `ims_superdesk_shop_member_address` WHERE openid = 'oX8KYwutiI5NEJ20LIF8zNINwSng'
+
+SELECT * FROM `ims_superdesk_shop_member_invoice` WHERE openid = 'oX8KYwutiI5NEJ20LIF8zNINwSng'
+
+UPDATE `ims_superdesk_shop_member_address` set deleted = 0 WHERE

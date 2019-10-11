@@ -1,0 +1,103 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="{php echo $this->createWebUrl('organization', array('op' => 'list'))}">项目信息管理</a></li>
+    <li><a href="{php echo $this->createWebUrl('organization', array('op' => 'edit'))}">添加项目信息</a></li>
+
+    <li><a href="{php echo $this->createMyJsUrl('sync_organization_all')}" target="_blank">全量同步</a></li>
+</ul>
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                项目信息管理
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:3%;">ID</th>
+                        <th style="width:10%;">名称</th>
+                        <th style="width:6%;">编码</th>
+                        <!--<th style="width:10%;">项目类型（高校校园、小区住宅、CBD写字楼）1企业 2部门</th>-->
+                        <th style="width:6%;">服务热线</th>
+                        <th style="width:5%;">所在省份<br/>编码/名称</th>
+                        <th style="width:5%;">所在城市<br/>编码/名称</th>
+                        <th style="width:14%;">详细地址</th>
+                        <!--<th style="width:6%;">经度</th>-->
+                        <!--<th style="width:6%;">纬度</th>-->
+
+                        <!--<th style="width:10%;">申请人姓名</th>-->
+                        <!--<th style="width:10%;">申请人电话</th>-->
+                        <!--<th style="width:10%;">审核信息说明</th>-->
+                        <!--<th style="width:10%;">申请人身份</th>-->
+                        <!--<th style="width:10%;">申请人的微信信息ID</th>-->
+                        <th style="width:8%;">创建时间/修改时间</th>
+                        <!--<th style="width:10%;">创建者</th>-->
+                        <!--<th style="width:10%;">修改人</th>-->
+                        <th style="width:4%;" title="(0-待审核;1-通过;2-不通过)">审核<br/>状态</th>
+                        <th style="width:4%;">可用<br/>状态</th>
+                        <th style="text-align:right; width:4%;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+
+                        <td>{$item['id']}</td>
+                        <td>{$item['name']}</td>
+                        <td>{$item['code']}</td>
+                        <!--<td>{$item['type']}</td>-->
+                        <td>{$item['telephone']}</td>
+                        <td>{$item['provinceCode']}<br/>{$item['provinceName']}</td>
+                        <td>{$item['cityCode']}<br/>{$item['cityName']}</td>
+                        <td>{$item['address']}</td>
+                        <!--<td>{$item['lng']}</td>-->
+                        <!--<td>{$item['lat']}</td>-->
+
+                        <!--<td>{$item['applicantName']}</td>-->
+                        <!--<td>{$item['applicantPhone']}</td>-->
+                        <!--<td>{$item['reviewRemark']}</td>-->
+                        <!--<td>{$item['applicantIdentity']}</td>-->
+                        <!--<td>{$item['wxUserId']}</td>-->
+                        <td>
+                            {if empty($item['createTime'])}--/--{else}{$item['createTime']}{/if}
+                            <br/>
+                            {if empty($item['modifyTime'])}--/--{else}{$item['modifyTime']}{/if}
+                        </td>
+                        <!--<td>{$item['creator']}</td>-->
+                        <!--<td>{$item['modifier']}</td>-->
+                        <td>{if $item['status'] == 0}待审核{elseif $item['status'] == 1}通过{elseif $item['status'] == 2}不通过{/if}</td>
+                        <td>{if $item['isEnabled'] == 1}可用{elseif $item['isEnabled'] == 0}删除{/if}</td>
+                        <td style="text-align:right;">
+                            <a href="{php echo $this->createWebUrl('organization', array('id' => $item['id'], 'op' => 'edit'));}"
+                               class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="编辑"><i
+                                    class="fa fa-pencil">&nbsp;编辑</i></a>
+                            <!--
+                            &nbsp;&nbsp;
+                            <a href="{php echo $this->createWebUrl('organization', array('id' => $item['id'], 'op' => 'delete'));}"
+                               class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title=""
+                               onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" data-original-title="删除">
+                                <i class="fa fa-times">&nbsp;删除</i> </a>
+                            -->
+                        </td>
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            共{$total}条
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                        </td>
+                        <td colspan="8">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

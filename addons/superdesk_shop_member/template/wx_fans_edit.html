@@ -1,0 +1,206 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('wx_fans', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('wx_fans', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">活动用户ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="fansId" class="form-control" value="{$item['fansId']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">微信用户OPENID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="openId" class="form-control" value="{$item['openId']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">用户昵称</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="nickName" class="form-control" value="{$item['nickName']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">用户头像</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="headImgUrl" class="form-control" value="{$item['headImgUrl']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">手机号码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="telePhone" class="form-control" value="{$item['telePhone']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">登陆密码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="password" class="form-control" value="{$item['password']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="wxProvince" class="form-control" value="{$item['wxProvince']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">所在城市</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="city" class="form-control" value="{$item['city']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">1:男性，2：女性,0：未知</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="sex" class="form-control" value="{$item['sex']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否关注:0否1是</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="is_subscribed" class="form-control" value="{$item['is_subscribed']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否已登陆用户:0否1是</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="is_wsd_user" class="form-control" value="{$item['is_wsd_user']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">版本号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="version" class="form-control" value="{$item['version']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="created_time" class="form-control" value="{$item['created_time']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">修改时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="modified_time" class="form-control" value="{$item['modified_time']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">来源</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="token" class="form-control" value="{$item['token']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">打标时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="marking_time" class="form-control" value="{$item['marking_time']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">推荐码/水店ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="scene_str" class="form-control" value="{$item['scene_str']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">0:微信会员1:pc端会员2:导入</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="fansType" class="form-control" value="{$item['fansType']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">语言</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="language" class="form-control" value="{$item['language']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">角色,0:普通客户，1：经销商，2:其他</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="levelid" class="form-control" value="{$item['levelid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">会员名称</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="userName" class="form-control" value="{$item['userName']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">帐号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="account" class="form-control" value="{$item['account']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">密码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="pwd" class="form-control" value="{$item['pwd']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属销售ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="salerid" class="form-control" value="{$item['salerid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">登陆类型,0:手机，1：后台</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="logintype" class="form-control" value="{$item['logintype']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">1:正常 2: 黑名单</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="stated" class="form-control" value="{$item['stated']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">积分密码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="pointPwd" class="form-control" value="{$item['pointPwd']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">用户基本信息地址</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="userInfoAddress" class="form-control" value="{$item['userInfoAddress']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">店铺二维码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="storeQRCode" class="form-control" value="{$item['storeQRCode']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

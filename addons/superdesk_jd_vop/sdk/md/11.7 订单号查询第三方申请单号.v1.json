@@ -1,0 +1,6 @@
+{
+  "success": true,
+  "resultMessage": "",
+  "resultCode": "0005",
+  "result": "GD1523381993" // String | 物流单号
+}

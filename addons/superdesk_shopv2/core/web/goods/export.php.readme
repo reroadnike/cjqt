@@ -1,0 +1,489 @@
+<?php
+
+if (!defined('IN_IA')) {
+    exit('Access Denied');
+}
+
+include_once(IA_ROOT . '/addons/superdesk_shopv2/service/CategoryService.class.php');
+include_once(IA_ROOT . '/addons/superdesk_shopv2/service/plugin/MerchService.class.php');
+include_once(IA_ROOT . '/addons/superdesk_core/service/TbuserService.class.php');
+include_once(IA_ROOT . '/addons/superdesk_core/service/VirtualarchitectureService.class.php');
+
+class Export_SuperdeskShopV2Page extends WebPage
+{
+    private $_categoryService;
+    private $_plugin_merchService;
+    private $_tbuserService;//
+    private $_virtualarchitectureService;
+
+    public function __construct($_init = true)
+    {
+        parent::__construct($_init);
+
+        $this->_categoryService     = new CategoryService();
+        $this->_plugin_merchService = new MerchService();
+
+
+        $this->_tbuserService              = new TbuserService();
+        $this->_virtualarchitectureService = new VirtualarchitectureService();
+
+    }
+
+    protected function field_index($columns, $field)
+    {
+        $index = -1;
+        foreach ($columns as $i => $v) {
+            if ($v['field'] == $field) {
+                $index = $i;
+                break;
+            }
+        }
+        return $index;
+    }
+
+    protected function defaultColumns()
+    {
+        return array(
+
+
+            array('title' => '商品ID', 'field' => 'parent_ordersn', 'width' => 24),// A 父单编号
+            array('title' => '商户名称', 'field' => 'parent_ordersn', 'width' => 24),// A 父单编号
+            array('title' => '商品信息', 'field' => 'parent_ordersn', 'width' => 24),// A 父单编号
+            array('title' => '商品编码', 'field' => 'parent_ordersn', 'width' => 24),// A 父单编号
+            array('title' => '商品条码', 'field' => 'parent_ordersn', 'width' => 24),// A 父单编号
+            array('title' => '商品规格', 'field' => 'parent_ordersn', 'width' => 24),// A 父单编号
+            array('title' => '商品数量', 'field' => 'parent_ordersn', 'width' => 24),// A 父单编号
+            array('title' => '成本价', 'field' => 'parent_ordersn', 'width' => 24),// A 父单编号
+            array('title' => '京东协议价', 'field' => 'parent_ordersn', 'width' => 24),// A 父单编号
+            array('title' => '京东SKU', 'field' => 'parent_ordersn', 'width' => 24),// A 父单编号
+            array('title' => '主页商品分类', 'field' => 'parent_ordersn', 'width' => 24),// A 父单编号
+            array('title' => '一级分类ID', 'field' => 'parent_ordersn', 'width' => 24),// A 父单编号
+            array('title' => '二级分类ID', 'field' => 'parent_ordersn', 'width' => 24),// A 父单编号
+            array('title' => '三级分类ID', 'field' => 'parent_ordersn', 'width' => 24),// A 父单编号
+
+
+        );
+    }
+
+
+    public function main()
+    {
+        global $_W;
+        global $_GPC;
+        global $_S;
+
+        $merch_plugin = p('merch');
+        $merch_data   = m('common')->getPluginset('merch');
+
+        if ($merch_plugin && $merch_data['is_openmerch']) {
+            $is_openmerch = 1;
+        } else {
+            $is_openmerch = 0;
+        }
+
+        $plugin_diyform = p('diyform');
+        $shop_set       = $_S['shop'];
+        $dflag          = intval($_GPC['dflag']);
+        $level          = 0;
+        $pc             = p('commission');
+
+        if ($pc) {
+            $pset  = $pc->getSet();
+            $level = intval($pset['level']);
+        }
+
+        $default_columns = $this->defaultColumns();
+        $templates       = ((isset($shop_set['ordertemplates']) ? $shop_set['ordertemplates'] : array()));
+        $columns         = ((isset($shop_set['ordercolumns']) ? $shop_set['ordercolumns'] : array()));
+
+        if (empty($columns)) {
+
+            if ($dflag == 0) {
+                $columns = $default_columns;
+            }
+        }
+
+        foreach ($default_columns as &$dc) {
+            $dc['select'] = false;
+            foreach ($columns as $c) {
+                if ($dc['field'] == $c['field']) {
+                    $dc['select'] = true;
+                    break;
+                }
+            }
+        }
+        unset($dc);
+
+
+        if ($_GPC['export'] == 1) {
+
+            $goodsindex = $this->field_index($columns, 'goods_title');
+
+            if ($goodsindex != -1) {
+
+                array_splice($columns, $goodsindex + 1, 0, array(
+                        array('title' => '商品编码', 'field' => 'goods_goodssn', 'width' => 12),
+                        array('title' => '商品条码', 'field' => 'goods_productsn', 'width' => 12),
+                        array('title' => '商品规格', 'field' => 'goods_optiontitle', 'width' => 12),
+                        array('title' => '商品数量', 'field' => 'goods_total', 'width' => 12),
+                        array('title' => '退货数量', 'field' => 'goods_return_goods_nun', 'width' => 12),
+                        array('title' => '成本价', 'field' => 'order_costprice', 'width' => 12),//2018年10月30日 17:18:49 zjh 陈康俊
+                        array('title' => '商品单价(折扣前)', 'field' => 'goods_price1', 'width' => 12),
+                        array('title' => '商品单价(折扣后)', 'field' => 'goods_price2', 'width' => 12),
+                        array('title' => '京东协议价', 'field' => 'goods_jd_vop_costprice', 'width' => 12),// P 京东协议价
+                        array('title' => '商品价格(折扣前)', 'field' => 'goods_rprice1', 'width' => 12),
+                        array('title' => '商品价格(折扣后)', 'field' => 'goods_rprice2', 'width' => 12),
+
+                        array('title' => '京东SKU', 'field' => 'goods_jd_vop_sku', 'width' => 12),// 商品编码(京东SKU) jd_vop_sku
+                        array('title' => '商品单位', 'field' => 'goods_unit', 'width' => 12),// 商品单位 unit
+                        array('title' => '商品一级分类', 'field' => 'goods_pcate', 'width' => 12),// 一级分类 pcate
+                        array('title' => '商品二级分类', 'field' => 'goods_ccate', 'width' => 12),// 二级分类 ccate
+                        array('title' => '商品三级分类', 'field' => 'goods_tcate', 'width' => 12),// 三级分类 tcate
+                        array('title' => '财务代码', 'field' => 'goods_fiscal_code', 'width' => 24) // 财务代码 fiscal_code
+
+                    )
+                );
+
+            }
+            plog('goods.export', '导出商品');
+
+//            pcate =670 and deleted = 0 and status =1 and merchid = 8
+
+            $condition =
+                ' and o.uniacid = :uniacid ' .
+                ' and o.deleted=0 ' .
+                ' and o.status=1 ';
+
+            $condition .= ' and o.merchid = 8 ';//SUPERDESK_SHOPV2_JD_VOP_MERCHID
+
+            $paras = array(
+                ':uniacid' => $_W['uniacid']
+            );
+
+            $sql =
+                ' select o.* , ' .
+                '       po.ordersn as parent_ordersn,po.price as parent_price,' .
+                '       p.title as package_name, ' .
+                '       a.realname as arealname,a.mobile as amobile,' .
+                '       a.province as aprovince ,a.city as acity , a.area as aarea , a.town as atown ,a.address as aaddress, ' .
+                '       d.dispatchname,' .
+                '       m.nickname,m.id as mid,m.realname as mrealname,m.mobile as mmobile,m.core_enterprise,' .
+                '       sm.id as salerid,sm.nickname as salernickname,s.salername, ' .
+                '       r.price as refund_price, ' .
+                '       IFNULL(oe.manager_realname,oe2.manager_realname) as examine_manager_name, ' .
+                '       IFNULL(ofi.press_status,ofi2.press_status) as press_status, ' .
+                '       IFNULL(ofi.invoice_sn,ofi2.invoice_sn) as invoice_sn ' .
+                ' from ' . tablename('superdesk_shop_order') . ' o' .// TODO 标志 楼宇之窗 openid shop_order 已处理
+                ' left join ' . tablename('superdesk_shop_order') . ' po on po.id =o.parentid ' .
+                ' left join ' . tablename('superdesk_shop_package') . ' p on p.id =o.packageid and o.packageid > 0 ' .
+                ' left join ' . tablename('superdesk_shop_order_refund') . ' r on r.id =o.refundid ' .
+                ' left join ' . tablename('superdesk_shop_member') . ' m on m.openid=o.openid and m.core_user=o.core_user and m.uniacid =  o.uniacid ' . // TODO 标志 楼宇之窗 openid shop_member 已处理
+                ' left join ' . tablename('superdesk_shop_member_address') . ' a on a.id=o.addressid ' . // TODO 标志 楼宇之窗 openid superdesk_shop_member_address 不处理
+                ' left join ' . tablename('superdesk_shop_dispatch') . ' d on d.id = o.dispatchid ' .
+                ' left join ' . tablename('superdesk_shop_member') . ' sm on sm.openid = o.verifyopenid and sm.uniacid=o.uniacid' .// TODO 标志 楼宇之窗 openid shop_order 待处理
+                ' left join ' . tablename('superdesk_shop_saler') . ' s on s.openid = o.verifyopenid and s.uniacid=o.uniacid' .// TODO 标志 楼宇之窗 openid shop_order 待处理
+                ' left join ' . tablename('superdesk_shop_order_examine') . ' oe on oe.orderid = o.id' .// TODO 标志 楼宇之窗 openid superdesk_shop_order_examine 已处理
+                ' left join ' . tablename('superdesk_shop_order_examine') . ' oe2 on oe2.orderid = o.parentid and o.parentid > 0 and o.merchid = ' . SUPERDESK_SHOPV2_JD_VOP_MERCHID .// TODO 标志 楼宇之窗 openid superdesk_shop_order_examine 已处理
+                ' left join ' . tablename('superdesk_shop_order_finance') . ' ofi on ofi.orderid = o.id' .
+                ' left join ' . tablename('superdesk_shop_order_finance') . ' ofi2 on ofi2.orderid = o.parentid and o.parentid > 0 and o.merchid = ' . SUPERDESK_SHOPV2_JD_VOP_MERCHID .
+                ' where ' .
+                $condition . ' ' .
+                $statuscondition .
+                ' ORDER BY o.createtime DESC,o.status DESC  ';
+
+            $list       = pdo_fetchall($sql, $paras);
+
+            $goodscount = 0;
+
+            foreach ($list as &$value) {
+
+                //TODO 2018年10月11日 11:31:01 zjh 这里预留一下.退款金额如果是京东的要去检查一下京东那边有没有退款
+                $value['reduce_refund_price'] = !empty($value['refund_price']) ? number_format($value['price'] - $value['refund_price'], 2) : $value['price'];
+                $agentid                      = $value['agentid'];
+                $s                            = $value['status'];
+                $pt                           = $value['paytype'];
+                $value['statusvalue']         = $s;
+                $value['statuscss']           = $orderstatus[$value['status']]['css'];
+                $value['status']              = $orderstatus[$value['status']]['name'];
+
+                if (($pt == 3) && empty($value['statusvalue'])) {
+                    $value['statuscss'] = $orderstatus[1]['css'];
+                    $value['status']    = $orderstatus[1]['name'];
+                }
+
+                if ($s == 1) {
+                    if ($value['isverify'] == 1) {
+                        $value['status'] = '待使用';
+                    } else if (empty($value['addressid'])) {
+                        $value['status'] = '待取货';
+                    }
+                }
+
+                if ($s == -1) {
+                    if (!empty($value['refundtime'])) {
+                        $value['status'] = '已退款';
+                    }
+                }
+
+                $value['paytypevalue'] = $pt;
+                $value['css']          = $paytype[$pt]['css'];
+                $value['paytype']      = $paytype[$pt]['name'];
+                $value['dispatchname'] = (empty($value['addressid']) ? '自提' : $value['dispatchname']);
+
+                if (empty($value['dispatchname'])) {
+                    $value['dispatchname'] = '快递';
+                }
+
+                if ($value['isverify'] == 1) {
+                    $value['dispatchname'] = '线下核销';
+                } else if ($value['isvirtual'] == 1) {
+                    $value['dispatchname'] = '虚拟物品';
+                } else if (!empty($value['virtual'])) {
+                    $value['dispatchname'] = '虚拟物品(卡密)<br/>自动发货';
+                }
+
+
+                $value['merchname'] = $this->_plugin_merchService->merchUserGetMerchnameById($value['merchid']);// J 供应商名称 转换
+
+
+
+
+                $order_goods = pdo_fetchall(
+                    ' select ' .
+                    '       g.id,g.title,g.thumb,g.goodssn,og.goodssn as option_goodssn, g.productsn, g.unit,' .
+                    '       g.costprice,' .
+                    '       jd_order_sku.price as jd_costprice,' .
+                    '       g.pcate,g.ccate,g.tcate,' .
+                    '       g.jd_vop_sku,' .
+                    '       c.name,c.fiscal_code,' .
+                    '       og.productsn as option_productsn, og.total, og.return_goods_nun, og.price,og.optionname as optiontitle, ' .
+                    '       og.realprice,og.changeprice,og.oldprice,' .
+                    '       og.commission1,og.commission2,og.commission3,og.commissions,' .
+                    '       og.diyformdata,og.diyformfields,og.costprice as order_costprice ' .
+                    ' from ' . tablename('superdesk_shop_order_goods') . ' og ' .// TODO 标志 楼宇之窗 openid shop_order_goods 不处理
+                    ' left join ' . tablename('superdesk_shop_goods') . ' g on g.id=og.goodsid ' .
+                    ' left join ' . tablename('superdesk_shop_category') . ' c on g.tcate=c.id ' .
+                    ' left join ' . tablename('superdesk_jd_vop_order_submit_order_sku') . ' jd_order_sku on og.orderid = jd_order_sku.shop_order_id and og.goodsid = jd_order_sku.shop_goods_id ' .
+                    ' where og.uniacid=:uniacid ' .
+                    '       and og.orderid=:orderid ',
+                    array(
+                        ':uniacid' => $_W['uniacid'],
+                        ':orderid' => $value['id']
+                    )
+                );
+
+
+
+                // 修正数据显示
+//                $value['press_status'] = $press_status[$value['press_status']]['name'];
+
+            }
+            unset($value);
+
+            $exportlist = array();
+
+
+            if($this->field_index($columns, 'goods_title') == -1){
+
+                foreach ($list as $r) {
+                    $exportlist[] = $r;
+                }
+
+            } else if ($this->field_index($columns, 'goods_title') != -1) { // 插入数据
+                $i = 0;
+
+                while ($i < $goodscount) {
+                    $exportlist['row' . $i] = array();
+                    ++$i;
+                }
+
+                $rowindex = 0;
+
+                foreach ($list as $index => $r) {
+
+//                    $exportlist['row' . $rowindex] = $r; // 这个是李华锐要求 把空位数据补上
+                    $goodsindex                    = $rowindex;
+
+                    foreach ($r['goods'] as $g) {
+
+                        $exportlist['row' . $goodsindex] = $r;
+
+                        $exportlist['row' . $goodsindex]['goods_title']            = $g['title'];
+                        $exportlist['row' . $goodsindex]['goods_goodssn']          = $g['goodssn'];
+                        $exportlist['row' . $goodsindex]['goods_productsn']        = $g['productsn'];
+                        $exportlist['row' . $goodsindex]['goods_optiontitle']      = $g['optiontitle'];
+                        $exportlist['row' . $goodsindex]['goods_total']            = $g['total'];
+                        $exportlist['row' . $goodsindex]['goods_return_goods_nun'] = $g['return_goods_nun'];
+
+
+                        $exportlist['row' . $goodsindex]['goods_price1']      = number_format($g['price'] / $g['total'], 2);
+                        $exportlist['row' . $goodsindex]['goods_price2']      = number_format($g['realprice'] / $g['total'], 2);
+                        $exportlist['row' . $goodsindex]['goods_rprice1']     = $g['price'];
+                        $exportlist['row' . $goodsindex]['goods_rprice2']     = $g['realprice'];
+                        $exportlist['row' . $goodsindex]['goods_diyformdata'] = $g['goods_diyformdata'];
+
+                        // 补充信息 李华锐要求
+//                        $exportlist['row' . $goodsindex]['goods_jd_vop_costprice'] = $g['costprice'];// P 京东协议价 TODO 成本价有可会变
+                        $exportlist['row' . $goodsindex]['goods_jd_vop_costprice'] = $g['jd_costprice'];// P 京东协议价
+                        $exportlist['row' . $goodsindex]['goods_jd_vop_sku']       = $g['jd_vop_sku'];// 商品编码(京东SKU) jd_vop_sku
+                        $exportlist['row' . $goodsindex]['goods_unit']             = $g['unit'];// 商品单位 unit
+                        $exportlist['row' . $goodsindex]['goods_pcate']            = $this->_categoryService->getNameById($g['pcate']);// 商品一级分类 pcate
+                        $exportlist['row' . $goodsindex]['goods_ccate']            = $this->_categoryService->getNameById($g['ccate']);// 商品二级分类 ccate
+                        $exportlist['row' . $goodsindex]['goods_tcate']            = $this->_categoryService->getNameById($g['tcate']);// 商品三级分类 tcate
+                        $exportlist['row' . $goodsindex]['goods_fiscal_code']      = $g['fiscal_code'];// 财务代码 fiscal_code
+                        $exportlist['row' . $goodsindex]['order_costprice']        = $g['order_costprice'];//2018年10月30日 17:18:49 zjh 陈康俊
+
+                        ++$goodsindex;
+                    }
+                    $nextindex = 0;
+                    $i         = 0;
+
+                    while ($i <= $index) {
+                        $nextindex += $list[$i]['goodscount'];
+                        ++$i;
+                    }
+
+                    $rowindex = $nextindex;
+                }
+            } else {
+
+            }
+
+
+
+            m('excel')->export(
+                $exportlist,
+                array(
+                    'title'   => '商品数据-截' . date('Y-m-d_H_i', time()),
+                    'columns' => $columns
+                )
+            );
+        }
+
+        if (empty($starttime) || empty($endtime)) {
+            $starttime = strtotime('-1 month');
+            $endtime   = time();
+        }
+
+
+
+//        include $this->template();
+    }
+
+    public function save()
+    {
+        global $_W;
+        global $_GPC;
+        global $_S;
+
+        $columns = $_GPC['columns'];
+
+        if (!is_array($columns)) {
+            exit();
+        }
+
+        $data     = array(
+            'ordertemplates' => $_S['shop']['ordertemplates']
+        );
+        $tempname = trim($_GPC['tempname']);
+
+        if (!empty($tempname)) {
+            $data['ordertemplates'][$tempname] = $columns;
+        }
+
+        $data['ordercolumns'] = $columns;
+
+        m('common')->updateSysset(array('shop' => $data));
+
+        if (!empty($tempname)) {
+            exit(json_encode(array('templates' => array_keys($data['ordertemplates']), 'tempname' => $tempname)));
+        }
+        exit(json_encode(array()));
+    }
+
+    public function delete()
+    {
+        global $_W;
+        global $_GPC;
+        global $_S;
+
+        $data = array(
+            'ordertemplates' => $_S['shop']['ordertemplates']
+        );
+
+        $tempname = trim($_GPC['tempname']);
+
+        if (!empty($tempname)) {
+            unset($data['ordertemplates'][$tempname]);
+        }
+
+        m('common')->updateSysset(array('shop' => $data));
+
+        exit(json_encode(array(
+            'templates' => array_keys($data['ordertemplates'])
+        )));
+    }
+
+    public function gettemplate()
+    {
+        global $_W;
+        global $_GPC;
+        global $_S;
+
+        $tempname = trim($_GPC['tempname']);
+
+        $default_columns = $this->defaultColumns();
+
+        if (empty($tempname)) {
+            $columns = array();
+        } else {
+            $columns = $_S['shop']['ordertemplates'][$tempname];
+        }
+
+        if (!is_array($columns)) {
+            $columns = array();
+        }
+
+        $others = array();
+
+        $selectcolumns = array();
+        foreach ($default_columns as $dc) {
+
+            $hascolumn = false;
+
+            foreach ($columns as $c) {
+                if ($dc['field'] == $c['field']) {
+                    $hascolumn       = true;
+                    $selectcolumns[] = $dc;
+                    break;
+                }
+            }
+
+            if (!$hascolumn) {
+                $others[] = $dc;
+            }
+        }
+
+        $data['ordercolumns'] = $selectcolumns;
+
+        m('common')->updateSysset(array('shop' => $data));
+
+        exit(json_encode(array(
+            'columns' => $columns,
+            'others'  => $others
+        )));
+    }
+
+    public function reset()
+    {
+        global $_W;
+        global $_GPC;
+
+        $data['ordercolumns'] = array();
+
+        m('common')->updateSysset(array('shop' => $data));
+
+        show_json(1);
+    }
+}
+

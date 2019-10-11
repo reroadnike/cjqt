@@ -1,0 +1,37 @@
+<div class="page-heading">
+    <h2>商品推荐 {ifp 'goods.edit'}<small>拖动可排序</small>{/if}</h2>
+</div>
+<div>
+    <div class="form-group">
+        {ifp 'goods.edit'}
+        <?php echo tpl_selector('similar_id',
+                               array(
+                               		'preview'=>true,
+        'readonly'=>true,
+        'multi'=>1,
+        'value'=>$item['title'],
+        'url'=>merchUrl('goods/query',array('merchid'=>$item['merchid'])),
+        'items'=>$similar_goods,
+        'buttontext'=>'选择商品',
+        'placeholder'=>'请选择商品,请输入商品ID(EQ)/京东SKU(EQ)/商品名称(LIKE)/商品关键字(LIKE)')
+        )
+        ?>
+        {else}
+        <div class="input-group multi-img-details container ui-sortable">
+            {loop $goods $item}
+            <div data-name="similar_id" data-id="426" class="multi-item">
+                <img src="{php echo tomedia($item['thumb'])}" class="img-responsive img-thumbnail">
+                <div class="img-nickname">{$item['title']}</div>
+            </div>
+            {/loop}
+        </div>
+
+        {/if}
+    </div>
+</div>
+<script language="javascript">
+    require(['jquery.ui'],function(){
+        $('.multi-img-details').sortable();
+    })
+</script>
+

@@ -1,0 +1,79 @@
+{
+  "result": {
+    //基础数据
+    "baseData": {
+      "availQuota": 619730.99,  //用户可用额度 | BigDecimal
+      "occQuota": 230269.01,  //用户已占用额度 | BigDecimal
+      "quota": 850000,  //用户总额度 | BigDecimal
+      "quotaType": "3002",  //额度类型(3002:额度上限,3001:额度共享) | String
+      "sumAmt": 0,  //待还款总金额 | BigDecimal
+      "sumNrDefer": 0,  //待还延期 | BigDecimal
+      "sumNrDelin": 0,  //待还逾期 | BigDecimal
+      "sumNrPri": 0,  //待还本金 | BigDecimal
+      "sumOverAmt": 0 //待还款逾期总金额 | BigDecimal
+    },
+    //已出账单详情
+    "billInfo": {
+      "pageNo": 1,  //页码 | Int
+      "pageSize": 10, //页数 | Int
+      "totalPage": 0, //总页数 | Int
+      "totalRecord": 0, //总记录数 | Int
+      "results": [ //账单详情 | JsonArray
+        {
+          "billNo" : "",  //账单编号  | String
+          "billStartDate" : "", //账单开始日期  | Date
+          "billEndDate" : "", //账单结束日期  | Date
+          "repayDate" : "", //应还款日期  | Date
+          "billAmount" : "",  //账单金额  | BigDecimal
+          "repayStatus" : "", //还款状态(5001=正常，5002=延期，5003=逾期，5004=已结清，5005=延期已结清，5006=逾期已结清)  | Int
+          "overDays" : "",  //逾期天数  | Int
+          "nrRepayPri" : "",  //未还本金  | BigDecimal
+          "overAmount" : ""  //违约金  | BigDecimal
+        }
+      ]
+    },
+    //账单明细
+    "billDetail": {
+      "billNo": "",  //账单编号 | String
+      "billType": "",  //账单类型(5106：月结；5170：周结；5102：文档没写) | String
+      "execRate": 0,  //服务费率（执行利率） | BigDecimal
+      "sumPri": 0,  //已还本金 | BigDecimal
+      "sumNrPri": 0,  //未还本金 | BigDecimal
+      "sumDefer": 0,  //已还延期服务费 | BigDecimal
+      "sumNrDefer": 0,  //未还延期服务费 | BigDecimal
+      "sumDelin": 0,  //已还违约服务费 | BigDecimal
+      "sumNrDelin": 0, //未还违约服务费 | BigDecimal
+      "repayDate": 0, //还款日期（应还款日） | Date
+      "delinDate": 0, //违约开始日期 | Date
+      "status": 0 //状态(5001: 正常 ;5002: 延期 ;5003: 逾期;5004: 已结清;5005: 延期已结清;5006:逾期已结清) | String
+    },
+    //账单下的所有订单明细
+    "orderStatusDetail": {
+      "pageNo": 1,  //页码 | Int
+      "pageSize": 10, //页数 | Int
+      "totalPage": 0, //总页数 | Int
+      "totalRecord": 0, //总记录数 | Int
+      "results": [ //账单详情 | JsonArray
+        {
+          "orderNo" : "",  //订单号  | String
+          "customerName" : "", //结算单位  | String
+          "repayStatus" : "" //结清状态(2500:未结清；2501:已结清)  | Int //这里文档有问题.坑比卧槽
+        }
+      ]
+    },
+    //订单明细
+    "orderDetail": {
+      "orderNo": "86750389742", //订单号  | String
+      "billNo": "201902071200169883", //账单编号 | String
+      "orderAmount": 128, //订单金额 | BigDecimal
+      "settleDate": "", //结算时间 | Date
+      "settleStatus": "2500", //结清状态(2500:未结清；2501:已结清) | String
+      "sumRefundAmount": 0, //总退款金额 | BigDecimal
+      "customerName": "" //结算单位 | String
+    }
+  },
+  "success": true,
+  "resultMessage": "",
+  "resultCode": "9000",
+  "code": 200
+}

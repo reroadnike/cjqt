@@ -1,0 +1,19 @@
+<style type='text/css'>
+	.goods-list a {
+		position: relative; 
+	}
+	.goods-list span  {
+	float:right;margin-right:20px;
+	 
+	}
+</style>
+
+{ifp 'category'}
+<div class='menu-header'>分类管理</div>
+<ul class='goods-list'>
+
+    {ifp 'category'}<li {if $_W['routes'] == 'category'} class="active" {/if}><a href="{php echo webUrl('category')}">商品分类</a></li>{/if}
+    {ifp 'category.category_relation'}<li {if $_W['routes'] == 'category.relation'} class="active" {/if}><a href="{php echo webUrl('category/relation')}">分类关联</a></li>{/if}
+    {ifp 'category.category_relation'}<li {if $_W['routes'] == 'category.yanxuan_relation'} class="active" {/if}><a href="{php echo webUrl('category/yanxuan_relation')}">严选分类关联</a></li>{/if}
+</ul>
+{/if}

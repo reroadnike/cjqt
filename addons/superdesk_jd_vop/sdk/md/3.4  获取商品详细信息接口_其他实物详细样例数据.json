@@ -1,0 +1,28 @@
+{"result":
+{
+  "sku" : 商品编号,
+  "weight" : "重量",
+  "imagePath" : "主图地址",
+  "state" : 上下架状态,
+  "brandName" : "品牌",
+  "name" : "商品名称",
+  "productArea" : 产地,
+  "upc"：条形码,
+  "saleUnit" : 销售单位,
+  "category": 类别,
+  "eleGift": 4,    // 京东自营礼品卡， 只有当sku为京东自营实物礼品卡的时候才有该字段
+  "introduction":
+  "<div class='content_tpl'><div class='formwork_bt'><div class='formwork_bt_it'><span>产品信息</span><span class='s2'>Product Information</span></div></div><div class='formwork'><div class='formwork_img'><img src='http://img20.360buyimg.com/vc/g12/M00/06/08/rBEQYVGTRrMIAAAAAAF59yhoUI4AABOYQOudsQAAXoP109.jpg' alt='' /></div></div><div class='formwork_bt'><div class='formwork_bt_it'><span>产品特色</span><span class='s2'>Selling Point</span></div></div><div class='formwork'><div class='formwork_img'><img src='http://img20.360buyimg.com/vc/g12/M00/06/08/rBEQYVGTRtEIAAAAAAKREgbm5fkAABOYwF1DeAAApEq566.jpg' alt='' /></div></div></div>",
+  "param"："
+  <table width='100%' cellspacing='1' cellpadding='0' border='0' class='Ptable'><tbody><tr><th colspan='2' class='tdTitle'>主体</th></tr><tr></tr><tr><td class='tdTitle'>品牌</td><td>雷蛇 Razer</td></tr><tr><td class='tdTitle'>类型</td><td>有线鼠标</td></tr><tr><td class='tdTitle'>型号</td><td>地狱狂蛇镜面特别版</td></tr><tr><td class='tdTitle'>颜色</td><td>黑色</td></tr><tr><th colspan='2' class='tdTitle'>规格</th></tr><tr></tr><tr><td class='tdTitle'>传输方式</td><td>线缆</td></tr><tr><td class='tdTitle'>人体工学</td><td>否</td></tr><tr><td class='tdTitle'>鼠标工作方式</td><td>光电</td></tr><tr><td class='tdTitle'>鼠标分辨率</td><td>3500dpi</td></tr><tr><td class='tdTitle'>接口</td><td>USB</td></tr><tr><td class='tdTitle'>鼠标尺寸</td><td>115(L) x 63(W) x 40(H) mm</td></tr><tr><td class='tdTitle'>重量</td><td>0.09kg</td></tr></tbody></table>",
+  "wareQD" : "笔记本主机 x1 电池 x1 电源适配器 x1 " 商品清单
+}
+}
+
+
+
+
+
+
+web介绍
+app介绍

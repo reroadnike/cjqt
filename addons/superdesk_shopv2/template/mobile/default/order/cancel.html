@@ -1,0 +1,53 @@
+{template '_header'}
+<div class='fui-page {if empty($order['refundstate'])}fui-page-current{/if}' id='page-refund-edit' >
+    <div class="fui-header">
+        <div class="fui-header-left">
+            <a class="back" onclick='history.back()'></a>
+        </div>
+        <div class="title">取消申请</div>
+        <div class="fui-header-right">&nbsp;</div>
+    </div>
+
+    <div class='fui-content margin navbar'>
+        <div class="fui-cell-group">
+            <div class="fui-cell">
+                <div class="fui-cell-label">取消原因</div>
+                <div class="fui-cell-info">
+
+                    <select id="reason">
+                        <option value="我不想买了" {if $cancelData['reason']=='不想要了'}selected{/if}>我不想买了</option>
+                        <option value="信息填写错误，重新拍" {if $cancelData['reason']=='信息填写错误，重新拍'}selected{/if}>信息填写错误，重新拍</option>
+                        <option value="同城见面交易" {if $cancelData['reason']=='同城见面交易'}selected{/if}>同城见面交易</option>
+                        <option value="其他原因" {if $cancelData['reason']=='其他原因'}selected{/if}>其他原因</option>
+                    </select>
+                </div>
+                <div class="fui-cell-remark"></div>
+
+            </div>
+
+            <div class="fui-cell">
+                <div class="fui-cell-label"><span class="re-g">取消说明</span></div>
+                <div class="fui-cell-info">
+                    <input type="text" id="content" class='fui-input' placeholder="选填" value="{$cancelData['content']}"/>
+                </div>
+            </div>
+
+            <div class='fui-cell text-danger'>
+                提示:订单取消成功后将无法恢复，整个订单将会取消；若您对已收到的商品不满意，须先点击确认收货之后才能进行售后申请（对全部或部分商品进行退换货，维修操作）。
+            </div>
+        </div>
+    </div>
+
+    <div class='fui-footer text-right'>
+        <a class='btn btn-danger btn-submit'>提交申请</a>
+        <a class="btn btn-default btn-default-o back">取消</a>
+    </div>
+
+    <script language='javascript'>
+        require(['biz/order/cancel'], function (modal) {
+            modal.init({orderid: "{$orderid}"});
+        });
+
+    </script>
+</div>
+{template '_footer'}

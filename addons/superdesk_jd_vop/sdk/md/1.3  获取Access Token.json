@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "resultMessage": "",
+  "resultCode": "0000",
+  "result": {
+    "uid": "6165718786",
+    "refresh_token_expires": 1525071742348,
+    "time": 1509346942348,
+    "expires_in": 86400,
+    "refresh_token": "A23k88ryXJx9QJBay7QEmdPcM0GoJk8uidR2pIjy",
+    "access_token": "NIwoLn95BLs0ZdKLyawIiuFPM"
+  }
+}

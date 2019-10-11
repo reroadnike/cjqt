@@ -1,0 +1,48 @@
+
+
+<!--<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery-2.0.3.min.js"></script>-->
+
+<link href="{MODULE_URL}static/js/dist/jquery-plugin-datepicker/css/datepicker.css" rel="stylesheet">
+<link href="{MODULE_URL}static/js/dist/jquery-plugin-datepicker/css/layout.css" rel="stylesheet">
+
+
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery-plugin-datepicker/js/jquery.js"></script>
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery-plugin-datepicker/js/datepicker.js"></script>
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery-plugin-datepicker/js/eye.js"></script>
+<!--<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery-plugin-datepicker/js/layout.js"></script>-->
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery-plugin-datepicker/js/utils.js"></script>
+
+
+<input type="text" id="inputDate" style="width: 100%;"/>
+
+<p id="date2"></p>
+
+<script>
+    var now = new Date();
+    console.log(now);
+//    now.addDays(-10);
+    var now2 = new Date();
+//    now2.addDays(-5);
+//    now2.setHours(0, 0, 0, 0);
+    $('#date2').DatePicker({
+        flat: true,
+        date: [],//['2017-08-14', '2017-08-15']  // set select date
+        current: '2017-08-14',
+        format: 'Y-m-d',
+        calendars: 1,
+        mode: 'multiple',
+        onRender: function (date) {
+            return {
+                disabled: (date.valueOf() < now.valueOf()),
+                className: date.valueOf() == now2.valueOf() ? 'datepickerSpecial' : false
+            }
+        },
+        onChange: function(formated, dates){
+            $('#inputDate').val(formated);
+//            if ($('#closeOnSelect input').attr('checked')) {
+//                $('#inputDate').DatePickerHide();
+//            }
+        },
+        starts: 0
+    });
+</script>

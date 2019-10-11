@@ -1,0 +1,56 @@
+array(2) {
+  [0]=>
+  array(2) {
+    ["lable"]=>
+    string(10) "2017-08-17"
+    ["select_time_bar"]=>
+    array(1) {
+      [30]=>
+      array(8) {
+        ["index"]=>
+        int(30)
+        ["key"]=>
+        string(19) "2017-08-17 15:00:00"
+        ["timestamp"]=>
+        int(1502955000)
+        ["is_use"]=>
+        int(0)
+        ["lable"]=>
+        string(11) "15:00-15:30"
+        ["lable_start"]=>
+        string(5) "15:00"
+        ["lable_end"]=>
+        string(5) "15:30"
+        ["checked"]=>
+        int(1)
+      }
+    }
+  }
+  [1]=>
+  array(2) {
+    ["lable"]=>
+    string(10) "2017-08-18"
+    ["select_time_bar"]=>
+    array(1) {
+      [30]=>
+      array(8) {
+        ["index"]=>
+        int(30)
+        ["key"]=>
+        string(19) "2017-08-18 15:00:00"
+        ["timestamp"]=>
+        int(1503041400)
+        ["is_use"]=>
+        int(0)
+        ["lable"]=>
+        string(11) "15:00-15:30"
+        ["lable_start"]=>
+        string(5) "15:00"
+        ["lable_end"]=>
+        string(5) "15:30"
+        ["checked"]=>
+        int(1)
+      }
+    }
+  }
+}

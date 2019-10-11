@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>{if !empty($_W['account']['name'])}{$_W['account']['name']}{else}{/if}{if !empty($detail['title'])} - {$detail['title']}{else}{/if}</title>
+	<meta name="format-detection" content="telephone=no, address=no">
+	<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- apple devices fullscreen -->
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="keywords" content="{if empty($_W['page']['keywords'])}{else}{$_W['page']['keywords']}{/if}" />
+	<meta name="description" content="{if empty($_W['page']['description'])}{else}{$_W['page']['description']}{/if}" />
+	<link href="./resource/css/bootstrap.min.css" rel="stylesheet">
+	<link href="./resource/css/font-awesome.min.css" rel="stylesheet">
+	<link href="./resource/css/animate.css" rel="stylesheet">
+	<link href="./resource/css/common.css" rel="stylesheet">
+	<link href="{url 'utility/style'}" rel="stylesheet">
+	<script src="./resource/js/require.js"></script>
+	<script src="./resource/js/app/config.js"></script>
+	<script type="text/javascript" src="./resource/js/lib/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		window.sharedata = {
+			'appId': 'wxcb965730e74a2b56', // 服务号可以填写appId
+			'imgUrl' : '{php echo $detail['thumb']}', // 缩略图
+			'link': '{php echo $_share['link']}', // 内容链接
+			'title': '{php echo $detail['title']}', // 内容标题
+			'desc': '{php echo $detail['description']}' // 内容简介
+		};
+		window.onshared = ''; 
+	</script>
+</head>
+<body>
+<div class="container container-fill">

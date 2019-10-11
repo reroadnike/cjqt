@@ -1,0 +1,65 @@
+{template 'common/header'}
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                已全部处理
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:5%;">京东sku</th>
+                        <th style="width:25%;">商品标题</th>
+                        <th style="width:5%;">重复数</th>
+                        <th style="width:10%;">商品ids</th>
+                        <th style="width:5%;">是否处理/真实销量</th>
+                        <!--<th style="text-align:right; width:5%;">操作</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+                        <td>{$item['sku']}</td>
+                        <td></td>
+                        <td>{$item['num']}</td>
+                        <td>{$item['ids']}</td>
+                        <td>{$item['is_delete']}</td>
+                        <!--
+                        <td style="text-align:right;">
+                            <a href="{php echo $this->createWebUrl('cc_superdesk_shop_goods_cc_sku', array('id' => $item['id'], 'op' => 'edit'));}"
+                               class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="编辑"><i
+                                    class="fa fa-pencil">&nbsp;编辑</i></a>
+                        </td>
+                        -->
+                    </tr>
+
+                    {loop $item['goods_list'] $item_goods}
+                    <tr>
+                        <td>|---- </td>
+                        <td>{$item_goods['title']}</td>
+                        <td></td>
+                        <td>{$item_goods['id']}</td>
+                        <td>{$item_goods['salesreal']}</td>
+
+                    </tr>
+                    {/loop}
+
+                    {/loop}
+                    <tr>
+                        <td>
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                        </td>
+                        <td colspan="4">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

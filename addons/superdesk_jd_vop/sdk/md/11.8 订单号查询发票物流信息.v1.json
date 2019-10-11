@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "resultMessage": "",
+  "resultCode": "0005",
+  "result": [ // Array | 物流信息列表
+    {
+      "opeTitle": "", // String | 操作主题
+      "opeRemark": "", // String | 操作备注
+      "opeName": "", // String | 操作用户
+      "opeTime": "2018/04/12 17:00:03", // String | 操作时间
+      "waybillCode": "VC41723014130" // String | 物流单号
+    },
+    {
+      "opeTitle": "",
+      "opeRemark": "",
+      "opeName": "",
+      "opeTime": "2018/04/13 11:45:45",
+      "waybillCode": "VC41723014130"
+    }
+  ]
+}

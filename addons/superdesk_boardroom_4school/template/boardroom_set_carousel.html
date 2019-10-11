@@ -1,0 +1,92 @@
+{template 'common/header'}
+
+
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('boardroom_manage', array('op' => 'list'))}">会议室列表</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('boardroom_set_equipment', array('op' => 'edit','id'=> $id ))}">{if
+        isset($item[id])}编辑{else}新增{/if}会议室 - 轮播图</a></li>
+</ul>
+
+<div class="main">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">编辑议室 - 轮播图</div>
+        <div class="table-responsive panel-body">
+            <table class="table table-hover text-center">
+                <thead class="navbar-inner">
+                <tr>
+                    <th style="width:4%;">ID</th>
+                    <th style="width:86%;">轮播图片</th>
+                    <th style="width:10%;text-align: center;">操作</th>
+                </tr>
+                </thead>
+
+
+                <tbody>
+                {loop $list $index $item}
+                <tr>
+                    <td>{php echo ($index+1)}</td>
+                    <td style="text-align: left;"><img style="height: 6rem;" src="{php echo tomedia($item);}"></td>
+                    <td style="text-align: center;">
+                        <a href="{php echo $this->createWebUrl('boardroom_set_carousel',array('index'=>$index , 'id' => $id, 'op' => 'delete'));}" class="btn btn-info btn-xs">
+                            <i class="fa fa-times">&nbsp;删除</i></a>
+                    </td>
+                </tr>
+                {/loop}
+                {if empty($list)}
+                <tr>
+                    <td colspan="3">
+                        NO DATA
+                    </td>
+                </tr>
+                {/if}
+                <tr>
+                    <td>
+                        <!--<input name="submit" type="submit" class="btn btn-primary" value="提交">-->
+                        <input type="hidden" name="token" value="{$_W['token']}" />
+                    </td>
+                    <td>
+                        {$pager}
+                    </td>
+                    <td>
+                        <a id="btn_boardroom_set_carousel_add" class="btn btn-info btn-xs" href="#" data-id="{$id}">添加轮播图</a>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--<div class="text-center">{$data['page']}</div>-->
+
+</div>
+
+<script>
+    var url = '{$url_api_boardroom_set_carousel_add}';
+    var id = '{$id}';
+    require(['jquery', 'util'], function($, util){
+        $(function(){
+            $('#btn_boardroom_set_carousel_add').click(function(){
+
+                var imgId = $(this).data('id');
+
+                util.image('',function(data){
+                    $.post( url,
+                            {
+                                img: data.filename,
+                                id: id,
+                                token: "{$_W['token']}"
+                            },
+                            function (json) {
+                                console.log(json);
+                                location.href = "";
+                            }, "json");
+                });
+            });
+
+        });
+    });
+</script>
+
+{template 'common/footer'}

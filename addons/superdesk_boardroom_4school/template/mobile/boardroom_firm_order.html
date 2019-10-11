@@ -1,0 +1,93 @@
+{template '__header'}
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/firmOrder.css"/>
+
+<div class="pagetoplogo"></div>
+<div class="pagebottomlogo"></div>
+<ul class="orderAddress clearfix">
+    <li class="clearfix">
+        <em>名称：</em>
+        <span class="ellipsis">{$_boardroom['name']}</span>
+    </li>
+    <li class="clearfix">
+        <em>地址：</em>
+        <span class="ellipsis">{$_boardroom['address']}</span>
+    </li>
+    <li class="clearfix">
+        <em>使用时间：</em>
+        <span class="ellipsis">2017年7月12日 {$check_start_end}</span>
+    </li>
+</ul>
+<ul class="orderAddress clearfix">
+    <li class="clearfix">
+        <em>单价：</em>
+        <span class="ellipsis">{$_boardroom['price']}元/时</span>
+    </li>
+    <li class="clearfix">
+        <em>数量：</em>
+        <span class="ellipsis">{$num_hour}小时</span>
+    </li>
+    <li class="clearfix">
+        <em>总价：</em>
+        <span class="ellipsis">{$total_price_boardroom_booking}元</span>
+    </li>
+</ul>
+
+{if !empty($allgoods)}
+<h3 class="accessorial">附加服务:</h3>
+<div class="addService2">
+    <ul>
+        {loop $allgoods $item}
+        <input type="hidden" name="goodstype" value="{$item['type']}" />
+        {if $item['type'] == '2'}
+        <script language="JavaScript">
+            $('#fictitious').show();
+        </script>
+        {/if}
+
+        <li class="clearfix">
+            <span class="extraName name" data-url="{php echo $this->createMobileUrl('detail',array('id'=>$item['id']))}">
+                {$item['title']}
+                {if !empty($item['optionname'])}<br/>
+                    <span style='font-size:12px;color:#666'> {$item['optionname']}</span>
+                {/if}
+            </span>
+            <span class="extraCount num">X {$item['total']}{if !empty($item['unit'])} {$item['unit']}{/if}</span>
+            <span class="extraPrice total goodsprice">{$item['marketprice']} 元</span>
+            <span style="display: none;">{$item['total']}</span>
+            <span style="display: none;">{$item['marketprice']}</span>
+        </li>
+        {/loop}
+        <li class="clearfix">
+            <span class="totalPriceName">合计</span>
+            <span class="extraPrice" id='totalprice'>{$total_price_accessorial_service}元</span>
+        </li>
+    </ul>
+</div>
+{/if}
+
+<div class="payment clearfix">支付金额:{$total_price_all}元</div>
+
+<div class="suspendBtn">
+    {if !empty($pay['wechat']['switch'])}
+    <div class="pay-btn" id="wechat-panel">
+        <form action="{php echo url('mc/cash/wechat');}" method="post">
+            <input type="hidden" name="params" value="{php echo base64_encode(json_encode($params));}" />
+            <input type="hidden" name="encrypt_code" value="" />
+            <input type="hidden" name="card_id" value="{php echo base64_encode($card_id);}" />
+            <input type="hidden" name="coupon_id" value="" />
+            <button class="suspend-btn" disabled="disabled" type="submit" id="wBtn" value="wechat">微信支付(必须使用微信内置浏览器)</button>
+        </form>
+    </div>
+    <script type="text/javascript">
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            $('#wBtn').removeAttr('disabled');
+            $('#wBtn').html('微信支付');
+        });
+    </script>
+    {/if}
+</div>
+
+
+
+{template '__footer'}

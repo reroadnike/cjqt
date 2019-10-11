@@ -1,0 +1,109 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="{php echo $this->createWebUrl('jd_vop_configs_manage', array('op' => 'list'))}">京东接口参数设置</a></li>
+    <li><a href="{php echo $this->createWebUrl('jd_vop_configs_manage', array('op' => 'edit'))}">#add#</a></li>
+</ul>
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                #list#
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <!--<th style="width:10%;">ID</th>-->
+                        <th style="width:10%;">标题</th>
+                        <th style="width:13%;">client_id</th>
+
+                        <th style="width:14%;">client_secret</th>
+                        <th style="width:10%;">username</th>
+                        <th style="width:12%;">password</th>
+                        <th style="width:12%;">是否默认</th>
+                        <th style="width:12%;">创建时间/更新时间</th>
+                        <th style="text-align:right; width:10%;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+
+
+                        <!--<td>{$item['id']}</td>-->
+
+                        <td>{$item['title']}</td>
+                        <td>{$item['client_id']}</td>
+                        <td>{$item['client_secret']}</td>
+                        <td>{$item['username']}</td>
+                        <td>{$item['password']}</td>
+                        <td>
+
+                            <input type="checkbox" name="is_default" value="{intval($item['is_default'])}" {if intval($item['is_default'])==1} checked="checked" {/if} data-id="{$item['id']}" data-on-text="是" data-off-text="否"/>
+                        </td>
+                        <td>
+                            {if isset($item['createtime'])}{php echo date('Y-m-d H:i:s',$item['createtime'])}{/if}
+                            <br/>
+                            {if isset($item['updatetime'])}{php echo date('Y-m-d H:i:s',$item['updatetime'])}{/if}
+                        </td>
+                        <td style="text-align:right;">
+
+                            <a href="{php echo $this->createWebUrl('jd_vop_configs_manage', array('id' => $item['id'], 'op' => 'edit'));}"
+                               class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="编辑"><i
+                                    class="fa fa-pencil">&nbsp;编辑</i></a>&nbsp;&nbsp;
+                            <a href="{php echo $this->createWebUrl('jd_vop_configs_manage', array('id' => $item['id'], 'op' => 'delete'));}"
+                               class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title=""
+                               onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" data-original-title="删除"><i
+                                    class="fa fa-times">&nbsp;删除</i> </a>
+                        </td>
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            共{$total}条
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                        </td>
+                        <td colspan="4">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+
+        require(['bootstrap.switch'], function() {
+
+            $(":checkbox[name='is_default']").bootstrapSwitch();
+
+            $(":checkbox[name='is_default']").on('switchChange.bootstrapSwitch', function(e, is_default){
+
+                var that = $(this);
+                var is_default = this.checked ? 1 : 0;
+                var id = that.data('id');
+
+                $.post("{php echo $this->createWebUrl('jd_vop_configs_manage', array('op' => 'is_default'))}",
+                        {
+                            is_default:is_default,
+                            id: id
+                        }, function(resp){
+                            if(resp != 'success') {
+                                util.message(resp, location.href, 'error')
+                            } else {
+                                util.message('操作成功', location.href, 'success');
+                            }
+                        });
+            });
+
+        });
+    });
+</script>
+
+{template 'common/footer'}

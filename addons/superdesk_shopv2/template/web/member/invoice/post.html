@@ -1,0 +1,134 @@
+<form action="" method="post" class="form-horizontal form-validate" enctype="multipart/form-data">
+
+    <input type="hidden" name="c" value="site" />
+    <input type="hidden" name="a" value="entry" />
+    <input type="hidden" name="m" value="superdesk_shopv2" />
+    <input type="hidden" name="do" value="web" />
+    <input type="hidden" name="r" value="member.invoice.edit" />
+    <input type='hidden' name='id' value="{$id}" />
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">{if $id}编辑发票{else}添加发票{/if}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">用户名称</label>
+                    <div class="col-sm-5 col-xs-12">
+                            {$item['name']}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl" >用户ID</label>
+                    <div class="col-sm-3 col-xs-12">
+                        <input type="text" name="core_user" class="form-control" value="{$item['core_user']}" data-rule-required='true' title="请输入服务之窗用户ID"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">开票方式</label>
+                    <div class="col-sm-5 col-xs-12">
+                        <select name="invoiceState" class="form-control">
+                            <option value="1" {if $item['invoiceState']=='1'}selected{/if}>随货开票</option>
+                            <option value="0" {if $item['invoiceState']=='0'}selected{/if}>订单预借</option>
+                            <option value="2" {if $item['invoiceState']=='2'}selected{/if}>集中开票</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">发票类型</label>
+                    <div class="col-sm-5 col-xs-12">
+                        <select name="invoiceType" class="form-control">
+                            <option value="1" {if $item['invoiceType']=='1'}selected{/if}>普通发票</option>
+                            <option value="2" {if $item['invoiceType']=='2'}selected{/if}>增值税发票</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">抬头类型</label>
+                    <div class="col-sm-5 col-xs-12">
+                        <select name="selectedInvoiceTitle" class="form-control">
+                            <option value="4" {if $item['selectedInvoiceTitle']=='4'}selected{/if}>个人</option>
+                            <option value="5" {if $item['selectedInvoiceTitle']=='5'}selected{/if}>单位</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">个人发票抬头</label>
+                    <div class="col-sm-5 col-xs-12">
+                        <input type="text" name="realname" class="form-control" value="{$item['realname']}" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">公司发票抬头</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="companyName" class="form-control" value="{$item['companyName']}" data-rule-required='true' />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">发票标识码</label>
+                    <div class="col-sm-5 col-xs-12">
+                        <input type="text" name="taxpayersIDcode" class="form-control" value="{$item['taxpayersIDcode']}" data-rule-required='true' />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">收票人</label>
+                    <div class="col-sm-5 col-xs-12">
+                        <input type="text" name="invoiceName" class="form-control" value="{$item['invoiceName']}" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">收票人电话</label>
+                    <div class="col-sm-5 col-xs-12">
+                        <input type="text" name="invoicePhone" class="form-control" value="{$item['invoicePhone']}" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">收票人地址</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="invoiceAddress" class="form-control" value="{$item['invoiceAddress']}" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">开户银行</label>
+                    <div class="col-sm-6 col-xs-12">
+                        <input type="text" name="invoiceBank" class="form-control" value="{$item['invoiceBank']}"  />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">开户帐号</label>
+                    <div class="col-sm-6 col-xs-12">
+                        <input type="text" name="invoiceAccount" class="form-control" value="{$item['invoiceAccount']}" data-rule-number='true' />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">是否默认</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="checkbox" class="checkbox" name="isdefault" class="form-control" value="{$item['isdefault']}" {if $item['isdefault']=='1'}checked{/if} />
+                    </div>
+                </div>
+
+
+            </div> <div class="modal-footer">
+            <button class="btn btn-primary" type="submit">确认提交</button>
+            <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+        </div>
+        </div>
+    </div>
+
+</form>
+

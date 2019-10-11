@@ -1,0 +1,17 @@
+{if sizeof($children[$structures_parentid]) == 0}
+<li class="" data-id="0">
+    <span class="ellipsis">全部楼层</span>
+    <i class="iconCorrect"></i>
+</li>
+{else}
+<li class="" data-id="0">
+    <span class="ellipsis">全部楼层</span>
+    <i class="iconCorrect"></i>
+</li>
+{loop $children[$structures_parentid] $index $child_item}
+<li class="{if $child_item['id'] == $attribute} tabconsel {/if}" data-id="{$child_item['id']}">
+    <span class="ellipsis">{$child_item['name']}</span>
+    <i class="iconCorrect"></i>
+</li>
+{/loop}
+{/if}

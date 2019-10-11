@@ -1,0 +1,128 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('ms_coupon_data', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('ms_coupon_data', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_data_id" class="form-control" value="{$item['coupon_data_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">对应优惠券规则PKCODE</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_standard_pkcode" class="form-control" value="{$item['coupon_standard_pkcode']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">优惠券名称</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_data_name" class="form-control" value="{$item['coupon_data_name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">规则类型，0：表示抵扣次数，1：优惠券</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_data_type" class="form-control" value="{$item['coupon_data_type']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">优惠券对外的唯一id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_data_pkcode" class="form-control" value="{$item['coupon_data_pkcode']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">规则类型为0 时，这个值有效，抵扣次数值</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_data_usetime" class="form-control" value="{$item['coupon_data_usetime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">若规则条件为1时，此字段为满多少的值</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_data_condition" class="form-control" value="{$item['coupon_data_condition']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_data_mjprice" class="form-control" value="{$item['coupon_data_mjprice']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">到期类型：0:表示每天到期，1：每月到期，2：每年到期，3：自定到期时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_data_expiretype" class="form-control" value="{$item['coupon_data_expiretype']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">若到期类型为3时，这个为券有效时间的开始时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_data_begintime" class="form-control" value="{$item['coupon_data_begintime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">若到期类型为2或者3时，这个为券有效时间的结束时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_data_endtime" class="form-control" value="{$item['coupon_data_endtime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_data_ctime" class="form-control" value="{$item['coupon_data_ctime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">适用商品规则，0：全场通用，1：指定供应商</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_data_useproducttype" class="form-control" value="{$item['coupon_data_useproducttype']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">0：表示未启用，1：表示可使用，2：已使用，3：已过期，4：已失效</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_data_state" class="form-control" value="{$item['coupon_data_state']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">会员ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_m_id" class="form-control" value="{$item['coupon_m_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">优惠券使用时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="coupon_use_time" class="form-control" value="{$item['coupon_use_time']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

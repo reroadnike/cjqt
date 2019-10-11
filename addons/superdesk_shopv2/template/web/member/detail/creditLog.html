@@ -1,0 +1,26 @@
+<table class="table table-hover table-responsive">
+	<thead class="navbar-inner">
+	<tr>
+		<th style="width:150px;">ID</th>
+		<th style="width:120px;">旧余额</th>
+		<th style="width:100px;">增加金额</th>
+		<th style="width:100px;">减少金额</th>
+		<th style="width:100px;">新余额</th>
+		<th style="width:100px;">类型</th>
+		<th style="width:100px;">完成时间</th>
+	</tr>
+	</thead>
+	<tbody>
+	{loop $creditLogList $clrow}
+	<tr rel="pop" data-title="ID: {$clrow['id']} ">
+		<td>{$clrow['id']}</td>
+		<td>{$clrow['old_price']}</td>
+		<td>{$clrow['add_price']}</td>
+		<td>{$clrow['reduce_price']}</td>
+		<td>{$clrow['new_price']}</td>
+		<td>{$creditLogType[$clrow['type']]}</td>
+		<td>{php echo date('Y-m-d H:i:s',$clrow['createtime']);}</td>
+	</tr>
+	{/loop}
+	</tbody>
+</table>

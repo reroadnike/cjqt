@@ -1,0 +1,18 @@
+正常
+
+{
+  "success": true,
+  "resultMessage": "取消订单成功",
+  "resultCode": "0002",
+  "result": true,
+  "code": 200
+}
+
+
+{
+  "success": false,
+  "resultMessage": "该订单已经被取消",
+  "resultCode": "3203",
+  "result": false,
+  "code": 200
+}

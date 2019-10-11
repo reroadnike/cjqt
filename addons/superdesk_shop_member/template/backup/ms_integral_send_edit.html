@@ -1,0 +1,128 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('ms_integral_send', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('ms_integral_send', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_send_id" class="form-control" value="{$item['integral_send_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">发送规则名称</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_send_name" class="form-control" value="{$item['integral_send_name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_standard_pkcode" class="form-control" value="{$item['integral_standard_pkcode']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">发放时间规则类型，0：每天发放，1：每月发放，2：每年指定时间发放 3自定义</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_send_timetype" class="form-control" value="{$item['integral_send_timetype']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">指定发放时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_send_diytime" class="form-control" value="{$item['integral_send_diytime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">发送的数量</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_send_number" class="form-control" value="{$item['integral_send_number']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_send_ctime" class="form-control" value="{$item['integral_send_ctime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">0:无效，1：有效</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_send_state" class="form-control" value="{$item['integral_send_state']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">公司ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_id" class="form-control" value="{$item['e_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">公司标签的id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_send_companyid" class="form-control" value="{$item['integral_send_companyid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">分公司标签的id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_send_branch" class="form-control" value="{$item['integral_send_branch']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">部门标签的id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_send_department" class="form-control" value="{$item['integral_send_department']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">小组标签的id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_send_group" class="form-control" value="{$item['integral_send_group']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">职位标签的id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_send_position" class="form-control" value="{$item['integral_send_position']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">福利等级标签的id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_send_welfare" class="form-control" value="{$item['integral_send_welfare']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="integral_send_endtime" class="form-control" value="{$item['integral_send_endtime']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

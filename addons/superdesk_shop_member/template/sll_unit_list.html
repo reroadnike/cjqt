@@ -1,0 +1,57 @@
+{template 'common/header'}
+
+{template '__nav-tabs_merch__'}
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                #list#
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:10%;">unit<br/>id</th>
+                        <th style="width:80%;">unit<br/>name</th>
+                        <th style="width:10%;">0:废弃<br/>1:使用</th>
+                        <!--<th style="text-align:right; width:10%;">操作</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+
+
+                        <td>{$item['unit_id']}</td>
+                        <td>{$item['unit_name']}</td>
+                        <td>{$item['status']}</td>
+                        <!--
+                        <td style="text-align:right;">
+                            <a href="{php echo $this->createWebUrl('sll_unit', array('id' => $item['id'], 'op' => 'edit'));}"
+                               class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="编辑"><i
+                                    class="fa fa-pencil">&nbsp;编辑</i></a>&nbsp;&nbsp;
+                            <a href="{php echo $this->createWebUrl('sll_unit', array('id' => $item['id'], 'op' => 'delete'));}"
+                               class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title=""
+                               onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" data-original-title="删除"><i
+                                    class="fa fa-times">&nbsp;删除</i> </a>
+                        </td>
+                        -->
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                        </td>
+                        <td colspan="2">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

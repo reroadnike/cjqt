@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 43 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>分类</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="手机端" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-219.000000, -2311.000000)">
+            <g id="Group-5" transform="translate(1.000000, 2291.000000)">
+                <g id="分类" transform="translate(218.000000, 20.000000)">
+                    <ellipse id="Oval" fill="#D0D0D0" cx="2.69230769" cy="2.76357133" rx="2.69230769" ry="2.76357133"></ellipse>
+                    <ellipse id="Oval-Copy" fill="#D0D0D0" cx="2.69230769" cy="19.3449993" rx="2.69230769" ry="2.76357133"></ellipse>
+                    <ellipse id="Oval-Copy-2" fill="#D0D0D0" cx="2.69230769" cy="35.9264273" rx="2.69230769" ry="2.76357133"></ellipse>
+                    <path d="M8.61538462,2.21085706 L41.5634142,2.21085706" id="Path-8" stroke="#D0D0D0" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M8.61538462,18.792285 L41.5634142,18.792285" id="Path-8-Copy" stroke="#D0D0D0" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M8.61538462,36.4791416 L41.5634142,36.4791416" id="Path-8-Copy-2" stroke="#D0D0D0" stroke-width="2" stroke-linecap="round"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

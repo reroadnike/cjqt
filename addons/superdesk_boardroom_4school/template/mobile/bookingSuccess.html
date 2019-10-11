@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预定成功</title>
+     <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no" />
+     <link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/reset.css" />
+     <link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/booksuccess.css" />
+     
+</head>
+<body>
+
+  <div class="pagetoplogo"></div>
+  <div class="pagebottomlogo"></div>
+
+
+  <div class="headImg">
+    <h3>预定成功</h3>
+    <!-- <p class="headtext">离您使用会议室的时间还有：<em>一天21时27分20秒</em></p> -->
+    <i class="headokicon"></i>
+  </div>
+      
+  <div class="centerContent">          
+      <div class="mediaRoom clearfix">
+          <P class="mediaRoomLeft">会议室:</P>
+          <p  class="mediaRoomRight">1208号会议室</p>
+      </div>
+      <div class="mediaRoom clearfix">
+          <P class="mediaRoomLeft">地址:</P>
+          <p  class="mediaRoomRight">1028号会议室</p>
+      </div>
+      <div class="mediaRoom clearfix">
+          <P class="mediaRoomLeft">日期:</P>
+          <p  class="mediaRoomRight">2017/08/10-2017/08/11  08:30-18:30</p>
+      </div>
+      <div class="mediaRoom clearfix">
+          <P class="mediaRoomLeft">人数:</P>
+          <p  class="mediaRoomRight">8人</p>
+      </div>
+      <div class="mediaRoom clearfix">
+          <P class="mediaRoomLeft">附加服务:</P>
+          <p  class="mediaRoomRight">
+            <em class="ellipsis">写字板</em>
+            <span>x1</span>
+          </p>
+          <p  class="mediaRoomRight">
+            <em class="ellipsis">茶叶</em>
+            <span>x1</span>
+          </p>
+          <p  class="mediaRoomRight">
+            <em class="ellipsis">话筒</em>
+            <span>x2</span>
+          </p>
+      </div>
+  </div>
+  <div class="footertext">
+    <div class="prompt">*该预定可在使用前24小时取消</div>
+    <div class="twoText clearfix">
+        <a href="{php echo $this->createMobileUrl('boardroom')}" title="回到首页">回到首页</a>
+        <a href="{php echo $this->createMobileUrl('profile')}" title="个人中心">个人中心</a>
+    </div>
+  </div>
+
+</body>
+</html>

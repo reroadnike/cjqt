@@ -1,0 +1,397 @@
+{template '_header'}
+<div class='fui-page  fui-page-current order-comment-page'>
+	<div class="fui-header">
+		<div class="fui-header-left">
+			<a class="back" onclick='history.back()'></a>
+		</div>
+		<div class="title">{if $comment['status']==1}追加{else if $comment['status']==2}查看{/if}评价</div>
+		<div class="fui-header-right">&nbsp;</div>
+	</div>
+	<div class='fui-content margin navbar'>
+
+		<div class="fui-list-group goods-list-group">
+			<div class="fui-list-group-title"><i class="icon icon-shop"></i> {$_W['shopset']['shop']['name']}</div>
+			<div class="fui-title">订单编号：{$order['ordersn']}</div>
+			<div class="fui-title">整单评价</div>
+			<div class="fui-cell-group">
+				{if !empty($comment)}
+				<div class='fui-cell must'>
+					<div class='fui-cell-label'>物流服务</div>
+					<div class='fui-cell-info'>
+						<div class='fui-stars logis  warning' data-value="0">
+							<span {if empty($comment["logis"])} class='stars' {else} class='' {/if} >
+							{if empty($comment["logis"])}
+							{else if $comment["logis"]==1}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							{else if $comment["logis"]==2}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							{else if $comment["logis"]==3}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							{else if $comment["logis"]==4}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							{else if $comment["logis"]==5}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							{/if}
+							</span>
+							<span class='fui-label {if empty($comment["logis"])} fui-default {else if $comment["logis"]==1} fui-label-default {else if $comment["logis"]==2} fui-label-primary {else if $comment["logis"]==3} fui-label-success {else if $comment["logis"]==4} fui-label-warning {else if $comment["logis"]==5} fui-label-danger {/if} '>{if empty($comment["logis"])} 没有评分 {else if $comment["logis"]==1} 差评 {else if $comment["logis"]==2} 一般 {else if $comment["logis"]==3} 挺好 {else if $comment["logis"]==4} 满意 {else if $comment["logis"]==5} 非常满意 {/if}</span>
+							<i class='icon icon-roundclose clear'  {if isset($comment["logis"])} style="display:none;" {/if} ></i>
+						</div>
+					</div>
+				</div>
+				<div class='fui-cell must'>
+					<div class='fui-cell-label'>服务态度</div>
+					<div class='fui-cell-info'>
+						<div class='fui-stars service  warning'  data-value='0'>
+							<span {if empty($comment["service"])} class='stars' {else} class='' {/if} >
+							{if empty($comment["service"])}
+							{else if $comment["service"]==1}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							{else if $comment["service"]==2}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							{else if $comment["service"]==3}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							{else if $comment["service"]==4}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							{else if $comment["service"]==5}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							{/if}
+							</span>
+							<span class='fui-label {if empty($comment["service"])} fui-default {else if $comment["service"]==1} fui-label-default {else if $comment["service"]==2} fui-label-primary {else if $comment["service"]==3} fui-label-success {else if $comment["service"]==4} fui-label-warning {else if $comment["service"]==5} fui-label-danger {/if} '>{if empty($comment["service"])} 没有评分 {else if $comment["service"]==1} 差评 {else if $comment["service"]==2} 一般 {else if $comment["service"]==3} 挺好 {else if $comment["service"]==4} 满意 {else if $comment["service"]==5} 非常满意 {/if}</span>
+							<i class='icon icon-roundclose clear'  {if isset($comment["service"])} style="display:none;" {/if} ></i>
+						</div>
+					</div>
+				</div>
+				<div class='fui-cell must'>
+					<div class='fui-cell-label'>描述相符</div>
+					<div class='fui-cell-info'>
+						<div class='fui-stars describes  warning'  data-value='0'>
+							<span {if empty($comment["describes"])} class='stars' {else} class='' {/if} >
+							{if empty($comment["describes"])}
+							{else if $comment["describes"]==1}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							{else if $comment["describes"]==2}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							{else if $comment["describes"]==3}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							{else if $comment["describes"]==4}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favor"style="float: left;"></ol>
+							{else if $comment["describes"]==5}
+							<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							<ol class="icon icon-favorfill selected"style="float: left;"></ol>
+							{/if}
+							</span>
+							<span class='fui-label {if empty($comment["describes"])} fui-default {else if $comment["describes"]==1} fui-label-default {else if $comment["describes"]==2} fui-label-primary {else if $comment["describes"]==3} fui-label-success {else if $comment["describes"]==4} fui-label-warning {else if $comment["describes"]==5} fui-label-danger {/if} '>{if empty($comment["describes"])} 没有评分 {else if $comment["describes"]==1} 差评 {else if $comment["describes"]==2} 一般 {else if $comment["describes"]==3} 挺好 {else if $comment["describes"]==4} 满意 {else if $comment["describes"]==5} 非常满意 {/if}</span>
+							<i class='icon icon-roundclose clear'  {if isset($comment["describes"])} style="display:none;" {/if} ></i>
+						</div>
+					</div>
+				</div>
+				<div class='fui-cell must'>
+					<div class='fui-cell-label '>首次评论</div>
+					<div class='fui-cell-info'><textarea rows="3"  readonly="readonly">{$comment['content']}</textarea></div>
+				</div>
+				{if !empty($comment['images'])}
+				<div class='fui-cell'>
+					<div class='fui-cell-label'>首次晒图</div>
+					<div class='fui-cell-info'>
+
+						<ul class="fui-images fui-images-sm" >
+							{loop $comment['images'] $i}
+							<div class=" fui-uploader-sm" data-max="5" data-count="0" style="float: left;">
+								<img src="{php echo tomedia($i)}" style="width: 35px; ">
+							</div>
+							{/loop}
+						</ul>
+						<!--<div class="fui-uploader fui-uploader-sm" data-max="5" data-count="0">
+							<input type="file" src="" name='imgFile0' id='imgFile0' multiple="" accept="image/*" >
+						</div>-->
+					</div>
+				</div>
+				{/if}
+				{if !empty($comment['reply_content'])}
+				<div class='fui-cell must'>
+					<div class='fui-cell-label '>首次回复</div>
+					<div class='fui-cell-info'><textarea rows="3" readonly="readonly">{$comment['reply_content']}</textarea></div>
+				</div>
+				{/if}
+				{if !empty($comment['reply_images'])}
+				<div class='fui-cell'>
+					<div class='fui-cell-label'>回复晒图</div>
+					<div class='fui-cell-info'>
+
+						<ul class="fui-images fui-images-sm" >
+							{loop $comment['reply_images'] $i}
+							<div class=" fui-uploader-sm" data-max="5" data-count="0" style="float: left;">
+								<img src="{php echo tomedia($i)}" style="width: 35px; ">
+							</div>
+							{/loop}
+						</ul>
+					</div>
+				</div>
+				{/if}
+				{if $comment['status']==1}
+				<div class='fui-cell must' >
+					<div class='fui-cell-label '>追加评论</div>
+					<div class='fui-cell-info'><textarea id="append_content" rows="3" placeholder="说点什么吧" ></textarea></div>
+				</div>
+				<div class='fui-cell' >
+					<div class='fui-cell-label'>追加晒图</div>
+					<div class='fui-cell-info'>
+
+						<ul class="fui-images fui-images-sm" id="append_images"></ul>
+						<div class="fui-uploader fui-uploader-sm"
+							 data-max="5"
+							 data-count="0">
+							<input type="file" name='imgFile1' id='imgFile1' multiple="" accept="image/*" >
+						</div>
+					</div>
+				</div>
+				{else if $comment['status']==2}
+
+				<div class='fui-cell must'>
+					<div class='fui-cell-label '>追加评论</div>
+					<div class='fui-cell-info'><textarea id="append_content" rows="3"  readonly="readonly">{$comment['append_content']}</textarea></div>
+				</div>
+				{if !empty($comment['append_images'])}
+				<div class='fui-cell'>
+					<div class='fui-cell-label'>追加晒图</div>
+					<div class='fui-cell-info'>
+
+						<ul class="fui-images fui-images-sm" >
+							{loop $comment['append_images'] $i}
+							<div class=" fui-uploader-sm" data-max="5" data-count="0" style="float: left;">
+								<img src="{php echo tomedia($i)}" style="width: 35px; ">
+							</div>
+							{/loop}
+						</ul>
+					</div>
+				</div>
+				{/if}
+				{if !empty($comment['append_reply_content'])}
+				<div class='fui-cell must'>
+					<div class='fui-cell-label '>追加回复</div>
+					<div class='fui-cell-info'><textarea id="append_reply_content" rows="3"  readonly="readonly">{$comment['append_reply_content']}</textarea></div>
+				</div>
+				{/if}
+				{if !empty($comment['append_reply_images'])}
+				<div class='fui-cell'>
+					<div class='fui-cell-label'>追加回复晒图</div>
+					<div class='fui-cell-info'>
+
+						<ul class="fui-images fui-images-sm" >
+							{loop $comment['append_reply_images'] $i}
+							<div class=" fui-uploader-sm" data-max="5" data-count="0" style="float: left;">
+								<img src="{php echo tomedia($i)}" style="width: 35px; ">
+							</div>
+							{/loop}
+						</ul>
+					</div>
+				</div>
+				{/if}
+				{/if}
+			</div>
+			{else}
+			<div class='fui-cell must'>
+				<div class='fui-cell-label'>物流服务</div>
+				<div class='fui-cell-info'>
+					<div class='fui-stars logis  warning'  data-value='0'>
+						<span class='stars'></span>
+						<span class='fui-label fui-default'>没有评分</span>
+						<i class='icon icon-roundclose clear'></i>
+					</div>
+				</div>
+			</div>
+			<div class='fui-cell must'>
+				<div class='fui-cell-label'>服务态度</div>
+				<div class='fui-cell-info'>
+					<div class='fui-stars service  warning'  data-value='0'>
+						<span class='stars'></span>
+						<span class='fui-label fui-default'>没有评分</span>
+						<i class='icon icon-roundclose clear'></i>
+					</div>
+				</div>
+			</div>
+			<div class='fui-cell must'>
+				<div class='fui-cell-label'>描述相符</div>
+				<div class='fui-cell-info'>
+					<div class='fui-stars describes  warning'  data-value='0'>
+						<span class='stars'></span>
+						<span class='fui-label fui-default'>没有评分</span>
+						<i class='icon icon-roundclose clear'></i>
+					</div>
+				</div>
+			</div>
+			<div class='fui-cell must'>
+				<div class='fui-cell-label '>评论</div>
+				<div class='fui-cell-info'><textarea id="comment" rows="3" placeholder="说点什么吧" ></textarea></div>
+			</div>
+			<div class='fui-cell'>
+				<div class='fui-cell-label'>晒图</div>
+				<div class='fui-cell-info'>
+
+					<ul class="fui-images fui-images-sm" id="images"></ul>
+					<div class="fui-uploader fui-uploader-sm"
+						 data-max="5"
+						 data-count="0">
+						<input type="file" name='imgFile0' id='imgFile0' multiple="" accept="image/*" >
+					</div>
+				</div>
+			</div>
+		</div>
+		{/if}
+
+		<div class="fui-title" >商品评价
+			{if count($goods)>1}
+			<div class='fui-label fui-label-warning goods-comment-btn' style="margin-left:230px;" >评价 <i class='icon icon-fold'></i></div>
+			{/if}
+		</div>
+
+		{loop $goods $g}
+
+
+		<div class="fui-list goods-list" data-goodsid="{$g['goodsid']}" style="padding-bottom: 6px; padding-top: 15px;">
+			<a class="fui-list-media" href="{php echo mobileUrl('goods/detail',array('id'=>$g['goodsid']))}">
+				<img src="{php echo tomedia($g['thumb'])}" class="round">
+			</a>
+			<a class="fui-list-inner" href="{php echo mobileUrl('goods/detail',array('id'=>$g['goodsid']))}">
+				<div style="width: 220px;" class="text goodstitle">{$g['title']}</div>
+				{if !empty($g['optionid'])}<div class='subtitle'>{$g['optiontitle']}</div>{/if}
+			</a>
+			<div class='fui-list-angle' style="width: 50px;">
+				<p>￥<span class='marketprice'>{$g['price']}<br/>x{$g['total']}</span></p>
+			</div>
+
+			{if !$comment['status']}
+			<div class='fui-cell must goods-level' style="margin-top: 65px;">
+				<div class='fui-cell-label' style="margin-left: -350px; margin-top: -11px;">商品质量</div>
+				<div class='fui-cell-info'>
+					<div class='fui-stars levels warning'  data='0' style="margin-top: -26px; margin-left: -265px;">
+						<span class='stars'></span>
+						<span class='fui-label fui-default'>没有评分</span>
+						<i class='icon icon-roundclose clear'></i>
+					</div>
+				</div>
+			</div>
+			{else}
+			<div class='fui-cell must goods-level' style="margin-top: 65px;">
+				<div class='fui-cell-label' style="margin-left: -350px; margin-top: -11px;">商品质量</div>
+				<div class='fui-cell-info'>
+					<div class='fui-stars levels warning'  data='0'  style="margin-top: -26px; margin-left: -265px;">
+						<span {if empty($g["level"])} class='stars' {else} class='' {/if} >
+						{if empty($g["level"])}
+						{else if $g["level"]==1}
+						<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+						<ol class="icon icon-favor" style="float: left;"></ol>
+						<ol class="icon icon-favor" style="float: left;"></ol>
+						<ol class="icon icon-favor" style="float: left;"></ol>
+						<ol class="icon icon-favor" style="float: left;"></ol>
+						{else if $g["level"]==2}
+						<ol class="icon icon-favorfill selected"  style="float: left;"></ol>
+						<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+						<ol class="icon icon-favor" style="float: left;"></ol>
+						<ol class="icon icon-favor" style="float: left;"></ol>
+						<ol class="icon icon-favor" style="float: left;"></ol>
+						{else if $g["level"]==3}
+						<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+						<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+						<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+						<ol class="icon icon-favor" style="float: left;"></ol>
+						<ol class="icon icon-favor" style="float: left;"></ol>
+						{else if $g["level"]==4}
+						<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+						<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+						<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+						<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+						<ol class="icon icon-favor" style="float: left;"></ol>
+						{else if $g["level"]==5}
+						<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+						<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+						<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+						<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+						<ol class="icon icon-favorfill selected" style="float: left;"></ol>
+						{/if}
+						</span>
+						<span  class='fui-label  {if empty($g["level"])} fui-default {else if $g["level"]==1} fui-label-default {else if $g["level"]==2} fui-label-primary {else if $g["level"]==3} fui-label-success {else if $g["level"]==4} fui-label-warning {else if $g["level"]==5} fui-label-danger {/if} '>{if empty($g["level"])} 没有评分 {else if $g["level"]==1} 差评 {else if $g["level"]==2} 一般 {else if $g["level"]==3} 挺好 {else if $g["level"]==4} 满意 {else if $g["level"]==5} 非常满意 {/if}</span>
+						<!--                <i class='icon icon-roundclose clear' style="width: 20px;" style="display:none;"  ></i>-->
+					</div>
+				</div>
+			</div>
+			{/if}
+
+		</div>
+
+		{/loop}
+
+		{if $comment['status']!=2}
+		<div class='fui-footer'>
+			<a class='btn btn-danger btn-submit block'>提交评价</a>
+		</div>
+		{/if}
+
+		<script language='javascript'>require(['biz/order/comment'], function (modal) {
+			modal.init({
+				orderid: {php echo intval($order['id'])} ,
+			status: {php echo intval($comment['status'])}
+		});
+		});
+		</script>
+	</div>
+	{template '_footer'}

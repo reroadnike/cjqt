@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="0.6,0.7,0.8">
+    <application setting="false">
+        <name><![CDATA[超级前台-点餐]]></name>
+        <identifie><![CDATA[superdesk_dish]]></identifie>
+        <version><![CDATA[4.1]]></version>
+        <type><![CDATA[business]]></type>
+        <ability><![CDATA[超级前台-点餐]]]></ability>
+        <description><![CDATA[超级前台-点餐]]]></description>
+        <author><![CDATA[前海超级前台（深圳）信息技术有限公司]]></author>
+        <url><![CDATA[http://www.avic-s.com]]></url>
+    </application>
+    <platform>
+        <handles>
+            <message type="text"/>
+        </handles>
+        <rule embed="false"/>
+    </platform>
+    <bindings>
+        <cover>
+            <entry title="首页入口设置" do="wapindex"/>
+            <entry title="门店列表入口" do="waprestList"/>
+            <entry title="商品列表入口" do="waplist"/>
+            <entry title="智能点餐入口" do="wapselect"/>
+            <entry title="我的订单入口" do="orderlist"/>
+        </cover>
+        <menu>
+            <entry title="门店管理" do="stores"/>
+            <entry title="区域管理" do="area"/>
+            <entry title="黑名单" do="blacklist"/>
+            <entry title="基本设置" do="setting"/>
+        </menu>
+        <home>
+            <entry title="微点餐" do="wapindex"/>
+            <entry title="门店列表" do="waprestList"/>
+            <entry title="商品列表" do="waplist"/>
+            <entry title="智能点餐" do="wapselect"/>
+            <entry title="我的订单" do="orderlist"/>
+        </home>
+    </bindings>
+    <install><![CDATA[]]></install>
+    <uninstall><![CDATA[]]></uninstall>
+    <upgrade><![CDATA[]]></upgrade>
+</manifest>

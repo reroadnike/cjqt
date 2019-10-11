@@ -1,0 +1,134 @@
+{template 'common/header'}
+
+{template '__nav-tabs_user__'}
+
+<div class="alert alert-info" >
+    以下为正式数据库数据，可以看出，<br/>
+    <ol>
+        <li>数据有部分不正常的，导入时要处理</li>
+        <li>加入用户手机号来比对li>
+        <li>触发条件:在用户绑定手机时执行绑定</li>
+    </ol>
+</div>
+
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Table::zc_invoice
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:8%;">wx_fans_id</th>
+
+                        <!--<th style="width:4%;">发票<br/>ID</th>-->
+                        <th style="width:6%;">1:普通发票<br/>2:增值税发票</th>
+                        <th style="width:4%;">1:个人<br/>2:单位</th>
+
+
+                        <th style="width:15%;">发票抬头</th>
+
+
+                        <th style="width:8%;">0:明细<br/>1:电脑配件<br/>2:耗材<br/>3:办公用品<br/>(备注:若增值发票则只能选 0:明细)</th>
+
+                        <th style="width:20%;">
+                            增值票注册地址<br/>
+                            增值票注册电话<br/>
+                            增值票开户银行<br/>
+                            增值票开户帐号<br/>
+
+                        </th>
+
+
+                        <!--<th style="width:10%;">增值票收票人</th>-->
+                        <!--<th style="width:10%;"></th>-->
+                        <!--<th style="width:10%;"></th>-->
+                        <!--<th style="width:10%;"></th>-->
+
+
+
+                        <!--<th style="width:10%;">纳税人识别号</th>-->
+
+
+
+                        <!--<th style="width:4%;">0:失效<br/>1:有效</th>-->
+
+                        <!--<th style="width:10%;">创建时间</th>-->
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+                        <td>{$item['zi_fansid']}</td>
+
+                        <!--<td>{$item['zi_id']}</td>-->
+                        <td>{$item['zi_invoiceType']}</td>
+                        <td>{$item['zi_selectedInvoiceTitle']}</td>
+
+
+                        <td>
+                            {$item['zi_companyName']}<br/>
+                            {$item['zi_taxpayer_identification_number']}&nbsp;
+                        </td>
+
+
+                        <td>{$item['zi_invoiceContent']}</td>
+
+                        <td>
+                            {$item['zi_invoiceAddress']}&nbsp;<br/>
+                            {$item['zi_invoicePhone']}&nbsp;<br/>
+                            {$item['zi_invoiceBank']}&nbsp;<br/>
+                            {$item['zi_invoiceAccount']}&nbsp;
+
+                        </td>
+
+
+                        <!--
+                        <td>
+                            {$item['zi_invoiceName']} 全为空
+                            SELECT count(0) FROM membershop.zc_invoice where zi_invoiceName = '' 0
+                            SELECT count(0) FROM membershop.zc_invoice where zi_invoiceName is null 278
+                            SELECT count(0) FROM membershop.zc_invoice where zi_invoiceName is not null 0
+                        </td>
+                        -->
+                        <!--<td></td>-->
+                        <!--<td></td>-->
+                        <!--<td></td>-->
+
+
+
+                        <!--<td>纳税人识别号</td>-->
+
+
+                        <!--
+                        <td>{$item['zi_state']} 全为1，全要导入
+                            SELECT count(0) FROM membershop.zc_invoice where zi_state = 1 278
+                        </td>
+                        -->
+
+                        <!--<td>{$item['zi_ctime']}</td>-->
+
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            <!--<input name="submit" type="submit" class="btn btn-primary" value="提交">-->
+                            {$total}
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                        </td>
+                        <td colspan="5">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

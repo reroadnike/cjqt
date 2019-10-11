@@ -1,0 +1,92 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('wx_invitation', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('wx_invitation', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">图片地址，用逗号隔开</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="picurl" class="form-control" value="{$item['picurl']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">统一标题，多个标题用逗号隔开</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="title" class="form-control" value="{$item['title']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="ctime" class="form-control" value="{$item['ctime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">浏览次数</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="visitcount" class="form-control" value="{$item['visitcount']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">访问ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="visitcode" class="form-control" value="{$item['visitcode']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="token" class="form-control" value="{$item['token']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">分享图片</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="sharepic" class="form-control" value="{$item['sharepic']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">分享音乐</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="sharemusic" class="form-control" value="{$item['sharemusic']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">分享标题</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="sharetitle" class="form-control" value="{$item['sharetitle']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">分享内容</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="sharecontext" class="form-control" value="{$item['sharecontext']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

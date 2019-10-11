@@ -1,0 +1,246 @@
+
+
+<style>
+    .select {
+        width: 9.6rem;
+        display: inline;
+    }
+</style>
+
+<form class="form-horizontal form-validate" action="{php echo merchUrl('order/op/changeinvoice')}" method="post" enctype="multipart/form-data">
+	<input type='hidden' name='id' value='{$id}' />
+
+	<div class="modal-dialog">
+           <div class="modal-content">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">编辑发票信息</h4>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">发票类型:</label>
+                    <div class="col-sm-9 col-xs-12">
+
+                        <label class="radio-inline">
+                            <input type="radio" value="1" class="" name="invoiceType" {if $invoice['invoiceType'] == 1}checked="checked"{/if} />
+                            增值税普票
+                        </label>
+
+                        <!-- 发票类型仅需“增值税普票”“增值税专票”，电子发票选项可去掉
+                        <label class="radio-inline">
+                            <input type="radio" value="" class="" name="invoiceType" disabled />
+                            电子普票
+                        </label>
+                        -->
+
+                        <label class="radio-inline">
+                            <input type="radio" value="2" class="" name="invoiceType" {if $invoice['invoiceType'] == 2}checked="checked"{/if} />
+                            增值税专票
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">发票抬头:</label>
+                    <div class="col-sm-9 col-xs-12">
+
+                        <label class="radio-inline">
+                            <input type="radio" value="4" class="" name="selectedInvoiceTitle" {if $invoice['selectedInvoiceTitle'] == 4}checked="checked"{/if}>
+                            个人
+                        </label>
+
+                        <label class="radio-inline">
+                            <input type="radio" value="5" class="" name="selectedInvoiceTitle" {if $invoice['selectedInvoiceTitle'] == 5}checked="checked"{/if} />
+                            单位
+                        </label>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">发票抬头:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name='companyName' value="{$invoice['companyName']}" placeholder="请在此填写发票抬头" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group Rule_1_5">
+                    <label class="col-sm-2 control-label">纳税识别:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name='taxpayersIDcode' value="{$invoice['taxpayersIDcode']}" placeholder="请在此填写纳税人识别号" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group Rule_2_5">
+                    <label class="col-sm-2 control-label">注册地址:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name='invoiceAddress' value="{$invoice['invoiceAddress']}" placeholder="请在此填写注册地址" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group Rule_2_5">
+                    <label class="col-sm-2 control-label">注册电话:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name='invoicePhone' value="{$invoice['invoicePhone']}" placeholder="请在此填写注册电话" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group Rule_2_5">
+                    <label class="col-sm-2 control-label">开户银行:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name='invoiceBank' value="{$invoice['invoiceBank']}" placeholder="请在此填写开户银行" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group Rule_2_5">
+                    <label class="col-sm-2 control-label">银行账号:</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name='invoiceAccount' value="{$invoice['invoiceAccount']}" placeholder="请在此填写银行账号" class="form-control"/>
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">发票内容:</label>
+                    <div class="col-sm-9 col-xs-12">
+
+
+                        <label class="radio-inline">
+                            <input type="radio" value="1" class="" name="invoiceContent" {if $invoice['invoiceContent'] == 1}checked="checked"{/if} />
+                            明细
+                        </label>
+
+                        <!--
+
+                        <label class="radio-inline">
+                            <input type="radio" value="3" class="" name="invoiceContent" {if $invoice['invoiceContent'] == 3}checked="checked"{/if}  />
+                            电脑配件
+                        </label>
+
+                        <label class="radio-inline">
+                            <input type="radio" value="19" class="" name="invoiceContent" {if $invoice['invoiceContent'] == 19}checked="checked"{/if}  />
+                            耗材
+                        </label>
+
+                        <label class="radio-inline">
+                            <input type="radio" value="22" class="" name="invoiceContent" {if $invoice['invoiceContent'] == 22}checked="checked"{/if}  />
+                            办公用品
+                        </label>
+                        -->
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="submit" id="btn-submit;">保存</button>
+                <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+            </div>
+        </div>
+        </div>
+</form>
+<script language="javascript">
+
+    var modal = {};
+    modal.invoiceRule = function () {
+
+        // 发票类型 增值普票 1 增值专票 2
+        var _invoiceType = $('input:radio[name="invoiceType"]:checked').val();
+
+        // 发票抬头 个人 4 单位 5
+        var _selectedInvoiceTitle = $('input:radio[name="selectedInvoiceTitle"]:checked').val();
+
+        console.log('发票类型 cc 增值专票 2');
+        console.log(_invoiceType);
+        console.log('发票抬头 个人 4 单位 5');
+        console.log(_selectedInvoiceTitle);
+
+        if(_invoiceType == 1){ // 增值普票 1
+
+            $('input:radio[name=selectedInvoiceTitle]:nth(0)').attr('disabled',false);
+
+            if(_selectedInvoiceTitle == 4) {
+
+                modal.initPostRule_1_5(false);
+                modal.initPostRule_2_5(false);
+
+            } else if(_selectedInvoiceTitle == 5){
+
+                modal.initPostRule_1_5(true);
+                modal.initPostRule_2_5(false);
+            }
+        } else if(_invoiceType == 2){
+
+
+            $('input:radio[name=selectedInvoiceTitle]:nth(0)').attr('disabled',true);
+
+
+            if(_selectedInvoiceTitle == 4) {
+
+                $('input:radio[name=selectedInvoiceTitle]')[0].checked = false;
+                $('input:radio[name=selectedInvoiceTitle]')[1].checked = true;
+                modal.initPostRule_1_5(true);
+                modal.initPostRule_2_5(true);
+
+            } else if(_selectedInvoiceTitle == 5){
+
+                modal.initPostRule_1_5(true);
+                modal.initPostRule_2_5(true);
+            }
+
+        }
+
+    };
+
+    // 增值普票 1 个人 4
+    modal.initPostRule_1_4 = function () {
+
+    };
+    // 增值普票 1 单位 5
+    modal.initPostRule_1_5 = function (isShow) {
+        $('.Rule_1_5').each(function (index,element) {
+            var that = this;
+            if(isShow){
+                $(that).show();
+            } else {
+                $(that).hide();
+            }
+        });
+    };
+    // 增值专票 2 单位 5
+    modal.initPostRule_2_5 = function (isShow) {
+        $('.Rule_2_5').each(function (index,element) {
+            var that = this;
+            if(isShow){
+                $(that).show();
+            } else {
+                $(that).hide();
+            }
+        });
+    };
+
+    modal.submitPostRule = function () {};
+
+    modal.initPost = function () {
+
+        modal.invoiceRule();
+
+        $(document).on('change', 'input:radio[name="invoiceType"]',
+            function () {
+                modal.invoiceRule();
+            });
+        $(document).on('change', 'input:radio[name="selectedInvoiceTitle"]',
+            function () {
+                modal.invoiceRule();
+            });
+
+
+    };
+
+    modal.initPost();
+
+
+</script>
+
+

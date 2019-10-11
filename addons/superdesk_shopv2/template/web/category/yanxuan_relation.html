@@ -1,0 +1,262 @@
+
+<!--<script src="{$_W['siteroot']}addons/superdesk_recovery/static/jqueryui/external/jquery/jquery.js"></script>-->
+<!--<script src="{$_W['siteroot']}addons/superdesk_recovery/static/jqueryui/jquery-ui.min.js"></script>-->
+<!--<link rel="stylesheet" href="{$_W['siteroot']}addons/superdesk_recovery/static/jqueryui/jquery-ui.min.css">-->
+
+{template '_header'}
+
+
+<script type="text/javascript">
+
+    require(['jquery.ui','css!jqueryui/jquery-ui.min.css'], function(u){
+        $( init );
+
+        function init() {
+            $('.makeMeDraggable').draggable({
+                containment: 'document',
+                cursor: 'move',
+                stack: '#drop_container',
+                revert: true
+            });
+
+            $('.drop_accept').droppable({
+                hoverClass: "dropActive",
+                drop: handleCardDrop
+            });
+        }
+
+        function handleCardDrop(event, ui){
+//            console.log('event',event)
+//            console.log('ui',ui)
+
+            let selfLevel = ui.draggable.data('level');
+            let otherLevel = $(this).data('level');
+
+            let selfCompleteName = ui.draggable.data('complete-name');
+            let otherCompleteName = $(this).data('complete-name');
+            let selfPartName = ui.draggable.find('b').text();
+            let otherPartName = $(this).find('b').text();
+
+            console.log('selfLevel',selfLevel);
+            console.log('otherLevel',otherLevel);
+            console.log('selfCompleteName',selfCompleteName);
+            console.log('otherCompleteName',otherCompleteName);
+            console.log('selfPartName',selfPartName);
+            console.log('otherPartName',otherPartName);
+
+            let submitResult = confirm(
+                    '确认关联这两个分类?' + '\n' + '\n' +
+                    selfCompleteName + '\n' + '\n' +
+                    otherCompleteName
+            );
+
+            if(!submitResult){
+                return;
+            }
+
+            let selectSelfCateId = ui.draggable.data('cate');
+            let selectOtherCateId = $(this).data('cate');
+
+            let _this = $(this);
+
+            $.ajax({
+                type: 'POST',
+                url: "",
+                data: {
+                    selfLevel: selfLevel,
+                    otherLevel: otherLevel,
+                    selectSelfCateId: selectSelfCateId,
+                    selectOtherCateId: selectOtherCateId
+                },
+                dataType:'json',
+                async:false,
+                success: function(result){
+                    if(result.status == 1){
+                        console.log('qq',selfPartName);
+                        _this.find('.selectedColor').text(selfPartName); //目标位置追加
+                        _this.find('.selectedColor').attr('data-self-cate',selectSelfCateId); //目标位置追加
+                        _this.find('.selectedColor').attr('data-other-cate',selectOtherCateId); //目标位置追加
+                        _this.find('.selectedColor').attr('data-level',otherLevel); //目标位置追加
+                    }else{
+                        alert('出错了');
+                    }
+                }
+            });
+        }
+
+        $('.dd-extends').click(function(e){
+            console.log('11');
+
+            e.stopPropagation();
+
+
+            if($(this).parents('span').eq(0).next().is(':hidden')){　　//如果node是隐藏的则显示node元素，否则隐藏
+                $(this).parents('span').eq(0).next().show();
+                $(this).attr('data-action','extends')
+            }else{
+                $(this).parents('span').eq(0).next().hide();
+                $(this).attr('data-action','collapse')
+            }
+
+        });
+
+        $('.delRelation').click(function(e){
+            console.log('11');
+
+            e.stopPropagation();
+
+            let otherLevel = $(this).parents('.drop_accept').data('level');
+
+            let selectSelfCateId = $(this).data('self-cate');
+            let selectOtherCateId = $(this).data('other-cate');
+
+            let submitResult = confirm('确认删除关联?');
+
+            if(!submitResult){
+                return;
+            }
+
+            let _this = $(this);
+
+            $.ajax({
+                type: 'POST',
+                url: "{php echo webUrl('category/delRelation')}",
+                data: {
+                    otherLevel: otherLevel,
+                    selectSelfCateId: selectSelfCateId,
+                    selectOtherCateId: selectOtherCateId
+                },
+                dataType:'json',
+                async:false,
+                success: function(result){
+                    if(result.status == 1){
+                        _this.html(''); //目标位置清空
+                    }else{
+                        alert('出错了');
+                    }
+                }
+            });
+
+        });
+    });
+
+</script>
+
+<style type='text/css' xmlns="http://www.w3.org/1999/html">
+
+    .makeMeDraggable { background: #bfffa5; }
+
+    .selectedColor {
+        color: #ff6c3c;
+        float: right;
+    }
+
+    .dropActive { border: 1px solid #ccbecf; background: #ccbecf; }
+
+    .dd-item>span>.dd-extends:before {
+        content: '- ';
+        width: 100%;
+        text-align: center;
+        text-indent: 0;
+        z-index: 10000;
+    }
+
+    .drop_accept>.delRelation:not(:empty):after {
+        content: ' X ';
+        width: 100%;
+        text-align: center;
+        text-indent: 0;
+        z-index: 10000;
+    }
+
+    .dd-item>span>.dd-extends[data-action="collapse"]:before { content: '+'; }
+
+</style>
+<div id="drop_container">
+    <div style="float: left;width: 50%">
+        <div>
+            <ol class="dd-list">
+                {loop $category $index $firstCate}
+                {if $firstCate['cateType'] == 2}
+                    <li class="dd-item">
+
+                        <span class="dd-handle makeMeDraggable firstCate"
+                              data-level="{$firstCate['level']}"
+                              data-cate="{$firstCate['id']}"
+                              data-complete-name="{$firstCate['name']}">
+                            <b class="dd-extends" data-action="extends">{$firstCate['name']}</b>
+                        </span>
+
+                        <ol class="">
+                            {loop $children[$firstCate['id']] $cindex $secondCate}
+                            <li class="dd-item">
+
+                                <span class="dd-handle makeMeDraggable secondCate"
+                                      data-level="{$secondCate['level']}"
+                                      data-cate="{$secondCate['id']}"
+                                      data-complete-name="{$firstCate['name']} - {$secondCate['name']}" >
+                                    <b class="dd-extends" data-action="extends">{$secondCate['name']}</b>
+                                </span>
+
+                                <ol class="">
+                                    {loop $children[$secondCate['id']] $tindex $thirdCate}
+                                    <li class="dd-item">
+                                        <span class="dd-handle makeMeDraggable thirdCate"
+                                              data-level="{$thirdCate['level']}"
+                                              data-cate="{$thirdCate['id']}"
+                                              data-complete-name="{$firstCate['name']} - {$secondCate['name']}  - {$thirdCate['name']}" >
+                                            {$thirdCate['name']}
+                                        </span>
+                                    </li>
+                                    {/loop}
+                                </ol>
+                            </li>
+
+                            {/loop}
+                        </ol>
+                    </li>
+                {/if}
+                {/loop}
+            </ol>
+        </div>
+    </div>
+    <div style="float: left;width: 50%">
+        <div>
+            <ol class="dd-list">
+                {loop $category $index $firstCate}
+                {if $firstCate['cateType'] == 3}
+                    <li class="dd-item">
+
+                        <span class="dd-handle drop_accept firstCate"
+                              data-level="{$firstCate['level']}"
+                              data-cate="{$firstCate['id']}"
+                              data-complete-name="{$firstCate['name']}">
+                            <b class="dd-extends" data-action="extends">{$firstCate['name']}</b>
+                            <span class="selectedColor delRelation" data-other-level="{$firstCate['level']}" data-other-cate="{$firstCate['id']}" data-self-cate="{$firstCate['relation']}">{$categoryIdKey[$firstCate['relation']]['name']}</span>
+                        </span>
+
+                        <ol class="dd-list">
+                            {loop $children[$firstCate['id']] $cindex $secondCate}
+                            <li class="dd-item">
+
+                                <span class="dd-handle drop_accept secondCate"
+                                      data-level="{$secondCate['level']}"
+                                      data-cate="{$secondCate['id']}"
+                                      data-complete-name="{$firstCate['name']} - {$secondCate['name']}" >
+                                    <b class="dd-extends" data-action="extends">{$secondCate['name']}</b>
+                                    <span class="selectedColor delRelation" data-other-level="{$secondCate['level']}" data-other-cate="{$secondCate['id']}" data-self-cate="{$secondCate['relation']}">{$categoryIdKey[$secondCate['relation']]['name']}</span>
+                                </span>
+                            </li>
+                            {/loop}
+                        </ol>
+                    </li>
+                {/if}
+                {/loop}
+            </ol>
+        </div>
+    </div>
+
+</div>
+
+{template '_footer'}
+

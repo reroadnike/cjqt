@@ -1,0 +1,63 @@
+{template 'common/header'}
+
+<link rel="stylesheet" type="text/css" href='{$_W["siteroot"]}addons/superdesk_shopv2/static/js/dist/select2/select2.css' />
+<link rel="stylesheet" type="text/css" href='{$_W["siteroot"]}addons/superdesk_shopv2/static/js/dist/select2/select2-bootstrap.css' />
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('elasticsearch_dictionary', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('elasticsearch_dictionary', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">词</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="word" class="form-control" value="{$item['word']}"/>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">商品分类</label>
+                    <div class="col-sm-8 col-xs-12">
+                        <select id="cates"  name='cates[]' class="form-control select2" style='width:605px;' multiple='' >
+                            {loop $category $c}
+                            <option value="{$c['id']}" {if is_array($cates) &&  in_array($c['id'],$cates)}selected{/if} >{$c['name']}</option>
+                            {/loop}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否开启</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="enabled" class="form-control" value="{$item['enabled']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" src='{$_W["siteroot"]}addons/superdesk_shopv2/static/js/dist/select2/select2.min.js'></script>
+<script type="text/javascript">
+
+    $(function(){
+        $('#cates').select2();
+    })
+</script>
+
+{template 'common/footer'}

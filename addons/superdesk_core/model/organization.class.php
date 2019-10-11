@@ -1,0 +1,278 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: linjinyu
+ * Date: 6/19/17
+ * Time: 11:28 AM
+ */
+class organizationModel
+{
+
+    public $table_name = "superdesk_core_organization";
+
+    //    对映:
+
+    // createtime_,updatetime,enabled,
+    public $table_column_all =
+        "ID,name,code,type,telephone,provinceCode,provinceName,cityCode,cityName,address,lng,lat,status,applicantName,applicantPhone,reviewRemark,applicantIdentity,wxUserId,createTime,creator,modifyTime,modifier,isEnabled,uniacid";
+//      "ID,name,code,type,telephone,provinceCode,provinceName,cityCode,cityName,address,lng,lat,status,applicantName,applicantPhone,reviewRemark,applicantIdentity,wxUserId,createTime,creator,modifyTime,modifier,isEnabled,isSyncNeigou";
+
+
+    /**
+     * @param $params
+     */
+    public function insert($params)
+    {
+        global $_GPC, $_W;
+
+        $params['uniacid']    = $_W['uniacid'];
+        $params['createtime'] = strtotime('now');
+
+        $ret = pdo_insert($this->table_name, $params);
+        if (!empty($ret)) {
+            $id = pdo_insertid();
+        }
+
+    }
+
+    /**
+     * @param $params
+     * @param $id
+     */
+    public function update($params, $id)
+    {
+        global $_GPC, $_W;
+
+        $params['updatetime'] = strtotime('now');
+        $ret                  = pdo_update($this->table_name, $params, array('id' => $id));
+    }
+
+
+    /**
+     * @param $id
+     *
+     * @return bool
+     */
+    public function delete($id)
+    {
+        global $_GPC, $_W;
+        if (empty($id)) {
+            return false;
+        }
+        pdo_delete($this->table_name, array('id' => $id));
+    }
+
+
+    public function replace($params, $id = '')
+    {
+        global $_GPC, $_W;
+
+        $params['uniacid'] = $_W['uniacid'];
+
+        pdo_insert($this->table_name, $params, true);
+    }
+
+    /**
+     * @param        $params
+     * @param string $id
+     */
+    public function saveOrUpdate($params, $id = '')
+    {
+        global $_GPC, $_W;
+
+        if (empty($id)) {
+            $params['uniacid'] = $_W['uniacid'];
+//            $params['createtime'] = strtotime('now');
+
+            $ret = pdo_insert($this->table_name, $params);
+            if (!empty($ret)) {
+                $id = pdo_insertid();
+            }
+        } else {
+//            $params['updatetime'] = strtotime('now');
+            $ret = pdo_update($this->table_name, $params, array('id' => $id));
+        }
+
+    }
+
+    /**
+     * @param       $params
+     * @param array $column
+     */
+    public function saveOrUpdateByColumn($params, $column = array())
+    {
+        global $_GPC, $_W;
+
+        $_is_exist = $this->getOneByColumn($column);
+
+        // 如果没找到会返回 false
+        if (!$_is_exist) {
+
+//            $params['uniacid'] = $_W['uniacid'];
+//            $params['createtime'] = strtotime('now');
+
+            $ret = pdo_insert($this->table_name, $params);
+            if (!empty($ret)) {
+                $id = pdo_insertid();
+            }
+
+        } else {
+
+//            $params['updatetime'] = strtotime('now');
+
+            $ret = pdo_update($this->table_name, $params, $column);
+
+        }
+
+    }
+
+    /**
+     * @param $id
+     *
+     * @return bool
+     */
+    public function getOne($id)
+    {
+        global $_GPC, $_W;
+
+        if (empty($id)) {
+            return null;
+        }
+
+        $result = pdo_get($this->table_name, array('ID' => $id));
+
+        return $result;
+
+    }
+
+    /**
+     * @param array $column
+     *
+     * @return bool
+     */
+    public function getOneByColumn($column = array())
+    {
+        global $_GPC, $_W;
+
+        $result = pdo_get($this->table_name, $column);
+
+        return $result;
+
+    }
+
+    /**
+     * @param array $where
+     * @param int   $page
+     * @param int   $page_size
+     *
+     * @return array
+     */
+    public function queryAll($where = array(), $page = 0, $page_size = 50)
+    {
+        global $_GPC, $_W;//TIMESTAMP
+
+        $page = max(1, intval($page));
+
+        $where_sql = ' WHERE 1 ';
+//        $where_sql .= " WHERE `uniacid` = :uniacid";
+//        $params = array(
+//            ':uniacid' => $_W['uniacid'],
+//        );
+
+        $total = pdo_fetchcolumn("SELECT COUNT(*) FROM " . tablename($this->table_name) . $where_sql, $params);
+        $list  = pdo_fetchall("SELECT * FROM " . tablename($this->table_name) . $where_sql . " ORDER BY modifyTime DESC,createTime DESC LIMIT " . ($page - 1) * $page_size . ',' . $page_size, $params);
+//        $pager = pagination($total, $page, $page_size);
+
+        $pager              = array();
+        $pager['total']     = $total;
+        $pager['page']      = $page;
+        $pager['page_size'] = $page_size;
+        $pager['data']      = $list;
+
+        return $pager;
+
+    }
+
+    public function querySelector($where = array(), $page = 0, $page_size = 50)
+    {
+        global $_GPC, $_W;//TIMESTAMP
+
+        $page = max(1, intval($page));
+
+        $where_sql = ' WHERE 1 ';
+//        $where_sql .= " WHERE `uniacid` = :uniacid";
+//        $params = array(
+//            ':uniacid' => $_W['uniacid'],
+//        );
+
+        if ($where['isEnabled']) {
+            $where_sql .= " AND `isEnabled` = :isEnabled";
+            $params[':isEnabled'] = isset($where['isEnabled']) ? $where['isEnabled'] : 1;//1可用 0删除
+        }
+
+        // 0-待审核;1-通过;2-不通过
+        if (isset($where['status'])) {
+            $where_sql .= " AND `status` = :status";
+            $params[':status'] = $where['status'];
+        }
+
+
+        $where_sql .= " AND `code` != ''";
+
+
+        $total = pdo_fetchcolumn("SELECT COUNT(*) FROM " . tablename($this->table_name) . $where_sql, $params);
+        $list  = pdo_fetchall(
+            " SELECT ".
+            "       ID,name,code ".
+            " FROM " . tablename($this->table_name) . $where_sql .
+            " ORDER BY modifyTime DESC,createTime DESC LIMIT " . ($page - 1) * $page_size . ',' . $page_size, $params);
+//        $pager = pagination($total, $page, $page_size);
+
+        $pager              = array();
+        $pager['total']     = $total;
+        $pager['page']      = $page;
+        $pager['page_size'] = $page_size;
+        $pager['data']      = $list;
+
+        return $pager;
+
+    }
+
+
+    public function checkSyncCreateTime()
+    {
+        global $_GPC, $_W;
+
+        $page      = 1;
+        $page_size = 1;
+        $params    = array();
+
+        $where_sql = " WHERE 1 = 1 ";
+
+        $list = pdo_fetchall(
+            " SELECT createTime " .
+            " FROM " . tablename($this->table_name) . $where_sql .
+            " ORDER BY createTime DESC LIMIT " . ($page - 1) * $page_size . ',' . $page_size, $params);
+        return $list;
+    }
+
+    public function checkSyncModifyTime()
+    {
+        global $_GPC, $_W;
+
+        $page      = 1;
+        $page_size = 1;
+        $params    = array();
+
+        $where_sql = " WHERE 1 = 1 ";
+
+        $list = pdo_fetchall(
+            " SELECT modifyTime " .
+            " FROM " . tablename($this->table_name) . $where_sql .
+            " ORDER BY modifyTime DESC LIMIT " . ($page - 1) * $page_size . ',' . $page_size, $params);
+        return $list;
+    }
+
+
+}

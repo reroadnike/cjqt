@@ -1,0 +1,359 @@
+{template '__header'}
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/boardroom.css" />
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/boardroom.js"></script>
+
+
+<div class="pagebottomlogo"></div>
+<!--boardroom_info test_form-->
+<form action="{php echo murl('entry' , array('m'=>'superdesk_boardroom_4school' , 'do'=>'boardroom_info'))}" method="post" id="form_submit">
+    <input type="hidden" name="id" value="{$id}"/>
+    <input type="hidden" name="select_time_bar" value=""/>
+    <input type="hidden" name="order_goodsid" value=""/>
+<div class="outer">
+    <div class="datetimeswrap">
+        <!-- 日期时间选择 -->
+        <div class="datetimesel">
+            <!--
+            <div class="datesel">
+                <div class="datestart">
+                    <span>开始日期</span>
+                    <em id="span_date_start">{$date_start}</em>
+                    <input type="text" id="date_start" name="date_start" value="{$date_start}"/>
+                </div>
+                <div class="dateend">
+                    <span>结束日期</span>
+                    <em id="span_date_end">{$date_end}</em>
+                    <input type="text" id="date_end" name="date_end" value="{$date_end}"/>
+                </div>
+                <i class="dateicon"></i>
+            </div>
+            -->
+            <div class="datesel">
+                <div class="datestart">
+                    <span>开始日期</span>
+                    <em id="span_date_start">{$date_start}</em>
+                    <input type="text" id="date_start" name="date_start" value="{$date_start}"/>
+                </div>
+                <div class="dateend">
+                    <span>结束日期</span>
+                    <em id="span_date_end">{$date_end}</em>
+                    <input type="text" id="date_end" name="date_end" value="{$date_end}"/>
+                </div>
+                <i class="dateicon"></i>
+            </div>
+            <div class="timesel">
+                <div class="timestart">
+                    <span>开始时间</span>
+                    <em id="span_time_start">{$time_start}</em>
+                    <input type="time" id="time_start" name="time_start" value="{$time_start}"/>
+                </div>
+                <div class="timeend">
+                    <span>结束时间</span>
+                    <em id="span_time_end">{$time_end}</em>
+                    <input type="time" id="time_end" name="time_end" value="{$time_end}"/>
+                </div>
+                <i class="timeicon"></i>
+            </div>
+        </div>
+        <!-- 筛选 -->
+        <div class="tabnav">
+            <!-- tabanvsel——选中 tabnavoptions——选择中 -->
+            <a href="javascript: void(0);" class="tabnavitem" data-type="building" alt="building" >
+                <span><em>1号楼</em><i class="downarrow"></i></span>
+            </a>
+            <a href="javascript: void(0);" class="tabnavitem" date-type="floor" alt="floor" >
+                <span><em>第一层</em><i class="downarrow"></i></span>
+            </a>
+            <a href="javascript: void(0);" class="tabnavitem" date-type="room" alt="room">
+                <span><em>房间属性</em><i class="downarrow"></i></span>
+            </a>
+        </div>
+    </div>
+    <div class="tabconmask">
+        <div class="tabcon"  data-type="building">
+            <ul class="tabconlist">
+                <!-- 选中添加样式tabconsel -->
+                <!--TODO 顶住档先啦 , 中有个大bug要改-->
+                <div id="building" class="list_content">
+                    <li>
+                        <span class="ellipsis">1号楼</span>
+                        <i class="iconCorrect"></i>
+                    </li>
+                    <li>
+                        <span>2号楼</span>
+                        <i class="iconCorrect"></i>
+                    </li>
+                    <li>
+                        <span>3号楼</span>
+                        <i class="iconCorrect"></i>
+                    </li>
+                </div>
+
+                <div id="floor" class="list_content">
+                    <li>
+                        <span class="ellipsis">第一层</span>
+                        <i class="iconCorrect"></i>
+                    </li>
+                    <li>
+                        <span>第二层</span>
+                        <i class="iconCorrect"></i>
+                    </li>
+                    <li>
+                        <span>第三层</span>
+                        <i class="iconCorrect"></i>
+                    </li>
+                </div>
+
+                <div id="room" class="list_content">
+                    <li>
+                        <span class="ellipsis">会议室</span>
+                        <i class="iconCorrect"></i>
+                    </li>
+                    <!--<li>-->
+                        <!--<span>招待室</span>-->
+                        <!--<i class="iconCorrect"></i>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<span>贵宾室</span>-->
+                        <!--<i class="iconCorrect"></i>-->
+                    <!--</li>-->
+                </div>
+
+            </ul>
+        </div>
+    </div>
+
+</div>
+</form>
+<script src="{MODULE_URL}static/js/dist/mobiscroll/dev/js/mobiscroll.core-2.5.2.js" type="text/javascript"></script>
+<script src="{MODULE_URL}static/js/dist/mobiscroll/dev/js/mobiscroll.core-2.5.2-zh.js" type="text/javascript"></script>
+
+<link href="{MODULE_URL}static/js/dist/mobiscroll/dev/css/mobiscroll.core-2.5.2.css" rel="stylesheet" type="text/css" />
+<link href="{MODULE_URL}static/js/dist/mobiscroll/dev/css/mobiscroll.animation-2.5.2.css" rel="stylesheet" type="text/css" />
+<script src="{MODULE_URL}static/js/dist/mobiscroll/dev/js/mobiscroll.datetime-2.5.1.js" type="text/javascript"></script>
+<script src="{MODULE_URL}static/js/dist/mobiscroll/dev/js/mobiscroll.datetime-2.5.1-zh.js" type="text/javascript"></script>
+
+<!-- S 可根据自己喜好引入样式风格文件 -->
+<script src="{MODULE_URL}static/js/dist/mobiscroll/dev/js/mobiscroll.android-ics-2.5.2.js" type="text/javascript"></script>
+<link href="{MODULE_URL}static/js/dist/mobiscroll/dev/css/mobiscroll.android-ics-2.5.2.css" rel="stylesheet" type="text/css" />
+
+<script src="{MODULE_URL}static/js/dist/mobiscroll/dev/js/mobiscroll.android-2.5.1.js" type="text/javascript"></script>
+<link href="{MODULE_URL}static/js/dist/mobiscroll/dev/css/mobiscroll.android-2.5.1.css" rel="stylesheet" type="text/css" />
+<script src="{MODULE_URL}static/js/dist/mobiscroll/dev/js/mobiscroll.ios-2.5.1.js" type="text/javascript"></script>
+<link href="{MODULE_URL}static/js/dist/mobiscroll/dev/css/mobiscroll.ios-2.5.1.css" rel="stylesheet" type="text/css" />
+<script src="{MODULE_URL}static/js/dist/mobiscroll/dev/js/mobiscroll.jqm-2.5.1.js" type="text/javascript"></script>
+<link href="{MODULE_URL}static/js/dist/mobiscroll/dev/css/mobiscroll.jqm-2.5.1.css" rel="stylesheet" type="text/css" />
+<link href="{MODULE_URL}static/js/dist/mobiscroll/dev/css/mobiscroll.sense-ui-2.5.1.css" rel="stylesheet" type="text/css" />
+<script src="{MODULE_URL}static/js/dist/mobiscroll/dev/js/mobiscroll.wp-2.5.2.js" type="text/javascript"></script>
+<link href="{MODULE_URL}static/js/dist/mobiscroll/dev/css/mobiscroll.wp-2.5.2.css" rel="stylesheet" type="text/css" />
+<!-- E 可根据自己喜好引入样式风格文件 -->
+
+<script src="{MODULE_URL}static/js/dist/mobiscroll/dev/js/mobiscroll.list-2.5.1.js" type="text/javascript"></script>
+<script src="{MODULE_URL}static/js/dist/mobiscroll/dev/js/mobiscroll.list-2.5.1.js" type="text/javascript"></script>
+<script src="{MODULE_URL}static/js/dist/mobiscroll/dev/js/mobiscroll.select-2.5.1.js" type="text/javascript"></script>
+<script language='javascript'>
+$(function () {
+
+    var today = new Date(),
+        currYear = today.getFullYear();
+        currMonth = today.getMonth();
+        currDay = today.getDate();
+        maxDate = new Date(currYear, currMonth, currDay+10);
+
+
+    //初始化日期控件
+    var opt = {
+        preset: 'datetime', //日期
+//        minDate: new Date(2017,7,9,0,0),//year,month,date,hours,minutes,seconds,milliseconds
+//        maxDate: new Date(2017,7,12,23,30),
+        minDate: today,
+        maxDate: maxDate,
+        stepMinute: 30,
+        theme: 'android-ics light', //皮肤样式
+        mode: 'scroller', //日期选择模式
+        dateFormat: 'yy-mm-dd', // 日期格式
+        setText: '确定', //确认按钮名称
+        cancelText: '取消',//取消按钮名籍我
+        timeFormat: 'HH:ii',
+        timeWheels: 'HHii',
+        dateOrder: 'yymmdd', //面板中日期排列格式
+        dayText: '日',
+        monthText: '月',
+        yearText: '年', //面板中年月日文字
+        endYear:2017, //结束年份
+        display:'bottom'
+    };
+
+
+
+    var async_loading = function () {
+
+        var date_start = $("input[name='date_start']").val();
+        var time_start = $("input[name='time_start']").val();
+
+        var date_end = $("input[name='date_end']").val();
+        var time_end = $("input[name='time_end']").val();
+
+        console.log("async_loading = "
+                + "{$url_boardroom_async_list}"
+                + "&date_start=" + date_start
+                + "&time_start=" + time_start
+                + "&date_end=" + date_end
+                + "&time_end=" + time_end);
+
+        $.alert("加载中...", 250);
+        $(".boardroomlist").load("{$url_boardroom_async_list}"
+                + "&date_start=" + date_start
+                + "&time_start=" + time_start
+                + "&date_end=" + date_end
+                + "&time_end=" + time_end ,
+                function () {
+
+                    // 预约按扭
+                    $(".room-reserve").each(function(index,element){
+
+
+                        var that_boardroom_id = $(this).data("boardroom_id");
+//                        console.log("room-reserve::" + that_boardroom_id);
+
+                        $(this).bind('click', function(event) {
+
+//                            stbs : new Array()
+                            var select_time_bar_submit = {
+                                stbs : []
+                            };
+
+                            console.log("dateline_" + that_boardroom_id);
+
+                            // dateline
+                            $(".dateline_" + that_boardroom_id).each(function (index, element) {
+
+
+
+                                console.log("dateline_"+that_boardroom_id + ":: each :: " + index);
+
+//                                var that_boardroom_id=$(this).data("boardroom_id");
+                                var that_lable=$(this).data("lable");
+                                var that_can_booking=$(this).data("can_booking");
+                                var that_error_msg=$(this).data("error_msg");
+                                var that_timestamp = $(this).data("timestamp");
+//                                var that_select_time_bar=$(this).data("select_time_bar");
+//                                var that_select_time_bar = $("input[name='select_time_bar_"+that_boardroom_id+"']").val();
+
+//                                alert(that_select_time_bar);
+
+//                                console.log(JSON.parse(that_select_time_bar));
+
+
+                                var vars_name = "select_time_bar_" + that_boardroom_id + "_" + that_timestamp;
+                                select_time_bar_submit.stbs[index] = {
+                                    "lable" : that_lable,
+                                    "select_time_bar" : eval(vars_name)
+                                }
+
+                            });
+
+//                            console.log(select_time_bar_submit);
+                            $("input[name='select_time_bar']").val(JSON.stringify(select_time_bar_submit));
+                            $("input[name='id']").val(that_boardroom_id);
+
+//                            console.log("from serialize :: ");
+//                            console.log($("#form_submit").serialize());
+                            $("#form_submit").get(0).submit(function(e){});
+
+                        });
+                    });
+                }
+        );
+    };
+
+    $(document).ready(function () {
+        async_loading();
+    });
+
+    var opt_start = {};
+    $.extend(opt_start,opt,{
+        onSelect: function (valueText, inst) { //点击确定的事件
+
+            console.log("opt_start::onSelect");
+            console.log(valueText);
+
+            var date_time_arr = valueText.split(" ");
+
+            $("input[name='date_start']").val(date_time_arr[0]);
+            $("input[name='time_start']").val(date_time_arr[1]);
+            $("#span_date_start").html(date_time_arr[0]);
+            $("#span_time_start").html(date_time_arr[1]);
+        }
+    });
+    var opt_end = {};
+    $.extend(opt_end,opt,{
+        onSelect: function (valueText, inst) { //点击确定的事件
+            console.log("opt_end::onSelect");
+            console.log(valueText);
+
+            var date_time_arr = valueText.split(" ");
+
+            $("input[name='date_end']").val(date_time_arr[0]);
+            $("input[name='time_end']").val(date_time_arr[1]);
+            $("#span_date_end").html(date_time_arr[0]);
+            $("#span_time_end").html(date_time_arr[1]);
+
+            async_loading();
+        }
+    });
+
+//    console.log(opt_start);
+//    console.log(opt_end);
+
+
+
+    $('#date_start').mobiscroll(opt_start);
+    $('#date_end').mobiscroll(opt_end);
+
+    //初始化日期控件（时间）
+    var opt_time = {
+        preset: 'time', //日期
+        stepMinute: 30,
+        theme: 'android-ics light', //皮肤样式
+        mode: 'scroller', //日期选择模式
+        setText: '确定', //确认按钮名称
+        cancelText: '取消',//取消按钮名籍我
+        timeFormat: 'HH:ii',
+        timeWheels: 'HHii',
+        endYear:2017, //结束年份
+        display:'bottom',
+    };
+
+
+    var opt_time_start = {};
+    $.extend(opt_time_start,opt_time,{
+        onSelect: function (valueText, inst) { //点击确定的事件
+            var sub_time = valueText.substring(0,5);
+            $("input[name='time_start']").val(sub_time);
+            $("#span_time_start").html(sub_time);
+        }
+    });
+    var opt_time_end = {};
+    $.extend(opt_time_end,opt_time,{
+        onSelect: function (valueText, inst) { //点击确定的事件
+            var sub_time = valueText.substring(0,5);
+            $("input[name='time_end']").val(sub_time);
+            $("#span_time_end").html(sub_time);
+            async_loading();
+        }
+    });
+
+
+    $('#time_start').mobiscroll(opt_time_start);
+    $('#time_end').mobiscroll(opt_time_end);
+
+});
+</script>
+<div class="boardroomwrap">
+    <ul class="boardroomlist"></ul>
+</div>
+
+{template '__nav__'}
+{template '__footer'}

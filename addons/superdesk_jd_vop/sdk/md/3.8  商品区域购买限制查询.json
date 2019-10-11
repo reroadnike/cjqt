@@ -1,0 +1,47 @@
+返回结果
+参数名称 | 意义 
+success | 检查是否成功，true:成功；false:失败
+resultMessage | 若检查失败，则该字段会显示失败原因
+resultCode | 错误码，暂未使用，默认为null
+result | 若检查成功，则该字段显示商品区域限制检测结果，检验结果格式如下：
+                                          result:[
+                                          {skuId:12345,isAreaRestrict:true},
+                                          {skuId:12344,isAreaRestrict:false},
+                                          {skuId:12345,isAreaRestrict:false}
+                                          ]
+                                          说明
+                                          skuId  商品编号
+                                          isAreaRestrict true 代表区域受限 false 区域不受限
+
+
+检测成功返回示例：
+{"success":true,"
+resultMessage":"",
+"resultCode":null,"
+result":"[{\"skuId\":102194,\"isAreaRestrict\":true}]"}
+{"success":true,"
+resultMessage":"","
+resultCode":null,"
+result":"[{\"skuId\":102194,\" isAreaRestrict \":true},{\"skuId\":107164,\" isAreaRestrict \":false}]"}
+
+
+用户不具备该商品购买权限：
+{"success":true,
+"resultMessage":"您不具有如下商品购买权限skuIds:[\"102194\"]",
+"resultCode":null,
+"result":null
+}
+{"success":true,"
+resultMessage":"您不具有如下商品购买权限skuIds:[1,2,3]",
+"resultCode":null,
+"result":"[{\"skuId\":107164,\"isAreaRestrict\":false}]"
+}
+
+
+检测失败返回示例：
+参数有误：
+{"success":false,"resultMessage":"待检查的skuIds输入为空! 省份信息输入不能为空! 市级信息输入不能为空! 县级信息输入不能为空!","resultCode":null,"result":null}
+
+
+校验商品数量超过规定数量
+{"success":false,"resultMessage":"待检测商品数量超过100个！","resultCode":null,"result":null}

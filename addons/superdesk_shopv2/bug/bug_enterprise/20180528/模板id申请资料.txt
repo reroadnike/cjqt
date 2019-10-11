@@ -1,0 +1,70 @@
+-- 采购专员-采购后 -> 采购经理-审批
+超级前台 - 买家通知 - 订单通知 - 订单提交审核通知 - OPENTM414203543 - pFFVbqq87XDv06SESF1iMsUwAAMaIDDOM_lXsHme9R0
+
+-- 采购经理-审批 -> 采购专员-审批通知
+超级前台 - 买家通知 - 订单通知 - 订单审核结果通知 - OPENTM201430842 - W4p3SgNmW9eQKpgzG4Xi5mRM0LMeBUR9RBjpsIIsOjo
+
+
+
+
+
+
+
+模板ID
+pFFVbqq87XDv06SESF1iMsUwAAMaIDDOM_lXsHme9R0
+
+开发者调用模版消息接口时需提供模版ID
+标题-订单审核提醒
+行业-IT科技 - IT软件与服务
+
+详细内容
+A花2first.DATAB花2
+订单编号：A花2keyword1.DATAB花2
+订单金额：A花2keyword2.DATAB花2
+客户名称：A花2keyword3.DATAB花2
+申请备注：A花2keyword4.DATAB花2
+申请时间：A花2keyword5.DATAB花2
+A花2remark.DATAB花2
+在发送时，需要将内容中的参数（A花2.DATAB花2内为参数）赋值替换为需要的信息
+内容示例
+您有新的微订单申请，请及时审核
+订单编号：D201718293928
+订单金额：188
+客户名称：贝贝母婴店
+申请备注：无
+申请时间：2017-10-10
+点击查看详情
+OPENTM414203543
+
+
+
+
+
+
+
+
+模版ID
+W4p3SgNmW9eQKpgzG4Xi5mRM0LMeBUR9RBjpsIIsOjo
+
+开发者调用模版消息接口时需提供模版ID
+标题-订单提交成功通知
+行业-IT科技 - IT软件与服务
+
+详细内容
+
+A花2first.DATAB花2
+下单时间：A花2keyword1.DATAB花2
+订单总金额：A花2keyword2.DATAB花2
+订单详情：A花2keyword3.DATAB花2
+详细地址：A花2keyword4.DATAB花2
+A花2remark.DATAB花2
+在发送时，需要将内容中的参数（A花2.DATAB花2内为参数）赋值替换为需要的信息
+
+
+内容示例
+OPENTM201430842 订单提交成功通知
+下单时间：2014年9月1日 18:25
+订单总金额：59元
+订单详情：红烧牛肉盖饭￥18；酸笋牛肉盖饭￥18
+详细地址：XX街XX小区XX楼XX室
+您在XXX订单已提交成功，请等待前台确认

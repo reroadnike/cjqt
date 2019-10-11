@@ -1,0 +1,4 @@
+
+
+response:
+{"success":true,"resultMessage":null,"resultCode":"1","result":{"serviceInfoList":[{"afsServiceId":100013559,"customerExpect":30,"customerExpectName":"维修","afsApplyTime":"2014-06-23 16:57:06","orderId":40280165112,"wareId":800032,"wareName":null,"afsServiceStep":31,"afsServiceStepName":"京东收货","cancel":0}],"totalNum":1,"pageSize":10,"pageNum":1,"pageIndex":1}}

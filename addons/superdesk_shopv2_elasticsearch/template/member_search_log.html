@@ -1,0 +1,194 @@
+{template 'common/header'}
+
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">筛选</div>
+        <div class="panel-body">
+            <form action="./index.php" method="get" class="form-horizontal" role="form">
+                <input type="hidden" name="c" value="site" />
+                <input type="hidden" name="a" value="entry" />
+                <input type="hidden" name="m" value="superdesk_shopv2_elasticsearch" />
+                <input type="hidden" name="do" value="member_search_log" />
+                <input type="hidden" name="op" value="list" />
+
+                <div class="form-group">
+
+                    <label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label" style="width: 100px;">创建时间</label>
+
+                    <div class="col-sm-3 col-lg-2 col-xs-12">
+                        <select class="form-control" name="search_time" id="search_time">
+                            <option value="0">不按时间</option>
+                            <option value="1">按照时间</option>
+
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 col-xs-12">
+                        {php echo tpl_form_field_daterange('createtime', !empty($_GPC['createtime']) ? array('start'=>$_GPC['createtime']['start'],'end'=>$_GPC['createtime']['end']) : array() ,true);}
+                    </div>
+
+                    <div class="col-sm-3 col-lg-2 col-xs-12">
+                        <select class="form-control" name="has_keyword" id="has_keyword">
+                            <option value="">是否有关键字</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+
+                        </select>
+                    </div>
+
+                    <div class="col-sm-4 col-lg-3">
+                        <button class="btn btn-default"><i class="fa fa-search"></i> 搜索</button>
+                        <button class="btn btn-success" type="submit" name="out_put" value="output"><i class="fa fa-file"></i> 导出</button>
+                        <button class="btn btn-default batchButton" type="button" data-toggle='batch' data-href="{php echo $this->createWebUrl('elasticsearch_dictionary', array('op' => 'logMoreInsertDictionary'));}" disabled>
+                            <i class="fa fa-file"></i>
+                            入词库
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body table-responsive">
+            <table class="table table-hover">
+                <thead class="navbar-inner">
+                <tr>
+                    <th style="width:25px;"><input type='checkbox' /></th>
+                    <th style="width:20%;">搜索关键字</th>
+					<th style="width:15%;">用户</th>
+                    <!-- <th style="width:10%;">最低价格</th> -->
+                    <!-- <th style="width:20%;">最高价格</th> -->
+                    <th style="width:15%;">筛选</th>
+                    <th style="width:10%;">分类名称</th>
+                    <th style="width:10%;">排序</th>
+                    <th style="width:15%;">创建时间</th>
+                    <th style="width:10%;">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {loop $result['data'] $item}
+                <tr>
+                    <td>
+                        <input type='checkbox' value="{$item['keyword']}"/>
+                    </td>
+                    <td>{$item['keyword']}</td>
+                    <td>{$item['realname']}</td>
+                    <!-- <td>{$item['minprice']}</td> -->
+                    <!-- <td>{$item['maxprice']}</td> -->
+                    <td>{$item['filters']}</td>
+                    <td>{$item['category_name']}</td>
+                    <td>{$item['order_by']}</td>
+                    <td>{$item['createtime']}</td>
+                    <td style="text-align:right;">
+                        {if $item['has_keyword'] == 1}
+                        <a href="{php echo $this->createWebUrl('elasticsearch_dictionary', array('op' => 'logInsertDictionary', 'word' => $item['keyword']));}"
+                           class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="加入词库"><i
+                                class="fa fa-pencil">&nbsp;加入词库</i></a>&nbsp;&nbsp;
+                        {/if}
+                    </td>
+                </tr>
+                {/loop}
+                <tr>
+                    <td>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                    </td>
+                    <td colspan="7">
+                        {$pager}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#compensate").click(function(){
+        if(!confirm('确定要一键补漏?')){
+            return false;
+        }
+        $('input[name=op]').val('compensate')
+
+        let url = "{php echo $this->createWebUrl('cc_superdesk_shop_order_examine')}"
+        $.ajax({
+            url: url,
+            data:$('form').serialize(),
+            success:function(){
+                window.location.href = url
+            }
+        });
+    });
+
+    var div = $(".table-responsive");
+    $(document).on('change', 'table thead [type="checkbox"]',
+            function(e) {
+                e && e.preventDefault();
+                var $table = $(e.target).closest('table'),
+                        $checked = $(e.target).is(':checked');
+                $('tbody [type="checkbox"]', $table).prop('checked', $checked)
+            });
+
+    var get_selecteds = function() {
+        var selected_checkboxs = $('tbody tr td:first-child [type="checkbox"]:checked', div);
+        var selecteds = selected_checkboxs.map(function() {
+            return $(this).val()
+        }).get();
+        return selecteds
+    };
+
+    var all_selecteds = function() {
+        var selected_checkboxs = $('tbody tr td:first-child [type="checkbox"]', div);
+        var selecteds = selected_checkboxs.map(function() {
+            return $(this).val()
+        }).get();
+        return selecteds
+    };
+
+    $(document).on("change", '.table-responsive thead th:first [type="checkbox"]',
+            function(e) {
+                e && e.preventDefault();
+                var t = $(e.target).closest("table"),
+                        checked = $(e.target).is(":checked");
+                $('tbody tr td:first-child  [type="checkbox"]', t).prop("checked", checked),
+                        $('.batchButton').attr("disabled", !checked);
+                $('tbody tr td:first-child [type="checkbox"]', t).each(function() {
+                    var $this = $(this);
+                    if (checked) {
+                        $this.closest('tr').find('td').css('background', '#fcf9e9')
+                    } else {
+                        $this.closest('tr').find('td').css('background', 'none')
+                    }
+                })
+            })
+
+    $(document).on("change", '.table-responsive tbody td:first-child [type="checkbox"]',
+            function(e) {
+                console.log(get_selecteds())
+                e && e.preventDefault();
+                var t = $(e.target).closest("table"),
+                        checked = $(e.target).is(":checked"),
+                        chk = $('tbody tr td:first-child  [type="checkbox"]:checked', t);
+                $('thead th:first [type="checkbox"]', t).prop("checked", checked && chk.length == all_selecteds().length),
+                        $('.batchButton').attr("disabled", get_selecteds().length == 0)
+            })
+
+    $('.batchButton').click(function(){
+        var href = $(this).data('href');
+        var selecteds = get_selecteds();
+
+        $.post(href, {
+            words: selecteds
+        }).done(function(data) {
+            data = eval("(" + data + ")");
+            if (data.status == 1) {
+                location.reload();
+            } else {
+                alert('出错了');
+            }
+        }).fail(function() {
+            alert('出错了2');
+        })
+    });
+</script>
+
+{template 'common/footer'}

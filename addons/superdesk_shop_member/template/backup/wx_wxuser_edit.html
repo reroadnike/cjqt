@@ -1,0 +1,170 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('wx_wxuser', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('wx_wxuser', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="uid" class="form-control" value="{$item['uid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">公众号名称</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="wxname" class="form-control" value="{$item['wxname']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">公众号类型</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="winxintype" class="form-control" value="{$item['winxintype']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">加密串</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="aeskey" class="form-control" value="{$item['aeskey']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">加密方式,0:表示明文</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="encode" class="form-control" value="{$item['encode']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">公众号appid</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="appid" class="form-control" value="{$item['appid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">公众号密钥</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="appsecret" class="form-control" value="{$item['appsecret']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">公众号原始ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="wxid" class="form-control" value="{$item['wxid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">微信号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="weixin" class="form-control" value="{$item['weixin']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">头像地址</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="headerpic" class="form-control" value="{$item['headerpic']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">登陆用户唯一token</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="token" class="form-control" value="{$item['token']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">第三方者绑定密钥</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="pigsecret" class="form-control" value="{$item['pigsecret']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">省</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="province" class="form-control" value="{$item['province']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">市</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="city" class="form-control" value="{$item['city']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">公众号邮箱</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="qq" class="form-control" value="{$item['qq']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">微信粉丝</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="wxfans" class="form-control" value="{$item['wxfans']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">分类ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="typeid" class="form-control" value="{$item['typeid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">分类名</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="typename" class="form-control" value="{$item['typename']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="oauth" class="form-control" value="{$item['oauth']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="oauthinfo" class="form-control" value="{$item['oauthinfo']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="state" class="form-control" value="{$item['state']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">支付id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="mchid" class="form-control" value="{$item['mchid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">支付key</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="wxkey" class="form-control" value="{$item['wxkey']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

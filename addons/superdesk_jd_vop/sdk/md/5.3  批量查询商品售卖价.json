@@ -1,0 +1,24 @@
+{"result":
+[
+  {"skuId":111111,"price":客户购买价格, "jdPrice":京东价格},
+  {"skuId":111111, "price":客户购买价格, "jdPrice":京东价格}
+]
+}
+示例：
+{
+    "success":true,
+    "resultMessage":"价格为null或者小于0时，为暂无报价",
+    "resultCode":"0000",
+    "result":[
+        {
+            "price":18.00,
+            "skuId":826076,
+            "jdPrice":18.00
+        },
+        {
+            "price":5.90,
+            "skuId":1138634,
+            "jdPrice":5.90
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+<style>
+    .myicon{
+        width: 1rem;
+        height: 1rem;
+        margin-top: 0.26rem;
+    }
+    .myicon2x{
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        transform: translateX(-50%) translateY(-25%);
+    }
+</style>
+
+<div class="fui-navbar">
+
+    <a href="{if empty($_GPC['merchid'])}{php echo mobileUrl()}{else}{php echo mobileUrl('merch')}{/if}"
+        class="external nav-item {if $_W['routes']=='' ||  $_W['routes']=='shop' ||  $_W['routes']=='commission.myshop'}active{/if}">
+        <span class="icon icon-home"></span>
+        <span class="label">首页</span>
+    </a>
+
+    {if intval($_W['shopset']['category']['level'])!=-1}
+    <a href="{php echo mobileUrl('shop/category')}"
+        class="external nav-item {if $_W['routes']=='shop.category'}active{/if}">
+        <span class="icon icon-list"></span>
+        <span class="label">分类</span>
+    </a>
+    {else}
+
+    {/if}
+    <a href="{php echo mobileUrl('goods')}" class="external nav-item {if $_W['routes']=='goods'}active{/if}">
+        <!--<span class="icon icon-list"></span>-->
+        <div style="width: 100%;height: 1.64rem;text-align: center;"><img class="myicon2x" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/menu/faxian@2x.png" /></div>
+        <span class="label">发现</span>
+    </a>
+
+    <!--
+    {if !empty($commission)}
+    <a href="{$commission['url']}" class="external nav-item {if $_W['routes']=='commission.register'}active{/if}">
+        <span class="icon icon-group"></span>
+        <span class="label">{$commission['text']}</span>
+    </a>
+    {/if}
+    -->
+
+    <a href="{php echo mobileUrl('member/cart')}"
+       class="external nav-item {if $_W['routes']=='member.cart'}active{/if}" id="menucart">
+        <span class="icon icon-cart"></span>
+        <span class="label">购物车</span>
+        {if $cartcount>0}<span class="badge">{$cartcount}</span>{/if}
+    </a>
+    <a href="{php echo mobileUrl('member')}" class="external nav-item  {if $_W['routes']=='member'}active{/if}">
+        <span class="icon icon-person2"></span>
+        <span class="label">我的</span>
+    </a>
+</div>

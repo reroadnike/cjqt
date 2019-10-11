@@ -1,0 +1,24 @@
+<ul class="menu-head-top">
+    <li {if $_W['controller']=='index'} class="active" {/if}><a href="{php echo enterpriseUrl('member/list');}">员工管理 <i class="fa fa-caret-right"></i></a></li>
+</ul>
+
+{ifp 'member.list'}
+<div class='menu-header'>员工</div>
+<ul>
+    {ifp 'member.list'}
+    <li {if $_W['action']=='member.list'} class="active" {/if}><a href="{php echo enterpriseUrl('member/list');}">员工列表</a></li>
+    {/if}
+</ul>
+{/if}
+
+{ifp 'member.import'}
+<div class='menu-header'>工具</div>
+<ul>
+    {ifp 'member.import'}
+    <li {if $_W['action']=='member.import'} class="active" {/if}><a href="{php echo enterpriseUrl('member/import');}">自定义导入</a></li>
+    <li {if $_W['action']=='member.import_log'} class="active" {/if}><a href="{php echo enterpriseUrl('member/import_log');}">导入日志</a></li>
+    <li {if $_W['action']=='member.import_address'} class="active" {/if}><a href="{php echo enterpriseUrl('member/import_address');}">自定义导入地址</a></li>
+    <li {if $_W['action']=='member.import_address_log'} class="active" {/if}><a href="{php echo enterpriseUrl('member/import_address_log');}">导入地址日志</a></li>
+    {/if}
+</ul>
+{/if}

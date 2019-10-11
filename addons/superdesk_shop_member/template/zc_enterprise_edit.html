@@ -1,0 +1,164 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('zc_enterprise', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('zc_enterprise', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_id" class="form-control" value="{$item['e_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">企业编号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_number" class="form-control" value="{$item['e_number']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">企业名称</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_name" class="form-control" value="{$item['e_name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">企业状态1:正常；0：过期</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_status" class="form-control" value="{$item['e_status']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">到期时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_end_time" class="form-control" value="{$item['e_end_time']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_ctime" class="form-control" value="{$item['e_ctime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">营业执照地址</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_business_license_address" class="form-control" value="{$item['e_business_license_address']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">办公地址</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_office_address" class="form-control" value="{$item['e_office_address']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">总机</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_switchboard" class="form-control" value="{$item['e_switchboard']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">传真</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_fax" class="form-control" value="{$item['e_fax']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">营业执照</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_business_license" class="form-control" value="{$item['e_business_license']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">税务登记证</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_tax_registration_certificate" class="form-control" value="{$item['e_tax_registration_certificate']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">组织机构代码证</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_organization_code_certificate" class="form-control" value="{$item['e_organization_code_certificate']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">统一信用代码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_uniform_credit_code" class="form-control" value="{$item['e_uniform_credit_code']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">省</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_province_name" class="form-control" value="{$item['e_province_name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">市</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_city_name" class="form-control" value="{$item['e_city_name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">区</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_area_name" class="form-control" value="{$item['e_area_name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">街道</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_street_name" class="form-control" value="{$item['e_street_name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">省code</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_province_code" class="form-control" value="{$item['e_province_code']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">市code</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_city_code" class="form-control" value="{$item['e_city_code']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">区code</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_area_code" class="form-control" value="{$item['e_area_code']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">街道code</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="e_street_code" class="form-control" value="{$item['e_street_code']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

@@ -1,0 +1,115 @@
+{template '_header'}
+<div class="page-heading">
+
+    <h2>评价管理</h2>
+</div>
+<ul class="nav nav-arrow-next nav-tabs" id="myTab">
+    <li class="active" >
+        <a href="{php echo webUrl('goods/comment')}">评价管理</a>
+    </li>
+    <!--<li>
+        <a href="{php echo webUrl('goods/label/style')}">设置样式</a>
+    </li>-->
+</ul>
+<form action="./index.php" method="get" class="form-horizontal form-search" role="form">
+    <input type="hidden" name="c" value="site" />
+    <input type="hidden" name="a" value="entry" />
+    <input type="hidden" name="m" value="superdesk_shopv2" />
+    <input type="hidden" name="do" value="web" />
+    <input type="hidden" name="r"  value="goods.comment" />
+    <div class="page-toolbar row m-b-sm m-t-sm">
+<!--        <div class="col-sm-4">
+            <div class="input-group-btn">
+                <button class="btn btn-default btn-sm"  type="button" data-toggle='refresh'><i class='fa fa-refresh'></i></button>
+                {ifp 'goods.label.edit'}
+                <button class="btn btn-default btn-sm" type="button" data-toggle='batch' data-href="{php echo webUrl('goods/label/status',array('status'=>1))}"><i class='fa fa-circle'></i> 启用</button>
+                <button class="btn btn-default btn-sm" type="button" data-toggle='batch'  data-href="{php echo webUrl('goods/label/status',array('status'=>0))}"><i class='fa fa-circle-o'></i> 禁用</button>
+                {/if}
+                {ifp 'goods.label.delete'}
+                <button class="btn btn-default btn-sm" type="button" data-toggle='batch-remove' data-confirm="确认要删除?" data-href="{php echo webUrl('sns/level/delete')}"><i class='fa fa-trash'></i> 删除</button>
+                {/if}
+            </div>
+        </div>-->
+        <div class="col-sm-6 pull-right">
+            <!--<select name="enabled" class='form-control input-sm select-sm'>
+                <option value="" {if $_GPC['enabled'] == ''} selected{/if}>状态</option>
+                <option value="1" {if $_GPC['enabled']== '1'} selected{/if}>启用</option>
+                <option value="0" {if $_GPC['enabled'] == '0'} selected{/if}>禁用</option>
+            </select>-->
+            <div class="input-group">
+                <input type="text" class="input-sm form-control" name='keyword' value="{$_GPC['keyword']}" placeholder="请输入关键词"> <span class="input-group-btn">
+                <button class="btn btn-sm btn-primary" type="submit"> 搜索</button> </span>
+            </div>
+        </div>
+    </div>
+</form>
+<form action="" method="post" >
+    {if count($comment)>0}
+    <table class="table table-hover table-responsive">
+        <thead>
+        <tr>
+            <th style="width:25px;"><input type='checkbox' /></th>
+            <th style="width:160px;">订单编号</th>
+            <th style="width:50px;">评价者</th>
+            <th style="width:100px;">评价得分</th>
+            <th style="width:50px;">评价状态</th>
+            <th style="width:50px;">回复状态</th>
+            <th style="width:90px;">下单时间</th>
+            <th style="width:90px;">评价时间</th>
+            <th style="width:80px;text-align: center;">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {loop $comment $row}
+        <tr>
+            <td>
+                {if $row['id']!='default'}
+                <input type='checkbox' value="{$row['id']}"/>
+                {/if}
+            </td>
+            <td>{$row['ordersn']}</td>
+            <td>{$row['nickname']}</td>
+            <td>
+                物流服务:<li>{$row['logis']}</li>
+                服务态度:<li>{$row['service']}</li>
+                描述相符:<li>{$row['describes']}</li>
+            </td>
+            <td>{if !empty($row['content']) && empty($row['append_content'])}首次评价 {elseif !empty($row['content']) && !empty($row['append_content'])}追加了评价 {/if}</td>
+            <!--首次未回复 首次已回复 未追加回复 已追加回复-->
+            <td>{if empty($row['append_content'])}首次未回复{elseif !empty($row['append_content'])}首次已回复{elseif empty($row['append_reply_content'])}未追加回复{elseif !empty($row['append_reply_content'])}已追加回复{/if}</td>
+            <td>{php echo date('Y-m-d H:i:s',$row['ordertime'])}</td>
+            <td>{php echo date('Y-m-d H:i:s',$row['createtime'])}</td>
+            <td>
+<!--                <a href="{php echo webUrl('goods/comment/view', array('id' => $row['id']))}" class="btn btn-default btn-sm">查看</a>-->
+                <a href="{php echo webUrl('goods/comment/view',array('id'=>$row['id']))}" class="btn btn-default btn-sm">查看</a>
+                <!--<a data-toggle='ajaxRemove' href="{php echo webUrl('goods/comment/delete', array('id' => $row['id']))}"class="btn btn-default btn-sm" data-confirm='确认要删除此评价吗?'>删除</a>-->
+            </td>
+            <!--<td>
+                {ifp 'goods.label.view|goods.label.edit'}
+                <a href="{php echo webUrl('goods/label/edit', array('id' => $row['id']))}" class="btn btn-default btn-sm">
+                    <i class='fa fa-edit'></i> {ifp 'goods.label.edit'}修改{else}查看{/if}
+                </a>
+                {/if}
+                {if $row['id']!='default'}
+                {ifp 'goods.label.delete'}<a data-toggle='ajaxRemove' href="{php echo webUrl('goods/label/delete', array('id' => $row['id']))}"class="btn btn-default btn-sm" data-confirm='确认要删除此标签组吗?'><i class="fa fa-trash"></i> 删除</a>{/if}
+                {/if}
+            </td>-->
+        </tr>
+        {/loop}
+
+        </tbody>
+    </table>
+    <div style="text-align:right;width:100%;">
+        {$pager}
+    </div>
+    {else}
+    <div class='panel panel-default'>
+        <div class='panel-body' style='text-align: center;padding:30px;'>
+            暂时没有任何评价!
+        </div>
+    </div>
+    {/if}
+</form>
+
+
+{template '_footer'}

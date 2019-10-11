@@ -1,0 +1,34 @@
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/region.css"/>
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/announcement.css"/>
+<!--cont-->
+<div class="cont">
+    <h1 class="act_title">{$item['title']}</h1>
+    <div class="act_other"><span>发布时间:{php echo date('Y-m-d',$item['createtime'])}</span>
+        <!-- <span>浏览:</span> -->
+    </div>
+    <div class="act_content">
+        {if $item['datetime']}
+        <p>通知时间:{$item['datetime']}</p>
+        {/if}
+        {if $item['location']}
+        <p>通知范围:{$item['location']}</p>
+        {/if}
+        <p>通知原因:{$item['reason']}</p>
+        {if $item['remark']}
+        <p>通知备注:{$item['remark']}</p>
+        {/if}
+    </div>
+
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var id = "{$item['id']}";
+    $.getJSON("{php echo $this->createMobileUrl('announcement',array('op' => 'ajax'))}", {id: id}, function (data) {
+        if (data.s == 1) {
+            window.location.reload();
+        }}
+    );
+});
+</script>

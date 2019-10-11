@@ -1,0 +1,166 @@
+{template 'common/header'}
+
+{template '__nav-tabs_merch__'}
+
+<div class="alert alert-info" >
+    以下为正式数据库数据，可以看出，<br/>
+    <ol>
+        <li>为在洗白这些数据，真费事。</li>
+        <li>TODO 现在手动设置不导入还没做，先写死，不导入 145 avic_jdbbuy</li>
+        145
+    </ol>
+</div>
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                #list#
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:4%;">store<br/>id</th>
+
+                        <th style="width:10%;">外键/市级ID这个只是说明是那个登陆用户去录入的，费<br/>登陆账号
+                            <!--<br/>登陆密码-->
+                        </th>
+
+                        <!--<th style="width:10%;">上班时间<br/>下班时间</th>-->
+
+                        <th style="width:15%;">
+                            店名<br/>
+                            店主名<br/>
+                            店地址<br/>
+                            店电话<br/>
+                            店编号
+                        </th>
+
+                        <th style="width:20%;">
+                            开户行<br/>
+                            开户人<br/>
+                            银行账号
+                        </th>
+
+                        <!--<th style="width:10%;">联系方式phone_type</th>-->
+
+                        <!--<th style="width:10%;">门店图片<br/>二维码url</th>-->
+
+                        <!--<th style="width:10%;">固定电话</th>-->
+
+                        <!--
+                        <th style="width:6%;">
+                            所属省<br/>
+                            所属市<br/>
+                            所属区县<br/>
+                            所属街道
+                        </th>
+                        -->
+
+                        <!--<th style="width:10%;">地址外键</th>-->
+
+                        <!--<th style="width:20%;">数据格式</th>-->
+
+                        <th style="width:10%;">
+                            <!--创建时间<br/>-->
+                            结束时间(到期时间)
+                        </th>
+
+                        <th style="width:5%;">0:正常<br/>1:到期<br/>2:暂停<br/>400:删除</th>
+                        <th style="width:10%;">商品数量<br/>辅助导入</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {loop $list $item}
+                    <tr>
+                        <td>{$item['store_id']}</td>
+
+                        <td>
+                            {$item['userid']}<br/>
+                            {$item['store_account']}
+                            <!--<br/>{$item['store_pwd']}-->
+                        </td>
+
+                        <!--
+                        <td>
+                            {$item['beginStoreTime']} 已证实全为NULL SELECT COUNT(*) FROM `sll_water_store` WHERE beginStoreTime is null<br/>
+                            {$item['endStoreTime']} 已证实全为NULL SELECT COUNT(*) FROM `sll_water_store` WHERE endStoreTime is null
+                        </td>
+                        -->
+
+                        <td>
+                            {if empty($item['store_name'])}--/--{else}{$item['store_name']}{/if}<br/>
+                            {if empty($item['store_user'])}--/--{else}{$item['store_user']}{/if}<br/>
+                            {if empty($item['store_address'])}--/--{else}{$item['store_address']}{/if}<br/>
+                            {if empty($item['phone'])}--/--{else}{$item['phone']}{/if}<br/>
+                            {if empty($item['store_code'])}--/--{else}{$item['store_code']}{/if}
+                        </td>
+
+                        <td>
+                            {if empty($item['bank_name'])}--/--{else}{$item['bank_name']}{/if}<br/>
+                            {if empty($item['bank_card_number'])}--/--{else}{$item['bank_card_number']}{/if}<br/>
+                            {if empty($item['bank_account'])}--/--{else}{$item['bank_account']}{/if}
+                        </td>
+
+
+                        <!--<td>{$item['phone_type']} 已证实全为NULL SELECT COUNT(*) FROM `sll_water_store` WHERE phone_type is null</td>-->
+
+
+                        <!--
+                        <td>
+                            <ul>
+                                <li><img style="width: 6rem;" src="{$item['store_imageUrl1']}"/></li>
+                                <li><img style="width: 6rem;" src="{$item['store_imageUrl2']}"/></li>
+                                <li><img style="width: 6rem;" src="{$item['store_imageUrl3']}"/></li>
+                                <li><img style="width: 6rem;" src="{$item['store_codeUrl1']}"/></li>
+
+                            </ul>
+
+                        </td>
+                        -->
+
+                        <!--<td>{$item['telmunber']} 已证实全为NULL SELECT COUNT(*) FROM `sll_water_store` WHERE telmunber is null</td>-->
+
+                        <!--
+                        <td>
+                            {if empty($item['store_province'])}--/--{else}{$item['store_province']}{/if}<br/>
+                            {if empty($item['store_city'])}--/--{else}{$item['store_city']}{/if}<br/>
+                            {if empty($item['store_district'])}--/--{else}{$item['store_district']}{/if}<br/>
+                            {if empty($item['store_street'])}--/--{else}{$item['store_street']}{/if}
+                        </td>
+                        -->
+
+                        {php //echo json_encode($item['store_json'],JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT)}
+                        <!--<td>{$item['store_addre_id']} 已证实全为NULL SELECT COUNT(*) FROM `sll_water_store` WHERE store_addre_id is null</td>-->
+                        <!--<td><textarea style="height: 20rem;width: 100%;">{$item['store_json']}</textarea></td>-->
+
+                        <td>
+                            <!--{$item['ctime']}<br/>-->
+                            {$item['endTime']}
+                        </td>
+                        <td>{$item['status']}</td>
+                        <td>商品共有:{$item['total']} &nbsp; <a href="{php echo $this->createMyJsUrl('js_update_shop_merch',array('store_id'=>$item['store_id']),'superdesk_shop_member');}">导入</a></td>
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                            {$total}
+                        </td>
+                        <td colspan="5">
+                            {$pager}
+                        </td>
+                        <td>
+                            {$count_goods}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

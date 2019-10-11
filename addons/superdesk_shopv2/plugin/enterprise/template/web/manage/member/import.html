@@ -1,0 +1,217 @@
+{template '_header'}
+
+<style>
+    .del_animation
+    {
+        animation-name:del_frame;   /*动画名称*/
+        animation-duration: 1s;     /*全程时间*/
+        animation-fill-mode: forwards;  /*结束时状态*/
+    }
+
+    @keyframes del_frame
+    {
+        from   {opacity: 1;}
+        to {opacity: 0;display: none;}
+    }
+</style>
+
+<div class="page-heading"> 
+    <span class='pull-right'>
+        <a class='btn btn-default btn-sm' href="{php echo enterpriseUrl('member/list')}">返回列表</a>
+    </span>
+
+    <h2>
+        批量导入
+    </h2>
+</div>
+<div class="col-sm-12 alert alert-info">
+    <div class="col-sm-6">
+        功能介绍: 使用excel快速导入进行员工添加与充值
+        <br><span style="padding-left: 60px;">如重复导入数据将以最新导入数据为准，请谨慎使用</span>
+        <br><span style="padding-left: 60px;">员工不存在时会创建员工，员工登录初始密码为123456</span>
+        <br><span style="padding-left: 60px;">数据导入员工金额自动增加，金额为负时不处理</span>
+        <br><span style="padding-left: 60px;">一次导入的数据最多50条,大量数据请分批导入
+    </div>
+    <div class="col-sm-6">
+        使用方法: 1. 下载Excel模板文件并录入信息
+        <span style="padding-left: 40px;">2. 上传Excel文件</span>
+        <br><span style="padding-left: 60px;">3. 确认下方表格数据是否正确</span>
+        <span style="padding-left: 57px;">4. 点击确认导入</span>
+        <br><br>备注：  请严格按照模板顺序填入信息
+        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成功的数据将消失，失败的数据会显示失败原因
+    </div>
+
+
+</div>
+
+<form id="importform" class="form-horizontal form" action="javscript:;" enctype="multipart/form-data">
+    <div class='form-group'>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label must">EXCEL</label>
+
+            <div class="col-sm-5 goodsname"  style="padding-right:0;" >
+                <input type="file" name="excelfile" class="form-control" />
+                <span class="help-block">如果遇到数据重复则将进行数据更新</span>
+            </div>
+
+            <div class="col-sm-5">
+                {ifp 'member.import.main'}
+                <button id="submitImport" class="btn btn-primary" name="cancelsend" value="yes" disabled="true">确认导入</button>
+
+                <a class="btn btn-primary" href="{php echo enterpriseUrl('member/import/importTpl')}" style="margin-right: 10px;" ><i class="fa fa-download" title=""></i> 下载Excel模板文件</a>
+                {/if}
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class='form-group'>
+        <div class="col-sm-12" style="border-top: 1px solid #e5e5e5">
+            <table class="table table-hover" id="show-import-data">
+                <thead>
+                <tr>
+                    <td>手机号</td>
+                    <td>真实名称</td>
+                    <td>充值金额</td>
+                    <td>用户昵称</td>
+                    <td>结果 | <span id="showContent" style="color:red;"></span></td>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</form>
+
+
+<script language='javascript'>
+
+    /*
+    * 这里是直接导入整个Excel
+    * */
+    var submitImport = function () {
+        if(!$(":input[name=excelfile]").val()){
+            tip.msgbox.err("您还未选择Excel文件哦~");
+            return false;
+        }
+
+        $("#submitImport").attr('disabled',true);
+
+        var defer = $.Deferred();//这一步必须要写，要不然下面的then无法使用
+        defer.resolve($("#showContent").html("开始执行..."));
+
+        $("#show-import-data tbody tr").each(function (index,element) {
+            console.log(index)
+            var that = this;
+            var keys = $(that).data('id');
+
+            defer = defer.then(function () {
+                return $.ajax({
+                    type: "POST",
+                    url: "{php echo enterpriseUrl('member/import/submitOne');}",
+                    data:{
+                        keys : keys,
+                        type: 1
+                    },
+                    beforeSend : function () {
+
+                        $("#showContent").html("正在执行第 " + index + " 个任务");
+                    },
+                    success: function (data) {
+
+                        console.log(data);
+
+                        var obj = JSON.parse(data);
+                        if(obj.status == 1){
+                            // TODO 去除改行的动画效果
+                            $(that).addClass('del_animation');
+                        }else{
+                            $(that).find(".import_result").html(obj.result.message + ' <button class="btn btn-primary btn-xs submitImportOnes">重新提交</button>');
+                            var price = $(that).find(".price_can_change").html();
+                            $(that).find(".price_can_change").html('<input class="price_num" value="' + price + '" />');
+                        }
+                    }
+                });
+            });
+
+        });
+
+        defer.done(function(){
+            $("#showContent").html("结束执行.");
+        });
+
+        return defer.promise();
+
+    };
+
+    $(function(){
+
+        $("#submitImport").bind("click", submitImport);
+
+        /*
+         * 这里是上传Excel
+         * */
+        $('input[name=excelfile]').on('change',function(){
+            $("#submitImport").attr('disabled',false);
+
+            $.ajax({
+                url: "{php echo enterpriseUrl('member/import')}",
+                type: 'POST',
+                data: new FormData($('#importform')[0]),
+                processData: false,
+                contentType: false,
+                dataType:"json",
+                success: function (data) {
+                    if(data.status == 1){
+                        var html = '';
+                        var result = data.result
+                        delete result.url
+                        for(var i in result){
+                            var css = result[i]['css'] ? 'style="color:red;"' : '';
+                            html += ' <tr data-id="'+i+'"><td>'+result[i][0]+'</td><td>'+result[i][1]+'</td><td class="price_can_change" ' + css + '>'+result[i][2]+'</td><td>'+result[i][3]+'</td><td class="import_result"></td></tr> ';
+                        }
+
+                        $('#show-import-data tbody').html(html);
+                    }else{
+                        tip.msgbox.err(data.result.message);
+                    }
+                }
+            });
+        });
+
+        /*
+         * 这里是修改单条数据之后提交
+         * */
+        $(document).on('click','.submitImportOnes',function(){
+            var parent = $(this).parents('tr');
+
+            $.ajax({
+                type: "POST",
+                url: "{php echo enterpriseUrl('member/import/submitOne');}",
+                data:{
+                    mobile : parent.find('td').eq(0).html(),
+                    price : parent.find('.price_num').val(),
+                    type: 2
+                },
+                success: function (data) {
+
+                    console.log(data);
+
+                    var obj = JSON.parse(data);
+                    if(obj.status == 1){
+                        // TODO 去除改行的动画效果
+                        $(parent).addClass('del_animation');
+                    }else{
+                        $(parent).find(".import_result").html(obj.result.message + ' <button class="btn btn-primary submitImportOnes">重新提交</button>');
+                    }
+                }
+            });
+        })
+
+    })
+
+</script>
+
+{template '_footer'}

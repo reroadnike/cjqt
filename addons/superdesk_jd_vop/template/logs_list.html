@@ -1,0 +1,112 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="{php echo $this->createWebUrl('logs', array('op' => 'list'))}">调用日志</a></li>
+</ul>
+
+<div class="main">
+    <form action="" method="get">
+        <input type="hidden" name="c" value="site" />
+        <input type="hidden" name="a" value="entry" />
+        <input type="hidden" name="m" value="superdesk_jd_vop" />
+        <input type="hidden" name="do" value="logs" />
+        <input type="hidden" name="op" value="list" />
+        <input type="hidden" name="token" value="{$_W['token']}" />
+
+        <div class="panel panel-default">
+
+            <div class="panel-body table-responsive">
+                <div class="form-group">
+
+                    <div class="col-sm-4 col-xs-4">
+                        <select class="form-control" name="search[api]">
+                            <option value="0">全部记录</option>
+                            {loop $select_list_api $index $child_item}
+                            <option value="{$child_item['key']}" {if $child_item['key'] == $search['api']}selected="selected"{/if}>{$child_item['name']}</option>
+                            {/loop}
+                        </select>
+                    </div>
+                    <div class="col-sm-2 col-xs-2" style="text-align: left;">
+                        <select class="form-control" name="search[success]">
+                            <option value="0" {if 0 == $search['success']}selected="selected"{/if}>Fail</option>
+                            <option value="1" {if 1 == $search['success']}selected="selected"{/if}>Success</option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-sm-7 col-lg-4 col-xs-12">
+                        {php echo tpl_form_field_daterange('search', array('start'=>date('Y-m-d', $search['start']),'end'=>date('Y-m-d', $search['end'])),false);}
+                    </div>
+
+                    <div class="col-sm-2 col-xs-2" style="text-align: left;">
+
+                        <input type="submit" class="btn btn-info" value="确认"/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <!--<div class="panel-heading">调用日志</div>-->
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:20%;">logId/method/createtime/<br/>api/url</th>
+                        <th style="width:30%;">post_fields</th>
+                        <th style="width:20%;">curl_info</th>
+                        <th style="width:30%;">result</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+                        <td>
+                            LOGID : {$item['id']}<br/>
+                            {$item['method']} : {if isset($item['createtime'])}{php echo date('Y-m-d H:i:s',$item['createtime'])}{/if}
+
+                            <a href="{php echo $this->createWebUrl('logs', array('id' => $item['id'], 'op' => 'edit'));}"
+                               class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="编辑"><i
+                                    class="fa fa-pencil">&nbsp;编辑</i></a>&nbsp;&nbsp;
+                            <a href="{php echo $this->createWebUrl('logs', array('id' => $item['id'], 'op' => 'delete'));}"
+                               class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title=""
+                               onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" data-original-title="删除"><i
+                                    class="fa fa-times">&nbsp;删除</i> </a>
+                            <br/>
+                            {$item['api']}<br/>
+                            <textarea style="width: 100%;" rows="12">{$item['url']}</textarea>
+                        </td>
+
+                        <td>
+                            <br/><br/><br/>
+
+                            <textarea style="width: 100%;" rows="12">{$item['post_fields']}</textarea>
+                        </td>
+                        <td>
+                            <br/><br/><br/>
+                            <textarea style="width: 100%;" rows="12">{$item['curl_info']}</textarea>
+                        </td>
+                        <td>
+                            success {if $item['success'] == 1}true{else}false{/if};<br/>
+                            resultCode {$item['resultCode']}; <br/>
+                            resultMessage {$item['resultMessage']}; <br/>
+                            <textarea style="width: 100%;" rows="12">{$item['result']}</textarea>
+                        </td>
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            共 {$total}
+                        </td>
+                        <td colspan="3">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

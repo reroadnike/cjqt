@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <!-- <link rel="icon" href="/front/image/bitbug_favicon.ico" type="image/x-icon"> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="format-detection" content="telephone=no">
+    <title>报名成功</title>
+    <link href="{$_W['siteroot']}app/resource/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="{MODULE_URL}template/mobile/assets/css/lanrenzhijia.css"> -->
+    <!--组件依赖js begin-->
+
+    <!--刷新-->
+    <link href="{$_W['siteroot']}app/resource/css/bootstrap.min.css" rel="stylesheet">
+<!--     <script src="{$_W['siteroot']}app/resource/js/lib/jquery-1.11.1.min.js"></script>
+    <script src="{$_W['siteroot']}app/resource/js/lib/bootstrap.min.js"></script> -->
+</head>
+
+<body  style="background: url({MODULE_URL}template/mobile/activity/static/image/BG.png) no-repeat top center;background-size:cover;" >
+
+
+
+<div class="container" >
+    <div class="row clearfix">
+       
+        <div class="col-xs-12" style="padding: 0;text-align: center;color: white;font-size: 2rem;">
+            <div>
+                <img src="{MODULE_URL}template/mobile/activity/static/image/success.png" style="height: 4rem;margin-top: 10%;">
+            </div>
+            <div style="margin-top: 6%;">
+                已完成支付，{$detail['title']}报名成功
+            </div>
+            <div style="margin-top: 18%;position: relative;">
+                <img src="{MODULE_URL}template/mobile/activity/static/image/qrcode.png" style="width: 80%">
+                
+                <!-- {php echo $_W['fans']['tag']['avatar'];} -->
+                <img style="border:5px solid #c11f20;position: absolute;top: -4rem;left: calc( 50% - 3.5rem );width: 7rem" src="http://wx.qlogo.cn/mmopen/IHaDd9PT81cFupmibx3KsMNxyXBhSD3q5X9RH2JMmwUh09NHLKlEfKNcJATzLCmDRUkmCJick9jYM285VgKnPiaQgYxrY4CI8sw/132" class="img-circle img-responsive"> 
+                <img src="http://qr.api.cli.im/qr?data=http%253A%252F%252Fwww.baidu.com&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&size=280&kid=cliim&key=1d654768e833ea12c3e7d7c2873ec606" style="position: absolute;width: 50%;left: 25%;top: 19%;">
+            </div>
+            <div style="margin-top: 15%;font-size: 1.6rem">
+                扫描上方二维码，与活动负责人保持联系
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

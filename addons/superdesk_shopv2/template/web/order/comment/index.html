@@ -1,0 +1,262 @@
+{template '_header'}
+<div class="page-heading">
+
+<!--    <h2>评价管理</h2>-->
+</div>
+<ul class="nav nav-arrow-next nav-tabs" id="myTab">
+    <li {if $_GPC['r']=='order.comment'} class="active" {/if}>
+        <a href="{php echo webUrl('order/comment')}">评价管理</a>
+    </li>
+    <li {if $_GPC['r']=='order.report'} class="active" {/if}>
+        <a href="{php echo webUrl('order/report')}">商户报表</a>
+    </li>
+    <li {if $_GPC['r']=='order.goods'} class="active" {/if}>
+    <a href="{php echo webUrl('order/goods')}">商品报表</a>
+    </li>
+</ul>
+<form action="./index.php" method="get" class="form-horizontal form-search" role="form">
+    <input type="hidden" name="c" value="site" />
+    <input type="hidden" name="a" value="entry" />
+    <input type="hidden" name="m" value="superdesk_shopv2" />
+    <input type="hidden" name="do" value="web" />
+    <input type="hidden" name="r"  value="order.comment" />
+    <div class="page-toolbar row m-b-sm m-t-sm">
+        <!--<div class="col-sm-4">
+            <div class="input-group-btn">
+                <button class="btn btn-default btn-sm"  type="button" data-toggle='refresh'><i class='fa fa-refresh'></i></button>
+                {ifp 'goods.label.edit'}
+                <button class="btn btn-default btn-sm" type="button" data-toggle='batch' data-href="{php echo webUrl('goods/label/status',array('status'=>1))}"><i class='fa fa-circle'></i> 启用</button>
+                <button class="btn btn-default btn-sm" type="button" data-toggle='batch'  data-href="{php echo webUrl('goods/label/status',array('status'=>0))}"><i class='fa fa-circle-o'></i> 禁用</button>
+                {/if}
+                {ifp 'goods.label.delete'}
+                <button class="btn btn-default btn-sm" type="button" data-toggle='batch-remove' data-confirm="确认要删除?" data-href="{php echo webUrl('sns/level/delete')}"><i class='fa fa-trash'></i> 删除</button>
+                {/if}
+            </div>
+        </div>-->
+        <div class='col-sm-4' style='padding-right:0;'>
+            {php echo tpl_daterange('time', array('sm'=>true,'placeholder'=>'评价时间'),true);}
+        </div>
+        <div class="col-sm-4">
+            <select name="merch" class='form-control input-sm select-sm' style="width: 110px; margin-right: 10px;">
+                <option value="">选择商户</option>
+                {loop $merch $m}
+                <option value="{$m['id']}" {if $_GPC['merch']==$m['id']} selected {/if} >{$m['merchname']}</option>
+                {/loop}
+            </select>
+            <select name="state" class='form-control input-sm select-sm' >
+                <option value="">状态</option>
+                <option value="1" {if $_GPC['state']==1} selected {/if} >启用</option>
+                <option value="2" {if $_GPC['state']==2} selected {/if} >禁用</option>
+            </select>
+             <select name="searchfield" class='form-control input-sm select-sm' style="width: 110px; margin-left: 50px;">
+                 <option value="ordersn" {if $_GPC['searchfield']=="ordersn"} selected {/if} >订单编号</option>
+                 <option value="nickname" {if $_GPC['searchfield']=="nickname"} selected {/if} >评价者</option>
+                 <!--<option value="">评价时间</option>
+                 <option value="0" {if $_GPC['enabled'] == '0'} selected{/if}>订单归属供应商名称</option>-->
+            </select>
+        </div>
+        <div class="col-sm-4 pull-right">
+            <div class="input-group">
+                <input style="width: 332px;" type="text" class="input-sm form-control" name='keyword' value="{$_GPC['keyword']}" placeholder="选择编号或评价者，再输入关键词搜索">
+                <span class="input-group-btn">
+                    <button class="btn btn-sm btn-primary" type="submit"> 搜索</button>
+                </span>
+            </div>
+            <!--<div class="input-group">
+                <input style="width: 259px;" type="text" class="input-sm form-control" name='keyword' value="{$_GPC['keyword']}" placeholder="请输入关键词">
+                <span class="input-group-btn">
+                    <button class="btn btn-sm btn-primary" type="submit"> 搜索</button>
+                      {ifp 'order.comment.withdraw.export'}
+                        <button type="submit" name="export" value="1" class="btn btn-success btn-sm">导出 Excel</button>
+                        {/if}
+                </span>
+            </div>-->
+        </div>
+    </div>
+</form>
+<form action="" method="post" >
+    {if count($comment)>0}
+    <table class="table table-hover table-responsive">
+        <thead>
+        <tr>
+            <th style="width:25px;"><input type='checkbox' /></th>
+            <th style="width:120px;">订单编号</th>
+            <th style="width:50px;">评价者</th>
+            <th style="width:100px;">评价得分</th>
+            <th style="width:50px;">评价状态</th>
+            <th style="width:70px;">回复状态</th>
+            <th style="width:90px;">下单时间</th>
+            <th style="width:90px;">评价时间</th>
+            <th style="width:80px;text-align: center;">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {loop $comment $row}
+        <tr>
+            <td>
+                {if $row['id']!='default'}
+                <input type='checkbox' value="{$row['id']}"/>
+                {/if}
+            </td>
+            <td>{$row['ordersn']}</td>
+            <td>{$row['nickname']}</td>
+            <td>
+                <div>
+                <span>物流服务:</span><!--<div class='fui-stars levels warning'  data='0' >-->
+                            {if $row['logis']==1}
+                                        <span class="icon icon-favorfill selected"></span>
+                                        <span class="icon icon-favor"></span>
+                                        <span class="icon icon-favor"></span>
+                                        <span class="icon icon-favor"></span>
+                                        <span class="icon icon-favor"></span>
+                            {/if}
+                            {if $row['logis']==2}
+                                        <span class="icon icon-favorfill selected"></span>
+                                        <span class="icon icon-favorfill selected"></span>
+                                        <span class="icon icon-favor"></span>
+                                        <span class="icon icon-favor"></span>
+                                        <span class="icon icon-favor"></span>
+                            {/if}
+                            {if $row['logis']==3}
+                                        <span class="icon icon-favorfill selected"></span>
+                                        <span class="icon icon-favorfill selected"></span>
+                                        <span class="icon icon-favorfill selected"></span>
+                                        <span class="icon icon-favor"></span>
+                                        <span class="icon icon-favor"></span>
+                            {/if}
+                            {if $row['logis']==4}
+                                        <span class="icon icon-favorfill selected"></span>
+                                        <span class="icon icon-favorfill selected"></span>
+                                        <span class="icon icon-favorfill selected"></span>
+                                        <span class="icon icon-favorfill selected"></span>
+                                        <span class="icon icon-favor"></span>
+                            {/if}
+                            {if $row['logis']==5}
+                                        <span class="icon icon-favorfill selected"></span>
+                                        <span class="icon icon-favorfill selected"></span>
+                                        <span class="icon icon-favorfill selected"></span>
+                                        <span class="icon icon-favorfill selected"></span>
+                                        <span class="icon icon-favorfill selected"></span>
+                            {/if}
+                </div>
+                <!--<li class="logis" data="0" value="{$row['logis']}">{$row['logis']}</li>-->
+                <div>
+                    <span>服务态度:</span><!--<li class="service" value="{$row['service']}">{$row['service']}</li>-->
+                    {if $row['service']==1}
+                    <span class="icon icon-favorfill selected"></span>
+                    <span class="icon icon-favor"></span>
+                    <span class="icon icon-favor"></span>
+                    <span class="icon icon-favor"></span>
+                    <span class="icon icon-favor"></span>
+                    {/if}
+                    {if $row['service']==2}
+                    <span class="icon icon-favorfill selected"></span>
+                    <span class="icon icon-favorfill selected"></span>
+                    <span class="icon icon-favor"></span>
+                    <span class="icon icon-favor"></span>
+                    <span class="icon icon-favor"></span>
+                    {/if}
+                    {if $row['service']==3}
+                    <span class="icon icon-favorfill selected"></span>
+                    <span class="icon icon-favorfill selected"></span>
+                    <span class="icon icon-favorfill selected"></span>
+                    <span class="icon icon-favor"></span>
+                    <span class="icon icon-favor"></span>
+                    {/if}
+                    {if $row['service']==4}
+                    <span class="icon icon-favorfill selected"></span>
+                    <span class="icon icon-favorfill selected"></span>
+                    <span class="icon icon-favorfill selected"></span>
+                    <span class="icon icon-favorfill selected"></span>
+                    <span class="icon icon-favor"></span>
+                    {/if}
+                    {if $row['service']==5}
+                    <span class="icon icon-favorfill selected"></span>
+                    <span class="icon icon-favorfill selected"></span>
+                    <span class="icon icon-favorfill selected"></span>
+                    <span class="icon icon-favorfill selected"></span>
+                    <span class="icon icon-favorfill selected"></span>
+                    {/if}
+                </div>
+                 <div>
+                     <span>描述相符:</span>
+                     {if $row['describes']==1}
+                     <span class="icon icon-favorfill selected"></span>
+                     <span class="icon icon-favor"></span>
+                     <span class="icon icon-favor"></span>
+                     <span class="icon icon-favor"></span>
+                     <span class="icon icon-favor"></span>
+                     {/if}
+                     {if $row['describes']==2}
+                     <span class="icon icon-favorfill selected"></span>
+                     <span class="icon icon-favorfill selected"></span>
+                     <span class="icon icon-favor"></span>
+                     <span class="icon icon-favor"></span>
+                     <span class="icon icon-favor"></span>
+                     {/if}
+                     {if $row['describes']==3}
+                     <span class="icon icon-favorfill selected"></span>
+                     <span class="icon icon-favorfill selected"></span>
+                     <span class="icon icon-favorfill selected"></span>
+                     <span class="icon icon-favor"></span>
+                     <span class="icon icon-favor"></span>
+                     {/if}
+                     {if $row['describes']==4}
+                     <span class="icon icon-favorfill selected"></span>
+                     <span class="icon icon-favorfill selected"></span>
+                     <span class="icon icon-favorfill selected"></span>
+                     <span class="icon icon-favorfill selected"></span>
+                     <span class="icon icon-favor"></span>
+                     {/if}
+                     {if $row['describes']==5}
+                     <span class="icon icon-favorfill selected"></span>
+                     <span class="icon icon-favorfill selected"></span>
+                     <span class="icon icon-favorfill selected"></span>
+                     <span class="icon icon-favorfill selected"></span>
+                     <span class="icon icon-favorfill selected"></span>
+                     {/if}
+                 </div><!--<li class="describes" value="{$row['describes']}">{$row['describes']}</li>-->
+            </td>
+            <td>{if !empty($row['content']) && empty($row['append_content'])}首次评价 {elseif !empty($row['content']) && !empty($row['append_content'])}追加了评价 {/if}</td>
+            <!--首次未回复 首次已回复 未追加回复 已追加回复-->
+            <td>{if empty($row['reply_content'])}<ol style="margin-left: -40px;">未首次回复</ol>{else}<ol style="margin-left: -40px;">已首次回复</ol>{/if}{if empty($row['append_reply_content'])}<ol style="margin-left: -40px;">未追加回复</ol>{else}<ol style="margin-left: -40px;">已追加回复</ol>{/if}</td>
+            <td>{php echo date('Y-m-d H:i:s',$row['ordertime'])}</td>
+            <td>{php echo date('Y-m-d H:i:s',$row['createtime'])}</td>
+            <td>
+<!--                <a href="{php echo webUrl('goods/comment/view', array('id' => $row['id']))}" class="btn btn-default btn-sm">查看</a>-->
+                <a href="{php echo webUrl('order/comment/view',array('id'=>$row['orderid']))}" class="btn btn-default btn-sm">详情</a>
+                {if $row['state']==2}
+                <a class="btn btn-default btn-sm" >已隐藏</a>
+                {else}
+                <a data-toggle='ajaxRemove' href="{php echo webUrl('order/comment/status', array('id' => $row['id']))}" class="btn btn-default btn-sm" data-confirm='确认要对商户隐藏此评价吗?'>隐藏</a>
+                {/if}
+                <!--<a data-toggle='ajaxRemove' href="{php echo webUrl('goods/comment/delete', array('id' => $row['id']))}"class="btn btn-default btn-sm" data-confirm='确认要删除此评价吗?'>删除</a>-->
+            </td>
+            <!--<td>
+                {ifp 'goods.label.view|goods.label.edit'}
+                <a href="{php echo webUrl('goods/label/edit', array('id' => $row['id']))}" class="btn btn-default btn-sm">
+                    <i class='fa fa-edit'></i> {ifp 'goods.label.edit'}修改{else}查看{/if}
+                </a>
+                {/if}
+                {if $row['id']!='default'}
+                {ifp 'goods.label.delete'}<a data-toggle='ajaxRemove' href="{php echo webUrl('goods/label/delete', array('id' => $row['id']))}"class="btn btn-default btn-sm" data-confirm='确认要删除此标签组吗?'><i class="fa fa-trash"></i> 删除</a>{/if}
+                {/if}
+            </td>-->
+        </tr>
+        {/loop}
+
+        </tbody>
+    </table>
+    <div style="text-align:right;width:100%;">
+        {$pager}
+    </div>
+    {else}
+    <div class='panel panel-default'>
+        <div class='panel-body' style='text-align: center;padding:30px;'>
+            暂时没有任何评价!
+        </div>
+    </div>
+    {/if}
+</form>
+
+{template '_footer'}

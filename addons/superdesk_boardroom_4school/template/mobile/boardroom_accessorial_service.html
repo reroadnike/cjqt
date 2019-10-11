@@ -1,0 +1,171 @@
+{template '__header'}
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/accessorialService.css" />
+<div class="pagetoplogo"></div>
+<div class="pagebottomlogo"></div>
+<ul class="sevicegoodslist">
+
+
+    {loop $cart_list $item}
+    {php $price += $item['totalprice'];}
+    {php $goods = $item['goods']}
+    <span id="stock_{$item['id']}" style='display:none'>{$goods['total']}</span>
+    <li class="sevicegoods clearfix">
+        <div class="goodsimg">
+            <!--<input type="checkbox" name="goodsid" value="{$item['id']}" style="position: absolute;">-->
+            <img src="{php echo tomedia($goods['thumb']);}" alt="" />
+        </div>
+        <div class="goodsname">
+            <em class="ellipsis">{$goods['title']}{if $goods['unit']}{/if}</em>
+            <span style="display: none;"> 元{if !empty($goods['unit'])} / {$goods['unit']}{/if}</span>
+            <span style="display: none;" id="singleprice_{$item['id']}">{$goods['marketprice']}</span>
+        </div>
+        <div class="specifications">
+
+            <em style="display: none;" class="ellipsis">小计：<span class='singletotalprice' id="goodsprice_{$item['id']}">{$item['totalprice']}</span> 元</em>
+
+            <div class="counter">
+               <a href="javascript: void(0);" title="减" onclick="reduceNum({$item['id']})" class="reduce"></a>
+               <div class="couterentry">
+                   <input type="number"
+                          name="goodsid"
+                          value="{$item['total']}"
+                          id="goodsnum_{$item['id']}"
+                          data-id="{$item['id']}"
+                          price="{$goods['marketprice']}"
+                          pricetotal="{$item['totalprice']}"
+                          cartid="{$item['id']}"
+                          maxbuy="{$goods['maxbuy']}"/>
+               </div>
+               <a href="javascript: void(0);" title="加" onclick="addNum({$item['id']},{if $goods['maxbuy'] == 0}{$goods['total']}{else}{php echo min($goods['total'], $goods['maxbuy'])}{/if})" class="plus"></a>
+           </div>
+        </div>
+    </li>
+    {php $n++;}
+    {/loop}
+</ul>
+
+
+
+<div class="amount" {if count($list)<=0}style="display:none"{else}style="z-index:3;"{/if}>
+  <em style="display: none;">合计：￥<span id="pricetotal">{$price}</span> 元</em>
+  <a href="javascript:void(0);" title="完成添加" id="confirm">完成添加</a>
+</div>
+
+
+
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery/jquery.gcjs.js"></script>
+<script type="text/javascript">
+//    $('#confirm').click(function() {
+//        var ids =  new Array();
+//        var i = 0;
+//        $('[name="goodsid"]').each(function () {
+//            if($(this).val() > 0){
+//                ids[i] = $(this).data('id');
+//                i++;
+//            }
+//        });
+////        location.href = "{php echo murl('entry//confirm',array('m'=>'superdesk_boardroom'))}&goodids="+ids;
+//
+//        console.log("// TODO set goodids : "+ids);
+//    });
+    $(function(){
+        $(".goodsnum").blur(function(){
+            var id = $(this).attr("cartid");
+            if($(this).isInt()){
+                var num = parseInt( $("#goodsnum_" + id).val() );
+                var maxbuy = parseInt( $(this).attr("maxbuy") );
+                var mb = maxbuy;
+                var stock =$("#stock_" + id).html()==''?-1:parseInt($("#stock_" + id).html());
+                if(mb>stock && stock!=-1){
+                    mb = stock;
+                }
+
+                if(num>mb && mb>0){
+                    $.alert("最多只能选择 " + mb + "件", 1500);
+                    $("#goodsnum_" + id).val(mb);
+                    return;
+                }
+                updateCart(id,num);
+            }else{
+                $(this).val("1");
+                updateCart(id,1);
+            }
+        })
+    });
+    function clearCart(){
+        if (confirm('确定要清空购物车吗？')) {
+            tip("正在处理数据...");
+            $.getJSON("{php echo $this->createMobileUrl('mycart',array('op'=>'clear'));}", function(s){
+                $(".shopcart-item").remove();
+                $("#cartempty").show();
+                $("#cartfooter").hide();
+                tip_close();
+            });
+        }
+    }
+    function removeCart(id){
+        if (confirm('您确定要删除此商品吗？')) {
+            tip("正在处理数据...");
+            var url = "{php echo murl('entry//mycart',array('m'=>'superdesk_boardroom','op'=>'remove'), true)}"+ "&id=" + id;
+            $.getJSON(url, function(s){
+                $("#item_" + s.cartid).remove();
+                if($(".shopcart-item").length<=0){
+                    $("#cartempty").show();
+                    $("#cartfooter").hide();
+                }
+                tip_close();
+                canculate();
+            });
+        }
+    }
+    function updateCart(id,num){
+        var url = "{php echo murl('entry//mycart',array('m'=>'superdesk_boardroom','op'=>'update'), true)}"+ "&id=" + id+"&num=" + num;
+        $.getJSON(url, function(s){
+
+        });
+    }
+    function checkMaxBuy(id, maxbuy){
+
+    }
+    function addNum(id,maxbuy){
+        var mb = maxbuy;
+        var stock =$("#stock_" + id).html()==''?-1:parseInt($("#stock_" + id).html());
+        if(mb>stock && stock!=-1){
+            mb = stock;
+        }
+        var num = parseInt( $("#goodsnum_" + id).val() ) + 1;
+        if(num>mb && mb>0){
+//            tip("最多只能购买 " + mb + " 件!",true);
+            $.alert("最多只能选择 " + mb + "件", 1500);
+            return;
+        }
+        $("#goodsnum_" + id).val(num);
+        var price = parseFloat( $("#singleprice_"+id).html() ) * num;
+        $("#goodsprice_" + id).html(price);
+        canculate();
+        updateCart(id,num);
+    }
+    function reduceNum(id){
+        var num = parseInt( $("#goodsnum_" + id).val() );
+        if(num-1<=-1){
+            return;
+        }
+        num--;
+        $("#goodsnum_" + id).val(num);
+        var price = parseFloat( $("#singleprice_"+id).html() ) * num;
+        $("#goodsprice_" + id).html(price);
+        canculate();
+        updateCart(id,num);
+    }
+    function canculate(){
+        var total = 0;
+        $(".singletotalprice").each(function(){
+            total+=parseFloat( $(this).html() );
+        });
+
+        $("#pricetotal").html(total);
+    }
+</script>
+
+{template '__footer'}

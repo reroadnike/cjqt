@@ -1,0 +1,26 @@
+请求示例
+param={"jdOrderId":41220440659,"customerExpect":30,"questionDesc":"123","isNeedDetectionReport":true,"questionPic":null,"isHasPackage":true,"packageDesc":0,"asCustomerDto":{"customerContactName":"yhj","customerTel":"13810343698","customerMobilePhone":"13810343698","customerEmail":"123456@163.com","customerPostcode":"065201"},"asPickwareDto":{"pickwareType":40,"pickwareProvince":1,"pickwareCity":72,"pickwareCounty":2839,"pickwareVillage":0,"pickwareAddress":"test"},"asReturnwareDto":{"returnwareType":10,"returnwareProvince":2839,"returnwareCity":72,"returnwareCounty":1,"returnwareVillage":0,"returnwareAddress":"111"},"asDetailDto":{"skuId":712609,"skuNum":1}}
+
+
+返回示例
+{"success":false,"resultMessage":"该订单未妥投","resultCode":"6005","result":null}
+
+参数名 | 含义 | 参数类型 | 其他
+success | 状态码 | boolean | true成功 false失败
+result | 组件列表 | | 没有数据返回空
+resultMessage | 错误信息 | String |
+resultCode | 异常代码Key | | 0无错误信息
+                            2000 创建失败
+                            6000:网络异常，请稍后重试,
+                            6001:参数不正确,
+                            6002:该订单不存在,
+                            6003:该订单未确认提交, 6004:该订单不是子订单,
+                            6005:该订单未妥投,
+                            6006:该订单不是正常订单,
+                            6007:订单没有该商品编号,
+                            6008:该订单是未完成订单,
+                            6009:订单中某商品不可以提交售后服务,
+                            6010:数量超过订单商品数量,
+                            6011:不属于商品返回京东方式,
+                            6012:不属于支持的服务类型,
+                            6013:服务单未通过审核;

@@ -1,0 +1,8 @@
+{
+  "result": {
+    "creditLimit": 1000.00,	//授信额度
+    "remainLimit": 0,		//可用额度
+    "debtSumAmt": 0.00,	//代还款总额
+    "penaltySumAmt": 0.08	//违约金总额
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "cOrder": [
+    {
+      "pOrder": 73248004624,
+      "orderState": 1,
+      "jdOrderId": 73251474258,
+      "state": 0,
+      "freight": 0,
+      "submitState": 1,
+      "orderPrice": 19,
+      "orderNakedPrice": 16.24,
+      "type": 2,
+      "sku": [
+        {
+          "category": 7371,
+          "num": 2,
+          "price": 9.5,
+          "tax": 17,
+          "oid": 0,
+          "name": "信发（TRNFA）328 自粘性标签贴纸 不干胶口取纸价格资料分类纸 蓝色38*25mm（65张）",
+          "taxPrice": 1.38,
+          "skuId": 5908543,　----　448276
+          "nakedPrice": 8.12,
+          "type": 0
+        }
+      ],
+      "orderTaxPrice": 2.76
+    },
+    {
+      "pOrder": 73248004624,
+      "orderState": 1,
+      "jdOrderId": 73251676691,
+      "state": 0,
+      "freight": 0,
+      "submitState": 1,
+      "orderPrice": 411.46,
+      "orderNakedPrice": 351.67,
+      "type": 2,
+      "sku": [
+        {
+          "category": 728,
+          "num": 10,
+          "price": 8.5,
+          "tax": 17,
+          "oid": 0,
+          "name": "齐心(Comix)12位太阳能双电源办公计算器\/计算机 办公文具 C-330",
+          "taxPrice": 1.23,
+          "skuId": 657297,　----　253175
+          "nakedPrice": 7.27,
+          "type": 0
+        },
+        {
+          "category": 7371,
+          "num": 1,
+          "price": 36.86,
+          "tax": 17,
+          "oid": 0,
+          "name": "广博(GuangBo)12本装便利贴76*19mm便签纸便签本子标签贴ZGT9350",
+          "taxPrice": 5.36,
+          "skuId": 1815530,　----　11378
+          "nakedPrice": 31.5,
+          "type": 0
+        },
+        {
+          "category": 4840,
+          "num": 15,
+          "price": 6.8,
+          "tax": 17,
+          "oid": 0,
+          "name": "齐心(Comix)AB600A-W 双强力夹文件夹\/资料夹 A4 蓝色",
+          "taxPrice": 0.99,
+          "skuId": 555830,　----　8860
+          "nakedPrice": 5.81,
+          "type": 0
+        },
+        {
+          "category": 7371,
+          "num": 10,
+          "price": 15,
+          "tax": 17,
+          "oid": 0,
+          "name": "齐心(Comix) 122张25K笔记本子软木纹皮面本办公记事本C5832 灰",
+          "taxPrice": 2.18,
+          "skuId": 6020507,　----　711979
+          "nakedPrice": 12.82,
+          "type": 0
+        },
+        {
+          "category": 4837,
+          "num": 4,
+          "price": 9.4,
+          "tax": 17,
+          "oid": 0,
+          "name": "齐心(COMIX)10盒装12#强穿透订书钉 可订25页 1000枚\/盒 办公文具 B3058 ",
+          "taxPrice": 1.37,
+          "skuId": 557870,　----　2867
+          "nakedPrice": 8.03,
+          "type": 0
+        }
+      ],
+      "orderTaxPrice": 59.79
+    },
+    {
+      "pOrder": 73248004624,
+      "orderState": 1,
+      "jdOrderId": 73251721820,
+      "state": 0,
+      "freight": 0,
+      "submitState": 1,
+      "orderPrice": 103.52,
+      "orderNakedPrice": 88.48,
+      "type": 2,
+      "sku": [
+        {
+          "category": 854,
+          "num": 2,
+          "price": 51.76,
+          "tax": 17,
+          "oid": 0,
+          "name": "南孚(NANFU)LR6AA聚能环5号电池碱性干电池\/儿童玩具\/血糖仪\/挂钟\/鼠标键盘遥控器电池30粒装",
+          "taxPrice": 7.52,
+          "skuId": 4025874,　----103997
+          "nakedPrice": 44.24,
+          "type": 0
+        }
+      ],
+      "orderTaxPrice": 15.04
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{template 'common/header'}
+
+{template '__nav-tabs_merch__'}
+
+<div class="alert alert-info" >
+    以下为正式数据库数据，可以看出，<br/>
+    <ol>
+        <li>以ID来比对是不行的;以名称来比对是不会有不确定性;以page_num来比对,只有部分能比对上</li>
+        <li>主图片为没意义图多，不要了;排序不要了;classify,ctime不要了</li>
+        <li>同步分类图片,通过page_num来作比对</li>
+        <li>映射商品分类,通过page_num来作比对;不能比对的需手动映射;红色部分是要手动填写</li>
+        <li><a href="{php echo $this->createMyWebUrl('shop_product_category_2_fiscal',array(),'superdesk_jd_vop');}" target="_blank">比对地址</a></li>
+    </ol>
+</div>
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="text-align: right;">
+
+                <span id="showContent"></span>
+
+                {if $filter_total_0 == 1}
+                <a class="btn btn-sm btn-default btn-mapping"><i class="fa fa-cog">&nbsp;&nbsp;映射商品分类</i></a>
+                {else}
+                <a class="btn btn-sm btn-default btn-sync"><i class="fa fa-cog">&nbsp;&nbsp;同步分类图片</i></a>
+                {/if}
+
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-condensed "><!-- table-hover -->
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:5%;">classify<br/>id</th>
+                        <th style="width:6%;">分类名称</th>
+                        <th style="width:4%;">classify<br/>status</th>
+                        <th style="width:6%;">图片</th>
+                        <!--<th style="width:2.8rem;">排序</th>-->
+                        <!--<th style="width:14rem;">classify<br/>ctime</th>-->
+                        <th style="width:3%;">父类<br/>id</th>
+                        <th style="width:5%;">page_num</th>
+                        <th style="width:15%;">映射 TargetCateId<br/>辅助导入</th>
+                        <!--<th style="width:5rem;">classify<br/>isshow<br/>商城首页是否显示<br/>0:不显<br/>1:显示</th>-->
+                        <!--<th style="width:5rem;">主图片</th>-->
+                        <th style="width:3%;">商品数量<br/>辅助导入</th>
+                        <th style="width:15%;">处理状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {php $pid = 0}
+                    {loop $list $id $item}
+
+                    {if $filter_total_0 == 1}
+
+                        {if $item['total'] == 0}
+                        {else}
+
+                            {if $pid != $item['classify_pid']}
+                            <tr>
+                                <td colspan="9" style="background-color: #d9edf7;">
+                                    <h4>{$list[$item['classify_pid']]['classify_name']}</h4>
+                                </td>
+                            </tr>
+                            {php $pid = $item['classify_pid'];}
+                            {/if}
+
+                            <tr {if $item['target_cate_id'] == 0}style="background-color: red;"{/if}">
+                                <td>{$item['classify_id']}</td>
+                                <td>{$item['classify_name']}</td>
+                                <td>{$item['classify_status']}</td>
+                                <td><img style="width: 5rem;height: 5rem;" src="{$item['classify_pic']}"></td>
+                                <td>{$item['classify_pid']}</td>
+                                <td>{if empty($item['page_num'])}需要手动填写{else}{$item['page_num']}{/if}</td>
+                                <td>
+
+                                    <span class="pull-right" style="margin: 0 2rem; width: 5rem;">
+                                        <a href="javascript:void(0);"
+                                           data-classify_id="{$item['classify_id']}"
+                                           class="btn btn-default btn-sm btn_update_target_cate_id"
+                                           data-toggle="tooltip"
+                                           data-placement="top"
+                                           title="保存"><i class="fa fa-pencil">&nbsp;保存</i></a>
+                                    </span>
+                                    <span class="pull-right" style="margin: 0 2rem; width: 10rem;">
+                                    <input type="text"
+                                           name="target_cate_id"
+                                           class="form-control for_update_target_cate_id"
+                                           data-classify_id="{$item['classify_id']}"
+                                           data-page_num="{$item['page_num']}"
+                                           value="{$item['target_cate_id']}"
+                                           placeholder="{if empty($item['target_cate_id'])}没找到映射关系{/if}"/>
+                                    </span>
+                                </td>
+                                <td>{$item['total']}</td>
+                                <td class="tips_{$item['classify_id']}"></td>
+                            </tr>
+                        {/if}
+
+
+                    {else}
+                        <tr class="item_tr"
+                            data-thumb="{$item['classify_pic']}"
+                            data-page_num="{$item['page_num']}"
+                        >
+                            <td>{$item['classify_id']}</td>
+                            <td>{$item['classify_name']}</td>
+                            <td>{$item['classify_status']}</td>
+                            <td><img style="width: 5rem;height: 5rem;" src="{$item['classify_pic']}"></td>
+                            <!--<td>{$item['classify_sort']}</td>-->
+                            <!--<td>{$item['classify_ctime']}</td>-->
+                            <td>{$item['classify_pid']}</td>
+                            <td>{if empty($item['page_num'])}NULL{else}{$item['page_num']}{/if}</td>
+                            <td></td>
+                            <!--<td>{$item['classify_isshow']}</td>-->
+                            <!--<td><img style="height: 5rem;" src="{$item['classify_main_pic']}"></td>-->
+                            <td>{$item['total']}</td>
+                            <td class="tips_{$item['page_num']}"></td>
+                        </tr>
+                    {/if}
+                    {/loop}
+                    <tr>
+                        <td>
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                            {$total}
+                        </td>
+                        <td colspan="6">
+                            {$pager}
+                        </td>
+                        <td>
+                            {$count_goods}
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="application/javascript">
+
+
+    // 同步分类图片 start
+    var js_update_shop_cate_img = function (page_num ,thumb, isThen) {
+
+        $("#showContent").html("同处理中 ...");
+
+        return $.ajax({
+            type: "POST",
+            url: "{php echo $this->createMyJsUrl('js_update_shop_cate_img',array(),'superdesk_shop_member');}",
+            data: {
+                page_num : page_num,
+                thumb : thumb
+            },
+            success: function (data) {
+
+                console.log(data);
+                var obj = JSON.parse(data);
+                if (obj.status == 0) {
+                    $(".tips_"+page_num).html(obj.result.message);
+                } else if (obj.status == 1) {
+                    $(".tips_"+page_num).html(obj.result.message);
+                }
+
+
+            }
+        }).then(function () {
+            if(isThen){
+
+            }
+
+        });
+    };
+
+    var sync_batch_page_num = function () {
+
+        var defer = $.Deferred();
+        defer.resolve($("#showContent").html("开始同步执行 ..."));
+
+        $('.item_tr').each(function (index) {
+
+            console.log(index);
+
+
+            var page_num = $(this).data('page_num');
+            var thumb   = $(this).data('thumb');
+
+            if(page_num == '' ) {
+                $(".tips_"+page_num).html("disregard");
+                return true;// 如果return false 相当于break 如果return true 相当于 continure
+            }
+            console.log(page_num);
+
+            defer = defer.then(function () {
+                return js_update_shop_cate_img(page_num, thumb, false);
+            });
+        });
+
+        defer.done(function(){
+            $("#showContent").html("结束同步执行 .");
+        });
+    };
+    // 同步分类图片 end
+
+    // 映射商品分类 start
+    var js_update_shop_cate_mapping_by_page_nun = function (page_num ,classify_id, isThen) {
+
+
+        return $.ajax({
+            type: "POST",
+            url: "{php echo $this->createMyJsUrl('js_update_shop_cate_mapping_by_page_nun',array(),'superdesk_shop_member');}",
+            data: {
+                page_num    : page_num,
+                classify_id : classify_id
+            },
+            success: function (data) {
+
+                console.log(data);
+                var obj = JSON.parse(data);
+                if (obj.status == 0) {
+                    $(".tips_"+classify_id).html(obj.result.message);
+                } else if (obj.status == 1) {
+                    $(".tips_"+classify_id).html(obj.result.name);
+                }
+            }
+        }).then(function () {
+            if(isThen){
+            }
+        });
+    };
+
+    var sync_batch_mapping2shopcate = function () {
+
+        console.log('sync_batch_mapping2shopcate start');
+
+        var defer = $.Deferred();
+
+        defer.resolve($("#showContent").html("开始映射执行 ..."));
+
+        $('.for_update_target_cate_id').each(function (index) {
+
+            var page_num      = $(this).data('page_num');
+            var classify_id   = $(this).data('classify_id');
+
+            if(page_num == 0 ) {
+                $(".tips_"+classify_id).html("disregard");
+                return true;// 如果return false 相当于break 如果return true 相当于 continure
+            }
+
+            defer = defer.then(function () {
+                return js_update_shop_cate_mapping_by_page_nun(page_num, classify_id, false);
+            });
+        });
+
+        defer.done(function(){
+            $("#showContent").html("结束映射执行 .");
+        });
+    };
+
+    var js_update_shop_cate_mapping = function (target_cate_id ,classify_id, isThen) {
+
+
+        return $.ajax({
+            type: "POST",
+            url: "{php echo $this->createMyJsUrl('js_update_shop_cate_mapping',array(),'superdesk_shop_member');}",
+            data: {
+                target_cate_id : target_cate_id,
+                classify_id : classify_id
+            },
+            success: function (data) {
+
+                console.log(data);
+                var obj = JSON.parse(data);
+                if (obj.status == 0) {
+                    $(".tips_"+classify_id).html(obj.result.message);
+                } else if (obj.status == 1) {
+                    $(".tips_"+classify_id).html(obj.result.name);
+                }
+            }
+        }).then(function () {
+            if(isThen){
+            }
+        });
+    };
+
+    $(".btn_update_target_cate_id").on("click", function(){
+
+        var classify_id = $(this).data('classify_id');
+        var target_cate_id = $("input[data-classify_id=" + classify_id + "]").val();
+
+        if(target_cate_id == '' || target_cate_id == 0) {
+            $(".tips_"+classify_id).html("请填写新版商城分类ID");
+            return ;
+        }
+
+        js_update_shop_cate_mapping(target_cate_id, classify_id, false);
+    });
+
+    // 映射商品分类 end
+
+    $(document).ready(function () {
+        $(".btn-sync").bind("click", sync_batch_page_num);
+        $(".btn-mapping").bind("click", sync_batch_mapping2shopcate);
+
+    });
+
+</script>
+
+{template 'common/footer'}

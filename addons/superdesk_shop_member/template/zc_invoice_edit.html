@@ -1,0 +1,116 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('zc_invoice', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('zc_invoice', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="zi_id" class="form-control" value="{$item['zi_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">1 普通发票 2 增值税发票</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="zi_invoiceType" class="form-control" value="{$item['zi_invoiceType']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">发票类型：1:个人，2 :单位</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="zi_selectedInvoiceTitle" class="form-control" value="{$item['zi_selectedInvoiceTitle']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">发票抬头  </label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="zi_companyName" class="form-control" value="{$item['zi_companyName']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">0:明细，1：电脑配件，2:耗材，3：办公用品(备注:若增值发票则只能选 0 明细) </label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="zi_invoiceContent" class="form-control" value="{$item['zi_invoiceContent']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">增值票注册地址</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="zi_invoiceAddress" class="form-control" value="{$item['zi_invoiceAddress']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">增值票注册电话</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="zi_invoicePhone" class="form-control" value="{$item['zi_invoicePhone']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">0:失效，1：有效</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="zi_state" class="form-control" value="{$item['zi_state']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">粉丝id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="zi_fansid" class="form-control" value="{$item['zi_fansid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="zi_ctime" class="form-control" value="{$item['zi_ctime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">纳税人识别号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="zi_taxpayer_identification_number" class="form-control" value="{$item['zi_taxpayer_identification_number']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">增值票开户银行</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="zi_invoiceBank" class="form-control" value="{$item['zi_invoiceBank']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">增值票开户帐号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="zi_invoiceAccount" class="form-control" value="{$item['zi_invoiceAccount']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">增值票收票人</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="zi_invoiceName" class="form-control" value="{$item['zi_invoiceName']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

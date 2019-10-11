@@ -1,0 +1,6 @@
+{ifp 'sysset.enterprise'}
+<div class='menu-header'>企业</div>
+<ul>
+    {ifp 'sysset.enterprise'}<li {if $_W['routes']=='sysset.enterprise' ||$_W['routes']=='sysset'}class="active"{/if}><a href="{php echo enterpriseUrl('sysset/enterprise');}">基础设置</a></li>{/if}
+</ul>
+{/if}

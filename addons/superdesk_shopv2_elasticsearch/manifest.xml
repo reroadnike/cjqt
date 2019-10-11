@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="0.6,0.7,0.8">
+	<application setting="false">
+		<name><![CDATA[超级前台-商城-搜索插件]]></name>
+		<identifie><![CDATA[superdesk_shopv2_elasticsearch]]></identifie>
+		<version><![CDATA[2.7.5]]></version>
+		<type><![CDATA[business]]></type>
+		<ability><![CDATA[超级前台-商城-搜索插件]]></ability>
+		<description><![CDATA[超级前台-商城-搜索插件]]></description>
+		<author><![CDATA[前海超级前台（深圳）信息技术有限公司]]></author>
+		<url><![CDATA[http://www.avic-s.com/]]></url>
+	</application>
+	<platform>
+		<subscribes>
+		</subscribes>
+		<handles>
+		</handles>
+		<rule embed="false" />
+		<card embed="false" />
+	</platform>
+	<bindings>
+		<menu>
+			<entry title="功能说明" do="readme" state="" direct="false"/>
+			<entry title="词" do="elasticsearch_dictionary" state="" direct="false"/>
+			<entry title="分类" do="elasticsearch_dictionary_category" state="" direct="false"/>
+			<entry title="用户搜索日志" do="member_search_log" state="" direct="false"/>
+		</menu>
+	</bindings>
+	<permissions>
+	</permissions>
+	<install><![CDATA[]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

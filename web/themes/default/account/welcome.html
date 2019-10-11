@@ -1,0 +1,26 @@
+{template 'common/header-base'}
+<div class="home">
+	<div class="content clearfix">
+		<div id="head">
+			<div class="logo" {if !empty($copyright['flogo'])}style="background:url('{php echo tomedia($copyright['flogo']);}') no-repeat;"{/if}></div>
+			<div class="advertisement">
+				{if !empty($copyright['notice'])}
+					{$copyright['notice']}
+				{else}
+				{/if}
+			</div>
+			<div class="btns">
+				<a href="{url 'user/login'}" class="btn btn-primary btn-lg"><i class="fa fa-user"></i> 立即登录</a>
+				{if !empty($settings['register']['open'])}
+				<a href="{url 'user/register'}" class="btn btn-primary btn-lg"><i class="fa fa-user-plus"></i> 我要加入</a>
+				{/if}
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	require(['bootstrap']);
+
+</script>
+</body>
+</html>

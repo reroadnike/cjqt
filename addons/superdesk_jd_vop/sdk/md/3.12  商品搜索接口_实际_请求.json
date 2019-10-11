@@ -1,0 +1,1649 @@
+{
+  "success": true,
+  "resultMessage": "操作成功",
+  "resultCode": "0000",
+  "result": {
+    "resultCount": 3437,
+    "pageSize": 20,
+    "pageIndex": 1,
+    "pageCount": 150,
+    "brandAggregate": {
+      "pinyinAggr": [
+        "other"
+      ],
+      "brandList": [
+        {
+          "id": "11516",
+          "pinyin": "other",
+          "name": "联想（Lenovo）"
+        }
+      ]
+    },
+    "priceIntervalAggregate": [
+      {
+        "min": 0,
+        "max": 199
+      },
+      {
+        "min": 200,
+        "max": 799
+      },
+      {
+        "min": 800,
+        "max": 3699
+      },
+      {
+        "min": 3700,
+        "max": 5899
+      },
+      {
+        "min": 5900,
+        "max": 14999
+      },
+      {
+        "min": 15000,
+        "max": 44799
+      },
+      {
+        "min": 44800,
+        "max": 159999
+      },
+      {
+        "min": 0,
+        "max": 0
+      }
+    ],
+    "categoryAggregate": {
+      "firstCategory": [
+        {
+          "catId": 670,
+          "count": 2447,
+          "parentId": 0,
+          "field": "cid1",
+          "name": "电脑、办公",
+          "weight": 0
+        },
+        {
+          "catId": 1672,
+          "count": 595,
+          "parentId": 0,
+          "field": "cid1",
+          "name": "礼品箱包",
+          "weight": 0
+        },
+        {
+          "catId": 1713,
+          "count": 215,
+          "parentId": 0,
+          "field": "cid1",
+          "name": "图书",
+          "weight": 0
+        },
+        {
+          "catId": 652,
+          "count": 88,
+          "parentId": 0,
+          "field": "cid1",
+          "name": "数码",
+          "weight": 0
+        },
+        {
+          "catId": 9987,
+          "count": 42,
+          "parentId": 0,
+          "field": "cid1",
+          "name": "手机",
+          "weight": 0
+        },
+        {
+          "catId": 737,
+          "count": 25,
+          "parentId": 0,
+          "field": "cid1",
+          "name": "家用电器",
+          "weight": 0
+        },
+        {
+          "catId": 6728,
+          "count": 23,
+          "parentId": 0,
+          "field": "cid1",
+          "name": "汽车用品",
+          "weight": 0
+        },
+        {
+          "catId": 6196,
+          "count": 1,
+          "parentId": 0,
+          "field": "cid1",
+          "name": "厨具",
+          "weight": 0
+        },
+        {
+          "catId": 9259,
+          "count": 1,
+          "parentId": 0,
+          "field": "cid1",
+          "name": "测试分类",
+          "weight": 0
+        }
+      ],
+      "secondCategory": [
+        {
+          "catId": 671,
+          "count": 1830,
+          "parentId": 670,
+          "field": "cid2",
+          "name": "电脑整机",
+          "weight": 0
+        },
+        {
+          "catId": 2577,
+          "count": 567,
+          "parentId": 1672,
+          "field": "cid2",
+          "name": "功能箱包",
+          "weight": 0
+        },
+        {
+          "catId": 729,
+          "count": 415,
+          "parentId": 670,
+          "field": "cid2",
+          "name": "文具\/耗材",
+          "weight": 0
+        },
+        {
+          "catId": 3291,
+          "count": 111,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "外语学习",
+          "weight": 0
+        },
+        {
+          "catId": 686,
+          "count": 82,
+          "parentId": 670,
+          "field": "cid2",
+          "name": "外设产品",
+          "weight": 0
+        },
+        {
+          "catId": 677,
+          "count": 56,
+          "parentId": 670,
+          "field": "cid2",
+          "name": "电脑配件",
+          "weight": 0
+        },
+        {
+          "catId": 828,
+          "count": 50,
+          "parentId": 652,
+          "field": "cid2",
+          "name": "影音娱乐",
+          "weight": 0
+        },
+        {
+          "catId": 716,
+          "count": 49,
+          "parentId": 670,
+          "field": "cid2",
+          "name": "办公设备",
+          "weight": 0
+        },
+        {
+          "catId": 2599,
+          "count": 28,
+          "parentId": 1672,
+          "field": "cid2",
+          "name": "礼品",
+          "weight": 0
+        },
+        {
+          "catId": 12345,
+          "count": 28,
+          "parentId": 652,
+          "field": "cid2",
+          "name": "智能设备",
+          "weight": 0
+        },
+        {
+          "catId": 3263,
+          "count": 27,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "童书",
+          "weight": 0
+        },
+        {
+          "catId": 3289,
+          "count": 24,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "中小学教辅",
+          "weight": 0
+        },
+        {
+          "catId": 3290,
+          "count": 23,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "考试",
+          "weight": 0
+        },
+        {
+          "catId": 653,
+          "count": 21,
+          "parentId": 9987,
+          "field": "cid2",
+          "name": "手机通讯",
+          "weight": 0
+        },
+        {
+          "catId": 830,
+          "count": 21,
+          "parentId": 9987,
+          "field": "cid2",
+          "name": "手机配件",
+          "weight": 0
+        },
+        {
+          "catId": 1276,
+          "count": 19,
+          "parentId": 737,
+          "field": "cid2",
+          "name": "个护健康",
+          "weight": 0
+        },
+        {
+          "catId": 6740,
+          "count": 16,
+          "parentId": 6728,
+          "field": "cid2",
+          "name": "车载电器",
+          "weight": 0
+        },
+        {
+          "catId": 3266,
+          "count": 11,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "管理",
+          "weight": 0
+        },
+        {
+          "catId": 12346,
+          "count": 10,
+          "parentId": 652,
+          "field": "cid2",
+          "name": "电子教育",
+          "weight": 0
+        },
+        {
+          "catId": 12800,
+          "count": 10,
+          "parentId": 670,
+          "field": "cid2",
+          "name": "游戏设备",
+          "weight": 0
+        },
+        {
+          "catId": 6929,
+          "count": 7,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "港台图书",
+          "weight": 0
+        },
+        {
+          "catId": 794,
+          "count": 6,
+          "parentId": 737,
+          "field": "cid2",
+          "name": "大 家 电",
+          "weight": 0
+        },
+        {
+          "catId": 6745,
+          "count": 6,
+          "parentId": 6728,
+          "field": "cid2",
+          "name": "汽车装饰",
+          "weight": 0
+        },
+        {
+          "catId": 699,
+          "count": 5,
+          "parentId": 670,
+          "field": "cid2",
+          "name": "网络产品",
+          "weight": 0
+        },
+        {
+          "catId": 3262,
+          "count": 2,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "艺术",
+          "weight": 0
+        },
+        {
+          "catId": 3281,
+          "count": 2,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "社会科学",
+          "weight": 0
+        },
+        {
+          "catId": 3259,
+          "count": 1,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "文学",
+          "weight": 0
+        },
+        {
+          "catId": 3280,
+          "count": 1,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "文化",
+          "weight": 0
+        },
+        {
+          "catId": 3294,
+          "count": 1,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "字典词典\/工具书",
+          "weight": 0
+        },
+        {
+          "catId": 4855,
+          "count": 1,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "进口原版",
+          "weight": 0
+        },
+        {
+          "catId": 6747,
+          "count": 1,
+          "parentId": 6728,
+          "field": "cid2",
+          "name": "安全自驾",
+          "weight": 0
+        },
+        {
+          "catId": 9182,
+          "count": 1,
+          "parentId": 6196,
+          "field": "cid2",
+          "name": "酒店用品",
+          "weight": 0
+        },
+        {
+          "catId": 9314,
+          "count": 1,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "娱乐\/休闲",
+          "weight": 0
+        },
+        {
+          "catId": 9340,
+          "count": 1,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "科普读物",
+          "weight": 0
+        },
+        {
+          "catId": 9401,
+          "count": 1,
+          "parentId": 9259,
+          "field": "cid2",
+          "name": "测试分类二级01",
+          "weight": 0
+        },
+        {
+          "catId": 11047,
+          "count": 1,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "大中专教材教辅",
+          "weight": 0
+        },
+        {
+          "catId": 12775,
+          "count": 1,
+          "parentId": 1713,
+          "field": "cid2",
+          "name": "绘画",
+          "weight": 0
+        }
+      ],
+      "thridCategory": [
+        {
+          "catId": 672,
+          "count": 447,
+          "parentId": 671,
+          "field": "catid",
+          "name": "笔记本",
+          "weight": 1000
+        },
+        {
+          "catId": 1105,
+          "count": 65,
+          "parentId": 671,
+          "field": "catid",
+          "name": "游戏本",
+          "weight": 329
+        },
+        {
+          "catId": 673,
+          "count": 715,
+          "parentId": 671,
+          "field": "catid",
+          "name": "台式机",
+          "weight": 164
+        },
+        {
+          "catId": 3997,
+          "count": 566,
+          "parentId": 2577,
+          "field": "catid",
+          "name": "电脑包",
+          "weight": 0
+        },
+        {
+          "catId": 730,
+          "count": 407,
+          "parentId": 729,
+          "field": "catid",
+          "name": "硒鼓\/墨粉",
+          "weight": 0
+        },
+        {
+          "catId": 674,
+          "count": 320,
+          "parentId": 671,
+          "field": "catid",
+          "name": "服务器\/工作站",
+          "weight": 0
+        },
+        {
+          "catId": 675,
+          "count": 164,
+          "parentId": 671,
+          "field": "catid",
+          "name": "笔记本配件",
+          "weight": 0
+        },
+        {
+          "catId": 12798,
+          "count": 77,
+          "parentId": 671,
+          "field": "catid",
+          "name": "一体机",
+          "weight": 0
+        },
+        {
+          "catId": 6624,
+          "count": 45,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "英语四\/六级考试（CET-4\/6）",
+          "weight": 0
+        },
+        {
+          "catId": 869,
+          "count": 41,
+          "parentId": 828,
+          "field": "catid",
+          "name": "麦克风",
+          "weight": 0
+        },
+        {
+          "catId": 1049,
+          "count": 37,
+          "parentId": 686,
+          "field": "catid",
+          "name": "线缆",
+          "weight": 0
+        },
+        {
+          "catId": 688,
+          "count": 32,
+          "parentId": 677,
+          "field": "catid",
+          "name": "显示器",
+          "weight": 0
+        },
+        {
+          "catId": 2694,
+          "count": 29,
+          "parentId": 671,
+          "field": "catid",
+          "name": "平板电脑",
+          "weight": 0
+        },
+        {
+          "catId": 12079,
+          "count": 28,
+          "parentId": 2599,
+          "field": "catid",
+          "name": "礼品定制",
+          "weight": 0
+        },
+        {
+          "catId": 717,
+          "count": 27,
+          "parentId": 716,
+          "field": "catid",
+          "name": "打印机",
+          "weight": 0
+        },
+        {
+          "catId": 12353,
+          "count": 23,
+          "parentId": 12345,
+          "field": "catid",
+          "name": "智能家居",
+          "weight": 0
+        },
+        {
+          "catId": 655,
+          "count": 21,
+          "parentId": 653,
+          "field": "catid",
+          "name": "手机",
+          "weight": 0
+        },
+        {
+          "catId": 690,
+          "count": 21,
+          "parentId": 686,
+          "field": "catid",
+          "name": "鼠标",
+          "weight": 0
+        },
+        {
+          "catId": 6602,
+          "count": 20,
+          "parentId": 3290,
+          "field": "catid",
+          "name": "考研英语",
+          "weight": 0
+        },
+        {
+          "catId": 1289,
+          "count": 19,
+          "parentId": 1276,
+          "field": "catid",
+          "name": "电子秤",
+          "weight": 0
+        },
+        {
+          "catId": 6626,
+          "count": 19,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "雅思IELTS",
+          "weight": 0
+        },
+        {
+          "catId": 720,
+          "count": 18,
+          "parentId": 716,
+          "field": "catid",
+          "name": "多功能一体机",
+          "weight": 0
+        },
+        {
+          "catId": 693,
+          "count": 13,
+          "parentId": 686,
+          "field": "catid",
+          "name": "移动硬盘",
+          "weight": 0
+        },
+        {
+          "catId": 5146,
+          "count": 13,
+          "parentId": 671,
+          "field": "catid",
+          "name": "平板电脑配件",
+          "weight": 0
+        },
+        {
+          "catId": 6625,
+          "count": 12,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "英语专业四\/八级考试",
+          "weight": 0
+        },
+        {
+          "catId": 11303,
+          "count": 12,
+          "parentId": 677,
+          "field": "catid",
+          "name": "SSD固态硬盘",
+          "weight": 0
+        },
+        {
+          "catId": 3841,
+          "count": 11,
+          "parentId": 3289,
+          "field": "catid",
+          "name": "初中通用",
+          "weight": 0
+        },
+        {
+          "catId": 689,
+          "count": 10,
+          "parentId": 686,
+          "field": "catid",
+          "name": "键盘",
+          "weight": 0
+        },
+        {
+          "catId": 840,
+          "count": 10,
+          "parentId": 12346,
+          "field": "catid",
+          "name": "录音笔",
+          "weight": 0
+        },
+        {
+          "catId": 4761,
+          "count": 10,
+          "parentId": 3263,
+          "field": "catid",
+          "name": "绘本",
+          "weight": 0
+        },
+        {
+          "catId": 733,
+          "count": 8,
+          "parentId": 729,
+          "field": "catid",
+          "name": "色带",
+          "weight": 0
+        },
+        {
+          "catId": 3842,
+          "count": 8,
+          "parentId": 3289,
+          "field": "catid",
+          "name": "高中通用",
+          "weight": 0
+        },
+        {
+          "catId": 13661,
+          "count": 8,
+          "parentId": 830,
+          "field": "catid",
+          "name": "数据线",
+          "weight": 0
+        },
+        {
+          "catId": 13983,
+          "count": 8,
+          "parentId": 6740,
+          "field": "catid",
+          "name": "车载充电器",
+          "weight": 0
+        },
+        {
+          "catId": 4762,
+          "count": 7,
+          "parentId": 3263,
+          "field": "catid",
+          "name": "美术\/书法",
+          "weight": 0
+        },
+        {
+          "catId": 6622,
+          "count": 7,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "英语词汇",
+          "weight": 0
+        },
+        {
+          "catId": 12803,
+          "count": 7,
+          "parentId": 12800,
+          "field": "catid",
+          "name": "手柄\/方向盘",
+          "weight": 0
+        },
+        {
+          "catId": 877,
+          "count": 6,
+          "parentId": 794,
+          "field": "catid",
+          "name": "家电配件",
+          "weight": 0
+        },
+        {
+          "catId": 3895,
+          "count": 6,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "词典与工具书",
+          "weight": 0
+        },
+        {
+          "catId": 6629,
+          "count": 6,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "剑桥商务英语考试BEC",
+          "weight": 0
+        },
+        {
+          "catId": 13984,
+          "count": 6,
+          "parentId": 6745,
+          "field": "catid",
+          "name": "车载支架",
+          "weight": 0
+        },
+        {
+          "catId": 682,
+          "count": 5,
+          "parentId": 677,
+          "field": "catid",
+          "name": "散热器",
+          "weight": 0
+        },
+        {
+          "catId": 841,
+          "count": 5,
+          "parentId": 828,
+          "field": "catid",
+          "name": "音箱\/音响",
+          "weight": 0
+        },
+        {
+          "catId": 867,
+          "count": 5,
+          "parentId": 830,
+          "field": "catid",
+          "name": "手机贴膜",
+          "weight": 0
+        },
+        {
+          "catId": 3440,
+          "count": 5,
+          "parentId": 3266,
+          "field": "catid",
+          "name": "创业\/商业史传",
+          "weight": 0
+        },
+        {
+          "catId": 6964,
+          "count": 5,
+          "parentId": 6740,
+          "field": "catid",
+          "name": "行车记录仪",
+          "weight": 0
+        },
+        {
+          "catId": 842,
+          "count": 4,
+          "parentId": 828,
+          "field": "catid",
+          "name": "耳机\/耳麦",
+          "weight": 0
+        },
+        {
+          "catId": 866,
+          "count": 4,
+          "parentId": 830,
+          "field": "catid",
+          "name": "手机壳\/保护套",
+          "weight": 0
+        },
+        {
+          "catId": 3398,
+          "count": 4,
+          "parentId": 3263,
+          "field": "catid",
+          "name": "智力开发",
+          "weight": 0
+        },
+        {
+          "catId": 5008,
+          "count": 4,
+          "parentId": 677,
+          "field": "catid",
+          "name": "声卡\/扩展卡",
+          "weight": 0
+        },
+        {
+          "catId": 702,
+          "count": 3,
+          "parentId": 699,
+          "field": "catid",
+          "name": "交换机",
+          "weight": 0
+        },
+        {
+          "catId": 3836,
+          "count": 3,
+          "parentId": 3289,
+          "field": "catid",
+          "name": "小学通用",
+          "weight": 0
+        },
+        {
+          "catId": 3887,
+          "count": 3,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "日语",
+          "weight": 0
+        },
+        {
+          "catId": 3890,
+          "count": 3,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "英语综合教程",
+          "weight": 0
+        },
+        {
+          "catId": 3892,
+          "count": 3,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "其它英语考试",
+          "weight": 0
+        },
+        {
+          "catId": 6611,
+          "count": 3,
+          "parentId": 3290,
+          "field": "catid",
+          "name": "博士生入学考试",
+          "weight": 0
+        },
+        {
+          "catId": 6807,
+          "count": 3,
+          "parentId": 6740,
+          "field": "catid",
+          "name": "车载净化器",
+          "weight": 0
+        },
+        {
+          "catId": 12802,
+          "count": 3,
+          "parentId": 12800,
+          "field": "catid",
+          "name": "游戏耳机",
+          "weight": 0
+        },
+        {
+          "catId": 862,
+          "count": 2,
+          "parentId": 830,
+          "field": "catid",
+          "name": "手机耳机",
+          "weight": 0
+        },
+        {
+          "catId": 3379,
+          "count": 2,
+          "parentId": 3262,
+          "field": "catid",
+          "name": "设计",
+          "weight": 0
+        },
+        {
+          "catId": 3399,
+          "count": 2,
+          "parentId": 3263,
+          "field": "catid",
+          "name": "科普\/百科",
+          "weight": 0
+        },
+        {
+          "catId": 3401,
+          "count": 2,
+          "parentId": 3263,
+          "field": "catid",
+          "name": "少儿英语",
+          "weight": 0
+        },
+        {
+          "catId": 5009,
+          "count": 2,
+          "parentId": 677,
+          "field": "catid",
+          "name": "装机配件",
+          "weight": 0
+        },
+        {
+          "catId": 5010,
+          "count": 2,
+          "parentId": 716,
+          "field": "catid",
+          "name": "投影配件",
+          "weight": 0
+        },
+        {
+          "catId": 6592,
+          "count": 2,
+          "parentId": 3289,
+          "field": "catid",
+          "name": "字帖",
+          "weight": 0
+        },
+        {
+          "catId": 6628,
+          "count": 2,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "托业TOEIC",
+          "weight": 0
+        },
+        {
+          "catId": 6957,
+          "count": 2,
+          "parentId": 6929,
+          "field": "catid",
+          "name": "文化\/學術",
+          "weight": 0
+        },
+        {
+          "catId": 12347,
+          "count": 2,
+          "parentId": 12345,
+          "field": "catid",
+          "name": "智能手环",
+          "weight": 0
+        },
+        {
+          "catId": 12348,
+          "count": 2,
+          "parentId": 12345,
+          "field": "catid",
+          "name": "智能手表",
+          "weight": 0
+        },
+        {
+          "catId": 13660,
+          "count": 2,
+          "parentId": 830,
+          "field": "catid",
+          "name": "充电器",
+          "weight": 0
+        },
+        {
+          "catId": 684,
+          "count": 1,
+          "parentId": 677,
+          "field": "catid",
+          "name": "刻录机\/光驱",
+          "weight": 0
+        },
+        {
+          "catId": 700,
+          "count": 1,
+          "parentId": 699,
+          "field": "catid",
+          "name": "路由器",
+          "weight": 0
+        },
+        {
+          "catId": 701,
+          "count": 1,
+          "parentId": 699,
+          "field": "catid",
+          "name": "网卡",
+          "weight": 0
+        },
+        {
+          "catId": 722,
+          "count": 1,
+          "parentId": 716,
+          "field": "catid",
+          "name": "投影机",
+          "weight": 0
+        },
+        {
+          "catId": 1047,
+          "count": 1,
+          "parentId": 686,
+          "field": "catid",
+          "name": "插座",
+          "weight": 0
+        },
+        {
+          "catId": 3333,
+          "count": 1,
+          "parentId": 3259,
+          "field": "catid",
+          "name": "散文\/随笔\/书信",
+          "weight": 0
+        },
+        {
+          "catId": 3394,
+          "count": 1,
+          "parentId": 3263,
+          "field": "catid",
+          "name": "儿童文学",
+          "weight": 0
+        },
+        {
+          "catId": 3396,
+          "count": 1,
+          "parentId": 3263,
+          "field": "catid",
+          "name": "手工\/游戏",
+          "weight": 0
+        },
+        {
+          "catId": 3439,
+          "count": 1,
+          "parentId": 3266,
+          "field": "catid",
+          "name": "人力资源管理",
+          "weight": 0
+        },
+        {
+          "catId": 3441,
+          "count": 1,
+          "parentId": 3266,
+          "field": "catid",
+          "name": "企业管理与培训",
+          "weight": 0
+        },
+        {
+          "catId": 3444,
+          "count": 1,
+          "parentId": 3266,
+          "field": "catid",
+          "name": "市场营销",
+          "weight": 0
+        },
+        {
+          "catId": 3445,
+          "count": 1,
+          "parentId": 3266,
+          "field": "catid",
+          "name": "战略管理",
+          "weight": 0
+        },
+        {
+          "catId": 3449,
+          "count": 1,
+          "parentId": 3266,
+          "field": "catid",
+          "name": "管理学",
+          "weight": 0
+        },
+        {
+          "catId": 3454,
+          "count": 1,
+          "parentId": 3266,
+          "field": "catid",
+          "name": "领导学",
+          "weight": 0
+        },
+        {
+          "catId": 3664,
+          "count": 1,
+          "parentId": 3280,
+          "field": "catid",
+          "name": "文化评述",
+          "weight": 0
+        },
+        {
+          "catId": 3681,
+          "count": 1,
+          "parentId": 3281,
+          "field": "catid",
+          "name": "社会调查",
+          "weight": 0
+        },
+        {
+          "catId": 3883,
+          "count": 1,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "外语教学\/学术著作",
+          "weight": 0
+        },
+        {
+          "catId": 3886,
+          "count": 1,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "德语",
+          "weight": 0
+        },
+        {
+          "catId": 3888,
+          "count": 1,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "生活实用英语",
+          "weight": 0
+        },
+        {
+          "catId": 3889,
+          "count": 1,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "法语",
+          "weight": 0
+        },
+        {
+          "catId": 3891,
+          "count": 1,
+          "parentId": 3291,
+          "field": "catid",
+          "name": "职业\/行业英语",
+          "weight": 0
+        },
+        {
+          "catId": 4858,
+          "count": 1,
+          "parentId": 4855,
+          "field": "catid",
+          "name": "Business & Investing（商业与投资）",
+          "weight": 0
+        },
+        {
+          "catId": 5265,
+          "count": 1,
+          "parentId": 2577,
+          "field": "catid",
+          "name": "书包",
+          "weight": 0
+        },
+        {
+          "catId": 6932,
+          "count": 1,
+          "parentId": 6929,
+          "field": "catid",
+          "name": "動漫\/繪本",
+          "weight": 0
+        },
+        {
+          "catId": 6937,
+          "count": 1,
+          "parentId": 6929,
+          "field": "catid",
+          "name": "娛樂時尚",
+          "weight": 0
+        },
+        {
+          "catId": 6948,
+          "count": 1,
+          "parentId": 6929,
+          "field": "catid",
+          "name": "文學",
+          "weight": 0
+        },
+        {
+          "catId": 6954,
+          "count": 1,
+          "parentId": 6929,
+          "field": "catid",
+          "name": "經濟管理",
+          "weight": 0
+        },
+        {
+          "catId": 6956,
+          "count": 1,
+          "parentId": 6929,
+          "field": "catid",
+          "name": "工業\/建築\/計算機",
+          "weight": 0
+        },
+        {
+          "catId": 7374,
+          "count": 1,
+          "parentId": 716,
+          "field": "catid",
+          "name": "安防监控",
+          "weight": 0
+        },
+        {
+          "catId": 9184,
+          "count": 1,
+          "parentId": 9182,
+          "field": "catid",
+          "name": "酒店餐具",
+          "weight": 0
+        },
+        {
+          "catId": 9319,
+          "count": 1,
+          "parentId": 9314,
+          "field": "catid",
+          "name": "休闲游戏",
+          "weight": 0
+        },
+        {
+          "catId": 9339,
+          "count": 1,
+          "parentId": 3281,
+          "field": "catid",
+          "name": "语言文字",
+          "weight": 0
+        },
+        {
+          "catId": 9343,
+          "count": 1,
+          "parentId": 9340,
+          "field": "catid",
+          "name": "数理化",
+          "weight": 0
+        },
+        {
+          "catId": 11048,
+          "count": 1,
+          "parentId": 11047,
+          "field": "catid",
+          "name": "大学教材",
+          "weight": 0
+        },
+        {
+          "catId": 11954,
+          "count": 1,
+          "parentId": 6747,
+          "field": "catid",
+          "name": "胎压监测",
+          "weight": 0
+        },
+        {
+          "catId": 12087,
+          "count": 1,
+          "parentId": 3294,
+          "field": "catid",
+          "name": "法语词典",
+          "weight": 0
+        },
+        {
+          "catId": 12351,
+          "count": 1,
+          "parentId": 12345,
+          "field": "catid",
+          "name": "健康监测",
+          "weight": 0
+        },
+        {
+          "catId": 12777,
+          "count": 1,
+          "parentId": 12775,
+          "field": "catid",
+          "name": "国画赏析",
+          "weight": 0
+        },
+        {
+          "catId": 15097,
+          "count": 1,
+          "parentId": 9401,
+          "field": "catid",
+          "name": "测试三级分类-zz11",
+          "weight": 0
+        }
+      ]
+    },
+    "expandAttrAggregate": null,
+    "hitResult": [
+      {
+        "wareId": "6529483",
+        "warePId": "4422256",
+        "brandId": "11518",
+        "brand": "ThinkPad",
+        "wareName": "联想ThinkPad E470（A3CD）14英寸笔记本电脑（i5-7200U 8G 500G Win10）黑色",
+        "catName": null,
+        "imageUrl": "jfs\/t15844\/275\/2111239890\/213333\/a47edfb9\/5a7bbdd2N4d29ed16.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "4422256",
+        "warePId": "4422256",
+        "brandId": "11518",
+        "brand": "ThinkPad",
+        "wareName": "联想ThinkPad E470c（0PCD）14英寸笔记本电脑（i3-6006U 4G 500G Win10）黑色",
+        "catName": null,
+        "imageUrl": "jfs\/t14581\/123\/1031749630\/261455\/2b01e587\/5a434789N73be71c3.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "6072622",
+        "warePId": "6076583",
+        "brandId": "11518",
+        "brand": "ThinkPad",
+        "wareName": "联想ThinkPad 翼480（0VCD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 128GSSD+500G 2G独显）",
+        "catName": null,
+        "imageUrl": "jfs\/t14920\/22\/1777379314\/198740\/95d0cc64\/5a582c82N56109a34.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "5363894",
+        "warePId": "4752515",
+        "brandId": "11516",
+        "brand": "联想（Lenovo）",
+        "wareName": "联想(Lenovo)小新潮7000 13.3英寸超轻薄窄边框笔记本电脑(i5-8250U 8G 256G MX150 office2016)花火银",
+        "catName": null,
+        "imageUrl": "jfs\/t18748\/161\/1107376415\/351144\/cfa6adde\/5abb3ec6N27cadb8a.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "5005927",
+        "warePId": "6888610",
+        "brandId": "11516",
+        "brand": "联想（Lenovo）",
+        "wareName": "联想(Lenovo)小新潮7000 14英寸轻薄窄边框笔记本电脑(I5-8250U 8G 1T+128G 940MX office2016)花火银",
+        "catName": null,
+        "imageUrl": "jfs\/t18916\/104\/1243867406\/218347\/3fc0684c\/5ac1a912N7f752390.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "5005949",
+        "warePId": "6888610",
+        "brandId": "11516",
+        "brand": "联想（Lenovo）",
+        "wareName": "联想(Lenovo)小新潮7000 14英寸轻薄窄边框笔记本电脑(I7-8550U 8G 1T+128G 940MX office2016)火花金",
+        "catName": null,
+        "imageUrl": "jfs\/t18025\/354\/1241175596\/229613\/393a2cb\/5ac1a832N4e2b2333.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "6076609",
+        "warePId": "6076583",
+        "brandId": "11518",
+        "brand": "ThinkPad",
+        "wareName": "联想ThinkPad 翼480（1ACD）14英寸轻薄窄边框笔记本电脑（i7-8550U 8G 128GSSD+1T 2G独显 FHD）冰原银",
+        "catName": null,
+        "imageUrl": "jfs\/t19750\/245\/24122623\/198856\/a7e0288e\/5a582ce8N6a80b6d2.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "3948470",
+        "warePId": "3517479",
+        "brandId": "11518",
+        "brand": "ThinkPad",
+        "wareName": "联想ThinkPad E470（1RCD）英特尔7代酷睿14英寸笔记本电脑（i5-7200U 8G 500G 2G独显 Win10）黑色",
+        "catName": null,
+        "imageUrl": "jfs\/t16117\/315\/861558148\/193806\/872ef179\/5a434b5cNf9656a05.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "6076583",
+        "warePId": "6076583",
+        "brandId": "11518",
+        "brand": "ThinkPad",
+        "wareName": "联想ThinkPad 翼480（04CD）英特尔8代酷睿14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 256SSD Office）冰原银",
+        "catName": null,
+        "imageUrl": "jfs\/t20830\/37\/524406248\/402601\/4c80a7f9\/5b0f9a96Nfefe93f0.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "3948454",
+        "warePId": "3597549",
+        "brandId": "11518",
+        "brand": "ThinkPad",
+        "wareName": "联想ThinkPad E470（1NCD）14英寸笔记本电脑（i5-7200U 4G 500G 2G独显 Win10）黑色",
+        "catName": null,
+        "imageUrl": "jfs\/t12937\/145\/1336861903\/193806\/872ef179\/5a434bffNc7d0c8c2.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "4752515",
+        "warePId": "4752515",
+        "brandId": "11516",
+        "brand": "联想（Lenovo）",
+        "wareName": "联想(Lenovo)小新潮7000 13.3英寸超轻薄窄边框笔记本电脑(i7-8550U 8G 256G MX150 office2016)花火银",
+        "catName": null,
+        "imageUrl": "jfs\/t22375\/120\/427069144\/301050\/78d11742\/5b0d35bcNac62b5dd.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "4161503",
+        "warePId": "4161503",
+        "brandId": "11516",
+        "brand": "联想（Lenovo）",
+        "wareName": "联想(Lenovo)小新潮5000 15.6英寸笔记本电脑(i7-7500U 4G 1T+128G 2G独显 FHD Office2016)银",
+        "catName": null,
+        "imageUrl": "jfs\/t18907\/267\/1102346776\/323837\/5066d177\/5abb1606N95cdb3cc.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "3915827",
+        "warePId": "4422256",
+        "brandId": "11518",
+        "brand": "ThinkPad",
+        "wareName": "联想ThinkPad E475（02CD）14英寸笔记本电脑（A6-9500B 4G 500G Win10）",
+        "catName": null,
+        "imageUrl": "jfs\/t13210\/51\/2626955846\/186132\/2d17eaaf\/5a4454e5N1902a9c3.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "6888608",
+        "warePId": "6888610",
+        "brandId": "11516",
+        "brand": "联想（Lenovo）",
+        "wareName": "联想(Lenovo)小新Air 2018款 15.6英寸超轻薄笔记本电脑(i5-8250U 8G 256G MX150 Office2016)灰",
+        "catName": null,
+        "imageUrl": "jfs\/t17017\/365\/1748791174\/206845\/b5605014\/5ad4736aN9c1de980.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "6431951",
+        "warePId": "4161503",
+        "brandId": "11516",
+        "brand": "联想（Lenovo）",
+        "wareName": "联想(Lenovo) ideapad320C 15.6英寸商务笔记本电脑（I5-7200U 4G 1T 2G独显 正版Office2016)黑",
+        "catName": null,
+        "imageUrl": "jfs\/t18019\/329\/526914153\/177518\/b977574\/5a93ad16N4f6acbcf.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "6529481",
+        "warePId": "4422256",
+        "brandId": "11518",
+        "brand": "ThinkPad",
+        "wareName": "联想ThinkPad E470（A5CD）14英寸笔记本电脑（i5-7200U 8G 256GSSD Win10）黑色",
+        "catName": null,
+        "imageUrl": "jfs\/t14659\/81\/2209972833\/213333\/a47edfb9\/5a7bbd87N301457cf.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "6072614",
+        "warePId": "6076583",
+        "brandId": "11518",
+        "brand": "ThinkPad",
+        "wareName": "联想ThinkPad 翼480（0UCD）14英寸轻薄窄边框笔记本电脑（i5-8250U 8G 256GSSD 2G独显 FHD IPS屏）冰原银",
+        "catName": null,
+        "imageUrl": "jfs\/t16306\/76\/1559342114\/198740\/95d0cc64\/5a582cbfNa68fe9e7.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "3178510",
+        "warePId": "3347789",
+        "brandId": "11516",
+        "brand": "联想（Lenovo）",
+        "wareName": "联想(Lenovo)小新Air 12.2英寸13.4mm超轻薄笔记本电脑(6Y30 4G 128G SSD IPS FHD WIN10 WiFi)金",
+        "catName": null,
+        "imageUrl": "jfs\/t21775\/329\/139476301\/295420\/9e482fa0\/5afea312Nf17f2b7f.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "5363896",
+        "warePId": "4752515",
+        "brandId": "11516",
+        "brand": "联想（Lenovo）",
+        "wareName": "联想(Lenovo)小新潮7000 13.3英寸超轻薄窄边框笔记本电脑(i7-8550U 8G 256G MX150 office2016)火花金",
+        "catName": null,
+        "imageUrl": "jfs\/t18025\/107\/1093175187\/359726\/aa675318\/5abb3ddcNedbd83ae.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      },
+      {
+        "wareId": "7102519",
+        "warePId": "4752515",
+        "brandId": "11516",
+        "brand": "联想（Lenovo）",
+        "wareName": "联想(Lenovo)小新潮7000 2018款 14英寸轻薄笔记本电脑(英特尔八代酷睿I7-8550U 8G 2T+128G R535)极光银",
+        "catName": null,
+        "imageUrl": "jfs\/t17908\/64\/1676226796\/224456\/85527f4e\/5ad473a3N83eb3078.jpg",
+        "catId": "672",
+        "cid1": "670",
+        "cid2": "671",
+        "cid1Name": null,
+        "cid2Name": null,
+        "wstate": "1",
+        "wyn": "1",
+        "synonyms": null
+      }
+    ]
+  },
+  "code": 200
+}

@@ -1,0 +1,416 @@
+{template '_header'}
+
+<div class="page-heading"> <h2>评价详情</h2> </div>
+
+<!--<form {if 'order.comment.edit'}action="" method='post'{/if} class='form-horizontal form-validate'>-->
+<form action="" method='post' class='form-horizontal form-validate'>
+{if !empty($comment)}
+ <input type="hidden" name="referer" value="{php echo referer()}" />
+ <input type="hidden" name="data[core_user]" value="{$member['core_user']}" />
+	<div class="tabs-container">
+
+		<div class="tabs">
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#tab-basic" aria-expanded="true"> 回复评价</a></li>
+			</ul>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">订单编号：</label>
+				<div class="col-sm-9 col-xs-12">
+					<div class='form-control-static'>{$order['ordersn']}</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">下单时间：</label>
+				<div class="col-sm-9 col-xs-12">
+					<div class='form-control-static'>{php echo date("Y-m-d H:i:s",$order['createtime'])}</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">评价时间：</label>
+				<div class="col-sm-9 col-xs-12">
+					<div class='form-control-static'>{php echo date("Y-m-d H:i:s",$comment['createtime'])}</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">评价者：</label>
+				<label style="float: left; margin-left: 20px;">{$comment['nickname']}</label>
+				<div class="col-sm-9 col-xs-12">
+					<img src='{$member['avatar']}' style='width:50px;height:50px;padding:1px;border:1px solid #ccc' />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">整单评价：</label>
+				<div class="col-sm-9 col-xs-12">
+					<span class="">物流服务：</span>
+					{if $comment['logis']==1}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					{/if}
+					{if $comment['logis']==2}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					{/if}
+					{if $comment['logis']==3}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					{/if}
+					{if $comment['logis']==4}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favor"></span>
+					{/if}
+					{if $comment['logis']==5}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					{/if}
+					<br/>
+					<span class="">服务态度：</span>
+					{if $comment['service']==1}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					{/if}
+					{if $comment['service']==2}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					{/if}
+					{if $comment['service']==3}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					{/if}
+					{if $comment['service']==4}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favor"></span>
+					{/if}
+					{if $comment['service']==5}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					{/if}
+					<br/>
+					<span class="">描述相符：</span>
+					{if $comment['describes']==1}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					{/if}
+					{if $comment['describes']==2}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					{/if}
+					{if $comment['describes']==3}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favor"></span>
+					<span class="icon icon-favor"></span>
+					{/if}
+					{if $comment['describes']==4}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favor"></span>
+					{/if}
+					{if $comment['describes']==5}
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					<span class="icon icon-favorfill selected"></span>
+					{/if}
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">首次评价：</label>
+				<div class="col-sm-9 col-xs-12">
+					<div class='form-control-static'>{$comment['content']}</div>
+				</div>
+			</div>
+			{if !empty($comment['images'])}
+			<div class="form-group">
+				<label class="col-sm-2 control-label">首次晒图：</label>
+				<div class="col-sm-9 col-xs-12">
+					<ul class="fui-images fui-images-sm" >
+						{loop $comment['images'] $i}
+						<div class=" fui-uploader-sm" data-max="5" data-count="0" style="float: left;">
+							<img src="{php echo tomedia($i)}" style="width: 70px; ">
+						</div>
+						{/loop}
+					</ul>
+				</div>
+			</div>
+			{/if}
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">首次回复：</label>
+				<div class="col-sm-9 col-xs-12">
+					{if !empty($comment['reply_content'])}
+					<div class='form-control-static reply_content' data-value="{$comment['reply_content']}">{$comment['reply_content']}</div>
+					{else}
+					<input type="text" name="reply_content" class="form-control reply_content" />
+					{/if}
+				</div>
+			</div>
+
+			{if !empty($comment['reply_images'])}
+			<div class="form-group">
+				<label class="col-sm-2 control-label">回复图片：</label>
+				<div class="col-sm-9 col-xs-12">
+					<ul class="fui-images fui-images-sm" >
+						{loop $comment['reply_images'] $i}
+						<div class=" fui-uploader-sm" data-max="5" data-count="0" style="float: left;">
+							<img src="{php echo tomedia($i)}" style="width: 70px; ">
+						</div>
+						{/loop}
+					</ul>
+				</div>
+			</div>
+			{else}
+				{if empty($comment['reply_content'])}
+					<div class="form-group">
+						<label class="col-sm-2 control-label">回复图片：</label>
+						<div class="col-sm-9 col-xs-12 gimgs">
+							{ife 'comments' $item}
+							{php echo tpl_form_field_multi_image('thumbs')}
+							<span class="help-block image-block">最多上传5张图片</span>
+							{/if}
+						</div>
+					</div>
+				{/if}
+			{/if}
+
+			{if !empty($comment['append_content'])}
+			<div class="form-group">
+				<label class="col-sm-2 control-label">追加评价：</label>
+				<div class="col-sm-9 col-xs-12">
+					<div class='form-control-static'>{$comment['append_content']}</div>
+				</div>
+			</div>
+			{else}
+			<div class="form-group">
+				<label class="col-sm-2 control-label">追加评价：</label>
+				<div class="col-sm-9 col-xs-12">
+					<div class='form-control-static'>未追加评价</div>
+				</div>
+			</div>
+			{/if}
+
+			{if !empty($comment['append_images'])}
+			<div class="form-group">
+				<label class="col-sm-2 control-label">追加晒图：</label>
+				<div class="col-sm-9 col-xs-12">
+					<ul class="fui-images fui-images-sm" >
+						{loop $comment['append_images'] $i}
+						<div class=" fui-uploader-sm" data-max="5" data-count="0" style="float: left;">
+							<img src="{php echo tomedia($i)}" style="width: 70px; ">
+						</div>
+						{/loop}
+					</ul>
+				</div>
+			</div>
+			{/if}
+			{if !empty($comment['append_content'])}
+			{if !empty($comment['reply_content'])}
+				{if !empty($comment['append_reply_content'])}
+				<div class="form-group">
+					<label class="col-sm-2 control-label">追加回复：</label>
+					<div class="col-sm-9 col-xs-12">
+						<div class='form-control-static'>{$comment['append_reply_content']}</div>
+					</div>
+				</div>
+				{else}
+				<div class="form-group">
+					<label class="col-sm-2 control-label">追加回复：</label>
+					<div class="col-sm-9 col-xs-12">
+						<input type="text" name="append_reply_content" class="form-control" />
+						<!--{if !empty($comment['append_content'])}
+						{else}
+						<div class='form-control-static'>未追加回复</div>
+						{/if}-->
+					</div>
+				</div>
+				{/if}
+
+				{if !empty($comment['append_reply_images'])}
+				<div class="form-group">
+					<label class="col-sm-2 control-label">回复图片：</label>
+					<div class="col-sm-9 col-xs-12">
+						<ul class="fui-images fui-images-sm" >
+							{loop $comment['append_reply_images'] $i}
+							<div class=" fui-uploader-sm" data-max="5" data-count="0" style="float: left;">
+								<img src="{php echo tomedia($i)}" style="width: 70px; ">
+							</div>
+							{/loop}
+						</ul>
+					</div>
+				</div>
+				{else}
+                    {if empty($comment['append_reply_content'])}
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">回复图片：</label>
+                            <div class="col-sm-9 col-xs-12 gimgs">
+                                {ife 'comments' $item}
+                                {php echo tpl_form_field_multi_image('thumbs')}
+                                <span class="help-block image-block">最多上传5张图片</span>
+                                {/if}
+                            </div>
+                        </div>
+                    {/if}
+				{/if}
+			{/if}
+			{/if}
+			<div class="form-group">
+				<label class="col-sm-2 control-label">商品打分：</label>
+				<div>
+					<table style="border-collapse:separate; border-spacing:40px 10px;">
+						<tr>
+							<th>商品名称</th>
+							<th>商品图片</th>
+							<th>商品质量</th>
+						</tr>
+						{loop $goods $g}
+						<tr>
+							<td>{$g['title']}</td>
+							<td><img src="{php echo tomedia($g['thumb'])}" style="width: 50px;" class="round"></td>
+							<td>
+								{if $g['level']==1}
+								<span class="icon icon-favorfill selected"></span>
+								<span class="icon icon-favor"></span>
+								<span class="icon icon-favor"></span>
+								<span class="icon icon-favor"></span>
+								<span class="icon icon-favor"></span>
+								{/if}
+								{if $g['level']==2}
+								<span class="icon icon-favorfill selected"></span>
+								<span class="icon icon-favorfill selected"></span>
+								<span class="icon icon-favor"></span>
+								<span class="icon icon-favor"></span>
+								<span class="icon icon-favor"></span>
+								{/if}
+								{if $g['level']==3}
+								<span class="icon icon-favorfill selected"></span>
+								<span class="icon icon-favorfill selected"></span>
+								<span class="icon icon-favorfill selected"></span>
+								<span class="icon icon-favor"></span>
+								<span class="icon icon-favor"></span>
+								{/if}
+								{if $g['level']==4}
+								<span class="icon icon-favorfill selected"></span>
+								<span class="icon icon-favorfill selected"></span>
+								<span class="icon icon-favorfill selected"></span>
+								<span class="icon icon-favorfill selected"></span>
+								<span class="icon icon-favor"></span>
+								{/if}
+								{if $g['level']==5}
+								<span class="icon icon-favorfill selected"></span>
+								<span class="icon icon-favorfill selected"></span>
+								<span class="icon icon-favorfill selected"></span>
+								<span class="icon icon-favorfill selected"></span>
+								<span class="icon icon-favorfill selected"></span>
+								{/if}
+							</td>
+						</tr>
+						{/loop}
+					</table>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="form-group"></div>	
+          <div class="form-group">
+		<label class="col-sm-2 control-label"></label>
+		<div class="col-sm-9 col-xs-12">
+
+			{ifp 'order.comment.edit'}
+			<input type="button" {if !empty($comment['append_reply_content']) || empty($comment['append_content']) } disabled="disabled" {/if}  value="提交" class="btn btn-primary"  id="btn" />
+			{/if}
+			<input type="button" class="btn btn-default" name="submit" onclick="history.go(-1)" value="返回列表" style='margin-left:10px;' />
+		</div>
+	</div>
+{else}
+<div class='panel panel-default'>
+	<div class='panel-body' style='text-align: center;padding:30px;'>
+		暂时没有任何评价!
+		<input type="button" class="btn btn-default" name="submit" onclick="history.go(-1)" value="返回列表" style='margin-left:10px;' />
+	</div>
+</div>
+{/if}
+
+</form>
+
+<script language="JavaScript">
+	$('#btn').click(function() {
+		var id = {$_GPC['id']};
+		var reply_images = [];
+		$(" input[ name='thumbs[]' ] ").each(function(){
+			reply_images.push($(this).val());
+		})
+		var con = $('.reply_content').data();
+		if(!con['value']) {
+			var reply_content = $('.reply_content').val();
+			if(!reply_content) {
+				alert('回复内容不能为空！');return
+			}
+			var datas = {id:id,reply_content:reply_content,reply_images:reply_images};
+		} else {
+			var append_reply_content = $('input[name="append_reply_content"]').val();
+			if(!append_reply_content) {
+				alert('追加内容不能为空！');return
+			}
+			var datas = {id:id,append_reply_content:append_reply_content,append_reply_images:reply_images};
+
+		}
+
+		$.post("<?php  echo MerchUrl('order/comment/edit')?>",datas,function(data) {
+			if(data.status==1) {
+				location.href = data.result.url;
+			}
+		},'json');
+
+	});
+
+
+
+</script>
+
+{template '_footer'}

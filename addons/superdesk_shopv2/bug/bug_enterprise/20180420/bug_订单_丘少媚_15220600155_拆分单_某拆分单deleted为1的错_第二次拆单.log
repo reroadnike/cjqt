@@ -1,0 +1,287 @@
+{"id":5859972405,"result":{"pOrder":73771129623},"time":"2018-05-08 14:41:35","type":1}  处理::
+START====>
+{
+    "success": true,
+    "resultMessage": "",
+    "resultCode": "0000",
+    "result": {
+        "pOrder": {
+            "jdOrderId": 73771129623,
+            "freight": 0,
+            "orderPrice": 526.89,
+            "orderNakedPrice": 454.21,
+            "sku": [
+                {
+                    "category": 4837,
+                    "num": 1,
+                    "price": 17.38,
+                    "tax": 16,
+                    "oid": 0,
+                    "name": "晨光（M&G）ABS92795 防锈彩色3号回形针曲别针160枚\/盒6盒装",
+                    "taxPrice": 2.4,
+                    "skuId": 4219510,
+                    "nakedPrice": 14.98,
+                    "type": 0
+                },
+                {
+                    "category": 4840,
+                    "num": 5,
+                    "price": 10,
+                    "tax": 16,
+                    "oid": 0,
+                    "name": "欧标（MATE-IST）透明板夹A4写字垫板侧面带刻度pp材料平夹 灰色B2051",
+                    "taxPrice": 1.38,
+                    "skuId": 6655271,
+                    "nakedPrice": 8.62,
+                    "type": 0
+                },
+                {
+                    "category": 4837,
+                    "num": 5,
+                    "price": 5,
+                    "tax": 16,
+                    "oid": 0,
+                    "name": "益而高（EAGLE）办公剪纸刀 家用缝纫手工剪子用品 7寸长剪刀 180MM EG-087",
+                    "taxPrice": 0.69,
+                    "skuId": 7347615,
+                    "nakedPrice": 4.31,
+                    "type": 0
+                },
+                {
+                    "category": 6232,
+                    "num": 1,
+                    "price": 26.9,
+                    "tax": 16,
+                    "oid": 0,
+                    "name": "洁成 一次性纸杯200只装 8盎司228ml中口杯超值装 一次性杯子 大包装",
+                    "taxPrice": 3.71,
+                    "skuId": 4556226,
+                    "nakedPrice": 23.19,
+                    "type": 0
+                },
+                {
+                    "category": 2603,
+                    "num": 2,
+                    "price": 17.1,
+                    "tax": 16,
+                    "oid": 0,
+                    "name": "TANOSEE日本进口学生办公极细+细圆双头油性笔记号笔 黑色 3支装TS-CWFM-1B",
+                    "taxPrice": 2.36,
+                    "skuId": 6297832,
+                    "nakedPrice": 14.74,
+                    "type": 0
+                },
+                {
+                    "category": 6230,
+                    "num": 1,
+                    "price": 270,
+                    "tax": 16,
+                    "oid": 0,
+                    "name": "皇室家居   大盘装 5双盘   无烟温和 速杀型 蚊香 60盒\/箱",
+                    "taxPrice": 37.24,
+                    "skuId": 7158978,
+                    "nakedPrice": 232.76,
+                    "type": 0
+                },
+                {
+                    "category": 1560,
+                    "num": 3,
+                    "price": 29.87,
+                    "tax": 16,
+                    "oid": 0,
+                    "name": "【京东超市】宝宝金水花露水190ml*3瓶 驱蚊液婴儿驱蚊水防蚊喷雾",
+                    "taxPrice": 4.12,
+                    "skuId": 2683755,
+                    "nakedPrice": 25.75,
+                    "type": 0
+                },
+                {
+                    "category": 12376,
+                    "num": 2,
+                    "price": 6.9,
+                    "tax": 16,
+                    "oid": 0,
+                    "name": "迪士尼（Disney）12色水彩笔可水洗\/儿童彩色笔\/画笔套装 米奇蓝色DM20582M",
+                    "taxPrice": 0.95,
+                    "skuId": 7205051,
+                    "nakedPrice": 5.95,
+                    "type": 0
+                }
+            ],
+            "orderTaxPrice": 72.68
+        },
+        "orderState": 1,
+        "cOrder": [
+            {
+                "pOrder": 73771129623,
+                "orderState": 1,
+                "jdOrderId": 75748093091,
+                "state": 0,
+                "freight": 0,
+                "submitState": 1,
+                "orderPrice": 270,
+                "orderNakedPrice": 232.76,
+                "type": 2,
+                "sku": [
+                    {
+                        "category": 6230,
+                        "num": 1,
+                        "price": 270,
+                        "tax": 16,
+                        "oid": 0,
+                        "name": "皇室家居   大盘装 5双盘   无烟温和 速杀型 蚊香 60盒\/箱",
+                        "taxPrice": 37.24,
+                        "skuId": 7158978,
+                        "nakedPrice": 232.76,
+                        "type": 0
+                    }
+                ],
+                "orderTaxPrice": 37.24
+            },
+            {
+                "pOrder": 73771129623,
+                "orderState": 1,
+                "jdOrderId": 75748997388,
+                "state": 0,
+                "freight": 0,
+                "submitState": 1,
+                "orderPrice": 26.9,
+                "orderNakedPrice": 23.19,
+                "type": 2,
+                "sku": [
+                    {
+                        "category": 6232,
+                        "num": 1,
+                        "price": 26.9,
+                        "tax": 16,
+                        "oid": 0,
+                        "name": "洁成 一次性纸杯200只装 8盎司228ml中口杯超值装 一次性杯子 大包装",
+                        "taxPrice": 3.71,
+                        "skuId": 4556226,
+                        "nakedPrice": 23.19,
+                        "type": 0
+                    }
+                ],
+                "orderTaxPrice": 3.71
+            },
+            {
+                "pOrder": 73771129623,
+                "orderState": 1,
+                "jdOrderId": 75749041997,
+                "state": 0,
+                "freight": 0,
+                "submitState": 1,
+                "orderPrice": 89.61,
+                "orderNakedPrice": 77.25,
+                "type": 2,
+                "sku": [
+                    {
+                        "category": 1560,
+                        "num": 3,
+                        "price": 29.87,
+                        "tax": 16,
+                        "oid": 0,
+                        "name": "【京东超市】宝宝金水花露水190ml*3瓶 驱蚊液婴儿驱蚊水防蚊喷雾",
+                        "taxPrice": 4.12,
+                        "skuId": 2683755,
+                        "nakedPrice": 25.75,
+                        "type": 0
+                    }
+                ],
+                "orderTaxPrice": 12.36
+            },
+            {
+                "pOrder": 73771129623,
+                "orderState": 1,
+                "jdOrderId": 73791380189,
+                "state": 0,
+                "freight": 0,
+                "submitState": 1,
+                "orderPrice": 123,
+                "orderNakedPrice": 106.03,
+                "type": 2,
+                "sku": [
+                    {
+                        "category": 4840,
+                        "num": 5,
+                        "price": 10,
+                        "tax": 16,
+                        "oid": 0,
+                        "name": "欧标（MATE-IST）透明板夹A4写字垫板侧面带刻度pp材料平夹 灰色B2051",
+                        "taxPrice": 1.38,
+                        "skuId": 6655271,
+                        "nakedPrice": 8.62,
+                        "type": 0
+                    },
+                    {
+                        "category": 4837,
+                        "num": 5,
+                        "price": 5,
+                        "tax": 16,
+                        "oid": 0,
+                        "name": "益而高（EAGLE）办公剪纸刀 家用缝纫手工剪子用品 7寸长剪刀 180MM EG-087",
+                        "taxPrice": 0.69,
+                        "skuId": 7347615,
+                        "nakedPrice": 4.31,
+                        "type": 0
+                    },
+                    {
+                        "category": 2603,
+                        "num": 2,
+                        "price": 17.1,
+                        "tax": 16,
+                        "oid": 0,
+                        "name": "TANOSEE日本进口学生办公极细+细圆双头油性笔记号笔 黑色 3支装TS-CWFM-1B",
+                        "taxPrice": 2.36,
+                        "skuId": 6297832,
+                        "nakedPrice": 14.74,
+                        "type": 0
+                    },
+                    {
+                        "category": 12376,
+                        "num": 2,
+                        "price": 6.9,
+                        "tax": 16,
+                        "oid": 0,
+                        "name": "迪士尼（Disney）12色水彩笔可水洗\/儿童彩色笔\/画笔套装 米奇蓝色DM20582M",
+                        "taxPrice": 0.95,
+                        "skuId": 7205051,
+                        "nakedPrice": 5.95,
+                        "type": 0
+                    }
+                ],
+                "orderTaxPrice": 16.97
+            },
+            {
+                "pOrder": 73771129623,
+                "orderState": 1,
+                "jdOrderId": 73796805112,
+                "state": 0,
+                "freight": 0,
+                "submitState": 1,
+                "orderPrice": 17.38,
+                "orderNakedPrice": 14.98,
+                "type": 2,
+                "sku": [
+                    {
+                        "category": 4837,
+                        "num": 1,
+                        "price": 17.38,
+                        "tax": 16,
+                        "oid": 0,
+                        "name": "晨光（M&G）ABS92795 防锈彩色3号回形针曲别针160枚\/盒6盒装",
+                        "taxPrice": 2.4,
+                        "skuId": 4219510,
+                        "nakedPrice": 14.98,
+                        "type": 0
+                    }
+                ],
+                "orderTaxPrice": 2.4
+            }
+        ],
+        "submitState": 1,
+        "type": 1
+    },
+    "code": 200
+} update `ims_superdesk_shop_order` set deleted = 1  where uniacid=16       and parentid=1988       and id NOT IN (2018,2019,2021,2023,2024)
+<======END

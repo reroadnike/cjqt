@@ -1,0 +1,66 @@
+"cOrder": [
+{
+"pOrder": 72741774068,
+"orderState": 1,
+"jdOrderId": 73896781133,
+"state": 1,
+"freight": 0,
+"submitState": 1,
+"orderPrice": 5996,
+"orderNakedPrice": 5124.8,
+"type": 2,
+"sku": [
+{
+"category": 870,
+"num": 4,
+"price": 1499,
+"tax": 17,
+"oid": 0,
+"name": "TCL 小1匹 冷暖 定速 壁挂式 空调挂机（KFRd-23GW\/BF33-I）",
+"taxPrice": 217.8,
+"skuId": 929693,
+"nakedPrice": 1281.2,
+"type": 0
+},
+{
+"category": 1259,
+"num": 4,
+"price": 0,
+"tax": 17,
+"oid": 929693,
+"name": "TCL KFR-23W024 室外机 （对应的室内机为：KFRd-23GW\/BF33-I）",
+"taxPrice": 0,
+"skuId": 929688,
+"nakedPrice": 0,
+"type": 1
+}
+],
+"orderTaxPrice": 871.2
+},
+{
+"pOrder": 72741774068,
+"orderState": 1,
+"jdOrderId": 73896683982,
+"state": 1,
+"freight": 0,
+"submitState": 1,
+"orderPrice": 0,
+"orderNakedPrice": 0,
+"type": 2,
+"sku": [
+{
+"category": 877,
+"num": 4,
+"price": 0,
+"tax": 17,
+"oid": 929693,
+"name": "馨家港湾 温馨系列A款 壁挂式空调罩",
+"taxPrice": 0,
+"skuId": 2586166,
+"nakedPrice": 0,
+"type": 2
+}
+],
+"orderTaxPrice": 0
+}
+]

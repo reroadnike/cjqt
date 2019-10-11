@@ -1,0 +1,30 @@
+<div id="list" style="min-height: 488px;">
+    <p class="title">附近商铺</p>
+    <div class="list-info">
+        <ul>
+            {data module="site_nearbyshops" func="site_nearby_shop_list" item="row" }
+            <a href="{$row['url']}">
+                <li>
+                    <div class="m-img"><img src="{php echo tomedia($row['icon'])}" alt="{$row['name']}" /></div>
+                    <div class="m-info">
+                        <span class="m-title">{$row['name']}</span>
+                        <div class="m-hot">
+                            <div class="m-hot-mark">
+                                <img src="{$_W['siteroot']}app/themes/yt_index/assets/i/list_mark.png"/>
+                            </div>
+                            <div class="m-host-bar am-progress am-progress-striped am-progress-sm am-active ">
+                                <div class="am-progress-bar am-progress-bar-secondary"  style="width: 0%"></div>
+                            </div>
+                            <div class="m-host-percent"><span>0%</span></div>
+                        </div>
+                    </div>
+                    <div class="m-btn">
+                        <a href="{$row['url']}" style="color: white;">进入></a>
+                    </div>
+                </li>
+            </a>
+            {/data}
+        </ul>
+    </div>
+</div>
+<!-- 附近商铺 end -->

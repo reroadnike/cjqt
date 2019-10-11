@@ -1,0 +1,139 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="{php echo $this->createWebUrl('page_num', array('op' => 'list'))}">管理京东商品池同步策略</a></li>
+    <!--<li><a href="{php echo $this->createWebUrl('page_num', array('op' => 'edit'))}">#add#</a></li>-->
+</ul>
+
+<div class="alert alert-info" >
+    管理京东商品池同步策略原则:<br/>
+    <ol>
+        <li>在此操作[同步<=>排除][可用<=>删除]，京东自动同步商品池时，不会修改此两标记</li>
+        <li>在自动同步京东商品池时，当发现某s池子没了，本地记录会修正为[同步=>排除][可用=>删除]</li>
+        <li>在自动同步京东商品池内商品时，当发现池子没了，本地记录会修正为[同步=>排除][可用=>删除]</li>
+    </ol>
+</div>
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                #list#
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <!--<th style="width:10%;">ID</th>-->
+                        <th style="width:10%;">商品池名字</th>
+                        <th style="width:10%;">page_num</th>
+
+                        <th style="width:10%;">同步状态 / 可用状态</th>
+                        <th style="width:6%;">createtime/updatetime</th>
+                        <th style="width:6%;">synctime</th>
+                        <!--<th style="text-align:right; width:10%;">操作</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+
+
+                        <!--<td>{$item['id']}</td>-->
+
+                        <td>{$item['name']}</td>
+                        <td>{$item['page_num']}</td>
+                        <td>
+
+                            <input type="checkbox" name="state" value="{intval($item['state'])}" {if intval($item['state'])==1} checked="checked" {/if} data-id="{$item['id']}" data-on-text="同步" data-off-text="排除"/>
+                            <input type="checkbox" name="deleted" value="intval($item['deleted'])" {if intval($item['deleted'])==0} checked="checked" {/if} data-id="{$item['id']}" data-on-text="可用" data-off-text="删除"/>
+                        </td>
+                        <td>
+                            {if isset($item['createtime'])}{php echo date('Y-m-d H:i:s',$item['createtime'])}{/if}
+                            <br/>
+                            {if isset($item['updatetime'])}{php echo date('Y-m-d H:i:s',$item['updatetime'])}{/if}
+                        </td>
+                        <td></td>
+
+
+                        <!--
+                        <td style="text-align:right;">
+
+                            <a href="{php echo $this->createWebUrl('page_num', array('id' => $item['id'], 'op' => 'edit'));}"
+                               class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="编辑"><i
+                                    class="fa fa-pencil">&nbsp;编辑</i></a>&nbsp;&nbsp;
+                            <a href="{php echo $this->createWebUrl('page_num', array('id' => $item['id'], 'op' => 'delete'));}"
+                               class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title=""
+                               onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" data-original-title="删除"><i
+                                    class="fa fa-times">&nbsp;删除</i> </a>
+                        </td>
+                        -->
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            共{$total}条
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                        </td>
+                        <td colspan="4">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+
+        require(['bootstrap.switch'], function() {
+
+            $(":checkbox[name='state']").bootstrapSwitch();
+
+            $(":checkbox[name='state']").on('switchChange.bootstrapSwitch', function(e, state){
+
+                var that = $(this);
+                var state = this.checked ? 1 : 0;
+                var id = that.data('id');
+
+                $.post("{php echo $this->createWebUrl('page_num', array('op' => 'state'))}",
+                        {
+                            state:state,
+                            id: id
+                        }, function(resp){
+                            if(resp != 'success') {
+//                                util.message('操作失败, 请稍后重试.')
+                            } else {
+//                                util.message('操作成功', location.href, 'success');
+                            }
+                        });
+            });
+
+            $(":checkbox[name='deleted']").bootstrapSwitch();
+            $(":checkbox[name='deleted']").on('switchChange.bootstrapSwitch', function(e, state){
+
+                var that = $(this);
+                var deleted = this.checked ? 0 : 1;
+                var id = that.data('id');
+
+                $.post("{php echo $this->createWebUrl('page_num', array('op' => 'deleted'))}",
+                        {
+                            deleted:deleted,
+                            id: id
+                        }, function(resp){
+                            if(resp != 'success') {
+//                                util.message('操作失败, 请稍后重试.')
+                            } else {
+//                                util.message('操作成功', location.href, 'success');
+                            }
+                        });
+            });
+
+        });
+    });
+</script>
+
+{template 'common/footer'}

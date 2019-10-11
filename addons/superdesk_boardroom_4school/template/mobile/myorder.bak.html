@@ -1,0 +1,184 @@
+{template '__header'}
+<!--
+<div class="pagetoplogo"></div>
+<div class="pagebottomlogo"></div>
+-->
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/orderList.css" />
+
+<div class="navlist">
+    <!-- 选中添加类名 navitemsel-->
+
+    <!--<a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'myorder' , 'status' => 1))}" class="navitem {if $status == 1}navitemsel{/if}">-->
+        <!--<span>已付款</span>-->
+    <!--</a>-->
+    <!--<a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'myorder' , 'status' => 0))}" class="navitem {if $status == 0}navitemsel{/if}">-->
+        <!--<span>待付款</span>-->
+    <!--</a>-->
+    <!--<a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'myorder' , 'status' => 3))}" class="navitem {if $status == 3}navitemsel{/if}">-->
+        <!--<span>已过期</span>-->
+    <!--</a>-->
+    <!--<a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'myorder' , 'status' => -1))}" class="navitem {if $status == -1}navitemsel{/if}">-->
+        <!--<span>已取消</span>-->
+    <!--</a>-->
+    <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom_4school' , 'do'=>'myorder' , 'status' => '-2'))}" class="navitem {if $status == -2}navitemsel{/if}">
+        <span>全部</span>
+    </a>
+    <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom_4school' , 'do'=>'myorder' , 'status' => 0))}" class="navitem {if $status == 0}navitemsel{/if}">
+        <span>待审核</span>
+    </a>
+    <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom_4school' , 'do'=>'myorder' , 'status' => 1))}" class="navitem {if $status == 1}navitemsel{/if}">
+        <span>已审核</span>
+    </a>
+    <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom_4school' , 'do'=>'myorder' , 'status' => 3))}" class="navitem {if $status == 3}navitemsel{/if}">
+        <span>已使用</span>
+    </a>
+    <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom_4school' , 'do'=>'myorder' , 'status' => '-1'))}" class="navitem {if $status == -1}navitemsel{/if}">
+        <span>已取消</span>
+    </a>
+</div>
+<div class="orderwrap">
+    <ul class="orderlist">
+        <!--{loop $my_boardroom_appointment $index $item}-->
+        <!--<li class="orderlistitem clearfix">-->
+            <!--<a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom_4school' , 'do'=>'boardroom_booking_success' , 'out_trade_no' => $item['out_trade_no']))}">-->
+                <!--<div class="orderlistimg" style="background: url({php echo tomedia($item['boardroom']['thumb'])}) center center no-repeat;background-size: auto 100%;"></div>-->
+                <!--<div class="orderinfotop">-->
+                    <!--<h3 class="ellipsis">{$item['boardroom']['name']}</h3>-->
+                    <!--&lt;!&ndash; 待付款/使用中（添加类名为textcolor） 已完成不加类名&ndash;&gt;-->
+                    <!--<span class="textcolor">-->
+                        <!--{if $status == 1}-->
+                        <!--已付款-->
+                        <!--{elseif $status == 0}-->
+                        <!--待付款-->
+                        <!--{elseif $status == 3}-->
+                        <!--已过期-->
+                        <!--{elseif $status == -1}-->
+                        <!--已取消-->
+                        <!--{/if}-->
+                    <!--</span>-->
+                <!--</div>-->
+                <!--<div class="orderroominfo">-->
+                    <!--<span>容纳人数：{$item['boardroom']['max_num']}人</span>-->
+                    <!--<span>楼层：{$item['boardroom']['floor']}层</span>-->
+                <!--</div>-->
+                <!--<div class="orderroomprice">-->
+                    <!--<span>{$item['price']} 元/时</span>-->
+                    <!--<span>x {$item['quantity']} 小时</span>-->
+                <!--</div>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--{/loop}-->
+        {if $status == -1 || $status == -2}
+        <li class="orderlistitem clearfix">
+            <a href="{php echo $this->createMobileUrl('bookSuccess')}" class="orderlistimg" style="background: url('{MODULE_URL}template/mobile/images/demo/5.png') center center no-repeat;background-size: auto 100%;"></a>
+            <div class="orderinfotop">
+                <h3 class="ellipsis">1028号会议室</h3>
+                <!-- 除了已使用是灰色(不添加类名)， 其他状态添加类名 textcolor-->
+                <span class="textcolor">已取消</span>
+            </div>
+            <div class="orderroominfo">
+                <span>容纳人数：8人</span>
+            </div>
+            <div class="orderroomprice">
+                <em class="roomdesk">
+                    <i class="deskicon"></i>
+                    <span>20</span>
+                    <i class="sofaicon"></i>
+                    <span>20</span>
+                </em>
+            </div>
+        </li>
+        <li class="orderlistitem clearfix">
+            <a href="{php echo $this->createMobileUrl('bookSuccess')}" class="orderlistimg" style="background: url('{MODULE_URL}template/mobile/images/demo/5.png') center center no-repeat;background-size: auto 100%;"></a>
+            <div class="orderinfotop">
+                <h3 class="ellipsis">1032号会议室</h3>
+                <!-- 除了已使用是灰色(不添加类名)， 其他状态添加类名 textcolor-->
+                <span class="textcolor">已取消</span>
+            </div>
+            <div class="orderroominfo">
+                <span>容纳人数：10人</span>
+            </div>
+            <div class="orderroomprice">
+                <em class="roomdesk">
+                    <i class="deskicon"></i>
+                    <span>20</span>
+                    <i class="sofaicon"></i>
+                    <span>20</span>
+                </em>
+            </div>
+        </li>
+        {/if}
+        {if $status == 1 || $status == -2}
+        <li class="orderlistitem clearfix">
+            <a href="{php echo $this->createMobileUrl('bookSuccess')}" class="orderlistimg" style="background: url('{MODULE_URL}template/mobile/images/demo/5.png') center center no-repeat;background-size: auto 100%;"></a>
+            <div class="orderinfotop">
+                <h3 class="ellipsis">1029号会议室</h3>
+                <!-- 除了已使用是灰色(不添加类名)， 其他状态添加类名 textcolor-->
+                <span class="textcolor">已审核</span>
+
+            </div>
+            <div class="orderroominfo">
+                <span>容纳人数：8人</span>
+            </div>
+            <div class="orderroomprice">
+                <em class="roomdesk">
+                    <i class="deskicon"></i>
+                    <span>25</span>
+                    <i class="sofaicon"></i>
+                    <span>25</span>
+                </em>
+
+                <!-- 只有已审核/待审核可以取消订单 -->
+                <strong href="javascript: void(0);" title="取消订单" class="cancelorder">取消订单</strong>
+            </div>
+        </li>
+        {/if}
+        {if $status == 0 || $status == -2}
+        <li class="orderlistitem clearfix">
+            <a href="{php echo $this->createMobileUrl('bookSuccess')}" class="orderlistimg" style="background: url('{MODULE_URL}template/mobile/images/demo/5.png') center center no-repeat;background-size: auto 100%;"></a>
+            <div class="orderinfotop">
+                <h3 class="ellipsis">1030号会议室</h3>
+                <!-- 除了已使用是灰色(不添加类名)， 其他状态添加类名 textcolor-->
+                <span class="textcolor">待审核</span>
+            </div>
+            <div class="orderroominfo">
+                <span>容纳人数：8人</span>
+            </div>
+            <div class="orderroomprice">
+                <em class="roomdesk">
+                    <i class="deskicon"></i>
+                    <span>25</span>
+                    <i class="sofaicon"></i>
+                    <span>25</span>
+                </em>
+                <!-- 只有已审核/待审核可以取消订单 -->
+                <strong href="javascript: void(0);" title="取消订单" class="cancelorder">取消订单</strong>
+            </div>
+
+        </li>
+        {/if}
+        {if $status == 3 || $status == -2}
+        <li class="orderlistitem clearfix">
+            <a href="{php echo $this->createMobileUrl('bookSuccess')}" class="orderlistimg" style="background: url('{MODULE_URL}template/mobile/images/demo/5.png') center center no-repeat;background-size: auto 100%;"></a>
+            <div class="orderinfotop">
+                <h3 class="ellipsis">1031号会议室</h3>
+                <!-- 除了已使用是灰色(不添加类名)， 其他状态添加类名 textcolor-->
+                <span>已使用</span>
+            </div>
+            <div class="orderroominfo">
+                <span>容纳人数：20人</span>
+            </div>
+            <div class="orderroomprice">
+                <em class="roomdesk">
+                    <i class="deskicon"></i>
+                    <span>25</span>
+                    <i class="sofaicon"></i>
+                    <span>25</span>
+                </em>
+            </div>
+        </li>
+        {/if}
+    </ul>
+</div>
+{template '__footer'}

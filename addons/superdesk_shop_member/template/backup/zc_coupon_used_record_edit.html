@@ -1,0 +1,92 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('zc_coupon_used_record', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('zc_coupon_used_record', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="r_id" class="form-control" value="{$item['r_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">优惠券id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="r_coupon_id" class="form-control" value="{$item['r_coupon_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">优惠券类型 0：抵扣券  1：满减券</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="r_coupon_type" class="form-control" value="{$item['r_coupon_type']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">优惠金额</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="r_coupon_price" class="form-control" value="{$item['r_coupon_price']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">商品id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="r_goods_id" class="form-control" value="{$item['r_goods_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">供应商id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="r_user_id" class="form-control" value="{$item['r_user_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">订单号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="r_orderid" class="form-control" value="{$item['r_orderid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">记录时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="r_ctime" class="form-control" value="{$item['r_ctime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">记录类型 1：使用   2：退还</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="r_type" class="form-control" value="{$item['r_type']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">会员id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="r_m_id" class="form-control" value="{$item['r_m_id']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

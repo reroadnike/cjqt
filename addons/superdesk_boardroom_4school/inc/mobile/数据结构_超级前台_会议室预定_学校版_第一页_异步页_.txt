@@ -1,0 +1,5118 @@
+array(6) {
+        ["timestamp"]=>
+        int(1502208000)
+        ["lable_full"]=>
+        string(19) "2017-08-09 00:00:00"
+        ["lable"]=>
+        string(10) "2017-08-09"
+        ["situation"]=>
+        array(2) {
+          ["am"]=>
+          array(24) {
+            [0]=>
+            array(7) {
+              ["index"]=>
+              int(0)
+              ["key"]=>
+              string(19) "2017-08-09 00:00:00"
+              ["timestamp"]=>
+              int(1502209800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "00:00-00:30"
+              ["lable_start"]=>
+              string(5) "00:00"
+              ["lable_end"]=>
+              string(5) "00:30"
+            }
+            [1]=>
+            array(7) {
+              ["index"]=>
+              int(1)
+              ["key"]=>
+              string(19) "2017-08-09 00:30:00"
+              ["timestamp"]=>
+              int(1502211600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "00:30-01:00"
+              ["lable_start"]=>
+              string(5) "00:30"
+              ["lable_end"]=>
+              string(5) "01:00"
+            }
+            [2]=>
+            array(7) {
+              ["index"]=>
+              int(2)
+              ["key"]=>
+              string(19) "2017-08-09 01:00:00"
+              ["timestamp"]=>
+              int(1502213400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "01:00-01:30"
+              ["lable_start"]=>
+              string(5) "01:00"
+              ["lable_end"]=>
+              string(5) "01:30"
+            }
+            [3]=>
+            array(7) {
+              ["index"]=>
+              int(3)
+              ["key"]=>
+              string(19) "2017-08-09 01:30:00"
+              ["timestamp"]=>
+              int(1502215200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "01:30-02:00"
+              ["lable_start"]=>
+              string(5) "01:30"
+              ["lable_end"]=>
+              string(5) "02:00"
+            }
+            [4]=>
+            array(7) {
+              ["index"]=>
+              int(4)
+              ["key"]=>
+              string(19) "2017-08-09 02:00:00"
+              ["timestamp"]=>
+              int(1502217000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "02:00-02:30"
+              ["lable_start"]=>
+              string(5) "02:00"
+              ["lable_end"]=>
+              string(5) "02:30"
+            }
+            [5]=>
+            array(7) {
+              ["index"]=>
+              int(5)
+              ["key"]=>
+              string(19) "2017-08-09 02:30:00"
+              ["timestamp"]=>
+              int(1502218800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "02:30-03:00"
+              ["lable_start"]=>
+              string(5) "02:30"
+              ["lable_end"]=>
+              string(5) "03:00"
+            }
+            [6]=>
+            array(7) {
+              ["index"]=>
+              int(6)
+              ["key"]=>
+              string(19) "2017-08-09 03:00:00"
+              ["timestamp"]=>
+              int(1502220600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "03:00-03:30"
+              ["lable_start"]=>
+              string(5) "03:00"
+              ["lable_end"]=>
+              string(5) "03:30"
+            }
+            [7]=>
+            array(7) {
+              ["index"]=>
+              int(7)
+              ["key"]=>
+              string(19) "2017-08-09 03:30:00"
+              ["timestamp"]=>
+              int(1502222400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "03:30-04:00"
+              ["lable_start"]=>
+              string(5) "03:30"
+              ["lable_end"]=>
+              string(5) "04:00"
+            }
+            [8]=>
+            array(7) {
+              ["index"]=>
+              int(8)
+              ["key"]=>
+              string(19) "2017-08-09 04:00:00"
+              ["timestamp"]=>
+              int(1502224200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "04:00-04:30"
+              ["lable_start"]=>
+              string(5) "04:00"
+              ["lable_end"]=>
+              string(5) "04:30"
+            }
+            [9]=>
+            array(7) {
+              ["index"]=>
+              int(9)
+              ["key"]=>
+              string(19) "2017-08-09 04:30:00"
+              ["timestamp"]=>
+              int(1502226000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "04:30-05:00"
+              ["lable_start"]=>
+              string(5) "04:30"
+              ["lable_end"]=>
+              string(5) "05:00"
+            }
+            [10]=>
+            array(7) {
+              ["index"]=>
+              int(10)
+              ["key"]=>
+              string(19) "2017-08-09 05:00:00"
+              ["timestamp"]=>
+              int(1502227800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "05:00-05:30"
+              ["lable_start"]=>
+              string(5) "05:00"
+              ["lable_end"]=>
+              string(5) "05:30"
+            }
+            [11]=>
+            array(7) {
+              ["index"]=>
+              int(11)
+              ["key"]=>
+              string(19) "2017-08-09 05:30:00"
+              ["timestamp"]=>
+              int(1502229600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "05:30-06:00"
+              ["lable_start"]=>
+              string(5) "05:30"
+              ["lable_end"]=>
+              string(5) "06:00"
+            }
+            [12]=>
+            array(7) {
+              ["index"]=>
+              int(12)
+              ["key"]=>
+              string(19) "2017-08-09 06:00:00"
+              ["timestamp"]=>
+              int(1502231400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "06:00-06:30"
+              ["lable_start"]=>
+              string(5) "06:00"
+              ["lable_end"]=>
+              string(5) "06:30"
+            }
+            [13]=>
+            array(7) {
+              ["index"]=>
+              int(13)
+              ["key"]=>
+              string(19) "2017-08-09 06:30:00"
+              ["timestamp"]=>
+              int(1502233200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "06:30-07:00"
+              ["lable_start"]=>
+              string(5) "06:30"
+              ["lable_end"]=>
+              string(5) "07:00"
+            }
+            [14]=>
+            array(7) {
+              ["index"]=>
+              int(14)
+              ["key"]=>
+              string(19) "2017-08-09 07:00:00"
+              ["timestamp"]=>
+              int(1502235000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "07:00-07:30"
+              ["lable_start"]=>
+              string(5) "07:00"
+              ["lable_end"]=>
+              string(5) "07:30"
+            }
+            [15]=>
+            array(7) {
+              ["index"]=>
+              int(15)
+              ["key"]=>
+              string(19) "2017-08-09 07:30:00"
+              ["timestamp"]=>
+              int(1502236800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "07:30-08:00"
+              ["lable_start"]=>
+              string(5) "07:30"
+              ["lable_end"]=>
+              string(5) "08:00"
+            }
+            [16]=>
+            array(7) {
+              ["index"]=>
+              int(16)
+              ["key"]=>
+              string(19) "2017-08-09 08:00:00"
+              ["timestamp"]=>
+              int(1502238600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "08:00-08:30"
+              ["lable_start"]=>
+              string(5) "08:00"
+              ["lable_end"]=>
+              string(5) "08:30"
+            }
+            [17]=>
+            array(7) {
+              ["index"]=>
+              int(17)
+              ["key"]=>
+              string(19) "2017-08-09 08:30:00"
+              ["timestamp"]=>
+              int(1502240400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "08:30-09:00"
+              ["lable_start"]=>
+              string(5) "08:30"
+              ["lable_end"]=>
+              string(5) "09:00"
+            }
+            [18]=>
+            array(7) {
+              ["index"]=>
+              int(18)
+              ["key"]=>
+              string(19) "2017-08-09 09:00:00"
+              ["timestamp"]=>
+              int(1502242200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "09:00-09:30"
+              ["lable_start"]=>
+              string(5) "09:00"
+              ["lable_end"]=>
+              string(5) "09:30"
+            }
+            [19]=>
+            array(7) {
+              ["index"]=>
+              int(19)
+              ["key"]=>
+              string(19) "2017-08-09 09:30:00"
+              ["timestamp"]=>
+              int(1502244000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "09:30-10:00"
+              ["lable_start"]=>
+              string(5) "09:30"
+              ["lable_end"]=>
+              string(5) "10:00"
+            }
+            [20]=>
+            array(7) {
+              ["index"]=>
+              int(20)
+              ["key"]=>
+              string(19) "2017-08-09 10:00:00"
+              ["timestamp"]=>
+              int(1502245800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "10:00-10:30"
+              ["lable_start"]=>
+              string(5) "10:00"
+              ["lable_end"]=>
+              string(5) "10:30"
+            }
+            [21]=>
+            array(7) {
+              ["index"]=>
+              int(21)
+              ["key"]=>
+              string(19) "2017-08-09 10:30:00"
+              ["timestamp"]=>
+              int(1502247600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "10:30-11:00"
+              ["lable_start"]=>
+              string(5) "10:30"
+              ["lable_end"]=>
+              string(5) "11:00"
+            }
+            [22]=>
+            array(7) {
+              ["index"]=>
+              int(22)
+              ["key"]=>
+              string(19) "2017-08-09 11:00:00"
+              ["timestamp"]=>
+              int(1502249400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "11:00-11:30"
+              ["lable_start"]=>
+              string(5) "11:00"
+              ["lable_end"]=>
+              string(5) "11:30"
+            }
+            [23]=>
+            array(7) {
+              ["index"]=>
+              int(23)
+              ["key"]=>
+              string(19) "2017-08-09 11:30:00"
+              ["timestamp"]=>
+              int(1502251200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "11:30-12:00"
+              ["lable_start"]=>
+              string(5) "11:30"
+              ["lable_end"]=>
+              string(5) "12:00"
+            }
+          }
+          ["pm"]=>
+          array(24) {
+            [0]=>
+            array(7) {
+              ["index"]=>
+              int(24)
+              ["key"]=>
+              string(19) "2017-08-09 12:00:00"
+              ["timestamp"]=>
+              int(1502253000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "12:00-12:30"
+              ["lable_start"]=>
+              string(5) "12:00"
+              ["lable_end"]=>
+              string(5) "12:30"
+            }
+            [1]=>
+            array(7) {
+              ["index"]=>
+              int(25)
+              ["key"]=>
+              string(19) "2017-08-09 12:30:00"
+              ["timestamp"]=>
+              int(1502254800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "12:30-13:00"
+              ["lable_start"]=>
+              string(5) "12:30"
+              ["lable_end"]=>
+              string(5) "13:00"
+            }
+            [2]=>
+            array(7) {
+              ["index"]=>
+              int(26)
+              ["key"]=>
+              string(19) "2017-08-09 13:00:00"
+              ["timestamp"]=>
+              int(1502256600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "13:00-13:30"
+              ["lable_start"]=>
+              string(5) "13:00"
+              ["lable_end"]=>
+              string(5) "13:30"
+            }
+            [3]=>
+            array(7) {
+              ["index"]=>
+              int(27)
+              ["key"]=>
+              string(19) "2017-08-09 13:30:00"
+              ["timestamp"]=>
+              int(1502258400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "13:30-14:00"
+              ["lable_start"]=>
+              string(5) "13:30"
+              ["lable_end"]=>
+              string(5) "14:00"
+            }
+            [4]=>
+            array(7) {
+              ["index"]=>
+              int(28)
+              ["key"]=>
+              string(19) "2017-08-09 14:00:00"
+              ["timestamp"]=>
+              int(1502260200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "14:00-14:30"
+              ["lable_start"]=>
+              string(5) "14:00"
+              ["lable_end"]=>
+              string(5) "14:30"
+            }
+            [5]=>
+            array(7) {
+              ["index"]=>
+              int(29)
+              ["key"]=>
+              string(19) "2017-08-09 14:30:00"
+              ["timestamp"]=>
+              int(1502262000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "14:30-15:00"
+              ["lable_start"]=>
+              string(5) "14:30"
+              ["lable_end"]=>
+              string(5) "15:00"
+            }
+            [6]=>
+            array(7) {
+              ["index"]=>
+              int(30)
+              ["key"]=>
+              string(19) "2017-08-09 15:00:00"
+              ["timestamp"]=>
+              int(1502263800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "15:00-15:30"
+              ["lable_start"]=>
+              string(5) "15:00"
+              ["lable_end"]=>
+              string(5) "15:30"
+            }
+            [7]=>
+            array(7) {
+              ["index"]=>
+              int(31)
+              ["key"]=>
+              string(19) "2017-08-09 15:30:00"
+              ["timestamp"]=>
+              int(1502265600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "15:30-16:00"
+              ["lable_start"]=>
+              string(5) "15:30"
+              ["lable_end"]=>
+              string(5) "16:00"
+            }
+            [8]=>
+            array(7) {
+              ["index"]=>
+              int(32)
+              ["key"]=>
+              string(19) "2017-08-09 16:00:00"
+              ["timestamp"]=>
+              int(1502267400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "16:00-16:30"
+              ["lable_start"]=>
+              string(5) "16:00"
+              ["lable_end"]=>
+              string(5) "16:30"
+            }
+            [9]=>
+            array(7) {
+              ["index"]=>
+              int(33)
+              ["key"]=>
+              string(19) "2017-08-09 16:30:00"
+              ["timestamp"]=>
+              int(1502269200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "16:30-17:00"
+              ["lable_start"]=>
+              string(5) "16:30"
+              ["lable_end"]=>
+              string(5) "17:00"
+            }
+            [10]=>
+            array(7) {
+              ["index"]=>
+              int(34)
+              ["key"]=>
+              string(19) "2017-08-09 17:00:00"
+              ["timestamp"]=>
+              int(1502271000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "17:00-17:30"
+              ["lable_start"]=>
+              string(5) "17:00"
+              ["lable_end"]=>
+              string(5) "17:30"
+            }
+            [11]=>
+            array(7) {
+              ["index"]=>
+              int(35)
+              ["key"]=>
+              string(19) "2017-08-09 17:30:00"
+              ["timestamp"]=>
+              int(1502272800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "17:30-18:00"
+              ["lable_start"]=>
+              string(5) "17:30"
+              ["lable_end"]=>
+              string(5) "18:00"
+            }
+            [12]=>
+            array(7) {
+              ["index"]=>
+              int(36)
+              ["key"]=>
+              string(19) "2017-08-09 18:00:00"
+              ["timestamp"]=>
+              int(1502274600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "18:00-18:30"
+              ["lable_start"]=>
+              string(5) "18:00"
+              ["lable_end"]=>
+              string(5) "18:30"
+            }
+            [13]=>
+            array(7) {
+              ["index"]=>
+              int(37)
+              ["key"]=>
+              string(19) "2017-08-09 18:30:00"
+              ["timestamp"]=>
+              int(1502276400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "18:30-19:00"
+              ["lable_start"]=>
+              string(5) "18:30"
+              ["lable_end"]=>
+              string(5) "19:00"
+            }
+            [14]=>
+            array(7) {
+              ["index"]=>
+              int(38)
+              ["key"]=>
+              string(19) "2017-08-09 19:00:00"
+              ["timestamp"]=>
+              int(1502278200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "19:00-19:30"
+              ["lable_start"]=>
+              string(5) "19:00"
+              ["lable_end"]=>
+              string(5) "19:30"
+            }
+            [15]=>
+            array(7) {
+              ["index"]=>
+              int(39)
+              ["key"]=>
+              string(19) "2017-08-09 19:30:00"
+              ["timestamp"]=>
+              int(1502280000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "19:30-20:00"
+              ["lable_start"]=>
+              string(5) "19:30"
+              ["lable_end"]=>
+              string(5) "20:00"
+            }
+            [16]=>
+            array(7) {
+              ["index"]=>
+              int(40)
+              ["key"]=>
+              string(19) "2017-08-09 20:00:00"
+              ["timestamp"]=>
+              int(1502281800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "20:00-20:30"
+              ["lable_start"]=>
+              string(5) "20:00"
+              ["lable_end"]=>
+              string(5) "20:30"
+            }
+            [17]=>
+            array(7) {
+              ["index"]=>
+              int(41)
+              ["key"]=>
+              string(19) "2017-08-09 20:30:00"
+              ["timestamp"]=>
+              int(1502283600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "20:30-21:00"
+              ["lable_start"]=>
+              string(5) "20:30"
+              ["lable_end"]=>
+              string(5) "21:00"
+            }
+            [18]=>
+            array(7) {
+              ["index"]=>
+              int(42)
+              ["key"]=>
+              string(19) "2017-08-09 21:00:00"
+              ["timestamp"]=>
+              int(1502285400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "21:00-21:30"
+              ["lable_start"]=>
+              string(5) "21:00"
+              ["lable_end"]=>
+              string(5) "21:30"
+            }
+            [19]=>
+            array(7) {
+              ["index"]=>
+              int(43)
+              ["key"]=>
+              string(19) "2017-08-09 21:30:00"
+              ["timestamp"]=>
+              int(1502287200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "21:30-22:00"
+              ["lable_start"]=>
+              string(5) "21:30"
+              ["lable_end"]=>
+              string(5) "22:00"
+            }
+            [20]=>
+            array(7) {
+              ["index"]=>
+              int(44)
+              ["key"]=>
+              string(19) "2017-08-09 22:00:00"
+              ["timestamp"]=>
+              int(1502289000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "22:00-22:30"
+              ["lable_start"]=>
+              string(5) "22:00"
+              ["lable_end"]=>
+              string(5) "22:30"
+            }
+            [21]=>
+            array(7) {
+              ["index"]=>
+              int(45)
+              ["key"]=>
+              string(19) "2017-08-09 22:30:00"
+              ["timestamp"]=>
+              int(1502290800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "22:30-23:00"
+              ["lable_start"]=>
+              string(5) "22:30"
+              ["lable_end"]=>
+              string(5) "23:00"
+            }
+            [22]=>
+            array(7) {
+              ["index"]=>
+              int(46)
+              ["key"]=>
+              string(19) "2017-08-09 23:00:00"
+              ["timestamp"]=>
+              int(1502292600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "23:00-23:30"
+              ["lable_start"]=>
+              string(5) "23:00"
+              ["lable_end"]=>
+              string(5) "23:30"
+            }
+            [23]=>
+            array(7) {
+              ["index"]=>
+              int(47)
+              ["key"]=>
+              string(19) "2017-08-09 23:30:00"
+              ["timestamp"]=>
+              int(1502294400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "23:30-00:00"
+              ["lable_start"]=>
+              string(5) "23:30"
+              ["lable_end"]=>
+              string(5) "00:00"
+            }
+          }
+        }
+        ["can_booking"]=>
+        int(1)
+        ["error_msg"]=>
+        string(0) ""
+      }
+      [1]=>
+      array(6) {
+        ["timestamp"]=>
+        int(1502294400)
+        ["lable_full"]=>
+        string(19) "2017-08-10 00:00:00"
+        ["lable"]=>
+        string(10) "2017-08-10"
+        ["situation"]=>
+        array(2) {
+          ["am"]=>
+          array(24) {
+            [0]=>
+            array(7) {
+              ["index"]=>
+              int(0)
+              ["key"]=>
+              string(19) "2017-08-10 00:00:00"
+              ["timestamp"]=>
+              int(1502296200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "00:00-00:30"
+              ["lable_start"]=>
+              string(5) "00:00"
+              ["lable_end"]=>
+              string(5) "00:30"
+            }
+            [1]=>
+            array(7) {
+              ["index"]=>
+              int(1)
+              ["key"]=>
+              string(19) "2017-08-10 00:30:00"
+              ["timestamp"]=>
+              int(1502298000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "00:30-01:00"
+              ["lable_start"]=>
+              string(5) "00:30"
+              ["lable_end"]=>
+              string(5) "01:00"
+            }
+            [2]=>
+            array(7) {
+              ["index"]=>
+              int(2)
+              ["key"]=>
+              string(19) "2017-08-10 01:00:00"
+              ["timestamp"]=>
+              int(1502299800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "01:00-01:30"
+              ["lable_start"]=>
+              string(5) "01:00"
+              ["lable_end"]=>
+              string(5) "01:30"
+            }
+            [3]=>
+            array(7) {
+              ["index"]=>
+              int(3)
+              ["key"]=>
+              string(19) "2017-08-10 01:30:00"
+              ["timestamp"]=>
+              int(1502301600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "01:30-02:00"
+              ["lable_start"]=>
+              string(5) "01:30"
+              ["lable_end"]=>
+              string(5) "02:00"
+            }
+            [4]=>
+            array(7) {
+              ["index"]=>
+              int(4)
+              ["key"]=>
+              string(19) "2017-08-10 02:00:00"
+              ["timestamp"]=>
+              int(1502303400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "02:00-02:30"
+              ["lable_start"]=>
+              string(5) "02:00"
+              ["lable_end"]=>
+              string(5) "02:30"
+            }
+            [5]=>
+            array(7) {
+              ["index"]=>
+              int(5)
+              ["key"]=>
+              string(19) "2017-08-10 02:30:00"
+              ["timestamp"]=>
+              int(1502305200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "02:30-03:00"
+              ["lable_start"]=>
+              string(5) "02:30"
+              ["lable_end"]=>
+              string(5) "03:00"
+            }
+            [6]=>
+            array(7) {
+              ["index"]=>
+              int(6)
+              ["key"]=>
+              string(19) "2017-08-10 03:00:00"
+              ["timestamp"]=>
+              int(1502307000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "03:00-03:30"
+              ["lable_start"]=>
+              string(5) "03:00"
+              ["lable_end"]=>
+              string(5) "03:30"
+            }
+            [7]=>
+            array(7) {
+              ["index"]=>
+              int(7)
+              ["key"]=>
+              string(19) "2017-08-10 03:30:00"
+              ["timestamp"]=>
+              int(1502308800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "03:30-04:00"
+              ["lable_start"]=>
+              string(5) "03:30"
+              ["lable_end"]=>
+              string(5) "04:00"
+            }
+            [8]=>
+            array(7) {
+              ["index"]=>
+              int(8)
+              ["key"]=>
+              string(19) "2017-08-10 04:00:00"
+              ["timestamp"]=>
+              int(1502310600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "04:00-04:30"
+              ["lable_start"]=>
+              string(5) "04:00"
+              ["lable_end"]=>
+              string(5) "04:30"
+            }
+            [9]=>
+            array(7) {
+              ["index"]=>
+              int(9)
+              ["key"]=>
+              string(19) "2017-08-10 04:30:00"
+              ["timestamp"]=>
+              int(1502312400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "04:30-05:00"
+              ["lable_start"]=>
+              string(5) "04:30"
+              ["lable_end"]=>
+              string(5) "05:00"
+            }
+            [10]=>
+            array(7) {
+              ["index"]=>
+              int(10)
+              ["key"]=>
+              string(19) "2017-08-10 05:00:00"
+              ["timestamp"]=>
+              int(1502314200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "05:00-05:30"
+              ["lable_start"]=>
+              string(5) "05:00"
+              ["lable_end"]=>
+              string(5) "05:30"
+            }
+            [11]=>
+            array(7) {
+              ["index"]=>
+              int(11)
+              ["key"]=>
+              string(19) "2017-08-10 05:30:00"
+              ["timestamp"]=>
+              int(1502316000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "05:30-06:00"
+              ["lable_start"]=>
+              string(5) "05:30"
+              ["lable_end"]=>
+              string(5) "06:00"
+            }
+            [12]=>
+            array(7) {
+              ["index"]=>
+              int(12)
+              ["key"]=>
+              string(19) "2017-08-10 06:00:00"
+              ["timestamp"]=>
+              int(1502317800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "06:00-06:30"
+              ["lable_start"]=>
+              string(5) "06:00"
+              ["lable_end"]=>
+              string(5) "06:30"
+            }
+            [13]=>
+            array(7) {
+              ["index"]=>
+              int(13)
+              ["key"]=>
+              string(19) "2017-08-10 06:30:00"
+              ["timestamp"]=>
+              int(1502319600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "06:30-07:00"
+              ["lable_start"]=>
+              string(5) "06:30"
+              ["lable_end"]=>
+              string(5) "07:00"
+            }
+            [14]=>
+            array(7) {
+              ["index"]=>
+              int(14)
+              ["key"]=>
+              string(19) "2017-08-10 07:00:00"
+              ["timestamp"]=>
+              int(1502321400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "07:00-07:30"
+              ["lable_start"]=>
+              string(5) "07:00"
+              ["lable_end"]=>
+              string(5) "07:30"
+            }
+            [15]=>
+            array(7) {
+              ["index"]=>
+              int(15)
+              ["key"]=>
+              string(19) "2017-08-10 07:30:00"
+              ["timestamp"]=>
+              int(1502323200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "07:30-08:00"
+              ["lable_start"]=>
+              string(5) "07:30"
+              ["lable_end"]=>
+              string(5) "08:00"
+            }
+            [16]=>
+            array(7) {
+              ["index"]=>
+              int(16)
+              ["key"]=>
+              string(19) "2017-08-10 08:00:00"
+              ["timestamp"]=>
+              int(1502325000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "08:00-08:30"
+              ["lable_start"]=>
+              string(5) "08:00"
+              ["lable_end"]=>
+              string(5) "08:30"
+            }
+            [17]=>
+            array(7) {
+              ["index"]=>
+              int(17)
+              ["key"]=>
+              string(19) "2017-08-10 08:30:00"
+              ["timestamp"]=>
+              int(1502326800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "08:30-09:00"
+              ["lable_start"]=>
+              string(5) "08:30"
+              ["lable_end"]=>
+              string(5) "09:00"
+            }
+            [18]=>
+            array(7) {
+              ["index"]=>
+              int(18)
+              ["key"]=>
+              string(19) "2017-08-10 09:00:00"
+              ["timestamp"]=>
+              int(1502328600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "09:00-09:30"
+              ["lable_start"]=>
+              string(5) "09:00"
+              ["lable_end"]=>
+              string(5) "09:30"
+            }
+            [19]=>
+            array(7) {
+              ["index"]=>
+              int(19)
+              ["key"]=>
+              string(19) "2017-08-10 09:30:00"
+              ["timestamp"]=>
+              int(1502330400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "09:30-10:00"
+              ["lable_start"]=>
+              string(5) "09:30"
+              ["lable_end"]=>
+              string(5) "10:00"
+            }
+            [20]=>
+            array(7) {
+              ["index"]=>
+              int(20)
+              ["key"]=>
+              string(19) "2017-08-10 10:00:00"
+              ["timestamp"]=>
+              int(1502332200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "10:00-10:30"
+              ["lable_start"]=>
+              string(5) "10:00"
+              ["lable_end"]=>
+              string(5) "10:30"
+            }
+            [21]=>
+            array(7) {
+              ["index"]=>
+              int(21)
+              ["key"]=>
+              string(19) "2017-08-10 10:30:00"
+              ["timestamp"]=>
+              int(1502334000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "10:30-11:00"
+              ["lable_start"]=>
+              string(5) "10:30"
+              ["lable_end"]=>
+              string(5) "11:00"
+            }
+            [22]=>
+            array(7) {
+              ["index"]=>
+              int(22)
+              ["key"]=>
+              string(19) "2017-08-10 11:00:00"
+              ["timestamp"]=>
+              int(1502335800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "11:00-11:30"
+              ["lable_start"]=>
+              string(5) "11:00"
+              ["lable_end"]=>
+              string(5) "11:30"
+            }
+            [23]=>
+            array(7) {
+              ["index"]=>
+              int(23)
+              ["key"]=>
+              string(19) "2017-08-10 11:30:00"
+              ["timestamp"]=>
+              int(1502337600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "11:30-12:00"
+              ["lable_start"]=>
+              string(5) "11:30"
+              ["lable_end"]=>
+              string(5) "12:00"
+            }
+          }
+          ["pm"]=>
+          array(24) {
+            [0]=>
+            array(7) {
+              ["index"]=>
+              int(24)
+              ["key"]=>
+              string(19) "2017-08-10 12:00:00"
+              ["timestamp"]=>
+              int(1502339400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "12:00-12:30"
+              ["lable_start"]=>
+              string(5) "12:00"
+              ["lable_end"]=>
+              string(5) "12:30"
+            }
+            [1]=>
+            array(7) {
+              ["index"]=>
+              int(25)
+              ["key"]=>
+              string(19) "2017-08-10 12:30:00"
+              ["timestamp"]=>
+              int(1502341200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "12:30-13:00"
+              ["lable_start"]=>
+              string(5) "12:30"
+              ["lable_end"]=>
+              string(5) "13:00"
+            }
+            [2]=>
+            array(7) {
+              ["index"]=>
+              int(26)
+              ["key"]=>
+              string(19) "2017-08-10 13:00:00"
+              ["timestamp"]=>
+              int(1502343000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "13:00-13:30"
+              ["lable_start"]=>
+              string(5) "13:00"
+              ["lable_end"]=>
+              string(5) "13:30"
+            }
+            [3]=>
+            array(7) {
+              ["index"]=>
+              int(27)
+              ["key"]=>
+              string(19) "2017-08-10 13:30:00"
+              ["timestamp"]=>
+              int(1502344800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "13:30-14:00"
+              ["lable_start"]=>
+              string(5) "13:30"
+              ["lable_end"]=>
+              string(5) "14:00"
+            }
+            [4]=>
+            array(7) {
+              ["index"]=>
+              int(28)
+              ["key"]=>
+              string(19) "2017-08-10 14:00:00"
+              ["timestamp"]=>
+              int(1502346600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "14:00-14:30"
+              ["lable_start"]=>
+              string(5) "14:00"
+              ["lable_end"]=>
+              string(5) "14:30"
+            }
+            [5]=>
+            array(7) {
+              ["index"]=>
+              int(29)
+              ["key"]=>
+              string(19) "2017-08-10 14:30:00"
+              ["timestamp"]=>
+              int(1502348400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "14:30-15:00"
+              ["lable_start"]=>
+              string(5) "14:30"
+              ["lable_end"]=>
+              string(5) "15:00"
+            }
+            [6]=>
+            array(7) {
+              ["index"]=>
+              int(30)
+              ["key"]=>
+              string(19) "2017-08-10 15:00:00"
+              ["timestamp"]=>
+              int(1502350200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "15:00-15:30"
+              ["lable_start"]=>
+              string(5) "15:00"
+              ["lable_end"]=>
+              string(5) "15:30"
+            }
+            [7]=>
+            array(7) {
+              ["index"]=>
+              int(31)
+              ["key"]=>
+              string(19) "2017-08-10 15:30:00"
+              ["timestamp"]=>
+              int(1502352000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "15:30-16:00"
+              ["lable_start"]=>
+              string(5) "15:30"
+              ["lable_end"]=>
+              string(5) "16:00"
+            }
+            [8]=>
+            array(7) {
+              ["index"]=>
+              int(32)
+              ["key"]=>
+              string(19) "2017-08-10 16:00:00"
+              ["timestamp"]=>
+              int(1502353800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "16:00-16:30"
+              ["lable_start"]=>
+              string(5) "16:00"
+              ["lable_end"]=>
+              string(5) "16:30"
+            }
+            [9]=>
+            array(7) {
+              ["index"]=>
+              int(33)
+              ["key"]=>
+              string(19) "2017-08-10 16:30:00"
+              ["timestamp"]=>
+              int(1502355600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "16:30-17:00"
+              ["lable_start"]=>
+              string(5) "16:30"
+              ["lable_end"]=>
+              string(5) "17:00"
+            }
+            [10]=>
+            array(7) {
+              ["index"]=>
+              int(34)
+              ["key"]=>
+              string(19) "2017-08-10 17:00:00"
+              ["timestamp"]=>
+              int(1502357400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "17:00-17:30"
+              ["lable_start"]=>
+              string(5) "17:00"
+              ["lable_end"]=>
+              string(5) "17:30"
+            }
+            [11]=>
+            array(7) {
+              ["index"]=>
+              int(35)
+              ["key"]=>
+              string(19) "2017-08-10 17:30:00"
+              ["timestamp"]=>
+              int(1502359200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "17:30-18:00"
+              ["lable_start"]=>
+              string(5) "17:30"
+              ["lable_end"]=>
+              string(5) "18:00"
+            }
+            [12]=>
+            array(7) {
+              ["index"]=>
+              int(36)
+              ["key"]=>
+              string(19) "2017-08-10 18:00:00"
+              ["timestamp"]=>
+              int(1502361000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "18:00-18:30"
+              ["lable_start"]=>
+              string(5) "18:00"
+              ["lable_end"]=>
+              string(5) "18:30"
+            }
+            [13]=>
+            array(7) {
+              ["index"]=>
+              int(37)
+              ["key"]=>
+              string(19) "2017-08-10 18:30:00"
+              ["timestamp"]=>
+              int(1502362800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "18:30-19:00"
+              ["lable_start"]=>
+              string(5) "18:30"
+              ["lable_end"]=>
+              string(5) "19:00"
+            }
+            [14]=>
+            array(7) {
+              ["index"]=>
+              int(38)
+              ["key"]=>
+              string(19) "2017-08-10 19:00:00"
+              ["timestamp"]=>
+              int(1502364600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "19:00-19:30"
+              ["lable_start"]=>
+              string(5) "19:00"
+              ["lable_end"]=>
+              string(5) "19:30"
+            }
+            [15]=>
+            array(7) {
+              ["index"]=>
+              int(39)
+              ["key"]=>
+              string(19) "2017-08-10 19:30:00"
+              ["timestamp"]=>
+              int(1502366400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "19:30-20:00"
+              ["lable_start"]=>
+              string(5) "19:30"
+              ["lable_end"]=>
+              string(5) "20:00"
+            }
+            [16]=>
+            array(7) {
+              ["index"]=>
+              int(40)
+              ["key"]=>
+              string(19) "2017-08-10 20:00:00"
+              ["timestamp"]=>
+              int(1502368200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "20:00-20:30"
+              ["lable_start"]=>
+              string(5) "20:00"
+              ["lable_end"]=>
+              string(5) "20:30"
+            }
+            [17]=>
+            array(7) {
+              ["index"]=>
+              int(41)
+              ["key"]=>
+              string(19) "2017-08-10 20:30:00"
+              ["timestamp"]=>
+              int(1502370000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "20:30-21:00"
+              ["lable_start"]=>
+              string(5) "20:30"
+              ["lable_end"]=>
+              string(5) "21:00"
+            }
+            [18]=>
+            array(7) {
+              ["index"]=>
+              int(42)
+              ["key"]=>
+              string(19) "2017-08-10 21:00:00"
+              ["timestamp"]=>
+              int(1502371800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "21:00-21:30"
+              ["lable_start"]=>
+              string(5) "21:00"
+              ["lable_end"]=>
+              string(5) "21:30"
+            }
+            [19]=>
+            array(7) {
+              ["index"]=>
+              int(43)
+              ["key"]=>
+              string(19) "2017-08-10 21:30:00"
+              ["timestamp"]=>
+              int(1502373600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "21:30-22:00"
+              ["lable_start"]=>
+              string(5) "21:30"
+              ["lable_end"]=>
+              string(5) "22:00"
+            }
+            [20]=>
+            array(7) {
+              ["index"]=>
+              int(44)
+              ["key"]=>
+              string(19) "2017-08-10 22:00:00"
+              ["timestamp"]=>
+              int(1502375400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "22:00-22:30"
+              ["lable_start"]=>
+              string(5) "22:00"
+              ["lable_end"]=>
+              string(5) "22:30"
+            }
+            [21]=>
+            array(7) {
+              ["index"]=>
+              int(45)
+              ["key"]=>
+              string(19) "2017-08-10 22:30:00"
+              ["timestamp"]=>
+              int(1502377200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "22:30-23:00"
+              ["lable_start"]=>
+              string(5) "22:30"
+              ["lable_end"]=>
+              string(5) "23:00"
+            }
+            [22]=>
+            array(7) {
+              ["index"]=>
+              int(46)
+              ["key"]=>
+              string(19) "2017-08-10 23:00:00"
+              ["timestamp"]=>
+              int(1502379000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "23:00-23:30"
+              ["lable_start"]=>
+              string(5) "23:00"
+              ["lable_end"]=>
+              string(5) "23:30"
+            }
+            [23]=>
+            array(7) {
+              ["index"]=>
+              int(47)
+              ["key"]=>
+              string(19) "2017-08-10 23:30:00"
+              ["timestamp"]=>
+              int(1502380800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "23:30-00:00"
+              ["lable_start"]=>
+              string(5) "23:30"
+              ["lable_end"]=>
+              string(5) "00:00"
+            }
+          }
+        }
+        ["can_booking"]=>
+        int(1)
+        ["error_msg"]=>
+        string(0) ""
+      }
+    }
+  }
+  [1]=>
+  array(21) {
+    ["id"]=>
+    string(1) "2"
+    ["name"]=>
+    string(12) "地址名称"
+    ["address"]=>
+    string(30) "地址名称名称名称名称"
+    ["floor"]=>
+    string(2) "30"
+    ["traffic"]=>
+    string(0) ""
+    ["lat"]=>
+    string(8) "0.000000"
+    ["lng"]=>
+    string(8) "0.000000"
+    ["thumb"]=>
+    string(0) ""
+    ["basic"]=>
+    string(0) ""
+    ["carousel"]=>
+    string(70) "a:1:{i:0;s:52:"images/15/2017/07/CMfQi6Z7w7MsHaYtCJ6JmzTh1WFcPZ.jpg";}"
+    ["price"]=>
+    string(4) "0.00"
+    ["equipment"]=>
+    string(65) "s:57:"{&quot;value&quot;:1,&quot;text&quot;:&quot;电脑&quot;}";"
+    ["max_num"]=>
+    string(1) "0"
+    ["appointment_num"]=>
+    string(1) "0"
+    ["remark"]=>
+    string(0) ""
+    ["cancle_rule"]=>
+    string(0) ""
+    ["createtime"]=>
+    string(10) "1501104742"
+    ["updatetime"]=>
+    string(10) "1501257427"
+    ["enabled"]=>
+    string(1) "1"
+    ["uniacid"]=>
+    string(2) "15"
+    ["situation"]=>
+    array(2) {
+      [0]=>
+      array(6) {
+        ["timestamp"]=>
+        int(1502208000)
+        ["lable_full"]=>
+        string(19) "2017-08-09 00:00:00"
+        ["lable"]=>
+        string(10) "2017-08-09"
+        ["situation"]=>
+        array(2) {
+          ["am"]=>
+          array(24) {
+            [0]=>
+            array(7) {
+              ["index"]=>
+              int(0)
+              ["key"]=>
+              string(19) "2017-08-09 00:00:00"
+              ["timestamp"]=>
+              int(1502209800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "00:00-00:30"
+              ["lable_start"]=>
+              string(5) "00:00"
+              ["lable_end"]=>
+              string(5) "00:30"
+            }
+            [1]=>
+            array(7) {
+              ["index"]=>
+              int(1)
+              ["key"]=>
+              string(19) "2017-08-09 00:30:00"
+              ["timestamp"]=>
+              int(1502211600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "00:30-01:00"
+              ["lable_start"]=>
+              string(5) "00:30"
+              ["lable_end"]=>
+              string(5) "01:00"
+            }
+            [2]=>
+            array(7) {
+              ["index"]=>
+              int(2)
+              ["key"]=>
+              string(19) "2017-08-09 01:00:00"
+              ["timestamp"]=>
+              int(1502213400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "01:00-01:30"
+              ["lable_start"]=>
+              string(5) "01:00"
+              ["lable_end"]=>
+              string(5) "01:30"
+            }
+            [3]=>
+            array(7) {
+              ["index"]=>
+              int(3)
+              ["key"]=>
+              string(19) "2017-08-09 01:30:00"
+              ["timestamp"]=>
+              int(1502215200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "01:30-02:00"
+              ["lable_start"]=>
+              string(5) "01:30"
+              ["lable_end"]=>
+              string(5) "02:00"
+            }
+            [4]=>
+            array(7) {
+              ["index"]=>
+              int(4)
+              ["key"]=>
+              string(19) "2017-08-09 02:00:00"
+              ["timestamp"]=>
+              int(1502217000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "02:00-02:30"
+              ["lable_start"]=>
+              string(5) "02:00"
+              ["lable_end"]=>
+              string(5) "02:30"
+            }
+            [5]=>
+            array(7) {
+              ["index"]=>
+              int(5)
+              ["key"]=>
+              string(19) "2017-08-09 02:30:00"
+              ["timestamp"]=>
+              int(1502218800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "02:30-03:00"
+              ["lable_start"]=>
+              string(5) "02:30"
+              ["lable_end"]=>
+              string(5) "03:00"
+            }
+            [6]=>
+            array(7) {
+              ["index"]=>
+              int(6)
+              ["key"]=>
+              string(19) "2017-08-09 03:00:00"
+              ["timestamp"]=>
+              int(1502220600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "03:00-03:30"
+              ["lable_start"]=>
+              string(5) "03:00"
+              ["lable_end"]=>
+              string(5) "03:30"
+            }
+            [7]=>
+            array(7) {
+              ["index"]=>
+              int(7)
+              ["key"]=>
+              string(19) "2017-08-09 03:30:00"
+              ["timestamp"]=>
+              int(1502222400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "03:30-04:00"
+              ["lable_start"]=>
+              string(5) "03:30"
+              ["lable_end"]=>
+              string(5) "04:00"
+            }
+            [8]=>
+            array(7) {
+              ["index"]=>
+              int(8)
+              ["key"]=>
+              string(19) "2017-08-09 04:00:00"
+              ["timestamp"]=>
+              int(1502224200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "04:00-04:30"
+              ["lable_start"]=>
+              string(5) "04:00"
+              ["lable_end"]=>
+              string(5) "04:30"
+            }
+            [9]=>
+            array(7) {
+              ["index"]=>
+              int(9)
+              ["key"]=>
+              string(19) "2017-08-09 04:30:00"
+              ["timestamp"]=>
+              int(1502226000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "04:30-05:00"
+              ["lable_start"]=>
+              string(5) "04:30"
+              ["lable_end"]=>
+              string(5) "05:00"
+            }
+            [10]=>
+            array(7) {
+              ["index"]=>
+              int(10)
+              ["key"]=>
+              string(19) "2017-08-09 05:00:00"
+              ["timestamp"]=>
+              int(1502227800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "05:00-05:30"
+              ["lable_start"]=>
+              string(5) "05:00"
+              ["lable_end"]=>
+              string(5) "05:30"
+            }
+            [11]=>
+            array(7) {
+              ["index"]=>
+              int(11)
+              ["key"]=>
+              string(19) "2017-08-09 05:30:00"
+              ["timestamp"]=>
+              int(1502229600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "05:30-06:00"
+              ["lable_start"]=>
+              string(5) "05:30"
+              ["lable_end"]=>
+              string(5) "06:00"
+            }
+            [12]=>
+            array(7) {
+              ["index"]=>
+              int(12)
+              ["key"]=>
+              string(19) "2017-08-09 06:00:00"
+              ["timestamp"]=>
+              int(1502231400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "06:00-06:30"
+              ["lable_start"]=>
+              string(5) "06:00"
+              ["lable_end"]=>
+              string(5) "06:30"
+            }
+            [13]=>
+            array(7) {
+              ["index"]=>
+              int(13)
+              ["key"]=>
+              string(19) "2017-08-09 06:30:00"
+              ["timestamp"]=>
+              int(1502233200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "06:30-07:00"
+              ["lable_start"]=>
+              string(5) "06:30"
+              ["lable_end"]=>
+              string(5) "07:00"
+            }
+            [14]=>
+            array(7) {
+              ["index"]=>
+              int(14)
+              ["key"]=>
+              string(19) "2017-08-09 07:00:00"
+              ["timestamp"]=>
+              int(1502235000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "07:00-07:30"
+              ["lable_start"]=>
+              string(5) "07:00"
+              ["lable_end"]=>
+              string(5) "07:30"
+            }
+            [15]=>
+            array(7) {
+              ["index"]=>
+              int(15)
+              ["key"]=>
+              string(19) "2017-08-09 07:30:00"
+              ["timestamp"]=>
+              int(1502236800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "07:30-08:00"
+              ["lable_start"]=>
+              string(5) "07:30"
+              ["lable_end"]=>
+              string(5) "08:00"
+            }
+            [16]=>
+            array(7) {
+              ["index"]=>
+              int(16)
+              ["key"]=>
+              string(19) "2017-08-09 08:00:00"
+              ["timestamp"]=>
+              int(1502238600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "08:00-08:30"
+              ["lable_start"]=>
+              string(5) "08:00"
+              ["lable_end"]=>
+              string(5) "08:30"
+            }
+            [17]=>
+            array(7) {
+              ["index"]=>
+              int(17)
+              ["key"]=>
+              string(19) "2017-08-09 08:30:00"
+              ["timestamp"]=>
+              int(1502240400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "08:30-09:00"
+              ["lable_start"]=>
+              string(5) "08:30"
+              ["lable_end"]=>
+              string(5) "09:00"
+            }
+            [18]=>
+            array(7) {
+              ["index"]=>
+              int(18)
+              ["key"]=>
+              string(19) "2017-08-09 09:00:00"
+              ["timestamp"]=>
+              int(1502242200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "09:00-09:30"
+              ["lable_start"]=>
+              string(5) "09:00"
+              ["lable_end"]=>
+              string(5) "09:30"
+            }
+            [19]=>
+            array(7) {
+              ["index"]=>
+              int(19)
+              ["key"]=>
+              string(19) "2017-08-09 09:30:00"
+              ["timestamp"]=>
+              int(1502244000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "09:30-10:00"
+              ["lable_start"]=>
+              string(5) "09:30"
+              ["lable_end"]=>
+              string(5) "10:00"
+            }
+            [20]=>
+            array(7) {
+              ["index"]=>
+              int(20)
+              ["key"]=>
+              string(19) "2017-08-09 10:00:00"
+              ["timestamp"]=>
+              int(1502245800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "10:00-10:30"
+              ["lable_start"]=>
+              string(5) "10:00"
+              ["lable_end"]=>
+              string(5) "10:30"
+            }
+            [21]=>
+            array(7) {
+              ["index"]=>
+              int(21)
+              ["key"]=>
+              string(19) "2017-08-09 10:30:00"
+              ["timestamp"]=>
+              int(1502247600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "10:30-11:00"
+              ["lable_start"]=>
+              string(5) "10:30"
+              ["lable_end"]=>
+              string(5) "11:00"
+            }
+            [22]=>
+            array(7) {
+              ["index"]=>
+              int(22)
+              ["key"]=>
+              string(19) "2017-08-09 11:00:00"
+              ["timestamp"]=>
+              int(1502249400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "11:00-11:30"
+              ["lable_start"]=>
+              string(5) "11:00"
+              ["lable_end"]=>
+              string(5) "11:30"
+            }
+            [23]=>
+            array(7) {
+              ["index"]=>
+              int(23)
+              ["key"]=>
+              string(19) "2017-08-09 11:30:00"
+              ["timestamp"]=>
+              int(1502251200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "11:30-12:00"
+              ["lable_start"]=>
+              string(5) "11:30"
+              ["lable_end"]=>
+              string(5) "12:00"
+            }
+          }
+          ["pm"]=>
+          array(24) {
+            [0]=>
+            array(7) {
+              ["index"]=>
+              int(24)
+              ["key"]=>
+              string(19) "2017-08-09 12:00:00"
+              ["timestamp"]=>
+              int(1502253000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "12:00-12:30"
+              ["lable_start"]=>
+              string(5) "12:00"
+              ["lable_end"]=>
+              string(5) "12:30"
+            }
+            [1]=>
+            array(7) {
+              ["index"]=>
+              int(25)
+              ["key"]=>
+              string(19) "2017-08-09 12:30:00"
+              ["timestamp"]=>
+              int(1502254800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "12:30-13:00"
+              ["lable_start"]=>
+              string(5) "12:30"
+              ["lable_end"]=>
+              string(5) "13:00"
+            }
+            [2]=>
+            array(7) {
+              ["index"]=>
+              int(26)
+              ["key"]=>
+              string(19) "2017-08-09 13:00:00"
+              ["timestamp"]=>
+              int(1502256600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "13:00-13:30"
+              ["lable_start"]=>
+              string(5) "13:00"
+              ["lable_end"]=>
+              string(5) "13:30"
+            }
+            [3]=>
+            array(7) {
+              ["index"]=>
+              int(27)
+              ["key"]=>
+              string(19) "2017-08-09 13:30:00"
+              ["timestamp"]=>
+              int(1502258400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "13:30-14:00"
+              ["lable_start"]=>
+              string(5) "13:30"
+              ["lable_end"]=>
+              string(5) "14:00"
+            }
+            [4]=>
+            array(7) {
+              ["index"]=>
+              int(28)
+              ["key"]=>
+              string(19) "2017-08-09 14:00:00"
+              ["timestamp"]=>
+              int(1502260200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "14:00-14:30"
+              ["lable_start"]=>
+              string(5) "14:00"
+              ["lable_end"]=>
+              string(5) "14:30"
+            }
+            [5]=>
+            array(7) {
+              ["index"]=>
+              int(29)
+              ["key"]=>
+              string(19) "2017-08-09 14:30:00"
+              ["timestamp"]=>
+              int(1502262000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "14:30-15:00"
+              ["lable_start"]=>
+              string(5) "14:30"
+              ["lable_end"]=>
+              string(5) "15:00"
+            }
+            [6]=>
+            array(7) {
+              ["index"]=>
+              int(30)
+              ["key"]=>
+              string(19) "2017-08-09 15:00:00"
+              ["timestamp"]=>
+              int(1502263800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "15:00-15:30"
+              ["lable_start"]=>
+              string(5) "15:00"
+              ["lable_end"]=>
+              string(5) "15:30"
+            }
+            [7]=>
+            array(7) {
+              ["index"]=>
+              int(31)
+              ["key"]=>
+              string(19) "2017-08-09 15:30:00"
+              ["timestamp"]=>
+              int(1502265600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "15:30-16:00"
+              ["lable_start"]=>
+              string(5) "15:30"
+              ["lable_end"]=>
+              string(5) "16:00"
+            }
+            [8]=>
+            array(7) {
+              ["index"]=>
+              int(32)
+              ["key"]=>
+              string(19) "2017-08-09 16:00:00"
+              ["timestamp"]=>
+              int(1502267400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "16:00-16:30"
+              ["lable_start"]=>
+              string(5) "16:00"
+              ["lable_end"]=>
+              string(5) "16:30"
+            }
+            [9]=>
+            array(7) {
+              ["index"]=>
+              int(33)
+              ["key"]=>
+              string(19) "2017-08-09 16:30:00"
+              ["timestamp"]=>
+              int(1502269200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "16:30-17:00"
+              ["lable_start"]=>
+              string(5) "16:30"
+              ["lable_end"]=>
+              string(5) "17:00"
+            }
+            [10]=>
+            array(7) {
+              ["index"]=>
+              int(34)
+              ["key"]=>
+              string(19) "2017-08-09 17:00:00"
+              ["timestamp"]=>
+              int(1502271000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "17:00-17:30"
+              ["lable_start"]=>
+              string(5) "17:00"
+              ["lable_end"]=>
+              string(5) "17:30"
+            }
+            [11]=>
+            array(7) {
+              ["index"]=>
+              int(35)
+              ["key"]=>
+              string(19) "2017-08-09 17:30:00"
+              ["timestamp"]=>
+              int(1502272800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "17:30-18:00"
+              ["lable_start"]=>
+              string(5) "17:30"
+              ["lable_end"]=>
+              string(5) "18:00"
+            }
+            [12]=>
+            array(7) {
+              ["index"]=>
+              int(36)
+              ["key"]=>
+              string(19) "2017-08-09 18:00:00"
+              ["timestamp"]=>
+              int(1502274600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "18:00-18:30"
+              ["lable_start"]=>
+              string(5) "18:00"
+              ["lable_end"]=>
+              string(5) "18:30"
+            }
+            [13]=>
+            array(7) {
+              ["index"]=>
+              int(37)
+              ["key"]=>
+              string(19) "2017-08-09 18:30:00"
+              ["timestamp"]=>
+              int(1502276400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "18:30-19:00"
+              ["lable_start"]=>
+              string(5) "18:30"
+              ["lable_end"]=>
+              string(5) "19:00"
+            }
+            [14]=>
+            array(7) {
+              ["index"]=>
+              int(38)
+              ["key"]=>
+              string(19) "2017-08-09 19:00:00"
+              ["timestamp"]=>
+              int(1502278200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "19:00-19:30"
+              ["lable_start"]=>
+              string(5) "19:00"
+              ["lable_end"]=>
+              string(5) "19:30"
+            }
+            [15]=>
+            array(7) {
+              ["index"]=>
+              int(39)
+              ["key"]=>
+              string(19) "2017-08-09 19:30:00"
+              ["timestamp"]=>
+              int(1502280000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "19:30-20:00"
+              ["lable_start"]=>
+              string(5) "19:30"
+              ["lable_end"]=>
+              string(5) "20:00"
+            }
+            [16]=>
+            array(7) {
+              ["index"]=>
+              int(40)
+              ["key"]=>
+              string(19) "2017-08-09 20:00:00"
+              ["timestamp"]=>
+              int(1502281800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "20:00-20:30"
+              ["lable_start"]=>
+              string(5) "20:00"
+              ["lable_end"]=>
+              string(5) "20:30"
+            }
+            [17]=>
+            array(7) {
+              ["index"]=>
+              int(41)
+              ["key"]=>
+              string(19) "2017-08-09 20:30:00"
+              ["timestamp"]=>
+              int(1502283600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "20:30-21:00"
+              ["lable_start"]=>
+              string(5) "20:30"
+              ["lable_end"]=>
+              string(5) "21:00"
+            }
+            [18]=>
+            array(7) {
+              ["index"]=>
+              int(42)
+              ["key"]=>
+              string(19) "2017-08-09 21:00:00"
+              ["timestamp"]=>
+              int(1502285400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "21:00-21:30"
+              ["lable_start"]=>
+              string(5) "21:00"
+              ["lable_end"]=>
+              string(5) "21:30"
+            }
+            [19]=>
+            array(7) {
+              ["index"]=>
+              int(43)
+              ["key"]=>
+              string(19) "2017-08-09 21:30:00"
+              ["timestamp"]=>
+              int(1502287200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "21:30-22:00"
+              ["lable_start"]=>
+              string(5) "21:30"
+              ["lable_end"]=>
+              string(5) "22:00"
+            }
+            [20]=>
+            array(7) {
+              ["index"]=>
+              int(44)
+              ["key"]=>
+              string(19) "2017-08-09 22:00:00"
+              ["timestamp"]=>
+              int(1502289000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "22:00-22:30"
+              ["lable_start"]=>
+              string(5) "22:00"
+              ["lable_end"]=>
+              string(5) "22:30"
+            }
+            [21]=>
+            array(7) {
+              ["index"]=>
+              int(45)
+              ["key"]=>
+              string(19) "2017-08-09 22:30:00"
+              ["timestamp"]=>
+              int(1502290800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "22:30-23:00"
+              ["lable_start"]=>
+              string(5) "22:30"
+              ["lable_end"]=>
+              string(5) "23:00"
+            }
+            [22]=>
+            array(7) {
+              ["index"]=>
+              int(46)
+              ["key"]=>
+              string(19) "2017-08-09 23:00:00"
+              ["timestamp"]=>
+              int(1502292600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "23:00-23:30"
+              ["lable_start"]=>
+              string(5) "23:00"
+              ["lable_end"]=>
+              string(5) "23:30"
+            }
+            [23]=>
+            array(7) {
+              ["index"]=>
+              int(47)
+              ["key"]=>
+              string(19) "2017-08-09 23:30:00"
+              ["timestamp"]=>
+              int(1502294400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "23:30-00:00"
+              ["lable_start"]=>
+              string(5) "23:30"
+              ["lable_end"]=>
+              string(5) "00:00"
+            }
+          }
+        }
+        ["can_booking"]=>
+        int(1)
+        ["error_msg"]=>
+        string(0) ""
+      }
+      [1]=>
+      array(6) {
+        ["timestamp"]=>
+        int(1502294400)
+        ["lable_full"]=>
+        string(19) "2017-08-10 00:00:00"
+        ["lable"]=>
+        string(10) "2017-08-10"
+        ["situation"]=>
+        array(2) {
+          ["am"]=>
+          array(24) {
+            [0]=>
+            array(7) {
+              ["index"]=>
+              int(0)
+              ["key"]=>
+              string(19) "2017-08-10 00:00:00"
+              ["timestamp"]=>
+              int(1502296200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "00:00-00:30"
+              ["lable_start"]=>
+              string(5) "00:00"
+              ["lable_end"]=>
+              string(5) "00:30"
+            }
+            [1]=>
+            array(7) {
+              ["index"]=>
+              int(1)
+              ["key"]=>
+              string(19) "2017-08-10 00:30:00"
+              ["timestamp"]=>
+              int(1502298000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "00:30-01:00"
+              ["lable_start"]=>
+              string(5) "00:30"
+              ["lable_end"]=>
+              string(5) "01:00"
+            }
+            [2]=>
+            array(7) {
+              ["index"]=>
+              int(2)
+              ["key"]=>
+              string(19) "2017-08-10 01:00:00"
+              ["timestamp"]=>
+              int(1502299800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "01:00-01:30"
+              ["lable_start"]=>
+              string(5) "01:00"
+              ["lable_end"]=>
+              string(5) "01:30"
+            }
+            [3]=>
+            array(7) {
+              ["index"]=>
+              int(3)
+              ["key"]=>
+              string(19) "2017-08-10 01:30:00"
+              ["timestamp"]=>
+              int(1502301600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "01:30-02:00"
+              ["lable_start"]=>
+              string(5) "01:30"
+              ["lable_end"]=>
+              string(5) "02:00"
+            }
+            [4]=>
+            array(7) {
+              ["index"]=>
+              int(4)
+              ["key"]=>
+              string(19) "2017-08-10 02:00:00"
+              ["timestamp"]=>
+              int(1502303400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "02:00-02:30"
+              ["lable_start"]=>
+              string(5) "02:00"
+              ["lable_end"]=>
+              string(5) "02:30"
+            }
+            [5]=>
+            array(7) {
+              ["index"]=>
+              int(5)
+              ["key"]=>
+              string(19) "2017-08-10 02:30:00"
+              ["timestamp"]=>
+              int(1502305200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "02:30-03:00"
+              ["lable_start"]=>
+              string(5) "02:30"
+              ["lable_end"]=>
+              string(5) "03:00"
+            }
+            [6]=>
+            array(7) {
+              ["index"]=>
+              int(6)
+              ["key"]=>
+              string(19) "2017-08-10 03:00:00"
+              ["timestamp"]=>
+              int(1502307000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "03:00-03:30"
+              ["lable_start"]=>
+              string(5) "03:00"
+              ["lable_end"]=>
+              string(5) "03:30"
+            }
+            [7]=>
+            array(7) {
+              ["index"]=>
+              int(7)
+              ["key"]=>
+              string(19) "2017-08-10 03:30:00"
+              ["timestamp"]=>
+              int(1502308800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "03:30-04:00"
+              ["lable_start"]=>
+              string(5) "03:30"
+              ["lable_end"]=>
+              string(5) "04:00"
+            }
+            [8]=>
+            array(7) {
+              ["index"]=>
+              int(8)
+              ["key"]=>
+              string(19) "2017-08-10 04:00:00"
+              ["timestamp"]=>
+              int(1502310600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "04:00-04:30"
+              ["lable_start"]=>
+              string(5) "04:00"
+              ["lable_end"]=>
+              string(5) "04:30"
+            }
+            [9]=>
+            array(7) {
+              ["index"]=>
+              int(9)
+              ["key"]=>
+              string(19) "2017-08-10 04:30:00"
+              ["timestamp"]=>
+              int(1502312400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "04:30-05:00"
+              ["lable_start"]=>
+              string(5) "04:30"
+              ["lable_end"]=>
+              string(5) "05:00"
+            }
+            [10]=>
+            array(7) {
+              ["index"]=>
+              int(10)
+              ["key"]=>
+              string(19) "2017-08-10 05:00:00"
+              ["timestamp"]=>
+              int(1502314200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "05:00-05:30"
+              ["lable_start"]=>
+              string(5) "05:00"
+              ["lable_end"]=>
+              string(5) "05:30"
+            }
+            [11]=>
+            array(7) {
+              ["index"]=>
+              int(11)
+              ["key"]=>
+              string(19) "2017-08-10 05:30:00"
+              ["timestamp"]=>
+              int(1502316000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "05:30-06:00"
+              ["lable_start"]=>
+              string(5) "05:30"
+              ["lable_end"]=>
+              string(5) "06:00"
+            }
+            [12]=>
+            array(7) {
+              ["index"]=>
+              int(12)
+              ["key"]=>
+              string(19) "2017-08-10 06:00:00"
+              ["timestamp"]=>
+              int(1502317800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "06:00-06:30"
+              ["lable_start"]=>
+              string(5) "06:00"
+              ["lable_end"]=>
+              string(5) "06:30"
+            }
+            [13]=>
+            array(7) {
+              ["index"]=>
+              int(13)
+              ["key"]=>
+              string(19) "2017-08-10 06:30:00"
+              ["timestamp"]=>
+              int(1502319600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "06:30-07:00"
+              ["lable_start"]=>
+              string(5) "06:30"
+              ["lable_end"]=>
+              string(5) "07:00"
+            }
+            [14]=>
+            array(7) {
+              ["index"]=>
+              int(14)
+              ["key"]=>
+              string(19) "2017-08-10 07:00:00"
+              ["timestamp"]=>
+              int(1502321400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "07:00-07:30"
+              ["lable_start"]=>
+              string(5) "07:00"
+              ["lable_end"]=>
+              string(5) "07:30"
+            }
+            [15]=>
+            array(7) {
+              ["index"]=>
+              int(15)
+              ["key"]=>
+              string(19) "2017-08-10 07:30:00"
+              ["timestamp"]=>
+              int(1502323200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "07:30-08:00"
+              ["lable_start"]=>
+              string(5) "07:30"
+              ["lable_end"]=>
+              string(5) "08:00"
+            }
+            [16]=>
+            array(7) {
+              ["index"]=>
+              int(16)
+              ["key"]=>
+              string(19) "2017-08-10 08:00:00"
+              ["timestamp"]=>
+              int(1502325000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "08:00-08:30"
+              ["lable_start"]=>
+              string(5) "08:00"
+              ["lable_end"]=>
+              string(5) "08:30"
+            }
+            [17]=>
+            array(7) {
+              ["index"]=>
+              int(17)
+              ["key"]=>
+              string(19) "2017-08-10 08:30:00"
+              ["timestamp"]=>
+              int(1502326800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "08:30-09:00"
+              ["lable_start"]=>
+              string(5) "08:30"
+              ["lable_end"]=>
+              string(5) "09:00"
+            }
+            [18]=>
+            array(7) {
+              ["index"]=>
+              int(18)
+              ["key"]=>
+              string(19) "2017-08-10 09:00:00"
+              ["timestamp"]=>
+              int(1502328600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "09:00-09:30"
+              ["lable_start"]=>
+              string(5) "09:00"
+              ["lable_end"]=>
+              string(5) "09:30"
+            }
+            [19]=>
+            array(7) {
+              ["index"]=>
+              int(19)
+              ["key"]=>
+              string(19) "2017-08-10 09:30:00"
+              ["timestamp"]=>
+              int(1502330400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "09:30-10:00"
+              ["lable_start"]=>
+              string(5) "09:30"
+              ["lable_end"]=>
+              string(5) "10:00"
+            }
+            [20]=>
+            array(7) {
+              ["index"]=>
+              int(20)
+              ["key"]=>
+              string(19) "2017-08-10 10:00:00"
+              ["timestamp"]=>
+              int(1502332200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "10:00-10:30"
+              ["lable_start"]=>
+              string(5) "10:00"
+              ["lable_end"]=>
+              string(5) "10:30"
+            }
+            [21]=>
+            array(7) {
+              ["index"]=>
+              int(21)
+              ["key"]=>
+              string(19) "2017-08-10 10:30:00"
+              ["timestamp"]=>
+              int(1502334000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "10:30-11:00"
+              ["lable_start"]=>
+              string(5) "10:30"
+              ["lable_end"]=>
+              string(5) "11:00"
+            }
+            [22]=>
+            array(7) {
+              ["index"]=>
+              int(22)
+              ["key"]=>
+              string(19) "2017-08-10 11:00:00"
+              ["timestamp"]=>
+              int(1502335800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "11:00-11:30"
+              ["lable_start"]=>
+              string(5) "11:00"
+              ["lable_end"]=>
+              string(5) "11:30"
+            }
+            [23]=>
+            array(7) {
+              ["index"]=>
+              int(23)
+              ["key"]=>
+              string(19) "2017-08-10 11:30:00"
+              ["timestamp"]=>
+              int(1502337600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "11:30-12:00"
+              ["lable_start"]=>
+              string(5) "11:30"
+              ["lable_end"]=>
+              string(5) "12:00"
+            }
+          }
+          ["pm"]=>
+          array(24) {
+            [0]=>
+            array(7) {
+              ["index"]=>
+              int(24)
+              ["key"]=>
+              string(19) "2017-08-10 12:00:00"
+              ["timestamp"]=>
+              int(1502339400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "12:00-12:30"
+              ["lable_start"]=>
+              string(5) "12:00"
+              ["lable_end"]=>
+              string(5) "12:30"
+            }
+            [1]=>
+            array(7) {
+              ["index"]=>
+              int(25)
+              ["key"]=>
+              string(19) "2017-08-10 12:30:00"
+              ["timestamp"]=>
+              int(1502341200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "12:30-13:00"
+              ["lable_start"]=>
+              string(5) "12:30"
+              ["lable_end"]=>
+              string(5) "13:00"
+            }
+            [2]=>
+            array(7) {
+              ["index"]=>
+              int(26)
+              ["key"]=>
+              string(19) "2017-08-10 13:00:00"
+              ["timestamp"]=>
+              int(1502343000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "13:00-13:30"
+              ["lable_start"]=>
+              string(5) "13:00"
+              ["lable_end"]=>
+              string(5) "13:30"
+            }
+            [3]=>
+            array(7) {
+              ["index"]=>
+              int(27)
+              ["key"]=>
+              string(19) "2017-08-10 13:30:00"
+              ["timestamp"]=>
+              int(1502344800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "13:30-14:00"
+              ["lable_start"]=>
+              string(5) "13:30"
+              ["lable_end"]=>
+              string(5) "14:00"
+            }
+            [4]=>
+            array(7) {
+              ["index"]=>
+              int(28)
+              ["key"]=>
+              string(19) "2017-08-10 14:00:00"
+              ["timestamp"]=>
+              int(1502346600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "14:00-14:30"
+              ["lable_start"]=>
+              string(5) "14:00"
+              ["lable_end"]=>
+              string(5) "14:30"
+            }
+            [5]=>
+            array(7) {
+              ["index"]=>
+              int(29)
+              ["key"]=>
+              string(19) "2017-08-10 14:30:00"
+              ["timestamp"]=>
+              int(1502348400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "14:30-15:00"
+              ["lable_start"]=>
+              string(5) "14:30"
+              ["lable_end"]=>
+              string(5) "15:00"
+            }
+            [6]=>
+            array(7) {
+              ["index"]=>
+              int(30)
+              ["key"]=>
+              string(19) "2017-08-10 15:00:00"
+              ["timestamp"]=>
+              int(1502350200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "15:00-15:30"
+              ["lable_start"]=>
+              string(5) "15:00"
+              ["lable_end"]=>
+              string(5) "15:30"
+            }
+            [7]=>
+            array(7) {
+              ["index"]=>
+              int(31)
+              ["key"]=>
+              string(19) "2017-08-10 15:30:00"
+              ["timestamp"]=>
+              int(1502352000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "15:30-16:00"
+              ["lable_start"]=>
+              string(5) "15:30"
+              ["lable_end"]=>
+              string(5) "16:00"
+            }
+            [8]=>
+            array(7) {
+              ["index"]=>
+              int(32)
+              ["key"]=>
+              string(19) "2017-08-10 16:00:00"
+              ["timestamp"]=>
+              int(1502353800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "16:00-16:30"
+              ["lable_start"]=>
+              string(5) "16:00"
+              ["lable_end"]=>
+              string(5) "16:30"
+            }
+            [9]=>
+            array(7) {
+              ["index"]=>
+              int(33)
+              ["key"]=>
+              string(19) "2017-08-10 16:30:00"
+              ["timestamp"]=>
+              int(1502355600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "16:30-17:00"
+              ["lable_start"]=>
+              string(5) "16:30"
+              ["lable_end"]=>
+              string(5) "17:00"
+            }
+            [10]=>
+            array(7) {
+              ["index"]=>
+              int(34)
+              ["key"]=>
+              string(19) "2017-08-10 17:00:00"
+              ["timestamp"]=>
+              int(1502357400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "17:00-17:30"
+              ["lable_start"]=>
+              string(5) "17:00"
+              ["lable_end"]=>
+              string(5) "17:30"
+            }
+            [11]=>
+            array(7) {
+              ["index"]=>
+              int(35)
+              ["key"]=>
+              string(19) "2017-08-10 17:30:00"
+              ["timestamp"]=>
+              int(1502359200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "17:30-18:00"
+              ["lable_start"]=>
+              string(5) "17:30"
+              ["lable_end"]=>
+              string(5) "18:00"
+            }
+            [12]=>
+            array(7) {
+              ["index"]=>
+              int(36)
+              ["key"]=>
+              string(19) "2017-08-10 18:00:00"
+              ["timestamp"]=>
+              int(1502361000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "18:00-18:30"
+              ["lable_start"]=>
+              string(5) "18:00"
+              ["lable_end"]=>
+              string(5) "18:30"
+            }
+            [13]=>
+            array(7) {
+              ["index"]=>
+              int(37)
+              ["key"]=>
+              string(19) "2017-08-10 18:30:00"
+              ["timestamp"]=>
+              int(1502362800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "18:30-19:00"
+              ["lable_start"]=>
+              string(5) "18:30"
+              ["lable_end"]=>
+              string(5) "19:00"
+            }
+            [14]=>
+            array(7) {
+              ["index"]=>
+              int(38)
+              ["key"]=>
+              string(19) "2017-08-10 19:00:00"
+              ["timestamp"]=>
+              int(1502364600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "19:00-19:30"
+              ["lable_start"]=>
+              string(5) "19:00"
+              ["lable_end"]=>
+              string(5) "19:30"
+            }
+            [15]=>
+            array(7) {
+              ["index"]=>
+              int(39)
+              ["key"]=>
+              string(19) "2017-08-10 19:30:00"
+              ["timestamp"]=>
+              int(1502366400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "19:30-20:00"
+              ["lable_start"]=>
+              string(5) "19:30"
+              ["lable_end"]=>
+              string(5) "20:00"
+            }
+            [16]=>
+            array(7) {
+              ["index"]=>
+              int(40)
+              ["key"]=>
+              string(19) "2017-08-10 20:00:00"
+              ["timestamp"]=>
+              int(1502368200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "20:00-20:30"
+              ["lable_start"]=>
+              string(5) "20:00"
+              ["lable_end"]=>
+              string(5) "20:30"
+            }
+            [17]=>
+            array(7) {
+              ["index"]=>
+              int(41)
+              ["key"]=>
+              string(19) "2017-08-10 20:30:00"
+              ["timestamp"]=>
+              int(1502370000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "20:30-21:00"
+              ["lable_start"]=>
+              string(5) "20:30"
+              ["lable_end"]=>
+              string(5) "21:00"
+            }
+            [18]=>
+            array(7) {
+              ["index"]=>
+              int(42)
+              ["key"]=>
+              string(19) "2017-08-10 21:00:00"
+              ["timestamp"]=>
+              int(1502371800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "21:00-21:30"
+              ["lable_start"]=>
+              string(5) "21:00"
+              ["lable_end"]=>
+              string(5) "21:30"
+            }
+            [19]=>
+            array(7) {
+              ["index"]=>
+              int(43)
+              ["key"]=>
+              string(19) "2017-08-10 21:30:00"
+              ["timestamp"]=>
+              int(1502373600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "21:30-22:00"
+              ["lable_start"]=>
+              string(5) "21:30"
+              ["lable_end"]=>
+              string(5) "22:00"
+            }
+            [20]=>
+            array(7) {
+              ["index"]=>
+              int(44)
+              ["key"]=>
+              string(19) "2017-08-10 22:00:00"
+              ["timestamp"]=>
+              int(1502375400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "22:00-22:30"
+              ["lable_start"]=>
+              string(5) "22:00"
+              ["lable_end"]=>
+              string(5) "22:30"
+            }
+            [21]=>
+            array(7) {
+              ["index"]=>
+              int(45)
+              ["key"]=>
+              string(19) "2017-08-10 22:30:00"
+              ["timestamp"]=>
+              int(1502377200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "22:30-23:00"
+              ["lable_start"]=>
+              string(5) "22:30"
+              ["lable_end"]=>
+              string(5) "23:00"
+            }
+            [22]=>
+            array(7) {
+              ["index"]=>
+              int(46)
+              ["key"]=>
+              string(19) "2017-08-10 23:00:00"
+              ["timestamp"]=>
+              int(1502379000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "23:00-23:30"
+              ["lable_start"]=>
+              string(5) "23:00"
+              ["lable_end"]=>
+              string(5) "23:30"
+            }
+            [23]=>
+            array(7) {
+              ["index"]=>
+              int(47)
+              ["key"]=>
+              string(19) "2017-08-10 23:30:00"
+              ["timestamp"]=>
+              int(1502380800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "23:30-00:00"
+              ["lable_start"]=>
+              string(5) "23:30"
+              ["lable_end"]=>
+              string(5) "00:00"
+            }
+          }
+        }
+        ["can_booking"]=>
+        int(1)
+        ["error_msg"]=>
+        string(0) ""
+      }
+    }
+  }
+  [2]=>
+  array(21) {
+    ["id"]=>
+    string(1) "3"
+    ["name"]=>
+    string(16) "名称名称ww d"
+    ["address"]=>
+    string(17) "ds名dsds称dfsds"
+    ["floor"]=>
+    string(2) "10"
+    ["traffic"]=>
+    string(0) ""
+    ["lat"]=>
+    string(8) "0.000000"
+    ["lng"]=>
+    string(8) "0.000000"
+    ["thumb"]=>
+    string(0) ""
+    ["basic"]=>
+    string(0) ""
+    ["carousel"]=>
+    string(0) ""
+    ["price"]=>
+    string(4) "0.00"
+    ["equipment"]=>
+    string(68) "s:60:"{&quot;value&quot;:3,&quot;text&quot;:&quot;记号笔&quot;}";"
+    ["max_num"]=>
+    string(1) "0"
+    ["appointment_num"]=>
+    string(1) "0"
+    ["remark"]=>
+    string(0) ""
+    ["cancle_rule"]=>
+    string(0) ""
+    ["createtime"]=>
+    string(10) "1501104758"
+    ["updatetime"]=>
+    string(10) "1501240561"
+    ["enabled"]=>
+    string(1) "1"
+    ["uniacid"]=>
+    string(2) "15"
+    ["situation"]=>
+    array(2) {
+      [0]=>
+      array(6) {
+        ["timestamp"]=>
+        int(1502208000)
+        ["lable_full"]=>
+        string(19) "2017-08-09 00:00:00"
+        ["lable"]=>
+        string(10) "2017-08-09"
+        ["situation"]=>
+        array(2) {
+          ["am"]=>
+          array(24) {
+            [0]=>
+            array(7) {
+              ["index"]=>
+              int(0)
+              ["key"]=>
+              string(19) "2017-08-09 00:00:00"
+              ["timestamp"]=>
+              int(1502209800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "00:00-00:30"
+              ["lable_start"]=>
+              string(5) "00:00"
+              ["lable_end"]=>
+              string(5) "00:30"
+            }
+            [1]=>
+            array(7) {
+              ["index"]=>
+              int(1)
+              ["key"]=>
+              string(19) "2017-08-09 00:30:00"
+              ["timestamp"]=>
+              int(1502211600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "00:30-01:00"
+              ["lable_start"]=>
+              string(5) "00:30"
+              ["lable_end"]=>
+              string(5) "01:00"
+            }
+            [2]=>
+            array(7) {
+              ["index"]=>
+              int(2)
+              ["key"]=>
+              string(19) "2017-08-09 01:00:00"
+              ["timestamp"]=>
+              int(1502213400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "01:00-01:30"
+              ["lable_start"]=>
+              string(5) "01:00"
+              ["lable_end"]=>
+              string(5) "01:30"
+            }
+            [3]=>
+            array(7) {
+              ["index"]=>
+              int(3)
+              ["key"]=>
+              string(19) "2017-08-09 01:30:00"
+              ["timestamp"]=>
+              int(1502215200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "01:30-02:00"
+              ["lable_start"]=>
+              string(5) "01:30"
+              ["lable_end"]=>
+              string(5) "02:00"
+            }
+            [4]=>
+            array(7) {
+              ["index"]=>
+              int(4)
+              ["key"]=>
+              string(19) "2017-08-09 02:00:00"
+              ["timestamp"]=>
+              int(1502217000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "02:00-02:30"
+              ["lable_start"]=>
+              string(5) "02:00"
+              ["lable_end"]=>
+              string(5) "02:30"
+            }
+            [5]=>
+            array(7) {
+              ["index"]=>
+              int(5)
+              ["key"]=>
+              string(19) "2017-08-09 02:30:00"
+              ["timestamp"]=>
+              int(1502218800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "02:30-03:00"
+              ["lable_start"]=>
+              string(5) "02:30"
+              ["lable_end"]=>
+              string(5) "03:00"
+            }
+            [6]=>
+            array(7) {
+              ["index"]=>
+              int(6)
+              ["key"]=>
+              string(19) "2017-08-09 03:00:00"
+              ["timestamp"]=>
+              int(1502220600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "03:00-03:30"
+              ["lable_start"]=>
+              string(5) "03:00"
+              ["lable_end"]=>
+              string(5) "03:30"
+            }
+            [7]=>
+            array(7) {
+              ["index"]=>
+              int(7)
+              ["key"]=>
+              string(19) "2017-08-09 03:30:00"
+              ["timestamp"]=>
+              int(1502222400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "03:30-04:00"
+              ["lable_start"]=>
+              string(5) "03:30"
+              ["lable_end"]=>
+              string(5) "04:00"
+            }
+            [8]=>
+            array(7) {
+              ["index"]=>
+              int(8)
+              ["key"]=>
+              string(19) "2017-08-09 04:00:00"
+              ["timestamp"]=>
+              int(1502224200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "04:00-04:30"
+              ["lable_start"]=>
+              string(5) "04:00"
+              ["lable_end"]=>
+              string(5) "04:30"
+            }
+            [9]=>
+            array(7) {
+              ["index"]=>
+              int(9)
+              ["key"]=>
+              string(19) "2017-08-09 04:30:00"
+              ["timestamp"]=>
+              int(1502226000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "04:30-05:00"
+              ["lable_start"]=>
+              string(5) "04:30"
+              ["lable_end"]=>
+              string(5) "05:00"
+            }
+            [10]=>
+            array(7) {
+              ["index"]=>
+              int(10)
+              ["key"]=>
+              string(19) "2017-08-09 05:00:00"
+              ["timestamp"]=>
+              int(1502227800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "05:00-05:30"
+              ["lable_start"]=>
+              string(5) "05:00"
+              ["lable_end"]=>
+              string(5) "05:30"
+            }
+            [11]=>
+            array(7) {
+              ["index"]=>
+              int(11)
+              ["key"]=>
+              string(19) "2017-08-09 05:30:00"
+              ["timestamp"]=>
+              int(1502229600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "05:30-06:00"
+              ["lable_start"]=>
+              string(5) "05:30"
+              ["lable_end"]=>
+              string(5) "06:00"
+            }
+            [12]=>
+            array(7) {
+              ["index"]=>
+              int(12)
+              ["key"]=>
+              string(19) "2017-08-09 06:00:00"
+              ["timestamp"]=>
+              int(1502231400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "06:00-06:30"
+              ["lable_start"]=>
+              string(5) "06:00"
+              ["lable_end"]=>
+              string(5) "06:30"
+            }
+            [13]=>
+            array(7) {
+              ["index"]=>
+              int(13)
+              ["key"]=>
+              string(19) "2017-08-09 06:30:00"
+              ["timestamp"]=>
+              int(1502233200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "06:30-07:00"
+              ["lable_start"]=>
+              string(5) "06:30"
+              ["lable_end"]=>
+              string(5) "07:00"
+            }
+            [14]=>
+            array(7) {
+              ["index"]=>
+              int(14)
+              ["key"]=>
+              string(19) "2017-08-09 07:00:00"
+              ["timestamp"]=>
+              int(1502235000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "07:00-07:30"
+              ["lable_start"]=>
+              string(5) "07:00"
+              ["lable_end"]=>
+              string(5) "07:30"
+            }
+            [15]=>
+            array(7) {
+              ["index"]=>
+              int(15)
+              ["key"]=>
+              string(19) "2017-08-09 07:30:00"
+              ["timestamp"]=>
+              int(1502236800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "07:30-08:00"
+              ["lable_start"]=>
+              string(5) "07:30"
+              ["lable_end"]=>
+              string(5) "08:00"
+            }
+            [16]=>
+            array(7) {
+              ["index"]=>
+              int(16)
+              ["key"]=>
+              string(19) "2017-08-09 08:00:00"
+              ["timestamp"]=>
+              int(1502238600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "08:00-08:30"
+              ["lable_start"]=>
+              string(5) "08:00"
+              ["lable_end"]=>
+              string(5) "08:30"
+            }
+            [17]=>
+            array(7) {
+              ["index"]=>
+              int(17)
+              ["key"]=>
+              string(19) "2017-08-09 08:30:00"
+              ["timestamp"]=>
+              int(1502240400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "08:30-09:00"
+              ["lable_start"]=>
+              string(5) "08:30"
+              ["lable_end"]=>
+              string(5) "09:00"
+            }
+            [18]=>
+            array(7) {
+              ["index"]=>
+              int(18)
+              ["key"]=>
+              string(19) "2017-08-09 09:00:00"
+              ["timestamp"]=>
+              int(1502242200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "09:00-09:30"
+              ["lable_start"]=>
+              string(5) "09:00"
+              ["lable_end"]=>
+              string(5) "09:30"
+            }
+            [19]=>
+            array(7) {
+              ["index"]=>
+              int(19)
+              ["key"]=>
+              string(19) "2017-08-09 09:30:00"
+              ["timestamp"]=>
+              int(1502244000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "09:30-10:00"
+              ["lable_start"]=>
+              string(5) "09:30"
+              ["lable_end"]=>
+              string(5) "10:00"
+            }
+            [20]=>
+            array(7) {
+              ["index"]=>
+              int(20)
+              ["key"]=>
+              string(19) "2017-08-09 10:00:00"
+              ["timestamp"]=>
+              int(1502245800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "10:00-10:30"
+              ["lable_start"]=>
+              string(5) "10:00"
+              ["lable_end"]=>
+              string(5) "10:30"
+            }
+            [21]=>
+            array(7) {
+              ["index"]=>
+              int(21)
+              ["key"]=>
+              string(19) "2017-08-09 10:30:00"
+              ["timestamp"]=>
+              int(1502247600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "10:30-11:00"
+              ["lable_start"]=>
+              string(5) "10:30"
+              ["lable_end"]=>
+              string(5) "11:00"
+            }
+            [22]=>
+            array(7) {
+              ["index"]=>
+              int(22)
+              ["key"]=>
+              string(19) "2017-08-09 11:00:00"
+              ["timestamp"]=>
+              int(1502249400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "11:00-11:30"
+              ["lable_start"]=>
+              string(5) "11:00"
+              ["lable_end"]=>
+              string(5) "11:30"
+            }
+            [23]=>
+            array(7) {
+              ["index"]=>
+              int(23)
+              ["key"]=>
+              string(19) "2017-08-09 11:30:00"
+              ["timestamp"]=>
+              int(1502251200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "11:30-12:00"
+              ["lable_start"]=>
+              string(5) "11:30"
+              ["lable_end"]=>
+              string(5) "12:00"
+            }
+          }
+          ["pm"]=>
+          array(24) {
+            [0]=>
+            array(7) {
+              ["index"]=>
+              int(24)
+              ["key"]=>
+              string(19) "2017-08-09 12:00:00"
+              ["timestamp"]=>
+              int(1502253000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "12:00-12:30"
+              ["lable_start"]=>
+              string(5) "12:00"
+              ["lable_end"]=>
+              string(5) "12:30"
+            }
+            [1]=>
+            array(7) {
+              ["index"]=>
+              int(25)
+              ["key"]=>
+              string(19) "2017-08-09 12:30:00"
+              ["timestamp"]=>
+              int(1502254800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "12:30-13:00"
+              ["lable_start"]=>
+              string(5) "12:30"
+              ["lable_end"]=>
+              string(5) "13:00"
+            }
+            [2]=>
+            array(7) {
+              ["index"]=>
+              int(26)
+              ["key"]=>
+              string(19) "2017-08-09 13:00:00"
+              ["timestamp"]=>
+              int(1502256600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "13:00-13:30"
+              ["lable_start"]=>
+              string(5) "13:00"
+              ["lable_end"]=>
+              string(5) "13:30"
+            }
+            [3]=>
+            array(7) {
+              ["index"]=>
+              int(27)
+              ["key"]=>
+              string(19) "2017-08-09 13:30:00"
+              ["timestamp"]=>
+              int(1502258400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "13:30-14:00"
+              ["lable_start"]=>
+              string(5) "13:30"
+              ["lable_end"]=>
+              string(5) "14:00"
+            }
+            [4]=>
+            array(7) {
+              ["index"]=>
+              int(28)
+              ["key"]=>
+              string(19) "2017-08-09 14:00:00"
+              ["timestamp"]=>
+              int(1502260200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "14:00-14:30"
+              ["lable_start"]=>
+              string(5) "14:00"
+              ["lable_end"]=>
+              string(5) "14:30"
+            }
+            [5]=>
+            array(7) {
+              ["index"]=>
+              int(29)
+              ["key"]=>
+              string(19) "2017-08-09 14:30:00"
+              ["timestamp"]=>
+              int(1502262000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "14:30-15:00"
+              ["lable_start"]=>
+              string(5) "14:30"
+              ["lable_end"]=>
+              string(5) "15:00"
+            }
+            [6]=>
+            array(7) {
+              ["index"]=>
+              int(30)
+              ["key"]=>
+              string(19) "2017-08-09 15:00:00"
+              ["timestamp"]=>
+              int(1502263800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "15:00-15:30"
+              ["lable_start"]=>
+              string(5) "15:00"
+              ["lable_end"]=>
+              string(5) "15:30"
+            }
+            [7]=>
+            array(7) {
+              ["index"]=>
+              int(31)
+              ["key"]=>
+              string(19) "2017-08-09 15:30:00"
+              ["timestamp"]=>
+              int(1502265600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "15:30-16:00"
+              ["lable_start"]=>
+              string(5) "15:30"
+              ["lable_end"]=>
+              string(5) "16:00"
+            }
+            [8]=>
+            array(7) {
+              ["index"]=>
+              int(32)
+              ["key"]=>
+              string(19) "2017-08-09 16:00:00"
+              ["timestamp"]=>
+              int(1502267400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "16:00-16:30"
+              ["lable_start"]=>
+              string(5) "16:00"
+              ["lable_end"]=>
+              string(5) "16:30"
+            }
+            [9]=>
+            array(7) {
+              ["index"]=>
+              int(33)
+              ["key"]=>
+              string(19) "2017-08-09 16:30:00"
+              ["timestamp"]=>
+              int(1502269200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "16:30-17:00"
+              ["lable_start"]=>
+              string(5) "16:30"
+              ["lable_end"]=>
+              string(5) "17:00"
+            }
+            [10]=>
+            array(7) {
+              ["index"]=>
+              int(34)
+              ["key"]=>
+              string(19) "2017-08-09 17:00:00"
+              ["timestamp"]=>
+              int(1502271000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "17:00-17:30"
+              ["lable_start"]=>
+              string(5) "17:00"
+              ["lable_end"]=>
+              string(5) "17:30"
+            }
+            [11]=>
+            array(7) {
+              ["index"]=>
+              int(35)
+              ["key"]=>
+              string(19) "2017-08-09 17:30:00"
+              ["timestamp"]=>
+              int(1502272800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "17:30-18:00"
+              ["lable_start"]=>
+              string(5) "17:30"
+              ["lable_end"]=>
+              string(5) "18:00"
+            }
+            [12]=>
+            array(7) {
+              ["index"]=>
+              int(36)
+              ["key"]=>
+              string(19) "2017-08-09 18:00:00"
+              ["timestamp"]=>
+              int(1502274600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "18:00-18:30"
+              ["lable_start"]=>
+              string(5) "18:00"
+              ["lable_end"]=>
+              string(5) "18:30"
+            }
+            [13]=>
+            array(7) {
+              ["index"]=>
+              int(37)
+              ["key"]=>
+              string(19) "2017-08-09 18:30:00"
+              ["timestamp"]=>
+              int(1502276400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "18:30-19:00"
+              ["lable_start"]=>
+              string(5) "18:30"
+              ["lable_end"]=>
+              string(5) "19:00"
+            }
+            [14]=>
+            array(7) {
+              ["index"]=>
+              int(38)
+              ["key"]=>
+              string(19) "2017-08-09 19:00:00"
+              ["timestamp"]=>
+              int(1502278200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "19:00-19:30"
+              ["lable_start"]=>
+              string(5) "19:00"
+              ["lable_end"]=>
+              string(5) "19:30"
+            }
+            [15]=>
+            array(7) {
+              ["index"]=>
+              int(39)
+              ["key"]=>
+              string(19) "2017-08-09 19:30:00"
+              ["timestamp"]=>
+              int(1502280000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "19:30-20:00"
+              ["lable_start"]=>
+              string(5) "19:30"
+              ["lable_end"]=>
+              string(5) "20:00"
+            }
+            [16]=>
+            array(7) {
+              ["index"]=>
+              int(40)
+              ["key"]=>
+              string(19) "2017-08-09 20:00:00"
+              ["timestamp"]=>
+              int(1502281800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "20:00-20:30"
+              ["lable_start"]=>
+              string(5) "20:00"
+              ["lable_end"]=>
+              string(5) "20:30"
+            }
+            [17]=>
+            array(7) {
+              ["index"]=>
+              int(41)
+              ["key"]=>
+              string(19) "2017-08-09 20:30:00"
+              ["timestamp"]=>
+              int(1502283600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "20:30-21:00"
+              ["lable_start"]=>
+              string(5) "20:30"
+              ["lable_end"]=>
+              string(5) "21:00"
+            }
+            [18]=>
+            array(7) {
+              ["index"]=>
+              int(42)
+              ["key"]=>
+              string(19) "2017-08-09 21:00:00"
+              ["timestamp"]=>
+              int(1502285400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "21:00-21:30"
+              ["lable_start"]=>
+              string(5) "21:00"
+              ["lable_end"]=>
+              string(5) "21:30"
+            }
+            [19]=>
+            array(7) {
+              ["index"]=>
+              int(43)
+              ["key"]=>
+              string(19) "2017-08-09 21:30:00"
+              ["timestamp"]=>
+              int(1502287200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "21:30-22:00"
+              ["lable_start"]=>
+              string(5) "21:30"
+              ["lable_end"]=>
+              string(5) "22:00"
+            }
+            [20]=>
+            array(7) {
+              ["index"]=>
+              int(44)
+              ["key"]=>
+              string(19) "2017-08-09 22:00:00"
+              ["timestamp"]=>
+              int(1502289000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "22:00-22:30"
+              ["lable_start"]=>
+              string(5) "22:00"
+              ["lable_end"]=>
+              string(5) "22:30"
+            }
+            [21]=>
+            array(7) {
+              ["index"]=>
+              int(45)
+              ["key"]=>
+              string(19) "2017-08-09 22:30:00"
+              ["timestamp"]=>
+              int(1502290800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "22:30-23:00"
+              ["lable_start"]=>
+              string(5) "22:30"
+              ["lable_end"]=>
+              string(5) "23:00"
+            }
+            [22]=>
+            array(7) {
+              ["index"]=>
+              int(46)
+              ["key"]=>
+              string(19) "2017-08-09 23:00:00"
+              ["timestamp"]=>
+              int(1502292600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "23:00-23:30"
+              ["lable_start"]=>
+              string(5) "23:00"
+              ["lable_end"]=>
+              string(5) "23:30"
+            }
+            [23]=>
+            array(7) {
+              ["index"]=>
+              int(47)
+              ["key"]=>
+              string(19) "2017-08-09 23:30:00"
+              ["timestamp"]=>
+              int(1502294400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "23:30-00:00"
+              ["lable_start"]=>
+              string(5) "23:30"
+              ["lable_end"]=>
+              string(5) "00:00"
+            }
+          }
+        }
+        ["can_booking"]=>
+        int(1)
+        ["error_msg"]=>
+        string(0) ""
+      }
+      [1]=>
+      array(6) {
+        ["timestamp"]=>
+        int(1502294400)
+        ["lable_full"]=>
+        string(19) "2017-08-10 00:00:00"
+        ["lable"]=>
+        string(10) "2017-08-10"
+        ["situation"]=>
+        array(2) {
+          ["am"]=>
+          array(24) {
+            [0]=>
+            array(7) {
+              ["index"]=>
+              int(0)
+              ["key"]=>
+              string(19) "2017-08-10 00:00:00"
+              ["timestamp"]=>
+              int(1502296200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "00:00-00:30"
+              ["lable_start"]=>
+              string(5) "00:00"
+              ["lable_end"]=>
+              string(5) "00:30"
+            }
+            [1]=>
+            array(7) {
+              ["index"]=>
+              int(1)
+              ["key"]=>
+              string(19) "2017-08-10 00:30:00"
+              ["timestamp"]=>
+              int(1502298000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "00:30-01:00"
+              ["lable_start"]=>
+              string(5) "00:30"
+              ["lable_end"]=>
+              string(5) "01:00"
+            }
+            [2]=>
+            array(7) {
+              ["index"]=>
+              int(2)
+              ["key"]=>
+              string(19) "2017-08-10 01:00:00"
+              ["timestamp"]=>
+              int(1502299800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "01:00-01:30"
+              ["lable_start"]=>
+              string(5) "01:00"
+              ["lable_end"]=>
+              string(5) "01:30"
+            }
+            [3]=>
+            array(7) {
+              ["index"]=>
+              int(3)
+              ["key"]=>
+              string(19) "2017-08-10 01:30:00"
+              ["timestamp"]=>
+              int(1502301600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "01:30-02:00"
+              ["lable_start"]=>
+              string(5) "01:30"
+              ["lable_end"]=>
+              string(5) "02:00"
+            }
+            [4]=>
+            array(7) {
+              ["index"]=>
+              int(4)
+              ["key"]=>
+              string(19) "2017-08-10 02:00:00"
+              ["timestamp"]=>
+              int(1502303400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "02:00-02:30"
+              ["lable_start"]=>
+              string(5) "02:00"
+              ["lable_end"]=>
+              string(5) "02:30"
+            }
+            [5]=>
+            array(7) {
+              ["index"]=>
+              int(5)
+              ["key"]=>
+              string(19) "2017-08-10 02:30:00"
+              ["timestamp"]=>
+              int(1502305200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "02:30-03:00"
+              ["lable_start"]=>
+              string(5) "02:30"
+              ["lable_end"]=>
+              string(5) "03:00"
+            }
+            [6]=>
+            array(7) {
+              ["index"]=>
+              int(6)
+              ["key"]=>
+              string(19) "2017-08-10 03:00:00"
+              ["timestamp"]=>
+              int(1502307000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "03:00-03:30"
+              ["lable_start"]=>
+              string(5) "03:00"
+              ["lable_end"]=>
+              string(5) "03:30"
+            }
+            [7]=>
+            array(7) {
+              ["index"]=>
+              int(7)
+              ["key"]=>
+              string(19) "2017-08-10 03:30:00"
+              ["timestamp"]=>
+              int(1502308800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "03:30-04:00"
+              ["lable_start"]=>
+              string(5) "03:30"
+              ["lable_end"]=>
+              string(5) "04:00"
+            }
+            [8]=>
+            array(7) {
+              ["index"]=>
+              int(8)
+              ["key"]=>
+              string(19) "2017-08-10 04:00:00"
+              ["timestamp"]=>
+              int(1502310600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "04:00-04:30"
+              ["lable_start"]=>
+              string(5) "04:00"
+              ["lable_end"]=>
+              string(5) "04:30"
+            }
+            [9]=>
+            array(7) {
+              ["index"]=>
+              int(9)
+              ["key"]=>
+              string(19) "2017-08-10 04:30:00"
+              ["timestamp"]=>
+              int(1502312400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "04:30-05:00"
+              ["lable_start"]=>
+              string(5) "04:30"
+              ["lable_end"]=>
+              string(5) "05:00"
+            }
+            [10]=>
+            array(7) {
+              ["index"]=>
+              int(10)
+              ["key"]=>
+              string(19) "2017-08-10 05:00:00"
+              ["timestamp"]=>
+              int(1502314200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "05:00-05:30"
+              ["lable_start"]=>
+              string(5) "05:00"
+              ["lable_end"]=>
+              string(5) "05:30"
+            }
+            [11]=>
+            array(7) {
+              ["index"]=>
+              int(11)
+              ["key"]=>
+              string(19) "2017-08-10 05:30:00"
+              ["timestamp"]=>
+              int(1502316000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "05:30-06:00"
+              ["lable_start"]=>
+              string(5) "05:30"
+              ["lable_end"]=>
+              string(5) "06:00"
+            }
+            [12]=>
+            array(7) {
+              ["index"]=>
+              int(12)
+              ["key"]=>
+              string(19) "2017-08-10 06:00:00"
+              ["timestamp"]=>
+              int(1502317800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "06:00-06:30"
+              ["lable_start"]=>
+              string(5) "06:00"
+              ["lable_end"]=>
+              string(5) "06:30"
+            }
+            [13]=>
+            array(7) {
+              ["index"]=>
+              int(13)
+              ["key"]=>
+              string(19) "2017-08-10 06:30:00"
+              ["timestamp"]=>
+              int(1502319600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "06:30-07:00"
+              ["lable_start"]=>
+              string(5) "06:30"
+              ["lable_end"]=>
+              string(5) "07:00"
+            }
+            [14]=>
+            array(7) {
+              ["index"]=>
+              int(14)
+              ["key"]=>
+              string(19) "2017-08-10 07:00:00"
+              ["timestamp"]=>
+              int(1502321400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "07:00-07:30"
+              ["lable_start"]=>
+              string(5) "07:00"
+              ["lable_end"]=>
+              string(5) "07:30"
+            }
+            [15]=>
+            array(7) {
+              ["index"]=>
+              int(15)
+              ["key"]=>
+              string(19) "2017-08-10 07:30:00"
+              ["timestamp"]=>
+              int(1502323200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "07:30-08:00"
+              ["lable_start"]=>
+              string(5) "07:30"
+              ["lable_end"]=>
+              string(5) "08:00"
+            }
+            [16]=>
+            array(7) {
+              ["index"]=>
+              int(16)
+              ["key"]=>
+              string(19) "2017-08-10 08:00:00"
+              ["timestamp"]=>
+              int(1502325000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "08:00-08:30"
+              ["lable_start"]=>
+              string(5) "08:00"
+              ["lable_end"]=>
+              string(5) "08:30"
+            }
+            [17]=>
+            array(7) {
+              ["index"]=>
+              int(17)
+              ["key"]=>
+              string(19) "2017-08-10 08:30:00"
+              ["timestamp"]=>
+              int(1502326800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "08:30-09:00"
+              ["lable_start"]=>
+              string(5) "08:30"
+              ["lable_end"]=>
+              string(5) "09:00"
+            }
+            [18]=>
+            array(7) {
+              ["index"]=>
+              int(18)
+              ["key"]=>
+              string(19) "2017-08-10 09:00:00"
+              ["timestamp"]=>
+              int(1502328600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "09:00-09:30"
+              ["lable_start"]=>
+              string(5) "09:00"
+              ["lable_end"]=>
+              string(5) "09:30"
+            }
+            [19]=>
+            array(7) {
+              ["index"]=>
+              int(19)
+              ["key"]=>
+              string(19) "2017-08-10 09:30:00"
+              ["timestamp"]=>
+              int(1502330400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "09:30-10:00"
+              ["lable_start"]=>
+              string(5) "09:30"
+              ["lable_end"]=>
+              string(5) "10:00"
+            }
+            [20]=>
+            array(7) {
+              ["index"]=>
+              int(20)
+              ["key"]=>
+              string(19) "2017-08-10 10:00:00"
+              ["timestamp"]=>
+              int(1502332200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "10:00-10:30"
+              ["lable_start"]=>
+              string(5) "10:00"
+              ["lable_end"]=>
+              string(5) "10:30"
+            }
+            [21]=>
+            array(7) {
+              ["index"]=>
+              int(21)
+              ["key"]=>
+              string(19) "2017-08-10 10:30:00"
+              ["timestamp"]=>
+              int(1502334000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "10:30-11:00"
+              ["lable_start"]=>
+              string(5) "10:30"
+              ["lable_end"]=>
+              string(5) "11:00"
+            }
+            [22]=>
+            array(7) {
+              ["index"]=>
+              int(22)
+              ["key"]=>
+              string(19) "2017-08-10 11:00:00"
+              ["timestamp"]=>
+              int(1502335800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "11:00-11:30"
+              ["lable_start"]=>
+              string(5) "11:00"
+              ["lable_end"]=>
+              string(5) "11:30"
+            }
+            [23]=>
+            array(7) {
+              ["index"]=>
+              int(23)
+              ["key"]=>
+              string(19) "2017-08-10 11:30:00"
+              ["timestamp"]=>
+              int(1502337600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "11:30-12:00"
+              ["lable_start"]=>
+              string(5) "11:30"
+              ["lable_end"]=>
+              string(5) "12:00"
+            }
+          }
+          ["pm"]=>
+          array(24) {
+            [0]=>
+            array(7) {
+              ["index"]=>
+              int(24)
+              ["key"]=>
+              string(19) "2017-08-10 12:00:00"
+              ["timestamp"]=>
+              int(1502339400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "12:00-12:30"
+              ["lable_start"]=>
+              string(5) "12:00"
+              ["lable_end"]=>
+              string(5) "12:30"
+            }
+            [1]=>
+            array(7) {
+              ["index"]=>
+              int(25)
+              ["key"]=>
+              string(19) "2017-08-10 12:30:00"
+              ["timestamp"]=>
+              int(1502341200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "12:30-13:00"
+              ["lable_start"]=>
+              string(5) "12:30"
+              ["lable_end"]=>
+              string(5) "13:00"
+            }
+            [2]=>
+            array(7) {
+              ["index"]=>
+              int(26)
+              ["key"]=>
+              string(19) "2017-08-10 13:00:00"
+              ["timestamp"]=>
+              int(1502343000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "13:00-13:30"
+              ["lable_start"]=>
+              string(5) "13:00"
+              ["lable_end"]=>
+              string(5) "13:30"
+            }
+            [3]=>
+            array(7) {
+              ["index"]=>
+              int(27)
+              ["key"]=>
+              string(19) "2017-08-10 13:30:00"
+              ["timestamp"]=>
+              int(1502344800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "13:30-14:00"
+              ["lable_start"]=>
+              string(5) "13:30"
+              ["lable_end"]=>
+              string(5) "14:00"
+            }
+            [4]=>
+            array(7) {
+              ["index"]=>
+              int(28)
+              ["key"]=>
+              string(19) "2017-08-10 14:00:00"
+              ["timestamp"]=>
+              int(1502346600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "14:00-14:30"
+              ["lable_start"]=>
+              string(5) "14:00"
+              ["lable_end"]=>
+              string(5) "14:30"
+            }
+            [5]=>
+            array(7) {
+              ["index"]=>
+              int(29)
+              ["key"]=>
+              string(19) "2017-08-10 14:30:00"
+              ["timestamp"]=>
+              int(1502348400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "14:30-15:00"
+              ["lable_start"]=>
+              string(5) "14:30"
+              ["lable_end"]=>
+              string(5) "15:00"
+            }
+            [6]=>
+            array(7) {
+              ["index"]=>
+              int(30)
+              ["key"]=>
+              string(19) "2017-08-10 15:00:00"
+              ["timestamp"]=>
+              int(1502350200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "15:00-15:30"
+              ["lable_start"]=>
+              string(5) "15:00"
+              ["lable_end"]=>
+              string(5) "15:30"
+            }
+            [7]=>
+            array(7) {
+              ["index"]=>
+              int(31)
+              ["key"]=>
+              string(19) "2017-08-10 15:30:00"
+              ["timestamp"]=>
+              int(1502352000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "15:30-16:00"
+              ["lable_start"]=>
+              string(5) "15:30"
+              ["lable_end"]=>
+              string(5) "16:00"
+            }
+            [8]=>
+            array(7) {
+              ["index"]=>
+              int(32)
+              ["key"]=>
+              string(19) "2017-08-10 16:00:00"
+              ["timestamp"]=>
+              int(1502353800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "16:00-16:30"
+              ["lable_start"]=>
+              string(5) "16:00"
+              ["lable_end"]=>
+              string(5) "16:30"
+            }
+            [9]=>
+            array(7) {
+              ["index"]=>
+              int(33)
+              ["key"]=>
+              string(19) "2017-08-10 16:30:00"
+              ["timestamp"]=>
+              int(1502355600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "16:30-17:00"
+              ["lable_start"]=>
+              string(5) "16:30"
+              ["lable_end"]=>
+              string(5) "17:00"
+            }
+            [10]=>
+            array(7) {
+              ["index"]=>
+              int(34)
+              ["key"]=>
+              string(19) "2017-08-10 17:00:00"
+              ["timestamp"]=>
+              int(1502357400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "17:00-17:30"
+              ["lable_start"]=>
+              string(5) "17:00"
+              ["lable_end"]=>
+              string(5) "17:30"
+            }
+            [11]=>
+            array(7) {
+              ["index"]=>
+              int(35)
+              ["key"]=>
+              string(19) "2017-08-10 17:30:00"
+              ["timestamp"]=>
+              int(1502359200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "17:30-18:00"
+              ["lable_start"]=>
+              string(5) "17:30"
+              ["lable_end"]=>
+              string(5) "18:00"
+            }
+            [12]=>
+            array(7) {
+              ["index"]=>
+              int(36)
+              ["key"]=>
+              string(19) "2017-08-10 18:00:00"
+              ["timestamp"]=>
+              int(1502361000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "18:00-18:30"
+              ["lable_start"]=>
+              string(5) "18:00"
+              ["lable_end"]=>
+              string(5) "18:30"
+            }
+            [13]=>
+            array(7) {
+              ["index"]=>
+              int(37)
+              ["key"]=>
+              string(19) "2017-08-10 18:30:00"
+              ["timestamp"]=>
+              int(1502362800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "18:30-19:00"
+              ["lable_start"]=>
+              string(5) "18:30"
+              ["lable_end"]=>
+              string(5) "19:00"
+            }
+            [14]=>
+            array(7) {
+              ["index"]=>
+              int(38)
+              ["key"]=>
+              string(19) "2017-08-10 19:00:00"
+              ["timestamp"]=>
+              int(1502364600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "19:00-19:30"
+              ["lable_start"]=>
+              string(5) "19:00"
+              ["lable_end"]=>
+              string(5) "19:30"
+            }
+            [15]=>
+            array(7) {
+              ["index"]=>
+              int(39)
+              ["key"]=>
+              string(19) "2017-08-10 19:30:00"
+              ["timestamp"]=>
+              int(1502366400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "19:30-20:00"
+              ["lable_start"]=>
+              string(5) "19:30"
+              ["lable_end"]=>
+              string(5) "20:00"
+            }
+            [16]=>
+            array(7) {
+              ["index"]=>
+              int(40)
+              ["key"]=>
+              string(19) "2017-08-10 20:00:00"
+              ["timestamp"]=>
+              int(1502368200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "20:00-20:30"
+              ["lable_start"]=>
+              string(5) "20:00"
+              ["lable_end"]=>
+              string(5) "20:30"
+            }
+            [17]=>
+            array(7) {
+              ["index"]=>
+              int(41)
+              ["key"]=>
+              string(19) "2017-08-10 20:30:00"
+              ["timestamp"]=>
+              int(1502370000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "20:30-21:00"
+              ["lable_start"]=>
+              string(5) "20:30"
+              ["lable_end"]=>
+              string(5) "21:00"
+            }
+            [18]=>
+            array(7) {
+              ["index"]=>
+              int(42)
+              ["key"]=>
+              string(19) "2017-08-10 21:00:00"
+              ["timestamp"]=>
+              int(1502371800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "21:00-21:30"
+              ["lable_start"]=>
+              string(5) "21:00"
+              ["lable_end"]=>
+              string(5) "21:30"
+            }
+            [19]=>
+            array(7) {
+              ["index"]=>
+              int(43)
+              ["key"]=>
+              string(19) "2017-08-10 21:30:00"
+              ["timestamp"]=>
+              int(1502373600)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "21:30-22:00"
+              ["lable_start"]=>
+              string(5) "21:30"
+              ["lable_end"]=>
+              string(5) "22:00"
+            }
+            [20]=>
+            array(7) {
+              ["index"]=>
+              int(44)
+              ["key"]=>
+              string(19) "2017-08-10 22:00:00"
+              ["timestamp"]=>
+              int(1502375400)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "22:00-22:30"
+              ["lable_start"]=>
+              string(5) "22:00"
+              ["lable_end"]=>
+              string(5) "22:30"
+            }
+            [21]=>
+            array(7) {
+              ["index"]=>
+              int(45)
+              ["key"]=>
+              string(19) "2017-08-10 22:30:00"
+              ["timestamp"]=>
+              int(1502377200)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "22:30-23:00"
+              ["lable_start"]=>
+              string(5) "22:30"
+              ["lable_end"]=>
+              string(5) "23:00"
+            }
+            [22]=>
+            array(7) {
+              ["index"]=>
+              int(46)
+              ["key"]=>
+              string(19) "2017-08-10 23:00:00"
+              ["timestamp"]=>
+              int(1502379000)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "23:00-23:30"
+              ["lable_start"]=>
+              string(5) "23:00"
+              ["lable_end"]=>
+              string(5) "23:30"
+            }
+            [23]=>
+            array(7) {
+              ["index"]=>
+              int(47)
+              ["key"]=>
+              string(19) "2017-08-10 23:30:00"
+              ["timestamp"]=>
+              int(1502380800)
+              ["is_use"]=>
+              int(0)
+              ["lable"]=>
+              string(11) "23:30-00:00"
+              ["lable_start"]=>
+              string(5) "23:30"
+              ["lable_end"]=>
+              string(5) "00:00"
+            }
+          }
+        }
+        ["can_booking"]=>
+        int(1)
+        ["error_msg"]=>
+        string(0) ""

@@ -1,0 +1,79 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('logs', array('op' => 'list'))}">调用日志</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('logs', array('op' => 'edit'))}">{if
+        isset($item[id])}查看日志{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <!--<div class="panel-heading">{if isset($item[id])}查看日志{else}#add#{/if}</div>-->
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">url</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="url" class="form-control" value="{$item['url']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">method</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="method" class="form-control" value="{$item['method']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">post_fields</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <textarea type="text" name="post_fields" class="form-control" rows="8">{$item['post_fields']}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">curl_info</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <textarea type="text" name="curl_info" class="form-control" rows="8">{$item['curl_info']}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">success</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="method" class="form-control" value="{$item['success']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">resultMessage</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <textarea type="text" name="response" class="form-control" rows="8">{$item['resultMessage']}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">resultCode</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="method" class="form-control" value="{$item['resultCode']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">result</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <textarea type="text" name="response" class="form-control" rows="8">{$item['result']}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

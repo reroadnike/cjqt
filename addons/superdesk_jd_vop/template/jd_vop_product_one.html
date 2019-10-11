@@ -1,0 +1,191 @@
+{template 'common/header'}
+
+
+<div class="alert alert-info" >
+    <div class="row">
+        <div class="col-sm-6">
+            京东状态说明:<br/>
+            <ol>
+                <li>正常 - 在京东的SKU库中为上架状态</li>
+                <li>下架 - 在京东的SKU库中为下架状态 - 如果京东都下架了, 在商城中也会是下架状态 - 强制上架后也不能正常购买</li>
+            </ol>
+            不在商品池处理<br/>
+            <ol>
+                <li>发送邮件 : 通知京东大客户部的人</li>
+                <li>收件&emsp;人 : <a href="mail:gzzhangmanshan@jd.com">gzzhangmanshan@jd.com</a></li>
+                <li>抄&emsp;&emsp;送 : <a href="mail:gzyinluoqi@jd.com">gzyinluoqi@jd.com</a>; <a href="mail:gzlishaomin@jd.com">gzlishaomin@jd.com</a></li>
+                <li>邮件内容 : 请同步商品SKU，谢谢！</li>
+                <li>附件模板 : <a class="btn btn-primary btn-xs" href="{$_W['siteroot']}addons/superdesk_jd_vop/attachment/商品添加模版 09.2502.xlsx" ><i class="fa fa-download" title=""></i> 下载Excel模板</a></li>
+            </ol>
+
+
+        </div>
+        <div class="col-sm-6">
+            商城状态说明:<br/>
+            <ol>
+
+                <!--$goods_status = '不存在';-->
+                <!--if (!empty($goods)) {-->
+                <!--if ($goods['status'] > 0 && $goods['checked'] == 0 && $goods['total'] > 0 && $goods['deleted'] == 0) {-->
+                <!--$goods_status = '出售中';-->
+                <!--} else if ($goods['status'] > 0 && $goods['total'] <= 0 && $goods['deleted'] == 0) {-->
+                <!--$goods_status = '已售罄';-->
+                <!--} else if (($goods['status'] == 0 || $goods['checked'] == 1) && $goods['deleted'] == 0) {-->
+                <!--$goods_status = '仓库中';-->
+                <!--} else if ($goods['status'] > 0 && $goods['deleted'] == 1) {-->
+                <!--$goods_status = '回收站';-->
+                <!--} else if ($goods['checked'] == 1 && $goods['deleted'] == 0) {-->
+                <!--$goods_status = '待审核';-->
+                <!--} else if ($goods['status'] == 0 && $goods['deleted'] == 1) {-->
+                <!--$goods_status = '不在商品池中';-->
+                <!--}-->
+                <!--}-->
+                <li>不存在 - 说明此SKU商品信息不能同步到商城</li>
+                <li>出售中 - 对映 - 后台 - 商品 - 商品管理 - 出售中</li>
+                <li>已售罄 - 对映 - 后台 - 商品 - 商品管理 - 已售罄</li>
+                <li>仓库中 - 对映 - 后台 - 商品 - 商品管理 - 仓库中</li>
+                <li>回收站 - 对映 - 后台 - 商品 - 商品管理 - 回收站</li>
+                <li>待审核 - 对映 - 后台 - 商品 - 商品管理 - 待审核</li>
+                <li>不在商品池中 - 说明此SKU商品信息已同步到商城, 但不能得到商品价格, 无法上架</li>
+            </ol>
+        </div>
+    </div>
+
+</div>
+
+<div class="main">
+
+    <div class="panel panel-info">
+        <div class="panel-heading">请输入京东SKU 点击同步</div>
+        <div class="panel-body">
+            <form action="./index.php" method="get" class="form-horizontal" role="form">
+                <input type="hidden" name="c" value="site"/>
+                <input type="hidden" name="a" value="entry"/>
+                <input type="hidden" name="m" value="superdesk_jd_vop"/>
+                <input type="hidden" name="do" value="jd_vop_product_one"/>
+                <input type="hidden" name="op" value="sync"/>
+                <input type="hidden" name="overwrite" value="1"/>
+
+                <div class="form-group">
+
+                    <label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label" style="width:50px;">sku</label>
+                    <div class="col-sm-2 col-lg-2">
+                        <input class="form-control" name="sku" id="" type="text" value="{$sku}">
+                    </div>
+
+                    <div class="col-sm-1 col-lg-1">
+                        <button class="btn btn-default"><i class="fa fa-at"></i> 同步</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                结果
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th class="text-left" style="width: 60rem;">商品名称</th>
+                        <th class="text-left" style="width: 5rem;">单位</th>
+                        <th class="text-left" style="width: 5rem;">净重</th>
+                        <th class="text-left" style="width: 18rem;">组合</th>
+                        <th class="text-left" style="width: 10rem;">所在地区</th>
+                        <th class="text-left" style="width: 8rem;"><a title="京东状态:正常;下架">京东状态</a></th>
+                        <th class="text-left" style="width: 16rem;">商户名称</th>
+                        <th class="text-left" style="width: 18rem;">财务编码</th>
+                        <th class="text-left" style="width: 8rem;">商城状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {if $result && $result['success'] == true }
+                    <tr>
+                        <td class="">
+                            <div class="row"><div class="col-sm-12">{$result['result']['name']}</div></div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a href="javascript:;" class='btn btn-default btn-xs js-clip'
+                                       data-url="{php echo mobileUrl('goods/detail', array('id' => $goods['id']),true)}"><i
+                                            class='fa fa-link'></i> WAP链接</a><br/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a href="javascript:;" class='btn btn-default btn-xs js-clip'
+                                       data-url="{php echo SUPERDESK_SHOPV2_PC_URL . '/detail?id=' . $goods['id'];}"><i
+                                            class='fa fa-link'></i> PC端链接</a>
+                                </div>
+                            </div>
+
+
+
+
+                        </td>
+                        <td class="">{$result['result']['saleUnit']}</td>
+                        <td class="">{$result['result']['weight']}</td>
+                        <td class=""><a title="{$result['result']['wareQD']}">{$result['result']['wareQD']}</a></td>
+                        <td class="">{$result['result']['productArea']}</td>
+                        <td class="">{php echo $result['result']['state'] == 1 ? '正常' : '下架'}</td>
+                        <td class="">{$result['result']['brandName']}</td>
+                        <td class="">{$result['result']['taxCode']}</td>
+                        <td class="">
+                            <a title="{$goods_status}">{$goods_status}</a>
+                        </td>
+                    </tr>
+                    {elseif $result && $result['success'] == false}
+                    <tr>
+                        <td colspan="9" style="text-align: center;">
+                            <h4>{$result['resultCode']} - {$result['resultMessage']}</h4>
+                        </td>
+                    </tr>
+                    {else}
+                    <tr>
+                        <td colspan="9" style="text-align: center;">
+                            <h4>请输入sku,点击同步</h4>
+                        </td>
+                    </tr>
+                    {/if}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="application/javascript">
+    // $(function () {
+    //     require(['jquery.zclip'], function () {
+    //
+    //     });
+    //
+    //     $('.js-clip-s').each(function () {
+    //         console.log(this)
+    //         var text = $(this).data('text') || $(this).data('href') || $(this).data('url');
+    //         console.log(text)
+    //         // util.clip(this, text)
+    //
+    //         var client = new ZeroClipboard(document.getElementById("copy-button"));
+    //
+    //         client.on("ready", function (readyEvent) {
+    //             // alert( "ZeroClipboard SWF is ready!" );
+    //
+    //             client.on("aftercopy", function (event) {
+    //                 // `this` === `client`
+    //                 // `event.target` === the element that was clicked
+    //                 event.target.style.display = "none";
+    //                 alert("Copied text to clipboard: " + event.data["text/plain"]);
+    //             });
+    //         });
+    //
+    //
+    //     })
+    // });
+</script>
+
+
+{template 'common/footer'}

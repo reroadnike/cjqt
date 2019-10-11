@@ -1,0 +1,18 @@
+
+@charset "utf-8";
+body {padding-bottom: 3.25rem;}
+.orderAddress {width: 100%; padding: .75rem .75rem 0; margin-bottom: .5rem; background-color: #fff;}
+.orderAddress li {width: 100%; margin-bottom: .5rem; line-height: 1rem;}
+.orderAddress li em {float: left; width: 25%; font-size:.7rem;color:#666666;}
+.orderAddress li span {float: left; text-align: right; width:75%; font-size:.7rem;color:#333;}
+.accessorial {padding: 0 0 .25rem .75rem; font-size:.6rem;color:#666666;}
+.addService2, .addService2 ul {width: 100%; background-color: #fff;}
+.addService2 li {width: 100%; padding: .75rem; border-bottom: 1px solid #c8c8c8;}
+.addService2 li span {float: left; font-size: .7rem; color:#333333;}
+.extraName {width: 68%;}
+.extraCount {line-height: 1rem;}
+.addService2 li .extraPrice {float: right; line-height: 1rem;}
+.addService2 li  .totalPriceName {color: #666;}
+.addService2 ul li:last-child {border-bottom: 0;}
+.payment {display: block; text-align: right; padding: .75rem .75rem 0 0; font-size: .9rem; color:#1b37a8; font-weight: 600;}
+

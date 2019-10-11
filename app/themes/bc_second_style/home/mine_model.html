@@ -1,0 +1,71 @@
+<style>
+    .vipheader {
+        padding: 1em; height: 165px;
+        background-size: cover;
+        background: url("{$_W['siteroot']}addons/site_bc/template/mobile/assets/images/mine/background.png");
+    }
+    .vipheader .touxiang { width: 72px; height: 72px; margin: 0px auto; border-radius: 100%;line-height:95px;}
+    .vipheader .touxiang img { border-radius: 100%; width: 100%;}
+    .vipheader .name { font-size: 1.4em; text-align: center; color: #fff; line-height: 3em;}
+    .vipheader .gztt { font-size: 1em; text-align: center; color: #fff;}
+
+
+    li.weui_cell p {
+        font-size: 1.4rem;
+    }
+
+
+    img.weixin_img {
+        width: 0.5rem;
+        margin-left: 1rem;
+    }
+
+    .imgStyle {
+        width: 1.6rem;
+        margin-right:5px;
+    }
+    .row{
+        line-height: 50px;
+        background-color: #ffffff;
+        margin: 1rem;
+    }
+    .row img {
+
+    }
+
+    .font_3e3834{
+        padding: 0px;
+        color: #3e3834;
+        font-size: 1.6rem;
+    }
+
+    .font_bdc0c5{
+        color: #bdc0c5;
+        font-size: 1.3rem;
+    }
+
+
+</style>
+<header class="vipheader">
+    <div class="touxiang">
+        <img src="{$_W['fans']['avatar']}" alt="">
+    </div>
+    <div class="name">{$_W['fans']['nickname']}
+        <!--<p style="font-size:12px;">手机号：{$member['mobile']}</p>-->
+        <!--<p style="font-size:12px;">积分：{$member['credit1']}</p>-->
+    </div>
+</header>
+<div class="container-full" style="margin-top: -40px;">
+    {loop $rows['navlist'] $row}
+    <a href="{$row['wechat_url']}">
+        <div class="row">
+            <div class="col-xs-2">
+                <img src="{$row['icon']}" class="imgStyle">
+            </div>
+            <div class="col-xs-5 font_3e3834">{$row['name']}</div>
+            <div class="col-xs-5 font_bdc0c5"><span>查看{$row['name']}</span><img src="{$_W['siteroot']}addons/site_bc/template/mobile/assets/images/right.png" class="weixin_img"></div>
+        </div>
+    </a>
+    {/loop}
+    <div style="height: 40px;clear: both"></div>
+</div>

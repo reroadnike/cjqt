@@ -1,0 +1,197 @@
+
+{template 'common/header'}
+
+
+
+<style>
+    .contact-box {
+        background-color: #ffffff;
+        border: 1px solid #e7eaec;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .views-number {
+        font-size: 24px;
+        line-height: 18px;
+        font-weight: 400;
+    }
+    .forum-info {
+        text-align: center;
+    }
+
+</style>
+
+
+<div class="main">
+    <div class="alert alert-info" >
+        <div class="row">
+            <div class="col-sm-6">
+                所有还款状态:<br/>
+                <ol>
+                    <li>正常 | 延期 | 逾期 | 已结清 | 延期已结清 | 逾期已结清</li>
+                </ol>
+                账单订单同步说明:<br/>
+                <ol>
+                    <li>由于订单量大,一次同步可能不成功.假如出现502.504等错误白页.重新刷新.直到不会出现.即完成该账单下所有订单同步.</li>
+                    <li>完成同步可进入账单明细.查看订单详细信息</li>
+                    <li>订单详细信息以上一次同步时拉取的数据为准.若要获取最新数据.需重新同步.</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="contact-box" style="border: 1px solid #e7eaec">
+        <div class="forum-item">
+            <div class="row">
+                <a href="javascript:void(0);">
+                    <div class="col-sm-4 forum-info">
+                        <span class="views-number">
+                            {$baseData['quota']}
+                        </span>
+                        <div>
+                            <small>用户总额度</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-4 forum-info">
+                        <span class="views-number">
+                            {$baseData['availQuota']}
+                        </span>
+                        <div>
+                            <small>用户可用额度</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-4 forum-info">
+                        <span class="views-number">
+                            {$baseData['occQuota']}
+                        </span>
+                        <div>
+                            <small>用户已占用额度</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="row" style="margin-top: 1rem;">
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$baseData['sumAmt']}
+                        </span>
+                        <div>
+                            <small>待还款总金额</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$baseData['sumNrDefer']}
+                        </span>
+                        <div>
+                            <small>待还延期</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$baseData['sumNrDelin']}
+                        </span>
+                        <div>
+                            <small>待还逾期</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$baseData['sumNrPri']}
+                        </span>
+                        <div>
+                            <small>待还本金</small>
+                        </div>
+                    </div>
+                </a>
+                <a href="javascript:void(0);">
+                    <div class="col-sm-2 forum-info">
+                        <span class="views-number">
+                            {$baseData['sumOverAmt']}
+                        </span>
+                        <div>
+                            <small>待还款逾期总金额</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                账单列表
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th class="text-center" style="width: 14rem;">账单编号</th>
+                        <th class="text-center">账单开始日</th>
+                        <th class="text-center">账单结束日</th>
+                        <th class="text-center">应还款日</th>
+                        <th class="text-center">账单金额</th>
+                        <th class="text-center">还款状态 </th>
+                        <th class="text-center" style="width: 15rem;">逾期天数</th>
+                        <th class="text-center" style="width: 15rem;">未还本金 </th>
+                        <th class="text-center">违约金</th>
+                        <th class="text-center" style="width: 20rem;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $billInfoData $item}
+                    <tr>
+                        <td class="text-center">{$item['billNo']}</td>
+                        <td class="text-center">{$item['billStartDate']}</td>
+                        <td class="text-center">{$item['billEndDate']}</td>
+                        <td class="text-center">{$item['repayDate']}</td>
+                        <td class="text-center">{$item['billAmount']}</td>
+                        <td class="text-center">{$item['repayStatus']}</td>
+                        <td class="text-center" style="text-overflow: clip;white-space:inherit;">{$item['overDays']}</td>
+                        <td class="text-center">{$item['nrRepayPri']}</td>
+                        <td class="text-center">{$item['overAmount']}</td>
+                        <td class="text-center">
+                            <a href="{php echo $this->createWebUrl('jd_vop_jincai_get_bill_detail', array('billId' => $item['billNo'], 'op' => 'billDetail'));}"
+                               class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="账单明细">
+                                <i class="fa fa-pencil">&nbsp;账单明细</i>
+                            </a>
+                            <a href="{php echo $this->createWebUrl('jd_vop_jincai_get_bill_detail', array('billId' => $item['billNo'], 'op' => 'constant'));}"
+                               class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="账单同步">
+                                <i class="fa fa-pencil">&nbsp;账单同步(订单列表同步)</i>
+                            </a>
+                        </td>
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td >
+                            <input type="hidden" name="token" value="{$_W['token']}" />
+                            共 {$total}
+                        </td>
+                        <td colspan="8">
+                            {$pager}
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{template 'common/footer'}

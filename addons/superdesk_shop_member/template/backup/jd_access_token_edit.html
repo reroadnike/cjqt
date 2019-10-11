@@ -1,0 +1,86 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('jd_access_token', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('jd_access_token', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="UID" class="form-control" value="{$item['UID']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="Access_token" class="form-control" value="{$item['Access_token']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="Refresh_token" class="form-control" value="{$item['Refresh_token']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">time 为当前时间 expire_in  为 access_token 的过期时间，秒级别，代表 86400 秒后过期，即 24 小时有效期</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="time" class="form-control" value="{$item['time']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">Access_token 的过期时间，秒级别,有效期 24 小时</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="expires_in" class="form-control" value="{$item['expires_in']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">refresh_token 的过期时间，毫秒级别</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="refresh_token_expires" class="form-control" value="{$item['refresh_token_expires']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">京东提供的 client_id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="client_id" class="form-control" value="{$item['client_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">京东提供的 client_secret</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="client_secret" class="form-control" value="{$item['client_secret']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">更新时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="update_time" class="form-control" value="{$item['update_time']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

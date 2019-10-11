@@ -1,0 +1,9 @@
+<ul class="nav nav-tabs">
+    <li {if $active == 'sll_water_store'}class="active"{/if}><a href="{php echo $this->createWebUrl('sll_water_store', array('op' => 'list'))}">#sll_water_store#</a></li>
+    <li {if $active == 'sll_classify_0'}class="active"{/if}><a href="{php echo $this->createWebUrl('sll_classify', array('op' => 'list'))}">#sll_classify#</a></li>
+    <li {if $active == 'sll_classify_1'}class="active"{/if}><a href="{php echo $this->createWebUrl('sll_classify', array('op' => 'list','filter_total_0'=> 1))}">#sll_classify 辅助导入#</a></li>
+    <li {if $active == 'sll_goods'}class="active"{/if}><a href="{php echo $this->createWebUrl('sll_goods', array('op' => 'list'))}">#sll_goods#</a></li>
+    <li {if $active == 'sll_unit'}class="active"{/if}><a href="{php echo $this->createWebUrl('sll_unit', array('op' => 'list'))}">#sll_unit#</a></li>
+
+    <!--<li><a target="_blank" href="{php echo $this->createMyJsUrl('js_update_shop_merch',array(),'superdesk_shop_member');}" title="懒!不做界面"><i class="fa fa-cog">&nbsp;&nbsp;同步处理</i></a></li>-->
+</ul>

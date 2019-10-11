@@ -1,0 +1,113 @@
+{template '_header'}
+<div class="page-heading">
+	<span class='pull-right'>
+		{ifp 'enterprise.group.add'}
+			<a class="btn btn-primary btn-sm" href="{php echo webUrl('enterprise/user/add')}">添加新企业</a>
+		{/if}
+		<a class="btn btn-default  btn-sm" href="{php echo webUrl('enterprise/enterprise',array('enterprise_id' => $enterprise_id))}">返回列表</a>
+	</span>
+    <h2>{if !empty($item['id'])}编辑{else}添加{/if}企业「{$_enterprise_user['enterprise_name']}」服务的企业
+        <small>{if !empty($item['id'])}修改【{$item['enterprise_name']}】{/if}</small>
+    </h2>
+</div>
+
+
+<form id="setform" {ife 'enterprise.enterprise' $item}action="" method="post"{/if} class="form-horizontal form-validate">
+
+    <input type="hidden" id="tab" name="tab" value="#tab_basic"/>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label must">请选择项目</label>
+        <div class="col-sm-8">
+            {ife 'enterprise.enterprise' $item}
+            <select name="organization_id" class='form-control input-sm select-sm select2' >
+                <option value="">请选择项目</option>
+                {loop $selector_organization $row}
+                <option value="{$row['ID']}" {if $item['organization_id'] == $row['ID']}selected = selected {/if}>{$row['ID']} - {$row['name']}</option>
+                {/loop}
+            </select>
+            {else}
+            <div class="form-control-static">
+                {loop $selector_organization $row}
+                {if $item['organization_code']==$row['code']}{$row['name']}{/if}
+                {/loop}
+            </div>
+            {/if}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label must">请选择企业</label>
+        <div class="col-sm-8">
+            {ife 'enterprise.enterprise' $item}
+            <select name="enterprise_id" class='form-control input-sm select-sm select2'>
+                <option value="">请选择企业</option>
+                {loop $selector_virtuals $row}
+                <option value="{$row['id']}" {if $item['enterprise_id'] == $row['id']}selected = selected {/if}>{$row['organizationId']} - {$row['id']} - {$row['name']}</option>
+                {/loop}
+            </select>
+            {else}
+            <div class="form-control-static">
+                {loop $selector_virtuals $row}
+                {if $item['enterprise_id']==$row['id']}{$row['name']}{/if}
+                {/loop}
+            </div>
+            {/if}
+        </div>
+    </div>
+
+    <br>
+    {ifp 'enterprise.enterprise.edit'}
+    <div class="form-group">
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-9 col-xs-12">
+            <input type="submit" value="提交" class="btn btn-primary"/>
+        </div>
+    </div>
+    {/if}
+
+</form>
+
+<script language='javascript'>
+    require(['bootstrap'], function () {
+        $('#myTab a').click(function (e) {
+            $('#tab').val($(this).attr('href'));
+            e.preventDefault();
+            $(this).tab('show');
+        });
+
+        $(document).on('change', 'select[name="organization_id"]',
+                function () {
+
+                    var organization_id = $('select[name="organization_id"]').val();
+
+                    console.log(organization_id);
+
+                    if (organization_id != '') {
+
+                        $.getJSON(
+                                "{php echo webUrl('enterprise/enterprise/ajax')}",
+                                {organization_id: organization_id},
+                                function (data) {
+
+                                    console.log(data);
+
+                                    var content = "";
+
+                                    for (var index in data) {
+
+                                        content += "<option value=" + data[index].id + " >" + data[index].organizationId + " - " + data[index].id + " - " + data[index].name + "</option>";
+                                        console.log(content);
+                                    }
+                                    $('select[name="enterprise_id"]').empty();
+                                    $('select[name="enterprise_id"]').append("<option value=''>请选择企业</option>");
+                                    $('select[name="enterprise_id"]').append(content);
+
+                                    $('select[name="enterprise_id"]').select2({});
+                                });
+                    } else {
+                    }
+                });
+    });
+</script>
+
+{template '_footer'}

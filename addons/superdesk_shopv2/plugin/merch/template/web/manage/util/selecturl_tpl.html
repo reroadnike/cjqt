@@ -1,0 +1,40 @@
+{if $type=='good'}
+	{if empty($goods)}
+		<div class="tip">抱歉！未查询到{if !empty($kw)}与“{$kw}”{/if}相关的商品，请更换关键字后重试。</div>
+	{else}
+		{loop $goods $good}
+			<div class="line good">
+				<div class="image"><img src="{$good['thumb']}"/></div>
+				<nav title="选择" class="btn btn-default btn-sm" data-href="{php echo mobileUrl('goods/detail', array('id'=>$good['id']), $full)}">选择</nav>
+				<div class="text">
+					<p class="name">{$good['title']}</p>
+					<p class="price">原价: {$good['productprice']}元 现价: {$good['marketprice']}元</p>
+				</div>
+			</div>
+		{/loop}
+	{/if}
+{elseif $type=='article'}
+	{if empty($articles)}
+		<div class="tip">抱歉！未查询到{if !empty($kw)}与“{$kw}”{/if}相关的文章，请更换关键字后重试。</div>
+	{else}
+		{loop $articles $article}
+			<div class="line">
+				<div class="icon icon-1"></div>
+				<nav data-href="{php echo mobileUrl('article', array('aid'=>$article['id']), $full)}" class="btn btn-default btn-sm" title="选择">选择</nav>
+				<div class="text">{$article['article_title']}</div>
+			</div>
+		{/loop}
+	{/if}
+{elseif $type=='coupon'}
+	{if empty($coupons)}
+		<div class="tip">抱歉！未查询到{if !empty($kw)}与“{$kw}”{/if}相关的优惠券，请更换关键字后重试。</div>
+	{else}
+		{loop $coupons $coupon}
+			<div class="line">
+				<div class="icon icon-1"></div>
+				<nav data-href="{php echo mobileUrl('coupon/detail', array('id'=>$coupon['id']), $full)}" class="btn btn-default btn-sm" title="选择">选择</nav>
+				<div class="text">{$coupon['couponname']}</div>
+			</div>
+		{/loop}
+	{/if}
+{/if}

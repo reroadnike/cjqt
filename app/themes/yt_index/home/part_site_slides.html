@@ -1,0 +1,13 @@
+<div class="am-slider am-slider-default" data-am-flexslider="{playAfterPaused: 4000}" id="entrance-slider">
+    <ul class="am-slides">
+        {php $slides = app_slide(array('multiid'=>$multiid));}
+        {loop $slides $row}
+        <li style="width: 640px; display: table-cell; vertical-align: top;">
+            <a href="#">
+                <img src="{$row['thumb']}" alt="{$row['title']}" style="width:100%;">
+            </a>
+        </li>
+        {/loop}
+    </ul>
+</div>
+<!-- 轮播广告 end -->

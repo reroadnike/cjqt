@@ -1,0 +1,2464 @@
+{
+    "stbs": [
+        {
+            "lable": "2017-08-10", 
+            "select_time_bar": [
+                {
+                    "index": 0, 
+                    "key": "2017-08-10 00:00:00", 
+                    "timestamp": 1502296200, 
+                    "is_use": 0, 
+                    "lable": "00:00-00:30", 
+                    "lable_start": "00:00", 
+                    "lable_end": "00:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 1, 
+                    "key": "2017-08-10 00:30:00", 
+                    "timestamp": 1502298000, 
+                    "is_use": 0, 
+                    "lable": "00:30-01:00", 
+                    "lable_start": "00:30", 
+                    "lable_end": "01:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 2, 
+                    "key": "2017-08-10 01:00:00", 
+                    "timestamp": 1502299800, 
+                    "is_use": 0, 
+                    "lable": "01:00-01:30", 
+                    "lable_start": "01:00", 
+                    "lable_end": "01:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 3, 
+                    "key": "2017-08-10 01:30:00", 
+                    "timestamp": 1502301600, 
+                    "is_use": 0, 
+                    "lable": "01:30-02:00", 
+                    "lable_start": "01:30", 
+                    "lable_end": "02:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 4, 
+                    "key": "2017-08-10 02:00:00", 
+                    "timestamp": 1502303400, 
+                    "is_use": 0, 
+                    "lable": "02:00-02:30", 
+                    "lable_start": "02:00", 
+                    "lable_end": "02:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 5, 
+                    "key": "2017-08-10 02:30:00", 
+                    "timestamp": 1502305200, 
+                    "is_use": 0, 
+                    "lable": "02:30-03:00", 
+                    "lable_start": "02:30", 
+                    "lable_end": "03:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 6, 
+                    "key": "2017-08-10 03:00:00", 
+                    "timestamp": 1502307000, 
+                    "is_use": 0, 
+                    "lable": "03:00-03:30", 
+                    "lable_start": "03:00", 
+                    "lable_end": "03:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 7, 
+                    "key": "2017-08-10 03:30:00", 
+                    "timestamp": 1502308800, 
+                    "is_use": 0, 
+                    "lable": "03:30-04:00", 
+                    "lable_start": "03:30", 
+                    "lable_end": "04:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 8, 
+                    "key": "2017-08-10 04:00:00", 
+                    "timestamp": 1502310600, 
+                    "is_use": 0, 
+                    "lable": "04:00-04:30", 
+                    "lable_start": "04:00", 
+                    "lable_end": "04:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 9, 
+                    "key": "2017-08-10 04:30:00", 
+                    "timestamp": 1502312400, 
+                    "is_use": 0, 
+                    "lable": "04:30-05:00", 
+                    "lable_start": "04:30", 
+                    "lable_end": "05:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 10, 
+                    "key": "2017-08-10 05:00:00", 
+                    "timestamp": 1502314200, 
+                    "is_use": 0, 
+                    "lable": "05:00-05:30", 
+                    "lable_start": "05:00", 
+                    "lable_end": "05:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 11, 
+                    "key": "2017-08-10 05:30:00", 
+                    "timestamp": 1502316000, 
+                    "is_use": 0, 
+                    "lable": "05:30-06:00", 
+                    "lable_start": "05:30", 
+                    "lable_end": "06:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 12, 
+                    "key": "2017-08-10 06:00:00", 
+                    "timestamp": 1502317800, 
+                    "is_use": 0, 
+                    "lable": "06:00-06:30", 
+                    "lable_start": "06:00", 
+                    "lable_end": "06:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 13, 
+                    "key": "2017-08-10 06:30:00", 
+                    "timestamp": 1502319600, 
+                    "is_use": 0, 
+                    "lable": "06:30-07:00", 
+                    "lable_start": "06:30", 
+                    "lable_end": "07:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 14, 
+                    "key": "2017-08-10 07:00:00", 
+                    "timestamp": 1502321400, 
+                    "is_use": 0, 
+                    "lable": "07:00-07:30", 
+                    "lable_start": "07:00", 
+                    "lable_end": "07:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 15, 
+                    "key": "2017-08-10 07:30:00", 
+                    "timestamp": 1502323200, 
+                    "is_use": 0, 
+                    "lable": "07:30-08:00", 
+                    "lable_start": "07:30", 
+                    "lable_end": "08:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 16, 
+                    "key": "2017-08-10 08:00:00", 
+                    "timestamp": 1502325000, 
+                    "is_use": 0, 
+                    "lable": "08:00-08:30", 
+                    "lable_start": "08:00", 
+                    "lable_end": "08:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 17, 
+                    "key": "2017-08-10 08:30:00", 
+                    "timestamp": 1502326800, 
+                    "is_use": 0, 
+                    "lable": "08:30-09:00", 
+                    "lable_start": "08:30", 
+                    "lable_end": "09:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 18, 
+                    "key": "2017-08-10 09:00:00", 
+                    "timestamp": 1502328600, 
+                    "is_use": 0, 
+                    "lable": "09:00-09:30", 
+                    "lable_start": "09:00", 
+                    "lable_end": "09:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 19, 
+                    "key": "2017-08-10 09:30:00", 
+                    "timestamp": 1502330400, 
+                    "is_use": 0, 
+                    "lable": "09:30-10:00", 
+                    "lable_start": "09:30", 
+                    "lable_end": "10:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 20, 
+                    "key": "2017-08-10 10:00:00", 
+                    "timestamp": 1502332200, 
+                    "is_use": 0, 
+                    "lable": "10:00-10:30", 
+                    "lable_start": "10:00", 
+                    "lable_end": "10:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 21, 
+                    "key": "2017-08-10 10:30:00", 
+                    "timestamp": 1502334000, 
+                    "is_use": 0, 
+                    "lable": "10:30-11:00", 
+                    "lable_start": "10:30", 
+                    "lable_end": "11:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 22, 
+                    "key": "2017-08-10 11:00:00", 
+                    "timestamp": 1502335800, 
+                    "is_use": 0, 
+                    "lable": "11:00-11:30", 
+                    "lable_start": "11:00", 
+                    "lable_end": "11:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 23, 
+                    "key": "2017-08-10 11:30:00", 
+                    "timestamp": 1502337600, 
+                    "is_use": 0, 
+                    "lable": "11:30-12:00", 
+                    "lable_start": "11:30", 
+                    "lable_end": "12:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 24, 
+                    "key": "2017-08-10 12:00:00", 
+                    "timestamp": 1502339400, 
+                    "is_use": 0, 
+                    "lable": "12:00-12:30", 
+                    "lable_start": "12:00", 
+                    "lable_end": "12:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 25, 
+                    "key": "2017-08-10 12:30:00", 
+                    "timestamp": 1502341200, 
+                    "is_use": 0, 
+                    "lable": "12:30-13:00", 
+                    "lable_start": "12:30", 
+                    "lable_end": "13:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 26, 
+                    "key": "2017-08-10 13:00:00", 
+                    "timestamp": 1502343000, 
+                    "is_use": 0, 
+                    "lable": "13:00-13:30", 
+                    "lable_start": "13:00", 
+                    "lable_end": "13:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 27, 
+                    "key": "2017-08-10 13:30:00", 
+                    "timestamp": 1502344800, 
+                    "is_use": 0, 
+                    "lable": "13:30-14:00", 
+                    "lable_start": "13:30", 
+                    "lable_end": "14:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 28, 
+                    "key": "2017-08-10 14:00:00", 
+                    "timestamp": 1502346600, 
+                    "is_use": 0, 
+                    "lable": "14:00-14:30", 
+                    "lable_start": "14:00", 
+                    "lable_end": "14:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 29, 
+                    "key": "2017-08-10 14:30:00", 
+                    "timestamp": 1502348400, 
+                    "is_use": 0, 
+                    "lable": "14:30-15:00", 
+                    "lable_start": "14:30", 
+                    "lable_end": "15:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 30, 
+                    "key": "2017-08-10 15:00:00", 
+                    "timestamp": 1502350200, 
+                    "is_use": 0, 
+                    "lable": "15:00-15:30", 
+                    "lable_start": "15:00", 
+                    "lable_end": "15:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 31, 
+                    "key": "2017-08-10 15:30:00", 
+                    "timestamp": 1502352000, 
+                    "is_use": 0, 
+                    "lable": "15:30-16:00", 
+                    "lable_start": "15:30", 
+                    "lable_end": "16:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 32, 
+                    "key": "2017-08-10 16:00:00", 
+                    "timestamp": 1502353800, 
+                    "is_use": 0, 
+                    "lable": "16:00-16:30", 
+                    "lable_start": "16:00", 
+                    "lable_end": "16:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 33, 
+                    "key": "2017-08-10 16:30:00", 
+                    "timestamp": 1502355600, 
+                    "is_use": 0, 
+                    "lable": "16:30-17:00", 
+                    "lable_start": "16:30", 
+                    "lable_end": "17:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 34, 
+                    "key": "2017-08-10 17:00:00", 
+                    "timestamp": 1502357400, 
+                    "is_use": 0, 
+                    "lable": "17:00-17:30", 
+                    "lable_start": "17:00", 
+                    "lable_end": "17:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 35, 
+                    "key": "2017-08-10 17:30:00", 
+                    "timestamp": 1502359200, 
+                    "is_use": 0, 
+                    "lable": "17:30-18:00", 
+                    "lable_start": "17:30", 
+                    "lable_end": "18:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 36, 
+                    "key": "2017-08-10 18:00:00", 
+                    "timestamp": 1502361000, 
+                    "is_use": 0, 
+                    "lable": "18:00-18:30", 
+                    "lable_start": "18:00", 
+                    "lable_end": "18:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 37, 
+                    "key": "2017-08-10 18:30:00", 
+                    "timestamp": 1502362800, 
+                    "is_use": 0, 
+                    "lable": "18:30-19:00", 
+                    "lable_start": "18:30", 
+                    "lable_end": "19:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 38, 
+                    "key": "2017-08-10 19:00:00", 
+                    "timestamp": 1502364600, 
+                    "is_use": 0, 
+                    "lable": "19:00-19:30", 
+                    "lable_start": "19:00", 
+                    "lable_end": "19:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 39, 
+                    "key": "2017-08-10 19:30:00", 
+                    "timestamp": 1502366400, 
+                    "is_use": 0, 
+                    "lable": "19:30-20:00", 
+                    "lable_start": "19:30", 
+                    "lable_end": "20:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 40, 
+                    "key": "2017-08-10 20:00:00", 
+                    "timestamp": 1502368200, 
+                    "is_use": 0, 
+                    "lable": "20:00-20:30", 
+                    "lable_start": "20:00", 
+                    "lable_end": "20:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 41, 
+                    "key": "2017-08-10 20:30:00", 
+                    "timestamp": 1502370000, 
+                    "is_use": 0, 
+                    "lable": "20:30-21:00", 
+                    "lable_start": "20:30", 
+                    "lable_end": "21:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 42, 
+                    "key": "2017-08-10 21:00:00", 
+                    "timestamp": 1502371800, 
+                    "is_use": 0, 
+                    "lable": "21:00-21:30", 
+                    "lable_start": "21:00", 
+                    "lable_end": "21:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 43, 
+                    "key": "2017-08-10 21:30:00", 
+                    "timestamp": 1502373600, 
+                    "is_use": 0, 
+                    "lable": "21:30-22:00", 
+                    "lable_start": "21:30", 
+                    "lable_end": "22:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 44, 
+                    "key": "2017-08-10 22:00:00", 
+                    "timestamp": 1502375400, 
+                    "is_use": 0, 
+                    "lable": "22:00-22:30", 
+                    "lable_start": "22:00", 
+                    "lable_end": "22:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 45, 
+                    "key": "2017-08-10 22:30:00", 
+                    "timestamp": 1502377200, 
+                    "is_use": 0, 
+                    "lable": "22:30-23:00", 
+                    "lable_start": "22:30", 
+                    "lable_end": "23:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 46, 
+                    "key": "2017-08-10 23:00:00", 
+                    "timestamp": 1502379000, 
+                    "is_use": 0, 
+                    "lable": "23:00-23:30", 
+                    "lable_start": "23:00", 
+                    "lable_end": "23:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 47, 
+                    "key": "2017-08-10 23:30:00", 
+                    "timestamp": 1502380800, 
+                    "is_use": 0, 
+                    "lable": "23:30-00:00", 
+                    "lable_start": "23:30", 
+                    "lable_end": "00:00", 
+                    "checked": 0
+                }
+            ]
+        }, 
+        {
+            "lable": "2017-08-11", 
+            "select_time_bar": [
+                {
+                    "index": 0, 
+                    "key": "2017-08-11 00:00:00", 
+                    "timestamp": 1502382600, 
+                    "is_use": 0, 
+                    "lable": "00:00-00:30", 
+                    "lable_start": "00:00", 
+                    "lable_end": "00:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 1, 
+                    "key": "2017-08-11 00:30:00", 
+                    "timestamp": 1502384400, 
+                    "is_use": 0, 
+                    "lable": "00:30-01:00", 
+                    "lable_start": "00:30", 
+                    "lable_end": "01:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 2, 
+                    "key": "2017-08-11 01:00:00", 
+                    "timestamp": 1502386200, 
+                    "is_use": 0, 
+                    "lable": "01:00-01:30", 
+                    "lable_start": "01:00", 
+                    "lable_end": "01:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 3, 
+                    "key": "2017-08-11 01:30:00", 
+                    "timestamp": 1502388000, 
+                    "is_use": 0, 
+                    "lable": "01:30-02:00", 
+                    "lable_start": "01:30", 
+                    "lable_end": "02:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 4, 
+                    "key": "2017-08-11 02:00:00", 
+                    "timestamp": 1502389800, 
+                    "is_use": 0, 
+                    "lable": "02:00-02:30", 
+                    "lable_start": "02:00", 
+                    "lable_end": "02:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 5, 
+                    "key": "2017-08-11 02:30:00", 
+                    "timestamp": 1502391600, 
+                    "is_use": 0, 
+                    "lable": "02:30-03:00", 
+                    "lable_start": "02:30", 
+                    "lable_end": "03:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 6, 
+                    "key": "2017-08-11 03:00:00", 
+                    "timestamp": 1502393400, 
+                    "is_use": 0, 
+                    "lable": "03:00-03:30", 
+                    "lable_start": "03:00", 
+                    "lable_end": "03:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 7, 
+                    "key": "2017-08-11 03:30:00", 
+                    "timestamp": 1502395200, 
+                    "is_use": 0, 
+                    "lable": "03:30-04:00", 
+                    "lable_start": "03:30", 
+                    "lable_end": "04:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 8, 
+                    "key": "2017-08-11 04:00:00", 
+                    "timestamp": 1502397000, 
+                    "is_use": 0, 
+                    "lable": "04:00-04:30", 
+                    "lable_start": "04:00", 
+                    "lable_end": "04:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 9, 
+                    "key": "2017-08-11 04:30:00", 
+                    "timestamp": 1502398800, 
+                    "is_use": 0, 
+                    "lable": "04:30-05:00", 
+                    "lable_start": "04:30", 
+                    "lable_end": "05:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 10, 
+                    "key": "2017-08-11 05:00:00", 
+                    "timestamp": 1502400600, 
+                    "is_use": 0, 
+                    "lable": "05:00-05:30", 
+                    "lable_start": "05:00", 
+                    "lable_end": "05:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 11, 
+                    "key": "2017-08-11 05:30:00", 
+                    "timestamp": 1502402400, 
+                    "is_use": 0, 
+                    "lable": "05:30-06:00", 
+                    "lable_start": "05:30", 
+                    "lable_end": "06:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 12, 
+                    "key": "2017-08-11 06:00:00", 
+                    "timestamp": 1502404200, 
+                    "is_use": 0, 
+                    "lable": "06:00-06:30", 
+                    "lable_start": "06:00", 
+                    "lable_end": "06:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 13, 
+                    "key": "2017-08-11 06:30:00", 
+                    "timestamp": 1502406000, 
+                    "is_use": 0, 
+                    "lable": "06:30-07:00", 
+                    "lable_start": "06:30", 
+                    "lable_end": "07:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 14, 
+                    "key": "2017-08-11 07:00:00", 
+                    "timestamp": 1502407800, 
+                    "is_use": 0, 
+                    "lable": "07:00-07:30", 
+                    "lable_start": "07:00", 
+                    "lable_end": "07:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 15, 
+                    "key": "2017-08-11 07:30:00", 
+                    "timestamp": 1502409600, 
+                    "is_use": 0, 
+                    "lable": "07:30-08:00", 
+                    "lable_start": "07:30", 
+                    "lable_end": "08:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 16, 
+                    "key": "2017-08-11 08:00:00", 
+                    "timestamp": 1502411400, 
+                    "is_use": 0, 
+                    "lable": "08:00-08:30", 
+                    "lable_start": "08:00", 
+                    "lable_end": "08:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 17, 
+                    "key": "2017-08-11 08:30:00", 
+                    "timestamp": 1502413200, 
+                    "is_use": 0, 
+                    "lable": "08:30-09:00", 
+                    "lable_start": "08:30", 
+                    "lable_end": "09:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 18, 
+                    "key": "2017-08-11 09:00:00", 
+                    "timestamp": 1502415000, 
+                    "is_use": 0, 
+                    "lable": "09:00-09:30", 
+                    "lable_start": "09:00", 
+                    "lable_end": "09:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 19, 
+                    "key": "2017-08-11 09:30:00", 
+                    "timestamp": 1502416800, 
+                    "is_use": 0, 
+                    "lable": "09:30-10:00", 
+                    "lable_start": "09:30", 
+                    "lable_end": "10:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 20, 
+                    "key": "2017-08-11 10:00:00", 
+                    "timestamp": 1502418600, 
+                    "is_use": 0, 
+                    "lable": "10:00-10:30", 
+                    "lable_start": "10:00", 
+                    "lable_end": "10:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 21, 
+                    "key": "2017-08-11 10:30:00", 
+                    "timestamp": 1502420400, 
+                    "is_use": 0, 
+                    "lable": "10:30-11:00", 
+                    "lable_start": "10:30", 
+                    "lable_end": "11:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 22, 
+                    "key": "2017-08-11 11:00:00", 
+                    "timestamp": 1502422200, 
+                    "is_use": 0, 
+                    "lable": "11:00-11:30", 
+                    "lable_start": "11:00", 
+                    "lable_end": "11:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 23, 
+                    "key": "2017-08-11 11:30:00", 
+                    "timestamp": 1502424000, 
+                    "is_use": 0, 
+                    "lable": "11:30-12:00", 
+                    "lable_start": "11:30", 
+                    "lable_end": "12:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 24, 
+                    "key": "2017-08-11 12:00:00", 
+                    "timestamp": 1502425800, 
+                    "is_use": 0, 
+                    "lable": "12:00-12:30", 
+                    "lable_start": "12:00", 
+                    "lable_end": "12:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 25, 
+                    "key": "2017-08-11 12:30:00", 
+                    "timestamp": 1502427600, 
+                    "is_use": 0, 
+                    "lable": "12:30-13:00", 
+                    "lable_start": "12:30", 
+                    "lable_end": "13:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 26, 
+                    "key": "2017-08-11 13:00:00", 
+                    "timestamp": 1502429400, 
+                    "is_use": 0, 
+                    "lable": "13:00-13:30", 
+                    "lable_start": "13:00", 
+                    "lable_end": "13:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 27, 
+                    "key": "2017-08-11 13:30:00", 
+                    "timestamp": 1502431200, 
+                    "is_use": 0, 
+                    "lable": "13:30-14:00", 
+                    "lable_start": "13:30", 
+                    "lable_end": "14:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 28, 
+                    "key": "2017-08-11 14:00:00", 
+                    "timestamp": 1502433000, 
+                    "is_use": 0, 
+                    "lable": "14:00-14:30", 
+                    "lable_start": "14:00", 
+                    "lable_end": "14:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 29, 
+                    "key": "2017-08-11 14:30:00", 
+                    "timestamp": 1502434800, 
+                    "is_use": 0, 
+                    "lable": "14:30-15:00", 
+                    "lable_start": "14:30", 
+                    "lable_end": "15:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 30, 
+                    "key": "2017-08-11 15:00:00", 
+                    "timestamp": 1502436600, 
+                    "is_use": 0, 
+                    "lable": "15:00-15:30", 
+                    "lable_start": "15:00", 
+                    "lable_end": "15:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 31, 
+                    "key": "2017-08-11 15:30:00", 
+                    "timestamp": 1502438400, 
+                    "is_use": 0, 
+                    "lable": "15:30-16:00", 
+                    "lable_start": "15:30", 
+                    "lable_end": "16:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 32, 
+                    "key": "2017-08-11 16:00:00", 
+                    "timestamp": 1502440200, 
+                    "is_use": 0, 
+                    "lable": "16:00-16:30", 
+                    "lable_start": "16:00", 
+                    "lable_end": "16:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 33, 
+                    "key": "2017-08-11 16:30:00", 
+                    "timestamp": 1502442000, 
+                    "is_use": 0, 
+                    "lable": "16:30-17:00", 
+                    "lable_start": "16:30", 
+                    "lable_end": "17:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 34, 
+                    "key": "2017-08-11 17:00:00", 
+                    "timestamp": 1502443800, 
+                    "is_use": 0, 
+                    "lable": "17:00-17:30", 
+                    "lable_start": "17:00", 
+                    "lable_end": "17:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 35, 
+                    "key": "2017-08-11 17:30:00", 
+                    "timestamp": 1502445600, 
+                    "is_use": 0, 
+                    "lable": "17:30-18:00", 
+                    "lable_start": "17:30", 
+                    "lable_end": "18:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 36, 
+                    "key": "2017-08-11 18:00:00", 
+                    "timestamp": 1502447400, 
+                    "is_use": 0, 
+                    "lable": "18:00-18:30", 
+                    "lable_start": "18:00", 
+                    "lable_end": "18:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 37, 
+                    "key": "2017-08-11 18:30:00", 
+                    "timestamp": 1502449200, 
+                    "is_use": 0, 
+                    "lable": "18:30-19:00", 
+                    "lable_start": "18:30", 
+                    "lable_end": "19:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 38, 
+                    "key": "2017-08-11 19:00:00", 
+                    "timestamp": 1502451000, 
+                    "is_use": 0, 
+                    "lable": "19:00-19:30", 
+                    "lable_start": "19:00", 
+                    "lable_end": "19:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 39, 
+                    "key": "2017-08-11 19:30:00", 
+                    "timestamp": 1502452800, 
+                    "is_use": 0, 
+                    "lable": "19:30-20:00", 
+                    "lable_start": "19:30", 
+                    "lable_end": "20:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 40, 
+                    "key": "2017-08-11 20:00:00", 
+                    "timestamp": 1502454600, 
+                    "is_use": 0, 
+                    "lable": "20:00-20:30", 
+                    "lable_start": "20:00", 
+                    "lable_end": "20:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 41, 
+                    "key": "2017-08-11 20:30:00", 
+                    "timestamp": 1502456400, 
+                    "is_use": 0, 
+                    "lable": "20:30-21:00", 
+                    "lable_start": "20:30", 
+                    "lable_end": "21:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 42, 
+                    "key": "2017-08-11 21:00:00", 
+                    "timestamp": 1502458200, 
+                    "is_use": 0, 
+                    "lable": "21:00-21:30", 
+                    "lable_start": "21:00", 
+                    "lable_end": "21:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 43, 
+                    "key": "2017-08-11 21:30:00", 
+                    "timestamp": 1502460000, 
+                    "is_use": 0, 
+                    "lable": "21:30-22:00", 
+                    "lable_start": "21:30", 
+                    "lable_end": "22:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 44, 
+                    "key": "2017-08-11 22:00:00", 
+                    "timestamp": 1502461800, 
+                    "is_use": 0, 
+                    "lable": "22:00-22:30", 
+                    "lable_start": "22:00", 
+                    "lable_end": "22:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 45, 
+                    "key": "2017-08-11 22:30:00", 
+                    "timestamp": 1502463600, 
+                    "is_use": 0, 
+                    "lable": "22:30-23:00", 
+                    "lable_start": "22:30", 
+                    "lable_end": "23:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 46, 
+                    "key": "2017-08-11 23:00:00", 
+                    "timestamp": 1502465400, 
+                    "is_use": 0, 
+                    "lable": "23:00-23:30", 
+                    "lable_start": "23:00", 
+                    "lable_end": "23:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 47, 
+                    "key": "2017-08-11 23:30:00", 
+                    "timestamp": 1502467200, 
+                    "is_use": 0, 
+                    "lable": "23:30-00:00", 
+                    "lable_start": "23:30", 
+                    "lable_end": "00:00", 
+                    "checked": 0
+                }
+            ]
+        }, 
+        {
+            "lable": "2017-08-12", 
+            "select_time_bar": [
+                {
+                    "index": 0, 
+                    "key": "2017-08-12 00:00:00", 
+                    "timestamp": 1502469000, 
+                    "is_use": 0, 
+                    "lable": "00:00-00:30", 
+                    "lable_start": "00:00", 
+                    "lable_end": "00:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 1, 
+                    "key": "2017-08-12 00:30:00", 
+                    "timestamp": 1502470800, 
+                    "is_use": 0, 
+                    "lable": "00:30-01:00", 
+                    "lable_start": "00:30", 
+                    "lable_end": "01:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 2, 
+                    "key": "2017-08-12 01:00:00", 
+                    "timestamp": 1502472600, 
+                    "is_use": 0, 
+                    "lable": "01:00-01:30", 
+                    "lable_start": "01:00", 
+                    "lable_end": "01:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 3, 
+                    "key": "2017-08-12 01:30:00", 
+                    "timestamp": 1502474400, 
+                    "is_use": 0, 
+                    "lable": "01:30-02:00", 
+                    "lable_start": "01:30", 
+                    "lable_end": "02:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 4, 
+                    "key": "2017-08-12 02:00:00", 
+                    "timestamp": 1502476200, 
+                    "is_use": 0, 
+                    "lable": "02:00-02:30", 
+                    "lable_start": "02:00", 
+                    "lable_end": "02:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 5, 
+                    "key": "2017-08-12 02:30:00", 
+                    "timestamp": 1502478000, 
+                    "is_use": 0, 
+                    "lable": "02:30-03:00", 
+                    "lable_start": "02:30", 
+                    "lable_end": "03:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 6, 
+                    "key": "2017-08-12 03:00:00", 
+                    "timestamp": 1502479800, 
+                    "is_use": 0, 
+                    "lable": "03:00-03:30", 
+                    "lable_start": "03:00", 
+                    "lable_end": "03:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 7, 
+                    "key": "2017-08-12 03:30:00", 
+                    "timestamp": 1502481600, 
+                    "is_use": 0, 
+                    "lable": "03:30-04:00", 
+                    "lable_start": "03:30", 
+                    "lable_end": "04:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 8, 
+                    "key": "2017-08-12 04:00:00", 
+                    "timestamp": 1502483400, 
+                    "is_use": 0, 
+                    "lable": "04:00-04:30", 
+                    "lable_start": "04:00", 
+                    "lable_end": "04:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 9, 
+                    "key": "2017-08-12 04:30:00", 
+                    "timestamp": 1502485200, 
+                    "is_use": 0, 
+                    "lable": "04:30-05:00", 
+                    "lable_start": "04:30", 
+                    "lable_end": "05:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 10, 
+                    "key": "2017-08-12 05:00:00", 
+                    "timestamp": 1502487000, 
+                    "is_use": 0, 
+                    "lable": "05:00-05:30", 
+                    "lable_start": "05:00", 
+                    "lable_end": "05:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 11, 
+                    "key": "2017-08-12 05:30:00", 
+                    "timestamp": 1502488800, 
+                    "is_use": 0, 
+                    "lable": "05:30-06:00", 
+                    "lable_start": "05:30", 
+                    "lable_end": "06:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 12, 
+                    "key": "2017-08-12 06:00:00", 
+                    "timestamp": 1502490600, 
+                    "is_use": 0, 
+                    "lable": "06:00-06:30", 
+                    "lable_start": "06:00", 
+                    "lable_end": "06:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 13, 
+                    "key": "2017-08-12 06:30:00", 
+                    "timestamp": 1502492400, 
+                    "is_use": 0, 
+                    "lable": "06:30-07:00", 
+                    "lable_start": "06:30", 
+                    "lable_end": "07:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 14, 
+                    "key": "2017-08-12 07:00:00", 
+                    "timestamp": 1502494200, 
+                    "is_use": 0, 
+                    "lable": "07:00-07:30", 
+                    "lable_start": "07:00", 
+                    "lable_end": "07:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 15, 
+                    "key": "2017-08-12 07:30:00", 
+                    "timestamp": 1502496000, 
+                    "is_use": 0, 
+                    "lable": "07:30-08:00", 
+                    "lable_start": "07:30", 
+                    "lable_end": "08:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 16, 
+                    "key": "2017-08-12 08:00:00", 
+                    "timestamp": 1502497800, 
+                    "is_use": 0, 
+                    "lable": "08:00-08:30", 
+                    "lable_start": "08:00", 
+                    "lable_end": "08:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 17, 
+                    "key": "2017-08-12 08:30:00", 
+                    "timestamp": 1502499600, 
+                    "is_use": 0, 
+                    "lable": "08:30-09:00", 
+                    "lable_start": "08:30", 
+                    "lable_end": "09:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 18, 
+                    "key": "2017-08-12 09:00:00", 
+                    "timestamp": 1502501400, 
+                    "is_use": 0, 
+                    "lable": "09:00-09:30", 
+                    "lable_start": "09:00", 
+                    "lable_end": "09:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 19, 
+                    "key": "2017-08-12 09:30:00", 
+                    "timestamp": 1502503200, 
+                    "is_use": 0, 
+                    "lable": "09:30-10:00", 
+                    "lable_start": "09:30", 
+                    "lable_end": "10:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 20, 
+                    "key": "2017-08-12 10:00:00", 
+                    "timestamp": 1502505000, 
+                    "is_use": 0, 
+                    "lable": "10:00-10:30", 
+                    "lable_start": "10:00", 
+                    "lable_end": "10:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 21, 
+                    "key": "2017-08-12 10:30:00", 
+                    "timestamp": 1502506800, 
+                    "is_use": 0, 
+                    "lable": "10:30-11:00", 
+                    "lable_start": "10:30", 
+                    "lable_end": "11:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 22, 
+                    "key": "2017-08-12 11:00:00", 
+                    "timestamp": 1502508600, 
+                    "is_use": 0, 
+                    "lable": "11:00-11:30", 
+                    "lable_start": "11:00", 
+                    "lable_end": "11:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 23, 
+                    "key": "2017-08-12 11:30:00", 
+                    "timestamp": 1502510400, 
+                    "is_use": 0, 
+                    "lable": "11:30-12:00", 
+                    "lable_start": "11:30", 
+                    "lable_end": "12:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 24, 
+                    "key": "2017-08-12 12:00:00", 
+                    "timestamp": 1502512200, 
+                    "is_use": 0, 
+                    "lable": "12:00-12:30", 
+                    "lable_start": "12:00", 
+                    "lable_end": "12:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 25, 
+                    "key": "2017-08-12 12:30:00", 
+                    "timestamp": 1502514000, 
+                    "is_use": 0, 
+                    "lable": "12:30-13:00", 
+                    "lable_start": "12:30", 
+                    "lable_end": "13:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 26, 
+                    "key": "2017-08-12 13:00:00", 
+                    "timestamp": 1502515800, 
+                    "is_use": 0, 
+                    "lable": "13:00-13:30", 
+                    "lable_start": "13:00", 
+                    "lable_end": "13:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 27, 
+                    "key": "2017-08-12 13:30:00", 
+                    "timestamp": 1502517600, 
+                    "is_use": 0, 
+                    "lable": "13:30-14:00", 
+                    "lable_start": "13:30", 
+                    "lable_end": "14:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 28, 
+                    "key": "2017-08-12 14:00:00", 
+                    "timestamp": 1502519400, 
+                    "is_use": 0, 
+                    "lable": "14:00-14:30", 
+                    "lable_start": "14:00", 
+                    "lable_end": "14:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 29, 
+                    "key": "2017-08-12 14:30:00", 
+                    "timestamp": 1502521200, 
+                    "is_use": 0, 
+                    "lable": "14:30-15:00", 
+                    "lable_start": "14:30", 
+                    "lable_end": "15:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 30, 
+                    "key": "2017-08-12 15:00:00", 
+                    "timestamp": 1502523000, 
+                    "is_use": 0, 
+                    "lable": "15:00-15:30", 
+                    "lable_start": "15:00", 
+                    "lable_end": "15:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 31, 
+                    "key": "2017-08-12 15:30:00", 
+                    "timestamp": 1502524800, 
+                    "is_use": 0, 
+                    "lable": "15:30-16:00", 
+                    "lable_start": "15:30", 
+                    "lable_end": "16:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 32, 
+                    "key": "2017-08-12 16:00:00", 
+                    "timestamp": 1502526600, 
+                    "is_use": 0, 
+                    "lable": "16:00-16:30", 
+                    "lable_start": "16:00", 
+                    "lable_end": "16:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 33, 
+                    "key": "2017-08-12 16:30:00", 
+                    "timestamp": 1502528400, 
+                    "is_use": 0, 
+                    "lable": "16:30-17:00", 
+                    "lable_start": "16:30", 
+                    "lable_end": "17:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 34, 
+                    "key": "2017-08-12 17:00:00", 
+                    "timestamp": 1502530200, 
+                    "is_use": 0, 
+                    "lable": "17:00-17:30", 
+                    "lable_start": "17:00", 
+                    "lable_end": "17:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 35, 
+                    "key": "2017-08-12 17:30:00", 
+                    "timestamp": 1502532000, 
+                    "is_use": 0, 
+                    "lable": "17:30-18:00", 
+                    "lable_start": "17:30", 
+                    "lable_end": "18:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 36, 
+                    "key": "2017-08-12 18:00:00", 
+                    "timestamp": 1502533800, 
+                    "is_use": 0, 
+                    "lable": "18:00-18:30", 
+                    "lable_start": "18:00", 
+                    "lable_end": "18:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 37, 
+                    "key": "2017-08-12 18:30:00", 
+                    "timestamp": 1502535600, 
+                    "is_use": 0, 
+                    "lable": "18:30-19:00", 
+                    "lable_start": "18:30", 
+                    "lable_end": "19:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 38, 
+                    "key": "2017-08-12 19:00:00", 
+                    "timestamp": 1502537400, 
+                    "is_use": 0, 
+                    "lable": "19:00-19:30", 
+                    "lable_start": "19:00", 
+                    "lable_end": "19:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 39, 
+                    "key": "2017-08-12 19:30:00", 
+                    "timestamp": 1502539200, 
+                    "is_use": 0, 
+                    "lable": "19:30-20:00", 
+                    "lable_start": "19:30", 
+                    "lable_end": "20:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 40, 
+                    "key": "2017-08-12 20:00:00", 
+                    "timestamp": 1502541000, 
+                    "is_use": 0, 
+                    "lable": "20:00-20:30", 
+                    "lable_start": "20:00", 
+                    "lable_end": "20:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 41, 
+                    "key": "2017-08-12 20:30:00", 
+                    "timestamp": 1502542800, 
+                    "is_use": 0, 
+                    "lable": "20:30-21:00", 
+                    "lable_start": "20:30", 
+                    "lable_end": "21:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 42, 
+                    "key": "2017-08-12 21:00:00", 
+                    "timestamp": 1502544600, 
+                    "is_use": 0, 
+                    "lable": "21:00-21:30", 
+                    "lable_start": "21:00", 
+                    "lable_end": "21:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 43, 
+                    "key": "2017-08-12 21:30:00", 
+                    "timestamp": 1502546400, 
+                    "is_use": 0, 
+                    "lable": "21:30-22:00", 
+                    "lable_start": "21:30", 
+                    "lable_end": "22:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 44, 
+                    "key": "2017-08-12 22:00:00", 
+                    "timestamp": 1502548200, 
+                    "is_use": 0, 
+                    "lable": "22:00-22:30", 
+                    "lable_start": "22:00", 
+                    "lable_end": "22:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 45, 
+                    "key": "2017-08-12 22:30:00", 
+                    "timestamp": 1502550000, 
+                    "is_use": 0, 
+                    "lable": "22:30-23:00", 
+                    "lable_start": "22:30", 
+                    "lable_end": "23:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 46, 
+                    "key": "2017-08-12 23:00:00", 
+                    "timestamp": 1502551800, 
+                    "is_use": 0, 
+                    "lable": "23:00-23:30", 
+                    "lable_start": "23:00", 
+                    "lable_end": "23:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 47, 
+                    "key": "2017-08-12 23:30:00", 
+                    "timestamp": 1502553600, 
+                    "is_use": 0, 
+                    "lable": "23:30-00:00", 
+                    "lable_start": "23:30", 
+                    "lable_end": "00:00", 
+                    "checked": 0
+                }
+            ]
+        }, 
+        {
+            "lable": "2017-08-13", 
+            "select_time_bar": [
+                {
+                    "index": 0, 
+                    "key": "2017-08-13 00:00:00", 
+                    "timestamp": 1502555400, 
+                    "is_use": 0, 
+                    "lable": "00:00-00:30", 
+                    "lable_start": "00:00", 
+                    "lable_end": "00:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 1, 
+                    "key": "2017-08-13 00:30:00", 
+                    "timestamp": 1502557200, 
+                    "is_use": 0, 
+                    "lable": "00:30-01:00", 
+                    "lable_start": "00:30", 
+                    "lable_end": "01:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 2, 
+                    "key": "2017-08-13 01:00:00", 
+                    "timestamp": 1502559000, 
+                    "is_use": 0, 
+                    "lable": "01:00-01:30", 
+                    "lable_start": "01:00", 
+                    "lable_end": "01:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 3, 
+                    "key": "2017-08-13 01:30:00", 
+                    "timestamp": 1502560800, 
+                    "is_use": 0, 
+                    "lable": "01:30-02:00", 
+                    "lable_start": "01:30", 
+                    "lable_end": "02:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 4, 
+                    "key": "2017-08-13 02:00:00", 
+                    "timestamp": 1502562600, 
+                    "is_use": 0, 
+                    "lable": "02:00-02:30", 
+                    "lable_start": "02:00", 
+                    "lable_end": "02:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 5, 
+                    "key": "2017-08-13 02:30:00", 
+                    "timestamp": 1502564400, 
+                    "is_use": 0, 
+                    "lable": "02:30-03:00", 
+                    "lable_start": "02:30", 
+                    "lable_end": "03:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 6, 
+                    "key": "2017-08-13 03:00:00", 
+                    "timestamp": 1502566200, 
+                    "is_use": 0, 
+                    "lable": "03:00-03:30", 
+                    "lable_start": "03:00", 
+                    "lable_end": "03:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 7, 
+                    "key": "2017-08-13 03:30:00", 
+                    "timestamp": 1502568000, 
+                    "is_use": 0, 
+                    "lable": "03:30-04:00", 
+                    "lable_start": "03:30", 
+                    "lable_end": "04:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 8, 
+                    "key": "2017-08-13 04:00:00", 
+                    "timestamp": 1502569800, 
+                    "is_use": 0, 
+                    "lable": "04:00-04:30", 
+                    "lable_start": "04:00", 
+                    "lable_end": "04:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 9, 
+                    "key": "2017-08-13 04:30:00", 
+                    "timestamp": 1502571600, 
+                    "is_use": 0, 
+                    "lable": "04:30-05:00", 
+                    "lable_start": "04:30", 
+                    "lable_end": "05:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 10, 
+                    "key": "2017-08-13 05:00:00", 
+                    "timestamp": 1502573400, 
+                    "is_use": 0, 
+                    "lable": "05:00-05:30", 
+                    "lable_start": "05:00", 
+                    "lable_end": "05:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 11, 
+                    "key": "2017-08-13 05:30:00", 
+                    "timestamp": 1502575200, 
+                    "is_use": 0, 
+                    "lable": "05:30-06:00", 
+                    "lable_start": "05:30", 
+                    "lable_end": "06:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 12, 
+                    "key": "2017-08-13 06:00:00", 
+                    "timestamp": 1502577000, 
+                    "is_use": 0, 
+                    "lable": "06:00-06:30", 
+                    "lable_start": "06:00", 
+                    "lable_end": "06:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 13, 
+                    "key": "2017-08-13 06:30:00", 
+                    "timestamp": 1502578800, 
+                    "is_use": 0, 
+                    "lable": "06:30-07:00", 
+                    "lable_start": "06:30", 
+                    "lable_end": "07:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 14, 
+                    "key": "2017-08-13 07:00:00", 
+                    "timestamp": 1502580600, 
+                    "is_use": 0, 
+                    "lable": "07:00-07:30", 
+                    "lable_start": "07:00", 
+                    "lable_end": "07:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 15, 
+                    "key": "2017-08-13 07:30:00", 
+                    "timestamp": 1502582400, 
+                    "is_use": 0, 
+                    "lable": "07:30-08:00", 
+                    "lable_start": "07:30", 
+                    "lable_end": "08:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 16, 
+                    "key": "2017-08-13 08:00:00", 
+                    "timestamp": 1502584200, 
+                    "is_use": 0, 
+                    "lable": "08:00-08:30", 
+                    "lable_start": "08:00", 
+                    "lable_end": "08:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 17, 
+                    "key": "2017-08-13 08:30:00", 
+                    "timestamp": 1502586000, 
+                    "is_use": 0, 
+                    "lable": "08:30-09:00", 
+                    "lable_start": "08:30", 
+                    "lable_end": "09:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 18, 
+                    "key": "2017-08-13 09:00:00", 
+                    "timestamp": 1502587800, 
+                    "is_use": 0, 
+                    "lable": "09:00-09:30", 
+                    "lable_start": "09:00", 
+                    "lable_end": "09:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 19, 
+                    "key": "2017-08-13 09:30:00", 
+                    "timestamp": 1502589600, 
+                    "is_use": 0, 
+                    "lable": "09:30-10:00", 
+                    "lable_start": "09:30", 
+                    "lable_end": "10:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 20, 
+                    "key": "2017-08-13 10:00:00", 
+                    "timestamp": 1502591400, 
+                    "is_use": 0, 
+                    "lable": "10:00-10:30", 
+                    "lable_start": "10:00", 
+                    "lable_end": "10:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 21, 
+                    "key": "2017-08-13 10:30:00", 
+                    "timestamp": 1502593200, 
+                    "is_use": 0, 
+                    "lable": "10:30-11:00", 
+                    "lable_start": "10:30", 
+                    "lable_end": "11:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 22, 
+                    "key": "2017-08-13 11:00:00", 
+                    "timestamp": 1502595000, 
+                    "is_use": 0, 
+                    "lable": "11:00-11:30", 
+                    "lable_start": "11:00", 
+                    "lable_end": "11:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 23, 
+                    "key": "2017-08-13 11:30:00", 
+                    "timestamp": 1502596800, 
+                    "is_use": 0, 
+                    "lable": "11:30-12:00", 
+                    "lable_start": "11:30", 
+                    "lable_end": "12:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 24, 
+                    "key": "2017-08-13 12:00:00", 
+                    "timestamp": 1502598600, 
+                    "is_use": 0, 
+                    "lable": "12:00-12:30", 
+                    "lable_start": "12:00", 
+                    "lable_end": "12:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 25, 
+                    "key": "2017-08-13 12:30:00", 
+                    "timestamp": 1502600400, 
+                    "is_use": 0, 
+                    "lable": "12:30-13:00", 
+                    "lable_start": "12:30", 
+                    "lable_end": "13:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 26, 
+                    "key": "2017-08-13 13:00:00", 
+                    "timestamp": 1502602200, 
+                    "is_use": 0, 
+                    "lable": "13:00-13:30", 
+                    "lable_start": "13:00", 
+                    "lable_end": "13:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 27, 
+                    "key": "2017-08-13 13:30:00", 
+                    "timestamp": 1502604000, 
+                    "is_use": 0, 
+                    "lable": "13:30-14:00", 
+                    "lable_start": "13:30", 
+                    "lable_end": "14:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 28, 
+                    "key": "2017-08-13 14:00:00", 
+                    "timestamp": 1502605800, 
+                    "is_use": 0, 
+                    "lable": "14:00-14:30", 
+                    "lable_start": "14:00", 
+                    "lable_end": "14:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 29, 
+                    "key": "2017-08-13 14:30:00", 
+                    "timestamp": 1502607600, 
+                    "is_use": 0, 
+                    "lable": "14:30-15:00", 
+                    "lable_start": "14:30", 
+                    "lable_end": "15:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 30, 
+                    "key": "2017-08-13 15:00:00", 
+                    "timestamp": 1502609400, 
+                    "is_use": 0, 
+                    "lable": "15:00-15:30", 
+                    "lable_start": "15:00", 
+                    "lable_end": "15:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 31, 
+                    "key": "2017-08-13 15:30:00", 
+                    "timestamp": 1502611200, 
+                    "is_use": 0, 
+                    "lable": "15:30-16:00", 
+                    "lable_start": "15:30", 
+                    "lable_end": "16:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 32, 
+                    "key": "2017-08-13 16:00:00", 
+                    "timestamp": 1502613000, 
+                    "is_use": 0, 
+                    "lable": "16:00-16:30", 
+                    "lable_start": "16:00", 
+                    "lable_end": "16:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 33, 
+                    "key": "2017-08-13 16:30:00", 
+                    "timestamp": 1502614800, 
+                    "is_use": 0, 
+                    "lable": "16:30-17:00", 
+                    "lable_start": "16:30", 
+                    "lable_end": "17:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 34, 
+                    "key": "2017-08-13 17:00:00", 
+                    "timestamp": 1502616600, 
+                    "is_use": 0, 
+                    "lable": "17:00-17:30", 
+                    "lable_start": "17:00", 
+                    "lable_end": "17:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 35, 
+                    "key": "2017-08-13 17:30:00", 
+                    "timestamp": 1502618400, 
+                    "is_use": 0, 
+                    "lable": "17:30-18:00", 
+                    "lable_start": "17:30", 
+                    "lable_end": "18:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 36, 
+                    "key": "2017-08-13 18:00:00", 
+                    "timestamp": 1502620200, 
+                    "is_use": 0, 
+                    "lable": "18:00-18:30", 
+                    "lable_start": "18:00", 
+                    "lable_end": "18:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 37, 
+                    "key": "2017-08-13 18:30:00", 
+                    "timestamp": 1502622000, 
+                    "is_use": 0, 
+                    "lable": "18:30-19:00", 
+                    "lable_start": "18:30", 
+                    "lable_end": "19:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 38, 
+                    "key": "2017-08-13 19:00:00", 
+                    "timestamp": 1502623800, 
+                    "is_use": 0, 
+                    "lable": "19:00-19:30", 
+                    "lable_start": "19:00", 
+                    "lable_end": "19:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 39, 
+                    "key": "2017-08-13 19:30:00", 
+                    "timestamp": 1502625600, 
+                    "is_use": 0, 
+                    "lable": "19:30-20:00", 
+                    "lable_start": "19:30", 
+                    "lable_end": "20:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 40, 
+                    "key": "2017-08-13 20:00:00", 
+                    "timestamp": 1502627400, 
+                    "is_use": 0, 
+                    "lable": "20:00-20:30", 
+                    "lable_start": "20:00", 
+                    "lable_end": "20:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 41, 
+                    "key": "2017-08-13 20:30:00", 
+                    "timestamp": 1502629200, 
+                    "is_use": 0, 
+                    "lable": "20:30-21:00", 
+                    "lable_start": "20:30", 
+                    "lable_end": "21:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 42, 
+                    "key": "2017-08-13 21:00:00", 
+                    "timestamp": 1502631000, 
+                    "is_use": 0, 
+                    "lable": "21:00-21:30", 
+                    "lable_start": "21:00", 
+                    "lable_end": "21:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 43, 
+                    "key": "2017-08-13 21:30:00", 
+                    "timestamp": 1502632800, 
+                    "is_use": 0, 
+                    "lable": "21:30-22:00", 
+                    "lable_start": "21:30", 
+                    "lable_end": "22:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 44, 
+                    "key": "2017-08-13 22:00:00", 
+                    "timestamp": 1502634600, 
+                    "is_use": 0, 
+                    "lable": "22:00-22:30", 
+                    "lable_start": "22:00", 
+                    "lable_end": "22:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 45, 
+                    "key": "2017-08-13 22:30:00", 
+                    "timestamp": 1502636400, 
+                    "is_use": 0, 
+                    "lable": "22:30-23:00", 
+                    "lable_start": "22:30", 
+                    "lable_end": "23:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 46, 
+                    "key": "2017-08-13 23:00:00", 
+                    "timestamp": 1502638200, 
+                    "is_use": 0, 
+                    "lable": "23:00-23:30", 
+                    "lable_start": "23:00", 
+                    "lable_end": "23:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 47, 
+                    "key": "2017-08-13 23:30:00", 
+                    "timestamp": 1502640000, 
+                    "is_use": 0, 
+                    "lable": "23:30-00:00", 
+                    "lable_start": "23:30", 
+                    "lable_end": "00:00", 
+                    "checked": 0
+                }
+            ]
+        }, 
+        {
+            "lable": "2017-08-14", 
+            "select_time_bar": [
+                {
+                    "index": 0, 
+                    "key": "2017-08-14 00:00:00", 
+                    "timestamp": 1502641800, 
+                    "is_use": 0, 
+                    "lable": "00:00-00:30", 
+                    "lable_start": "00:00", 
+                    "lable_end": "00:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 1, 
+                    "key": "2017-08-14 00:30:00", 
+                    "timestamp": 1502643600, 
+                    "is_use": 0, 
+                    "lable": "00:30-01:00", 
+                    "lable_start": "00:30", 
+                    "lable_end": "01:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 2, 
+                    "key": "2017-08-14 01:00:00", 
+                    "timestamp": 1502645400, 
+                    "is_use": 0, 
+                    "lable": "01:00-01:30", 
+                    "lable_start": "01:00", 
+                    "lable_end": "01:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 3, 
+                    "key": "2017-08-14 01:30:00", 
+                    "timestamp": 1502647200, 
+                    "is_use": 0, 
+                    "lable": "01:30-02:00", 
+                    "lable_start": "01:30", 
+                    "lable_end": "02:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 4, 
+                    "key": "2017-08-14 02:00:00", 
+                    "timestamp": 1502649000, 
+                    "is_use": 0, 
+                    "lable": "02:00-02:30", 
+                    "lable_start": "02:00", 
+                    "lable_end": "02:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 5, 
+                    "key": "2017-08-14 02:30:00", 
+                    "timestamp": 1502650800, 
+                    "is_use": 0, 
+                    "lable": "02:30-03:00", 
+                    "lable_start": "02:30", 
+                    "lable_end": "03:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 6, 
+                    "key": "2017-08-14 03:00:00", 
+                    "timestamp": 1502652600, 
+                    "is_use": 0, 
+                    "lable": "03:00-03:30", 
+                    "lable_start": "03:00", 
+                    "lable_end": "03:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 7, 
+                    "key": "2017-08-14 03:30:00", 
+                    "timestamp": 1502654400, 
+                    "is_use": 0, 
+                    "lable": "03:30-04:00", 
+                    "lable_start": "03:30", 
+                    "lable_end": "04:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 8, 
+                    "key": "2017-08-14 04:00:00", 
+                    "timestamp": 1502656200, 
+                    "is_use": 0, 
+                    "lable": "04:00-04:30", 
+                    "lable_start": "04:00", 
+                    "lable_end": "04:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 9, 
+                    "key": "2017-08-14 04:30:00", 
+                    "timestamp": 1502658000, 
+                    "is_use": 0, 
+                    "lable": "04:30-05:00", 
+                    "lable_start": "04:30", 
+                    "lable_end": "05:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 10, 
+                    "key": "2017-08-14 05:00:00", 
+                    "timestamp": 1502659800, 
+                    "is_use": 0, 
+                    "lable": "05:00-05:30", 
+                    "lable_start": "05:00", 
+                    "lable_end": "05:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 11, 
+                    "key": "2017-08-14 05:30:00", 
+                    "timestamp": 1502661600, 
+                    "is_use": 0, 
+                    "lable": "05:30-06:00", 
+                    "lable_start": "05:30", 
+                    "lable_end": "06:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 12, 
+                    "key": "2017-08-14 06:00:00", 
+                    "timestamp": 1502663400, 
+                    "is_use": 0, 
+                    "lable": "06:00-06:30", 
+                    "lable_start": "06:00", 
+                    "lable_end": "06:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 13, 
+                    "key": "2017-08-14 06:30:00", 
+                    "timestamp": 1502665200, 
+                    "is_use": 0, 
+                    "lable": "06:30-07:00", 
+                    "lable_start": "06:30", 
+                    "lable_end": "07:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 14, 
+                    "key": "2017-08-14 07:00:00", 
+                    "timestamp": 1502667000, 
+                    "is_use": 0, 
+                    "lable": "07:00-07:30", 
+                    "lable_start": "07:00", 
+                    "lable_end": "07:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 15, 
+                    "key": "2017-08-14 07:30:00", 
+                    "timestamp": 1502668800, 
+                    "is_use": 0, 
+                    "lable": "07:30-08:00", 
+                    "lable_start": "07:30", 
+                    "lable_end": "08:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 16, 
+                    "key": "2017-08-14 08:00:00", 
+                    "timestamp": 1502670600, 
+                    "is_use": 0, 
+                    "lable": "08:00-08:30", 
+                    "lable_start": "08:00", 
+                    "lable_end": "08:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 17, 
+                    "key": "2017-08-14 08:30:00", 
+                    "timestamp": 1502672400, 
+                    "is_use": 0, 
+                    "lable": "08:30-09:00", 
+                    "lable_start": "08:30", 
+                    "lable_end": "09:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 18, 
+                    "key": "2017-08-14 09:00:00", 
+                    "timestamp": 1502674200, 
+                    "is_use": 0, 
+                    "lable": "09:00-09:30", 
+                    "lable_start": "09:00", 
+                    "lable_end": "09:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 19, 
+                    "key": "2017-08-14 09:30:00", 
+                    "timestamp": 1502676000, 
+                    "is_use": 0, 
+                    "lable": "09:30-10:00", 
+                    "lable_start": "09:30", 
+                    "lable_end": "10:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 20, 
+                    "key": "2017-08-14 10:00:00", 
+                    "timestamp": 1502677800, 
+                    "is_use": 0, 
+                    "lable": "10:00-10:30", 
+                    "lable_start": "10:00", 
+                    "lable_end": "10:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 21, 
+                    "key": "2017-08-14 10:30:00", 
+                    "timestamp": 1502679600, 
+                    "is_use": 0, 
+                    "lable": "10:30-11:00", 
+                    "lable_start": "10:30", 
+                    "lable_end": "11:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 22, 
+                    "key": "2017-08-14 11:00:00", 
+                    "timestamp": 1502681400, 
+                    "is_use": 0, 
+                    "lable": "11:00-11:30", 
+                    "lable_start": "11:00", 
+                    "lable_end": "11:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 23, 
+                    "key": "2017-08-14 11:30:00", 
+                    "timestamp": 1502683200, 
+                    "is_use": 0, 
+                    "lable": "11:30-12:00", 
+                    "lable_start": "11:30", 
+                    "lable_end": "12:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 24, 
+                    "key": "2017-08-14 12:00:00", 
+                    "timestamp": 1502685000, 
+                    "is_use": 0, 
+                    "lable": "12:00-12:30", 
+                    "lable_start": "12:00", 
+                    "lable_end": "12:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 25, 
+                    "key": "2017-08-14 12:30:00", 
+                    "timestamp": 1502686800, 
+                    "is_use": 0, 
+                    "lable": "12:30-13:00", 
+                    "lable_start": "12:30", 
+                    "lable_end": "13:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 26, 
+                    "key": "2017-08-14 13:00:00", 
+                    "timestamp": 1502688600, 
+                    "is_use": 0, 
+                    "lable": "13:00-13:30", 
+                    "lable_start": "13:00", 
+                    "lable_end": "13:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 27, 
+                    "key": "2017-08-14 13:30:00", 
+                    "timestamp": 1502690400, 
+                    "is_use": 0, 
+                    "lable": "13:30-14:00", 
+                    "lable_start": "13:30", 
+                    "lable_end": "14:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 28, 
+                    "key": "2017-08-14 14:00:00", 
+                    "timestamp": 1502692200, 
+                    "is_use": 0, 
+                    "lable": "14:00-14:30", 
+                    "lable_start": "14:00", 
+                    "lable_end": "14:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 29, 
+                    "key": "2017-08-14 14:30:00", 
+                    "timestamp": 1502694000, 
+                    "is_use": 0, 
+                    "lable": "14:30-15:00", 
+                    "lable_start": "14:30", 
+                    "lable_end": "15:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 30, 
+                    "key": "2017-08-14 15:00:00", 
+                    "timestamp": 1502695800, 
+                    "is_use": 0, 
+                    "lable": "15:00-15:30", 
+                    "lable_start": "15:00", 
+                    "lable_end": "15:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 31, 
+                    "key": "2017-08-14 15:30:00", 
+                    "timestamp": 1502697600, 
+                    "is_use": 0, 
+                    "lable": "15:30-16:00", 
+                    "lable_start": "15:30", 
+                    "lable_end": "16:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 32, 
+                    "key": "2017-08-14 16:00:00", 
+                    "timestamp": 1502699400, 
+                    "is_use": 0, 
+                    "lable": "16:00-16:30", 
+                    "lable_start": "16:00", 
+                    "lable_end": "16:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 33, 
+                    "key": "2017-08-14 16:30:00", 
+                    "timestamp": 1502701200, 
+                    "is_use": 0, 
+                    "lable": "16:30-17:00", 
+                    "lable_start": "16:30", 
+                    "lable_end": "17:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 34, 
+                    "key": "2017-08-14 17:00:00", 
+                    "timestamp": 1502703000, 
+                    "is_use": 0, 
+                    "lable": "17:00-17:30", 
+                    "lable_start": "17:00", 
+                    "lable_end": "17:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 35, 
+                    "key": "2017-08-14 17:30:00", 
+                    "timestamp": 1502704800, 
+                    "is_use": 0, 
+                    "lable": "17:30-18:00", 
+                    "lable_start": "17:30", 
+                    "lable_end": "18:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 36, 
+                    "key": "2017-08-14 18:00:00", 
+                    "timestamp": 1502706600, 
+                    "is_use": 0, 
+                    "lable": "18:00-18:30", 
+                    "lable_start": "18:00", 
+                    "lable_end": "18:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 37, 
+                    "key": "2017-08-14 18:30:00", 
+                    "timestamp": 1502708400, 
+                    "is_use": 0, 
+                    "lable": "18:30-19:00", 
+                    "lable_start": "18:30", 
+                    "lable_end": "19:00", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 38, 
+                    "key": "2017-08-14 19:00:00", 
+                    "timestamp": 1502710200, 
+                    "is_use": 0, 
+                    "lable": "19:00-19:30", 
+                    "lable_start": "19:00", 
+                    "lable_end": "19:30", 
+                    "checked": 0, 
+                    "check": 1
+                }, 
+                {
+                    "index": 39, 
+                    "key": "2017-08-14 19:30:00", 
+                    "timestamp": 1502712000, 
+                    "is_use": 0, 
+                    "lable": "19:30-20:00", 
+                    "lable_start": "19:30", 
+                    "lable_end": "20:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 40, 
+                    "key": "2017-08-14 20:00:00", 
+                    "timestamp": 1502713800, 
+                    "is_use": 0, 
+                    "lable": "20:00-20:30", 
+                    "lable_start": "20:00", 
+                    "lable_end": "20:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 41, 
+                    "key": "2017-08-14 20:30:00", 
+                    "timestamp": 1502715600, 
+                    "is_use": 0, 
+                    "lable": "20:30-21:00", 
+                    "lable_start": "20:30", 
+                    "lable_end": "21:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 42, 
+                    "key": "2017-08-14 21:00:00", 
+                    "timestamp": 1502717400, 
+                    "is_use": 0, 
+                    "lable": "21:00-21:30", 
+                    "lable_start": "21:00", 
+                    "lable_end": "21:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 43, 
+                    "key": "2017-08-14 21:30:00", 
+                    "timestamp": 1502719200, 
+                    "is_use": 0, 
+                    "lable": "21:30-22:00", 
+                    "lable_start": "21:30", 
+                    "lable_end": "22:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 44, 
+                    "key": "2017-08-14 22:00:00", 
+                    "timestamp": 1502721000, 
+                    "is_use": 0, 
+                    "lable": "22:00-22:30", 
+                    "lable_start": "22:00", 
+                    "lable_end": "22:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 45, 
+                    "key": "2017-08-14 22:30:00", 
+                    "timestamp": 1502722800, 
+                    "is_use": 0, 
+                    "lable": "22:30-23:00", 
+                    "lable_start": "22:30", 
+                    "lable_end": "23:00", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 46, 
+                    "key": "2017-08-14 23:00:00", 
+                    "timestamp": 1502724600, 
+                    "is_use": 0, 
+                    "lable": "23:00-23:30", 
+                    "lable_start": "23:00", 
+                    "lable_end": "23:30", 
+                    "checked": 0
+                }, 
+                {
+                    "index": 47, 
+                    "key": "2017-08-14 23:30:00", 
+                    "timestamp": 1502726400, 
+                    "is_use": 0, 
+                    "lable": "23:30-00:00", 
+                    "lable_start": "23:30", 
+                    "lable_end": "00:00", 
+                    "checked": 0
+                }
+            ]
+        }
+    ]
+}

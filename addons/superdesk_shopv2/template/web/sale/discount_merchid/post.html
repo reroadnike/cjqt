@@ -1,0 +1,152 @@
+{template '_header'}
+
+<style type='text/css' xmlns="http://www.w3.org/1999/html">
+    /*.dd-handle { height: 40px; line-height: 30px}*/
+    .dd-list { width:860px;}
+</style>
+<div class="page-heading">
+    <h2>设置商户折扣</h2>
+</div>
+<div class="alert alert-info">
+    功能介绍: 选择企业,设置折扣.客户端商品列表详情购物车订单等地方会显示折扣后的价格
+    <br><span style="padding-left: 60px;">折扣会向下继承覆盖,如设置一级后二级三级都会变成一级的折扣,无论二三级原本是否已经设置，请谨慎使用</span>
+</div>
+
+<form action="" method="post" class="form-validate">
+    <input type="hidden" name="c" value="site" />
+    <input type="hidden" name="a" value="entry" />
+    <input type="hidden" name="m" value="superdesk_shopv2" />
+    <input type="hidden" name="do" value="web" />
+    <input type="hidden" name="r" value="sale.discount_merchid.edit" />
+    <input type='hidden' name='discount_id' value="{$item['discount_id']}" />
+
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <h4>价套名称:</h4>
+            <div class="col-sm-4">
+                <input type="text" name="discount_name" class="form-control" value="{$item['discount_name']}" data-rule-required='true'/>
+            </div>
+        </div>
+
+        <div class="panel-body">
+
+            <h4>商户设置：</h4>
+            <div class="col-sm-5">
+                <div class="dd" id="div_nestable">
+                    <ol class="dd-list">
+                        {loop $groupList $row}
+                        <li class="dd-item" data-id="{$row['groupid']}">
+                            <div class="dd-handle">
+                                <input type="checkbox" name="group[{$row['groupid']}][checked]" class="merchid_check" value="{$row['groupid']}" {if $row['checked']==1}checked{/if} />
+                                <span style="font-weight: normal">{$row['groupname']}</span>
+                                <input type="text" name="group[{$row['groupid']}][discount]" class="merchid_discount" value="{$row['discount']}" style="width: 60px"/>%
+                            </div>
+
+                            <ol class="dd-list">
+                                {loop $merchList $mrow}
+                                {if $mrow['groupid']==$row['groupid']}
+                                    <li class="dd-item" data-id="{$mrow['id']}">
+                                        <div class="dd-handle">
+                                            <p>
+                                                <input type="checkbox" class="merchid_check" name="merchid[{$mrow['id']}][checked]" value="1" {if $mrow['checked']==1}checked{/if} />
+                                                <span style="font-weight: normal">[{$mrow['id']}]{$mrow['merchname']}</span>
+                                                <input type="text" class="merchid_discount" name="merchid[{$mrow['id']}][discount]" value="{$mrow['discount']}" class="col" style="width: 60px; height: 25px; margin-left: 10px" />%
+                                            </p>
+                                        </div>
+                                    </li>
+                                {/if}
+                                {/loop}
+                            </ol>
+                        </li>
+                        {/loop}
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <h4>选择价格:</h4>
+            <div class="col-sm-5">
+                <!-- 是否成本价 -->
+                <label class='checkbox-inline'>
+                    <input type='checkbox' name='price_type' value="2" {if $item['price_type']==2}checked{/if} /> 成本价折扣
+                </label>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <h4>是否开启:</h4>
+            <div class="col-sm-5">
+                <!-- 是否成本价 -->
+                <label class='checkbox-inline'>
+                    <input type='checkbox' name='status' value="1" {if $item['status']==1}checked{/if} /> 启用
+                </label>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <h4>备注:</h4>
+            <div class="col-sm-5">
+                <!-- 是否成本价 -->
+                <label class='checkbox-inline'>
+                    <textarea rows="2" name="remark" cols="60">{$item['remark']}</textarea>
+                </label>
+            </div>
+        </div>
+
+    </div>
+
+    <input id="save_category" type="submit" class="btn btn-primary" value="保存">
+</form>
+
+<script src="../addons/superdesk_shopv2/static/js/dist/jquery/nestable/jquery.nestable.js"></script>
+<script language='javascript'>
+
+    $(function(){
+        //折叠所有商户
+        $('#div_nestable').nestable({maxDepth: 2, group:1});
+        $('#div_nestable').nestable('collapseAll');
+
+        //$('.dd-item').addClass('full');
+
+        $("input").mousedown(function (e) {
+            e.stopPropagation();
+        });
+
+        //批量设置折扣
+        $(".merchid_discount").on('change',function () {
+
+            var _this = $(this);
+            if($(this).val() < 50 || $(this).val() > 200){
+                $(this).val(100);
+                alert('折扣要在60%到200%之间');
+            }
+            $(this).closest('li').find('.merchid_discount').val($(this).val());
+        });
+
+        //批量选中商户
+        $(".merchid_check").on('click',function () {
+
+            var _this = $(this);
+            var ischecked = $(this).is(':checked');
+            if(ischecked){
+                $(this).closest('li').find('.merchid_check').attr("checked", true);
+            } else {
+                $(this).closest('li').find('.merchid_check').attr("checked", false);
+            }
+
+        });
+
+
+        $('form').submit(function () {
+
+               console.log($(this).val());
+               return false;
+        });
+
+
+    });
+
+</script>
+
+{template '_footer'}

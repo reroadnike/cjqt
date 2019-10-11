@@ -1,0 +1,406 @@
+{"id":4970881176,"result":{"pOrder":73529866606},"time":"2018-03-28 11:23:04","type":1}  处理::
+START====>
+{
+    "success": true,
+    "resultMessage": "",
+    "resultCode": "0000",
+    "result": {
+        "pOrder": {
+            "jdOrderId": 73529866606,
+            "freight": 0,
+            "orderPrice": 2620.53,
+            "orderNakedPrice": 2239.73,
+            "sku": [
+                {
+                    "category": 1049,
+                    "num": 5,
+                    "price": 45,
+                    "tax": 17,
+                    "oid": 0,
+                    "name": "博扬（BOYANG）BY-05Z01 DP转VGA母转换器显卡Displayport转VGA接口显示器转换接头 黑色",
+                    "taxPrice": 6.54,
+                    "skuId": 4296630,
+                    "nakedPrice": 38.46,
+                    "type": 0
+                },
+                {
+                    "category": 690,
+                    "num": 1,
+                    "price": 99,
+                    "tax": 17,
+                    "oid": 0,
+                    "name": "富德 i368d无线蓝牙\/2.4G双模鼠标 办公家用游戏笔记本台式机苹果联想电脑无线鼠标 黑色",
+                    "taxPrice": 14.39,
+                    "skuId": 6433455,
+                    "nakedPrice": 84.61,
+                    "type": 0
+                },
+                {
+                    "category": 717,
+                    "num": 1,
+                    "price": 745.61,
+                    "tax": 17,
+                    "oid": 0,
+                    "name": "爱普生（EPSON）L310 墨仓式 彩色打印机 学生打印 作业打印",
+                    "taxPrice": 108.34,
+                    "skuId": 1498193,
+                    "nakedPrice": 637.27,
+                    "type": 0
+                },
+                {
+                    "category": 727,
+                    "num": 1,
+                    "price": 25,
+                    "tax": 17,
+                    "oid": 0,
+                    "name": "AUCS 白板伴侣组合套装（白板清洁剂×1、白板笔×2、磁性白板擦×1、清洁布×1）",
+                    "taxPrice": 3.63,
+                    "skuId": 6034416,
+                    "nakedPrice": 21.37,
+                    "type": 0
+                },
+                {
+                    "category": 736,
+                    "num": 4,
+                    "price": 150,
+                    "tax": 17,
+                    "oid": 0,
+                    "name": "齐心(Comix) 8包装A4 70克利捷复印纸 C3874-8 500张\/包",
+                    "taxPrice": 21.8,
+                    "skuId": 4933787,
+                    "nakedPrice": 128.2,
+                    "type": 0
+                },
+                {
+                    "category": 727,
+                    "num": 2,
+                    "price": 336.96,
+                    "tax": 17,
+                    "oid": 0,
+                    "name": "比比牛 金刚系列白板架  90*180cm双面翻转 移动办公白板BBNO90180W",
+                    "taxPrice": 48.96,
+                    "skuId": 1801379,
+                    "nakedPrice": 288,
+                    "type": 0
+                },
+                {
+                    "category": 736,
+                    "num": 2,
+                    "price": 126,
+                    "tax": 17,
+                    "oid": 0,
+                    "name": "UPM 桃欣乐(Copykid)80克A4高白复印纸 5包\/箱",
+                    "taxPrice": 18.31,
+                    "skuId": 1171298,
+                    "nakedPrice": 107.69,
+                    "type": 0
+                },
+                {
+                    "category": 736,
+                    "num": 1,
+                    "price": 0,
+                    "tax": 17,
+                    "oid": 1498193,
+                    "name": "天威（PrintRite） 200G-A6 高光像纸\/相片纸PPS027WPRH 适用于（喷墨打印机）",
+                    "taxPrice": 0,
+                    "skuId": 1009323,
+                    "nakedPrice": 0,
+                    "type": 2
+                }
+            ],
+            "orderTaxPrice": 380.8
+        },
+        "orderState": 1,
+        "cOrder": [
+            {
+                "pOrder": 73529866606,
+                "orderState": 1,
+                "jdOrderId": 73651713326,
+                "state": 0,
+                "freight": 0,
+                "submitState": 1,
+                "orderPrice": 2296.53,
+                "orderNakedPrice": 1962.82,
+                "type": 2,
+                "sku": [
+                    {
+                        "category": 727,
+                        "num": 1,
+                        "price": 25,
+                        "tax": 17,
+                        "oid": 0,
+                        "name": "AUCS 白板伴侣组合套装（白板清洁剂×1、白板笔×2、磁性白板擦×1、清洁布×1）",
+                        "taxPrice": 3.63,
+                        "skuId": 6034416,
+                        "nakedPrice": 21.37,
+                        "type": 0
+                    },
+                    {
+                        "category": 736,
+                        "num": 4,
+                        "price": 150,
+                        "tax": 17,
+                        "oid": 0,
+                        "name": "齐心(Comix) 8包装A4 70克利捷复印纸 C3874-8 500张\/包",
+                        "taxPrice": 21.8,
+                        "skuId": 4933787,
+                        "nakedPrice": 128.2,
+                        "type": 0
+                    },
+                    {
+                        "category": 727,
+                        "num": 2,
+                        "price": 336.96,
+                        "tax": 17,
+                        "oid": 0,
+                        "name": "比比牛 金刚系列白板架  90*180cm双面翻转 移动办公白板BBNO90180W",
+                        "taxPrice": 48.96,
+                        "skuId": 1801379,
+                        "nakedPrice": 288,
+                        "type": 0
+                    },
+                    {
+                        "category": 736,
+                        "num": 2,
+                        "price": 126,
+                        "tax": 17,
+                        "oid": 0,
+                        "name": "UPM 桃欣乐(Copykid)80克A4高白复印纸 5包\/箱",
+                        "taxPrice": 18.31,
+                        "skuId": 1171298,
+                        "nakedPrice": 107.69,
+                        "type": 0
+                    },
+                    {
+                        "category": 717,
+                        "num": 1,
+                        "price": 745.61,
+                        "tax": 17,
+                        "oid": 0,
+                        "name": "爱普生（EPSON）L310 墨仓式 彩色打印机 学生打印 作业打印",
+                        "taxPrice": 108.34,
+                        "skuId": 1498193,
+                        "nakedPrice": 637.27,
+                        "type": 0
+                    },
+                    {
+                        "category": 736,
+                        "num": 1,
+                        "price": 0,
+                        "tax": 17,
+                        "oid": 1498193,
+                        "name": "天威（PrintRite） 200G-A6 高光像纸\/相片纸PPS027WPRH 适用于（喷墨打印机）",
+                        "taxPrice": 0,
+                        "skuId": 1009323,
+                        "nakedPrice": 0,
+                        "type": 2
+                    }
+                ],
+                "orderTaxPrice": 333.71
+            },
+            {
+                "pOrder": 73529866606,
+                "orderState": 1,
+                "jdOrderId": 73651919682,
+                "state": 0,
+                "freight": 0,
+                "submitState": 1,
+                "orderPrice": 324,
+                "orderNakedPrice": 276.91,
+                "type": 2,
+                "sku": [
+                    {
+                        "category": 1049,
+                        "num": 5,
+                        "price": 45,
+                        "tax": 17,
+                        "oid": 0,
+                        "name": "博扬（BOYANG）BY-05Z01 DP转VGA母转换器显卡Displayport转VGA接口显示器转换接头 黑色",
+                        "taxPrice": 6.54,
+                        "skuId": 4296630,
+                        "nakedPrice": 38.46,
+                        "type": 0
+                    },
+                    {
+                        "category": 690,
+                        "num": 1,
+                        "price": 99,
+                        "tax": 17,
+                        "oid": 0,
+                        "name": "富德 i368d无线蓝牙\/2.4G双模鼠标 办公家用游戏笔记本台式机苹果联想电脑无线鼠标 黑色",
+                        "taxPrice": 14.39,
+                        "skuId": 6433455,
+                        "nakedPrice": 84.61,
+                        "type": 0
+                    }
+                ],
+                "orderTaxPrice": 47.09
+            }
+        ],
+        "submitState": 1,
+        "type": 1
+    },
+    "code": 200
+}
+
+[
+    {
+        "category": 727,
+        "num": 1,
+        "price": 25,
+        "tax": 17,
+        "oid": 0,
+        "name": "AUCS 白板伴侣组合套装（白板清洁剂×1、白板笔×2、磁性白板擦×1、清洁布×1）",
+        "taxPrice": 3.63,
+        "skuId": 6034416,
+        "nakedPrice": 21.37,
+        "type": 0,
+        "shop_goods_id": "219199",
+        "shop_goods_price": "26.25",
+        "shop_goods_total": "1",
+        "shop_goods_realprice": "26.25",
+        "shop_goods_changeprice": "0.00",
+        "shop_goods_oldprice": "26.25",
+        "shop_goods_isdiscountprice": "0.00"
+    },
+    {
+        "category": 736,
+        "num": 4,
+        "price": 150,
+        "tax": 17,
+        "oid": 0,
+        "name": "齐心(Comix) 8包装A4 70克利捷复印纸 C3874-8 500张\/包",
+        "taxPrice": 21.8,
+        "skuId": 4933787,
+        "nakedPrice": 128.2,
+        "type": 0,
+        "shop_goods_id": "39383",
+        "shop_goods_price": "670.00",
+        "shop_goods_total": "4",
+        "shop_goods_realprice": "670.00",
+        "shop_goods_changeprice": "0.00",
+        "shop_goods_oldprice": "670.00",
+        "shop_goods_isdiscountprice": "0.00"
+    },
+    {
+        "category": 727,
+        "num": 2,
+        "price": 336.96,
+        "tax": 17,
+        "oid": 0,
+        "name": "比比牛 金刚系列白板架  90*180cm双面翻转 移动办公白板BBNO90180W",
+        "taxPrice": 48.96,
+        "skuId": 1801379,
+        "nakedPrice": 288,
+        "type": 0,
+        "shop_goods_id": "17093",
+        "shop_goods_price": "900.78",
+        "shop_goods_total": "2",
+        "shop_goods_realprice": "900.78",
+        "shop_goods_changeprice": "0.00",
+        "shop_goods_oldprice": "900.78",
+        "shop_goods_isdiscountprice": "0.00"
+    },
+    {
+        "category": 736,
+        "num": 2,
+        "price": 126,
+        "tax": 17,
+        "oid": 0,
+        "name": "UPM 桃欣乐(Copykid)80克A4高白复印纸 5包\/箱",
+        "taxPrice": 18.31,
+        "skuId": 1171298,
+        "nakedPrice": 107.69,
+        "type": 0,
+        "shop_goods_id": "38899",
+        "shop_goods_price": "256.20",
+        "shop_goods_total": "2",
+        "shop_goods_realprice": "256.20",
+        "shop_goods_changeprice": "0.00",
+        "shop_goods_oldprice": "256.20",
+        "shop_goods_isdiscountprice": "0.00"
+    },
+    {
+        "category": 717,
+        "num": 1,
+        "price": 745.61,
+        "tax": 17,
+        "oid": 0,
+        "name": "爱普生（EPSON）L310 墨仓式 彩色打印机 学生打印 作业打印",
+        "taxPrice": 108.34,
+        "skuId": 1498193,
+        "nakedPrice": 637.27,
+        "type": 0,
+        "shop_goods_id": "13759",
+        "shop_goods_price": "754.98",
+        "shop_goods_total": "1",
+        "shop_goods_realprice": "754.98",
+        "shop_goods_changeprice": "0.00",
+        "shop_goods_oldprice": "754.98",
+        "shop_goods_isdiscountprice": "0.00"
+    },
+    {
+        "category": 736,
+        "num": 1,
+        "price": 0,
+        "tax": 17,
+        "oid": 1498193,
+        "name": "天威（PrintRite） 200G-A6 高光像纸\/相片纸PPS027WPRH 适用于（喷墨打印机）",
+        "taxPrice": 0,
+        "skuId": 1009323,
+        "nakedPrice": 0,
+        "type": 2,
+        "shop_goods_id": "38822",
+        "shop_goods_price": null,
+        "shop_goods_total": null,
+        "shop_goods_realprice": null,
+        "shop_goods_changeprice": null,
+        "shop_goods_oldprice": null,
+        "shop_goods_isdiscountprice": null
+    }
+]
+
+
+[
+    {
+        "category": 1049,
+        "num": 5,
+        "price": 45,
+        "tax": 17,
+        "oid": 0,
+        "name": "博扬（BOYANG）BY-05Z01 DP转VGA母转换器显卡Displayport转VGA接口显示器转换接头 黑色",
+        "taxPrice": 6.54,
+        "skuId": 4296630,
+        "nakedPrice": 38.46,
+        "type": 0,
+        "shop_goods_id": "269038",
+        "shop_goods_price": "236.25",
+        "shop_goods_total": "5",
+        "shop_goods_realprice": "236.25",
+        "shop_goods_changeprice": "0.00",
+        "shop_goods_oldprice": "236.25",
+        "shop_goods_isdiscountprice": "0.00"
+    },
+    {
+        "category": 690,
+        "num": 1,
+        "price": 99,
+        "tax": 17,
+        "oid": 0,
+        "name": "富德 i368d无线蓝牙\/2.4G双模鼠标 办公家用游戏笔记本台式机苹果联想电脑无线鼠标 黑色",
+        "taxPrice": 14.39,
+        "skuId": 6433455,
+        "nakedPrice": 84.61,
+        "type": 0,
+        "shop_goods_id": "296958",
+        "shop_goods_price": "103.95",
+        "shop_goods_total": "1",
+        "shop_goods_realprice": "103.95",
+        "shop_goods_changeprice": "0.00",
+        "shop_goods_oldprice": "103.95",
+        "shop_goods_isdiscountprice": "0.00"
+    }
+]
+
+
+<======END

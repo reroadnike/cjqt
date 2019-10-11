@@ -1,0 +1,7 @@
+{ifp 'finance.invoice.invoice_export'}
+<div class='menu-header'>开票</div>
+<ul>
+    {ifp 'finance.invoice.invoice_export'}<li {if $_W['routes']=='finance.invoiceexport'} class="active" {/if}><a href="{php echo webUrl('finance/invoiceexport')}">开票导出</a></li>{/if}
+    {ifp 'finance.invoice.invoice_import'}<li {if $_W['routes']=='finance.invoiceimport'} class="active" {/if}><a href="{php echo webUrl('finance/invoiceimport')}">开票导入</a></li>{/if}
+</ul>
+{/if}

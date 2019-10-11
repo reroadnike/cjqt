@@ -1,0 +1,98 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('order_submit_order_sku', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('order_submit_order_sku', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">jdOrderId</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="jdOrderId" class="form-control" value="{$item['jdOrderId']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">skuId</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="skuId" class="form-control" value="{$item['skuId']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">数量</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="num" class="form-control" value="{$item['num']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">分类</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="category" class="form-control" value="{$item['category']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">售价</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="price" class="form-control" value="{$item['price']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="name" class="form-control" value="{$item['name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="tax" class="form-control" value="{$item['tax']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">税额</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="taxPrice" class="form-control" value="{$item['taxPrice']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">裸价</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="nakedPrice" class="form-control" value="{$item['nakedPrice']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">type为 0普通、1附件、2赠品</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="type" class="form-control" value="{$item['type']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">oid为主商品skuid，如果本身是主商品，则oid为0</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="oid" class="form-control" value="{$item['oid']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

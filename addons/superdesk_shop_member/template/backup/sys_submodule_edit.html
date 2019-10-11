@@ -1,0 +1,80 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('sys_submodule', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('sys_submodule', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">子模块ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="submodule_id" class="form-control" value="{$item['submodule_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">模块ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="mid" class="form-control" value="{$item['mid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">子模块名称</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="submodule_name" class="form-control" value="{$item['submodule_name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">子模块描述</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="submodule_info" class="form-control" value="{$item['submodule_info']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">子模块的连接地址</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="submodule_url" class="form-control" value="{$item['submodule_url']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">子模块创建时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="inserttime" class="form-control" value="{$item['inserttime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否显示子模块；1，显示；0，禁用子模块；</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="stat" class="form-control" value="{$item['stat']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">排序I标识</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="orderTag" class="form-control" value="{$item['orderTag']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

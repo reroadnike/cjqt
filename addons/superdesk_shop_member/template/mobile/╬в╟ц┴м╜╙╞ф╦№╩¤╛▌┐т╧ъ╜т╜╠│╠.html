@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微擎连接其它数据库详解教程</title>
+</head>
+<body>
+
+<div class="col-sm-9">
+
+    <div class="cons">
+
+
+
+        <div class="page-header">
+
+
+
+            <h1>微擎连接其它数据库详解教程</h1>
+
+
+        </div>
+
+        <p><script src="/plus/ad_js.php?aid=15" language="javascript"></script></p>
+
+        &nbsp; 通过微擎的类DB还可以连接其它数据库，当我们安装完微擎<a href="http://www.phpos.net" target="_blank"><u>微信公众号</u></a>管理系统后，不仅可以连接微擎本身的数据库，还可以连接其它数据库，例如，织梦、discuz数据库等。<br>
+        <br>
+        <hr>
+        <strong>连接数据库方法一</strong><br>
+        <br>
+        &nbsp; 只需要在/data/config.php创建一个一维数组或是直接在其它文件里面（最好是配置在config.php里面）做如下配置：<br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">$discuz_database = array(
+    'host' =&gt; '127.0.0.1', //数据库IP或是域名
+    'username' =&gt; 'root', // 数据库连接用户名
+    'password' =&gt; '123456', // 数据库连接密码
+    'database' =&gt; 'discuz', // 数据库名
+    'port' =&gt; 3306, // 数据库连接端口
+    'tablepre' =&gt; 'pre_', // 表前缀，如果没有前缀留空即可
+    'charset' =&gt; 'utf8', // 数据库默认编码
+    'pconnect' =&gt; 0, // 是否使用长连接
+);</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 实例化类DB：</strong>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+                    <pre class="brush:bash;">$discuz_db = new DB($discuz_database);</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp; 这样就实现了连接discuz数据库，连接好数据库后DB类里面的函数可以随便使用，跟微擎微信公众号管理系统连接数据库后使用DB类里面的函数并没有任何差别。<br>
+        <br>
+        <hr>
+        <strong>实现原理</strong><br>
+        <br>
+        &nbsp; 之所以可以使用DB类连接其它数据库，其原理就是在DB类里面由函数connect($name = 'master')处理的。<br>
+        <br>
+        &nbsp; 在这个函数里面先判断一下$name是不是数组（这个$name就是实例化类时传递的参数），若是则直接赋给数组$cfg：$cfg = $name;<br>
+        <br>
+        &nbsp; 而我们上面传的参数$discuz_database正是好一个一维数组。<br>
+        <br>
+        <strong>&nbsp; 获取表前缀：</strong>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+                    <pre class="brush:bash;">$this-&gt;tablepre = $cfg['tablepre'];</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 获取设置pdo连接数据库时的dsn：</strong>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+                    <pre class="brush:bash;">$dsn = "mysql:dbname={$cfg['database']};host={$cfg['host']};port={$cfg['port']}";</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 然后，连接数据库：</strong>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+                    <pre class="brush:bash;">$this-&gt;pdo = new $dbclass($dsn, $cfg['username'], $cfg['password'], $options);</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp; 这就是为什么我们可以定义一个一维数组，然后，把这个数组在实例化当作参数传递给DB类的构造函数就可以连接discuz数据库的原因。<br>
+        <br>
+        <hr>
+        <strong>实例</strong><br>
+        <br>
+        &nbsp; 例如，我在本地安装一个织梦（dedecms）系统，安装在根目录里面的dedecms目录里面，我要查询织梦系统里面id小于200的文章。<br>
+        <blockquote>
+            <p>
+                &nbsp; 注：在下面的两个实例里面先引入如下三行代码，请注意路径要换上您自己的，我的微擎系统安装在weiqing目录里面，织梦系统安装在dedecms目录里面。</p>
+        </blockquote>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">header("content-type:text/html;charset=utf-8");
+require'/weiqing/framework/bootstrap.inc.php';
+require '/dedecms/include/common.inc.php';</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>连接织梦系统数据库方法如下：</strong><br>
+        <br>
+        &nbsp; 1）在文件phpos.php里面添加如下连接织梦系统的数据库信息。<br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">$dedecms['host'] = '127.0.0.1';
+$dedecms['username'] = 'root';
+$dedecms['password'] = '123456';
+$dedecms['port'] = '3306';
+$dedecms['database'] = 'dedecmsv57utf8sp1';
+$dedecms['charset'] = 'utf8';
+$dedecms['pconnect'] = 0;
+$dedecms['tablepre'] = 'dede_';</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp; 也就是创建一个数组$dedecms，在这个数组里面保存了连接织梦系统的数据库信息。<br>
+        <br>
+        <strong>&nbsp; 2）实例化DB类：</strong>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+                    <pre class="brush:bash;">$db = new DB($dedecms);</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp;&nbsp; 这里把数组$dedecms直接当参数传递给DB类。<br>
+        <br>
+        <strong>&nbsp; 3）调取$db对象里面的方法查询id&lt;200的文章：</strong><br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">$sql = "SELECT title FROM `dede_archives` where id &lt; :id";
+$arr = array(':id'=&gt;200);
+$res = $db-&gt;fetchall($sql,$arr);
+
+var_dump($res);</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 4）结果：</strong><br>
+        <br>
+        <img alt="微擎连接织梦数据库查询表" src="/uploads/allimg/161225/1-161225105314607.png" style="width: 471px; height: 292px;"><br>
+        &nbsp; 成功连接数据库并且调出织梦网站中的文章了（因为，以前我把网站中的文章都删除了，所以，才看到四篇文章，但是，这已经证明连接数据库成功了）。<br>
+        <br>
+        <br>
+        <hr>
+        <strong>连接数据库方法二</strong><br>
+        <br>
+        &nbsp; 在data/config.php数据库配置文件里面配置如下数据库连接信息：<br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">$config['db']['dz']['host'] = '127.0.0.1';
+$config['db']['dz']['username'] = 'root';
+$config['db']['dz']['password'] = '123456';
+$config['db']['dz']['port'] = '3306';
+$config['db']['dz']['database'] = 'weiqing';
+$config['db']['dz']['charset'] = 'utf8';
+$config['db']['dz']['pconnect'] = 0;
+$config['db']['dz']['tablepre'] = 'ims_';</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 然后，实例化DB类：</strong>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">$discuz_db = new DB('dz');
+</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        &nbsp; 此时，我们传递的参数是一个字符串'dz'，是上面数组里同的一个键，使用这种方法也可以连接discuz数据库。<br>
+        <br>
+        <hr>
+        <strong>实例原理</strong><br>
+        <br>
+        &nbsp; 这是由于微擎微信公众号管理系统里面<a href="http://www.phpos.net/weiqing/wqhs/DB_class__construct.html">DB类的构造函数</a>__construct($name = 'master')决定的。<br>
+        <br>
+        &nbsp; 在构造函数里面通过$this-&gt;cfg = $_W['config']['db']获取到了一个二维数组。<br>
+        <br>
+        &nbsp; 然后，通过函数connect($name = 'master')里面的下面这段代码处理：<br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">        if(is_array($name)) {
+            $cfg = $name;
+        } else {
+            $cfg = $this-&gt;cfg[$name];
+        }</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp; 本来$this-&gt;cfg是一个二组数据，通过上面处理后得到的$cfg就是一个一维数组，在这个数组里面保存的就是discuz数据库连接信息。<br>
+        <br>
+        &nbsp; 有了数据库信息就可以使用pdo连接数据库：$this-&gt;pdo = new $dbclass($dsn, $cfg['username'], $cfg['password'], $options);<br>
+        <br>
+        &nbsp; 这样就实现了对其它数据库的连接，这里只是举了一个连接discuz数据库的两种方法，如果您修改类的话还可以有很多其它种方法，但是，这种修改微擎底层代码的方法不建议使用。<br>
+        <br>
+        <hr>
+        <strong>实例</strong><br>
+        <br>
+        <strong>&nbsp; 要求：</strong>还是调取织梦系统前200篇文章。<br>
+        <br>
+        <strong>连接织梦系统数据库方法如下：</strong><br>
+        <br>
+        &nbsp; 1）在data/config.php数据库配置文件里面添加如下数据库连接信息。<br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">$config['db']['dede']['host'] = '127.0.0.1';
+$config['db']['dede']['username'] = 'root';
+$config['db']['dede']['password'] = '123456';
+$config['db']['dede']['port'] = '3306';
+$config['db']['dede']['database'] = 'dedecmsv57utf8sp1';
+$config['db']['dede']['charset'] = 'utf8';
+$config['db']['dede']['pconnect'] = 0;
+$config['db']['dede']['tablepre'] = 'dede_';</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 2）实例化DB类：</strong>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+                    <pre class="brush:bash;">$db = new DB('dede');</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp;&nbsp; 此时，我们在实例化时传递的一个参数是'dede'，是上面数组里面的一的键。<br>
+        <br>
+        <strong>&nbsp; 3）查询数据库表：</strong><br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">$sql = "SELECT title FROM `dede_archives` where id &lt; :id";
+$arr = array(':id'=&gt;200);
+$res = $db-&gt;fetchall($sql,$arr);
+var_dump($res);</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 4）结果：</strong><br>
+        <br>
+        <img alt="查询结果" src="/uploads/allimg/161225/1-161225105314607.png" style="width: 471px; height: 292px;"><br>
+        &nbsp; 跟上面的实例一样，同样成功的调取了织梦系统里面的文章。<br>
+        <br>
+        <hr>
+        <strong>主从配置</strong><br>
+        <br>
+        &nbsp; 您可以根据微擎官方给出的主从配置对其它数据库进行主从配置，这里只是简单的提示一下，您可以参考data/config.php里面的官方提供的默认的主从配置数据，对其它数据库连接进行主从配置，主从配置一般不使用，只了解一下即可，如果有一天您也要主从配置数据库可以参考官方的文件data/config.php。</div>
+
+
+
+
+</div>
+</body>
+</html>
+<!--
+http://www.phpos.net/weiqing/wqhs/210.html
+-->

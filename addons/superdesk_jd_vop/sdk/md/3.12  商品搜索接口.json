@@ -1,0 +1,106 @@
+
+response:
+{
+  “success”: true,
+“resultMessage”: ”操作成功”,
+“resultCode”: ”0000”,
+“result”:
+{
+“resultCount”：100，
+“pageCount “：10,
+“pageSize”: 10,
+“pageIndex”:1,
+"brandAggregate":{ 								##品牌分类汇总信息
+"brandList":[								##品牌列表
+{
+"id":"1001",						##品牌id
+"name":"Apple",					##品牌名称
+"pinyin":"A"						##品牌首字母拼音
+},
+{
+"id":"10003",
+"name":"华为",
+"pinyin":"H"
+}
+],
+"pinyinAggr":[
+"A",
+"B",
+"C"
+]
+},
+"priceIntervalAggregate":[							##价格汇总
+{
+"max":1000000,					##高价
+"min":0							##低价
+},
+{
+"max":0,
+"min":10000
+}
+],
+"categoryAggregate":{								##分类汇总
+"firstCategory":[							##一级类目分类
+{
+"catId":1002,						##分类Id
+"count":2000,						##分类下商品数量
+"name":"Cloth",					##分类名称
+"weight":3						##分类权重
+}
+],
+"secondCategory":[							##二级类目分类
+{
+"catId":1002,
+"count":2,
+"name":"Cloth",
+"weight":3
+},
+{
+"catId":1002,
+"count":2,
+"name":"Cloth",
+"weight":3
+}
+],
+"thridCategory":[							##三级类目分类
+{
+"catId":1002,
+"count":2,
+"name":"Cloth",
+"weight":3
+},
+{
+"catId":1002,
+"count":2,
+"name":"Cloth",
+"weight":3
+},
+{
+"catId":1002,
+"count":2,
+"name":"Cloth",
+"weight":3
+}
+]
+},
+“hitResult”:[
+{
+"brand": "惠普（HP）",    							##品牌名称
+"imageUrl": “6468/e7839f86b26.jpg”, 					##商品图片url
+“wareName”：“惠普（HP）C8766ZZ 855号彩色墨盒”,	##商品名称
+“wareId“: "103890",								##商品id
+"warePId": "196805",    							##商品spuid
+"brandId":"14026",									##品牌id
+"catId":"655",										##三级类目id
+"cid1":"9987",										##一级类目id
+"cid2":"653",										##二级类目id
+"wstate" : "1",    									##上柜状态，1.有效
+"wyn" : "1",        								##商品状态，1.有效
+"catName" : "儿童家具 ",         					##三级分类名
+"cid1Name" : "家居、厨具、家装",    				##一级分类名
+"cid2Name" : "家具",                               ##二级分类名
+"synonyms" : "迪斯尼正版迪士尼",             		##商品同义词
+}
+]
+}
+}

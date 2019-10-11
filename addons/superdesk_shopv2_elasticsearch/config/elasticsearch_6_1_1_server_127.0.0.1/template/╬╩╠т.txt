@@ -1,0 +1,73 @@
+
+/run/media/linjinyu/25f7980e-9a12-41e0-a299-d7fb5d1bf7e2/__elasticsearch__/elasticsearch-6.1.1/config/analysis-ik/IKAnalyzer.cfg.xml
+
+
+ims_superdesk_shop_goods_v20180408
+
+"title": {
+  "type": "text",
+  "fields": {
+    "keyword": {
+      "type": "text",
+      "index": "true",
+      "boost": "5",
+      "analyzer": "ik_smart",
+      "search_analyzer": "ik_smart"
+    }
+  }
+},
+
+
+ims_superdesk_shop_goods_v20180409
+
+"title": {
+  "type": "text",
+  "fields": {
+    "keyword": {
+      "type": "keyword",
+      "ignore_above": 256
+    }
+  }
+},
+
+
+ims_superdesk_shop_goods_v20180410
+
+"title": {
+  "type":"keyword",
+  "index":"false"
+},
+
+
+
+ims_superdesk_shop_goods_v20180411
+
+"title": {
+  "type": "text",
+  "fields": {
+    "keyword": {
+      "type": "text",
+      "index": "true",
+      "boost": "5",
+      "analyzer": "ik_max_word",
+      "search_analyzer": "ik_max_word"
+    }
+  }
+},
+
+
+
+ims_superdesk_shop_goods_v20180413
+
+"title": {
+  "type": "text",
+  "fields": {
+    "keyword": {
+      "type": "text",
+      "index": "true",
+      "boost": "5",
+      "analyzer": "ik_smart",
+      "search_analyzer": "ik_smart"
+    }
+  }
+},

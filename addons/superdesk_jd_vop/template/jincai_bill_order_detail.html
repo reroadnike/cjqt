@@ -1,0 +1,85 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('jd_vop_jincai_get_bill_detail', array('op' => 'billList'))}">#账单列表#</a></li>
+    <li><a href="{php echo $this->createWebUrl('jd_vop_jincai_get_bill_detail', array('op' => 'billDetail','billId' => $_GPC['billId']))}">#账单明细#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('jd_vop_jincai_get_bill_detail', array('op' => 'orderDetail','billId' => $_GPC['billId'], 'orderId' => $_GPC['orderId']))}">#订单明细#</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                订单明细
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">订单号</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="orderNo" class="form-control" value="{$orderDetail['orderNo']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">账单编号</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="billNo" class="form-control" value="{$orderDetail['billNo']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">订单金额</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="orderAmount" class="form-control" value="{$orderDetail['orderAmount']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">结算时间</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="settleDate" class="form-control" value="{$orderDetail['settleDate']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">结清状态</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="settleStatus" class="form-control" value="{$orderDetail['settleStatus']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">总退款金额</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="sumRefundAmount" class="form-control" value="{$orderDetail['sumRefundAmount']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">结算单位</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="customerName" class="form-control" value="{$orderDetail['customerName']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">商城订单编号</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="ordersn" class="form-control" value="{$shopOrder['ordersn']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">商城金额</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="price" class="form-control" value="{$shopOrder['price']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">商城状态</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="status" class="form-control" value="{$shopOrder['status']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

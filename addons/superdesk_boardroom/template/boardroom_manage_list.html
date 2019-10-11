@@ -1,0 +1,137 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="{php echo $this->createWebUrl('boardroom_manage', array('op' => 'list'))}">会议室列表</a></li>
+    <li><a href="{php echo $this->createWebUrl('boardroom_manage', array('op' => 'edit'))}">新增会议室</a></li>
+</ul>
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                会议室列表
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <!--<th style="width:5rem;">显示顺序</th>-->
+                        <th style="width:4%;">ID</th>
+                        <th style="width:7%;">图片</th>
+                        <th style="width:10%;">名称</th>
+                        <th style="width:10%;">地址</th>
+                        <th style="width:5%;">楼层</th>
+                        <!--<th style="width:10%;">交通</th>-->
+                        <!--<th style="width:10%;">经度</th>-->
+                        <!--<th style="width:10%;">纬度</th>-->
+                        <!--<th style="width:10%;">basic</th>-->
+                        <!--<th style="width:10%;">轮播图</th>-->
+                        <th style="width:5%;">租金<br/>/小时</th>
+                        <th style="width:15%;">设备</th>
+                        <th style="width:5%;">容纳<br/>人数</th>
+                        <!--<th style="width:10%;">appointment_num</th>-->
+                        <!--<th style="width:10%;">注意事项</th>-->
+                        <!--<th style="width:10%;">取消预约规则</th>-->
+                        <!--<th style="width:10%;">创建时间</th>-->
+                        <th style="width:5%;">状态</th>
+                        <th style="text-align:center; width:12%;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+                        <!--<td><input type="text" class="form-control" name="displayorder[{$item['id']}]" style="width: 5rem;" value="{$item['displayorder']}"></td>-->
+                        <td>{$item['id']}</td>
+                        <td><img src="{$item['thumb']}" class="img-responsive" style="width: 8rem; height: 8rem;"/> </td>
+                        <td>{$item['name']}</td>
+                        <td>{$item['address']}</td>
+                        <td>{$item['floor']}</td>
+                        <!--<td>{$item['traffic']}</td>-->
+                        <!--<td>{$item['lat']}</td>-->
+                        <!--<td>{$item['lng']}</td>-->
+                        <!--<td>{$item['basic']}</td>-->
+                        <!--<td>{$item['carousel']}</td>-->
+                        <td>{$item['price']}</td>
+                        <td>
+
+                            {loop $item['equipment'] $_equipment}
+                            <span class="btn btn-default btn-sm btn-tags">{$_equipment['text']}</span>
+                            {/loop}
+                        </td>
+                        <td>{$item['max_num']}</td>
+                        <!--<td>{$item['appointment_num']}</td>-->
+                        <!--<td>{$item['remark']}</td>-->
+                        <!--<td>{$item['cancle_rule']}</td>-->
+                        <!--<td>{if isset($item['createtime'])}{php echo date('Y-m-d H:i:s',$item['createtime'])}{/if}</td>-->
+                        <td><label data='{$item['enabled']}' class='label label-default {if $item['enabled']==1}label-info{/if}' onclick="setProperty(this,{$item['id']},'enabled')">{if $item['enabled']==1}显示{else}屏蔽{/if}</label></td>
+                        <td style="text-align:center;">
+                            <a href="{php echo $this->createWebUrl('boardroom_set_equipment', array('id' => $item['id'], 'op' => 'edit'));}"
+                               class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="设备"><i
+                                    class="fa fa-pencil">&nbsp;设备</i></a>&nbsp;&nbsp;
+                            <a href="{php echo $this->createWebUrl('boardroom_set_carousel', array('id' => $item['id'], 'op' => 'list'));}"
+                               class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="轮播"><i
+                                    class="fa fa-pencil">&nbsp;轮播</i></a>
+                            <a href="{php echo $this->createWebUrl('boardroom_manage', array('id' => $item['id'], 'op' => 'edit'));}"
+                               class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="编辑"><i
+                                    class="fa fa-pencil">&nbsp;编辑</i></a>&nbsp;&nbsp;
+                            <a href="{php echo $this->createWebUrl('boardroom_manage', array('id' => $item['id'], 'op' => 'delete'));}"
+                               class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title=""
+                               onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" data-original-title="删除"><i
+                                    class="fa fa-times">&nbsp;删除</i> </a>
+                        </td>
+                    </tr>
+                    {/loop}
+
+                    {if empty($list)}
+                    <tr>
+                        <td colspan="7">
+                            NO DATA
+                        </td>
+                    </tr>
+                    {/if}
+
+                    <tr>
+                        <td>
+                            <!--<input name="submit" type="submit" class="btn btn-primary" value="提交">-->
+                            <input type="hidden" name="token" value="{$_W['token']}" />
+                        </td>
+                        <td colspan="8">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    function setProperty(obj, id, type) {
+        $(obj).html($(obj).html() + "...");
+
+        console.log({id: id, type: type, data: obj.getAttribute("data")});
+        $.post(
+                "{php echo $this->createWebUrl('boardroom_manage',array('op' => 'set_property'))}"
+                , {id: id, type: type, data: obj.getAttribute("data")}
+                , function (d) {
+                    $(obj).html($(obj).html().replace("...", ""));
+                    if (type == 'type') {
+                        $(obj).html(d.data == '1' ? '实体' : '虚拟');
+                    }
+                    if (type == 'status') {
+                        $(obj).html(d.data == '1' ? '上架' : '下架');
+                    }
+                    if (type == 'enabled') {
+                        $(obj).html(d.data == '1' ? '显示' : '屏蔽');
+                    }
+                    $(obj).attr("data", d.data);
+                    if (d.result == 1) {
+                        $(obj).toggleClass("label-info");
+                    }
+                }
+                , "json"
+        );
+    }
+
+</script>
+{template 'common/footer'}

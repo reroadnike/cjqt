@@ -1,0 +1,16 @@
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/nav.css" />
+<div class="myfootertext">
+    <div class="mytwoText clearfix">
+        <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom_4school' , 'do'=>'boardroom'))}" id="goto_index" class="mytext" {if $_GPC['do']=='boardroom'}style="color:#1b37a8"{/if}>会议室预定</a>
+        <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom_4school' , 'do'=>'profile'))}" class="mytext" {if $_GPC['do']=='profile'}style="color:#1b37a8"{/if}>个人中心</a>
+    </div>
+</div>
+
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery.storageapi.min.js"></script>
+<script type="text/javascript">
+    var initPage = function () {
+        var userMobile = $.localStorage.get('userMobile');
+        $("#goto_index").attr("href",$("#goto_index").attr("href")+"&userMobile="+userMobile);
+    };
+    initPage();
+</script>

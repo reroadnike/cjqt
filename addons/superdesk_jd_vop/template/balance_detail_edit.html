@@ -1,0 +1,87 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('balance_detail', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('balance_detail', array('op' => 'edit'))}">{if
+        isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">accountType</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="accountType" class="form-control" value="{$item['accountType']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">amount</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="amount" class="form-control" value="{$item['amount']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">pin</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="pin" class="form-control" value="{$item['pin']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">orderId</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="orderId" class="form-control" value="{$item['orderId']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">tradeType</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="tradeType" class="form-control" value="{$item['tradeType']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">tradeTypeName</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="tradeTypeName" class="form-control" value="{$item['tradeTypeName']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">createdDate</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="createdDate" class="form-control" value="{$item['createdDate']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">notePub</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="notePub" class="form-control" value="{$item['notePub']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">tradeNo</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="tradeNo" class="form-control" value="{$item['tradeNo']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

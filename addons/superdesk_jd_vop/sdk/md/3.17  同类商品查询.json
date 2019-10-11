@@ -1,0 +1,190 @@
+返回结果
+{
+  "success": true,
+  "resultMessage": "",
+  "resultCode": null,
+  "result": [{
+    "dim": 1,
+    "saleName": "颜色",
+    "saleAttrList": [{
+      "imagePath": "jfs/t3067/127/4505701936/243148/e970fccb/5844f4b3N579a256b.jpg",
+      "saleValue": "太空银",
+      "skuIds": [3158046,
+        2878273,
+        2878295]
+    },
+      {
+        "imagePath": "jfs/t2800/224/1832156981/228483/209561dd/574bf11eN8526cef6.jpg",
+        "saleValue": "暗夜灰",
+        "skuIds": [3072248]
+      },
+      {
+        "imagePath": "jfs/t3175/98/4506474928/251187/914831b7/5844f3a1N233450bb.jpg",
+        "saleValue": "落日金",
+        "skuIds": [3158054]
+      }]
+  },
+    {
+      "dim": 2,
+      "saleName": "版本",
+      "saleAttrList": [{
+        "imagePath": null,
+        "saleValue": "全网通(32GB ROM)",
+        "skuIds": [3158046,
+          3158054]
+      },
+        {
+          "imagePath": null,
+          "saleValue": "移动4G",
+          "skuIds": [3072248,
+            2878295]
+        },
+        {
+          "imagePath": null,
+          "saleValue": "联通移动",
+          "skuIds": [2878273]
+        }]
+    },
+    {
+      "dim": 3,
+      "saleName": "选择套装",
+      "saleAttrList": [{
+        "imagePath": null,
+        "saleValue": "官方标配",
+        "skuIds": [3158046,
+          3072248,
+          2878273,
+          3158054,
+          2878295]
+      }]
+    }]
+}
+
+参数名称 | 参数类型  | 意义 
+success | boolean | 结果
+resultCode | String | 错误码
+resultMessage | String | 错误表述
+result | List<SimilarProduct> | 结果
+
+
+SimilarProduct
+
+参数名称 | 参数类型  | 意义 
+dim | integer | 维度
+saleName | String | 销售名称
+saleAttrList | List<SaleAttr> | 商品销售标签 销售属性下可能只有一个标签，此种场景可以选择显示销售名称和标签，也可以不显示
+
+
+SaleAttr
+
+参数名称 | 参数类型  | 意义 
+imagePath | String | 标签图片地址
+saleValue | String | 标签名称
+skuIds | Set<Long> | 当前标签下的同类商品skuId
+
+
+附注：
+imagePath：当前只有第一维度别名【颜色】提供，只是相对路径，需要加上京东图片服务器url
+skuIds:会返回当前标签下所有的商品，根据不同维度销售名称下标签含有的skuIds的交集，自主判定需要重新定向的skuId,并且可以用于多级维度销售别称联动的控制。
+
+
+
+{
+"success": true,
+"resultMessage": "操作成功",
+"resultCode": "0000",
+"result": [
+{
+"dim": 1,
+"saleName": "颜色",
+"saleAttrList": [
+{
+"imagePath": "jfs\/t22045\/293\/826201391\/107903\/cc92b91e\/5b1a2106Nbe57b2e6.jpg",
+"saleValue": "橘红",
+"skuIds": [
+7897145,
+7684322,
+7684320,
+7897105,
+7684308,
+7897103,
+7684312,
+7897127,
+7684314
+]
+}
+]
+},
+{
+"dim": 2,
+"saleName": "尺码",
+"saleAttrList": [
+{
+"imagePath": null,
+"saleValue": "37",
+"skuIds": [
+7684322
+]
+},
+{
+"imagePath": null,
+"saleValue": "38",
+"skuIds": [
+7684314
+]
+},
+{
+"imagePath": null,
+"saleValue": "39",
+"skuIds": [
+7684312
+]
+},
+{
+"imagePath": null,
+"saleValue": "40",
+"skuIds": [
+7897127
+]
+},
+{
+"imagePath": null,
+"saleValue": "41",
+"skuIds": [
+7897145
+]
+},
+{
+"imagePath": null,
+"saleValue": "42",
+"skuIds": [
+7897105
+]
+},
+{
+"imagePath": null,
+"saleValue": "43",
+"skuIds": [
+7897103
+]
+},
+{
+"imagePath": null,
+"saleValue": "44",
+"skuIds": [
+7684320
+]
+},
+{
+"imagePath": null,
+"saleValue": "45",
+"skuIds": [
+7684308
+]
+}
+]
+}
+],
+"reqId": null,
+"code": 200
+}

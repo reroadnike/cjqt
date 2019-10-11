@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="0.6,0.7,0.8">
+	<application setting="true">
+		<name><![CDATA[超级前台-核心]]></name>
+		<identifie><![CDATA[superdesk_core]]></identifie>
+		<version><![CDATA[1.0]]></version>
+		<type><![CDATA[business]]></type>
+		<ability><![CDATA[超级前台-核心]]></ability>
+		<description><![CDATA[超级前台-核心]]></description>
+		<author><![CDATA[前海超级前台（深圳）信息技术有限公司]]></author>
+		<url><![CDATA[http://www.avic-s.com]]></url>
+	</application>
+	<platform>
+		<subscribes>
+			<message type="text" />
+			<message type="image" />
+			<message type="voice" />
+			<message type="video" />
+			<message type="shortvideo" />
+			<message type="location" />
+			<message type="link" />
+			<message type="subscribe" />
+			<message type="unsubscribe" />
+			<message type="qr" />
+			<message type="trace" />
+			<message type="click" />
+			<message type="view" />
+			<message type="merchant_order" />
+		</subscribes>
+		<handles>
+			<message type="image" />
+			<message type="voice" />
+			<message type="video" />
+			<message type="shortvideo" />
+			<message type="location" />
+			<message type="link" />
+			<message type="subscribe" />
+			<message type="qr" />
+			<message type="trace" />
+			<message type="click" />
+			<message type="merchant_order" />
+			<message type="text" />
+		</handles>
+		<rule embed="true" />
+		<card embed="false" />
+	</platform>
+	<bindings>
+		<cover>
+		</cover>
+		<rule>
+		</rule>
+		<menu><!--call="getMenus"-->
+			<entry title="省市信息管理" do="provincecity" state="" direct="false"/>
+			<entry title="项目信息管理" do="organization" state="" direct="false"/>
+			<entry title="楼宇信息管理" do="build" state="" direct="false"/>
+			<entry title="企业资料管理" do="virtualarchitecture" state="" direct="false"/>
+			<entry title="企业人员管理" do="tb_user" state="" direct="false"/>
+			<entry title="数据字典配置" do="dictionary_group" state="" direct="false"/>
+			<entry title="项目管理员" do="users" state="" direct="false"/>
+		</menu>
+		<home>
+		</home>
+		<profile>
+		</profile>
+		<shortcut>
+		</shortcut>
+		<function>
+		</function>
+	</bindings>
+	<permissions>
+	</permissions>
+	<install><![CDATA[]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

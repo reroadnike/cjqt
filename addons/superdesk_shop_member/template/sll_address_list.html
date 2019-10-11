@@ -1,0 +1,128 @@
+{template 'common/header'}
+
+{template '__nav-tabs_user__'}
+
+<div class="alert alert-info" >
+    以下为正式数据库数据，可以看出，<br/>
+    <ol>
+        <li>数据是正常的，符合导入，因为都是京东能用的</li>
+        <li>加入用户手机号来比对li>
+        <li>触发条件:在用户绑定手机时执行绑定</li>
+    </ol>
+</div>
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Table::sll_address
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:8%;">wx_fans_id</th>
+                        <!--<th style="width:4%;">地址<br/>ID</th>-->
+                        <th style="width:20%;">收货人<br/>电话<br/>地址详细</th>
+
+                        <!--合并-->
+                        <!--<th style="width:10%;">联系电话</th>-->
+                        <!--<th style="width:10%;">收件人</th>-->
+
+                        <!--<th style="width:10%;">创建时间</th>-->
+
+                        <!--这个是用来区分公众号的吧-->
+                        <!--<th style="width:10%;">token</th>-->
+
+                        <th style="width:4%;">address<br/>state<br/>0:使用<br/>1:停止</th>
+                        <th style="width:4%;">address<br/>default<br/>1:默认<br/>0:非默认</th>
+
+                        <th style="width:5%;">JD省<br/>JD_CODE</th>
+                        <th style="width:5%;">JD市<br/>JD_CODE</th>
+                        <th style="width:5%;">JD区/县<br/>JD_CODE</th>
+                        <th style="width:5%;">JD街道<br/>JD_CODE</th>
+
+                        <!--不用了-->
+                        <!--<th style="width:10%;">pkCode<br/>主键编码</th>-->
+
+
+                        <!--不要了，都是空的-->
+                        <!--<th style="width:10%;">community<br/>id</th>-->
+                        <!--<th style="width:10%;">community<br/>name</th>-->
+                        <!--<th style="width:10%;">community<br/>code</th>-->
+
+                        <!--合并-->
+                        <!--<th style="width:10%;">provinceCode</th>-->
+                        <!--<th style="width:10%;">citycode</th>-->
+                        <!--<th style="width:10%;">countryCode</th>-->
+                        <!--<th style="width:10%;">streetCode</th>-->
+
+                        <!--<th style="text-align:right; width:10%;">操作</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+                        <td>{$item['fansid']}</td>
+
+                        <!--<td>{$item['address_id']}</td>-->
+                        <td>
+                            {$item['user_name']}<br/>
+                            {$item['phone']}<br/>
+                            {$item['address_name']}
+                        </td>
+
+                        <!--<td></td>-->
+                        <!--<td></td>-->
+
+                        <!--<td>{$item['create_time']}</td>-->
+                        <!--<td>{$item['token']}</td>-->
+                        <td>{$item['address_state']}</td>
+                        <td>{$item['address_default']}</td>
+
+                        <td>{$item['province']}<br/>{$item['provinceCode']}</td>
+                        <td>{$item['city']}<br/>{$item['citycode']}</td>
+                        <td>{$item['country']}<br/>{$item['countryCode']}</td>
+                        <td>{$item['street']}<br/>{$item['streetCode']}</td>
+
+                        <!--<td>{$item['pkCode']}</td>-->
+
+
+                        <!--<td>{$item['community_id']}</td>-->
+                        <!--<td>{$item['community_name']}</td>-->
+                        <!--<td>{$item['community_code']}</td>-->
+
+                        <!--<td></td>-->
+                        <!--<td></td>-->
+                        <!--<td></td>-->
+                        <!--<td></td>-->
+                        <!--
+                        <td style="text-align:right;">
+                            <a href="{php echo $this->createWebUrl('sll_address', array('id' => $item['id'], 'op' => 'edit'));}"
+                               class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="编辑"><i
+                                    class="fa fa-pencil">&nbsp;编辑</i></a>&nbsp;&nbsp;
+                            <a href="{php echo $this->createWebUrl('sll_address', array('id' => $item['id'], 'op' => 'delete'));}"
+                               class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title=""
+                               onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" data-original-title="删除"><i
+                                    class="fa fa-times">&nbsp;删除</i> </a>
+                        </td>
+                        -->
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                            {$total}
+                        </td>
+                        <td colspan="5">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

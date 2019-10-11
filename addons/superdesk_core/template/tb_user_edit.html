@@ -1,0 +1,214 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('tb_user', array('op' => 'list'))}">企业人员管理</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('tb_user', array('op' => 'edit'))}">{if isset($item[id])}编辑{else}添加{/if}企业人员</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}编辑{else}添加{/if}企业人员
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">姓名</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="userName" class="form-control" value="{$item['userName']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">昵称</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="nickName" class="form-control" value="{$item['nickName']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">手机号码</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="userMobile" class="form-control" value="{$item['userMobile']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">用户类型</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="userType" class="form-control" value="{$item['userType']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">性别</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="userSex" class="form-control" value="{$item['userSex']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">学生号/身份证</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="userCardNo" class="form-control" value="{$item['userCardNo']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">生日</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="birthday" class="form-control" value="{$item['birthday']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">头像</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="userPhotoUrl" class="form-control" value="{$item['userPhotoUrl']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">密码</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="password" class="form-control" value="{$item['password']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">认证状态</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="status" class="form-control" value="{$item['status']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">审核建议</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="suggestion" class="form-control" value="{$item['suggestion']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">详细地址</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="address" class="form-control" value="{$item['address']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">证件照片1</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="imageUrl01" class="form-control" value="{$item['imageUrl01']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">证件照片2</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="imageUrl02" class="form-control" value="{$item['imageUrl02']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="imageUrl03" class="form-control" value="{$item['imageUrl03']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">用户所属组织</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="organizationId" class="form-control"
+                               value="{$item['organizationId']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">学院/系部ID</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="virtualArchId" class="form-control" value="{$item['virtualArchId']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">员工编号</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="userNumber" class="form-control" value="{$item['userNumber']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">入司时间</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="enteringTime" class="form-control" value="{$item['enteringTime']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">职位名称</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="positionName" class="form-control" value="{$item['positionName']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">部门ID</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="departmentId" class="form-control" value="{$item['departmentId']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">face++用户唯一标识</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="facePlusUserId" class="form-control"
+                               value="{$item['facePlusUserId']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">企业用户角色（1-管理员，2-普通用户）</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="roleType" class="form-control" value="{$item['roleType']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">接受审核通知（0-不接收用户申请通知，关，1-接收用户申请通知，开）</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="noticePower" class="form-control" value="{$item['noticePower']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建者</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="creator" class="form-control" value="{$item['creator']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建时间</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="createTime" class="form-control" value="{$item['createTime']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">修改人</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="modifier" class="form-control" value="{$item['modifier']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">修改时间</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="modifyTime" class="form-control" value="{$item['modifyTime']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否可用</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="isEnabled" class="form-control" value="{$item['isEnabled']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否同步内购网</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="isSyncNeigou" class="form-control" value="{$item['isSyncNeigou']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

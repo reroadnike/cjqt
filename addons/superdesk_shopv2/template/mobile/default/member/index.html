@@ -1,0 +1,622 @@
+{template '_header'}
+
+
+<style>
+
+    .order_icon{
+
+    }
+    .fui-cell-group .fui-cell .fui-cell-icon{
+        width: 2rem;
+        transform: translateY(10%);
+    }
+
+	.fui-header:after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 1px;
+		 border-bottom: 0px solid #D9D9D9;
+		-webkit-transform-origin: 0 100%;
+		-ms-transform-origin: 0 100%;
+		transform-origin: 0 100%;
+		-webkit-transform: scaleY(0.5);
+		-ms-transform: scaleY(0.5);
+		transform: scaleY(0.5);
+	}
+
+	.fui-header a.back:before {
+		content: " ";
+		display: inline-block;
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		transform: rotate(45deg);
+		height: 0.5rem;
+		width: 0.5rem;
+		border-width: 0 0 2px 2px;
+		border-color: #999;
+		border-style: none;
+		position: relative;
+		top: 0;
+
+	}
+
+	.fui-header a.back {
+		/* content: " "; */
+		/* display: inline-block; */
+		height: 1rem;
+		width: 1rem;
+		/* border-width: 0 0 2px 2px; */
+		/* border-color: #999; */
+		/* border-style: none; */
+		/* position: relative; */
+		top: 50%;
+		background-size: cover;
+		background-image: url(../addons/superdesk_shopv2/template/mobile/seven/static/images/back.png);
+		transform: translateY(50%);
+	}
+
+    .fui-header .title-sub {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        height: 1.4rem;
+        line-height: 1.4rem;
+        color: #333;
+        text-align: center;
+        position: absolute;
+        display: block;
+        width: 100%;
+        padding: 0;
+        top: 1.3rem;
+        left: 0;
+        z-index: 1;
+        font-size: .6rem;
+    }
+
+    .container-userinfo-card {
+        width: 90%;
+        background: white;
+        border-radius: .25rem;
+        position: absolute;
+        top: 1.9rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 99;
+        padding: .5rem;
+        /*-moz-box-shadow: 2px 2px 5px #bababa;*/
+        /*-webkit-box-shadow: 2px 2px 5px #bababa;*/
+        /*box-shadow: 2px 2px 5px #bababa;*/
+        -moz-box-shadow: 0rem 0.15rem 0.2rem #bababa;
+        -webkit-box-shadow: 0rem 0.15rem 0.2rem #bababa;
+        box-shadow: 0rem 0.15rem 0.2rem #bababa;
+    }
+    .row{
+        width: 100%;
+    }
+    .col-sm-12 {
+        width: 100%
+    }
+
+    .col-sm-11 {
+        width: 91.66666667%
+    }
+
+    .col-sm-10 {
+        width: 83.33333333%
+    }
+
+    .col-sm-9 {
+        width: 75%
+    }
+
+    .col-sm-8 {
+        width: 66.66666667%
+    }
+
+    .col-sm-7 {
+        width: 58.33333333%
+    }
+
+    .col-sm-6 {
+        width: 50%
+    }
+
+    .col-sm-5 {
+        width: 41.66666667%
+    }
+
+    .col-sm-4 {
+        width: 33.33333333%
+    }
+
+    .col-sm-3 {
+        width: 25%
+    }
+
+    .col-sm-2 {
+        width: 16.66666667%
+    }
+
+    .col-sm-1 {
+        width: 8.33333333%
+    }
+    .text-align-center{
+        text-align: center;
+    }
+    .text-color-555555{
+        color: #555555;
+    }
+    .text-color-999999{
+        color: #999999;
+    }
+    .text-color-E21F1F{
+        color: #E21F1F;
+    }
+
+
+    .font-size-dot8rem{
+        font-size: .8rem;
+    }
+    .font-size-dot7rem{
+        font-size: .7rem;
+    }
+    .font-size-dot6rem{
+        font-size: .6rem;
+    }
+    .font-size-1rem{
+        font-size: 1rem;
+    }
+
+    .img-circle {
+        border-radius: 50%;
+        border: .2rem solid #E21F1F20;
+    }
+
+    .img-avatar {
+        height: 3.5rem;
+        width: 3.5rem;
+    }
+
+    .line-xx {
+        border-left: 1px solid #d9d9d9;
+        /*height: 2.14rem;*/
+    }
+
+    .panel-enterprise {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        font-size: .66rem;
+        line-height: .9rem;
+        padding: 0 0 0 .8rem;
+        min-height: 1.86rem;
+    }
+
+    /*img {*/
+        /*vertical-align: middle;*/
+    /*}*/
+
+    img {
+        border: 0;
+    }
+
+	.fui-icon-col.external{
+		width:20%;
+	}
+
+</style>
+<div class='fui-page fui-page-current'>
+	<div class='fui-content member-page navbar'>
+		<div class="headinfo" style="min-height: 8rem;">
+
+
+			<div class="fui-header" style="background: transparent;">
+
+				<div class="fui-header-left" style="margin-left: .3rem;">
+					<a class="back" onclick='location.back()'></a>
+				</div>
+
+				<div class="fui-header-right" style="color: white; margin-right: .6rem;">
+                    <a class="setbtn" href="{php echo mobileUrl('member/info')}" data-nocache='true'>
+                        <img src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/btnsetting.svg" style="width: 1rem;">
+                    </a>
+                </div>
+			</div>
+
+
+
+
+
+            <div class="container-userinfo-card">
+
+                <!-- 用户 -->
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div style="height: 4rem;width: 4rem;border-radius: 2.8rem;border: .1erm solid #000000;">
+                            <img class="img-circle img-avatar" src="{php echo empty($member['avatar']) ? '../attachment/images/defaultAvatar.png' : $member['avatar']}" />
+                        </div>
+
+                    </div>
+                    <div class="col-sm-9" style="padding: .4rem 0 0 .5rem;">
+                        <div class="text-color-555555 font-size-1rem">
+                            {$member['realname']}
+                        </div>
+                        <div class="text-color-999999 font-size-dot7rem" {if !empty($_W['shopset']['shop']['levelurl'])}onclick='location.href="{$_W['shopset']['shop']['levelurl']}"'{/if}>
+                            {if empty($level['id'])}
+                            {if empty($_W['shopset']['shop']['levelname'])}普通会员{else}{$_W['shopset']['shop']['levelname']}{/if}
+                            {else}
+                            {$level['levelname']}
+                            {/if}
+                            {if !empty($_W['shopset']['shop']['levelurl'])}<i class='icon icon-question1' style='font-size:0.65rem'></i>{/if}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- 余额 -->
+                    <div class="col-sm-4 ">
+                        <div class="text-color-999999 text-align-center font-size-dot7rem">{$_W['shopset']['trade']['moneytext']}</div>
+                        <div class="text-color-E21F1F text-align-center font-size-dot8rem">{php echo number_format($member['credit2'],2)}元</div>
+                        <!--
+                        {if empty($_W['shopset']['trade']['closerecharge'])}<a href="{php echo mobileUrl('member/recharge')}"><div class="btn">充值</div></a>{/if}
+                        -->
+
+                    </div>
+
+
+
+                    <!-- 积分
+                    <div class="col-sm-6">
+                        <div class="text-color-999999">{$_W['shopset']['trade']['credittext']}</div>
+                        <div class="text-color-E21F1F">{php echo number_format($member['credit1'],0)}</div>
+                        {if $open_creditshop}<a href="{php echo mobileUrl('creditshop')}" class="external"><div class="btn">兑换</div></a>{/if}
+                    </div>
+                    -->
+
+                    <div class="col-sm-8" style="padding: .28rem;">
+                        <!--
+                        <div class="title" style="color: white;text-align: center;">{$_W['organization_name']}</div>
+                        <div class="title-sub" style="color: white;text-align: center;">{$_W['virtualarchitecture_name']}</div>
+                        -->
+                        <div style="" class="line-xx">
+                            <div class="text-color-555555 panel-enterprise">
+                                {$_W['virtualarchitecture_name']}
+                                <!--前海超级前台（深圳）信息技术有限公司前海超级前台（深圳）信息技术有限公司-->
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+		</div>
+
+		{if !$member['mobileverify'] && !empty($wapset['open'])}
+		<div class="fui-cell-group fui-cell-click external">
+			<a class="fui-cell"  href="{php echo mobileUrl('member/bind')}">
+				<div class="fui-cell-icon"><i class="icon icon-mobile"></i></div>
+				<div class="fui-cell-text"><p class="text text-danger">绑定手机号</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+			<div class="fui-cell-tip">如果您用手机号注册过会员或您想通过微信外购物请绑定您的手机号码</div>
+		</div>
+		{/if}
+
+
+		<div class="fui-cell-group fui-cell-click" style="margin-top: 0;padding-top: 2rem;">
+			<a class="fui-cell external" href="{php echo mobileUrl('order')}">
+				<div class="fui-cell-icon">
+                    <img style="height: 1rem;width: 1rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/wddd.png" />
+                </div>
+				<div class="fui-cell-text">我的订单</div>
+				<div class="fui-cell-remark font-size-dot7rem">全部订单</div>
+			</a>
+			<div class="fui-icon-group selecter">
+			    <a class="fui-icon-col external" href="{php echo mobileUrl('order',array('status'=>0))}">
+					{if $statics['order_0']>0}<div class="badge">{$statics['order_0']}</div>{/if}
+					<div class="icon icon-green radius" style="">
+                        <img style="height: 1.8rem;width: 1.8rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/order/style_order_03/daifukuan.png" />
+					</div>
+					<div class="text">待付款</div>
+				</a>
+				<a class="fui-icon-col external" href="{php echo mobileUrl('order',array('status'=>1))}">
+					{if $statics['order_1']>0}<div class="badge">{$statics['order_1']}</div>{/if}
+					<div class="icon icon-orange radius">
+                        <img style="height: 1.8rem;width: 1.8rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/order/style_order_03/daifahuo.png" />
+                    </div>
+					<div class="text">待发货</div>
+				</a>
+				<a class="fui-icon-col external" href="{php echo mobileUrl('order',array('status'=>2))}">
+					{if $statics['order_2']>0}<div class="badge">{$statics['order_2']}</div>{/if}
+					<div class="icon icon-blue radius">
+                        <img style="height: 1.8rem;width: 1.8rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/order/style_order_03/daishouhuo.png" />
+                    </div>
+					<div class="text">待收货</div>
+				</a>
+				<a class="fui-icon-col external" href="{php echo mobileUrl('order/refund_goods')}">
+					{if $statics['order_4']>0}<div class="badge">{$statics['order_4']}</div>{/if}
+					<div class="icon icon-pink radius">
+                        <img style="height: 1.8rem;width: 1.8rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/order/style_order_03/tuihuanhuo.png" />
+                    </div>
+					<div class="text">退换货</div>
+				</a>
+				<a class="fui-icon-col external" href="{php echo mobileUrl('order',array('status'=>-1))}">
+					{if $statics['order__1']>0}<div class="badge">{$statics['order__1']}</div>{/if}
+					<div class="icon icon-pink radius">
+                        <img style="height: 1.8rem;width: 1.8rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/order/style_order_03/tuihuanhuo.png" />
+                    </div>
+					<div class="text">已取消</div>
+				</a>
+			</div>
+		</div>
+
+		{if $hassign}
+		<div class="fui-cell-group fui-cell-click">
+			<a class="fui-cell" href="{php echo mobileUrl('sign')}">
+				<div class="fui-cell-icon">
+					<i class="icon icon-goods1"></i>
+				</div>
+				<div class="fui-cell-text"><p>{$hassign}</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+		</div>
+		{/if}
+
+		{if $hasglobonus}
+		<div class="fui-cell-group fui-cell-click">
+			<a class="fui-cell"  href="{php echo mobileUrl('globonus')}">
+				<div class="fui-cell-icon">
+					<img style="height: 1rem;width: 1rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/qydl.svg" />
+				</div>
+				<div class="fui-cell-text"><p>{$plugin_globonus_set['texts']['center']}</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+		</div>
+		{/if}
+
+		{if $hasabonus}
+		<div class="fui-cell-group fui-cell-click">
+			<a class="fui-cell"  href="{php echo mobileUrl('abonus')}">
+				<div class="fui-cell-icon">
+					<img style="height: 1rem;width: 1rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/qydl.svg" />
+				</div>
+				<div class="fui-cell-text"><p>{$plugin_abonus_set['texts']['center']}</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+		</div>
+		{/if}
+
+
+		{if $hasauthor}
+		<div class="fui-cell-group fui-cell-click">
+			<a class="fui-cell"  href="{php echo mobileUrl('author')}">
+				<div class="fui-cell-icon">
+					<img style="height: 1rem;width: 1rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/qydl.svg" />
+				</div>
+				<div class="fui-cell-text"><p>{$plugin_author_set['texts']['center']}</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+		</div>
+		{/if}
+
+
+		{if $hascoupon}
+		<div class="fui-cell-group fui-cell-click">
+			 {if $hascouponcenter}
+			<a class="fui-cell" href="{php echo mobileUrl('sale/coupon')}">
+				<div class="fui-cell-icon">
+					<!--<i class="icon icon-same"></i>-->
+					<img style="height: 1rem;width: 1rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/lqyhq.svg" />
+				</div>
+				<div class="fui-cell-text"><p>领取优惠券</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+			 {/if}
+			<a class="fui-cell"  href="{php echo mobileUrl('sale/coupon/my')}">
+				<div class="fui-cell-icon">
+					<img style="height: 1rem;width: 1rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/wdyhq.svg" />
+				</div>
+				<div class="fui-cell-text"><p>我的优惠券</p></div>
+				<div class="fui-cell-remark">{if $statics['coupon']>0}<span  {if $statics['newcoupon']>0}style="background: #fe5455;color:#fff"{/if} class='badge'>  {if $statics['newcoupon']>0}new{else}{$statics['coupon']}{/if}</span>{/if}</div>
+			</a>
+		</div>
+		{/if}
+
+
+		{if !empty( $_W['shopset']['rank']['status'] ) || !empty( $_W['shopset']['rank']['order_status'] ) }
+		<div class="fui-cell-group fui-cell-click">
+			{if !empty( $_W['shopset']['rank']['status'] ) }
+			<a class="fui-cell" href="{php echo mobileUrl('member/rank');}">
+				<div class="fui-cell-icon">
+					<i class="icon icon-rank"></i>
+
+				</div>
+				<div class="fui-cell-text"><p>{$_W['shopset']['trade']['credittext']}排行</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+			{/if}
+			{if !empty( $_W['shopset']['rank']['order_status'] ) }
+			<a class="fui-cell" href="{php echo mobileUrl('member/rank/order_rank');}">
+				<div class="fui-cell-icon">
+					<i class="icon icon-money"></i>
+
+				</div>
+				<div class="fui-cell-text"><p>消费排行</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+			{/if}
+		</div>
+		{/if}
+
+
+
+
+		<!-- 临时显示我的积分 -->
+		<div class="fui-cell-group fui-cell-click">
+			<a class="fui-cell" href="{if $open_creditshop}{php echo mobileUrl('creditshop')}{/if}">
+				<div class="fui-cell-icon">
+					<img style="height: 1rem;width: 1rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/wdgwc.svg" />
+				</div>
+				<div class="fui-cell-text"><p>我的{$_W['shopset']['trade']['credittext']}</p></div>
+				<div class="fui-cell-remark"><span class='badge'>{php echo number_format($member['credit1'],0)}</span></div>
+			</a>
+		</div>
+
+
+
+		<div class="fui-cell-group fui-cell-click">
+			<a class="fui-cell" href="{php echo mobileUrl('member/cart');}">
+				<div class="fui-cell-icon">
+					<img style="height: 1rem;width: 1rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/wdgwc.svg" />
+				</div>
+				<div class="fui-cell-text"><p>我的购物车</p></div>
+				<div class="fui-cell-remark">{if $statics['cart']>0}<span class='badge'>{$statics['cart']}</span>{/if}</div>
+			</a>
+			<a class="fui-cell" href="{php echo mobileUrl('member/favorite');}">
+				<div class="fui-cell-icon">
+					<img style="height: 1rem;width: 1rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/wdgz.svg" />
+				</div>
+				<div class="fui-cell-text"><p>我的关注</p></div>
+				<div class="fui-cell-remark">{if $statics['favorite']>0}<span class='badge'>{$statics['favorite']}</span>{/if}</div>
+			</a>
+			<a class="fui-cell" href="{php echo mobileUrl('member/history');}">
+				<div class="fui-cell-icon">
+					<img style="height: 1rem;width: 1rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/wdzj.svg" />
+				</div>
+				<div class="fui-cell-text"><p>我的足迹</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+
+			{if false}
+			<a class="fui-cell" href="{php echo mobileUrl('member/notice');}" data-nocache="true">
+				<div class="fui-cell-icon">
+					<img style="height: 1rem;width: 1rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/xxtx.svg" />
+				</div>
+				<div class="fui-cell-text"><p>消息提醒设置</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+			{/if}
+
+			{if $member['cash_role_id'] == $manager_cate_id}
+			<a class="fui-cell external" href="{php echo mobileUrl('examine');}">
+				<div class="fui-cell-icon">
+					<img style="height: 1rem;width: 1rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/wddd.svg" />
+				</div>
+				<div class="fui-cell-text"><p>审核订单</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+			{/if}
+		</div>
+
+		{if  $_W['shopset']['trade']['withdraw']==1}
+		<div class="fui-cell-group fui-cell-click">
+
+			<a class="fui-cell" href="{php echo mobileUrl('member/withdraw')}">
+				<div class="fui-cell-icon">
+					<i class="icon icon-money"></i>
+				</div>
+				<div class="fui-cell-text"><p>{$_W['shopset']['trade']['moneytext']}提现</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+
+			<a class="fui-cell" href="{php echo mobileUrl('member/log')}">
+				<div class="fui-cell-icon">
+					<img style="height: 1rem;width: 1rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/czjl.svg" />
+				</div>
+				<div class="fui-cell-text">
+					<p>{if $_W['shopset']['trade']['withdraw']==1}{$_W['shopset']['trade']['moneytext']}明细{else}充值记录{/if}</p>
+				</div>
+				<div class="fui-cell-remark"></div>
+			</a>
+		</div>
+		{/if}
+
+		<div class="fui-cell-group fui-cell-click">
+			<a class="fui-cell" href="{php echo mobileUrl('member/address')}">
+				<div class="fui-cell-icon">
+					<img style="height: 1rem;width: 1rem;" src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/shdz.svg" />
+				</div>
+				<div class="fui-cell-text"><p>收货地址管理</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+		</div>
+
+		{if SUPERDESK_SHOPV2_MODE_USER == 1}
+		<div class="fui-cell-group fui-cell-click">
+			<a class="fui-cell" href="{php echo mobileUrl('member/invoice')}">
+				<div class="fui-cell-icon">
+					<img src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/fapiao.svg" />
+				</div>
+				<div class="fui-cell-text"><p>发票管理</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+		</div>
+		{/if}
+
+		{if $hasqa}
+		<div class="fui-cell-group fui-cell-click">
+			<a class="fui-cell" href="{php echo mobileUrl('qa')}">
+				<div class="fui-cell-icon">
+					<i class="icon icon-help"></i>
+				</div>
+				<div class="fui-cell-text"><p>帮助中心</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+		</div>
+		{/if}
+
+		{if SUPERDESK_SHOPV2_DEBUG_OPENID == $_W['openid']}
+		<div class="fui-cell-group fui-cell-click">
+			<a class="fui-cell" href="{php echo mobileUrl('debug')}">
+				<div class="fui-cell-icon">
+					<i class="icon icon-help"></i>
+				</div>
+				<div class="fui-cell-text"><p>DEBUG</p></div>
+				<div class="fui-cell-remark"></div>
+			</a>
+		</div>
+		{/if}
+
+		{if !empty($wapset['open']) && (!is_weixin() || !is_weixin_member())}
+		<div class="fui-cell-group fui-cell-click">
+			<a class="fui-cell external" href="{if !empty($member['mobileverify'])}{php echo mobileUrl('member/changepwd')}{else}{php echo mobileUrl('member/bind')}{/if}">
+				<div class="fui-cell-text" style="text-align: center;color:red;"><p>修改密码</p></div>
+			</a>
+			<a class="fui-cell external btn-logout">
+				<div class="fui-cell-text" style="text-align: center;color:red;"><p>退出登录</p></div>
+			</a>
+		</div>
+
+		<div class="pop-apply-hidden" style="display: none">
+			<div class="verify-pop pop">
+				<div class="close"><i class="icon icon-roundclose"></i></div>
+				<div class="qrcode">
+					<div class="inner">
+						<div class="title">{$set['applytitle']}</div>
+						<div class="text">{$set['applycontent']}</div>
+					</div>
+					<div class="inner-btn" style="padding: 0.5rem">
+						<div class="btn btn-warning" style="width: 100%; margin: 0">我已阅读</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{/if}
+		{template '_copyright'}
+	</div>
+</div>
+<script language='javascript'>
+	require(['biz/member/index'], function (modal) {
+		modal.init();
+	});
+</script>
+{php $this->footerMenus()}
+{template '_footer'}

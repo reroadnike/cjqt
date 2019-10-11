@@ -1,0 +1,100 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('boardroom_equipment', array('op' => 'list'))}">设备列表</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('boardroom_equipment', array('op' => 'edit'))}">{if
+        isset($item[id])}编辑{else}新增{/if}设备</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}编辑{else}新增{/if}设备
+            </div>
+            <div class="panel-body">
+
+                {if $core_user}
+                <!-- -->
+                {$item['organization_code']}
+                {$item['virtual_code']}
+                {$core_user['organization_code']}
+                {$core_user['virtual_code']}
+                {else}
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">所属项目/企业</label>
+                    <div class="col-sm-10 col-lg-3 col-xs-3">
+                        <select name="organization_code" class="form-control" id="organization_code">
+                            <option value="">请选择所属项目</option>
+                            {loop $selector_organization $row}
+                            <option value="{$row['code']}" {if $item['organization_code'] == $row['code']}selected = selected {/if}>{$row['name']}</option>
+                            {/loop}
+                        </select>
+                    </div>
+                    <div class="col-sm-10 col-lg-3 col-xs-3">
+                        <select name="virtual_code" class="form-control" id="virtual_code">
+                            <option value="">请选择所属企业</option>
+                            {loop $selector_virtuals $row}
+                            <option value="{$row['codeNumber']}" {if $item['virtual_code'] == $row['codeNumber']}selected = selected {/if}>{$row['name']}</option>
+                            {/loop}
+                        </select>
+                        <span class="help-block"></span>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $("#organization_code").change(function () {
+                                var organization_code = $("#organization_code option:selected").val();
+                                if (organization_code != '') {
+                                    $.getJSON("{php echo wurl('site/entry', array('m'=>'superdesk_core','do'=>'users','op' => 'ajax'))}", {organization_code : organization_code}, function (data) {
+                                        var content = "";
+                                        for (var o in data) {
+                                            content += "<option value=" + data[o].codeNumber + " >" + data[o].name + "</option>";
+                                        }
+                                        $("#virtual_code").empty();
+                                        $("#virtual_code").append("<option value=''>请选择所属企业</option>");
+                                        $("#virtual_code").append(content);
+                                    });
+                                } else {}
+                            });
+                        });
+                    </script>
+
+                </div>
+                {/if}
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">设备名字</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="name" class="form-control" value="{$item['name']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">设备图片</label>
+                    <div class="col-sm-9 col-xs-12">
+                        {php echo tpl_form_field_image('images', $item['images'])}
+                        <!--<input type="text" name="images" class="form-control" value="{$item['images']}"/>-->
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-xs-12 col-sm-3 col-md-2 control-label">删除</label>-->
+                    <!--<div class="col-sm-9 col-xs-12">-->
+                        <!--<input type="text" name="deleted" class="form-control" value="{$item['deleted']}"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

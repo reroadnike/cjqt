@@ -1,0 +1,118 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('build', array('op' => 'list'))}">楼宇信息管理</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('build', array('op' => 'edit'))}">{if
+        isset($item[id])}编辑{else}添加{/if}楼宇信息</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}编辑{else}添加{/if}楼宇信息
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">名称</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="name" class="form-control" value="{$item['name']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属项目ID</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="organizationId" class="form-control"
+                               value="{$item['organizationId']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">vip标识：0 否，1 是</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="vip" class="form-control" value="{$item['vip']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">备注信息</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="remark" class="form-control" value="{$item['remark']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">详细地址</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="address" class="form-control" value="{$item['address']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">地图x坐标</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="lng" class="form-control" value="{$item['lng']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">地图Y坐标</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="lat" class="form-control" value="{$item['lat']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建时间</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="createTime" class="form-control" value="{$item['createTime']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建人</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="creator" class="form-control" value="{$item['creator']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">修改人</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="modifier" class="form-control" value="{$item['modifier']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">修改时间</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="modifyTime" class="form-control" value="{$item['modifyTime']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否可用或删除：0 禁用，1 可用</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="isEnabled" class="form-control" value="{$item['isEnabled']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建时间</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="createtime_" class="form-control" value="{$item['createtime_']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否可用或删除</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="enabled" class="form-control" value="{$item['enabled']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

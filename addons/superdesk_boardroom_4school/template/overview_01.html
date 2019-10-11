@@ -1,0 +1,121 @@
+{template 'common/header'}
+{template 'common'}
+
+<!--<img src="{MODULE_URL}static/images/overview_01.png" width="100%"/>-->
+
+<style>
+
+    /*会议室列表*/
+    .boardroomwrap {width: 100%; padding-top: 11.75rem; background-color: #fff;}
+    .boardroomwrap .boardroomlist {width: 100%;}
+    .boardroomitem {width: 100%; padding: 0.5rem .75rem; border-bottom: 1px solid #c8c8c8; background-color: #fff;;}
+    .boardroomlist .boardroomitem:last-child {border-bottom: 0;}
+    .boardroominfo {position: relative; width: 100%;}
+    .roomimg {float: left; width: 20%; height: 3.5rem; margin-right: 3%;}
+    .roomname {float: left; width: 77%; font-size: .7rem; font-weight: 600; line-height: 1rem; color:#333333; margin-bottom: 0.25rem;}
+    .roomprice {float: right; font-size:.7rem; line-height: 1rem; margin-bottom: 0.5rem; color:#333333;}
+    .roominfo {float: left;}
+    .roominfo em {display: block; font-size: .6rem; line-height: 0.85rem; color:#666666;}
+    .roominfo em:nth-child(1){margin-bottom: 0.25rem;}
+    .roomdesk span {float: left;}
+    .roomdesk i {float: left;}
+    .deskicon {width: 0.7rem; height: .7rem; margin-right: 0.2rem; background: url("../images/desk.png") 0 center no-repeat; background-size: 100% .55rem;}
+    .sofaicon {width: 0.7rem; height: .7rem; margin-left: 0.7rem; margin-right: 0.2rem; background: url("../images/sofa.png") 0 center no-repeat; background-size: 100% .55rem;}
+    .dateline {display: block; font-size:.6rem; color:#1b37a8; margin-bottom: .2rem;}
+
+    .room-reserve {position: absolute; top: 1.25rem; right: 0; width: 3.1rem; height: 1.5rem; border-radius: 4px; color: #fff; line-height: 1.5rem; text-align: center; background-color: #1b37a8; font-size: .7rem;}
+    .reserve-disable {opacity: .2;}
+    .boardroomtime {width: 100%; margin-top: 0.5rem;}
+    .boardroomtimebar {width: 100%;}
+    .boardroomtimebar li {float: left; width: 7.69%; height: .9rem;  box-shadow: 0 1px 2px 0 #fff;}
+    .roomtime {position: relative; background-color: #eee;}
+    .roomtime i {float: left; width: 50%; height: .9rem;}
+    .roomtime span {position: absolute; top: 0; left: 0; display: block; width: 100%; height: .9rem; text-align: center; line-height: .9rem; color: #333; font-size: .6rem;}
+    .roomtimeam {background: #cadaf3 url("../images/am.png") center center no-repeat; background-size: 100% auto;}
+    .roomtimepm {background: #cadaf3 url("../images/pm.png") center center no-repeat; background-size: 100% auto;}
+    .occupygrid {background-color: #c8c8c8;}
+
+    .myfootertext {position: fixed; bottom: 0; width: 100%; min-width: 320px; max-width: 750px; padding: .5rem 0 .5rem; background-color: #fff; box-shadow: 0 -1px 2px 0 #d2d2d2;}
+    .mytwoText {width: 8rem; margin: 0 auto 0;}
+    .mytwoText a {float: left; font-size:.6rem; color:#1b37a8;}
+    .mytwoText a:nth-child(1) {padding-right: 1rem; border-right: 1px solid #c8c8c8;}
+    .mytwoText a:nth-child(2) {padding-left: 1rem;}
+    .mytwoText .mytext {color:#bfbfbf;;}
+    .pagetoplogo {background-color: #fff;}
+    .pagebottomlogo {background-color: #fff;}
+</style>
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                概览({$total})
+            </div>
+            <div class="panel-body">
+                <div class="boardroomwrap">
+                    <ul class="boardroomlist">
+
+                        {loop $list $index $item}
+                        <li class="boardroomitem">
+                            <div class="boardroominfo clearfix">
+                                <div class="roomimg" style="background: url({php echo tomedia($item['thumb'])}) center center no-repeat;background-size: auto 100%;"></div>
+                                <h3 class="roomname ellipsis">{$item['name']}</h3>
+                                <div class="roomprice"><!-- {$item['price']}元/时 -->&nbsp;&nbsp;&nbsp;</div>
+                                <div class="roominfo">
+                                    <em>容纳人数：{$item['max_num']}人</em>
+                                    <em class="roomdesk">
+                                        <i class="deskicon"></i>
+                                        <span>25</span>
+                                        <i class="sofaicon"></i>
+                                        <span>25</span>
+                                    </em>
+                                </div>
+                                <a href="javascript:void(0);" title="预定" class="room-reserve" data-boardroom_id="{$item['id']}">预定</a>
+                            </div>
+                            <!-- 占用添加类名“occupygrid”   未占用类名为 class="occupygrid"（空）-->
+                            {loop $item['situation'] $inner_index $_item}
+                            <div class="boardroomtime">
+
+                                <script type="text/javascript">
+                                    var select_time_bar_{$item['id']}_{$_item['timestamp']} = {$_item['select_time_bar']};
+                                </script>
+                                <span
+                                    class="dateline dateline_{$item['id']}"
+                                    data-boardroom_id="{$item['id']}"
+                                    data-lable="{$_item['lable']}"
+                                    data-can_booking="{$_item['can_booking']}"
+                                    data-error_msg="{$_item['error_msg']}"
+                                    data-timestamp="{$_item['timestamp']}">{$_item['lable']}</span>
+                                <ul class="boardroomtimebar clearfix">
+                                    <li class="roomtimeam"></li>
+                                    {php for($index = 0 ;$index < sizeof($_item['situation']['am']);$index+=2){}
+                                    <li class="roomtime">
+                                        <i {if $_item['situation']['am'][$index]['is_use'] == 1 || $_item['situation']['am'][$index]['timestamp'] < $now}class="occupygrid"{/if}></i>
+                                        <i {if $_item['situation']['am'][$index+1]['is_use'] == 1 || $_item['situation']['am'][$index]['timestamp'] < $now}class="occupygrid"{/if}></i>
+                                        <span>{php echo $_item['situation']['am'][$index][index]/2}</span>
+                                    </li>
+                                    {php }}
+                                </ul>
+                                <ul class="boardroomtimebar clearfix">
+                                    <li class="roomtimepm"></li>
+                                    {php for($index = 0 ;$index < sizeof($_item['situation']['pm']);$index+=2){}
+                                    <li class="roomtime">
+                                        <i {if $_item['situation']['pm'][$index]['is_use'] == 1 || $_item['situation']['pm'][$index]['timestamp'] < $now}class="occupygrid"{/if}></i>
+                                        <i {if $_item['situation']['pm'][$index+1]['is_use'] == 1 || $_item['situation']['pm'][$index]['timestamp'] < $now}class="occupygrid"{/if}></i>
+                                        <span>{php echo ($_item['situation']['pm'][$index][index])/2}</span>
+                                    </li>
+                                    {php }}
+                                </ul>
+                            </div>
+                            {/loop}
+                        </li>
+                        {/loop}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+</script>
+{template 'common/footer'}

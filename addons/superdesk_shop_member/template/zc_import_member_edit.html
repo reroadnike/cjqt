@@ -1,0 +1,158 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('zc_import_member', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('zc_import_member', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_id" class="form-control" value="{$item['m_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">会员名称</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_name" class="form-control" value="{$item['m_name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">手机号码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_mobile" class="form-control" value="{$item['m_mobile']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">身份证</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_id_card" class="form-control" value="{$item['m_id_card']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">会员状态0：黑名单，1：正常 2:未注册</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_status" class="form-control" value="{$item['m_status']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">注册时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_registration_time" class="form-control" value="{$item['m_registration_time']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">会员帐号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_account" class="form-control" value="{$item['m_account']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">帐号注册码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_poll_code" class="form-control" value="{$item['m_poll_code']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">帐号密码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_account_pwd" class="form-control" value="{$item['m_account_pwd']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">对应粉丝表粉丝的id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_fansId" class="form-control" value="{$item['m_fansId']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属企业id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_e_id" class="form-control" value="{$item['m_e_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属企业名称</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_company" class="form-control" value="{$item['m_company']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属分公司</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_branch_company" class="form-control" value="{$item['m_branch_company']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属部门</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_department" class="form-control" value="{$item['m_department']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属小组</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_team" class="form-control" value="{$item['m_team']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属职务</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_position" class="form-control" value="{$item['m_position']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">所属福利等级</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_welfare_level" class="form-control" value="{$item['m_welfare_level']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">导入时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_import_time" class="form-control" value="{$item['m_import_time']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">福利卡号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_card_num" class="form-control" value="{$item['m_card_num']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">工号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_job_num" class="form-control" value="{$item['m_job_num']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">企业编号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="m_e_code" class="form-control" value="{$item['m_e_code']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

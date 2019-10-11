@@ -1,0 +1,16 @@
+<a class='weui_cell' href="{$url}">
+    <div class='weui_cell_bd weui_cell_primary'>
+        <p>
+            {if $rstatus == 0}
+                <p class="weui_cell_ann weui_cell_ann_read_ye">未读</p>
+            {else}
+                <p class="weui_cell_ann weui_cell_ann_read_ed">已读</p>
+            {/if}
+            <p style='font-size:.8rem;line-height:20px;'>&nbsp;&nbsp;{$value['title']}</p>
+        </p>
+        <p style='font-size:.6rem;color: #a9a9a9;clear:both;margin-top:5px;'>通知时间：{php echo date('Y-m-d',$value['createtime'])} </p>
+    </div>
+    <div class='weui_cell_ft'>
+    </div>
+</a>
+<div style="height: 20px;background-color: #F5F5F5;width: 100%;border: none"></div>

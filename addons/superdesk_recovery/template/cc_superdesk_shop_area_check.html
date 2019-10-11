@@ -1,0 +1,22 @@
+{template 'common/header'}
+
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">修复项</div>
+        <div class="panel-body">
+            <form action="./index.php" method="get" class="form-horizontal" role="form">
+                <input type="hidden" name="c" value="site" />
+                <input type="hidden" name="a" value="entry" />
+                <input type="hidden" name="m" value="superdesk_recovery" />
+                <input type="hidden" name="do" value="cc_superdesk_shop_area_check" />
+                <input type="hidden" name="op" value="edit" />
+
+                <div class="form-group">
+                    <button class="btn btn-default"><i class="fa fa-search"></i> 修复</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{template 'common/footer'}

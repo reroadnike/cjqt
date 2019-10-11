@@ -1,0 +1,253 @@
+{template '_header'}
+
+<style>
+	.icon-check{
+		position: absolute;
+		right: -.44rem;
+		bottom: -.8rem;
+		font-size: .6rem;
+		color: white;
+	}
+
+	.zhijiao {
+		border-color: transparent red red transparent;
+		border-width: 10px;
+		border-style: solid;
+		width: 0;
+		height: 0;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		display: none;
+		-moz-border-radius-bottomright: .25rem;
+		-webkit-border-bottom-right-radius: .25rem;
+		border-bottom-right-radius: .25rem;
+	}
+
+	.redirect-footer-icon{
+		position: fixed;
+		bottom: 5rem;
+		right: 1rem;
+		color: #555555;
+		border-radius: 25px;
+		border: 1px solid;
+		height: 1.7rem;
+		width: 1.7rem;
+		text-align: center;
+		background: #fff;
+	}
+
+	.redirect-footer-icon>img{
+		height: 100%;
+		width: 70%;
+	}
+</style>
+<div class='fui-page  fui-page-current page-goods-list'>
+	<div class="fui-header">
+		<div class="fui-header-left">
+			<a class="back"></a>
+		</div>
+		<div class="title">
+			<form method="post" action="#">
+				<div class="searchbar">
+					<div class="search-input">
+						<i class="icon icon-search"></i>
+						<input type="search" id="search" class="search" placeholder="输入关键字,如:进口 牛奶" value="{$_GPC['keywords']}">
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="fui-header-right" data-nomenu="true">
+			<a href="javascript:;"><i class="icon icon-sort" id="listblock" data-state="list"></i></a>
+		</div>
+	</div>
+
+	<!-- 发现 -->
+	<div class="sort">
+		<div class="item on"><span class='text'>综合</span></div>
+		<div class="item" data-order="sales"><span class='text'>销量</span></div>
+		<div class="item"  data-order="price_filter"><span class='text'>价格</span>
+		</div>
+		<div class="item"  data-order="filter"><span class='text'>筛选 <i class="icon icon-filter "></i></span></div>
+	</div>
+
+
+	<div class="fui-content navbar">
+		<div class='fui-content-inner'>
+			<div class='content-empty' style='display:none;'>
+				<i class='icon icon-searchlist'></i><br/>暂时没有任何商品
+			</div>
+			<div class="fui-goods-group container block" id="goods-list-container"></div>
+			<div class='infinite-loading'><span class='fui-preloader'></span><span class='text'> 正在加载...</span></div>
+		</div>
+		{template '_copyright'}
+	</div>
+
+	<div class='fui-mask-m'></div>
+	<div class="screen">
+		<div class="attribute">
+			<div class="item">
+				<div class="btn btn-default-o block" data-type="isrecommand"><div class="zhijiao"><i class="icon icon-check"></i></div> 推荐商品</div>
+			</div>
+			<div class="item">
+				<div class="btn btn-default-o block" data-type="isnew"><div class="zhijiao"><i class="icon icon-check"></i></div> 新品上市</div>
+			</div>
+			<div class="item">
+				<div class="btn btn-default-o block" data-type="ishot"><div class="zhijiao"><i class="icon icon-check"></i></div> 热卖商品</div>
+			</div>
+			<div class="item">
+				<div class="btn btn-default-o block" data-type="isdiscount"><div class="zhijiao"><i class="icon icon-check"></i></div> 促销商品</div>
+			</div>
+			<div class="item">
+				<div class="btn btn-default-o block" data-type="issendfree"><div class="zhijiao"><i class="icon icon-check"></i></div> 卖家包邮</div>
+			</div>
+			<div class="item">
+				<div class="btn btn-default-o block" data-type="istime"><div class="zhijiao"><i class="icon icon-check"></i></div> 限时抢购</div>
+			</div>
+		</div>
+		{if $catlevel!=-1 && $opencategory}
+		<div class="title">选择分类</div>
+		<div class="cate" data-catlevel="{$catlevel}">
+			<div class="item" data-level="1">
+				{loop $allcategory['parent'] $c}
+				<nav data-id="{$c['id']}">{$c['name']}</nav>
+				{/loop}
+			</div>
+			{if $catlevel>=2}
+			<div class="item" data-level="2"></div>
+			{/if}
+			{if $catlevel>=3}
+			<div class="item" data-level="3"></div>
+			{/if}
+		</div>
+		{/if}
+
+		<!-- 色调 筛选-->
+		<div class="btns">
+			<div class="cancel">取消</div>
+			<div class="confirm">确认</div>
+		</div>
+	</div>
+
+	<!-- 价格筛选模块层 开始 -->
+	<div class="price_screen">
+		<div class="priceorder">
+			<div class="item">
+				<div class="btn btn-default-o block" data-type="desc"></div>
+			</div>
+			<div class="item">
+				<div class="btn btn-default-o block" data-type="asc"></div>
+			</div>
+			<div class="pricelabel"><span>价格区间:</span></div>
+			<div class="priceinput"><input type="text" id="priceMin" placeholder="最低价" /></div>
+			<div class="priceline"><span class="fui-line" style="width: .4rem;height: 1.2rem;"></span></div>
+			<div class="priceinput"><input type="text" id="priceMax" placeholder="最高价" /></div>
+		</div>
+		<div class="btns">
+
+			<!-- 色调 -->
+			<!--<div class="cancel"><img src="../addons/superdesk_shopv2/template/mobile/seven/static/images/btnReset.svg" ></div>-->
+			<!--<div class="confirm"><img src="../addons/superdesk_shopv2/template/mobile/seven/static/images/btnSubmit.svg" ></div>-->
+
+			<div class="cancel">取消</div>
+			<div class="confirm">确认</div>
+
+		</div>
+	</div>
+	<!-- 价格筛选模块层 结束 -->
+
+	<!-- 我的足迹跳转 -->
+	<a class="redirect-footer-icon" href="{php echo mobileUrl('member/history');}">
+		<img src="../addons/superdesk_shopv2/template/mobile/seven/static/images/member/icon_style_03/wdzj.svg" />
+	</a>
+
+
+	<!--<i class="icon icon-cart"></i>  旧icon-->
+	<script type='text/html' id='tpl_goods_list'>
+		<%each list as g%>
+		<div class="fui-goods-item" data-goodsid="<%g.id%>">
+			<a <%if g.bargain>0%>href="{php echo mobileUrl('bargain/detail')}&id=<%g.bargain%>"<%else%>href="{php echo mobileUrl('goods/detail')}&id=<%g.id%>"<%/if%>>
+				<div class="image" data-lazy-background="<%g.thumb%>">
+					<%if g.total<=0%><div class="salez" style="background-image: url('{php echo tomedia($_W['shopset']['shop']['saleout'])}'); "></div><%/if%>
+				</div>
+			</a>
+			<div class="detail">
+				<a <%if g.bargain>0%>href="{php echo mobileUrl('bargain/detail')}&id=<%g.bargain%>"<%else%>href="{php echo mobileUrl('goods/detail')}&id=<%g.id%>"<%/if%>>
+					<div class="name"><%g.title%></div>
+				</a>
+				<div class="price">
+					<span class="text">￥<%g.minprice%></span>
+					<%if g.stock == -2 %>
+						<span class="nocanbuy">
+							<img src="../addons/superdesk_shopv2/template/mobile/seven/static/images//shop/cart_style_03/item_cart_huise.svg" style="width: 1rem;height: 1rem;"/>
+						</span>
+					<%else%>
+    					<span class="buy">
+							<%if g.bargain >0%>
+							砍价活动
+							<%else%>
+								<img src="../addons/superdesk_shopv2/template/mobile/seven/static/images//shop/cart_style_03/item_cart.svg" style="width: 1rem;height: 1rem;"/>
+							<%/if%>
+						</span>
+					<%/if%>
+				</div>
+				<div class="merchInfo">
+					<div class="btn btn-danger btn-sm storeName"> <%g.groupname%></div>
+					<div class="groupName"><%g.storename%> </div>
+				</div>
+			</div>
+		</div>
+		<%/each%>
+	</script>
+
+	<script id="tpl_cate_list" type="text/html">
+		<div class="item">
+			<%each category as c%>
+			<nav class="on"><%c.catname%></nav>
+			<%/each%>
+		</div>
+	</script>
+	{template 'goods/picker'}
+	<script language="javascript">
+		window.category = false;
+		{if $catlevel!=-1}
+		window.category = {php echo json_encode($allcategory)};
+		{/if}
+		require(['biz/goods/list'], function (modal) {
+			var _params = {
+				page: "1"
+			};
+
+			var keywords = "{$_GPC['keywords']}";
+			var isrecommand = "{$_GPC['isrecommand']}";
+			var ishot = "{$_GPC['ishot']}";
+			var isnew = "{$_GPC['isnew']}";
+			var isdiscount = "{$_GPC['isdiscount']}";
+			var issendfree = "{$_GPC['issendfree']}";
+			var istime = "{$_GPC['istime']}";
+			var cate = "{$_GPC['cate']}";
+			var order = "{$_GPC['order']}";
+			var by = "{$_GPC['by']}";
+			var merchid = "{$_GPC['merchid']}";
+			var frommyshop = "{php echo intval($_GPC['frommyshop'])}";
+
+			if(keywords){ _params.keywords = keywords; }
+			if(isrecommand){ _params.isrecommand = isrecommand; }
+			if(ishot){ _params.ishot = ishot; }
+			if(isnew){ _params.isnew = isnew; }
+			if(isdiscount){ _params.isdiscount = isdiscount; }
+			if(issendfree){ _params.issendfree = issendfree; }
+			if(istime){ _params.istime = istime; }
+			if(cate){ _params.cate = cate; }
+			if(order){ _params.order = order; }
+			if(by){ _params.by = by; }
+			if(merchid){ _params.merchid = merchid; }
+			if(frommyshop){ _params.frommyshop = frommyshop; }
+
+			modal.init(_params);
+		});
+	</script>
+	{php $this->footerMenus()}
+</div>
+
+{template '_footer'}

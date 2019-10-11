@@ -1,0 +1,80 @@
+<style type='text/css'>
+   .mc-list a {
+      position: relative;
+   }
+   .mc-list span  {
+
+      float:right;margin-right:20px;
+   }
+</style>
+
+<!-- 待开放 有可能 会用到 -->
+<!--
+<div class='menu-header'>入驻申请</div>
+<ul class="mc-list">
+   {ifp 'enterprise.reg'}<li {if $_W['routes']=='enterprise.reg' && $_GPC['status']==0}class="active"{/if}><a href="{php echo webUrl('enterprise/reg',array('status'=>0))}">申请中 <span class="text-danger" id="reg0">-</span></a> </li>{/if}
+   {ifp 'enterprise.reg'}<li {if $_W['routes']=='enterprise.reg' && $_GPC['status']==-1}class="active"{/if}><a href="{php echo webUrl('enterprise/reg',array('status'=>-1))}">驳回 <span class="text-default"  id="reg_1">-</span></a> </li>{/if}
+</ul>
+-->
+
+<div class='menu-header'>企业管理</div>
+<ul class="mc-list">
+   {ifp 'enterprise.user'}<li {if $_W['routes']=='enterprise.user' && $_GPC['status']==0}class="active"{/if}><a href="{php echo webUrl('enterprise/user',array('status'=>0))}">待入驻 <span class="text-success"  id="user0">-</span></a></li>{/if}
+   {ifp 'enterprise.user'}<li {if $_W['routes']=='enterprise.user' && $_GPC['status']==1}class="active"{/if}><a href="{php echo webUrl('enterprise/user',array('status'=>1))}">入驻中 <span class="text-primary"  id="user1">-</span></a></li>{/if}
+   {ifp 'enterprise.user'}<li {if $_W['routes']=='enterprise.user' && $_GPC['status']==2}class="active"{/if}><a href="{php echo webUrl('enterprise/user',array('status'=>2))}">暂停中 <span class="text-warning"  id="user2">-</span></a></li>{/if}
+   {ifp 'enterprise.user'}<li {if $_W['routes']=='enterprise.user' && $_GPC['status']==3}class="active"{/if}><a href="{php echo webUrl('enterprise/user',array('status'=>3))}">即将到期 <span class="text-danger"   id="user3">-</span></a></li>{/if}
+   {ifp 'enterprise.group'}<li {if $_W['routes']=='enterprise.group'}class="active"{/if}><a href="{php echo webUrl('enterprise/group')}">企业分组</a></li>{/if}
+
+   {ifp 'enterprise.enter'}<li {if $_W['routes']=='enterprise.enter'}class="active"{/if}><a href="{php echo webUrl('enterprise/enter')}">福利卡</a></li>{/if}
+   <!--
+   {ifp 'enterprise.category'}<li {if $_W['routes']=='enterprise.category'}class="active"{/if}><a href="{php echo webUrl('enterprise/category')}">企业分类 TODO 楼宇</a></li>{/if}
+   -->
+</ul>
+
+
+<div class='menu-header'>数据</div>
+<ul class="mc-list">
+   <!--
+   {ifp 'enterprise.statistics.order'}<li {if $_W['routes']=='enterprise.statistics.order'}class="active"{/if}><a href="{php echo webUrl('enterprise/statistics/order')}">订单统计</a></li>{/if}
+   -->
+   {ifp 'enterprise.statistics.enterprise'}<li {if $_W['routes']=='enterprise.statistics.enterprise'}class="active"{/if}><a href="{php echo webUrl('enterprise/statistics/enterprise')}">企业统计</a></li>{/if}
+</ul>
+
+
+<!--<div class='menu-header'>设置</div>-->
+<ul>
+   <!--
+   {ifp 'enterprise.set'}<li {if $_W['routes']=='enterprise.set'}class="active"{/if}><a href="{php echo webUrl('enterprise/set')}">基础设置</a></li>{/if}
+   -->
+   <!--
+   {ifp 'enterprise.notice'}<li {if $_W['routes']=='enterprise.notice'}class="active"{/if}><a href="{php echo webUrl('enterprise/notice')}">通知设置</a></li>{/if}
+   -->
+   <!--
+   {ifp 'enterprise.cover'}<li {if $_W['routes']=='enterprise.cover'}class="active"{/if}><a href="{php echo webUrl('enterprise/cover')}">入口设置</a></li>{/if}
+   -->
+   <!--
+   {ifp 'enterprise.category.swipe'}<li {if $_W['routes']=='enterprise.category.swipe'}class="active"{/if}><a href="{php echo webUrl('enterprise/category.swipe')}">企业分类幻灯</a></li>{/if}
+   -->
+</ul>
+
+
+<script language="javascript">
+
+   $(function(){
+      $.ajax({
+         url: "{php echo webUrl('enterprise/util/totals')}",
+         dataType:'json',
+         cache:false,
+         success:function(ret){
+            $('#reg0').html( ret.result.reg0);
+            $('#reg_1').html( ret.result.reg_1);
+            $('#user0').html( ret.result.user0);
+            $('#user1').html( ret.result.user1);
+            $('#user2').html( ret.result.user2);
+            $('#user3').html( ret.result.user3);
+         }
+      });
+
+   });
+
+</script>

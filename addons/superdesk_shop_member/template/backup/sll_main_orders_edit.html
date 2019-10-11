@@ -1,0 +1,182 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('sll_main_orders', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('sll_main_orders', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_id" class="form-control" value="{$item['main_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_tel" class="form-control" value="{$item['main_tel']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_fansid" class="form-control" value="{$item['main_fansid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_openid" class="form-control" value="{$item['main_openid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">主订单id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_orderid" class="form-control" value="{$item['main_orderid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">总价</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_orderPrice" class="form-control" value="{$item['main_orderPrice']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_pay_time" class="form-control" value="{$item['main_pay_time']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">支付流水号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_payNumber" class="form-control" value="{$item['main_payNumber']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否支付 0:未支付  1：已支付</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_isPay" class="form-control" value="{$item['main_isPay']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_ctime" class="form-control" value="{$item['main_ctime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">付款方式,0：表示微信，1：货到付款，2：来电支付，3：银行卡</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_payconf" class="form-control" value="{$item['main_payconf']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">0 : 微信  1：后台</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_type" class="form-control" value="{$item['main_type']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">支付返回信息</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_payMsg" class="form-control" value="{$item['main_payMsg']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">项目id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_e_id" class="form-control" value="{$item['main_e_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">1 普通发票 2 增值税发票</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_invoiceType" class="form-control" value="{$item['main_invoiceType']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">发票类型：1:个人，2 :单位</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_selectedInvoiceTitle" class="form-control" value="{$item['main_selectedInvoiceTitle']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">发票抬头  </label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_companyName" class="form-control" value="{$item['main_companyName']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">0:明细，1：电脑配件，2:耗材，3：办公用品(备注:若增值发票则只能选 0 明细) </label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_invoiceContent" class="form-control" value="{$item['main_invoiceContent']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">增值票收票人姓名</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_invoiceName" class="form-control" value="{$item['main_invoiceName']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">增值票注册电话</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_invoicePhone" class="form-control" value="{$item['main_invoicePhone']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">订单开票状态0：不开票，1：未开票，2：已开票，3：已退票，发票信息错误，4：已退票，发票类型错误，5：已退票，退款</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_make_out_invoice_state" class="form-control" value="{$item['main_make_out_invoice_state']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">纳税人识别号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_taxpayer_identification_number" class="form-control" value="{$item['main_taxpayer_identification_number']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">增值票开户银行</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_invoiceBank" class="form-control" value="{$item['main_invoiceBank']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">增值票开户帐号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_invoiceAccount" class="form-control" value="{$item['main_invoiceAccount']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">增值票注册地址</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="main_invoiceAddress" class="form-control" value="{$item['main_invoiceAddress']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

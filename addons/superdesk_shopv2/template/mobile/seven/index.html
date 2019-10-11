@@ -1,0 +1,24 @@
+{template '_header'}
+<style>
+	.index-text-title {
+		padding: .5rem .43rem 0;
+		font-size: .8rem;
+		color: #555555;
+		margin: .5rem 0 0 0;
+		background: #f9f9f9;
+	}
+</style>
+<div class='fui-page  fui-page-current shop-index-page'>
+	{if is_h5app()}
+	<div class="fui-header">
+		<div class="fui-header-left"></div>
+		<div class="title">{if empty($this->merch_user)}{$_W['shopset']['shop']['name']}{else}{php echo $this->merch_user['merchname']}{/if}</div>
+		<div class="fui-header-right"></div>
+	</div>
+	{/if}
+	{php //echo $this->followBar()}
+	{$index_cache}
+</div>
+
+{php $this->footerMenus()}
+{template '_footer'}

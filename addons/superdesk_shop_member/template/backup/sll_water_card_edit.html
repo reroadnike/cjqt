@@ -1,0 +1,164 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('sll_water_card', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('sll_water_card', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">水卡ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="water_card_id" class="form-control" value="{$item['water_card_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">水卡序列码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="water_card_code" class="form-control" value="{$item['water_card_code']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">水卡编号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="water_card_no" class="form-control" value="{$item['water_card_no']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">水卡访问url</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="water_card_url" class="form-control" value="{$item['water_card_url']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">状态0失效1有效</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="water_card_status" class="form-control" value="{$item['water_card_status']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="water_card_ctime" class="form-control" value="{$item['water_card_ctime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">水卡创建记录主键编码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="water_card_create_note_pk_code" class="form-control" value="{$item['water_card_create_note_pk_code']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">自定义主键标识</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="water_card_pkCode" class="form-control" value="{$item['water_card_pkCode']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">打印售价</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="water_card_sellPrice" class="form-control" value="{$item['water_card_sellPrice']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">商品ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="goods_id" class="form-control" value="{$item['goods_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">市级用户ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="user_id" class="form-control" value="{$item['user_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">生成币数量</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="number" class="form-control" value="{$item['number']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">代理价</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="proxy_price" class="form-control" value="{$item['proxy_price']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">成本价</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="base_price" class="form-control" value="{$item['base_price']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">零售价</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="sale_price" class="form-control" value="{$item['sale_price']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">激会者粉丝ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="activate_id" class="form-control" value="{$item['activate_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">激会时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="activate_time" class="form-control" value="{$item['activate_time']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">拥有者粉丝ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="own_id" class="form-control" value="{$item['own_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">拥有时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="get_time" class="form-control" value="{$item['get_time']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">到期时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="expire_time" class="form-control" value="{$item['expire_time']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">分配的水店ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="assign_id" class="form-control" value="{$item['assign_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="water_card_title" class="form-control" value="{$item['water_card_title']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

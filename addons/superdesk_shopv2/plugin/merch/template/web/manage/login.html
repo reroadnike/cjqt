@@ -1,0 +1,133 @@
+{template 'merch/manage/_header_base'}
+
+<style>
+    body{
+        overflow: hidden;
+    }
+    @media screen and (max-width:767px){.login .panel.panel-default{width:65%; min-width:300px;}}
+    @media screen and (min-width:768px){.login .panel.panel-default{width:45%;}}
+    @media screen and (min-width:1200px){.login .panel.panel-default{width:25%;}}
+
+    .login, .register {
+        background: #3a3a3a url({$_W['siteroot']}/web/resource/images/gw-bg.jpg) no-repeat fixed;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        padding-top: 5em;
+    }
+
+    .login .logo, .register .logo {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 2em;
+    }
+
+    .login .logo a, .register .logo a {
+        background: url(../images/gw-logo.png) no-repeat;
+        display: inline-block;
+        width: 420px;
+        height: 95px;
+        margin-left: 0 !important;
+    }
+</style>
+
+<body>
+
+<div class="login" style="min-height: 927px;">
+    <div class="logo">
+        <a>&nbsp;</a>
+        <!--<a href="./?refresh" {if !empty($_W['setting']['copyright']['flogo'])}style="background:url('{php echo tomedia($_W['setting']['copyright']['flogo']);}') no-repeat;"{/if}></a>-->
+        <!--<img src="{if empty($set['regpic'])}../addons/superdesk_shopv2/plugin/enterprise//static/images/regbg.png{else}{php echo tomedia($set['regpic'])}{/if}" />-->
+    </div>
+    <div class="clearfix" style="margin-bottom:0em;">
+        <div class="panel panel-default container">
+            <div class="panel-header">
+                <h2 style="text-align: center;">超级前台 商户端</h2>
+            </div>
+            <div class="panel-body">
+                <form method="post">
+                    <div class="form-group input-group">
+                        <span id="message" class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                        <input name="username" type="text" class="form-control input-lg" placeholder="请输入用户名登录">
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-addon"><i class="fa fa-unlock-alt"></i></div>
+                        <input name="pwd" type="password" class="form-control input-lg" placeholder="请输入登录密码">
+                        <p class="help-block text-danger" id="tip" style="display:none;"></p>
+                    </div>
+                    {if !empty($_W['setting']['copyright']['verifycode'])}
+                    <div class="form-group input-group">
+                        <div class="input-group-addon"><i class="fa fa-info"></i></div>
+                        <input name="verify" type="text" class="form-control input-lg" style="width:200px;" placeholder="请输入验证码">
+                        <a href="javascript:;" id="toggle" style="text-decoration: none"><img id="imgverify" src="{php echo url('utility/code')}" style="height:46px;" title="点击图片更换验证码"/> 看不清？换一张</a>
+                    </div>
+                    {/if}
+                    <div class="form-group">
+                        <!--<label class="checkbox-inline input-lg"><input type="checkbox" value="true" name="rember"> 记住用户名</label>-->
+                        <div class="pull-right">
+                            {if false && !$_W['siteclose']}<a href="{url 'user/register'}" class="btn btn-link btn-lg">注册</a>{/if}
+                            <!--<input type="submit" id="submit"  name="submit"  value="登录" class="btn btn-primary btn-lg" />-->
+                            <button type="button" id="btn-login" class="btn btn-primary btn-block">登录</button>
+                            <input name="token" value="{$_W['token']}" type="hidden" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script language='javascript'>
+    $('#btn-login').click(function () {
+        if ($(":input[name=username]").isEmpty()) {
+            $('#tip').html('请输入用户名!').show();
+            $(":input[name=username]").focus();
+            return;
+        } else {
+            $('#tip').hide();
+        }
+        if ($(":input[name=pwd]").isEmpty()) {
+            $('#tip').html('请输入密码!').show();
+            $(":input[name=pwd]").focus();
+            return;
+        } else {
+            $('#tip').hide();
+        }
+        if ($(this).attr('stop')) {
+            return;
+        }
+
+        $('#btn-login').attr('stop', 1).html('正在登录...');
+        $.ajax({
+            url     : "{$submitUrl}",
+            type    : 'post',
+            data    : {username: $(":input[name=username]").val(), pwd: $(":input[name=pwd]").val()},
+            dataType: 'json',
+            cache   : false,
+            success : function (ret) {
+                if (ret.status == 1) {
+                    location.href = ret.result.url;
+                    return;
+                }
+                $('#btn-login').removeAttr('stop').html('登录');
+                $(":input[name=pwd]").select();
+                $('#tip').html(ret.result.message).show();
+            }
+        })
+    });
+</script>
+<script language="javascript">
+    myrequire(['web/init'],function(){
+
+    });
+</script>
+{if !empty($_W['setting']['copyright']['statcode'])}{$_W['setting']['copyright']['statcode']}{/if}
+{if !empty($copyright) && !empty($copyright['copyright'])}
+<div class="signup-footer" style='width:750px;margin:auto;margin-top:10px;'>
+    <div>{$copyright['copyright']}</div>
+</div>
+{/if}
+</body>
+</html>

@@ -1,0 +1,120 @@
+{template '__header'}
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}static/js/dist/swiper/swiper-3.4.1.min.css" />
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/swiper/swiper-3.4.1.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/boardroominfo.css" />
+
+<div class="pagetoplogo"></div>
+<div class="pagebottomlogo"></div>
+
+<div class="swiper-container roominfoswiper">
+    <div class="swiper-wrapper">
+        {loop $item['carousel'] $_carousel}
+        <div class="swiper-slide">
+             <img src="{php echo tomedia($_carousel)}" alt="" />
+        </div>
+        {/loop}
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+</div>
+<!-- 会议室信息 -->
+<div class="roominformation">
+    <div class="roominfoname clearfix">
+        <em class="ellipsis">{$item['name']}</em>
+        <span style="display: none;"><!-- {$item['price']} 元/时 --></span>
+    </div>
+    <div class="roominfotext">
+        <em>容纳人数：{$item['max_num']}人</em>
+        <em>楼层：{$item['floor']}层</em>
+    </div>
+</div>
+<div class="roominfo-address">
+    <a href="{$url_boardroom_info_map}">
+    <i class="address-icon"></i>
+    <span class="ellipsis">{$item['address']}</span>
+    <i class="address-right"></i></a>
+</div>
+<h3 class="roominfo-subtit">场地设备</h3>
+<div class="roominfo-con">
+
+    {loop $item['equipment'] $index $_equipment}
+    {$_equipment['text']}
+    {if (sizeof($item['equipment']) -1) != $index}，{/if}
+    {/loop}
+</div>
+<!--
+<h3 class="roominfo-subtit">场地设备</h3>
+<div class="roominfo-con">电脑、黑板擦，记号笔，投影仪</div>
+-->
+<div class="suspendBtn">
+    <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'boardroom_select_time', 'id'=> $id, 'ymd' => $Ymd))}" title="开始预订" class="suspend-btn">开始预订</a>
+</div>
+
+<!-- 点击查看大图 -->
+<div class="showbigWrap">
+    <div class="closeshowbig"></div>
+</div>
+<style>
+    /* 背景图 */
+    .full_screen {
+        top:0;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+        background: #f6f6f6;
+
+        /*background-color: #000;*/
+        /*background-color:#000000;!* IE6和部分IE7内核的浏览器(如QQ浏览器)下颜色被覆盖 *!*/
+        /*background-color:rgba(0,0,0,0.3); !* IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂，但解析为透明 *!*/
+    }
+</style>
+
+<script type="text/javascript">
+    $(function(){
+        var activeIndex = 0;
+        var mySwiper = new Swiper ('.roominfoswiper', {
+            loop: true,
+
+            // 如果需要分页器
+            pagination: '.swiper-pagination',
+            paginationType : 'fraction',
+            paginationFractionRender: function (swiper, currentClassName, totalClassName) {
+                return '<span class="' + currentClassName + '"></span>' +
+                        ' / ' +
+                        '<span class="' + totalClassName + '"></span>';
+            }
+        });
+
+        showBigpicture = function(ele){
+
+            $(".showbigWrap").find(".showBigswiper").remove();
+            var _html = ele.html();
+
+            var __html = "<div class='swiper-container showBigswiper'>"+ _html + "</div>"
+
+            $(".showbigWrap").prepend(__html);
+            console.log()
+            $(".showbigWrap").show();
+            var showSwiper = new Swiper ('.showBigswiper', {
+                direction : 'horizontal',
+                loop: true,
+                // 如果需要分页器
+                pagination: '.swiper-pagination',
+                paginationType : 'fraction',
+            });
+        }
+        $(".roominfoswiper").click(function(){
+            var _this = $(this);
+            showBigpicture(_this);
+            activeIndex = mySwiper.realIndex;
+        });
+        $(".closeshowbig").click(function(){
+            $(".showbigWrap").hide();
+        })
+    })
+</script>
+{template '__footer'}

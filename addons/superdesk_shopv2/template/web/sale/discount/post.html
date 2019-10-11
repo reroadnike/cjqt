@@ -1,0 +1,65 @@
+<form action="" method="post" class="form-horizontal form-validate" enctype="multipart/form-data">
+
+    <input type="hidden" name="c" value="site" />
+    <input type="hidden" name="a" value="entry" />
+    <input type="hidden" name="m" value="superdesk_shopv2" />
+    <input type="hidden" name="do" value="web" />
+    <input type="hidden" name="r" value="sale.discount.edit" />
+    <input type='hidden' name='id' value="{$id}" />
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">设置客户价套</h4>
+            </div>
+            <div class="modal-body">
+
+                {if $id}
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">企业名称</label>
+                    <div class="col-sm-5 col-xs-12">
+                        {$virtuals['name']}
+                    </div>
+                </div>
+                {else}
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">项目名称</label>
+                    <div class="col-sm-7 col-xs-12">
+                        <select name="organization" class="form-control">
+                            <option value="0">请选择项目名称</option>
+                            {loop $organization $mrow}
+                            <option value="{$mrow['id']}">[{$mrow['id']}]{$mrow['name']}</option>
+                            {/loop}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">批量导入</label>
+                    <div class="col-sm-7 col-xs-12">
+                        <textarea rows="5" name="org_mul" cols="50">{$item['org_mul']}</textarea>
+                        <span style="color:#ccc">(项目ID，用 | 隔开)</span>
+                    </div>
+                </div>
+                {/if}
+                <div class="form-group">
+                    <label class="col-sm-3 control-label mustl">选择价套</label>
+                    <div class="col-sm-6 col-xs-12">
+                        <select name="discount" class="form-control">
+                            <option value="0">请选择价套</option>
+                            {loop $item $row}
+                            <option value="{$row['discount_id']}">{$row['discount_name']}</option>
+                            {/loop}
+                        </select>
+                    </div>
+                </div>
+            </div> <div class="modal-footer">
+            <button class="btn btn-primary" type="submit">确认提交</button>
+            <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+        </div>
+        </div>
+    </div>
+
+</form>
+

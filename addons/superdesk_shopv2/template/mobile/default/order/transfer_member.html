@@ -1,0 +1,233 @@
+{template '_header'}
+<style>
+    .fui-list-media img{height:2.5rem;}
+    .transfer_cancel {
+        float: right;
+        width: 7rem;
+        text-align: center;
+        line-height: 3rem;
+        height: 3rem;
+        color: #fff;
+        background: #ed5565;
+        cursor: pointer;
+    }
+    .transfer_submit {
+        float: right;
+        width: 7rem;
+        text-align: center;
+        line-height: 3rem;
+        height: 3rem;
+        color: #fff;
+        background: #1ab394;
+        cursor: pointer;
+    }
+</style>
+<div class='fui-page order-detail-page'>
+    <div class='fui-content navbar'>
+        <div class='result-list'>
+            <div class='fui-list order-status'>
+
+                <div class='fui-list-inner'>
+                    <div class='title'>
+                        审核状态:
+                        {if $order['tmstatus'] == -1}
+                            未审核
+                        {elseif $order['tmstatus'] == 0}
+                            未审核
+                        {elseif $order['tmstatus']==1}
+                            已通过
+                        {elseif $order['tmstatus']==2}
+                            已拒绝
+                        {/if}
+                    </div>
+                </div>
+                <div class='fui-list-media'>
+                    {if $order['tmstatus'] == -1 or $order['tmstatus'] == 0}
+                        <i class='icon icon-information'></i>
+                    {elseif $order['tmstatus']==1}
+                        <i class='icon icon-check'></i>
+                    {elseif $order['tmstatus']==2}
+                        <i class='icon icon-roundclose'></i>
+                    {/if}
+                </div>
+            </div>
+        </div>
+
+        <!-- 收货地址 -->
+        {if !empty($address)}
+        <div class='fui-list-group' style='margin-top:5px;'>
+            <div class='fui-list'>
+                <div class='fui-list-media'><i class='icon icon-location'></i></div>
+                <div class='fui-list-inner'>
+                    <div class='text'>{$address['realname']} {$address['mobile']}</div>
+                    <div class='text'>{$address['province']}{$address['city']}{$address['area']}{$address['town']} {$address['address']}</div>
+                </div>
+            </div>
+        </div>
+        {/if}
+
+        <!-- 发票信息 -->
+        {if !empty($user_invoice) && SUPERDESK_SHOPV2_MODE_USER == 1}
+        <div class='fui-list-group' style='margin-top:5px;'>
+            <div class='fui-list'>
+                <div class='fui-list-media'>
+                    <i class='icon'><img src="{$_W['siteroot']}addons/superdesk_shopv2/template/mobile/seven/static/images/my/fapiao.svg" style="width: .636rem;"></i>
+                </div>
+                <div class='fui-list-inner'>
+                    <div class='text'>{$user_invoice['companyName']} {$user_invoice['taxpayersIDcode']}</div>
+                    <div class='text'>{$view_invoiceType[$user_invoice['invoiceType']]} {$view_selectedInvoiceTitle[$user_invoice['selectedInvoiceTitle']]} {$view_invoiceContent[$user_invoice['invoiceContent']]}</div>
+                </div>
+            </div>
+        </div>
+        {/if}
+
+        <div class="fui-cell-group info-cell-group" style="margin-top:0">
+            <div class="fui-cell">
+                <div class="fui-cell-label">订单编号:</div>
+                <div class="fui-cell-info">{$order['ordersn']}</div>
+            </div>
+
+            <div class="fui-cell">
+                <div class="fui-cell-label">创建时间:</div>
+                <div class="fui-cell-info">{php echo date('Y-m-d H:i:s', $order['createtime'])}</div>
+            </div>
+
+            <div class="fui-cell">
+                <div class="fui-cell-label">支付金额:</div>
+                <div class="fui-cell-info">{$order['price']}</div>
+            </div>
+
+            <div class="fui-cell">
+                <div class="fui-cell-label">订单状态:</div>
+                <div class="fui-cell-info">
+                    {if empty($order['status'])}
+                        {if $order['paytype']==3}
+                            企业月结，等待发货
+                        {else}
+                            等待付款
+                        {/if}
+                    {elseif $order['status']==1}
+                        买家已付款
+                    {elseif $order['status']==2}
+                        卖家已发货
+                    {elseif $order['status']==3}
+                        交易完成
+                    {elseif $order['status']==-1}
+                        交易关闭
+                    {/if}
+
+                    {if $order['refundstate'] > 0}
+                        ({if $order['status'] ==1}申请退款{else}申请售后{/if}中)
+                    {/if}
+                </div>
+            </div>
+
+            <div class="fui-cell">
+                <div class="fui-cell-label">备注:</div>
+                <div class="fui-cell-info">{$order['remark']}</div>
+            </div>
+        </div>
+
+        <!-- 商品清单 start -->
+        <div class="fui-list-group goods-list-group" style="padding: .5rem 0rem;">
+            {php $i=0;}
+            {if count($order_child_list)>0}
+            {loop $order_child_list $oc}
+                <div style="padding-left: .5rem;font-size: .8rem">子单编号: {$oc['ordersn']}</div>
+                {loop $goods $g}
+                {if $g['orderid'] == $oc['id'] || $g['parent_order_id'] == $oc['id']}
+                    <a href="{php echo mobileUrl('goods/detail',array('id'=>$g['goodsid']))}">
+
+                        <div class="fui-list goods-list" style="background: white;">
+                            <div class="fui-list-media" {if $g['status']==2}style="padding-left:0.5rem;"{/if}>
+                                <img src="{php echo tomedia($g['thumb'])}" class="round">
+                            </div>
+                            <div class="fui-list-inner">
+                                <div class="text goodstitle">{$g['title']}</div>
+                                {if $g['status']==2}<span class="fui-label fui-label-danger">赠品</span>{/if}
+                                {if !empty($g['optionid'])}<div class='subtitle'>{$g['optiontitle']}</div>{/if}
+                            </div>
+                            <div class='fui-list-angle'>&yen; <span class='marketprice'>{php echo $g['price']/$g['total']}<br/>   x{$g['total']}</div>
+                        </div>
+                    </a>
+                    {if !empty($g['diyformdata']) && $g['diyformdata'] != 'false'}
+                    <div class="fui-list">
+                        <div class="fui-list-inner">
+                            <div class="text text-right">
+                                <div class="btn btn-default btn-sm look-diyinfo" hide="1" data="{$i}">查看提交的资料</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fui-cell-group price-cell-group diyinfo_{$i}" style="display: none;">
+                        {php $datas = $g['diyformdata']}
+                        {loop $g['diyformfields'] $key $value}
+                        <div class="fui-cell" >
+                            <div class="fui-cell-label">{php echo $value['tp_name']}</div>
+                            <div class="fui-cell-info"></div>
+                            <div class="fui-cell-remark noremark">{template 'diyform/mdiyform'}</div>
+                        </div>
+                        {/loop}
+                    </div>
+                    {/if}
+                    {php $i++;}
+                {/if}
+                {/loop}
+            {/loop}
+            {else}
+                {loop $goods $g}
+                    <a href="{php echo mobileUrl('goods/detail',array('id'=>$g['goodsid']))}">
+
+                        <div class="fui-list goods-list">
+                            <div class="fui-list-media" {if $g['status']==2}style="padding-left:0.5rem;"{/if}>
+                                <img src="{php echo tomedia($g['thumb'])}" class="round">
+                            </div>
+                            <div class="fui-list-inner">
+                                <div class="text goodstitle">{$g['title']}</div>
+                                {if $g['status']==2}<span class="fui-label fui-label-danger">赠品</span>{/if}
+                                {if !empty($g['optionid'])}<div class='subtitle'>{$g['optiontitle']}</div>{/if}
+                            </div>
+                            <div class='fui-list-angle'>&yen; <span class='marketprice'>{php echo $g['price']/$g['total']}<br/>   x{$g['total']}</div>
+                        </div>
+                    </a>
+                    {if !empty($g['diyformdata']) && $g['diyformdata'] != 'false'}
+                    <div class="fui-list">
+                        <div class="fui-list-inner">
+                            <div class="text text-right">
+                                <div class="btn btn-default btn-sm look-diyinfo" hide="1" data="{$i}">查看提交的资料</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fui-cell-group price-cell-group diyinfo_{$i}" style="display: none;">
+                        {php $datas = $g['diyformdata']}
+                        {loop $g['diyformfields'] $key $value}
+                        <div class="fui-cell" >
+                            <div class="fui-cell-label">{php echo $value['tp_name']}</div>
+                            <div class="fui-cell-info"></div>
+                            <div class="fui-cell-remark noremark">{template 'diyform/mdiyform'}</div>
+                        </div>
+                        {/loop}
+                    </div>
+                    {/if}
+                    {php $i++;}
+                {/loop}
+            {/if}
+        </div>
+        <!-- 商品清单 end -->
+
+    </div>
+
+    {if ($order['tmstatus'] == -1 || $order['tmstatus'] == 0) && $order['status']!=-1}
+        <div class='fui-footer'>
+            <div class="transfer_submit" data-status="1">通过</div>
+            <div class="transfer_cancel" data-status="2">不通过</div>
+        </div>
+    {/if}
+
+    <script language='javascript'>
+        require(['biz/order/transfer_member'], function (modal) {
+            FoxUI.according.init();
+            modal.init({id: "{$id}"});
+        });
+    </script>
+</div>
+{template '_footer'}

@@ -1,0 +1,16 @@
+<ul class="menu-head-top">
+    <li {if $_W['controller']=='index'} class="active" {/if}><a href="{php echo enterpriseUrl('index')}">企业概述 <i class="fa fa-caret-right"></i></a></li>
+</ul>
+
+
+<!--
+{if com('verify')}
+{ifp 'shop.verify.store|shop.verify.saler'}
+<div class='menu-header'>O2O</div>
+<ul>
+    {ifp 'shop.verify.store'}<li {if $_W['action'] == 'shop.verify.store'} class="active" {/if}><a href="{php echo enterpriseUrl('shop/verify/store')}">门店管理</a></li>{/if}
+    {ifp 'shop.verify.saler'}<li {if $_W['action'] == 'shop.verify.saler'} class="active" {/if}><a href="{php echo enterpriseUrl('shop/verify/saler')}">店员管理</a></li>{/if}
+</ul>
+{/if}
+{/if}
+-->

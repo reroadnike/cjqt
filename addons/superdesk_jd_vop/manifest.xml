@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="0.6,0.7,0.8">
+    <application setting="true">
+        <name><![CDATA[超级前台-京东VOP平台]]></name>
+        <identifie><![CDATA[superdesk_jd_vop]]></identifie>
+        <version><![CDATA[1.0]]></version>
+        <type><![CDATA[business]]></type>
+        <ability><![CDATA[超级前台-京东VOP平台]]></ability>
+        <description><![CDATA[超级前台-京东 VIP Open Platform]]></description>
+        <author><![CDATA[前海超级前台（深圳）信息技术有限公司]]></author>
+        <url><![CDATA[http://www.superdesk.cn]]></url>
+    </application>
+    <platform>
+        <subscribes>
+        </subscribes>
+        <handles>
+        </handles>
+        <rule embed="false"/>
+        <card embed="false"/>
+    </platform>
+    <bindings>
+        <menu>
+            <entry title="京东参数设置" do="jd_vop_configs_manage" state="" direct="false"/>
+            <entry title="京东商品同步单个" do="jd_vop_product_one" state="" direct="false"/>
+            <entry title="京东商品池同步商品" do="jd_vop_product_page_num_manage" state="" direct="false"/>
+            <entry title="商城分类调整" do="shop_product_category_manage" state="" direct="false"/>
+            <entry title="商城分类财务代码" do="shop_product_category_2_fiscal" state="" direct="false"/>
+            <entry title="商城分类同步JD商品" do="jd_vop_product_manage" state="" direct="false"/>
+            <entry title="京东商品池策略管理" do="page_num" state="" direct="false"/>
+            <entry title="京东金彩对账" do="jd_vop_jincai_get_bill_detail" state="" direct="false"/>
+            <!--<entry title="京东价格更新" do="jd_vop_price_manage" state="" direct="false"/>-->
+            <!--<entry title="京东商品库存" do="jd_vop_stock_manage" state="" direct="false"/>-->
+            <entry title="京东四级地址" do="jd_vop_area_manage" state="" direct="false"/>
+            <entry title="京东调用日志" do="logs" state="" direct="false"/>
+            <!--<entry title="京东任务管理(弃用unSafe)" do="jd_vop_task_manage" state="" direct="false"/>-->
+            <entry title="京东计划任务" do="task_cron" state="" direct="false"/>
+            <entry title="京东余额查询-网络" do="jd_vop_price_get_balance" state="" direct="false"/>
+            <entry title="京东余额查询-本地" do="balance_detail" state="" direct="false"/>
+        </menu>
+    </bindings>
+    <permissions>
+    </permissions>
+    <install><![CDATA[]]></install>
+    <uninstall><![CDATA[]]></uninstall>
+    <upgrade><![CDATA[]]></upgrade>
+</manifest>

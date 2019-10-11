@@ -1,0 +1,37 @@
+{template 'common/header'}
+
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">修复项</div>
+        <div class="panel-body">
+            <form action="./index.php" method="get" class="form-horizontal" role="form">
+                <input type="hidden" name="c" value="site" />
+                <input type="hidden" name="a" value="entry" />
+                <input type="hidden" name="m" value="superdesk_recovery" />
+                <input type="hidden" name="do" value="cc_superdesk_shop_category_check" />
+                <input type="hidden" name="op" value="edit" />
+
+                <div class="form-group">
+                    <input type="checkbox" id="level" name="level" checked /><label for="level">更新分类等级</label>
+                    <input type="checkbox" id="name" name="name" /><label for="name">更新分类名称</label>
+                    <input type="checkbox" id="jd_have" name="jd_have" /><label for="jd_have">添加京东新分类</label>
+                    <input type="checkbox" id="shop_have" name="shop_have" /><label for="shop_have">隐藏商城中京东没有的分类</label>
+                    <button class="btn btn-default"><i class="fa fa-search"></i> 修复</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body table-responsive">
+            错误:
+            {$diff_array}
+            <br/>京东有而商城没有:<br/>
+            {$jd_lack_array}
+            <br/>商城有而京东没有:<br/>
+            {$shop_lack_array}
+        </div>
+    </div>
+</div>
+
+{template 'common/footer'}

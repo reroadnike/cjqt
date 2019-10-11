@@ -1,0 +1,176 @@
+/* 
+* @Author: anchen
+* @Date:   2017-08-03 16:21:16
+* @Last Modified by:   anchen
+* @Last Modified time: 2017-08-10 15:04:49
+*/
+@charset "utf-8";
+.navlist {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-width: 320px;
+    max-width: 750px;
+    height: 2.2rem;
+    background-color: #fff;
+}
+
+.navlist a {
+    float: left;
+    width: 20%;
+    height: 2.2rem;
+    text-align: center;
+    line-height: 2.2rem;
+}
+
+.navitem span {
+    height: 2.2rem;
+    margin: 0 auto;
+    font-size: .7rem;
+    padding-bottom: .4rem;
+    color: #666;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.navitemsel span {
+    color: #1b37a8;
+    border-bottom: 2px solid #1b37a8;
+}
+
+.orderwrap {
+    padding-top: 2.7rem;
+    width: 100%;
+}
+
+.orderlist {
+    width: 100%;
+}
+
+.orderlistitem {
+    position: relative;
+    width: 100%;
+    padding: .75rem .75rem;
+    background-color: #fff;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.orderlist li:last-child {
+    border-bottom: 0;
+}
+
+.orderlistimg {
+    float: left;
+    width: 20%;
+    height: 3.5rem;
+    margin-right: 3%;
+}
+
+.orderinfotop {
+    float: left;
+    width: 77%;
+    font-size: .7rem;
+}
+
+.orderinfotop h3 {
+    float: left;
+    width: 78%;
+    color: #333;
+    font-weight: 600;
+}
+
+.orderinfotop span {
+    float: right;
+    color: #666;
+}
+
+.orderinfotop .textcolor {
+    color: #1b37a8;
+}
+
+.orderroominfo {
+    float: left;
+    width: 77%;
+    height: .8rem;
+    overflow: hidden;
+}
+
+.orderroominfo span {
+    float: left;
+    color: #666;
+    font-size: .6rem;
+    margin-right: 1rem;
+}
+
+.orderroomprice {
+    float: left;
+    width: 77%;
+    color: #333;
+    font-size: .6rem;
+}
+
+/*.orderroomprice span {float: left; margin-right: .5rem;}*/
+.roomdesk {
+    float: left;
+    padding-top: .7rem;
+}
+
+.roomdesk span {
+    float: left;
+}
+
+.roomdesk i {
+    float: left;
+}
+
+.deskicon {
+    width: 0.7rem;
+    height: .7rem;
+    margin-right: 0.2rem;
+    background: url("../images/desk.png") 0 center no-repeat;
+    background-size: 100% .55rem;
+}
+
+.sofaicon {
+    width: 0.7rem;
+    height: .7rem;
+    margin-left: 0.7rem;
+    margin-right: 0.2rem;
+    background: url("../images/sofa.png") 0 center no-repeat;
+    background-size: 100% .55rem;
+}
+
+.detail_order {
+    position: absolute;
+    bottom: .75rem;
+    right: .75rem;
+    float: right;
+    width: 1.75rem;
+    height: 1rem;
+    border: 1px solid #FFB70F;
+    text-align: center;
+    line-height: 0.95rem;
+    color: #FFB70F;
+    font-size: .6rem;
+}
+
+.cancelorder {
+    position: absolute;
+    bottom: .75rem;
+    right: 3rem;
+    float: right;
+    width: 2.75rem;
+    height: 1rem;
+    border: 1px solid #8E8A86;
+    text-align: center;
+    line-height: 0.95rem;
+    color: #8E8A86;
+    font-size: .6rem;
+}
+
+.pagetoplogo {
+    background: #f6f6f6;
+}
+

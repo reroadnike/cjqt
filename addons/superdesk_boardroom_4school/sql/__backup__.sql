@@ -1,0 +1,1 @@
+SELECT * FROM `ims_modules` WHERE name = 'ewei_shopping'

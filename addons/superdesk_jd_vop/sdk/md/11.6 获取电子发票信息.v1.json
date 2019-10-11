@@ -1,0 +1,98 @@
+{
+  "success": true,
+  "resultMessage": "",
+  "resultCode": "0005",
+  "result": [ // Array | List<BizInvoiceActualBillICRespVo> 发票信息列表 | List<BizIvcChainInvoiceRespVo> 发票信息列表, ivcType=4 返回该实体
+    { //List<BizInvoiceActualBillICRespVo>
+      "ivcCode": "114011015609",  // String | 发票代码
+      "ivcNo": "54071",  // String | 发票号
+      "ivcType": 3,  // Integer | 发票类型
+      "ivcContentType": 1,  // Integer | 开票内容
+      "ivcContentName": "  ",  // String | 开票内容名称
+      "ivcTitle": "  ",  // String | 发票抬头
+      "iflag": 1,  // Integer | 发票类别（1.正数；2.负数）
+      "businessId": "46666973970",  // String | 订单号
+      "invoiceTime": "2017-07-13 13:54:00.0",  // String | 开票日期
+      "totalPrice": 11000.00,  // BigDecimal | 开票金额,订单在本发票中的总金额
+      "totalTaxPrice": 0.00,  // BigDecimal | 税额
+      "blueIsn": null,  // String | 红票对应蓝票序列号
+      "isn": "114011015609-54071",  // String | 发票 ISN
+      "remark": null,  // String | 备注
+      "taxRate": 0.17,  // BigDecimal | 税率
+      "fileUrl": "http://storage.jd.com/eicore.fm.jd.com/114011015609-54071.pdf?Expires=2499925659&AccessKey=Qt1OcYqqPZGV3O7X&Signature=a0UBv19idY51oeExFJHRF%2FHiDWg%3D",  // String | 电子票下载地址
+      "yn": 1  // Integer | 作废标识(1,有效；0.作废)
+    },
+    { //List<BizInvoiceActualBillICRespVo>
+      "ivcCode": "114011015609",
+      "ivcNo": "54072",
+      "ivcType": 3,
+      "ivcContentType": 1,
+      "ivcContentName": "  ",
+      "ivcTitle": "  ",
+      "iflag": 1,
+      "businessId": "46666973970",
+      "invoiceTime": "2017-07-13 19:36:00.0",
+      "totalPrice": 10470.22,
+      "totalTaxPrice": 0.00,
+      "blueIsn": null,
+      "isn": "114011015609-54072",
+      "remark": null,
+      "taxRate": 0.17,
+      "fileUrl": "http://storage.jd.com/eicore.fm.jd.com/114011015609-54072.pdf?Expires=2499946159&AccessKey=Qt1OcYqqPZGV3O7X&Signature=pG%2BZzgALuBSy0F5tE2auqRyhzQ8%3D",
+      "yn": 1
+    },
+
+
+    { //List<BizIvcChainInvoiceRespVo> 跟上面的有所不同 下面的假数据是真的假..我自己造的..不是京东文档里的
+      "uuid": "114011015609",  // String | -
+      "invoiceCode": "114011015609",  // String | 发票代码
+      "invoiceNo": "54071",  // String | 发票号码
+      "invoiceDate": "2017-07-13 13:54:00",  // Date | 开票时间
+      "invoiceType": 1,  // Integer | 发票类型 2：增值税电子发票 1：增值税专用发票
+      "checkCode": "",  // String | 校验码
+      "printerNo": "",  // String | 机器编号
+      "buyerName": "",  // String | 购货方发票抬头
+      "buyerTaxNo": "46666973970",  // String | 购货方纳税人识别号
+      "buyerAddress": "",  // String | 购货方纳税人地址
+      "buyerPhone": "",  // String | 购货方电话
+      "buyerBank": "",  // String | 购货方开户行
+      "buyerAccount": "",  // String | 购货方银行账号
+      "password": "",  // String | 密码区
+      "totalAmount": 0.17,  // BigDecimal | 金额合计
+      "totalTaxAmount": 0.17,  // BigDecimal | 税额合计
+      "allAmount": 0.17,  // BigDecimal | 价税合计
+      "sellerName": "",  // String | 销货方名称
+      "sellerTaxNo": "",  // String | 销货方税号
+      "sellerAddress": "",  // String | 销货方地址
+      "sellerPhone": "",  // String | 销货方电话
+      "sellerBank": "",  // String | 销货方银行
+      "sellerAccount": "",  // String | 销货方银行账号
+      "payee": "",  // String | 收款人
+      "reviewer": "",  // String | 复核人
+      "printor": "",  // String | 开票人
+      "remark": "",  // String | 备注
+      "isSaleList": "",  // String | 是否有销货清单
+      "pdf": "",  // String | pdf 下载链接
+      "invoiceState": 1,  // Integer | 发票状态
+      "isRed": "",  // String | 是否红票 true/false
+      "blueCode": "",  // String | 红票对应的蓝票代码
+      "blueNo": "",  // String | 红票对应的蓝票号码
+      "createTime": "2017-07-13 13:54:00",  // Date | 创建时间
+      "detailList": [ // List | 明细列表
+        {
+          "isDiscount" : "",  // String | 是否折扣行 true/false
+          "ivwName" : "",  // String | 货物名称
+          "ivspec" : "",  // String | 规格型号
+          "unit" : "",  // String | 单位
+          "wnumb" : 0.17,  // BigDecimal | 数量
+          "wprice" : 0.17,  // BigDecimal | 单价
+          "amount" : 0.17,  // BigDecimal | 金额
+          "taxRate" : 0.17,  // BigDecimal | 税率
+          "taxAmount" : 0.17,  // BigDecimal | 税额
+          "createTime" : "2017-07-13 13:54:00"  // Date | 创建时间
+        }
+      ]
+    }
+
+  ]
+}

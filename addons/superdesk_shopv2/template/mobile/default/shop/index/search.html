@@ -1,0 +1,49 @@
+
+<style>
+
+    .fui-searchbar {
+        /*position: fixed;*/
+        z-index: 10;
+        height: 2.2rem;
+        padding-right: .5rem;
+        padding-left: .5rem;
+         background: transparent;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        width: 100%;
+        top: 0;
+    }
+
+    .fui-searchbar .searchbar{
+        background: rgba(255, 255, 255, 0);
+    }
+
+
+    .fui-searchbar .searchbar .search-input input[type="search"] {
+        background: rgba(255, 255, 255, 0.76);
+    }
+
+</style>
+<form action="{php echo mobileUrl('goods')}" method="post">
+	<div class="fui-searchbar bar">
+		<div class="searchbar"><!-- center -->
+			<!--<input type="submit" class="searchbar-cancel searchbtn" value="搜索" />-->
+			<div class="search-input">
+				<i class="icon icon-search"></i>
+				<input type="search" placeholder="输入关键字,如:进口 牛奶" class="search" name="keywords">
+			</div>
+		</div>
+	</div>
+</form>
+<script>
+	$(function () {
+		$("input[name='keywords']").focusin(function () {
+			$(this).removeAttr('placeholder');
+		});
+		$("input[name='keywords']").focusout(function () {
+			$(this).attr('placeholder','输入关键字,如:进口 牛奶');
+		});
+	});
+
+
+</script>

@@ -1,0 +1,163 @@
+关于父单、子单运费的说明：
+1.如果出现拆单情景，基础运费也会进行按比例分摊到子单上;在返回的订单详细数据中;如果返回的订单类型是父单，总运费 和 基础运费是 全部子单运费的总合;
+2.在拆单时，基础运费会比例分摊到各子单上，偏远超重附加运费，只会随sku进行分摊;
+
+说明Case 1:
+订单A ; 总运费是F，基础运费是B ,其中有一个sku1 需要收取偏远超重附加运费R,该订单购买了num件这个sku1; 该订单生产时进行了拆单，拆分成了 C1和C2, 其中sku1商品被拆分到C2订单中了;
+子单C1的总运费是F1,基础运费是B1;子单C2的总运费是F2,基础运费是B2;
+这时有以下关系：
+
+总运费是F = 子单C1的总运费是F1 +子单C2的总运费是F2;
+
+总运费是F = 基础运费是B + sku1偏远超重附加运费R  *  sku1的购买数量num;
+
+基础运费是B =子单C1的基础运费是B1 + 子单C2的基础运费是B2
+
+子单C1的总运费是F1 = 子单C1的基础运费是B1 （因为子单C1没有收取偏远超重附加运费的sku）
+
+子单C2的总运费是F2  = 子单C2的基础运费是B2 +  sku1偏远超重附加运费R *  sku1的购买数量num;
+
+
+
+（1）如果该订单编号为父订单，则返回拆分订单信息
+"result": {
+"pOrder": {
+"jdOrderId": 2302507708,
+"orderPrice": 18.6,
+"freight":0(合同配置未配置，始终返回0),
+"sku": [
+{
+"skuId": 831058,
+"num": 1,
+"category": 9919,
+"price": 9.8,
+"type": 0,
+"oid":0,
+"name": "雨花泽（Yuhuaze） YHZ-94001 黄铜锁20 工艺精湛坚固耐用",
+"tax": 17,
+"taxPrice": 1.42,
+"nakedPrice": 8.38
+},
+{
+"skuId": 892726,
+"num": 1,
+"category": 9435,
+"price": 3.8,
+"type": 1,
+"oid":831058,
+"name": "红星小二锅头 56度 100ml",
+"tax": 17,
+"taxPrice": 0.55,
+"nakedPrice": 3.25,
+
+}
+]
+},
+"cOrder": [
+{
+"pOrder": 2302507708,
+"orderState": 0,
+"jdOrderId": 2302541052,
+"state": 2,
+"submitState": 1,
+"orderPrice": 3.8,
+"freight":0 (合同配置未配置，始终返回0),
+"orderNakedPrice": 3.25,
+"type": 2,
+"sku": [
+{
+"skuId": 892726,
+"num": 1,
+"category": 9435,
+"price": 3.8,
+"type": 1,
+"oid":831058,
+"name": "红星小二锅头 56度 100ml",
+"tax": 17,
+"taxPrice": 0.55,
+"nakedPrice": 3.25
+}
+],
+"orderTaxPrice": 0.55
+},
+{
+"pOrder": 2302507708,
+"orderState": 0,
+"jdOrderId": 2302541060,
+"state": 2,
+"submitState": 1,
+"orderPrice": 9.8,
+"freight":0(合同配置未配置，始终返回0),
+"orderNakedPrice": 8.38,
+"type": 2,
+"sku": [
+{
+"skuId": 831058,
+"num": 1,
+"category": 9919,
+"price": 9.8,
+"type": 0,
+"oid":0,
+"name": "雨花泽（Yuhuaze） YHZ-94001 黄铜锁20 工艺精湛坚固耐用",
+"tax": 17,
+"taxPrice": 1.42,
+"nakedPrice": 8.38
+
+}
+],
+"orderTaxPrice": 1.42
+}
+],
+"orderState": 1,
+"submitState": 1,
+"orderNakedPrice": 11.63,
+"type": 1,
+"orderTaxPrice": 1.97
+}
+
+（2）如果该订单编号为子订单，则返回子订单详细信息
+{
+"success":true,
+"resultMessage":"",
+"resultCode":null,
+"result":{
+"pOrder":0,
+"orderState":1,
+"jdOrderId":42596254319,
+"state":0,
+"freight":0,
+"submitState":0,
+"orderPrice":124.5,
+"freight":0(合同配置了才返回),
+"baseFreight ":"基础运费"
+"orderNakedPrice":106.41,
+"sku":[
+{
+"skuId":852431,
+"num":1,
+"category":690,
+"price":124.50,
+"name":"罗技（Logitech） M545 无线鼠标 黑色",
+"tax":17,
+"taxPrice":18.09,
+"nakedPrice":106.41,
+"type":0,
+"oid":0
+},
+{
+"skuId":852431,
+"num":1,
+"category":690,
+"price":0,
+"name":"罗技（Logitech） M545 无线鼠标 黑色",
+"tax":0,
+"taxPrice":0,
+"nakedPrice":0,
+"type":2,
+"oid":852431
+}
+],
+"type":2,
+"orderTaxPrice":18.09
+}
+}

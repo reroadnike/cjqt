@@ -1,0 +1,39 @@
+{template '__header'}
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/myOrder.css" />
+
+<div class="headerdiv">
+    <div class="headPortrait">
+        <img src="{$mc_profile['avatar']}" onerror="this.src={MODULE_URL}template/mobile/images/profile/man@3x.png"/>
+        <span>{$mc_profile['nickname']}</span>
+    </div>
+</div>
+
+<div class="myordernav clearfix">
+    <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'myorder' , 'status' => 1))}" class="myordernavitem">
+        <div class="listicon">
+            <img src="{MODULE_URL}template/mobile/images/yifukuan.png" alt="" />
+            <em class="bubble"></em>
+        </div>
+        <span>已付款</span>
+    </a>
+    <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'myorder' , 'status' => 0))}" class="myordernavitem">
+        <div class="listicon">
+            <img src="{MODULE_URL}template/mobile/images/daifukuan.png" alt="" />
+            <em class="bubble"></em>
+        </div>
+        <span>待付款</span>
+    </a>
+    <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'myorder' , 'status' => -1))}" class="myordernavitem">
+        <div class="listicon">
+            <img src="{MODULE_URL}template/mobile/images/yiguoqi.png" alt="" />
+            <em class="bubble"></em>
+        </div>
+        <span>已取消</span>
+    </a>
+</div>
+
+
+
+{template '__nav__'}
+{template '__footer'}

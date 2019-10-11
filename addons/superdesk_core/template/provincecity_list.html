@@ -1,0 +1,128 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="{php echo $this->createWebUrl('provincecity', array('op' => 'list'))}">省市信息管理</a></li>
+    <li><a href="{php echo $this->createWebUrl('provincecity', array('op' => 'edit'))}">添加省市信息</a></li>
+</ul>
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                省市信息管理
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <!--<th style="width:5rem;">显示顺序</th>-->
+                        <!--<th style="width:10%;">ID</th>-->
+                        <th style="width:5%;"><!-- 类型(1-代表省份，2-代表城市) --></th>
+                        <th style="width:15%;">省份/城市名称</th>
+                        <th style="width:10%;">省份编码</th>
+                        <th style="width:10%;">城市编码</th>
+                        <th style="width:10%;">名称首字母</th>
+                        <!--<th style="width:10%;">创建人</th>-->
+                        <th style="width:12%;">创建时间</th>
+                        <!--<th style="width:10%;">修改人</th>-->
+                        <!--<th style="width:10%;">修改时间</th>-->
+                        <!--<th style="width:10%;">是否可用</th>-->
+                        <!--<th style="width:10%;">创建时间</th>-->
+                        <th style="width:4%;">Enabled</th>
+                        <th style="text-align:right; width:10%;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+
+                        <!--<td><input type="text" class="form-control" name="displayorder[{$item['id']}]"-->
+                                   <!--style="width: 5rem;" value="{$item['displayorder']}"></td>-->
+
+                        <!--<td>{$item['ID']}</td>-->
+                        <td>
+                            <!--{php //echo $item['type']}-->
+                            <a href="javascript:;"><i class="fa fa-chevron-down"></i></a>
+                        </td>
+                        <td>{$item['name']}</td>
+                        <td>{$item['provinceCode']}</td>
+                        <td>{$item['cityCode']}</td>
+                        <td>{$item['description']}</td>
+                        <!--<td>{$item['creator']}</td>-->
+                        <td>{$item['createTime']}</td>
+                        <!--<td>{$item['modifier']}</td>-->
+                        <!--<td>{$item['modifyTime']}</td>-->
+                        <!--<td>{$item['isEnabled']}</td>-->
+                        <!--<td>{$item['createtime_']}</td>-->
+                        <td>{if $item['enabled'] == 1}启用{else}屏蔽{/if}</td>
+                        <td style="text-align:right;">
+                            <a href="{php echo $this->createWebUrl('provincecity', array('id' => $item['id'], 'op' => 'edit'));}"
+                               class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="编辑"><i
+                                    class="fa fa-pencil">&nbsp;编辑</i></a>
+                            <!-- &nbsp;&nbsp;
+                            <a href="{php echo $this->createWebUrl('provincecity', array('id' => $item['id'], 'op' => 'delete'));}"
+                               class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title=""
+                               onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" data-original-title="删除">
+                                <i class="fa fa-times">&nbsp;删除</i> </a>
+                            -->
+                        </td>
+                    </tr>
+
+
+
+                    {if $item['city_items']['total'] == 0}
+                    <tr>
+                        <td colspan="5" style="text-align: left;">
+                            <div style="padding-left:50px;height:30px;line-height:30px;background:url('./resource/images/bg_repno.gif') no-repeat -245px -545px;">
+                                无
+                            </div>
+                        </td>
+                    </tr>
+                    {else}
+                    {loop $item['city_items']['data'] $item_x}
+                    <tr>
+                        <td>
+                            <div style="padding-left:50px;height:30px;line-height:30px;background:url('./resource/images/bg_repno.gif') no-repeat -245px -545px;">
+                            </div>
+                        </td>
+                        <td style="padding-left: 3rem;">{$item_x['name']} </td>
+                        <td>{$item_x['provinceCode']}</td>
+                        <td>{$item_x['cityCode']}</td>
+                        <td>{$item_x['description']}</td>
+                        <td>{$item_x['createTime']}</td>
+                        <td>{if $item_x['enabled'] == 1}启用{else}屏蔽{/if}</td>
+                        <td style="text-align:right;">
+                            <a href="{php echo $this->createWebUrl('provincecity', array('id' => $item_x['id'], 'op' => 'edit'));}"
+                               class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="编辑"><i
+                                    class="fa fa-pencil">&nbsp;编辑</i></a>
+                            <!-- &nbsp;&nbsp;
+                            <a href="{php echo $this->createWebUrl('provincecity', array('id' => $item_x['id'], 'op' => 'delete'));}"
+                               class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title=""
+                               onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" data-original-title="删除">
+                                <i class="fa fa-times">&nbsp;删除</i> </a>
+                            -->
+                        </td>
+                    </tr>
+                    {/loop}
+                    {/if}
+
+
+                    {/loop}
+                    <tr>
+                        <td>
+                            <!--<input name="submit" type="submit" class="btn btn-primary" value="提交">-->
+                            共{$total}条
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                        </td>
+                        <td colspan="7">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

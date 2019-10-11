@@ -1,0 +1,46 @@
+{template '_header'}
+<div class="page-heading"> 
+    <h2>快递管理</h2>
+</div>
+<form action="./index.php" method="get" class="form-horizontal form-search" role="form">
+    <input type="hidden" name="c" value="site" />
+    <input type="hidden" name="a" value="entry" />
+    <input type="hidden" name="m" value="superdesk_shopv2" />
+    <input type="hidden" name="do" value="web" />
+    <input type="hidden" name="r"  value="order.expresslist" />
+</form>
+
+{if count($list)>0}
+<table class="table table-hover table-responsive"> 
+    <thead class="navbar-inner">
+        <tr>
+            <th style="width:60px;text-align:center;">排序</th>
+            <th style="width:60px;">名称</th>
+            <th style="width:70px;" >代码</th>
+        </tr>
+    </thead>
+    <tbody>
+        {loop $list $item}
+        <tr>
+            <td style='text-align:center;'>
+                {ifp 'order.express.edit'}
+                <a href='javascript:;' data-toggle='ajaxEdit' data-href="{php echo webUrl('order/expresslist/change',array('type'=>'displayorder','id'=>$item['id']))}" >{$item['displayorder']}</a>
+                {else}
+                {$item['displayorder']} 
+                {/if}
+            </td>
+            <td>{$item['name']}</td>
+            <td>{$item['code']}</td>
+        </tr>
+    {/loop}
+    </tbody>
+</table>
+{$pager}
+{else}
+<div class='panel panel-default'>
+  <div class='panel-body' style='text-align: center;padding:30px;'>
+      暂时没有任何快递信息!
+  </div>
+</div>
+{/if}
+{template '_footer'}

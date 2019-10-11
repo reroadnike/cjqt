@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="0.6,0.7,0.8">
+	<application setting="true">
+		<name><![CDATA[超级前台-会议室预约(V学校)]]></name>
+		<identifie><![CDATA[superdesk_boardroom_4school]]></identifie>
+		<version><![CDATA[1.0]]></version>
+		<type><![CDATA[business]]></type>
+		<ability><![CDATA[超级前台-会议室预约(V学校)]]></ability>
+		<description><![CDATA[超级前台-会议室预约(V学校)]]></description>
+		<author><![CDATA[前海超级前台（深圳）信息技术有限公司]]></author>
+		<url><![CDATA[http://www.avic-s.com]]></url>
+	</application>
+	<platform>
+		<subscribes>
+			<message type="text"/>
+			<message type="image"/>
+			<message type="voice"/>
+			<message type="video"/>
+			<message type="shortvideo"/>
+			<message type="location"/>
+			<message type="link"/>
+			<message type="subscribe"/>
+			<message type="unsubscribe"/>
+			<message type="qr"/>
+			<message type="trace"/>
+			<message type="click"/>
+			<message type="view"/>
+			<message type="merchant_order"/>
+		</subscribes>
+		<handles>
+			<message type="image"/>
+			<message type="voice"/>
+			<message type="video"/>
+			<message type="shortvideo"/>
+			<message type="location"/>
+			<message type="link"/>
+			<message type="subscribe"/>
+			<message type="qr"/>
+			<message type="trace"/>
+			<message type="click"/>
+			<message type="merchant_order"/>
+			<message type="text"/>
+		</handles>
+		<rule embed="true"/>
+		<card embed="false"/>
+	</platform>
+	<bindings>
+		<cover>
+			<entry title="微信入口" do="cover" state="" direct="false"/>
+		</cover>
+		<rule>
+			<entry title="规则列表" do="rule" state="" direct="false"/>
+		</rule>
+		<menu><!--call="getMenus"-->
+
+			<entry title="概览" do="overview" state="" direct="false"/>
+
+			<!--<entry title="预约服务订单(管理)" do="boardroom_appointment?op=list&amp;mode=manage" state="" direct="false"/>-->
+			<!--<entry title="预约服务订单(审核)" do="boardroom_appointment?op=list&amp;mode=auditing" state="" direct="false"/>-->
+
+			<entry title="预约服务订单(管理)" do="boardroom_appointment" state="manage" direct="false"/>
+			<entry title="预约服务订单(审核)" do="boardroom_appointment_auditing" state="auditing" direct="false"/>
+
+			<entry title="附加服务订单" do="order" state="" direct="false"/>
+
+			<entry title="附加服务分类" do="category" state="" direct="false"/>
+			<entry title="附加服务管理" do="goods" state="" direct="false"/>
+
+			<entry title="楼宇管理" do="building_structures" state="" direct="false"/>
+			<entry title="单元属性" do="building_attribute" state="" direct="false"/>
+			<entry title="会议室管理" do="boardroom_manage" state="" direct="false"/>
+			<entry title="设备管理" do="boardroom_equipment" state="" direct="false"/>
+
+            <entry title="公告管理" do="announcement" state="" direct="false"/>
+            <entry title="投诉建议" do="report" state="" direct="false"/>
+
+
+			<entry title="幻灯片管理" do="adv" state="" direct="false"/>
+			<entry title="维权与告警" do="notice" state="" direct="false"/>
+
+			<entry title="物流管理" do="express" state="" direct="false"/>
+			<entry title="配送方式" do="dispatch" state="" direct="false"/>
+		</menu>
+		<home>
+            <!-- list -->
+			<entry title="会议预约" do="boardroom" state="" direct="false"/>
+		</home>
+		<profile>
+			<entry title="我的订单" do="myorder" state="" direct="false"/>
+		</profile>
+		<shortcut>
+			<entry title="快捷功能" do="shortcut" state="" direct="false"/>
+		</shortcut>
+		<function>
+			<entry title="独立功能" do="direct" state="" direct="false"/>
+		</function>
+	</bindings>
+	<permissions>
+	</permissions>
+	<install><![CDATA[]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

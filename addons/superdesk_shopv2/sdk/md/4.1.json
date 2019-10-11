@@ -1,0 +1,49 @@
+//request
+{
+  "OrderCode": "",
+  "ShipperCode": "ZTO",
+  "LogisticCode": "638650888018"
+},
+//无物流轨迹：
+{
+  "EBusinessID": "1237100",
+  "Traces": [],
+  "OrderCode": "",
+  "ShipperCode": "ZTO",
+  "LogisticCode": "638650888018",
+  "Success": true,
+  "Reason": "此单无物流信息"
+},
+//有物流轨迹：
+{
+  "EBusinessID": "1237100",
+  "OrderCode": "",
+  "ShipperCode": "ZTO",
+  "LogisticCode": "638650888018",
+  "Success": true,
+  "CallBack":"",
+  "State": 3,
+  "Reason": null,
+  "Traces": [
+    {
+      "AcceptTime": "2014-06-24 20:18:58",
+      "AcceptStation": "已收件[深圳市]",
+      "Remark": null
+    },
+    {
+      "AcceptTime": "2014-06-24 20:55:28",
+      "AcceptStation": "快件在 深圳 ,准备送往下一站 深圳集散中心 [深圳市]",
+      "Remark": null
+    },
+    {
+      "AcceptTime": "2014-06-25 10:23:03",
+      "AcceptStation": "派件已签收[深圳市]",
+      "Remark": null
+    },
+    {
+      "AcceptTime": "2014-06-25 10:23:03",
+      "AcceptStation": "签收人是：已签收[深圳市]",
+      "Remark": null
+    }
+  ]
+}

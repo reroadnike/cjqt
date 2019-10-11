@@ -1,0 +1,140 @@
+{template '_header'}
+<div class='fui-page  fui-page-current'>
+    <div class="fui-header">
+        <div class="fui-header-left">
+            <a class="back"></a>
+        </div>
+        <div class="title">{if empty($invoice)}新建发票{else}编辑发票{/if}</div>
+        <div class="fui-header-right">&nbsp;</div>
+    </div>
+    <div class='fui-content'>
+        <form method='post' class='form-ajax' >
+            <input type='hidden' id='invoiceid' value="{$invoice['id']}"/>
+
+            <div class="fui-title">发票类型</div>
+            <div class='fui-cell-group'>
+                <div class="fui-list">
+                    <div class="fui-list-media">
+                        <input type="radio" value="1" class="fui-radio fui-radio-success" name="invoiceType" {if $invoice['invoiceType'] == 1}checked="checked"{/if} />
+                    </div>
+                    <div class="fui-list-inner">
+                        <div class="subtitle">增值税普票</div>
+                    </div>
+                    <!-- 发票类型仅需“增值税普票”“增值税专票”，电子发票选项可去掉
+                    <div class="fui-list-media">
+                        <input type="radio" value="" class="fui-radio fui-radio-success" name="invoiceType" disabled />
+                    </div>
+                    <div class="fui-list-inner">
+                        <div class="subtitle">电子普票</div>
+                    </div>
+                    -->
+                    <div class="fui-list-media">
+                        <input type="radio" value="2" class="fui-radio fui-radio-success" name="invoiceType" {if $invoice['invoiceType'] == 2}checked="checked"{/if} />
+                    </div>
+                    <div class="fui-list-inner">
+                        <div class="subtitle">增值税专票</div>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 1rem">&nbsp;</div>
+            <div class="fui-title">发票抬头</div>
+            <div class='fui-cell-group'>
+                <div class="fui-list">
+                    <div class="fui-list-media">
+                        <input type="radio" value="4" class="fui-radio fui-radio-success" name="selectedInvoiceTitle" {if $invoice['selectedInvoiceTitle'] == 4}checked="checked"{/if}>
+                    </div>
+                    <div class="fui-list-inner">
+                        <div class="subtitle">个人</div>
+                    </div>
+                    <div class="fui-list-media">
+                        <input type="radio" value="5" class="fui-radio fui-radio-success" name="selectedInvoiceTitle" {if $invoice['selectedInvoiceTitle'] == 5}checked="checked"{/if} />
+                    </div>
+                    <div class="fui-list-inner">
+                        <div class="subtitle">单位</div>
+                    </div>
+                </div>
+                <div class='fui-cell'>
+                    <div class='fui-cell-info'>
+                        <input type="text" name='companyName' value="{$invoice['companyName']}" placeholder="请在此填写发票抬头" class="fui-input"/>
+                    </div>
+                </div>
+                <div class='fui-cell Rule_1_5'>
+                    <div class='fui-cell-info'>
+                        <input type="text" name='taxpayersIDcode' value="{$invoice['taxpayersIDcode']}" placeholder="请在此填写纳税人识别号" class="fui-input"/>
+                    </div>
+                </div>
+
+                <!--增值税专票 单位 start -->
+                <div class='fui-cell Rule_2_5'>
+                    <div class='fui-cell-info'>
+                        <input type="text" name='invoiceAddress' value="{$invoice['invoiceAddress']}" placeholder="请在此填写注册地址" class="fui-input"/>
+                    </div>
+                </div>
+                <div class='fui-cell Rule_2_5'>
+                    <div class='fui-cell-info'>
+                        <input type="text" name='invoicePhone' value="{$invoice['invoicePhone']}" placeholder="请在此填写注册电话" class="fui-input"/>
+                    </div>
+                </div>
+                <div class='fui-cell Rule_2_5'>
+                    <div class='fui-cell-info'>
+                        <input type="text" name='invoiceBank' value="{$invoice['invoiceBank']}" placeholder="请在此填写开户银行" class="fui-input"/>
+                    </div>
+                </div>
+                <div class='fui-cell Rule_2_5'>
+                    <div class='fui-cell-info'>
+                        <input type="text" name='invoiceAccount' value="{$invoice['invoiceAccount']}" placeholder="请在此填写银行账号" class="fui-input"/>
+                    </div>
+                </div>
+                <!--增值税专票 单位 end -->
+            </div>
+
+            <div style="height: 1rem">&nbsp;</div>
+            <div class="fui-title">发票内容</div>
+            <!-- disabled -->
+            <div class="fui-list-group">
+                <div class="fui-list">
+                    <div class="fui-list-media">
+                        <input type="radio" value="1" class="fui-radio fui-radio-success" name="invoiceContent" {if $invoice['invoiceContent'] == 1}checked="checked"{/if} />
+                    </div>
+                    <div class="fui-list-inner">
+                        <div class="subtitle">明细</div>
+                    </div>
+                </div>
+
+                <!--
+                <div class="fui-list">
+                    <div class="fui-list-media">
+                        <input type="radio" value="3" class="fui-radio fui-radio-success" name="invoiceContent" {if $invoice['invoiceContent'] == 3}checked="checked"{/if}  />
+                    </div>
+                    <div class="fui-list-inner">
+                        <div class="subtitle">电脑配件</div>
+                    </div>
+                </div>
+                <div class="fui-list">
+                    <div class="fui-list-media">
+                        <input type="radio" value="19" class="fui-radio fui-radio-success" name="invoiceContent" {if $invoice['invoiceContent'] == 19}checked="checked"{/if}  />
+                    </div>
+                    <div class="fui-list-inner">
+                        <div class="subtitle">耗材</div>
+                    </div>
+                </div>
+                <div class="fui-list">
+                    <div class="fui-list-media">
+                        <input type="radio" value="22" class="fui-radio fui-radio-success" name="invoiceContent" {if $invoice['invoiceContent'] == 22}checked="checked"{/if}  />
+                    </div>
+                    <div class="fui-list-inner">
+                        <div class="subtitle">办公用品</div>
+                    </div>
+                </div>
+                -->
+            </div>
+            <a id="btn-submit" class='external btn btn-danger block'>保存发票</a>
+        </form>
+    </div>
+</div>
+<script language='javascript'>
+    require(['biz/member/invoice'], function (modal) {
+        modal.initPost();
+    });
+</script>
+{template '_footer'}

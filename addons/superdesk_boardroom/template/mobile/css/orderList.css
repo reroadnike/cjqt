@@ -1,0 +1,23 @@
+/*
+* @Author: anchen
+* @Date:   2017-08-03 16:21:16
+* @Last Modified by:   anchen
+* @Last Modified time: 2017-08-03 17:24:27
+*/
+@charset "utf-8";
+.navlist {position: fixed; top: 0; width: 100%; min-width: 320px; max-width: 750px; height: 2.2rem; background-color: #fff;}
+.navlist a {float: left; width: 33.33333%; height: 2.2rem;}
+.navitem span {display: block;width: 60%; height: 2.2rem; margin: 0 auto; font-size: .7rem; color: #666; text-align: center; line-height: 2.2rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.navitemsel span {color: #1b37a8; border-bottom: 2px solid #1b37a8;}
+.orderwrap {padding-top: 2.7rem; width: 100%;}
+.orderlist {width: 100%;}
+.orderlistitem {width: 100%; padding: .5rem .75rem; background-color: #fff;}
+.orderlistimg {float: left; width: 20%; height: 3.5rem; margin-right: 3%;}
+.orderinfotop {float: left; width: 77%; font-size: .7rem;}
+.orderinfotop h3 {float: left; width: 78%; color: #333; font-weight: 600;}
+.orderinfotop span {float: right; color: #666;}
+.orderinfotop .textcolor {color: #1b37a8;}
+.orderroominfo {float: left; width: 77%; height: .8rem; overflow: hidden;}
+.orderroominfo span {float: left; color: #666; font-size: .6rem; margin-right: 1rem;}
+.orderroomprice {float: left; width: 77%; margin-top: .7rem; color: #333; font-size: .6rem;}
+.orderroomprice span {float: left; margin-right: .5rem;}

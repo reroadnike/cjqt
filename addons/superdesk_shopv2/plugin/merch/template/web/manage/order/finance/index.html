@@ -1,0 +1,162 @@
+{template '_header'}
+<style type='text/css'>
+    .trhead td {  background:#efefef;text-align: center}
+    .trbody td {  text-align: center; vertical-align:top;border-left:1px solid #f2f2f2;overflow: hidden; font-size:12px;}
+    .trorder { background:#f8f8f8;border:1px solid #f2f2f2;text-align:left;}
+    .ops { border-right:1px solid #f2f2f2; text-align: center;}
+</style>
+
+<div class="page-heading">
+
+    <h2>订单财务管理</h2>
+
+    <span>订单数:  <span class='text-danger'>{$total}</span> 订单金额:  <span class='text-danger'>{$totalmoney}</span> {if !empty($magent['nickname'])}订单推广人:  <span class='text-danger'>{$magent['nickname']}</span>{/if}</span>
+
+</div>
+
+<form action="./superdesk_shopv2_merchant.php" method="get" class="form-horizontal table-search" role="form">
+    <input type="hidden" name="c" value="site" />
+    <input type="hidden" name="a" value="entry" />
+    <input type="hidden" name="m" value="superdesk_shopv2" />
+    <input type="hidden" name="do" value="web" />
+    <input type="hidden" name="r" value="order.finance{$st}" />
+    <input type="hidden" name="status" value="{$status}" />
+    <div class="page-toolbar row m-b-sm m-t-sm">
+        <div class="col-sm-6">
+
+            {if $st == '.status3'}
+            <select name='press_type'  class='form-control  input-sm select-md'   style="width:95px;padding:0 5px;"  >
+
+                <option value='-1' {if $_GPC['press_type']=='-1'}selected{/if}>催款状态</option>
+                <option value='0' {if $_GPC['press_type']=='0'}selected{/if}>未催款</option>
+                <option value='1' {if $_GPC['press_type']=='1'}selected{/if}>业务催款</option>
+                <option value='2' {if $_GPC['press_type']=='2'}selected{/if}>财务催款</option>
+            </select>
+            {/if}
+
+            <select name='searchtime'  class='form-control  input-sm select-md'   style="width:90px;padding:0 5px;"  >
+                <option value=''>不按时间</option>
+                <option value='createtime' {if $_GPC['searchtime']=='createtime'}selected{/if}>下单时间</option>
+                <option value='create_invoice_time' {if $_GPC['searchtime']=='create_invoice_time'}selected{/if}>开票时间</option>
+            </select>
+
+            {php echo tpl_form_field_daterange('time', array('starttime'=>date('Y-m-d H:i', $starttime),'endtime'=>date('Y-m-d H:i', $endtime)),true);}
+        </div>
+
+        <div class="col-sm-6 pull-right">
+
+            <select name='searchfield'  class='form-control  input-sm select-md'   style="width:95px;padding:0 5px;"  >
+
+                <option value='ordersn' {if $_GPC['searchfield']=='ordersn'}selected{/if}>订单编号</option>
+                <option value='invoice_sn' {if $_GPC['searchfield']=='invoice_sn'}selected{/if}>发票号</option>
+                <option value='price' {if $_GPC['searchfield']=='price'}selected{/if}>订单金额</option>
+                <option value='enterprise_name' {if $_GPC['searchfield']=='enterprise_name'}selected{/if}>企业名称</option>
+                <option value='member' {if $_GPC['searchfield']=='member'}selected{/if}>会员信息</option>
+                <option value='address' {if $_GPC['searchfield']=='address'}selected{/if}>收件人信息</option>
+            </select>
+            <div class="input-group">
+                <input type="text" class="form-control input-sm"  name="keyword" value="{$_GPC['keyword']}" placeholder="请输入关键字"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-sm btn-primary" type="submit">搜索</button>
+                    <button type="submit" name="export" value="1" class="btn btn-success btn-sm">导出</button>
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+
+{if count($list)>0}
+<table class='table table-responsive' style='table-layout: fixed;'>
+    <tr style='background:#f8f8f8'>
+        <td style='width:120px;text-align: center;border-left:1px solid #f2f2f2;'>订单编号</td>
+        <td style='width:100px;text-align: center;border-left:1px solid #f2f2f2;'>商户名称</td>
+        <td style='width:70px;text-align: center;'>企业名称</td>
+        <td style='width:70px;text-align: center;'>买家信息</td>
+        <td style='width:50px;text-align: center;'>订单金额</td>
+        <td  style='width:100px;text-align: center;'>时间</td>
+        <td style='width:60px;text-align: center;'>支付方式</td>
+        <td style='width:50px;text-align: center;'>配送方式</td>
+        <td style='width:50px;text-align: center'>状态</td>
+        <td style='width:50px;text-align: center'>操作</td>
+
+    </tr>
+    {loop $list $item}
+    <tr class='trbody'>
+
+        <td >
+            <a href="{php echo merchUrl('order/finance/detail',array('id'=>$item['orderid']))}"> {$item['ordersn']}</a>
+            {if $item['express'] == 'jd'} {if !empty($item['expresssn'])} <br/>京东单号:{$item['expresssn']} {/if} {/if}
+        </td>
+
+        <td >
+            {$item['merchname']}
+        </td>
+
+        <td >
+            {$item['enterprise_name']}
+        </td>
+
+        <td >
+            {$item['addressdata']['realname']}<br/>
+            {$item['addressdata']['mobile']}
+        </td>
+
+        <td >
+            ￥{$item['price']}
+        </td>
+
+        <td >
+            创建时间：<br/>
+            {$item['createtime']}
+            {if !empty($item['finishtime'])}
+            <br/>完成时间:<br/>
+            {$item['finishtime']}
+            {/if}
+        </td>
+
+        <td >
+            {if $item['statusvalue'] > 0}
+            <label class='label label-{$item['css']}'>{$item['paytype']}</label>
+            {else if $item['statusvalue'] == 0}
+            {if $item['paytypevalue']!=3}
+            <label class='label label-default'>未支付</label>
+            {else}
+            <label class='label label-default'>企业月结</label>
+            {/if}
+            {else if $item['statusvalue'] == -1}
+            <label class='label label-default'>{$item['paytype']}</label>
+            {/if}
+        </td>
+
+        <td >
+            <span style='margin-top:5px;display:block;'>{$item['dispatchname']}</span>
+        </td>
+
+        <td >
+            <span class='text-{$item['statuscss']}'>{$item['status']}</span>
+        </td>
+
+        <td >
+            {ifp 'order.finance.edit'}
+            <a  class='btn btn-default btn-sm' href="{php echo merchUrl('order/finance/edit', array('id' => $item['id']))}" title="编辑"><i class='fa fa-edit'></i> 编辑</a>
+            {/if}
+        </td>
+    </tr>
+    {/loop}
+</table>
+<div style="text-align:right;width:100%;">
+    {$pager}
+</div>
+{else}
+
+<div class='panel panel-default'>
+    <div class='panel-body' style='text-align: center;padding:30px;'>
+        暂时没有任何财务信息!
+    </div>
+</div>
+{/if}
+
+{template '_footer'}

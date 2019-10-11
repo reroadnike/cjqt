@@ -1,0 +1,107 @@
+{template 'common/header'}
+
+{template '__nav-tabs_system__'}
+
+<div class="alert alert-info" >
+    以下为正式数据库数据<br/>
+    <ol>
+        <li>与华锐协商过，营业执照、营业执照地址、税务登记证、组织机构代码证、统一信用代码 JD省、JD市、JD区、JD街道 JD省code、JD市code、JD区code、JD街道code 不导入，基本上就不用导入了，直接在中航超级前台同步</li>
+    </ol>
+</div>
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                #list#
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:5%;">企业<br/>ID</th>
+
+                        <th style="width:25%;">企业名称<br/>企业编号<br/>办公地址<br/>总机/传真</th>
+
+                        <th style="width:30%;">营业执照<br/>营业执照地址<br/>税务登记证<br/>组织机构代码证<br/>统一信用代码</th>
+
+                        <th style="width:5%;">企业状态<br/>1:正常<br/>0:过期</th>
+
+                        <th style="width:8%;">创建时间<br/>到期时间</th>
+
+                        <th style="width:5%;">JD省<br/>JD市<br/>JD区<br/>JD街道</th>
+
+                        <th style="width:5%;">JD省code<br/>JD市code<br/>JD区code<br/>JD街道code</th>
+                        <th style="width:3%;">Mapping</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+                        <td>{$item['e_id']}</td>
+
+                        <td>
+                            {$item['e_name']}<br/>
+                            {$item['e_number']}<br/>
+                            {$item['e_office_address']}<br/>
+                            {$item['e_switchboard']}&nbsp;/&nbsp;{$item['e_fax']}
+                        </td>
+
+                        <td>
+                            {$item['e_business_license']}<br/>
+                            {$item['e_business_license_address']}<br/>
+                            {$item['e_tax_registration_certificate']}<br/>
+                            {$item['e_organization_code_certificate']}<br/>
+                            {$item['e_uniform_credit_code']}
+                        </td>
+
+                        <td>
+                            {if $item['e_status'] ==1}正常{else}过期{/if}
+                        </td>
+
+                        <td>{$item['e_ctime']}<br/>{$item['e_end_time']}</td>
+
+                        <td>
+                            {if empty($item['e_province_name'])}--/--{else}{$item['e_province_name']}{/if}
+                            <br/>
+                            {if empty($item['e_city_name'])}--/--{else}{$item['e_city_name']}{/if}
+                            <br/>
+                            {if empty($item['e_area_name'])}--/--{else}{$item['e_area_name']}{/if}
+                            <br/>
+                            {if empty($item['e_street_name'])}--/--{else}{$item['e_street_name']}{/if}
+                        </td>
+
+                        <td>
+                            {if empty($item['e_province_code'])}--/--{else}{$item['e_province_code']}{/if}
+                            <br/>
+                            {if empty($item['e_city_code'])}--/--{else}{$item['e_city_code']}{/if}
+                            <br/>
+                            {if empty($item['e_area_code'])}--/--{else}{$item['e_area_code']}{/if}
+                            <br/>
+                            {if empty($item['e_street_code'])}--/--{else}{$item['e_street_code']}{/if}
+                        </td>
+                        <td>
+                            {$item['mapping']}
+                        </td>
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                            {$total}
+                        </td>
+                        <td colspan="6">
+                            {$pager}
+                        </td>
+                        <td>
+                            {$mapping_count}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

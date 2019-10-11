@@ -1,0 +1,48 @@
+<?php
+
+if (!defined('IN_IA')) {
+    exit('Access Denied');
+}
+
+require SUPERDESK_SHOPV2_PLUGIN . 'merch/core/inc/page_merch.php';
+
+class Query_SuperdeskShopV2Page extends MerchWebPage
+{
+    public function main()
+    {
+        global $_W;
+        global $_GPC;
+
+        $kwd = trim($_GPC['keyword']);
+
+        $params = array();
+
+        $params[':uniacid'] = $_W['uniacid'];
+
+        $condition =
+            ' and uniacid=:uniacid';
+
+        if (!empty($kwd)) {
+            $condition          .= ' AND (`realname` LIKE :keyword or `nickname` LIKE :keyword or `mobile` LIKE :keyword)';
+            $params[':keyword'] = '%' . $kwd . '%';
+        }
+
+
+        $ds = pdo_fetchall(
+            'SELECT * ' .
+            ' FROM ' . tablename('superdesk_shop_member') .// TODO 标志 楼宇之窗 openid superdesk_shop_member 不处理
+            ' WHERE 1 ' .
+            $condition .
+            ' order by id asc',
+            $params
+        );
+
+        if ($_GPC['suggest']) {
+            exit(json_encode(array('value' => $ds)));
+        }
+
+        include $this->template();
+
+        exit();
+    }
+}

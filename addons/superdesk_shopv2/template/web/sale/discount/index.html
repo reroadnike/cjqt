@@ -1,0 +1,137 @@
+{template '_header'}
+
+
+<div class="page-heading"> <h2>客户价套</h2></div>
+
+<form action="./index.php" method="get" class="form-horizontal table-search" role="form">
+
+    <input type="hidden" name="c" value="site" />
+    <input type="hidden" name="a" value="entry" />
+    <input type="hidden" name="m" value="superdesk_shopv2" />
+    <input type="hidden" name="do" value="web" />
+    <input type="hidden" name="r" value="sale.discount" />
+
+    <div class="page-toolbar row m-b-sm m-t-sm">
+        <div class="col-sm-4 pull-right">
+            <div class="input-group">
+                <input type="text" class="form-control input-sm"  name="keyword" value="{$_GPC['keyword']}" placeholder="可搜索企业名/项目名"/>
+                <span class="input-group-btn">
+                <button class="btn btn-sm btn-primary" type="submit"> 搜索</button>
+                <a class="btn btn-sm btn-primary" style="margin-left: 5px; margin-right: 15px" href="{php echo webUrl('sale/discount/edit')}" data-toggle="ajaxModal" title='客户设置价套'> 设置价套 </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<table class="table table-hover table-responsive">
+    <thead class="navbar-inner">
+        <tr>
+            <th style="width:80px;">ID</th>
+            <th style="width:160px;">企业名称</th>
+            <th style="width:120px;">项目名称</th>
+            <th style="width:160px;">价套名称</th>
+            <th style="width:100px;">是否启用</th>
+            <th style="width:100px;">添加时间</th>
+            <th style="width:100px; text-align: center">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {loop $list $row}
+        <tr rel="pop" data-title="ID: {$row['id']} ">
+
+            <td style="position: relative; ">{$row['id']}</td>
+            <td style="position: relative; ">{$row['name']}</td>
+            <td style="position: relative; ">[{$row['organizationId']}]{$row['org_name']}</td>
+            <td> {ifp $row['discount_id'] > 0} {$merchid_dis[$row['discount_id']]} {else} - {/if}</td>
+            <td>{ifp $row['discount_id'] > 0}{ifp $row['status']==1}是{else}否{/if}{else} - {/if}</td>
+            <td>{ifp $row['discount_id'] > 0}{php echo date("Y-m-d",$row['createtime'])}{else} - {/if}</td>
+
+            <td  style="overflow:visible; text-align: center">
+
+            <div class="btn-group btn-group-sm" >
+                <li>
+                    {ifp 'sale.discount.edit'}
+                    <a data-toggle="ajaxModal" href="{php echo webUrl('sale/discount/edit', array('id'=>$row['id']))}" title='设置价套'>
+                        <i class='fa fa-edit'></i> 设置价套 </a>
+                    {/if} |
+                    {ifp 'sale.discount.delete'}
+                    <a  data-toggle='ajaxRemove'  href="{php echo webUrl('sale/discount/delete',array('id' => $row['id']));}" title='解绑价套' data-confirm="确定要解绑该企业价套吗？">
+                        <i class='fa fa-remove'></i> 删除</a>
+                    {/if}
+                </li>
+            </div>
+
+            </td>
+        </tr>
+        {/loop}
+    </tbody>
+</table>
+{$pager}
+<script language="javascript">
+
+{if $opencommission}
+
+require(['bootstrap','util'], function () {
+    $("[rel=pop]").popover({
+        trigger  : 'manual',
+        placement: 'left',
+        title    : $(this).data('title'),
+        html     : 'true',
+        content  : $(this).data('content'),
+        animation: false
+    }).on("mouseenter", function () {
+        var _this = this;
+        $(this).popover("show");
+        $(this).siblings(".popover").on("mouseleave", function () {
+            $(_this).popover('hide');
+        });
+    }).on("mouseleave", function () {
+        var _this = this;
+        setTimeout(function () {
+            if (!$(".popover:hover").length) {
+                $(_this).popover("hide")
+            }
+        }, 100);
+    });
+
+    $(document).on('change', 'select[name="organization_id"]',
+        function () {
+
+            var organization_id = $('select[name="organization_id"]').val();
+
+            console.log(organization_id);
+
+            if (organization_id != '') {
+
+                $.getJSON(
+                    "{php echo webUrl('merch/enterprise/ajax')}",
+                    {organization_id: organization_id},
+                    function (data) {
+
+                        console.log(data);
+
+                        var content = "";
+
+                        for (var index in data) {
+
+                            content += "<option value=" + data[index].id + " >" + data[index].organizationId + " - " + data[index].id + " - " + data[index].name + "</option>";
+                            console.log(content);
+                        }
+                        $('select[name="enterprise_id"]').empty();
+                        $('select[name="enterprise_id"]').append("<option value=''>请选择企业</option>");
+                        $('select[name="enterprise_id"]').append(content);
+
+                        $('select[name="enterprise_id"]').select2({});
+                    });
+            } else {
+            }
+        });
+});
+{/if}
+
+
+
+</script>
+{template '_footer'}

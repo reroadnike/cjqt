@@ -1,0 +1,14 @@
+正确：
+{
+"success": true,
+"resultMessage": "",
+"resultCode": null,
+"result": "{\"success\":true,\"resultCode\":1,\"addressId\":0,\"message\":null}"
+}
+错误：
+{
+"success": false,
+"resultMessage": "地址非法-非京东地址!",
+"resultCode": "3554",
+"result": null
+}

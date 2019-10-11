@@ -1,0 +1,185 @@
+{template '__header__'}
+<style>
+    .item_goods_tr{
+        height: 5rem;
+    }
+</style>
+
+<!-- container-fluid -->
+<div class="container">
+
+    <div class="row" style="margin-top: 1rem;">
+
+        <div class="col-md-12">
+
+            {if $_store}
+            <table class="table table-condensed table-hover">
+                <tr>
+                    <td>store_id</td>
+                    <td>{$_store['store_id']}</td>
+                    <td>store_account</td>
+                    <td>{$_store['store_account']}</td>
+                </tr>
+                <tr>
+                    <td>store_name</td>
+                    <td>{$_store['store_name']}</td>
+                    <td>store_user</td>
+                    <td>{$_store['store_user']}</td>
+                </tr>
+                <tr>
+                    <td>store_address</td>
+                    <td>{$_store['store_address']}</td>
+                    <td>phone</td>
+                    <td>{$_store['phone']}</td>
+                </tr>
+                <tr>
+                    <td>store_code</td>
+                    <td>{$_store['store_code']}</td>
+                    <td>ctime</td>
+                    <td>{$_store['ctime']}</td>
+                </tr>
+                <tr>
+                    <td>endTime</td>
+                    <td>{$_store['endTime']}</td>
+                    <td>status</td>
+                    <td>{$_store['status']}</td>
+                </tr>
+                <tr>
+                    <td>merchId</td>
+                    <td>{$_store['merchid']}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </table>
+            {/if}
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!--//            {-->
+            <!--//                "goods_id": "51",-->
+            <!--//                "name": "DELL燃7000 R1605S14.0英寸微边框笔记本电脑",-->
+            <!--//                "referprice": "299.00",-->
+            <!--//                "status": "400",-->
+            <!--//                "pic": "http:\/\/www.avic-s.com\/memberShop-admin\/images\/pic\/1488868351749.jpg",-->
+            <!--//                "introductions": "i5-7200U 8GB 256GB SSD HD620 Win10",-->
+            <!--//                "model": "a",-->
+            <!--//                "type": "0",-->
+            <!--//                "classify_id": "45",-->
+            <!--//                "stock": "10",-->
+            <!--//                "unit_id": "13",-->
+            <!--//                "user_id": "143",-->
+            <!--//                "oldprice": "399.00"-->
+            <!--//            }-->
+
+
+            <table class="table table-condensed table-hover">
+                <thead class="navbar-inner">
+                <tr>
+                    <th style="width:3%;">ID</th>
+                    <th style="width:5%;">图片</th>
+                    <th style="width:30%;">商品名</th>
+                    <th style="width:4%;">原价</th>
+                    <th style="width:4%;">现价</th>
+                    <th style="width:16%;text-align: right;"><a class="btn btn-sm btn-default btn-sync"><i class="fa fa-cog">&nbsp;&nbsp;同步商品</i></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                    {loop $goods_list $_goods}
+                    <tr class="item_goods_tr"
+                        data-merchid="{$_store['merchid']}"
+                        data-goods_id="{$_goods['goods_id']}"
+                    >
+                        <td>{$_goods['goods_id']}</td>
+                        <td><img src="{$_goods['pic']}" style="width: 5rem;"></td>
+                        <td>{$_goods['name']}<br/>{$_goods['pic']}</td>
+                        <td>{$_goods['oldprice']}</td>
+                        <td>{$_goods['referprice']}</td>
+                        <td class="tips_{$_goods['goods_id']}"></td>
+                    </tr>
+                    {/loop}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var data_source_store = {php echo json_encode($_store)};
+
+    console.log(data_source_store);
+
+    // 同步分类图片 start
+    var js_update_shop_merch_import_one_goods = function (merchid ,goods_id, isThen) {
+
+        $("#showContent").html("同处理中 ...");
+
+        return $.ajax({
+            type: "POST",
+            url: "{php echo $this->createMyJsUrl('js_update_shop_merch_import_one_goods',array(),'superdesk_shop_member');}",
+            data: {
+                merchid : merchid,
+                goods_id : goods_id
+            },
+            success: function (data) {
+
+                console.log(data);
+                var obj = JSON.parse(data);
+                if (obj.status == 0) {
+                    $(".tips_"+goods_id).html(obj.result.message);
+                } else if (obj.status == 1) {
+                    $(".tips_"+goods_id).html(obj.result.message);
+                }
+
+
+            }
+        }).then(function () {
+            if(isThen){
+
+            }
+
+        });
+    };
+
+    var sync_batch_store_goods = function () {
+
+        var defer = $.Deferred();
+        defer.resolve($("#showContent").html("开始同步执行 ..."));
+
+        $('.item_goods_tr').each(function (index) {
+
+            var merchid = $(this).data('merchid');
+            var goods_id   = $(this).data('goods_id');
+
+            if(merchid == '' ) {
+                $(".tips_"+goods_id).html("disregard");
+                return true;// 如果return false 相当于break 如果return true 相当于 continure
+            }
+
+            defer = defer.then(function () {
+                return js_update_shop_merch_import_one_goods(merchid, goods_id, false);
+            });
+        });
+
+        defer.done(function(){
+            $("#showContent").html("结束同步执行 .");
+        });
+    };
+    // 同步分类图片 end
+
+    $(document).ready(function () {
+        $(".btn-sync").bind("click", sync_batch_store_goods);
+
+    });
+</script>
+
+{template '__footer__'}

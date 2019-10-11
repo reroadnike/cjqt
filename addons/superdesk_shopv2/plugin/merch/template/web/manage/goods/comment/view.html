@@ -1,0 +1,11 @@
+{template '_header'}
+<div>
+    <ul>
+    <li>订单编号:{$order['ordersn']}</li>
+        <li>下单时间:{php echo date('Y-m-d H:i:s',$order['createtime'])}</li>
+        <li>评价时间:{php echo date('Y-m-d H:i:s',$comment['createtime'])}</li>
+        <li>评价者:{$comment['nickname']}</li>
+    </ul>
+</div>
+
+{template '_footer'}

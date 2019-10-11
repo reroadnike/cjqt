@@ -1,0 +1,32 @@
+<?php
+
+
+
+
+$sql = "
+
+DROP TABLE 
+`ims_superdesk_boardroom`, 
+`ims_superdesk_boardroom_appointment`, 
+`ims_superdesk_boardroom_equipment`, 
+`ims_superdesk_boardroom_s_adv`, 
+`ims_superdesk_boardroom_s_cart`, 
+`ims_superdesk_boardroom_s_category`, 
+`ims_superdesk_boardroom_s_dispatch`, 
+`ims_superdesk_boardroom_s_express`, 
+`ims_superdesk_boardroom_s_feedback`, 
+`ims_superdesk_boardroom_s_goods`, 
+`ims_superdesk_boardroom_s_goods_option`, 
+`ims_superdesk_boardroom_s_goods_param`, 
+`ims_superdesk_boardroom_s_order`, 
+`ims_superdesk_boardroom_s_order_goods`, 
+`ims_superdesk_boardroom_s_product`, 
+`ims_superdesk_boardroom_s_spec`, 
+`ims_superdesk_boardroom_s_spec_item`;
+    
+        
+";
+pdo_run($sql);
+
+
+?>

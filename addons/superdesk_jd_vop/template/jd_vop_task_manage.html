@@ -1,0 +1,228 @@
+{template 'common/header'}
+
+<!--
+
+京东商品池 初始化 清空 <br><br>
+
+京东商品池 初始化池内sku 清空临时sku<br><br>
+
+京东商品价格 更新 清空临时<br><br>
+
+-->
+
+<ul class="nav nav-tabs">
+
+    <!--
+    <li class="active"><a href="{php echo $this->createWebUrl('order_submit_order', array('op' => 'list'))}">#list#</a></li>
+    <li><a href="{php echo $this->createWebUrl('order_submit_order', array('op' => 'edit'))}">#add#</a></li>
+
+    -->
+
+    <li class="nav-home active"><a href="#" onclick="changePage('home');">README</a></li>
+    <li class="nav-new"><a href="#new" onclick="changePage('new');">新建计划任务</a></li>
+    <li class="nav-active"><a href="#active" onclick="changePage('active');">计划任务列表</a></li>
+</ul>
+
+<div class="alert alert-danger">
+    <strong>需要开放一个高级权限，基于安全问题，服务器暂时不开放此功能</strong>
+</div>
+
+<div class="alert alert-info" id="home">
+    <strong>在线帮助：</strong> <a href="http://zh.wikipedia.org/wiki/Cron"
+                              target="_blank">http://zh.wikipedia.org/wiki/Cron</a>
+    <br/>
+    <strong>帮助：</strong>
+    <br/>
+    在一个区域里填写多个数值的方法：
+    <ul>
+        <li>逗号 (',') 分开的值，例如：“1,3,4,7,8”</li>
+        <li>连词符 ('-') 制定值的范围，例如：“1-6”，意思等同于“1,2,3,4,5,6”</li>
+        <li>星号 ('*') 代表任何可能的值。例如，在“小时域” 里的星号等于是“每一个小时”。</li>
+    </ul>
+
+</div>
+
+<div class="main" id="new" style="display: none;">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+        <div class="panel panel-default">
+            <div class="panel-heading">新建计划任务 <a id="save-btn" class="btn btn-large btn-success">保存新的计划任务</a></div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label class="col-xs-2 col-sm-2 col-md-2 control-label">分钟</label>
+                    <div class="col-sm-2 col-xs-2">
+                        <input class="add-minute form-control" type="text" placeholder="0-59 or *" value="*"/>
+                    </div>
+
+                    <label class="col-xs-2 col-sm-2 col-md-2 control-label">小时</label>
+                    <div class="col-sm-2 col-xs-2">
+                        <input class="add-hour form-control" type="text" placeholder="0-23 or *" value="*"/>
+                    </div>
+
+                    <label class="col-xs-2 col-sm-2 col-md-2 control-label">星期</label>
+                    <div class="col-sm-2 col-xs-2">
+                        <input class="add-dayweek form-control" type="text" placeholder="0-6 or *" value="*"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 col-sm-2 col-md-2 control-label">日期</label>
+                    <div class="col-sm-2 col-xs-2">
+                        <input class="add-daymonth form-control" type="text" placeholder="0-31 or *" value="*"/>
+                    </div>
+
+                    <label class="col-xs-2 col-sm-2 col-md-2 control-label">月份</label>
+                    <div class="col-sm-2 col-xs-2">
+                        <input class="add-month form-control" type="text" placeholder="0-12 or *" value="*"/>
+                    </div>
+
+                    <label class="col-xs-2 col-sm-2 col-md-2 control-label">年份</label>
+                    <div class="col-sm-2 col-xs-2">
+                        <input class="add-year form-control" type="text" placeholder="0-59 or *" value="*"/>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-2 col-sm-2 col-md-2 control-label">需要执行的命令</label>
+                    <div class="col-sm-10 col-xs-10">
+                        <textarea class="add-command form-control" rows="3" style="width: 100%;"
+                                  placeholder="输入一个当前用户权限在系统上有效的CLI命令，或引用外部可执行脚本。">echo HelloWorld</textarea>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 计划任务列表 start -->
+<div class="main" id="active" style="display: none;">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">计划任务列表 <a class="btn btn-danger delete-all-btn">删除全部任务</a></div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th>分钟</th>
+                        <th>小时</th>
+                        <th>星期</th>
+                        <th>日期</th>
+                        <th>月份</th>
+                        <th>命令</th>
+                        <th>文件</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody class="active-job-list">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- 计划任务列表 end -->
+
+<script type="application/javascript">
+
+    var PAGES = ['home', 'new', 'active'];
+
+    $(document).ready(function () {
+
+        var hash = window.location.hash;
+
+        if (hash == '#new') changePage('new');
+        if (hash == '#active') changePage('active');
+
+        $('#save-btn').bind('click', onSaveButtonClick);
+        $('.delete-all-btn').bind('click', onDeleteAllJobsClick);
+    });
+
+    function onDeleteAllJobsClick(event) {
+        $.ajax({url: "{php echo $this->createWebUrl('jd_vop_task_manage',array('op'=>'deleteall'));}"}
+        ).done(function (data) {
+
+            console.log(data);
+
+            location.reload();
+        });
+    }
+
+    function onDeleteJobClick(jobID) {
+        $.post(
+            "{php echo $this->createWebUrl('jd_vop_task_manage',array('op'=>'deletejob'));}",
+            {"jobid": jobID},
+            function (data) {
+                console.log(data);
+                location.reload();
+            }
+        );
+    }
+
+    function onSaveButtonClick(event) {
+
+        var minute = $('.add-minute').val();
+        var hour = $('.add-hour').val();
+        var dayweek = $('.add-dayweek').val();
+        var daymonth = $('.add-daymonth').val();
+        var month = $('.add-month').val();
+        var name = $('.add-name').val();
+        var command = $('.add-command').val();
+
+        $.post("{php echo $this->createWebUrl('jd_vop_task_manage',array('op'=>'add'));}", {
+                "minute": minute,
+                "hour": hour,
+                "dayweek": dayweek,
+                "daymonth": daymonth,
+                "month": month,
+                "name": name,
+                "command": command
+            },
+            function (data) {
+                console.log(data);
+                changePage('active');
+            }
+        );
+    }
+
+    function changePage(page) {
+        getActiveCronjobs();
+
+        // Hide all pages
+        for (var i = 0; i < PAGES.length; i++) {
+            $('#' + PAGES[i]).hide();
+        }
+        $('.nav li').removeClass('active');
+
+        // Show the specified page.
+        $('#' + page).show();
+        $('.nav-' + page).addClass('active');
+    }
+
+    function getActiveCronjobs() {
+
+        $.getJSON(
+            "{php echo $this->createWebUrl('jd_vop_task_manage',array('op'=>'active'));}",
+            function (data) {
+                console.log(data);
+                var items = '';
+
+                $.each(data, function (key, val) {
+                    var n = val.split(' ');
+
+                    items += '<tr>';
+
+                    $.each(n, function (x, y) {
+                        items += '<td>' + y + '</td>';
+                    });
+                    items += '<td><a class="btn btn-mini btn-warning remove_' + key + '" onclick="onDeleteJobClick(' + key + ')">删除</a></td>';
+                    items += '</tr>';
+                });
+
+                $('.active-job-list').html(items);
+            });
+    }
+
+</script>
+
+
+{template 'common/footer'}

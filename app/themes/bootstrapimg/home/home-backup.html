@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>个人首页</title>
+</head>
+<link href="{$_W['siteroot']}app/resource/css/bootstrap.min.css" rel="stylesheet">
+
+
+<!--class="col-xs-12"-->
+
+<div class="col-xs-12" >
+    <div class="row">
+        <div  id="aa">
+            <img  src="{$_W['siteroot']}app/themes/bc_style/home/assets/images/personal.png" name="personal"   usemap="#personal" class="img-responsive"/>
+        </div>
+    </div>
+</div>
+
+
+<footer >
+    <img  src="{$_W['siteroot']}app/themes/bc_style/home/assets/images/footer1.png" name="footer_png" usemap="#footer_png" class="img-responsive" />
+</footer>
+<!--href="personal_circle.html"-->
+<map id = "personal" name="personal">
+    <!--<area shape = "rect" coords = "20,181,111,264" onclick="jump(3)"   >-->
+
+    <area shape = "rect" coords = "20,181,111,264" onclick="alert(3)" href="{php echo murl('entry',array('do'=>'bcpage','m'=>'site_user','type'=>1))}"  />
+    <!--<area shape = "rect" coords = "150,185,224,258" href="{php echo murl('entry',array('do'=>'bcpage','m'=>'site_user','type'=>2))}" >-->
+    <area shape = "rect" coords = "279,188,350,258" href="{php echo murl('entry',array('do'=>'bcpage','m'=>'site_user','type'=>3))}" />
+    <area shape = "rect" coords = "31,288,98,361"  href="{php echo murl('entry',array('do'=>'bcpage','m'=>'site_user','type'=>4))}" />
+    <area shape = "rect" coords = "151,297,224,361" href="{php echo murl('entry',array('do'=>'bcpage','m'=>'site_user','type'=>5))}" />
+
+
+
+    <area shape = "rect" coords = "278,291,348,366"  href="{php echo murl('entry',array('do'=>'bcpage','m'=>'site_user','type'=>6))}" />
+    <area shape = "rect" coords = "23,402,98,464"   href="{php echo murl('entry',array('do'=>'bcpage','m'=>'site_user','type'=>7))}" />
+    <!--<area shape = "rect" coords = "150,398,223,469" href="{php echo murl('entry',array('do'=>'bcpage','m'=>'site_user','type'=>8))}" >-->
+</map>
+
+<map name = "footer_png" id="footer_png">
+    <area shape = "rect" coords = "38,11,93,45"    >
+    <area shape = "rect" coords = "158,10,216,44" href="{php echo murl('entry',array('do'=>'bcpage','m'=>'site_user','type'=>9))}" />
+    <area shape = "rect" coords = "294,16,332,45" href="{php echo murl('entry',array('do'=>'bcpage','m'=>'site_user','type'=>10))}" />
+</map>
+
+<script>
+//    function jump(index){
+
+
+//    }
+</script>
+
+<script src="{$_W['siteroot']}app/resource/js/lib/jquery-1.11.1.min.js"></script>
+<script src="{$_W['siteroot']}app/resource/js/lib/bootstrap.min.js"></script>
+</body>
+</html>

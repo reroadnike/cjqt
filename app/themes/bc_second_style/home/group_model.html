@@ -1,0 +1,20 @@
+{loop $rows['navlist'] $key $row}
+<div class="row">
+    <div class="classify">{$key}</div>
+    {loop $row $navrow}
+    {if !empty($navrow['wechat_url']) }
+    <a href="{$navrow['wechat_url']}">
+            <div class="col-xs-4 col-md-4 padding_1 bottomLine">
+                    <img alt="" class="center-block " src="{$navrow['icon']}" />
+                    <p>{$navrow['name']}</p>
+            </div>
+    </a>
+    {else}
+    <div class="col-xs-4 col-md-4 padding_1 bottomLine" >
+        <img alt="" class="center-block " src="{$navrow['icon']}" style="visibility: hidden; "/>
+        <p style="visibility: hidden; ">{$navrow['name']}</p>
+    </div>
+    {/if}
+    {/loop}
+</div>
+{/loop}

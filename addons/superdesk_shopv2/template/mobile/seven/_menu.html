@@ -1,0 +1,96 @@
+<style>
+    .myicon {
+        width: 1rem;
+        height: 1rem;
+        margin-top: 0.26rem;
+    }
+</style>
+
+<div class="fui-navbar">
+
+    <a href="{if empty($_GPC['merchid'])}{php echo mobileUrl()}{else}{php echo mobileUrl('merch')}{/if}"
+       class="external nav-item {if $_W['routes']=='' ||  $_W['routes']=='shop' ||  $_W['routes']=='commission.myshop'}active{/if}">
+        <span class="">
+            {if $_W['routes']=='' ||  $_W['routes']=='shop' ||  $_W['routes']=='commission.myshop'}
+            <img class="myicon"
+                 src="../addons/superdesk_shopv2/template/mobile/seven/static/images/menu/style_menu_03/home_on.svg"/>
+            {else}
+            <img class="myicon"
+                 src="../addons/superdesk_shopv2/template/mobile/seven/static/images/menu/style_menu_03/home_off.svg"/>
+            {/if}
+
+
+        </span>
+        <span class="label">首页</span>
+    </a>
+
+    {if intval($_W['shopset']['category']['level'])!=-1}
+    <a href="{php echo mobileUrl('shop/category')}"
+       class="external nav-item {if $_W['routes']=='shop.category'}active{/if}">
+        <span class="">
+            {if $_W['routes']=='shop.category'}
+            <img class="myicon"
+                 src="../addons/superdesk_shopv2/template/mobile/seven/static/images/menu/style_menu_03/fenlei_on.svg"/>
+            {else}
+            <img class="myicon"
+                 src="../addons/superdesk_shopv2/template/mobile/seven/static/images/menu/style_menu_03/fenlei_off.svg"/>
+            {/if}
+        </span>
+        <span class="label">分类</span>
+    </a>
+    {else}
+
+    {/if}
+    <a href="{php echo mobileUrl('goods')}" class="external nav-item {if $_W['routes']=='goods'}active{/if}">
+        <span class="">
+            {if $_W['routes']=='goods'}
+            <img class="myicon"
+                 src="../addons/superdesk_shopv2/template/mobile/seven/static/images/menu/style_menu_03/faxian_on.svg"/>
+            {else}
+            <img class="myicon"
+                 src="../addons/superdesk_shopv2/template/mobile/seven/static/images/menu/style_menu_03/faxian_off.svg"/>
+            {/if}
+        </span>
+        <span class="label" style="">发现</span>
+    </a>
+
+    <!--
+    {if !empty($commission)}
+    <a href="{$commission['url']}" class="external nav-item {if $_W['routes']=='commission.register'}active{/if}">
+        <span class="icon icon-group"></span>
+        <span class="label">{$commission['text']}</span>
+    </a>
+    {/if}
+    -->
+    <a href="{php echo mobileUrl('member/cart')}" class="external nav-item {if $_W['routes']=='member.cart'}active{/if}"
+       id="menucart">
+        <span class="">
+            {if $_W['routes']=='member.cart'}
+            <img class="myicon"
+                 src="../addons/superdesk_shopv2/template/mobile/seven/static/images/menu/style_menu_03/gouw_on.svg"/>
+            {else}
+            <img class="myicon"
+                 src="../addons/superdesk_shopv2/template/mobile/seven/static/images/menu/style_menu_03/gouw_off.svg"/>
+            {/if}
+
+
+        </span>
+        <span class="label">购物车</span>
+        {if $cartcount>0}<span class="badge">{$cartcount}</span>{/if}
+    </a>
+
+    <a href="{php echo mobileUrl('member')}" class="external nav-item  {if $_W['routes']=='member'}active{/if}">
+        <span class="">
+            {if $_W['routes']=='member'}
+            <img class="myicon"
+                 src="../addons/superdesk_shopv2/template/mobile/seven/static/images/menu/style_menu_03/my_on.svg"/>
+            {else}
+            <img class="myicon"
+                 src="../addons/superdesk_shopv2/template/mobile/seven/static/images/menu/style_menu_03/my_off.svg"/>
+            {/if}
+
+
+        </span>
+        <span class="label">我的</span>
+    </a>
+</div>

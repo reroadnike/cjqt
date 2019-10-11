@@ -1,0 +1,585 @@
+
+<link  rel="stylesheet" href="{MODULE_URL}static/js/dist/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
+
+<link  rel="stylesheet" href="{MODULE_URL}static/js/dist/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/bootstrap-datetimepicker/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/bootstrap-datetimepicker/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery.storageapi.min.js"></script>
+
+<script type="text/javascript" src="{$_W['siteroot']}/app/resource/js/lib/moment.js"></script>
+
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/superdesk.js"></script>
+
+
+
+
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/foxui/js/iscroll.js"></script>
+
+
+<script type="text/javascript">
+    (function () {
+
+        $.supports = (function () {
+            return {
+                touch: !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch)
+            };
+        })();
+
+        $.touchEvents = {
+            start: $.supports.touch ? 'touchstart' : 'mousedown',
+            move: $.supports.touch ? 'touchmove' : 'mousemove',
+            end: $.supports.touch ? 'touchend' : 'mouseup'
+        };
+        function _bindCssEvent(events, callback) {
+            var dom = this;
+            function fireCallBack(e) {
+
+                if (e.target !== this) {
+                    return;
+                }
+                callback.call(this, e);
+                for (var i = 0; i < events.length; i++) {
+                    dom.off(events[i], fireCallBack);
+                }
+            }
+            if (callback) {
+                for (var i = 0; i < events.length; i++) {
+                    dom.on(events[i], fireCallBack);
+                }
+            }
+        }
+        $.fn.animationEnd = function (callback) {
+
+            _bindCssEvent.call(this, ['webkitAnimationEnd', 'animationend'], callback);
+            return this;
+        };
+        $.fn.transitionEnd = function (callback) {
+            _bindCssEvent.call(this, ['webkitTransitionEnd', 'transitionend'], callback);
+            return this;
+        };
+        $.fn.transition = function (duration) {
+            if (typeof duration !== 'string') {
+                duration = duration + 'ms';
+            }
+            for (var i = 0; i < this.length; i++) {
+                var elStyle = this[i].style;
+                elStyle.webkitTransitionDuration = elStyle.MozTransitionDuration = elStyle.transitionDuration = duration;
+            }
+            return this;
+        };
+        $.fn.transform = function (transform) {
+            for (var i = 0; i < this.length; i++) {
+                var elStyle = this[i].style;
+                elStyle.webkitTransform = elStyle.MozTransform = elStyle.transform = transform;
+            }
+            return this;
+        };
+
+        $.device = (function () {
+            var device = {};
+            var ua = navigator.userAgent;
+            var android = ua.match(/(Android);?[\s\/]+([\d.]+)?/);
+            var ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
+            var ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/);
+            var iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
+            device.ios = device.android = device.iphone = device.ipad = device.androidChrome = false;
+            if (android) {
+                device.os = 'android';
+                device.osVersion = android[2];
+                device.android = true;
+                device.androidChrome = ua.toLowerCase().indexOf('chrome') >= 0;
+            }
+            if (ipad || iphone || ipod) {
+                device.os = 'ios';
+                device.ios = true;
+            }
+            if (iphone && !ipod) {
+                device.osVersion = iphone[2].replace(/_/g, '.');
+                device.iphone = true;
+            }
+            if (ipad) {
+                device.osVersion = ipad[2].replace(/_/g, '.');
+                device.ipad = true;
+            }
+            if (ipod) {
+                device.osVersion = ipod[3] ? ipod[3].replace(/_/g, '.') : null;
+                device.iphone = true;
+            }
+            if (device.ios && device.osVersion && ua.indexOf('Version/') >= 0) {
+                if (device.osVersion.split('.')[0] === '10') {
+                    device.osVersion = ua.toLowerCase().split('version/')[1].split(' ')[0];
+                }
+            }
+            device.webView = (iphone || ipad || ipod) && ua.match(/.*AppleWebKit(?!.*Safari)/i);
+
+            if (device.os && device.os === 'ios') {
+                var osVersionArr = device.osVersion.split('.');
+                device.minimalUi = !device.webView &&
+                        (ipod || iphone) &&
+                        (osVersionArr[0] * 1 === 7 ? osVersionArr[1] * 1 >= 1 : osVersionArr[0] * 1 > 7) &&
+                        $('meta[name="viewport"]').length > 0 && $('meta[name="viewport"]').attr('content').indexOf('minimal-ui') >= 0;
+            }
+
+            var windowWidth = $(window).width();
+            var windowHeight = $(window).height();
+            device.statusBar = false;
+            if (device.webView && (windowWidth * windowHeight === screen.width * screen.height)) {
+                device.statusBar = true;
+            } else {
+                device.statusBar = false;
+            }
+
+            var classNames = [];
+
+            device.pixelRatio = window.devicePixelRatio || 1;
+            classNames.push('pixel-ratio-' + Math.floor(device.pixelRatio));
+            if (device.pixelRatio >= 2) {
+                classNames.push('retina');
+            }
+
+            if (device.os) {
+                classNames.push(device.os, device.os + '-' + device.osVersion.split('.')[0], device.os + '-' + device.osVersion.replace(/\./g, '-'));
+                if (device.os === 'ios') {
+                    var major = parseInt(device.osVersion.split('.')[0], 10);
+                    for (var i = major - 1; i >= 6; i--) {
+                        classNames.push('ios-gt-' + i);
+                    }
+                }
+
+            }
+            device.isWeixin = /MicroMessenger/i.test(ua);
+            return device;
+        })();
+
+        var FoxUIPullToLoading = function (container, params) {
+            var self = this;
+            self.container = $(container);
+
+            self.params = $.extend({}, params || {});
+
+            var isTouched, isMoved, touchStartX, touchStartY,
+                    isScrolling, touchesDiff, touchStartTime, loading = false,
+                    useTranslate = false,
+                    translate, scrollTop, wasScrolled, triggerDistance, containerHeight;
+            var triggerDistance = 44;
+
+            function handleTouchStart(e) {
+                if (isTouched) {
+                    if ($.device.android) {
+                        if ('targetTouches' in e && e.originalEvent.targetTouches.length > 1)
+                            return;
+                    } else
+                        return;
+                }
+                isMoved = false;
+                isTouched = true;
+                isScrolling = undefined;
+                wasScrolled = undefined;
+                useTranslate = false;
+                touchStartX = e.type === 'touchstart' ? e.originalEvent.targetTouches[0].pageX : e.pageX;
+                touchStartY = e.type === 'touchstart' ? e.originalEvent.targetTouches[0].pageY : e.pageY;
+                touchStartTime = (new Date()).getTime();
+
+            }
+
+            function handleTouchMove(e) {
+                if (!isTouched) {
+                    return;
+                }
+
+                var pageX = e.type === 'touchmove' ? e.originalEvent.targetTouches[0].pageX : e.pageX;
+                var pageY = e.type === 'touchmove' ? e.originalEvent.targetTouches[0].pageY : e.pageY;
+                if (typeof isScrolling === 'undefined') {
+                    isScrolling = !!(isScrolling || Math.abs(pageX - touchStartX) < Math.abs(pageY - touchStartY));
+                }
+
+                if (!isScrolling) {
+                    isTouched = false;
+                    return;
+                }
+                containerHeight = self.container.height();
+                scrollTop = self.container.scrollTop();
+//                console.log(scrollTop);
+                if (!isMoved) {
+                    self.container.removeClass('transitioning');
+                }
+
+                isMoved = true;
+                touchesDiff = pageY - touchStartY;
+                if (touchesDiff < 0) {
+
+                    var scrollHeight = self.container[0].scrollHeight;
+                    var bottom = scrollTop + containerHeight >= scrollHeight;
+
+                    if (bottom) {
+                        useTranslate = true;
+                    }
+                    touchesDiff = -touchesDiff;
+                    if (useTranslate) {
+
+                        e.preventDefault();
+                        translate = Math.pow(Math.abs(touchesDiff), 0.85);
+                        self.container.transform('translate3d(0,' + -translate + 'px,0)');
+                    }
+                    if (bottom) {
+                        if (touchesDiff > 0 && touchesDiff <= triggerDistance) {
+                            loading = false;
+                            self.container.find('.pullup-loading .arrow').addClass('reverse');
+                            self.container.find('.pullup-loading .text').html('释放加载');
+                            if (self.params.onLoadingReady) {
+                                self.params.onLoadingReady(self);
+                            }
+
+                        } else if (Math.abs(touchesDiff) > triggerDistance) {
+
+                            loading = true;
+                            self.container.find('.pulldown-loading .arrow').removeClass('reverse');
+                            self.container.find('.pulldown-loading .text').html('上拉加载');
+                        }
+                    }
+                } else {
+                    loading = false;
+                    self.container.find('.pullup-loading .arrow').removeClass('reverse');
+                    self.container.find('.pullup-loading .text').html('上拉加载');
+                    return;
+                }
+
+            }
+
+            function handleTouchEnd() {
+                if (!isTouched || !isMoved) {
+                    isTouched = false;
+                    isMoved = false;
+                    return;
+                }
+                if (translate) {
+                    self.container.addClass('transitioning');
+                    translate = 0;
+                }
+                self.container.transform('');
+                if (loading) {
+
+                    if (self.container.hasClass('loading')) {
+                        return;
+                    }
+                    self.container.addClass('loading');
+                    self.container.find('.pullup-loading .text').html('正在加载');
+                    if (self.params.onLoading) {
+                        self.params.onLoading(self);
+                    }
+                } else {
+                    self.container.find('.pullup-loading .arrow').removeClass('reverse');
+                    self.container.find('.pullup-loading .text').html('上拉加载');
+                }
+                isTouched = false;
+                isMoved = false;
+
+            }
+            self.container.on($.touchEvents.start, handleTouchStart);
+            self.container.on($.touchEvents.move, handleTouchMove);
+            self.container.on($.touchEvents.end, handleTouchEnd);
+            self.done = function () {
+
+
+                self.container.removeClass('loading').addClass('transitioning');
+                self.container.transitionEnd(function () {
+                    self.container.removeClass('transitioning');
+                });
+
+            };
+            self.detach = function () {
+                self.container.off($.touchEvents.start, handleTouchStart);
+                self.container.off($.touchEvents.move, handleTouchMove);
+                self.container.off($.touchEvents.end, handleTouchEnd);
+            };
+        };
+
+        $.fn.pullToLoading = function (params) {
+            var args = arguments;
+            return this.each(function () {
+
+                if (!this)
+                    return;
+                var $this = $(this);
+                var pulltoloading = $this.data("pulltoloading");
+                if (!pulltoloading) {
+                    params = params || {};
+                    pulltoloading = new FoxUIPullToLoading(this, params);
+                    $this.data("pulltoloading", pulltoloading);
+                }
+                if (typeof params === typeof "a") {
+                    pulltoloading[params].apply(pulltoloading, Array.prototype.slice.call(args, 1));
+                }
+            });
+        };
+
+        var FoxUIPullToRefresh = function (container, params) {
+            var self = this;
+            console.log(container);
+            self.container = $(container);
+
+            self.params = $.extend({}, params || {});
+
+            var isTouched, isMoved, touchStartX, touchStartY,
+                    isScrolling, touchesDiff, touchStartTime, refresh = false, loading = false,
+                    useTranslate = false,
+                    startTranslate = 0,
+                    translate, scrollTop, wasScrolled, triggerDistance;
+            triggerDistance = 44;
+
+            function handleTouchStart(e) {
+                if (isTouched) {
+                    if ($.device.android) {
+                        if ('targetTouches' in e && e.originalEvent.targetTouches.length > 1)
+                            return;
+                    } else
+                        return;
+                }
+                isMoved = false;
+                isTouched = true;
+                isScrolling = undefined;
+                wasScrolled = undefined;
+                useTranslate = false;
+                touchStartX = e.type === 'touchstart' ? e.originalEvent.targetTouches[0].pageX : e.pageX;
+                touchStartY = e.type === 'touchstart' ? e.originalEvent.targetTouches[0].pageY : e.pageY;
+                touchStartTime = (new Date()).getTime();
+
+            }
+
+            function handleTouchMove(e) {
+                if (!isTouched) {
+                    return;
+                }
+
+                var pageX = e.type === 'touchmove' ? e.originalEvent.targetTouches[0].pageX : e.pageX;
+                var pageY = e.type === 'touchmove' ? e.originalEvent.targetTouches[0].pageY : e.pageY;
+                if (typeof isScrolling === 'undefined') {
+                    isScrolling = !!(isScrolling || Math.abs(pageX - touchStartX) < Math.abs(pageY - touchStartY));
+                }
+
+                if (!isScrolling) {
+                    isTouched = false;
+                    return;
+                }
+
+
+                scrollTop = self.container.scrollTop();
+                console.log("scrollTop:"+scrollTop);
+
+                if (typeof wasScrolled === 'undefined' && scrollTop !== 0)
+                    wasScrolled = true;
+
+                if (!isMoved) {
+                    self.container.removeClass('transitioning');
+                    startTranslate = self.container.hasClass('refreshing') ? triggerDistance : 0;
+                }
+
+                isMoved = true;
+                touchesDiff = pageY - touchStartY;
+
+
+                if (touchesDiff > 0 && scrollTop <= 0 || scrollTop < 0) {
+
+                    if (scrollTop === 0 && !wasScrolled)
+                        useTranslate = true;
+
+                    if (useTranslate) {
+                        e.preventDefault();
+                        translate = (Math.pow(touchesDiff, 0.85) + startTranslate);
+                        self.container.transform('translate3d(0,' + translate + 'px,0)');
+                    } else {
+                    }
+                    if ((useTranslate && Math.pow(touchesDiff, 0.85) > triggerDistance) || (!useTranslate && touchesDiff >= triggerDistance * 2)) {
+                        refresh = true;
+                        self.container.find('.pulldown-loading .arrow').addClass('reverse');
+                        self.container.find('.pulldown-loading .text').html('释放刷新');
+                    } else {
+                        refresh = false;
+                        self.container.find('.pulldown-loading .arrow').removeClass('reverse');
+                        self.container.find('.pulldown-loading .text').html('下拉刷新');
+
+                        if (self.params.onRefreshReady) {
+                            self.params.onRefreshReady(self);
+                        }
+                    }
+                } else {
+
+                    self.container.find('.pulldown-loading .arrow').removeClass('reverse');
+                    self.container.find('.pulldown-loading .text').html('下拉刷新');
+                    refresh = false;
+                    return;
+                }
+
+            }
+
+            function handleTouchEnd() {
+                if (!isTouched || !isMoved) {
+                    isTouched = false;
+                    isMoved = false;
+                    return;
+                }
+                if (translate) {
+                    self.container.addClass('transitioning');
+                    translate = 0;
+                }
+                self.container.transform('');
+
+                if (refresh) {
+
+                    if (self.container.hasClass('refreshing')) {
+                        return;
+                    }
+                    self.container.addClass('refreshing');
+                    self.container.find('.pulldown-loading .text').html('正在刷新');
+                    if (self.params.onRefresh) {
+                        self.params.onRefresh(self);
+                    }
+                } else {
+                    self.container.find('.pulldown-loading .arrow').removeClass('reverse');
+                    self.container.find('.pulldown-loading .text').html('下拉刷新');
+                }
+                isTouched = false;
+                isMoved = false;
+
+            }
+            self.container.on($.touchEvents.start, handleTouchStart);
+            self.container.on($.touchEvents.move, handleTouchMove);
+            self.container.on($.touchEvents.end, handleTouchEnd);
+            self.done = function () {
+
+                $(window).scrollTop(0);//解决微信下拉刷新顶部消失的问题
+                self.container.removeClass('refreshing').addClass('transitioning');
+                self.container.transitionEnd(function () {
+                    self.container.removeClass('transitioning');
+                });
+
+            };
+            self.detach = function () {
+                self.container.off($.touchEvents.start, handleTouchStart);
+                self.container.off($.touchEvents.move, handleTouchMove);
+                self.container.off($.touchEvents.end, handleTouchEnd);
+            };
+        };
+
+        $.fn.pullToRefresh = function (params) {
+            var args = arguments;
+            return this.each(function () {
+
+                if (!this)
+                    return;
+                var $this = $(this);
+                var pulltorefresh = $this.data("pulltorefresh");
+                if (!pulltorefresh) {
+                    params = params || {};
+                    pulltorefresh = new FoxUIPullToRefresh(this, params);
+                    $this.data("pulltorefresh", pulltorefresh);
+                }
+                if (typeof params === typeof "a") {
+                    pulltorefresh[params].apply(pulltorefresh, Array.prototype.slice.call(args, 1));
+                }
+            });
+        };
+    })();
+
+</script>
+
+
+
+<style>
+
+    /*#scroller {*/
+        /*position: absolute;*/
+        /*z-index: 1;*/
+        /*-webkit-tap-highlight-color: rgba(0,0,0,0);*/
+        /*width: 100%;*/
+        /*-webkit-transform: translateZ(0);*/
+        /*-moz-transform: translateZ(0);*/
+        /*-ms-transform: translateZ(0);*/
+        /*-o-transform: translateZ(0);*/
+        /*transform: translateZ(0);*/
+        /*-webkit-touch-callout: none;*/
+        /*-webkit-user-select: none;*/
+        /*-moz-user-select: none;*/
+        /*-ms-user-select: none;*/
+        /*user-select: none;*/
+        /*-webkit-text-size-adjust: none;*/
+        /*-moz-text-size-adjust: none;*/
+        /*-ms-text-size-adjust: none;*/
+        /*-o-text-size-adjust: none;*/
+        /*text-size-adjust: none;*/
+    /*}*/
+
+    .table-condensed {
+        width: 100%;
+    }
+
+    .datetimepicker {
+        width: 100%;
+        margin-top: 1rem;
+        background-color: white;
+        border-radius: 6px;
+    }
+
+    .datetimepicker table tr td {
+        height: 1.8rem;
+        font-size: .7rem;
+    }
+
+    .datetimepicker table tr td .hour,
+
+    .datetimepicker table tr td .minute{
+        height: 1.8rem;
+        line-height: 1.8rem;
+        font-size: .7rem;
+    }
+
+
+
+    .datetimepicker table tr th {
+        height: 2.4rem;
+        font-size: .9rem;
+    }
+
+    .datepicker {
+        width: 100%;
+        margin-top: 1rem;
+        background-color: white;
+        border-radius: 6px;
+    }
+
+    .datepicker table tr td {
+        height: 1.8rem;
+        font-size: .7rem;
+        /*border: .5rem solid;*/
+    }
+
+    .datepicker table tr th {
+        height: 2.4rem;
+        font-size: .9rem;
+    }
+
+    /* 背景图 */
+    .full_screen {
+        top: 6.8rem;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: white;
+        z-index: 9;
+        /*background-color:#000000;!* IE6和部分IE7内核的浏览器(如QQ浏览器)下颜色被覆盖 *!*/
+        /*background-color:rgba(0,0,0,0.3); !* IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂，但解析为透明 *!*/
+    }
+</style>
+
+<style>
+
+    .full_screen_btn{
+        padding: .8rem 0rem;
+    }
+</style>

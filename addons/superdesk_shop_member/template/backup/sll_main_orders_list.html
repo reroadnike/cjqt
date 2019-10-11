@@ -1,0 +1,100 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="{php echo $this->createWebUrl('sll_main_orders', array('op' => 'list'))}">#list#</a></li>
+    <li><a href="{php echo $this->createWebUrl('sll_main_orders', array('op' => 'edit'))}">#add#</a></li>
+</ul>
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                #list#
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:5rem;">显示顺序</th>
+    <th style="width:10%;"></th>
+    <th style="width:10%;"></th>
+    <th style="width:10%;"></th>
+    <th style="width:10%;"></th>
+    <th style="width:10%;">主订单id</th>
+    <th style="width:10%;">总价</th>
+    <th style="width:10%;"></th>
+    <th style="width:10%;">支付流水号</th>
+    <th style="width:10%;">是否支付 0:未支付  1：已支付</th>
+    <th style="width:10%;"></th>
+    <th style="width:10%;">付款方式,0：表示微信，1：货到付款，2：来电支付，3：银行卡</th>
+    <th style="width:10%;">0 : 微信  1：后台</th>
+    <th style="width:10%;">支付返回信息</th>
+    <th style="width:10%;">项目id</th>
+    <th style="width:10%;">1 普通发票 2 增值税发票</th>
+    <th style="width:10%;">发票类型：1:个人，2 :单位</th>
+    <th style="width:10%;">发票抬头  </th>
+    <th style="width:10%;">0:明细，1：电脑配件，2:耗材，3：办公用品(备注:若增值发票则只能选 0 明细) </th>
+    <th style="width:10%;">增值票收票人姓名</th>
+    <th style="width:10%;">增值票注册电话</th>
+    <th style="width:10%;">订单开票状态0：不开票，1：未开票，2：已开票，3：已退票，发票信息错误，4：已退票，发票类型错误，5：已退票，退款</th>
+    <th style="width:10%;">纳税人识别号</th>
+    <th style="width:10%;">增值票开户银行</th>
+    <th style="width:10%;">增值票开户帐号</th>
+    <th style="width:10%;">增值票注册地址</th>
+                        <th style="text-align:right; width:10%;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+
+                        <td><input type="text" class="form-control" name="displayorder[{$item['id']}]" style="width: 5rem;" value="{$item['displayorder']}"></td>
+
+<td>{$item['main_id']}</td>
+    <td>{$item['main_tel']}</td>
+    <td>{$item['main_fansid']}</td>
+    <td>{$item['main_openid']}</td>
+    <td>{$item['main_orderid']}</td>
+    <td>{$item['main_orderPrice']}</td>
+    <td>{$item['main_pay_time']}</td>
+    <td>{$item['main_payNumber']}</td>
+    <td>{$item['main_isPay']}</td>
+    <td>{$item['main_ctime']}</td>
+    <td>{$item['main_payconf']}</td>
+    <td>{$item['main_type']}</td>
+    <td>{$item['main_payMsg']}</td>
+    <td>{$item['main_e_id']}</td>
+    <td>{$item['main_invoiceType']}</td>
+    <td>{$item['main_selectedInvoiceTitle']}</td>
+    <td>{$item['main_companyName']}</td>
+    <td>{$item['main_invoiceContent']}</td>
+    <td>{$item['main_invoiceName']}</td>
+    <td>{$item['main_invoicePhone']}</td>
+    <td>{$item['main_make_out_invoice_state']}</td>
+    <td>{$item['main_taxpayer_identification_number']}</td>
+    <td>{$item['main_invoiceBank']}</td>
+    <td>{$item['main_invoiceAccount']}</td>
+    <td>{$item['main_invoiceAddress']}</td>
+                            <td style="text-align:right;">
+                            <a href="{php echo $this->createWebUrl('sll_main_orders', array('id' => $item['id'], 'op' => 'edit'));}"class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="编辑"><i class="fa fa-pencil">&nbsp;编辑</i></a>&nbsp;&nbsp;
+                            <a href="{php echo $this->createWebUrl('sll_main_orders', array('id' => $item['id'], 'op' => 'delete'));}" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="" onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" data-original-title="删除"><i class="fa fa-times">&nbsp;删除</i> </a>
+                        </td>
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            <input name="submit" type="submit" class="btn btn-primary" value="提交">
+                            <input type="hidden" name="token" value="{$_W['token']}" />
+                        </td>
+                        <td colspan="5">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

@@ -1,0 +1,128 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('product_detail', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('product_detail', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">单品</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="sku" class="form-control" value="{$item['sku']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">商品名称</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="name" class="form-control" value="{$item['name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">page_num</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="page_num" class="form-control" value="{$item['page_num']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">类别</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="category" class="form-control" value="{$item['category']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">条形码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="upc" class="form-control" value="{$item['upc']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">销售单位</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="saleUnit" class="form-control" value="{$item['saleUnit']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">重量</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="weight" class="form-control" value="{$item['weight']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">产地</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="productArea" class="form-control" value="{$item['productArea']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">商品清单</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="wareQD" class="form-control" value="{$item['wareQD']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">主图地址</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="imagePath" class="form-control" value="{$item['imagePath']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="param" class="form-control" value="{$item['param']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">品牌</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="brandName" class="form-control" value="{$item['brandName']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">上下架状态</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="state" class="form-control" value="{$item['state']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">售后</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shouhou" class="form-control" value="{$item['shouhou']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">web介绍</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="introduction" class="form-control" value="{$item['introduction']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">app介绍</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="appintroduce" class="form-control" value="{$item['appintroduce']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

@@ -1,0 +1,116 @@
+
+<div class="modal-dialog">
+	<style>
+		#selectUrl .modal-body {padding: 10px 15px;}
+		#selectUrl .tab-pane {margin-top: 5px; min-height: 300px; max-height: 300px; overflow-y: auto;}
+		#selectUrl .page-header {padding: 9px 0; margin-bottom: 8px;}
+		#selectUrl .page-header h4 {margin: 0;}
+		#selectUrl .btn {margin-bottom: 3px;}
+		#selectUrl .modal-dialog {width: 650px;}
+		#selectUrl .line {border-bottom: 1px dashed #ddd; color: #999; height: 36px; line-height: 36px;}
+		#selectUrl .line .icon {height: 35px; width: 30px; position: relative; float: left;}
+		#selectUrl .line .icon.icon-1:before {content: ""; width: 10px; height: 10px; border: 1px dashed #ccc; position: absolute; top: 12px; left: 10px;}
+		#selectUrl .line .icon.icon-2 {width: 50px;}
+		#selectUrl .line .icon.icon-2:before {content: ""; width: 10px; height: 10px; border-left: 1px dashed #ccc; border-bottom: 1px dashed #ccc; position: absolute; top: 12px; left: 20px;}
+		#selectUrl .line .icon.icon-3 {width: 60px;}
+		#selectUrl .line .icon.icon-3:before {content: ""; width: 10px; height: 10px; border-left: 1px dashed #ccc; border-bottom: 1px dashed #ccc; position: absolute; top: 12px; left: 30px;}
+		#selectUrl .line .btn-sm {float: right; margin-top: 5px; height: 24px; line-height: 24px; padding: 0 10px;}
+		#selectUrl .line .text {display: block;}
+		#selectUrl .line.good {height: 60px; padding: 4px 0;}
+		#selectUrl .line.good .image {height: 50px; width: 50px; border: 1px solid #ccc; float: left;}
+		#selectUrl .line.good .image img {height: 100%; width: 100%;}
+		#selectUrl .line.good .text {padding-left: 60px; height: 52px;}
+		#selectUrl .line.good .text p {padding: 0; margin: 0;}
+		#selectUrl .line.good .text .name {font-size: 15px; line-height: 32px; height: 28px;}
+		#selectUrl .line.good .text .price {font-size: 12px; line-height: 18px; height: 18px;}
+		#selectUrl .line.good .btn-sm {height: 32px; padding: 5px 10px; line-height: 22px; margin-top: 9px;}
+		#selectUrl .tip {line-height: 250px; text-align: center;}
+		#selectUrl .nav-tabs > li > a {padding: 8px 20px;}
+	</style>
+    <div class="modal-content">
+        <div class="modal-header">
+            <button data-dismiss="modal" class="close" type="button">×</button>
+            <h4 class="modal-title">选择链接</h4>
+        </div>
+        <div class="modal-body">
+        	<ul class="nav nav-tabs" id="selectUrlTab">
+				<li class="active"><a href="#sut_shop">商城</a></li>
+				<li class=""><a href="#sut_good">商品</a></li>
+
+				{if mcom('coupon')}
+					<li class=""><a href="#sut_coupon">超级券</a></li>
+				{/if}
+			</ul>
+			<div class="tab-content ">
+				
+				<div class="tab-pane active" id="sut_shop">
+					
+					<div class="page-header"><h4><i class="fa fa-folder-open-o"></i> 商城页面</h4></div>
+					<nav data-href="{php echo mobileUrl('merch', array('merchid'=>$_W['merchid']), $full)}" class="btn btn-default btn-sm" title="商城首页">商城首页</nav>
+					<nav data-href="{php echo mobileUrl('goods', array('merchid'=>$_W['merchid']), $full)}" class="btn btn-default btn-sm" title="全部商品">全部商品</nav>
+
+					{if mp('article')}
+					<div class="page-header"><h4><i class="fa fa-folder-open-o"></i> 文章营销</h4></div>
+					<nav data-href="{php echo mobileUrl('article/list', array('merchid'=>$_W['merchid']), null, $full)}" class="btn btn-default btn-sm" title="文章列表页面">文章列表页面</nav>
+					{/if}
+					{if mcom('coupon')}
+					<div class="page-header"><h4><i class="fa fa-folder-open-o"></i> 超级券</h4></div>
+					<nav data-href="{php echo mobileUrl('sale/coupon', array('merchid'=>$_W['merchid']), $full)}" class="btn btn-default btn-sm" title="领取优惠券">领取优惠券</nav>
+					{/if}
+				</div>
+
+				<div class="tab-pane" id="sut_good">
+					<div class="input-group">
+						<input type="text" placeholder="请输入商品关键字进行搜索" id="select-good-kw" value="" class="form-control">
+							<span class="input-group-addon btn btn-default select-btn" data-type="good">搜索</span>
+					</div>
+					<div id="select-good-list"></div>
+				</div>
+
+				{if mcom('coupon')}
+				<div class="tab-pane" id="sut_coupon">
+					<div class="input-group">
+						<input type="text" placeholder="请输入优惠券关键字进行搜索" id="select-coupon-kw" value="" class="form-control">
+							<span class="input-group-addon btn btn-default select-btn" data-type="coupon">搜索</span>
+					</div> 
+					<div id="select-coupon-list"></div>
+				</div>
+				{/if}
+				
+			</div>
+        </div>
+        <div class="modal-footer">
+            <button data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
+        </div>
+        <script>
+        	$(function(){
+        		
+        		$("#selectUrl").find('#selectUrlTab a').click(function(e) {
+						$('#tab').val($(this).attr('href'));
+						e.preventDefault();
+						$(this).tab('show');
+				});
+        		
+        		$(".select-btn").click(function(){
+        			var type = $(this).data("type");
+        			var kw = $.trim($("#select-"+type+"-kw").val());
+        			if(!kw){
+        				tip.msgbox.err("请输入搜索关键字！");
+        				return;
+        			}
+        			$("#select-"+type+"-list").html('<div class="tip">正在进行搜索...</div>');
+        			$.ajax("{php echo merchUrl('util/selecturl/querygoods', array('full'=>$full))}", {
+		      			type: "get",
+		      			dataType: "html",
+		      			cache: false,
+		      			data: {kw:kw, type:type}
+		      		}).done(function (html) {
+		      			$("#select-"+type+"-list").html(html);
+		      		});
+        			
+        		});
+        	});
+        </script>
+    </div>
+
+ 

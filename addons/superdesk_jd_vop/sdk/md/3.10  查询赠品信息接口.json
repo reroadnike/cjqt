@@ -1,0 +1,50 @@
+返回结果
+{
+  "success": true,
+  "resultMessage": "",
+  "resultCode": null,
+  "result": {
+    "gifts": [
+      {
+        "skuId": 980693,
+        "num": 1,
+        "giftType": 1
+      },
+      {
+        "skuId": 1273115,
+        "num": 1,
+        "giftType": 2
+      },
+      {
+        "skuId": 1273104,
+        "num": 1,
+        "giftType": 2
+      },
+      {
+        "skuId": 801392,
+        "num": 1,
+        "giftType": 2
+      },
+      {
+        "skuId": 1117823,
+        "num": 1,
+        "giftType": 2
+      }
+    ],
+    "maxNum": 0,
+    "minNum": 0,
+    "promoStartTime": 1427083126357,
+    "promoEndTime": 1451632141000
+  }
+}
+gifts为赠品附件列表，其中
+num：赠品数量
+giftType属性：1附件 2赠品
+maxNum：赠品要求最多购买数量（为0表示没配置）
+minNum：赠品要求最少购买数量 （为0表示没配置）
+promoStartTime：促销开始时间
+promoEndTime：促销结束时间
+购买数量大于赠品要求最多购买数量，不加赠品
+购买数量小于赠品要求最少购买数量，不加赠品
+下单时间不在促销时间范围内，不加赠品
+需要计算赠品量的倍数=主商品/促销要求主商品最少数（minNum为0时，赠品数量倍数为主商品数量）

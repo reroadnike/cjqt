@@ -1,0 +1,835 @@
+{
+  "template": "*",
+  "version": 20180413,
+  "settings": {
+    "index.refresh_interval": "5s"
+  },
+  "mappings": {
+    "ims_superdesk_shop_goods": {
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "@version": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "allcates": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "artid": {
+          "type": "long"
+        },
+        "autoreceive": {
+          "type": "long"
+        },
+        "bargain": {
+          "type": "long"
+        },
+        "buyagain": {
+          "type": "float"
+        },
+        "buyagain_commission": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "buyagain_condition": {
+          "type": "long"
+        },
+        "buyagain_islong": {
+          "type": "long"
+        },
+        "buyagain_sale": {
+          "type": "long"
+        },
+        "buycontent": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "buygroups": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "buylevels": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "buyshow": {
+          "type": "long"
+        },
+        "cannotrefund": {
+          "type": "long"
+        },
+        "cash": {
+          "type": "long"
+        },
+        "catch_id": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "catch_source": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "catch_url": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "cates": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "catesinit3": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "ccate": {
+          "type": "long"
+        },
+        "ccates": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "checked": {
+          "type": "long"
+        },
+        "city": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "commission": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "commission1_pay": {
+          "type": "float"
+        },
+        "commission1_rate": {
+          "type": "float"
+        },
+        "commission2_pay": {
+          "type": "float"
+        },
+        "commission2_rate": {
+          "type": "float"
+        },
+        "commission3_pay": {
+          "type": "float"
+        },
+        "commission3_rate": {
+          "type": "float"
+        },
+        "commission_thumb": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "content": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "costprice": {
+          "type": "float"
+        },
+        "createtime": {
+          "type": "long"
+        },
+        "credit": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "deduct": {
+          "type": "float"
+        },
+        "deduct2": {
+          "type": "float"
+        },
+        "deleted": {
+          "type": "long"
+        },
+        "description": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "detail_btntext1": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "detail_btntext2": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "detail_btnurl1": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "detail_btnurl2": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "detail_logo": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "detail_shopname": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "detail_totaltitle": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "discounts": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "dispatch": {
+          "type": "long"
+        },
+        "dispatchid": {
+          "type": "long"
+        },
+        "dispatchprice": {
+          "type": "float"
+        },
+        "dispatchtype": {
+          "type": "long"
+        },
+        "displayorder": {
+          "type": "long"
+        },
+        "diyfields": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "diyformid": {
+          "type": "long"
+        },
+        "diyformtype": {
+          "type": "long"
+        },
+        "diymode": {
+          "type": "long"
+        },
+        "diypage": {
+          "type": "long"
+        },
+        "diysave": {
+          "type": "long"
+        },
+        "diysaveid": {
+          "type": "long"
+        },
+        "edareas": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "edmoney": {
+          "type": "float"
+        },
+        "ednum": {
+          "type": "long"
+        },
+        "followtip": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "followurl": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "goodssn": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "groupstype": {
+          "type": "long"
+        },
+        "hascommission": {
+          "type": "long"
+        },
+        "hasoption": {
+          "type": "long"
+        },
+        "hidecommission": {
+          "type": "long"
+        },
+        "id": {
+          "type": "long"
+        },
+        "invoice": {
+          "type": "long"
+        },
+        "iscomment": {
+          "type": "long"
+        },
+        "isdiscount": {
+          "type": "long"
+        },
+        "isdiscount_discounts": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "isdiscount_time": {
+          "type": "long"
+        },
+        "isdiscount_title": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "ishot": {
+          "type": "long"
+        },
+        "isnew": {
+          "type": "long"
+        },
+        "isnodiscount": {
+          "type": "long"
+        },
+        "isrecommand": {
+          "type": "long"
+        },
+        "issendfree": {
+          "type": "long"
+        },
+        "istime": {
+          "type": "long"
+        },
+        "isverify": {
+          "type": "long"
+        },
+        "jd_vop_page_num": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "jd_vop_sku": {
+          "type": "long"
+        },
+        "keywords": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "labelname": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "manydeduct": {
+          "type": "long"
+        },
+        "marketprice": {
+          "type": "float"
+        },
+        "maxbuy": {
+          "type": "long"
+        },
+        "maxprice": {
+          "type": "float"
+        },
+        "merchid": {
+          "type": "long"
+        },
+        "merchsale": {
+          "type": "long"
+        },
+        "minbuy": {
+          "type": "long"
+        },
+        "minprice": {
+          "type": "float"
+        },
+        "minpriceupdated": {
+          "type": "long"
+        },
+        "money": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "needfollow": {
+          "type": "long"
+        },
+        "nocommission": {
+          "type": "long"
+        },
+        "noticeopenid": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "noticetype": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "old_shop_goods_id": {
+          "type": "long"
+        },
+        "originalprice": {
+          "type": "float"
+        },
+        "pcate": {
+          "type": "long"
+        },
+        "pcates": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "product": {
+          "type": "float"
+        },
+        "productsn": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "province": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "quality": {
+          "type": "long"
+        },
+        "repair": {
+          "type": "long"
+        },
+        "sales": {
+          "type": "long"
+        },
+        "salesreal": {
+          "type": "long"
+        },
+        "score": {
+          "type": "float"
+        },
+        "seven": {
+          "type": "long"
+        },
+        "share_icon": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "share_title": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "sharebtn": {
+          "type": "long"
+        },
+        "shopid": {
+          "type": "long"
+        },
+        "shorttitle": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "showgroups": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "showlevels": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "showtotal": {
+          "type": "long"
+        },
+        "showtotaladd": {
+          "type": "long"
+        },
+        "spec": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "status": {
+          "type": "long"
+        },
+        "storeids": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "subtitle": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "synctime_jd_vop_price": {
+          "type": "integer"
+        },
+        "taobaoid": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "taobaourl": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "taotaoid": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "tcate": {
+          "type": "long"
+        },
+        "tcates": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "thumb": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "thumb_first": {
+          "type": "long"
+        },
+        "thumb_url": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "timeend": {
+          "type": "long"
+        },
+        "timestart": {
+          "type": "long"
+        },
+        "title": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "text",
+              "index": "true",
+              "boost": "5",
+              "analyzer": "ik_smart",
+              "search_analyzer": "ik_smart"
+            }
+          }
+        },
+        "total": {
+          "type": "long"
+        },
+        "totalcnf": {
+          "type": "long"
+        },
+        "type": {
+          "type": "long"
+        },
+        "uniacid": {
+          "type": "long"
+        },
+        "unit": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "updatetime": {
+          "type": "long"
+        },
+        "usermaxbuy": {
+          "type": "long"
+        },
+        "verifytype": {
+          "type": "long"
+        },
+        "viewcount": {
+          "type": "long"
+        },
+        "virtual": {
+          "type": "long"
+        },
+        "virtualsend": {
+          "type": "long"
+        },
+        "virtualsendcontent": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "weight": {
+          "type": "float"
+        }
+      }
+    }
+  }
+}

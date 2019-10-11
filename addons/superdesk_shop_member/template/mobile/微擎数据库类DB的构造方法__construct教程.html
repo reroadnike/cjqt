@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微擎数据库类DB的构造方法__construct教程</title>
+</head>
+<body>
+<div class="col-sm-9">
+
+
+
+
+    <div class="cons">
+
+
+
+        <div class="page-header">
+
+
+
+            <h1>微擎数据库类DB的构造方法__construct教程</h1>
+
+
+        </div>
+
+        <p><script src="/plus/ad_js.php?aid=15" language="javascript"></script></p>
+
+        <strong>类文件：</strong>/framework/class/db.class.php<br>
+        <br>
+        &nbsp; 从这个类的名称就可以知道这个类是微擎<a href="http://www.phpos.net" target="_blank"><u>微信公众号</u></a>管理系统用来处理连接数据库、查询数据库的，所有微擎系统所有操作要查询数据库就会用到这个类，对于微擎<a href="http://www.phpos.net" target="_blank"><u>微信公众号</u></a>管理系统而言，这个是其核心类之一。<br>
+        <br>
+        <strong>构造函数分析</strong><br>
+        <br>
+        <strong>&nbsp; 1）声明一些db类中用到的变量：</strong><br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">    protected $pdo;
+    protected $cfg;
+    protected $tablepre;
+    protected $result;
+    protected $statement;
+    protected $errors = array();
+    protected $link = array();</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp; 2）在构造函数__construct($name = 'master')声明一个全局变量$_W，因为，这个全局变量里面就有配置文件（/data/config.php）配置的信息，而下面会用到数据库配置信息，所以，在这个构造函数里面要声明一下。<br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+                    <pre class="brush:bash;">  global $_W;</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp;<strong> 把db键对应的二维数组赋给当前配置变量$this-&gt;cfg：</strong>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+                    <pre class="brush:bash;">$this-&gt;cfg = $_W['config']['db'];</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 此时，$this-&gt;cfg类似这样二个数组：</strong><br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">  array(
+  'master'=&gt;array('host'=&gt;'localhost','username'=&gt;'root','password'=&gt;''),
+  'slave_status'=&gt;false,
+  'slave'=&gt;array('host'=&gt;'','username'=&gt;'','port'=&gt;3307)
+  )</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 3）调用链接数据库函数：</strong>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">$this-&gt;connect($name);
+</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <strong>&nbsp; 参数$name的处理：</strong><br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">        if(is_array($name)) {
+            $cfg = $name;
+        } else {
+            $cfg = $this-&gt;cfg[$name];
+        }</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp; 也就是说我们在调用类DB时，实例化的参数$name是什么类型这里必须作一个判断处理。在实例化时如果默认不写任何东西，例如，new DB();则表示使用默认的值master，表示使用的是/data/config.php里面的master键对应的数据库配置，这个配置就是我们在安装微擎时填写的数据库链接信息，如果只是链接微擎微信公众号管理系统的话，光这一个配置就够用了，但是，微擎还帮我们考虑了连接其它数据库的可能性，所以，这里要做一个通用的处理。<br>
+        <br>
+        &nbsp; 如果传递过来的参数$name不是一个数组，则直接装进数组$this-&gt;cfg[$name]里面。<br>
+        <br>
+        <strong>&nbsp; 获取数据库表前缀：</strong>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+                    <pre class="brush:bash;">$this-&gt;tablepre = $cfg['tablepre'];</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp; 因为，默认是'ims_'作为微擎系统的表前缀，但是，这个用户在安装时可以改成自己的，所以，我们在连接数据库时，要替换成用户修改过的表前缀，以便为后面查询数据库表时作准备。<br>
+        <br>
+        &nbsp; 若$cfg为空，则说明可能由于某些原因，连接数据库的信息找不到，比如，不小心把/data/config.php文件给删除掉了等原因，如果找不到键master对应的数据库连接信息，则提示错误：<br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">        if(empty($cfg)) {
+            exit("The master database is not found, Please checking 'data/config.php'");
+        }</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 设置连接数据库用到的dsn：</strong>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+                    <pre class="brush:bash;">$dsn = "mysql:dbname={$cfg['database']};host={$cfg['host']};port={$cfg['port']}";</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 4）判断pdo类是否存在：</strong>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+                    <pre class="brush:bash;">if (class_exists('PDO'))</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp; 如果连这个类都不存在的话，连接数据库就无从谈起，这个类是微擎封装的一个类，在目录/framework/liberay/pdo里面。<br>
+        &nbsp;<br>
+        &nbsp; 若if (class_exists('PDO'))成立，则说明pdo类，但是，这只能说明pdo类已经有了，但是，并不能说明就可以使用pdo了，还要开启pdo的驱动，因为，pdo可以连接很多数据库，例如，mysql、myssql、pgsql等，每种数据库对应不同的扩展驱，mysql对应pdo_mysql扩展、myssql对应pdo_myssql扩展、pgsql对应pdo_pgsql扩展。<br>
+        <br>
+        &nbsp; 默认一般服务器是开启pdo_mysql扩展的，但是，这并不能保证所有的服务器都开启了这个扩展，也许其它原因，例如，关闭了这个pdo扩展，所以，这里要判断一下pdo_mysql扩展是否可以加载，因为微擎微信公众号管理系统则使用的mysql数据库，所以，只要判断一下pdo_mysql加载成功，说明这个扩展开启。<br>
+        <br>
+        &nbsp; 并且，判断一下mysql驱动是不是在可用的驱动里面：
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+                    <pre class="brush:bash;">in_array('mysql', PDO::getAvailableDrivers())</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp; 这里面使用了pdo里面的一个函数getAvailableDrivers()用来获取可用的驱动。<br>
+        <br>
+        &nbsp; 这两个条件都成立，即if (extension_loaded("pdo_mysql") &amp;&amp; in_array('mysql', PDO::getAvailableDrivers())) 成立，则设置pdo类：$dbclass = 'PDO';<br>
+        <br>
+        <strong>&nbsp; 设置是否持久连接数据库：</strong>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+                    <pre class="brush:bash;">$options = array(PDO::ATTR_PERSISTENT =&gt; $cfg['pconnect']);</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp; 否则这两个条件中的只要一个不存在，则设置pdo名称为_PDO：$dbclass = '_PDO';<br>
+        <br>
+        <strong>&nbsp; 若类_PDO不存在则引入这个类所在的文件PDO.class.php：</strong><br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">                if(!class_exists('_PDO')) {
+                    include IA_ROOT . '/framework/library/pdo/PDO.class.php';
+                }</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 注意：</strong>PDO是php程序里面的类，而_PDO是微擎官方针对无法使用PDO类而自己封的一个类，这个类就是对不符合条件（没有开启pdo_mysql扩展，没有可用的驱动）的PDO再次进行封处理，使其符合连接数据库所需要的条件，您可以研究一下PDO.class.php文件。<br>
+        <br>
+        <strong>&nbsp; 如果PDO类不存在，则引入这个类对应文件：</strong><br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">  else {
+    include IA_ROOT . '/framework/library/pdo/PDO.class.php';
+   $dbclass = 'PDO';
+   }</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp; 通过上面的处理，我们获取到了连接数据库所需要的pdo类: $dbclass<br>
+        <br>
+        &nbsp; $dbclass已经是一个通用的类名称，如果我们在实例化pdo类时，直接使用new pdo()这种方法来实例化时，有可能会出错，例如，没有开启pdo_mysql扩展驱动，这是无法使用pdo的，而经过上面的处理无论您是否开启或其它原因，都可以使用$dbclass这个类名来代替pdo类名，这样就大大的提交了程序灵活性。<br>
+        <br>
+        <strong>&nbsp; 实例化pdo类：</strong>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+                    <pre class="brush:bash;">$this-&gt;pdo = new $dbclass($dsn, $cfg['username'], $cfg['password'], $options);</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 设置编码和sql执行模式：</strong><br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">        $sql = "SET NAMES '{$cfg['charset']}';";
+        $this-&gt;pdo-&gt;exec($sql);
+        $this-&gt;pdo-&gt;exec("SET sql_mode='';");</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 把实例化的对象装到$this-&gt;link[$name]数组里面，以备后面使用：</strong><br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">        if(is_string($name)) {
+            $this-&gt;link[$name] = $this-&gt;pdo;
+        }</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>&nbsp; 5）pdo开启调试模式的处理：</strong><br>
+        <br>
+        &nbsp; 当我们在编写程序时可以开启调试模式进行错误调试。<br>
+        <br>
+        <strong>&nbsp; 如果开启则对出错的问题进行下面的处理：</strong><br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">        if(PDO_DEBUG) {
+            $info = array();
+            $info['sql'] = $sql;
+            $info['error'] = $this-&gt;pdo-&gt;errorInfo();
+            $this-&gt;debug(false, $info);
+        }</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp; 这段代码的意思是把错误的信息和对应的sql语句装到数组$info里面，调用函数debug()处理。<br>
+        <br>
+        <hr>
+        <strong>举例</strong><br>
+        <br>
+        &nbsp; 当我们进行实例化DB类时，获取到的结果如下。<br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">  require'/weiqing/framework/bootstrap.inc.php';
+  $pdo = new DB();
+  var_dump($pdo);</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <strong>结果：</strong><br>
+        <br>
+        <table style="border:1px solid #eee;width:96%;">
+            <tbody>
+            <tr>
+                <td>
+				<pre class="brush:bash;">object(DB)[4]
+  protected 'pdo' =&gt;
+    object(PDO)[5]
+  protected 'cfg' =&gt;
+    array (size=5)
+      'master' =&gt;
+        array (size=8)
+          'host' =&gt; string '127.0.0.1' (length=9)
+          'username' =&gt; string 'root' (length=4)
+          'password' =&gt; string '123456' (length=6)
+          'port' =&gt; string '3306' (length=4)
+          'database' =&gt; string 'weiqing' (length=7)
+          'charset' =&gt; string 'utf8' (length=4)
+          'pconnect' =&gt; int 0
+          'tablepre' =&gt; string 'ims_' (length=4)
+      'slave_status' =&gt; boolean false
+      'slave' =&gt;
+        array (size=1)
+          1 =&gt;
+            array (size=9)
+              ...
+      'common' =&gt;
+        array (size=1)
+          'slave_except_table' =&gt;
+            array (size=1)
+              ...
+      'tablepre' =&gt; string 'ims_' (length=4)
+  protected 'tablepre' =&gt; string 'ims_' (length=4)
+  protected 'result' =&gt; null
+  protected 'statement' =&gt; null
+  protected 'errors' =&gt;
+    array (size=1)
+      0 =&gt;
+        array (size=2)
+          'sql' =&gt; string 'SET NAMES 'utf8';' (length=17)
+          'error' =&gt;
+            array (size=3)
+              ...
+  protected 'link' =&gt;
+    array (size=1)
+      'master' =&gt;
+        object(PDO)[5]</pre>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        &nbsp; 从上面可以看出我们在实例化类DB时，其实，是执行了构造函数里面的处理的一些信息，包括获取到连接数据库用到的信息。</div>
+
+
+
+</div>
+</body>
+</html>

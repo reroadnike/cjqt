@@ -1,0 +1,34 @@
+{
+    "data": [
+        {
+            "groupcode": "",
+            "groupname": "",
+            "isenabled": "",
+            "oprateversion": "",
+            "opratetype": "",
+            "createby": "",
+            "createtime": "",
+            "lastupdateby": "",
+            "lastupdatetime": "",
+            "createtime_": "创建时间",
+            "updatetime": "修改时间",
+            "enabled": "是否可用或删除",
+            "uniacid": "uniacid"
+        },
+        {
+            "groupcode": "",
+            "groupname": "",
+            "isenabled": "",
+            "oprateversion": "",
+            "opratetype": "",
+            "createby": "",
+            "createtime": "",
+            "lastupdateby": "",
+            "lastupdatetime": "",
+            "createtime_": "创建时间",
+            "updatetime": "修改时间",
+            "enabled": "是否可用或删除",
+            "uniacid": "uniacid"
+        }
+    ]
+}

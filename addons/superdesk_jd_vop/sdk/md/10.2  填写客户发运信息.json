@@ -1,0 +1,6 @@
+request:
+{"afsServiceId":100011597,"deliverDate":"2014-04-15 00:00:00","expressCode":"19850810","expressCompany":"宅急送","freightMoney":10}
+
+
+response:
+{"success":false,"resultMessage":"客户填写发运信息失败：根据该服务单号（100013559）不存在原始运费信息获取！","resultCode":"0","result":null}

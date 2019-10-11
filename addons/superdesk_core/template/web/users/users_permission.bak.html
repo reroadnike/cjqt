@@ -1,0 +1,26 @@
+{template 'common/header'}
+
+{if !empty($module)}
+<tbody class="module_select">
+{php $i=1;}
+{loop $module $k $m}
+{if empty($m['issystem'])}
+{if $i%6 == 1 || $i == 1}<tr>{/if}
+    <td style="overflow:inherit;">
+        <div class="dropdown">
+            <span class="" data-id="{$k}">
+                <label class="checkbox-inline"><input type="checkbox" value="{$k}" name="module[]" {if in_array($k, $mod_keys)}checked{/if}>{$m['title']}</label>
+            </span>
+            <ul class="dropdown-menu" role="menu"></ul>
+            <label class="checkbox-inline info"></label>
+            <input type="hidden" name="{$k}_select" value="0"/>
+        </div>
+    </td>
+    {if $i%6 == 0}</tr>{/if}
+{php $i++;}
+{/if}
+{/loop}
+</tbody>
+{/if}
+
+{template 'common/footer'}

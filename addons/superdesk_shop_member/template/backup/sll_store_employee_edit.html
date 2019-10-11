@@ -1,0 +1,116 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('sll_store_employee', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('sll_store_employee', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="employee_id" class="form-control" value="{$item['employee_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">姓名</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="employee_name" class="form-control" value="{$item['employee_name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">电话</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="phone" class="form-control" value="{$item['phone']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">身份证</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="employee_cardid" class="form-control" value="{$item['employee_cardid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">身份证图片</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="cardid_imageUrl1" class="form-control" value="{$item['cardid_imageUrl1']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">身份证图片</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="cardd_imageUrl2" class="form-control" value="{$item['cardd_imageUrl2']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">店面图片</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_imageUrl1" class="form-control" value="{$item['store_imageUrl1']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">店面图片</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_imageUrl2" class="form-control" value="{$item['store_imageUrl2']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">店面图片</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_imageUrl3" class="form-control" value="{$item['store_imageUrl3']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">员工图片</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="employee_imageUrl" class="form-control" value="{$item['employee_imageUrl']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="store_id" class="form-control" value="{$item['store_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">1;店主2:员工3:送水工</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="employee_type" class="form-control" value="{$item['employee_type']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">0:在职1;离职</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="stated" class="form-control" value="{$item['stated']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="employee_cardimage" class="form-control" value="{$item['employee_cardimage']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

@@ -1,0 +1,40 @@
+{
+  "success": true,
+  "resultMessage": "",
+  "resultCode": "0000",
+  "result": {
+    "invoiceId": "16214xxx",  // String | 发票号码
+    "invoiceCode":"11001000000",  // String | 发票代码
+    "state": 1,  // Int | 发票状态 1.正常、2.作废、3.冲红
+    "originalInvoiceId": null,  // String | 冲红的原始发票号
+    "originalInvoiceCode": null,  // String | 冲红的原始发票代码
+    "invoiceDate": "2018-07-12 00:00:00.0",  // String | 发票日期
+    "invoiceNakedAmount": 2954.55,  // Double | 发票金额（裸价）
+    "invoiceTaxRate": 0.1,  // String | 发票税率
+    "invoiceTaxAmount": 295.45,  // Double | 发票税额 保留 2 位小数
+    "invoiceAmount": 3250,  // Double | 价税合计 保留 2 位小数
+    "invoiceType": 2,  // Int | 1：普票、2：增票
+    "title": "xxxxx",  // String | 发票抬头
+    "taxpayer": "xxxxxxx",  // String | 纳税人识别号
+    "address": "xxxxxxxx",  // String | 地址
+    "tel": "010-586xxxxxxx",  // String | 电话
+    "bank": "xxxxxx",  // String | 开户行
+    "account": "xxxxxxx",  // String | 账号
+    "remark": null,  // String | 备注
+    "skuDetails": [
+      {
+        "jdOrderId": "7717003xxxxxxx",  // String | 电商订单编号
+        "skuId": "1865001",  // String | 商品编码
+        "skuName": "5L",  // String | 商品名称
+        "price": 65,  // Double | 单价
+        "num": 50,  // Float | 数量
+        "taxRate": 0.1,  // Double | 税率
+        "amount": 3250,  // Double | 总金额（含税）
+        "amountUnTax": 2954.55,  // Double | 总金额（不含税）
+        "taxAmount": 295.45,  // Double | 税额
+        "specification": null,  // String | 这个没注释,不知道是什么
+        "settleUnit": null  // String | 结算单位
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+<div class="clearfix user-browser">
+	<div class="form-horizontal">
+		<div class="form-group">
+			<label class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label">用户昵称</label>
+			<div class="col-xs-10 col-md-10 col-lg-10">
+				<div class="input-group">
+					<input id="keyword" type="text" class="form-control" value="{$_GPC['keyword']}" />
+					<div class="input-group-btn">
+						<button class="btn btn-default pull-right" onclick="{$callback}.pIndex=1;{$callback}.query();"><i class="fa fa-search"></i> 搜索</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<table class="table tb" style="min-width:568px;">
+			<thead>
+				<tr>
+					<th style="width: 100px;">用户昵称</th>
+					<th style="width: 100px;">用户头像</th>
+					<th style="width: 50px;" class="text-center"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{loop $list $row}
+				<tr>
+					<td><label for="chk_user_{$row['fanid']}" style="font-weight:normal;">{$row['nickname']}</label></td>
+					<td> <img style="width : 22%;" src="{$row['avatar']}"/></td>
+					<td><a class="btn btn-default {if in_array($row['fanid'], $uidArr)}btn-primary{else}js-btn-select{/if}" js-nickname="{$row['nickname']}" js-uid="{$row['fanid']}" onclick="$('.user-browser a').removeClass('btn-primary');$(this).addClass('btn-primary');">选取</a></td>
+				</tr>
+				{/loop}
+			</tbody>
+		</table>
+		{$pager}
+	</div>
+</div>

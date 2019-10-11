@@ -1,0 +1,184 @@
+{template '_header'}
+
+
+{ifp 'order.finance.op.draw_a_bill'}
+<div class="page-heading"> <h2>开票登记</h2> </div>
+
+<form action="" method="post" class="form-horizontal form-validate" enctype="multipart/form-data" >
+    <input type="hidden" name="from_type" value="draw_a_bill">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">订单编号</label>
+        <div class="col-sm-9 col-xs-12" style="padding-top: 7px;">
+            {$item['ordersn']}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">状态</label>
+        <div class="col-sm-9 col-xs-12">
+            <input type="hidden" name="status" value="$item['status']">
+            <label class="radio-inline">
+                <input type="radio" name="status" value="1" {if $item['status'] == 1}checked="true"{/if} />
+                未开票
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="status" value="2"  {if $item['status'] == 2}checked="true"{/if} />
+                已开票
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">开票时间</label>
+        <div class="col-sm-9 col-xs-12">
+            {php echo tpl_form_field_date('create_invoice_time', !empty($item['create_invoice_time']) ? date('Y-m-d H:i',$item['create_invoice_time']) :date('Y-m-d H:i'), 1)}
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">发票号</label>
+        <div class="col-sm-9 col-xs-12">
+            <input type="text" name="invoice_sn" id="invoice_sn" class="form-control" value="{$item['invoice_sn']}" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">备注</label>
+        <div class="col-sm-9 col-xs-12">
+            <input type="text" name="remark" id="remark" class="form-control" value="{$item['remark']}" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-9 col-xs-12">
+            {ifp 'order.finance.edit'}
+            <input type="submit" value="提交" class="btn btn-primary"  />
+            {/if}
+        </div>
+    </div>
+
+
+</form>
+{/if}
+
+
+{ifp 'order.finance.op.mail_invoice'}
+<div class="page-heading"> <h2>邮寄发票</h2> </div>
+
+<form action="" method="post" class="form-horizontal form-validate" enctype="multipart/form-data" >
+
+    <input type="hidden" name="from_type" value="mail_invoice">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">订单编号</label>
+        <div class="col-sm-9 col-xs-12" style="padding-top: 7px;">
+            {$item['ordersn']}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">快递公司</label>
+        <div class="col-sm-9 col-xs-12">
+            <select class="form-control" name="expressid" id="expressid" >
+                <option value="0">请选择快递公司</option>
+                {loop $expressList $express}
+                <option value="{$express['id']}" {if $item['expressid'] == $express['id']} selected="selected" {/if} >{$express['name']}</option>
+                {/loop}
+            </select>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">快递单号</label>
+        <div class="col-sm-9 col-xs-12">
+            <input type="text" name="express_sn" id="express_sn" class="form-control" value="{$item['express_sn']}" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-9 col-xs-12">
+            {ifp 'order.finance.edit'}
+            <input type="submit" value="提交" class="btn btn-primary"  />
+            {/if}
+            <input type="checkbox" value="1" name="is_all_invoice_sn" id="is_all_invoice_sn" /> <label for="is_all_invoice_sn">批量修改所有相同发票号订单</label>
+        </div>
+    </div>
+
+
+</form>
+
+{/if}
+
+
+{ifp 'order.finance.op.press_for_money'}
+<div class="page-heading"> <h2>催单登记</h2> </div>
+
+<form action="" method="post" class="form-horizontal form-validate" enctype="multipart/form-data" >
+
+    <input type="hidden" name="from_type" value="press_for_money">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">订单编号</label>
+        <div class="col-sm-9 col-xs-12" style="padding-top: 7px;">
+            {$item['ordersn']}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">催单状态</label>
+        <div class="col-sm-9 col-xs-12">
+            <select class="form-control" name="press_type" id="press_type" >
+                <option value="0">请选择催款状态</option>
+                <option value="1" {if $item['press_type'] == 1} selected="selected" {/if} >业务催款</option>
+                <option value="2" {if $item['press_type'] == 2} selected="selected" {/if} >财务催款</option>
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">催款跟进记录</label>
+        <div class="col-sm-9 col-xs-12">
+            <input type="text" name="press_msg" id="press_msg" class="form-control" value="{$item['press_msg']}" />
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">是否回款</label>
+        <div class="col-sm-9 col-xs-12">
+            <input type="hidden" name="press_status" value="$item['press_status']">
+            <label class="radio-inline">
+                <input type="radio" name="press_status" value="1" {if $item['press_status'] == 1 || empty($item['press_status']) }checked="true"{/if} />
+                未回款
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="press_status" value="2" {if $item['press_status'] == 2}checked="true"{/if} />
+                已回款
+            </label>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">回款时间</label>
+        <div class="col-sm-9 col-xs-12">
+            {php echo tpl_form_field_date('press_time', !empty($item['press_time']) ? date('Y-m-d H:i',$item['press_time']) :date('Y-m-d H:i'), 1)}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-9 col-xs-12">
+            {ifp 'order.finance.edit'}
+            <input type="submit" value="提交" class="btn btn-primary"  />
+            {/if}
+        </div>
+    </div>
+
+
+</form>
+{/if}
+
+{template '_footer'}

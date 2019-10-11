@@ -1,0 +1,52 @@
+{template 'common/header'}
+<style>
+
+.head{height:40px; line-height:40px; background:#333; margin-bottom:5px; padding:0 5px; color:#FFF;}
+.head .bn{display:inline-block; height:30px; line-height:30px; padding:0 10px; margin-top:4px; font-size:20px; color:#FFF; text-decoration:none;}
+.head .bn.pull-right{position:absolute; right:5px; top:0;}
+.head .title{font-size:14pt;display:block;padding-left:10px;font-weight:bolder;margin-right:49px;text-align:center;height:40px;line-height:40px;text-overflow:ellipsis;white-space:nowrap;overflow: hidden;}
+.head .order{background:#F9F9F9; position:absolute; z-index:9999; right:0;}
+.head .order li > a{display:block; padding:0 10px; min-width:100px; height:35px; line-height:35px; font-size:16px; color:#333; text-decoration:none; border-top:1px #EEE solid;}
+.head .order li.fa-caret-up{font-size:20px;color:#F9F9F9;position:absolute;top:-11px;right:16px;}
+.pager-position{width:100%;margin:0 auto;text-align:center;}
+.item_list{width:100%;background:#ffffff;float:left;border-radius:5px;border:1px solid #CCCCCC;padding:10px 4%;}
+.news_name{width:100%;font-size:18px;line-height:25px;color:#333333;}
+.news_time{width:100%;font-size:12px;color:#999999;line-height:20px;}
+.news_pic{width:100%;padding-bottom:10px;border-bottom:1px solid #CCCCCC;}
+.news_link{width:100%;line-height:25px;margin-top:5px;font-size:14px;}
+article.item{margin: 16px 14px;}
+.clearfix:after{clear: both;}
+.clearfix:before, .clearfix:after {content: "";display: table;}
+.size-auto {max-width: 100%;height: auto;
+}
+</style>
+
+
+{php $result = site_article(array('cid' => $cid));}
+{loop $result['list'] $row}
+<article id="" class="clearfix item">
+	<a href="{if !empty($row['linkurl'])}{$row['linkurl']}{else}{php echo murl('site/site/detail', array('id' => $row['id'], 'uniacid' => $_W['uniacid']))}{/if}">
+		<div class="item_list">
+			<div class="news_name">{$row['title']}</div>
+			<div class="news_time">{php echo date('Y-m-d', $row['createtime'])}</div>
+			<div class="news_pic">{if $row['thumb']}<img src="{$_W['siteroot']}thumbnail/timthumb.php?src={$_W['attachurl']}{$row['thumb']}&h=380&w=380&zc=1" class="img-rounded size-auto" onerror="this.parentNode.removeChild(this)"/>{/if}</div>
+			<div class="news_link">查看全文</div>
+		</div>
+	</a>
+</article>
+{/loop}
+<script>
+	require(['jquery'], function($){
+		$(function(){
+			$('#category_show').click(function(){
+				$('.head .order').toggleClass('hide');
+				return false;
+			});
+			/* $("img").addClass("img-thumbnail"); */
+			$("img").lazyload();
+			/*$("img").addClass("size-auto");*/
+		});
+	});
+</script>
+<div class="pager-position">{$result['pager']}</div>
+{template 'common/footer'}

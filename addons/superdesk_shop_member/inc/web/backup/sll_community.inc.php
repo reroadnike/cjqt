@@ -1,0 +1,78 @@
+<?php
+/**
+ * Created by linjinyu.
+ * User: linjinyu
+ * Date: 2018/01/08 * Time: 17:08 * http://192.168.1.124/superdesk/web/index.php?c=site&a=entry&m=superdesk_shop_member&do=sll_community */
+
+global $_GPC, $_W;
+
+include_once(IA_ROOT . '/addons/superdesk_shop_member/model/out_db/sll_community.class.php');
+$sll_community = new sll_communityModel();
+
+$op = !empty($_GPC['op']) ? $_GPC['op'] : 'list';
+
+if ($op == 'edit') {
+
+    $item = $sll_community->getOne($_GPC['id']);
+
+    if (checksubmit('submit')) {
+
+
+        $id = isset($_GPC['id']) ? empty($_GPC['id']) ? "" : $_GPC['id'] : "";
+        $params = array(
+    'community_id' => $_GPC['community_id'],// 
+    'community_name' => $_GPC['community_name'],// 
+    'community_code' => $_GPC['community_code'],// 
+    'pcode' => $_GPC['pcode'],// 
+    'community_state' => $_GPC['community_state'],// 
+
+        );
+        $sll_community->saveOrUpdate($params, $id);
+
+        message('成功！', $this->createWebUrl('sll_community', array('op' => 'list')), 'success');
+
+
+    }
+    include $this->template('sll_community_edit');
+
+} elseif ($op == 'list') {
+
+    if (!empty($_GPC['displayorder'])) {
+        foreach ($_GPC['displayorder'] as $id => $displayorder) {
+
+            $params = array('displayorder' => $displayorder);
+            $where = array('id' => $id);
+
+            $sll_community->update($params,$where);
+        }
+        message('显示顺序更新成功！', $this->createWebUrl('sll_community', array('op' => 'list')), 'success');
+    }
+
+    $page = $_GPC['page'];
+    $page_size = 20;
+
+    $result = $sll_community->queryAll(array(),$page,$page_size);
+    $total = $result['total'];
+    $page = $result['page'];
+    $page_size = $result['page_size'];
+    $list = $result['data'];
+
+    $pager = pagination($total, $page, $page_size);
+
+    include $this->template('sll_community_list');
+
+} elseif ($op == 'delete') {
+
+    $id = isset($_GPC['id']) ? empty($_GPC['id']) ? "" : $_GPC['id'] : "";
+
+    $item = $sll_community->getOne($_GPC['id']);
+
+    if (empty($item)) {
+        message('抱歉，该信息不存在或是已经被删除！');
+    }
+
+    $sll_community->delete($id);
+
+    message('删除成功！', referer(), 'success');
+}
+

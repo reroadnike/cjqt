@@ -1,0 +1,38 @@
+{
+    "data": [
+        {
+            "itemcode": "",
+            "itemname": "",
+            "groupid": "",
+            "isenabled": "",
+            "oprateversion": "",
+            "opratetype": "",
+            "createby": "",
+            "createtime": "",
+            "lastupdateby": "",
+            "orderno": "",
+            "lastupdatetime": "",
+            "createtime_": "创建时间",
+            "updatetime": "修改时间",
+            "enabled": "是否可用或删除",
+            "uniacid": "uniacid"
+        },
+        {
+            "itemcode": "",
+            "itemname": "",
+            "groupid": "",
+            "isenabled": "",
+            "oprateversion": "",
+            "opratetype": "",
+            "createby": "",
+            "createtime": "",
+            "lastupdateby": "",
+            "orderno": "",
+            "lastupdatetime": "",
+            "createtime_": "创建时间",
+            "updatetime": "修改时间",
+            "enabled": "是否可用或删除",
+            "uniacid": "uniacid"
+        }
+    ]
+}

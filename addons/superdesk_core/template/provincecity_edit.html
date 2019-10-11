@@ -1,0 +1,110 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('provincecity', array('op' => 'list'))}">省市信息管理</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('provincecity', array('op' => 'edit'))}">{if isset($item[id])}编辑{else}添加{/if}省市信息</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}编辑{else}添加{/if}省市信息
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">ID</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="ID" class="form-control" value="{$item['id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">类型(1-代表省份，2-代表城市)</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="type" class="form-control" value="{$item['type']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">省份/城市名称</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="name" class="form-control" value="{$item['name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">省份编码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="provinceCode" class="form-control" value="{$item['provinceCode']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">城市编码</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="cityCode" class="form-control" value="{$item['cityCode']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">名称首字母</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="description" class="form-control" value="{$item['description']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建人</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="creator" class="form-control" value="{$item['creator']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="createTime" class="form-control" value="{$item['createTime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">修改人</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="modifier" class="form-control" value="{$item['modifier']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">修改时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="modifyTime" class="form-control" value="{$item['modifyTime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否可用</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="isEnabled" class="form-control" value="{$item['isEnabled']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="createtime_" class="form-control" value="{$item['createtime_']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">是否可用或删除</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="enabled" class="form-control" value="{$item['enabled']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

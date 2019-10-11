@@ -1,0 +1,22 @@
+
+
+## 已更新到服务器
+
+ALTER TABLE `ims_superdesk_jd_vop_page_num` ADD `deleted` TINYINT(4) NOT NULL DEFAULT '0' COMMENT '删除标记' AFTER `state`;
+
+
+INSERT INTO `ims_superdesk_jd_vop_task_cron` (`name`, `orde`, `file`, `no`, `desc`, `freq`, `lastdo`, `log`) VALUES
+('_cron_handle_task_1001_message_get_type_1', 1001, '_cron_handle_task_1001_message_get_type_1.inc.php', 0, '订单拆分变更{&quot;id&quot;:推送id, &quot;result&quot; : {&quot;pOrder&quot; :父订单id} , &quot;type&quot;: 1, &quot;time&quot;:推送时间},注意：京东订单可能会被多次拆单； 例如：订单1 首先被拆成订单2、订单3；然后订单2有继续被拆成订单4、订单5；最终订单1的子单是订单3、订单4、订单5；每拆一次单我们都会发送一次拆单消息，但父订单号只会传递订单1（原始单），需要通过查询接口获取到最新所有子单，进行相关更新；', 0, 1518418453, ''),
+('_cron_handle_task_1002_message_get_type_2', 1002, '_cron_handle_task_1002_message_get_type_2.inc.php', 0, '商品价格变更{&quot;id&quot;:推送id, &quot;result&quot;:{&quot;skuId&quot; : 商品编号 }, &quot;type&quot;: 2, &quot;time&quot;:推送时间},', 0, 1518418514, ''),
+('_cron_handle_task_1004_message_get_type_4', 1004, '_cron_handle_task_1004_message_get_type_4.inc.php', 0, '上下架变更消息{&quot;id&quot;:推送id, &quot;result&quot;:{&quot;skuId&quot; : 商品编号 }, &quot;type&quot;: 4 &quot;time&quot;:推送时间},', 0, 1518418554, ''),
+('_cron_handle_task_1005_message_get_type_5', 1005, '_cron_handle_task_1005_message_get_type_5.inc.php', 0, '该订单已妥投（买断模式代表外单已妥投或外单已拒收）{&quot;id&quot;:推送id, &quot;result&quot;:{&quot;orderId&quot;:&quot;京东订单编号&quot;, &quot;state&quot;:&quot;1是妥投，2是拒收&quot;}, &quot;type&quot; : 5, &quot;time&quot;:推送时间}，', 0, 1518418568, ''),
+('_cron_handle_task_1006_message_get_type_6', 1006, '_cron_handle_task_1006_message_get_type_6.inc.php', 0, '添加、删除商品池内商品{&quot;id&quot;:推送id, &quot;result&quot;:{&quot;skuId&quot;: 商品编号, &quot;page_num&quot;:商品池编号, &quot;state&quot;:&quot;1添加，2删除&quot;}, &quot;type&quot; : 6, &quot;time&quot;:推送时间}，', 0, 1518418602, ''),
+('_cron_handle_task_1010_message_get_type_10', 1010, '_cron_handle_task_1010_message_get_type_10.inc.php', 0, '订单取消（不区分取消原因）{&quot;id&quot;:推送id, &quot;result&quot;:{&quot; orderId&quot;: 京东订单编号 }, &quot;type&quot; : 10, &quot;time&quot;:推送时间}，', 0, 1518418618, ''),
+('_cron_handle_task_1012_message_get_type_12', 1012, '_cron_handle_task_1012_message_get_type_12.inc.php', 0, '配送单生成（打包完成后推送，仅提供给买卖宝类型客户）{&quot;id&quot;:推送id, &quot;result&quot;:{&quot; orderId&quot;: 京东订单编号 }, &quot;type&quot; : 12, &quot;time&quot;:推送时间}，', 0, 1518418662, ''),
+('_cron_handle_task_1013_message_get_type_13', 1013, '_cron_handle_task_1013_message_get_type_13.inc.php', 0, '换新订单生成（换新单下单后推送，仅提供给买卖宝类型客户）{&quot;id&quot;:推送id, &quot;result&quot;:{&quot;afsServiceId&quot;: 服务单号, &quot; orderId&quot;:换新订单号}, &quot;type&quot; : 13, &quot;time&quot;:推送时间}', 0, 1518418718, ''),
+('_cron_handle_task_1014_message_get_type_14', 1014, '_cron_handle_task_1014_message_get_type_14.inc.php', 0, '支付失败消息{&quot;id&quot;:推送id, &quot;result&quot;:{&quot; orderId&quot;: 京东订单编号}, &quot;type&quot; : 14, &quot;time&quot;:推送时间}', 0, 1518418731, ''),
+('_cron_handle_task_1015_message_get_type_15', 1015, '_cron_handle_task_1015_message_get_type_15.inc.php', 0, '7天未支付取消消息/未确认取消（cancelType, 1: 7天未支付取消消息; 2: 未确认取消）{&quot;id&quot;:推送id, &quot;result&quot;:{&quot;orderId&quot;: 京东订单编号, &quot;cancelType&quot;: 取消类型}， &quot;type&quot; : 15, &quot;time&quot;:推送时间}', 0, 1518418755, ''),
+('_cron_handle_task_1016_message_get_type_16', 1016, '_cron_handle_task_1016_message_get_type_16.inc.php', 0, '商品介绍及规格参数变更消息{&quot;id&quot;:推送id, &quot;result&quot;:{&quot;skuId&quot; : 商品编号 } &quot;type&quot; : 16, &quot;time&quot;:推送时间}}', 0, 1518418795, ''),
+('_cron_handle_task_1017_message_get_type_17', 1017, '_cron_handle_task_1017_message_get_type_17.inc.php', 0, '赠品促销变更消息{&quot;id&quot;:推送id, &quot;result&quot;:{&quot;skuId&quot; : 商品编号 } &quot;type&quot; : 17, &quot;time&quot;:推送时间}}', 0, 1518418816, ''),
+('_cron_handle_task_1025_message_get_type_25', 1025, '_cron_handle_task_1025_message_get_type_25.inc.php', 0, '新订单消息{&quot;id&quot;:推送id, &quot;result&quot;:{&quot;orderId&quot;:京东订单号, &quot;pin&quot;:&quot;京东账号&quot;} &quot;type&quot; : 25, &quot;time&quot;:推送时间(订单创建时间)}}', 0, 1518418844, ''),
+('_cron_handle_task_1050_message_get_type_50', 1050, '_cron_handle_task_1050_message_get_type_50.inc.php', 0, '京东地址变更消息推送', 0, 1518418868, '');

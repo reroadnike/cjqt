@@ -1,0 +1,36 @@
+相应结果样例：
+{
+    "result":{
+        "2317745":[
+            {
+                "categoryCode":"VXP-YCBX",
+                "detailUrl":"http://sale.jd.com/act/s7oXRvFNyVl.html",
+                "displayName":"延长保修",
+                "displayNo":1,
+                "fuwuSkuDetailList":[
+                    {
+                        "bindSkuId":2294753,
+                        "bindSkuName":"延长保修1年",
+                        "favor":false,
+                        "price":99,
+                        "sortIndex":1,
+                        "tip":"保修期延长1年，就近维修，不限次服务"
+                    },
+                    {
+                        "bindSkuId":2293796,
+                        "bindSkuName":"延长保修2年",
+                        "favor":false,
+                        "price":198,
+                        "sortIndex":2,
+                        "tip":"保修期延长2年，就近维修，不限次服务"
+                    }
+                ],
+                "imgUrl":"/fuwu/jfs/t2623/112/1419031929/1227/e5dadbca/573d95abNc672af4d.png",
+                "mainSkuId":2317745
+            }
+        ]
+    },
+    "resultCode":"0000",
+    "resultMessage":"操作成功",
+    "success":true
+}

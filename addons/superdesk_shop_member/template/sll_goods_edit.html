@@ -1,0 +1,170 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('sll_goods', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('sll_goods', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="goods_id" class="form-control" value="{$item['goods_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">品牌</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="brand_id" class="form-control" value="{$item['brand_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="name" class="form-control" value="{$item['name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">参考价</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="referprice" class="form-control" value="{$item['referprice']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">0:下架，1:上架 400：删除 2:审核不通过</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="status" class="form-control" value="{$item['status']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="pic" class="form-control" value="{$item['pic']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">简介</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="introductions" class="form-control" value="{$item['introductions']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">型号</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="model" class="form-control" value="{$item['model']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">详情页</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="content" class="form-control" value="{$item['content']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">数量（水票专用）</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="number" class="form-control" value="{$item['number']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">1：精选  2：特价  0：普通</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="type" class="form-control" value="{$item['type']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">水票对应的商品id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="toGoodsid" class="form-control" value="{$item['toGoodsid']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">排序</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="sort" class="form-control" value="{$item['sort']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">分类id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="classify_id" class="form-control" value="{$item['classify_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">库存</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="stock" class="form-control" value="{$item['stock']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">单位</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="unit_id" class="form-control" value="{$item['unit_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="ctime" class="form-control" value="{$item['ctime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">拥有者id ( 0:总端 )</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="user_id" class="form-control" value="{$item['user_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">原价</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="oldprice" class="form-control" value="{$item['oldprice']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">来源1：本商城，2：京东</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="origin" class="form-control" value="{$item['origin']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">京东商品sku</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="sku" class="form-control" value="{$item['sku']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">京东商品协议价</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="agreementprice" class="form-control" value="{$item['agreementprice']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="modified_at" class="form-control" value="{$item['modified_at']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

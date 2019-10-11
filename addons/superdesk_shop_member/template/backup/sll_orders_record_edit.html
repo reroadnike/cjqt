@@ -1,0 +1,86 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('sll_orders_record', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('sll_orders_record', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">新增订单数量</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="newOrdersCount" class="form-control" value="{$item['newOrdersCount']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">未处理订单数量</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="untreatedOrdersCount" class="form-control" value="{$item['untreatedOrdersCount']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">已完成订单数量（订单状态为3或5的）</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="completedOrdersCount" class="form-control" value="{$item['completedOrdersCount']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">订单总金额</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="ordersPriceSum" class="form-control" value="{$item['ordersPriceSum']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">来电总数</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="callCount" class="form-control" value="{$item['callCount']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">交易金额</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="transactionAmount" class="form-control" value="{$item['transactionAmount']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">新增商品数</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="newGoodsCount" class="form-control" value="{$item['newGoodsCount']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">水店id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="storeId" class="form-control" value="{$item['storeId']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">日期</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="ctime" class="form-control" value="{$item['ctime']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

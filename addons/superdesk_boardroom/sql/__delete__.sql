@@ -1,0 +1,7 @@
+TRUNCATE `ims_business_dongyuantangguoyiguang_department`;
+TRUNCATE `ims_business_dongyuantangguoyiguang_doctor_automated`;
+TRUNCATE `ims_business_dongyuantangguoyiguang_doctor_doc`;
+TRUNCATE `ims_business_dongyuantangguoyiguang_drug_allergy`;
+TRUNCATE `ims_business_dongyuantangguoyiguang_patient_appointment`;
+TRUNCATE `ims_business_dongyuantangguoyiguang_patient_diagnosis`;
+TRUNCATE `ims_business_dongyuantangguoyiguang_patient_doc`;

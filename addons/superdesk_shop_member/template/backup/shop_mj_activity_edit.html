@@ -1,0 +1,116 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('shop_mj_activity', array('op' => 'list'))}">#list#</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('shop_mj_activity', array('op' => 'edit'))}">{if isset($item[id])}#edit#{else}#add#{/if}</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}#edit#{else}#add#{/if}
+            </div>
+            <div class="panel-body">
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">满减活动表</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shop_mj_id" class="form-control" value="{$item['shop_mj_id']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">名称</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shop_mj_name" class="form-control" value="{$item['shop_mj_name']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">1:表示满减，2：表示阶梯满减</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shop_mj_condition" class="form-control" value="{$item['shop_mj_condition']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">条件对应的值(json结构) type=1元，type=2 积分</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shop_mj_value" class="form-control" value="{$item['shop_mj_value']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">用户级别要求</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shop_mj_level" class="form-control" value="{$item['shop_mj_level']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">活动开始时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shop_mj_begintime" class="form-control" value="{$item['shop_mj_begintime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">活动结束时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shop_mj_endtime" class="form-control" value="{$item['shop_mj_endtime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">0:未启用(未审核)，1：启用(已审核)，2：关闭</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shop_mj_status" class="form-control" value="{$item['shop_mj_status']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shop_mj_remark" class="form-control" value="{$item['shop_mj_remark']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">唯一id</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shop_mj_code" class="form-control" value="{$item['shop_mj_code']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">1：满减，2：满赠，</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shop_mj_activityType" class="form-control" value="{$item['shop_mj_activityType']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">介绍</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shop_mj_description" class="form-control" value="{$item['shop_mj_description']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">创建时间</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shop_mj_ctime" class="form-control" value="{$item['shop_mj_ctime']}"/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-xs-12 col-sm-3 col-md-2 control-label">1:全部 2:部分</label>
+    <div class="col-sm-9 col-xs-12">
+        <input type="text" name="shop_mj_productType" class="form-control" value="{$item['shop_mj_productType']}"/>
+    </div>
+</div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+{template 'common/footer'}

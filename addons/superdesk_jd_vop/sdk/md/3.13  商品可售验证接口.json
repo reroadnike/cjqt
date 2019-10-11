@@ -1,0 +1,41 @@
+返回示例
+{
+      "result":[
+        {
+            "is7ToReturn":1,
+            "isCanVAT":1,
+            "name":"荣事达（Royalstar）养生壶煎药壶2L玻璃电水壶304不锈钢发热盘YSH20K",
+            "saleState":0,
+            "skuId":1032440
+        },
+        {
+            "is7ToReturn":1,
+            "isCanVAT":1,
+            "name":"荣事达（Royalstar）养生壶煎药壶1.8L玻璃电水壶304不锈钢发热盘YSH18Q",
+            "saleState":0,
+            "skuId":1178224
+        }
+    ],
+    "resultCode":"0000",
+    "resultMessage":"操作成功",
+    "success":true
+}
+
+
+
+
+{
+  "success": true,
+  "resultMessage": "操作成功",
+  "resultCode": "0000",
+  "result": [
+    {
+      "is7ToReturn": 1,
+      "name": "维氏VICTORINOX瑞士军刀 攀登者（14种功能）红色光面1.3703",
+      "skuId": 102214,
+      "saleState": 1,
+      "isCanVAT": 1
+    }
+  ],
+  "code": 200
+}

@@ -1,0 +1,683 @@
+{template '__header'}
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/boardroom.css" />
+{template 'boardroom____part_css'}
+
+<div class="pagebottomlogo"></div>
+<form action="{php echo murl('entry' , array('m'=>'superdesk_boardroom_4school' , 'do'=>'boardroom_info'))}" method="post" id="form_submit">
+    <input type="hidden" name="id" value="{$id}"/>
+    <input type="hidden" name="structures_parentid" value="{$structures_parentid}"/>
+    <input type="hidden" name="structures_childid" value="{$structures_childid}"/>
+    <input type="hidden" name="attribute" value="{$attribute}"/>
+
+    <div class="outer basic-block">
+        <div class="datetimeswrap">
+            <!-- 日期时间选择 -->
+            <div class="datetimesel">
+                <div class="datesel">
+
+                    <i class="dateicon"></i>
+                    <div class="datestart">
+                        <em id="span_date_selected">{$span_date_start}</em>
+                        <input type="text" name="date_selected" id="date_selected" value="{$date_start}" class="ime-mode" style="width: 100%;"/>
+                    </div>
+                </div>
+                <div class="timesel">
+                    <i class="timeicon"></i>
+                    <div class="timestart">
+                        <span>开始时间</span>
+                        <em id="span_time_start">{$time_start}</em>
+                        <input type="text" id="time_start" name="time_start" value="{$time_start}" class="ime-mode" data-timestamp="{$timestamp_start}"/>
+                    </div>
+                    <div class="timeend">
+                        <span>结束时间</span>
+                        <em id="span_time_end">{$time_end}</em>
+                        <input type="text" id="time_end" name="time_end" value="{$time_end}" class="ime-mode" data-timestamp="{$timestamp_end}"/>
+                    </div>
+                </div>
+            </div>
+            <!-- 筛选 -->
+            <div class="tabnav">
+                <a href="javascript: void(0);" class="tabnavitem" data-type="building" alt="building" ><!-- tabanvsel——选中 tabnavoptions——选择中 -->
+                    <span><em>选择楼栋</em><i class="downarrow"></i></span>
+                </a>
+                <a href="javascript: void(0);" class="tabnavitem" date-type="floor" alt="floor" >
+                    <span><em>选择楼层</em><i class="downarrow"></i></span>
+                </a>
+                <a href="javascript: void(0);" class="tabnavitem" date-type="room" alt="room">
+                    <span><em>选择属性</em><i class="downarrow"></i></span>
+                </a>
+            </div>
+        </div>
+        <div class="tabconmask">
+            <div class="tabcon"  data-type="building">
+                <ul class="tabconlist">
+                    <div id="building" class="list_content"><!-- 选中添加样式 tabconsel -->
+                        {if sizeof($parent) == 0}
+                        <li class="" data-id="0">
+                            <span class="ellipsis">选择楼栋</span>
+                            <i class="iconCorrect"></i>
+                        </li>
+                        {else}
+                        {loop $parent $index $child_item}
+                        <li class="{if $child_item['id'] == $attribute} tabconsel {/if}" data-id="{$child_item['id']}">
+                            <span class="ellipsis">{$child_item['name']}</span>
+                            <i class="iconCorrect"></i>
+                        </li>
+                        {/loop}
+                        {/if}
+                    </div>
+                    <div id="floor" class="list_content"></div>
+                    <div id="room" class="list_content">
+                        {if sizeof($attributes) == 0}
+                        <li class="" data-id="0">
+                            <span class="ellipsis">选择属性</span>
+                            <i class="iconCorrect"></i>
+                        </li>
+                        {else}
+                        {loop $attributes $index $child_item}
+                        <li class="{if $child_item['id'] == $attribute} tabconsel {/if}" data-id="{$child_item['id']}">
+                            <span class="ellipsis">{$child_item['name']}</span>
+                            <i class="iconCorrect"></i>
+                        </li>
+                        {/loop}
+                        {/if}
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script language='javascript'>
+    $(function () {
+
+        $('.basic-block').pullToLoading({
+            onLoadingReady: function() {
+//            $(".look-detail").html("<i class='icon icon-unfold'></i> <span>释放搜索预定情况</span>");
+            },
+            onLoading: function() {
+//            $(".look-detail").html("<i class='icon icon-fold'></i> <span>上拉搜索预定情况</span>");
+                $('.basic-block').pullToLoading('done');
+                showDetail();
+            }
+        });
+
+        $('.detail-block').pullToRefresh({
+            onRefreshReady: function() {
+//            $(".look-basic").html("<i class='icon icon-fold'></i> <span>释放返回搜索设定</span>");
+            },
+            onRefresh: function() {
+//            $(".look-basic").html("<i class='icon icon-unfold'></i> <span>下拉返回搜索设定</span>");
+                $('.detail-block').removeClass('in').pullToRefresh('done');
+                hideDetail();
+            }
+        });
+//    setTimeout(function() {
+//                $('.detail-block').lazyload();
+//                core.showImages('.content-block img')
+//            },
+//            10);
+
+
+
+        var showDetail = function() {
+
+            $('.basic-block').hide();
+            $('.detail-block').transition(300).addClass('in').transitionEnd(function() {
+                $('.detail-block').transition('');
+            });
+            async_loading();
+        };
+        var hideDetail = function() {
+            $('.basic-block').show();
+            $('.detail-block').transition(300).removeClass('in').transitionEnd(function() {
+                $('.detail-block').transition('');
+            });
+        };
+
+
+
+
+
+
+        var target_input_date_selected;
+        var target_span_date_selected;
+        var picker = $('#datepicker');
+
+        var target_input_time;
+        var target_span_time;
+        var picker_time = $('#datetimepicker');
+
+        var set_target_time = function (val_html) {
+            target_input_time.val(val_html);
+            target_span_time.html(val_html);
+        };
+
+        var reset_target_time  = function () {
+
+            $("input[name='time_start']").val("{$time_start}");
+            $("#span_time_start").html("{$time_start}");
+
+            $("input[name='time_end']").val("{$time_end}");
+            $("#span_time_end").html("{$time_end}");
+
+            picker_time.datetimepicker('showMode',1);
+            picker_time.datetimepicker('setDate',new Date("{$Ymd_start} " + target_input_time.val()));
+
+        };
+
+        var reset_target_date  = function () {
+
+            target_input_date_selected.val("{$date_start}");
+            var arr_val = "{$date_start}".split(",");
+
+            picker.datepicker('setDates', arr_val);
+
+        };
+
+        $("#time_start").bind('click', function(event) {
+            target_input_time = $("input[name='time_start']");
+            target_span_time = $("#span_time_start");
+            show_full_screen_time();
+        });
+
+        $("#time_end").bind('click', function(event) {
+            target_input_time = $("input[name='time_end']");
+            target_span_time = $("#span_time_end");
+            show_full_screen_time();
+        });
+
+        $("#date_selected").bind('click', function(event) {
+            target_input_date_selected = $("input[name='date_selected']");
+            target_span_date_selected = $("#span_date_selected");
+            show_full_screen_date();
+        });
+
+
+        $("#btn_date_reset").bind('click', function(event) {
+            reset_target_date();
+//        async_loading();
+            $("#full_screen_date").fadeOut("flat");
+        });
+
+        $("#btn_date_close").bind('click', function(event) {
+//        async_loading();
+            $("#full_screen_date").fadeOut("flat");
+        });
+
+        $("#btn_time_reset").bind('click', function(event) {
+            reset_target_time();
+//        async_loading();
+            $("#full_screen_time").fadeOut("flat");
+        });
+
+        $("#btn_time_close").bind('click', function(event) {
+//        async_loading();
+            $("#full_screen_time").fadeOut("flat");
+        });
+
+
+        var show_full_screen_time = function () {
+            console.log("show_full_screen_time");
+
+            if(!$("#full_screen_date").is(":hidden")){
+                $("#full_screen_date").hide();
+            }
+
+            if($("#full_screen_time").is(":hidden")){
+                $("#full_screen_time").show();
+            }
+            picker_time.datetimepicker('showMode',1);
+
+            // TODO 电脑与手机的差别就在这 setDate后还是当前时间
+            var tmp = "{$Ymd_start} " + target_input_time.val()+":00";
+//        alert("设定前:"+tmp);
+//        alert(new Date(tmp));//手机上是返回invaild date debug http://www.jb51.net/article/99926.htm
+//        alert(new Date(tmp).getTime());// TODO 这东西在手机上返回NaN 在电脑上返回正常的ms值
+            picker_time.datetimepicker('setDate',new Date(tmp));//moment(tmp).unix()// TODO 这个的问题是加了8小时
+//        picker_time.datetimepicker('setUTCDate',new Date(tmp));//moment(tmp).unix()
+//        alert("设定后:"+picker_time.datetimepicker("getDate"));
+
+            picker_time.datetimepicker('setTitle','.datetimepicker-hours',moment(tmp).format('YYYY年MM月'));
+
+
+        };
+
+        var show_full_screen_date = function () {
+            console.log("show_full_screen_date");
+
+            if(!$("#full_screen_time").is(":hidden")){
+                $("#full_screen_time").hide();
+            }
+
+            if($("#full_screen_date").is(":hidden")){
+                $("#full_screen_date").show();
+            }
+
+            console.log(target_input_date_selected.val());
+            var str_val = target_input_date_selected.val();
+            var arr_val = str_val.split(",");
+
+            picker.datepicker('setDates', arr_val);
+        };
+
+
+
+        picker_time.datetimepicker({
+//        format:"h:i",
+//        dateFormat: 'yy-mm-dd',
+//        timeFormat: 'hh:mm:ss',
+            viewDate: {"year": "{$year}", "month": "{$month}", "day": "{$day}"},
+            language: "zh-CN",
+            startView: 1,
+            minView:0,
+            maxView:1,
+//        forceParse: 0,
+//        showMeridian: true,
+            startDate:"{$datetimepicker_start}",
+            endDate:"{$datetimepicker_end}",
+            minuteStep:30
+        }).on('changeDate', function(ev){
+            console.log('changeDate start');
+            console.log(ev.date);
+            console.log(moment(ev.date).format('HH:mm'));
+            set_target_time(moment(ev.date.valueOf()).format('HH:mm'));
+            target_input_time.data('timestamp', ev.date.valueOf()/1000);
+            console.log('changeDate end');
+//        if (ev.date.valueOf() < date-start-display.valueOf()){}
+        }).on('changeHour',function (ev) {
+            console.log('changeHour start');
+//        console.log(ev);
+//        console.log(moment(ev.date).format('YYYY年MM月'));
+            console.log(moment(ev.date).subtract(8,'hours').format('YYYY/MM/DD HH:mm'));// bug 修正　这个为加了八小时
+
+            set_target_time(moment(ev.date).subtract(8,'hours').format('HH:mm'));
+            target_input_time.data('timestamp', moment(ev.date).subtract(8,'hours').format('X'));
+
+            console.log('changeHour end');
+        }).on('changeMinute',function (ev) {
+            console.log('changeMinute start');
+//        console.log(ev);
+            console.log(moment(ev.date).subtract(8,'hours').format('YYYY/MM/DD HH:mm'));
+
+            set_target_time(moment(ev.date).subtract(8,'hours').format('HH:mm'));
+            target_input_time.data('timestamp', moment(ev.date).subtract(8,'hours').format('X'));
+
+            console.log('changeMinute end');
+        });
+
+        picker.datepicker({
+            multidate: true,
+            inline: true,
+            language: "zh-CN",
+            format: "yyyy-mm-dd",
+            defaultViewDate: {"year": "{$year}", "month": "{$month}", "day": "{$day}"},
+            startDate:"{$Ymd_start}",
+            endDate:"{$Ymd_end}"
+        }).on('changeDate', function(e){
+//            $('#date_selected').val(e.format('yyyy-mm-dd'));
+
+            var tmp_value = picker.datepicker('getFormattedDate');
+
+            target_input_date_selected.val(tmp_value);
+            console.log("changeDate input val :: "+target_input_date_selected.val());
+
+            // 转换 start
+            var kk = tmp_value.split(",");
+            var tmp_span_html = "";
+            var shw_span_html =  new Array();
+            for(var i = 0; i<kk.length;i++){
+                if(kk[i] !== ''){
+                    shw_span_html[i] = moment(kk[i]).format('MM-DD');
+                }
+            }
+            console.log(shw_span_html);//为数组
+            $.each(shw_span_html, function(index, value, array) {
+                var __spile__ = ",";
+                if(index == (shw_span_html.length-1) ){__spile__ = ""; }
+                tmp_span_html = tmp_span_html + value + __spile__;
+//            console.log(tmp_span_html);
+            });
+            // 转换 end
+
+            //shw_span_html.substring(0,shw_span_html.lastIndexOf(',')) is error , because shw_span_html is array
+            $('#span_date_selected').html(tmp_span_html);
+
+        });
+
+        /************ boardroom____part_async_loading start ************/
+
+
+        var today = new Date(),
+                currYear = today.getFullYear();
+        currMonth = today.getMonth();
+        currDay = today.getDate();
+        maxDate = new Date(currYear, currMonth, currDay + 10);
+
+
+
+        var date_selected = $("input[name='date_selected']");
+//        var date_start = $("input[name='date_start']");
+//        var date_end = $("input[name='date_end']");
+        var time_start = $("input[name='time_start']");
+        var time_end = $("input[name='time_end']");
+
+        var structures_parentid = $("input[name='structures_parentid']");
+        var structures_childid = $("input[name='structures_childid']");
+        var attribute = $("input[name='attribute']");
+
+        var check_problem_time_start_gt_end = function () {
+
+            console.log(time_start.data("timestamp"));
+            console.log(time_end.data("timestamp"));
+
+            if(parseInt(time_end.data("timestamp")) - parseInt(time_start.data("timestamp")) < 0){
+                $.alert("开始时间比结束时间晚", 3000);
+                return false;
+            }
+
+            return true;
+        };
+
+        var check_problem_show_error = function (that_boardroom_id) {
+
+            var tmp_show_error = "";
+
+//      $(".boardroomtime > span[data-error_msg!='']").each(function (index, element) {
+            $(".dateline_" + that_boardroom_id).each(function (index, element) {
+                console.log($(this).data('error_msg'));
+                tmp_show_error = tmp_show_error + $(this).data('error_msg');
+            });
+
+            if (tmp_show_error !== '') {
+
+                var content_ = tmp_show_error.split(",");
+                var content_p = "";
+                for(var i =0 ;i<content_.length;i++){
+                    content_p = content_p +"<p>"+content_[i]+"</p>";
+                }
+
+                $(".occupytipsmask_content").html(content_p);
+                $(".occupytipsmask").show();
+                return false;
+            }
+            return true;
+        };
+
+
+
+
+
+        var goto_booking = function (that_boardroom_id) {
+            // stbs : new Array()
+            var select_time_bar_submit = {
+                stbs: []
+            };
+
+            console.log("dateline_" + that_boardroom_id);
+
+            // 预定按扭下的dateline 会有多天
+            $(".dateline_" + that_boardroom_id).each(function (index, element) {
+
+                console.log("dateline_" + that_boardroom_id + ":: each :: " + index);
+
+                // var that_boardroom_id=$(this).data("boardroom_id");
+                var that_lable = $(this).data("lable");
+                var that_can_booking = $(this).data("can_booking");
+                var that_error_msg = $(this).data("error_msg");
+                var that_timestamp = $(this).data("timestamp");
+//                                var that_select_time_bar=$(this).data("select_time_bar");
+//                                var that_select_time_bar = $("input[name='select_time_bar_"+that_boardroom_id+"']").val();
+//                                alert(that_select_time_bar);
+//                                console.log(JSON.parse(that_select_time_bar));
+
+                // 此变量名是在生成页面时生成
+                var vars_name = "select_time_bar_" + that_boardroom_id + "_" + that_timestamp;
+
+                select_time_bar_submit.stbs[index] = {
+                    "lable": that_lable,
+                    "select_time_bar": eval(vars_name)//动态得到
+                }
+
+            });
+
+//                            console.log(select_time_bar_submit);
+            $("input[name='select_time_bar']").val(JSON.stringify(select_time_bar_submit));
+            $("input[name='id']").val(that_boardroom_id);
+
+            // Form 表单方式 修正为改下cookie
+//                            console.log("from serialize :: ");
+//                            console.log($("#form_submit").serialize());
+//                            $("#form_submit").get(0).submit(function(e){});
+
+            // 尝试改用cookie 有bug select_time_bar长度太长 改用local storage 试下
+//                            $.cookie('id', that_boardroom_id, { expires: 7, path: '/' });
+//                            $.cookie('select_time_bar', JSON.stringify(select_time_bar_submit), { expires: 7, path: '/' });
+//                            $.cookie('date_selected', date_selected, { expires: 7, path: '/' });
+//                            $.cookie('time_start', time_start, { expires: 7, path: '/' });
+//                            $.cookie('time_end', time_end, { expires: 7, path: '/' });
+
+            // local storage 可行
+            $.localStorage.set('id', that_boardroom_id);
+            $.localStorage.set('select_time_bar', JSON.stringify(select_time_bar_submit));
+            $.localStorage.set('date_selected', date_selected.val());
+            $.localStorage.set('time_start', time_start.val());
+            $.localStorage.set('time_end', time_end.val());
+
+
+            // TODO 要较正数据后才能跳转
+            location.href = "{php echo murl('entry' , array('m'=>'superdesk_boardroom_4school' , 'do'=>'boardroom_info'))}" + "&id=" + that_boardroom_id;
+        };
+
+
+        $(".closeicon").on('click',function (event) {
+            $(".occupytipsmask").hide();
+        });
+
+
+        var async_loading = function () {
+
+            if(check_problem_time_start_gt_end() == false){ return; }
+
+            console.log("async_loading = "
+                    + "{$url_boardroom_async_list}"
+                    + "&date_selected=" + date_selected.val()
+//                + "&date_start=" + date_start.val()
+                    + "&time_start=" + time_start.val()
+//                + "&date_end=" + date_end.val()
+                    + "&time_end=" + time_end.val()
+                    + "&structures_parentid=" + structures_parentid.val()
+                    + "&structures_childid=" + structures_childid.val()
+                    + "&attribute=" + attribute.val()
+            );
+
+            $.alert("加载中...", 300);
+            $(".boardroomlist").load("{$url_boardroom_async_list}"
+                    + "&date_selected=" + date_selected.val()
+//                + "&date_start=" + date_start.val()
+                    + "&time_start=" + time_start.val()
+//                + "&date_end=" + date_end.val()
+                    + "&time_end=" + time_end.val()
+                    + "&structures_parentid=" + structures_parentid.val()
+                    + "&structures_childid=" + structures_childid.val()
+                    + "&attribute=" + attribute.val(),
+                    function () {
+
+                        // 预定按扭
+                        $(".room-reserve").each(function (index, element) {
+
+                            var that_boardroom_id = $(this).data("boardroom_id");
+
+                            $(this).bind('click', function (event) {
+
+                                /** 预定 check start **/
+                                if(check_problem_time_start_gt_end() == false){ return; }
+                                if(check_problem_show_error(that_boardroom_id) == false){ return; }
+                                /** 预定 check start **/
+
+                                goto_booking(that_boardroom_id);
+//                            $.superdesk.confirm(that_boardroom_id , goto_booking);
+
+
+                            });
+                        });
+                    }
+            );
+        };
+
+        /************ boardroom____part_async_loading end ************/
+
+
+
+        /************ boardroom____part_nav start ************/
+        var _tabnavIndex = 0;
+        var _type = '';
+
+        // TODO 横
+        $(".tabnav").on("click", ".tabnavitem", function () {
+            var _this = $(this);
+            //TODO 顶住档先啦 , 中有个大bug要改
+            var type = _this.attr('alt');
+
+            _this.addClass("tabnavoptions");
+            $(".list_content").hide();
+
+            $("#" + type).show();
+            showFilter();
+            _tabnavIndex = _this.index();
+
+            console.log("nav => " + type + " || index => " + _tabnavIndex);
+
+            _type = type;
+        });
+
+        // TODO 竖
+        $(".tabconlist").on("click", "li", function () {
+            var _this = $(this);
+
+            var id = _this.data("id");
+            var listVal = _this.find("span").html();
+
+            _this.addClass("tabconsel").siblings("li").removeClass("tabconsel");
+            $(".tabnavitem").removeClass("tabnavoptions");
+            $(".tabnavitem").eq(_tabnavIndex).addClass("tabanvsel");
+            hideFilter(listVal);
+
+            console.log(_type + " id => " + id + " || name => " + listVal);
+
+            if (_type == 'building') {
+                console.log("select building");
+                $("input[name='structures_parentid']").val(id);
+                async_loading_floor(id);
+                //            async_loading();// TODO
+            } else if (_type == 'floor') {
+                console.log("select floor");
+                $("input[name='structures_childid']").val(id);
+                //            async_loading();// TODO
+            } else if (_type == 'room') {
+                console.log("select room");
+                $("input[name='attribute']").val(id);
+                //            async_loading();// TODO
+            }
+
+        });
+
+
+        //显示筛选
+        var showFilter = function () {
+            var _height = $(window).height();
+            $(".tabconmask").show();
+            $(".outer").height(_height);
+        };
+        var hideFilter = function (value) {
+            $(".tabnavitem").eq(_tabnavIndex).find("em").html(value);
+            $(".tabconmask").hide();
+//        $(".outer").css({"height": "auto"});
+        };
+
+        var async_loading_floor = function (id) {
+            console.log("async_loading_floor = "
+                    + "{$url_ajax_boardroom_get_floor}"
+                    + "&structures_parentid=" + id
+            );
+            $("#floor").load("{$url_ajax_boardroom_get_floor}"
+                    + "&structures_parentid=" + id,
+                    function () {
+                        var _floor = $('#floor').find('li').eq(0);
+
+                        var init_structures_childid = _floor.data("id");
+                        var init_structures_childid_html = _floor.find("span").html();
+
+                        _floor.addClass("tabconsel").siblings("li").removeClass("tabconsel");
+
+                        $(".tabnavitem[alt='floor']").find("em").html(init_structures_childid_html);
+                        $(".tabnavitem[alt='floor']").find("em").removeClass("tabnavoptions");
+                        $(".tabnavitem[alt='floor']").find("em").addClass("tabanvsel");
+
+                        structures_childid.val(init_structures_childid);
+                    });
+        };
+
+
+        /************ boardroom____part_nav end ************/
+
+        /************ boardroom____part_init end ************/
+        $(".ime-mode").on('focus', function () {
+            $(this).trigger('blur');
+        });
+
+        var init_page = function () {
+
+
+            myScroll = new IScroll('scroller');
+
+            $.localStorage.set('userMobile', "{$userMobile}");
+
+            var _build = $('#building').find('li').eq(0);
+            var _room = $('#room').find('li').eq(0);
+
+            var init_structures_parentid = _build.data("id");
+            var init_structures_parentid_html = _build.find("span").html();
+
+            var init_attribute = _room.data("id");
+            var init_attribute_html = _room.find("span").html();
+
+            _build.addClass("tabconsel").siblings("li").removeClass("tabconsel");
+            _room.addClass("tabconsel").siblings("li").removeClass("tabconsel");
+
+            $(".tabnavitem[alt='building']").find("em").html(init_structures_parentid_html);
+            $(".tabnavitem[alt='building']").find("em").removeClass("tabnavoptions");
+            $(".tabnavitem[alt='building']").find("em").addClass("tabanvsel");
+
+            $(".tabnavitem[alt='room']").find("em").html(init_attribute_html);
+            $(".tabnavitem[alt='room']").find("em").removeClass("tabnavoptions");
+            $(".tabnavitem[alt='room']").find("em").addClass("tabanvsel");
+
+            structures_parentid.val(init_structures_parentid);
+            attribute.val(init_attribute);
+
+            async_loading_floor(init_structures_parentid);
+
+//        async_loading();// TODO
+        }
+//    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        init_page();
+
+
+        /************ boardroom____part_init end ************/
+
+
+
+    });
+</script>
+
+<div class="boardroomwrap detail-block" id="scroller">
+    <ul class="boardroomlist"></ul>
+</div>
+
+
+
+
+

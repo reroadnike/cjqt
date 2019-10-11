@@ -1,0 +1,275 @@
+{template '__header'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/booksuccess.css" />
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/popup.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/bookingSuccess.js"></script>
+<div class="pagetoplogo"></div>
+<div class="pagebottomlogo"></div>
+<link href="{$_W['siteroot']}/app/resource/css/font-awesome.min.css" rel="stylesheet">
+<style>
+    .order-show .order-state-section {
+        height: 70px;
+        /*background-color: #eeeeee;*/
+        padding: 15px 0
+    }
+
+    .order-show .order-state-section .order-state {
+        display: table-cell;
+        width: 1%
+    }
+
+    .order-show .order-state-section .order-state.active i.fa {
+        color: #ef4437
+    }
+
+    .order-show .order-state-section .order-state.active .line-through {
+        border-bottom: 2px solid #ef4437
+    }
+
+    .order-show .order-state-section .order-state-header {
+        line-height: 20px;
+        width: 100%;
+        display: table;
+        vertical-align: middle;
+        color: #dbdbdb
+    }
+
+    .order-show .order-state-section .square {
+        display: table-cell;
+        width: 50%;
+        vertical-align: middle
+    }
+
+    .order-show .order-state-section .square .line-through {
+        border-bottom: 2px solid #dbdbdb
+    }
+
+    .order-show .order-state-section i {
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        font-size: 15px
+    }
+
+    .order-show .order-state-section .order-state-body {
+        font-size: 12px;
+        line-height: 20px;
+        color: #555555;
+        text-align: center
+    }
+
+    .order-show .time {
+        font-size: 12px;
+        color: #777777;
+        text-align: center
+    }
+
+    .order-show .order-item {
+        font-size: 12px;
+        color: #777777;
+        line-height: 18px
+    }
+
+    .order-show .list-item {
+        display: table;
+        width: 100%
+    }
+
+    .order-show .list-item .name, .order-show .list-item .quantity-info, .order-show .list-item .total-info {
+        display: table-cell
+    }
+
+    .order-show .list-item .name {
+        width: 3%;
+        font-size: 15px;
+        color: #555555
+    }
+
+    .order-show .list-item .quantity-info {
+        text-align: center;
+        width: 2%;
+        color: #777777
+    }
+
+    .order-show .list-item .total-info {
+        text-align: center;
+        width: 2%;
+        color: #777777
+    }
+
+    .order-show .list-item .total-info .total {
+        color: #ef4437
+    }
+
+    .order-show .list-item .total-info .original-amount {
+        font-size: 12px;
+        text-decoration: line-through
+    }
+
+    .order-show .list-item .price {
+        color: #ef4437
+    }
+
+    .order-show .service-button {
+        border-radius: 5px;
+        border: 1px solid #dbdbdb;
+        margin: auto;
+        padding: 6px;
+        text-align: center;
+        line-height: 20px
+    }
+
+    .order-show .service-button i {
+        font-size: 18px;
+        font-weight: bold;
+        vertical-align: middle
+    }
+</style>
+<div class="order-show">
+    <div class="order-state-section ng-scope">
+        <div class="order-state ng-isolate-scope active">
+            <div class="order-state-header">
+                <div class="square">
+                    <div class="line-through" style="display: none;"></div>
+                </div>
+                <i class="fa fa-check-circle"></i>
+                <div class="square">
+                    <div class="line-through" ng-hide="hide_right"></div>
+                </div>
+            </div>
+            <div class="order-state-body ng-binding">已预定</div>
+        </div>
+        <div class="order-state ng-isolate-scope {if $_boardroom_appointment['status'] >= 1}active{/if}">
+            <div class="order-state-header">
+                <div class="square">
+                    <div class="line-through" ng-hide="hide_left"></div>
+                </div>
+                <i class="fa fa-check-circle"></i>
+                <div class="square">
+                    <div class="line-through" ng-hide="hide_right"></div>
+                </div>
+            </div>
+            <div class="order-state-body ng-binding">待审核</div>
+        </div>
+        <div class="order-state ng-isolate-scope {if $_boardroom_appointment['status'] >= 3}active{/if}">
+            <div class="order-state-header">
+                <div class="square">
+                    <div class="line-through" ng-hide="hide_left"></div>
+                </div>
+                <i class="fa fa-check-circle"></i>
+                <div class="square">
+                    <div class="line-through ng-hide" style="display: none;"></div>
+                </div>
+            </div>
+            <div class="order-state-body ng-binding">已审核</div>
+        </div>
+    </div>
+</div>
+<div class="centerContent">
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">订单号:</P>
+        <p class="mediaRoomRight">{$out_trade_no}</p>
+    </div>
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">会议室:</P>
+        <p class="mediaRoomRight">{$_boardroom_appointment['boardroom']['name']}(桌 : {$_boardroom_appointment['boardroom']['desk']} 椅 : {$_boardroom_appointment['boardroom']['chair']})</p>
+    </div>
+
+
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">场地设备:</P>
+        <p class="mediaRoomRight">
+
+            {loop $_boardroom_appointment['boardroom']['equipment'] $index $_equipment}
+            {$_equipment['text']}
+            {if (sizeof($_boardroom_appointment['boardroom']['equipment']) -1) != $index}，{/if}
+            {/loop}
+        </p>
+    </div>
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">地址:</P>
+        <p class="mediaRoomRight">{$_boardroom_appointment['boardroom']['address']}</p>
+    </div>
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">日期:</P>
+        <p class="mediaRoomRight">{$_boardroom_appointment['lable_ymd']} {$_boardroom_appointment['lable_time']}</p>
+    </div>
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">会议主题:</P>
+        <p class="mediaRoomRight">{$_boardroom_appointment['subject']}</p>
+    </div>
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">会议组织人:</P>
+        <p class="mediaRoomRight">{$_boardroom_appointment['client_name']}</p>
+    </div>
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">联系手机:</P>
+        <p class="mediaRoomRight">{$_boardroom_appointment['client_telphone']}</p>
+    </div>
+
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">人数:</P>
+        <p class="mediaRoomRight">{$_boardroom_appointment['people_num']}人</p>
+    </div>
+    {if $goods}
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">附加服务:</P>
+        {loop $goods $_goods}
+        <p class="mediaRoomRight">
+            <em class="ellipsis">{$_goods['g']['title']}</em>
+            <span>x {$_goods['total']}</span>
+        </p>
+        {/loop}
+    </div>
+    {/if}
+</div>
+
+<style>
+
+    .pingjiaBtn {
+        bottom: 0;
+        width: 100%;
+        min-width: 320px;
+        max-width: 750px;
+        padding: .5rem .75rem;
+        /*background-color: #fff;*/
+        margin-top: 1rem;
+    }
+</style>
+<div class="pingjiaBtn">
+    <a href="{php echo $this->createMobileUrl('report',array('op' => 'add', 'out_trade_no'=> $out_trade_no))}" title="评价服务" class="suspend-btn">评价服务</a>
+</div>
+
+
+
+<div class="footertext">
+    <div class="prompt">*该预定可在使用前24小时取消</div>
+    <div class="twoText clearfix">
+        <!--<a href="{php echo $this->createMobileUrl('boardroom')}" id="goto_index" title="回到首页">回到首页</a>-->
+        <!--<a href="{php echo $this->createMobileUrl('profile')}" title="个人中心">个人中心</a>-->
+        <!--<a href="{php echo $this->createMobileUrl('report',array('op' => 'add'))}" title="开始预订" >新增建议</a>-->
+    </div>
+</div>
+{template '__nav__'}
+<!-- 弹窗 -->
+<div class="popupmask">
+    <div class="popup">
+        <h3>取消订单？</h3>
+        <p>只可以在使用前24小时取消预定</p>
+
+        <div class="popupbtns clearfix">
+            <a href="javascipt: void(0);" title="取消" class="popupbtn js_cancel">取消</a>
+            <a href="javascipt: void(0);" title="确认" class="popupbtn js_confirm">确认</a>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery.storageapi.min.js"></script>
+<script type="text/javascript">
+    var initPage = function () {
+        var userMobile = $.localStorage.get('userMobile');
+        $("#goto_index").attr("href",$("#goto_index").attr("href")+"&userMobile="+userMobile);
+    };
+    initPage();
+</script>
+{template '__footer'}

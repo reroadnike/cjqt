@@ -1,0 +1,1 @@
+DROP TABLE `ims_superdesk_feedback_feedback`, `ims_superdesk_feedback_setting`;

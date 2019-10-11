@@ -1,0 +1,1 @@
+ALTER TABLE `ims_account` ADD `isdeleted` TINYINT(2) NOT NULL DEFAULT '0' COMMENT 'isdeleted' AFTER `isconnect`;

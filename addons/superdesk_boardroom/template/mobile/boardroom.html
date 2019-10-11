@@ -1,0 +1,45 @@
+{template '__header'}
+
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/boardroom.css" />
+
+<div class="pagetoplogo"></div>
+<div class="pagebottomlogo"></div>
+
+<div class="addresstime">
+    <div class="timesel">
+        <span>会议日期</span>
+        <i class="arrow-right"></i>
+        <em id="datePickertime">{$Ymd}</em>
+    </div>
+    <div class="timesel">
+        <span>会议室地点</span>
+        <i class="arrow-right"></i>
+        <em id="lareaAddress"  class="ellipsis" name="input_area">天津市 天津市 南开区</em><!-- 天津市 委党校项目: 天津市南开区育梁道4号-->
+    </div>
+</div>
+
+<div class="boardroomwrap">
+    <ul class="boardroomlist">
+
+    </ul>
+</div>
+<script type="text/javascript">
+    var async_loading = function (Ymd) {
+        console.log("async_loading = " + Ymd);
+        $.alert("加载中...", 250);
+        $(".boardroomlist").load("{$url_boardroom_async_list}" + "&ymd=" + Ymd, function () {});
+    }
+    $(document).ready(function () {
+        async_loading("{$Ymd}");
+    });
+</script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/boardroom.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/LAreaboardroom.js"></script>
+
+<div style="height: 3rem;">
+    &nbsp;
+</div>
+
+{template '__nav__'}
+{template '__footer'}

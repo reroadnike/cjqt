@@ -1,0 +1,37 @@
+body {
+    background: #F7F7F7;
+}
+
+.title_color {
+    color: #666666;
+    font-size: 1.6rem;
+}
+
+.content_color{
+    color: #999999;
+    font-size: 0.05rem;
+}
+
+
+h1, h2, h3 {
+     margin-top: 10px; 
+    margin-bottom: 10px;
+}
+
+.header {
+    background-color: #C11F20;
+    height: 4rem;
+    line-height: 4rem;
+}
+
+.header img{
+    width: 1.14rem;
+}
+/*.back{
+    width: 0.71rem
+    height:1.14rem;
+}*/
+.header_title{
+    color: #FFFFFF;
+    font-size: 1.8rem;
+}

@@ -1,0 +1,107 @@
+{template 'common/header'}
+
+{template '__nav-tabs_merch__'}
+
+<div class="alert alert-info" >
+    以下为正式数据库数据，可以看出，<br/>
+    <ol>
+        <li>排除京东Sku</li>
+    </ol>
+</div>
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Table::sll_goods
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:5%;">商品<br/>ID</th>
+                        <!--<th style="width:10%;">品牌</th>-->
+                        <th style="width:10%;">商品<br/>名称</th>
+                        <th style="width:10%;">原价<br/>参考价</th>
+                        <th style="width:10%;">0:下架<br/>1:上架<br/>400:删除<br/>2:审核不通过</th>
+                        <th style="width:10%;">图片</th>
+                        <th style="width:10%;">简介</th>
+                        <th style="width:10%;">型号</th>
+
+                        <th style="width:10%;">详情页</th>
+
+                        <!--<th style="width:10%;">数量（水票专用）</th>-->
+                        <th style="width:10%;">1:精选<br/>2:特价<br/>0:普通</th>
+                        <!--<th style="width:10%;">水票对应的商品id</th>-->
+                        <!--<th style="width:10%;">排序</th>-->
+                        <th style="width:10%;">分类id</th>
+                        <th style="width:10%;">库存</th>
+                        <th style="width:10%;">单位</th>
+
+                        <th style="width:10%;">商户ID<br/>(0:总端)名字是叫user_id但对的是sll_water_store.store_id</th>
+                        <!--<th style="width:10%;">来源<br/>1:本商城<br/>2:京东</th>-->
+                        <!--<th style="width:10%;">JD商品sku</th>-->
+                        <!--<th style="width:10%;">JD商品协议价</th>-->
+                        <!--<th style="width:10%;">创建时间<br/>修改时间</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+                        <td>{$item['goods_id']}</td>
+                        <!--
+                        <td>{$item['brand_id']} 查过为空
+                            SELECT count(0) FROM membershop.sll_goods where brand_id is null 419466
+                        </td>
+                        -->
+                        <td>{$item['name']}</td>
+                        <td>{$item['oldprice']}<br/>{$item['referprice']}</td>
+                        <td>{$item['status']}</td>
+                        <td>{$item['pic']}</td>
+                        <td>{$item['introductions']}</td>
+                        <td>{$item['model']}</td>
+
+                        <td><textarea>{$item['content']}</textarea></td>
+
+                        <!--
+                        <td>{$item['number']} 查过为空
+                            SELECT count(0) FROM membershop.sll_goods where number is null 419466
+                        </td>
+                        -->
+
+                        <td>{$item['type']}</td>
+                        <!--
+                        <td>{$item['toGoodsid']}
+                            SELECT count(0) FROM membershop.sll_goods where toGoodsid is null 419466
+                        </td>
+                        -->
+                        <!--<td>{$item['sort']}</td>-->
+                        <td>{$item['classify_id']}</td>
+                        <td>{$item['stock']}</td>
+                        <td>{$item['unit_id']}</td>
+
+                        <td>{$item['user_id']}</td>
+                        <!--<td>{$item['origin']}</td>-->
+                        <!--<td>{$item['sku']}</td>-->
+                        <!--<td>{$item['agreementprice']}</td>-->
+
+                        <!--<td>{$item['ctime']}<br/>{$item['modified_at']}</td>-->
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                            {$total}
+                        </td>
+                        <td colspan="8">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

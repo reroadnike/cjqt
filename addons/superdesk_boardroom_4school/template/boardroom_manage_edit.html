@@ -1,0 +1,239 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('boardroom_manage', array('op' => 'list'))}">会议室列表</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('boardroom_manage', array('op' => 'edit'))}">{if
+        isset($item[id])}编辑{else}添加{/if}会议室</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}编辑{else}添加{/if}会议室
+            </div>
+            <div class="panel-body">
+
+                {if $core_user}
+                <!-- -->
+                {$item['organization_code']}
+                {$item['virtual_code']}
+                {$core_user['organization_code']}
+                {$core_user['virtual_code']}
+                {else}
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">所属项目/企业</label>
+                    <div class="col-sm-10 col-lg-3 col-xs-3">
+                        <select name="organization_code" class="form-control" id="organization_code">
+                            <option value="">请选择所属项目</option>
+                            {loop $selector_organization $row}
+                            <option value="{$row['code']}" {if $item['organization_code'] == $row['code']}selected = selected {/if}>{$row['name']}</option>
+                            {/loop}
+                        </select>
+                    </div>
+                    <div class="col-sm-10 col-lg-3 col-xs-3">
+                        <select name="virtual_code" class="form-control" id="virtual_code">
+                            <option value="">请选择所属企业</option>
+                            {loop $selector_virtuals $row}
+                            <option value="{$row['codeNumber']}" {if $item['virtual_code'] == $row['codeNumber']}selected = selected {/if}>{$row['name']}</option>
+                            {/loop}
+                        </select>
+                        <span class="help-block"></span>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $("#organization_code").change(function () {
+                                var organization_code = $("#organization_code option:selected").val();
+                                if (organization_code != '') {
+                                    $.getJSON("{php echo wurl('site/entry', array('m'=>'superdesk_core','do'=>'users','op' => 'ajax'))}", {organization_code : organization_code}, function (data) {
+                                        var content = "";
+                                        for (var o in data) {
+                                            content += "<option value=" + data[o].codeNumber + " >" + data[o].name + "</option>";
+                                        }
+                                        $("#virtual_code").empty();
+                                        $("#virtual_code").append("<option value=''>请选择所属企业</option>");
+                                        $("#virtual_code").append(content);
+                                    });
+                                } else {}
+                            });
+                        });
+                    </script>
+
+                </div>
+                {/if}
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">名称</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="name" class="form-control" value="{$item['name']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">地址</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="address" class="form-control" value="{$item['address']}"/>
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-xs-12 col-sm-3 col-md-2 control-label">楼层</label>-->
+                    <!--<div class="col-sm-9 col-xs-12">-->
+                        <!--<input type="text" name="floor" class="form-control" value="{$item['floor']}"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"><span style='color:red'>*</span>楼宇/楼层</label>
+                    <div class="col-sm-8 col-xs-12">
+                        {php echo tpl_form_field_category_2level('structures', $parent, $children, $item['structures_parentid'], $item['structures_childid'])}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"><span style='color:red'>*</span>会议室属性</label>
+                    <div class="col-sm-8 col-xs-12">
+
+
+                        <select class="form-control" name="attribute">
+                            <option value="0">请选择属性</option>
+                            {loop $attributes $index $child_item}
+                            <option value="{$child_item['id']}" {if $child_item['id'] == $item['attribute']}selected="selected"{/if}>{$child_item['name']}</option>
+                            {/loop}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">交通</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="traffic" class="form-control" value="{$item['traffic']}"/>
+                    </div>
+                </div>
+
+                <!--
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">经度</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="lat" class="form-control" value="{$item['lat']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">纬度</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="lng" class="form-control" value="{$item['lng']}"/>
+                    </div>
+                </div>
+                -->
+
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">坐标</label>
+                    <div class="col-sm-9 col-xs-12">
+                        {php echo tpl_form_field_coordinate('baidumap', $item)}
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">图片</label>
+                    <div class="col-sm-9 col-xs-12">
+                        {php echo tpl_form_field_image('thumb', $item['thumb']);}
+                    </div>
+                </div>
+                <!--
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="basic" class="form-control" value="{$item['basic']}"/>
+                    </div>
+                </div>
+                -->
+                <!--
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">轮播图</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="carousel" class="form-control" value="{$item['carousel']}"/>
+                    </div>
+                </div>
+                -->
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">租金/小时</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="price" class="form-control" value="{$item['price']}"/>
+                    </div>
+                </div>
+                <!--
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">设备 序列化的设备编号数组</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="equipment" class="form-control" value="{$item['equipment']}"/>
+                    </div>
+                </div>
+                -->
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">容纳人数</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="max_num" class="form-control" value="{$item['max_num']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">桌子</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="desk" class="form-control" value="{$item['desk']}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">椅子</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="chair" class="form-control" value="{$item['chair']}"/>
+                    </div>
+                </div>
+
+
+                <!--
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="appointment_num" class="form-control"
+                               value="{$item['appointment_num']}"/>
+                    </div>
+                </div>
+                -->
+                <!--
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">注意事项</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="remark" class="form-control" value="{$item['remark']}"/>
+                    </div>
+                </div>
+                -->
+                <!--
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">取消预约规则</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="cancle_rule" class="form-control" value="{$item['cancle_rule']}"/>
+                    </div>
+                </div>
+                -->
+                <!--
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">删除(1已删除)</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="deleted" class="form-control" value="{$item['deleted']}"/>
+                    </div>
+                </div>
+                -->
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{template 'common/footer'}

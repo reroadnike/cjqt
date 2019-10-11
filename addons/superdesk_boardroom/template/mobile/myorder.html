@@ -1,0 +1,59 @@
+{template '__header'}
+<!--
+<div class="pagetoplogo"></div>
+<div class="pagebottomlogo"></div>
+-->
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/orderList.css" />
+
+<div class="navlist">
+    <!-- 选中添加类名 navitemsel-->
+
+    <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'myorder' , 'status' => 1))}" class="navitem {if $status == 1}navitemsel{/if}">
+        <span>已付款</span>
+    </a>
+    <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'myorder' , 'status' => 0))}" class="navitem {if $status == 0}navitemsel{/if}">
+        <span>待付款</span>
+    </a>
+    <!--<a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'myorder' , 'status' => 3))}" class="navitem {if $status == 3}navitemsel{/if}">-->
+        <!--<span>已过期</span>-->
+    <!--</a>-->
+    <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'myorder' , 'status' => -1))}" class="navitem {if $status == -1}navitemsel{/if}">
+        <span>已取消</span>
+    </a>
+</div>
+<div class="orderwrap">
+    <ul class="orderlist">
+        {loop $my_boardroom_appointment $index $item}
+        <li class="orderlistitem clearfix">
+            <a href="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'boardroom_booking_success' , 'out_trade_no' => $item['out_trade_no']))}">
+                <div class="orderlistimg" style="background: url({php echo tomedia($item['boardroom']['thumb'])}) center center no-repeat;background-size: auto 100%;"></div>
+                <div class="orderinfotop">
+                    <h3 class="ellipsis">{$item['boardroom']['name']}</h3>
+                    <!-- 待付款/使用中（添加类名为textcolor） 已完成不加类名-->
+                    <span class="textcolor">
+                        {if $status == 1}
+                        已付款
+                        {elseif $status == 0}
+                        待付款
+                        {elseif $status == 3}
+                        已过期
+                        {elseif $status == -1}
+                        已取消
+                        {/if}
+                    </span>
+                </div>
+                <div class="orderroominfo">
+                    <span>容纳人数：{$item['boardroom']['max_num']}人</span>
+                    <span>楼层：{$item['boardroom']['floor']}层</span>
+                </div>
+                <div class="orderroomprice">
+                    <span>{$item['price']} 元/时</span>
+                    <span>x {$item['quantity']} 小时</span>
+                </div>
+            </a>
+        </li>
+        {/loop}
+    </ul>
+</div>
+{template '__footer'}

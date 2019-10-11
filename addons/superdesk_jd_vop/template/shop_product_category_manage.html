@@ -1,0 +1,654 @@
+{template 'common/header'}
+
+<link rel="stylesheet" href="{MODULE_URL}static/js/dist/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<style>
+
+    ul.ztree {
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        /*background: #ffffff;*/
+        width: 100%;
+        height: 700px;
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+
+    #goods_list{
+        margin-top: 10px;
+        padding-top: 10px;
+        border: 1px solid #ddd;
+        /*background: #ffffff;*/
+        width: 100%;
+        height: 700px;
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+
+    .sku_name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    ul.log{
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        /*background: #ffffff;*/
+        width: 0;
+        height: 0;
+        overflow-y: scroll;
+        overflow-x: auto;
+        list-style: none;
+        padding-left: .4rem;
+    }
+    ul.log li {
+    }
+
+    ul.log li.dark {
+        background-color: #E3E3E3;
+    }
+    .detail{
+        height: 120px;
+    }
+</style>
+
+<div class="main">
+    <div class="row">
+
+        <div class="col-xs-3 col-sm-3" style="padding: 0;">
+            [ <span id="alert_tips">初始化 ...</span> ]
+            [ <a id="expandAllBtn" href="#" title="展开" onclick="return false;">展开</a> ]
+            [ <a id="collapseAllBtn" href="#" title="折叠" onclick="return false;">折叠</a> ]
+            <!--[ <a id="addParent" href="#" title="增加父节点" onclick="return false;">增加父节点</a> ]-->
+            [ <a id="addLeaf" href="#" title="增加节点" onclick="return false;">增加节点</a> ]
+        </div>
+
+        <div class="col-xs-9 col-sm-9">
+            [ <span id="page_num_name">待机 ...</span>  <span id="page_num_total">0</span> 个 ]
+        </div>
+    </div>
+
+
+
+    <div class="row">
+
+        <div class="col-xs-3 col-sm-3" style="padding: 0;">
+            <ul id="areaTree" class="ztree"></ul>
+        </div>
+
+        <div class="col-xs-9 col-sm-9">
+            <div id="goods_list"></div>
+        </div>
+    </div>
+</div>
+
+
+<SCRIPT type="text/javascript">
+
+
+    var zNodes = {$zNodes};
+    var zTree = $("#areaTree");
+    var zTreeObj ;
+
+    var curDragNodes, autoExpandNode;
+    var showNodeCount = 0;
+
+    var core_tpl;
+    var version = +new Date();
+
+    var setting = {
+        edit: {
+            drag: {
+                autoExpandTrigger: true,
+                prev: dropPrev,
+                inner: dropInner,
+                next: dropNext
+            },
+            enable: true,
+            showRemoveBtn: showRemoveBtn,
+            showRenameBtn: showRenameBtn
+        },
+        view: {
+            fontCss: getFontCss
+        },
+        check: {
+            enable: false
+        },
+        data: {
+            simpleData: {
+                enable: true,
+                idKey: "id",
+                pIdKey: "pId",
+                rootPId: 0
+            }
+        },
+        callback: {
+            beforeRemove: beforeRemove,
+            onRemove: onRemove,
+
+            beforeRename: beforeRename,
+            onRename: onRename,
+
+            onNodeCreated: onNodeCreated,
+
+            beforeClick: beforeClick,
+            onClick: onClick,
+
+            beforeDragOpen: beforeDragOpen,
+            beforeDrag: beforeDrag,
+            onDrag: onDrag,
+
+            beforeDrop: beforeDrop,
+            onDrop: onDrop,
+
+
+            onExpand: onExpand
+        }
+    };
+
+    function beforeRemove(treeId, treeNode) {
+        console.log("[ beforeRemove ] " + treeNode.name);
+        return confirm("确认删除 节点 -- " + treeNode.name + " 吗？");
+    }
+    function onRemove(e, treeId, treeNode/*当前节点与子节点*/) {
+
+        console.log("[ onRemove ] " + JSON.stringify(treeNode));
+        ajax_tree_d(treeNode.id , function (data) {
+
+        });
+
+
+    }
+
+    function beforeRename(treeId, treeNode, newName) {
+        if (newName.length == 0) {
+            alert("节点名称不能为空.");
+            setTimeout(function(){zTreeObj.editName(treeNode)}, 10);
+            return false;
+        }
+        return true;
+    }
+    function onRename(e, treeId, treeNode/*当前节点与子节点*/) {
+        console.log("[ onRename ] " + JSON.stringify(treeNode));
+
+        ajax_tree_cu(treeNode.id,treeNode.pId,treeNode.name,function (data) {
+            console.log(data);
+        });
+
+    }
+
+    function onNodeCreated(event, treeId, treeNode) {
+        showNodeCount++;
+    }
+
+    function beforeClick(treeId, treeNode, clickFlag) {
+        return (treeNode.click != false);
+    }
+    function onClick(event, treeId, treeNode, clickFlag) {
+        console.log(treeNode);
+
+        $("#page_num_name").html(treeNode.name);
+        shopv2_mobile_goods_index_get_list(treeNode.id,false);
+
+    }
+
+    function dropPrev(treeId, nodes, targetNode) {
+        var pNode = targetNode.getParentNode();
+        if (pNode && pNode.dropInner === false) {
+            return false;
+        } else {
+            for (var i=0,l=curDragNodes.length; i<l; i++) {
+                var curPNode = curDragNodes[i].getParentNode();
+                if (curPNode && curPNode !== targetNode.getParentNode() && curPNode.childOuter === false) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    function dropInner(treeId, nodes, targetNode) {
+        if (targetNode && targetNode.dropInner === false) {
+            return false;
+        } else {
+            for (var i=0,l=curDragNodes.length; i<l; i++) {
+                if (!targetNode && curDragNodes[i].dropRoot === false) {
+                    return false;
+                } else if (curDragNodes[i].parentTId && curDragNodes[i].getParentNode() !== targetNode && curDragNodes[i].getParentNode().childOuter === false) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    function dropNext(treeId, nodes, targetNode) {
+        var pNode = targetNode.getParentNode();
+        if (pNode && pNode.dropInner === false) {
+            return false;
+        } else {
+            for (var i=0,l=curDragNodes.length; i<l; i++) {
+                var curPNode = curDragNodes[i].getParentNode();
+                if (curPNode && curPNode !== targetNode.getParentNode() && curPNode.childOuter === false) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    function beforeDrag(treeId, treeNodes) {
+//        console.log("[ beforeDrag ] drag: " + treeNodes.length + " nodes." );
+//        console.log("[ beforeDrag ] drag: " + JSON.stringify(treeNodes) );
+//        [{
+//            "id": "135",
+//            "tId": "areaTree_107",
+//            "pId": "806",
+//            "name": "鞋架/衣帽架",
+//            "page_num": "9885",
+//            "dropRoot": false,
+//            "dropInner": false,
+//            "level": 1,
+//            "parentTId": "areaTree_106",
+//            "open": false,
+//            "isParent": false,
+//            "zAsync": true,
+//            "isFirstNode": true,
+//            "isLastNode": false,
+//            "isAjaxing": false,
+//            "checked": false,
+//            "checkedOld": false,
+//            "nocheck": false,
+//            "chkDisabled": false,
+//            "halfCheck": false,
+//            "check_Child_State": -1,
+//            "check_Focus": false,
+//            "isHover": true,
+//            "editNameFlag": false
+//        }]
+
+
+        for (var i=0,l=treeNodes.length; i<l; i++) {
+            if (treeNodes[i].drag === false) {
+                curDragNodes = null;
+                return false;
+            } else if (treeNodes[i].parentTId && treeNodes[i].getParentNode().childDrag === false) {
+                curDragNodes = null;
+                return false;
+            }
+        }
+        curDragNodes = treeNodes;
+        return true;
+    }
+
+    function beforeDragOpen(treeId, treeNode) {
+        autoExpandNode = treeNode;
+//        console.log("[ beforeDragOpen ] autoExpandNode: " + JSON.stringify(autoExpandNode));
+        return true;
+    }
+
+    function onDrag(event, treeId, treeNodes) {
+        
+//        console.log("[ on拖 onDrag ] drag: " + treeNodes.length + " nodes." );
+        console.log("[ on拖 onDrag ] curDragNodes: " + JSON.stringify(curDragNodes) );
+    }
+    var curDragNodePid;
+    function beforeDrop(treeId, treeNodes, targetNode, moveType, isCopy) {
+//        console.log("[ beforeDrop ] moveType:" + moveType);
+//        console.log("[ beforeDrop ] target: " + (targetNode ? targetNode.name : "root") + "  -- is "+ (isCopy==null? "cancel" : isCopy ? "copy" : "move"));
+
+//        console.log("[ beforeDrop ] target: " + JSON.stringify(targetNode));
+//        console.log("[ beforeDrop ] curDragNodes: " + JSON.stringify(curDragNodes) );
+        curDragNodePid = curDragNodes[0].pId;
+        return true;
+    }
+    function onDrop(event, treeId, treeNodes, targetNode, moveType, isCopy/*true copy , false move , null cancel*/) {
+        
+
+//        console.log("[ *on放 onDrop ] target: " + (targetNode ? targetNode.name : "root") + "  -- is "+ (isCopy==null? "cancel" : isCopy ? "copy" : "move"));
+        console.log("[ *on放 onDrop ] curDragNodes: " + JSON.stringify(curDragNodes) );
+//        console.log("[ *on放 onDrop ] moveType:" + moveType);
+//        console.log("[ *on放 onDrop ] targetNode: " + JSON.stringify(targetNode));//
+
+        var action = isCopy==null? "cancel" : isCopy ? "copy" : "move";
+        if(action === 'move' ){
+
+            ajax_tree_cu(curDragNodes[0].id,curDragNodes[0].pId,curDragNodes[0].name,function (data) {
+                console.log(data);
+            });
+
+        }
+
+    }
+    function showRemoveBtn(treeId, treeNode) {
+        if (treeNode.check_Child_State == -1) {
+            if(treeNode.page_num != 0){// 商品池的分类不能删除
+                return false;
+            }else{
+                return true;
+            }
+        } else if (treeNode.check_Child_State == 0) {
+            return false;
+        }
+    }
+    function showRenameBtn(treeId, treeNode) {
+
+        if(treeNode.page_num != 0){// 商品池的分类不能删除
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+    function onExpand(event, treeId, treeNode) {
+        if (treeNode === autoExpandNode) {
+//            console.log("[ onExpand ] " + treeNode.name + " 自动展开" );
+        }
+    }
+
+    function createTree() {
+//        console.log(zNodes);
+        showNodeCount = 0;
+        zTree.empty();
+//        console.log($.fn.zTree);
+        var time1 = new Date();
+        $.fn.zTree.init(zTree, setting, zNodes);
+
+        zTreeObj = $.fn.zTree.getZTreeObj("areaTree");
+        var time2 = new Date();
+
+        $("#alert_tips").html("节点共 " + zNodes.length + " 个, 初始化节点共 " + showNodeCount + " 个"
+                + "初始化共耗时: " + (time2.getTime() - time1.getTime()) + " ms");
+    }
+
+    var newCount = 1;
+    function add(e) {
+
+//        var isParent = e.data.isParent;
+        var nodes = zTreeObj.getSelectedNodes();
+        var treeNode = nodes[0];
+
+        console.log(" [ on Add ] nodes: " + JSON.stringify(nodes));
+        console.log(" [ on Add ] treeNode: " + JSON.stringify(treeNode));
+
+
+        var name = "新建节点 " + (newCount++);
+        var id = 0;
+        var pId = 0;
+
+        if (treeNode) {
+            pId = treeNode.id;
+        } else {
+            treeNode = null;
+        }
+
+        ajax_tree_cu(id,pId,name,function (data) {
+//            console.log(data);
+            var obj = JSON.parse(data);
+            console.log(obj);
+
+            if (obj.status == 0) {
+
+            } else if (obj.status == 1) {
+                treeNode = zTreeObj.addNodes(treeNode, {
+                    id: obj.result.id,
+                    pId: obj.result.parentid,
+                    name:obj.result.name,
+                    page_num:0
+                });
+                console.log(treeNode);
+                if(treeNode){
+                    zTreeObj.selectNode(treeNode[0]);
+                }
+            }
+        });
+
+
+
+
+//        if (treeNode) {
+//            zTreeObj.editName(treeNode[0]);
+//        } else {
+//            alert("叶子节点被锁定，无法增加子节点");
+//        }
+    }
+
+    var ajax_tree_cu = function (id, pId, name, callback) {
+
+        var op = {
+            type: "POST",
+            url: '{php echo $this->createWebUrl("shop_product_category_manage_ajax_tree_cu");}',
+            data: {
+                id: id,
+                parentid: pId,
+                catename: name
+            }
+        };
+        console.log(op.data);
+
+        if (callback) {
+            op.success = function (data) {
+                console.log(data);
+                callback(data);
+            }
+        }
+        $.ajax(op);
+    };
+
+    var ajax_tree_d = function (id, callback) {
+
+        var op = {
+            type: "POST",
+            url: '{php echo $this->createWebUrl("shop_product_category_manage_ajax_tree_d");}',
+            data: {
+                id: id
+            }
+        };
+        console.log(op.data);
+
+        if (callback) {
+            op.success = function (data) {
+                console.log(data);
+                callback(data);
+            }
+        }
+        $.ajax(op);
+    };
+
+    function expandNode(e) {
+        var type = e.data.type;
+        var nodes = zTreeObj.getSelectedNodes();
+        if (type.indexOf("All") < 0 && nodes.length == 0) {
+            alert("请先选择一个父节点");
+        }
+
+        if (type == "expandAll") {
+            zTreeObj.expandAll(true);
+        } else if (type == "collapseAll") {
+            zTreeObj.expandAll(false);
+        } else {
+            var callbackFlag = $("#callbackTrigger").attr("checked");
+            for (var i = 0, l = nodes.length; i < l; i++) {
+
+                zTreeObj.setting.view.fontCss = {};
+
+                if (type == "expand") {
+                    zTreeObj.expandNode(nodes[i], true, null, null, callbackFlag);
+                } else if (type == "collapse") {
+                    zTreeObj.expandNode(nodes[i], false, null, null, callbackFlag);
+                } else if (type == "toggle") {
+                    zTreeObj.expandNode(nodes[i], null, null, null, callbackFlag);
+                } else if (type == "expandSon") {
+                    zTreeObj.expandNode(nodes[i], true, true, null, callbackFlag);
+                } else if (type == "collapseSon") {
+                    zTreeObj.expandNode(nodes[i], false, true, null, callbackFlag);
+                }
+            }
+        }
+    }
+    function getFontCss(treeId, treeNode) { //高亮样式
+        return (treeNode.highlight) ? { color: "#A60000", "font-weight": "bold"} : { color: "#333", "font-weight": "normal" };
+    }
+    var ruler = {
+        doc: null,
+        ruler: null,
+        cursor: null,
+        minCount: 50000,
+        count: 50000,
+        stepCount: 500,
+        minWidth: 30,
+        maxWidth: 215,
+        init: function () {
+            ruler.doc = $(document);
+//            ruler.ruler = $("#ruler");
+//            ruler.cursor = $("#cursor");
+            if (ruler.ruler) {
+                ruler.ruler.bind("mousedown", ruler.onMouseDown);
+
+            }
+        },
+        onMouseDown: function (e) {
+            ruler.drawRuler(e, true);
+            ruler.doc.bind("mousemove", ruler.onMouseMove);
+            ruler.doc.bind("mouseup", ruler.onMouseUp);
+            ruler.doc.bind("selectstart", ruler.onSelect);
+            $("body").css("cursor", "pointer");
+        },
+        onMouseMove: function (e) {
+            ruler.drawRuler(e);
+            return false;
+        },
+        onMouseUp: function (e) {
+            $("body").css("cursor", "auto");
+            ruler.doc.unbind("mousemove", ruler.onMouseMove);
+            ruler.doc.unbind("mouseup", ruler.onMouseUp);
+            ruler.doc.unbind("selectstart", ruler.onSelect);
+            ruler.drawRuler(e);
+        },
+        onSelect: function (e) {
+            return false;
+        },
+        getCount: function (end) {
+            var start = ruler.ruler.offset().left + 1;
+            var c = Math.max((end - start), ruler.minWidth);
+            c = Math.min(c, ruler.maxWidth);
+            return {width: c, count: (c - ruler.minWidth) * ruler.stepCount + ruler.minCount};
+        },
+        drawRuler: function (e, animate) {
+            var c = ruler.getCount(e.clientX);
+            ruler.cursor.stop();
+            if ($.browser.msie || !animate) {
+                ruler.cursor.css({width: c.width});
+            } else {
+                ruler.cursor.animate({width: c.width}, {duration: "fast", easing: "swing", complete: null});
+            }
+            ruler.count = c.count;
+            ruler.cursor.text(c.count);
+        }
+    };
+    
+    var shopv2_mobile_goods_index_get_list = function (cate_id) {
+
+        console.log("{php echo murl('entry', array( m => 'superdesk_shopv2' , 'do'=> 'mobile' , 'r' => 'goods.get_list'), true, true);}");
+
+        return $.ajax({
+            type: "POST",
+            url: "{php echo murl('entry', array( m => 'superdesk_shopv2' , 'do'=> 'mobile' , 'r' => 'goods.get_list'), true, true);}",
+            data: {
+                cate: cate_id
+            },
+            success: function (data) {
+
+//                console.log(data);
+                var obj = JSON.parse(data);
+//                console.log(obj);
+
+                if (obj.status == 0) {
+//                    $("#showContent").html(obj.result.message);
+//                    $("#page_num_total").html("0");
+//                    $("#goods_list").empty();
+                } else if (obj.status == 1) {
+
+                    $("#page_num_total").html(obj.result.total);
+//                    $("#page_num_pagesize").html(obj.result.pagesize);
+
+                    core_tpl('#goods_list', 'tpl_goods_list', obj.result);
+                }
+
+
+            }
+        });
+
+        //url:./index.php?i=16&c=entry&m=superdesk_shopv2&do=mobile&r=goods.get_list&keywords=&isrecommand=&ishot=&isnew=&isdiscount=&issendfree=&istime=&cate=38&order=&by=&merchid=&page=1&frommyshop=0
+    };
+
+    require(['{MODULE_URL}static/js/dist/tmodjs.js'],function (template) {
+        core_tpl = function (containerid, templateid, data, append) {
+            if (typeof append === undefined) {
+                append = false;
+            }
+            var html = template(templateid, data);//            console.log(html);
+
+            if (append) {
+                $(containerid).append(html);
+            } else {
+                $(containerid).html(html);
+            }
+            setTimeout(function () {
+                $("#goods_list").scrollTop(0);
+            }, 10);
+        };
+    });
+
+    require(['{MODULE_URL}static/js/dist/zTree_v3/js/jquery.ztree.all.min.js'], function () {
+        ruler.init("ruler");
+        createTree();
+    });
+
+    $(document).ready(function () {
+
+//        $("#createTree").bind("click", createTree);
+//        $("#addParent").bind("click", {isParent:true}, add);
+        $("#addLeaf").bind("click", {isParent:false}, add);
+
+        $("#expandAllBtn").bind("click", {type:"expandAll"}, expandNode);
+        $("#collapseAllBtn").bind("click", {type:"collapseAll"}, expandNode);
+
+
+    });
+</SCRIPT>
+
+<script type='text/html' id='tpl_goods_list'>
+    <%each list as g%>
+    <div class="col-xs-3 col-sm-3" data-goodsid="<%g.id%>">
+        <div class="image">
+            <img src="<%g.thumb%>" class="img-responsive"/>
+        </div>
+        </a>
+        <div class="detail">
+
+            <div class="name"><%g.title%></div>
+
+            <div class="price">
+                <span class="text">￥<%g.minprice%></span>
+
+            </div>
+        </div>
+    </div>
+    <%/each%>
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{template 'common/footer'}

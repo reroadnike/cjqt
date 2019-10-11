@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>{$item['address']}</title>
+    <!--引用百度地图API-->
+    <style type="text/css">
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .iw_poi_title {
+            color: #CC5522;
+            font-size: 14px;
+            font-weight: bold;
+            overflow: hidden;
+            padding-right: 13px;
+            white-space: nowrap
+        }
+
+        .iw_poi_content {
+            font: 12px arial, sans-serif;
+            overflow: visible;
+            padding-top: 4px;
+            white-space: -moz-pre-wrap;
+            word-wrap: break-word
+        }
+
+        .full_screen {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            /* background-color: #FFFAF5; */
+        }
+    </style>
+    <!-- <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script> -->
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/getscript?v=2.0&ak=F51571495f717ff1194de02366bb8da9&services=&t=20140530104353"></script>
+    <!-- <script type="text/javascript" src="http://api.map.baidu.com/lbsapi/getpoint/Js/public.js"></script> -->
+    <!-- <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script> -->
+    <!-- <script type="text/javascript" src="http://api.map.baidu.com/getscript?v=1.5&ak=mVXVL4BToC5F7LZYE5ARS5ON"></script> -->
+</head>
+
+<body>
+<!--百度地图容器-->
+<div class="full_screen" id="dituContent"></div>
+</body>
+<script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap() {
+        createMap();//创建地图
+        setMapEvent();//设置地图事件
+        addMapControl();//向地图添加控件
+        addRemark();//向地图中添加文字标注
+    }
+
+    //创建地图函数：
+    function createMap() {
+        var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+        var point = new BMap.Point({$item['lng']}, {$item['lat']});//定义一个中心点坐标113.249439|23.076086
+        map.centerAndZoom(point, 16);//设定地图的中心点和坐标并将地图显示在地图容器中
+
+        window.map = map;//将map变量存储在全局
+    }
+
+    //地图事件设置函数：
+    function setMapEvent() {
+        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+
+        map.enableKeyboard();//启用键盘上下左右键移动地图
+    }
+
+    //地图控件添加函数：
+    function addMapControl() {
+        //向地图中添加缩放控件
+        var ctrl_nav = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE});
+        map.addControl(ctrl_nav);
+        //向地图中添加缩略图控件
+        var ctrl_ove = new BMap.OverviewMapControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: 1});
+        map.addControl(ctrl_ove);
+        //向地图中添加比例尺控件
+        var ctrl_sca = new BMap.ScaleControl({anchor: BMAP_ANCHOR_BOTTOM_LEFT});
+        map.addControl(ctrl_sca);
+    }
+
+
+    //文字标注数组
+    var lbPoints = [{point: "{$item['lng']}|{$item['lat']}", content: "{$item['name']}"}];
+
+    //向地图中添加文字标注函数
+    function addRemark() {
+        for (var i = 0; i < lbPoints.length; i++) {
+            var json = lbPoints[i];
+            var p1 = json.point.split("|")[0];
+            var p2 = json.point.split("|")[1];
+
+
+            /* var label = new BMap.Label("<div style='padding:2px;'>"+json.content+"</div>",{point:new BMap.Point(p1,p2),offset:new BMap.Size(3,-6)}); 
+             map.addOverlay(label);
+             label.setStyle({borderColor:"#999"});
+
+
+             */
+
+//            var icon = new BMap.Icon("http://api.map.baidu.com/img/markers.png", new BMap.Size(23, 25), {
+//                offset: new BMap.Size(10, 25), // 指定定位位置
+//                imageOffset: new BMap.Size(0, 0 - 10 * 25) // 设置图片偏移
+//            });
+
+            var icon = new BMap.Icon(
+                    "{$_W['siteroot']}addons/superdesk_boardroom/template/mobile/images/mark.png",
+                    new BMap.Size(25, 42), //图片大小
+                    {
+                        offset: new BMap.Size(10, 25), // 指定定位位置
+                        imageOffset: new BMap.Size(0, 0) // 设置图片偏移
+                    }
+            );
+
+            var point = new BMap.Point(p1, p2);
+            var marker = new BMap.Marker(point, {
+                icon: icon
+            });
+            map.addOverlay(marker);
+        }
+    }
+    initMap();//创建和初始化地图
+</script>
+</html>

@@ -1,0 +1,357 @@
+{template 'common/header'}
+{template 'common'}
+
+<!--<img src="{MODULE_URL}static/images/overview_01.png" width="100%"/>-->
+
+<style>
+
+    /*会议室列表*/
+    .boardroomwrap {
+        width: 100%;
+        padding-top: 11.75rem;
+        background-color: #fff;
+    }
+
+    .boardroomwrap .boardroomlist {
+        width: 100%;
+    }
+
+    .boardroomitem {
+        width: 100%;
+        padding: 0.5rem .75rem;
+        border-bottom: 1px solid #c8c8c8;
+        background-color: #fff;;
+    }
+
+    .boardroomlist .boardroomitem:last-child {
+        border-bottom: 0;
+    }
+
+    .boardroominfo {
+        position: relative;
+        width: 100%;
+    }
+
+    .roomimg {
+        float: left;
+        width: 20%;
+        height: 3.5rem;
+        margin-right: 3%;
+    }
+
+    .roomname {
+        float: left;
+        width: 77%;
+        font-size: .7rem;
+        font-weight: 600;
+        line-height: 1rem;
+        color: #333333;
+        margin-bottom: 0.25rem;
+    }
+
+    .roomprice {
+        float: right;
+        font-size: .7rem;
+        line-height: 1rem;
+        margin-bottom: 0.5rem;
+        color: #333333;
+    }
+
+    .roominfo {
+        float: left;
+    }
+
+    .roominfo em {
+        display: block;
+        font-size: .6rem;
+        line-height: 0.85rem;
+        color: #666666;
+    }
+
+    .roominfo em:nth-child(1) {
+        margin-bottom: 0.25rem;
+    }
+
+    .roomdesk span {
+        float: left;
+    }
+
+    .roomdesk i {
+        float: left;
+    }
+
+    .deskicon {
+        width: 0.7rem;
+        height: .7rem;
+        margin-right: 0.2rem;
+        background: url("{MODULE_URL}template/mobile/images/desk.png") 0 center no-repeat;
+        background-size: 100% .55rem;
+    }
+
+    .sofaicon {
+        width: 0.7rem;
+        height: .7rem;
+        margin-left: 0.7rem;
+        margin-right: 0.2rem;
+        background: url("{MODULE_URL}template/mobile/images/sofa.png") 0 center no-repeat;
+        background-size: 100% .55rem;
+    }
+
+    .dateline {
+        display: block;
+        /*font-size: .6rem;*/
+        color: #1b37a8;
+        margin-bottom: 1.2rem;
+    }
+
+    .room-reserve {
+        position: absolute;
+        top: 1.25rem;
+        right: 0;
+        width: 3.1rem;
+        height: 1.5rem;
+        border-radius: 4px;
+        color: #fff;
+        line-height: 1.5rem;
+        text-align: center;
+        background-color: #1b37a8;
+        font-size: .7rem;
+    }
+
+    .reserve-disable {
+        opacity: .2;
+    }
+
+    .boardroomtime {
+        /*width: 100%;*/
+        margin: 1rem 0;
+    }
+
+    .boardroomtimebar {
+        width: 100%;
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .boardroomtimebar li {
+        float: left;
+        width: 7.69%;
+        height: 1.9rem;
+        box-shadow: 0 1px 2px 0 #fff;
+    }
+
+    .roomtime {
+        position: relative;
+        background-color: #eee;
+    }
+
+    .roomtime i {
+        float: left;
+        width: 50%;
+        height: 1.9rem;
+    }
+
+    .roomtime span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 1.9rem;
+        text-align: center;
+        line-height: 1.9rem;
+        color: #333;
+        font-size: 1.6rem;
+    }
+
+    .roomtimeam {
+        background: #cadaf3 url("{MODULE_URL}template/mobile/images/am.png") center center no-repeat;
+        background-size: 100% auto;
+    }
+
+    .roomtimepm {
+        background: #cadaf3 url("{MODULE_URL}template/mobile/images/pm.png") center center no-repeat;
+        background-size: 100% auto;
+    }
+
+    .occupygrid {
+        background-color: #c8c8c8;
+    }
+
+    .myfootertext {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        min-width: 320px;
+        max-width: 750px;
+        padding: .5rem 0 .5rem;
+        background-color: #fff;
+        box-shadow: 0 -1px 2px 0 #d2d2d2;
+    }
+
+    .mytwoText {
+        width: 8rem;
+        margin: 0 auto 0;
+    }
+
+    .mytwoText a {
+        float: left;
+        font-size: .6rem;
+        color: #1b37a8;
+    }
+
+    .mytwoText a:nth-child(1) {
+        padding-right: 1rem;
+        border-right: 1px solid #c8c8c8;
+    }
+
+    .mytwoText a:nth-child(2) {
+        padding-left: 1rem;
+    }
+
+    .mytwoText .mytext {
+        color: #bfbfbf;;
+    }
+
+    .pagetoplogo {
+        background-color: #fff;
+    }
+
+    .pagebottomlogo {
+        background-color: #fff;
+    }
+</style>
+
+
+<div class="main">
+<div class="panel panel-info">
+    <div class="panel-heading">筛选</div>
+    <div class="panel-body">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+        <input type="hidden" name="page" value=""/>
+        <div class="form-group">
+            <label class="col-xs-1 col-sm-1 col-md-1 control-label">楼宇/楼层</label>
+            <div class="col-sm-4 col-xs-4">
+                {php echo tpl_form_field_category_2level('structures', $parent, $children, $structures_parentid, $structures_childid)}
+            </div>
+
+            <label class="col-xs-1 col-sm-1 col-md-1 control-label">属性</label>
+            <div class="col-sm-2 col-xs-2">
+                <select class="form-control" name="attribute">
+                    <option value="0">请选择属性</option>
+                    {loop $attributes $index $child_item}
+                    <option value="{$child_item['id']}" {if $child_item['id'] == $attribute}selected="selected"{/if}>{$child_item['name']}</option>
+                    {/loop}
+                </select>
+            </div>
+            <div class="col-sm-2 col-xs-2" style="text-align: left;">
+                <input type="hidden" name="token" value="{$_W['token']}" />
+                <!--<input type="reset" class="btn btn-default" value="重置"/>-->
+                <input type="submit" class="btn btn-info" value="确认"/>
+
+            </div>
+            <div class="col-sm-2 col-xs-2" style="text-align: right;">
+                <span class="btn" style="background:#eeeeee;">空闲</span>
+                <span class="btn" style="background:#c8c8c8;">占用</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-1 col-sm-1 col-md-1 control-label">起止时间</label>
+            <div class="col-sm-4 col-xs-4">
+                {php echo tpl_form_field_daterange('date', array('start' => $date_start ,'end' => $date_end), false)}
+            </div>
+
+            <label class="col-xs-1 col-sm-1 col-md-1 control-label">分页大小</label>
+            <div class="col-sm-2 col-xs-2">
+                <select class="form-control" name="page_size">
+                    <option value="5" {if $page_size == 5}selected="selected"{/if}>5</option>
+                    <option value="10" {if $page_size == 10}selected="selected"{/if}>10</option>
+                    <option value="20" {if $page_size == 20}selected="selected"{/if}>20</option>
+                </select>
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+    <table class="table" style="">
+        <thead class="navbar-inner">
+            <tr>
+                <th class="btn-primary" style="width:10%;">会议室名称</th>
+                <th class="btn-primary" style="text-align:center; width:90%;">会议室预定明细</th>
+            </tr>
+        </thead>
+        <tbody>
+        {loop $list $index $item}
+        <tr>
+            <td style="white-space: normal;overflow: auto;text-overflow: ellipsis;">{$item['name']}</td>
+            <td >
+
+                <div class="row">
+                    <!-- 占用添加类名“occupygrid”   未占用类名为 class="occupygrid"（空）-->
+                    {loop $item['situation'] $inner_index $_item}
+                    <div class="boardroomtime col-xs-4">
+
+                        <span
+                            class="dateline dateline_{$item['id']}"
+                            data-boardroom_id="{$item['id']}"
+                            data-lable="{$_item['lable']}"
+                            data-can_booking="{$_item['can_booking']}"
+                            data-error_msg="{$_item['error_msg']}"
+                            data-timestamp="{$_item['timestamp']}">{$_item['lable']}</span>
+                        <ul class="boardroomtimebar clearfix">
+                            <li class="roomtimeam"></li>
+                            {php for($index = 0 ;$index < sizeof($_item['situation']['am']);$index+=2){}
+                            <li class="roomtime">
+                                <i {if $_item['situation']['am'][$index]['is_use'] == 1}class="occupygrid"{/if}></i>
+                                <i {if $_item['situation']['am'][$index+1]['is_use'] == 1}class="occupygrid"{/if}></i>
+                                <span>{php echo $_item['situation']['am'][$index][index]/2}</span>
+                            </li>
+                            {php }}
+                        </ul>
+                        <ul class="boardroomtimebar clearfix">
+                            <li class="roomtimepm"></li>
+                            {php for($index = 0 ;$index < sizeof($_item['situation']['pm']);$index+=2){}
+                            <li class="roomtime">
+                                <i {if $_item['situation']['pm'][$index]['is_use'] == 1}class="occupygrid"{/if}></i>
+                                <i {if $_item['situation']['pm'][$index+1]['is_use'] == 1}class="occupygrid"{/if}></i>
+                                <span>{php echo ($_item['situation']['pm'][$index][index])/2}</span>
+                            </li>
+                            {php }}
+                        </ul>
+                    </div>
+                    {/loop}
+                </div>
+            </td>
+        </tr>
+        {/loop}
+        {if empty($list)}
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                未添加会议室
+            </td>
+        </tr>
+        {/if}
+        <tr>
+            <td></td>
+            <td colspan="1">
+                {$pager}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(".pagination > li > a[page!='']").each(function (index, element) {
+//            console.log($(this).attr('page'));// TODO undefined
+            $(this).bind('click', function (event) {
+                $("input[name='page']").val($(this).attr('page'));
+                $("#form1").get(0).submit(function (e) {});
+            });
+        });
+    });
+</script>
+{template 'common/footer'}

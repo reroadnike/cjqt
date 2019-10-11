@@ -1,0 +1,601 @@
+/* 
+* @Author: anchen
+* @Date:   2017-07-20 10:33:18
+* @Last Modified by:   anchen
+* @Last Modified time: 2017-08-09 14:06:12
+*/
+@charset "utf-8";
+html, body {
+    background-color: #fff;
+}
+
+body {
+    padding-bottom: 1.45rem;
+}
+
+/*日期时间选择*/
+.outer {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    min-width: 320px;
+    max-width: 750px;
+    z-index: 1;
+    height: 100%;
+    background: #254ac8 url("../images/bgroom.png") center center no-repeat;
+    background-size: 100% 100%;
+}
+
+.datetimeswrap {
+    position: relative;
+    top: 0;
+    width: 100%;
+    min-width: 320px;
+    max-width: 750px;
+    /*height: 7.6rem;*/
+    padding: 0.75rem 0;
+
+}
+
+.datetimesel {
+    width: 92%;
+    height: 5.5rem;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 6px 1px rgba(27, 55, 168, 0.16);
+    border-radius: 4px;
+}
+
+.datesel {
+    position: relative;
+    width: 100%;
+    height: 2.75rem;
+    border-bottom: 1px dashed #bfbfbf;
+}
+
+
+.plugins_sel{
+    position: relative;
+    margin: 0 auto;
+    background-color: #fff;
+    width: 92%;
+    box-shadow: 0 0 6px 1px rgba(27, 55, 168, 0.16);
+    border-radius: 4px;
+}
+
+.status_sel {
+    position: relative;
+    width: 100%;
+    height: 2.75rem;
+}
+
+.people_num_sel{
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: 2.75rem;
+}
+
+.equipment_sel{
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 6rem;
+}
+
+.timesel {
+    position: relative;
+    width: 100%;
+    height: 2.75rem;
+}
+
+.datesel div{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 2.75rem;
+    padding-top: .5rem;
+}
+
+.timesel div {
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 2.75rem;
+    padding-top: .5rem;
+}
+
+.datestart span, .dateend span, .timestart span, .timeend span {
+    display: block;
+    text-align: center;
+    font-size: .6rem;
+    color: #bfbfbf;
+}
+
+.datestart em, .dateend em{
+    display: block;
+    /*margin-top: 0.15rem;*/
+    text-align: left;
+    font-size: .7rem;
+    color: #1b37a8;
+    padding-left: 3.2rem;
+}
+
+.timestart em, .timeend em {
+    display: block;
+    margin-top: 0.25rem;
+    text-align: center;
+    font-size: .7rem;
+    color: #1b37a8;
+}
+
+.dateicon {
+    position: absolute;
+    top: 36%;
+    left: 8%;
+    display: block;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: -.4rem 0 0 -.4rem;
+    background: url("../images/date.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.people_num_icon{
+    position: absolute;
+    top: 36%;
+    left: 8%;
+    display: block;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: -.4rem 0 0 -.4rem;
+    background: url("../images/people_num.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.status_icon {
+    position: absolute;
+    top: 36%;
+    left: 8%;
+    display: block;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: -.4rem 0 0 -.4rem;
+    background: url("../images/status_icon.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.equipment_icon{
+    position: absolute;
+    top: 1.2rem;
+    left: 8%;
+    display: block;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: -.4rem 0 0 -.4rem;
+    background: url("../images/status_icon.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.timeicon {
+    position: absolute;
+    top: 36%;
+    left: 8%;
+    display: block;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: -.4rem 0 0 -.4rem;
+    background: url("../images/time.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.datesel input, .timesel input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+/*筛选*/
+.status_nav {
+    font-size: .6rem;
+    color: #666;
+}
+
+
+.status_nav a {
+    overflow: hidden;
+    float: left;
+    width: 100%;
+    height: 2rem;
+    line-height: 2rem;
+    padding-left: 3rem;
+}
+
+.status_nav_item span {
+    display: block;
+    text-align: left;
+    font-size: .6rem;
+    color: #666;
+}
+
+.status_nav_con_sel span {
+    color: #1b37a8;
+}
+
+.status_nav_con_sel .downarrow {
+    background: url("../images/triangle.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.status_nav_options.status_nav_con_sel .downarrow {
+    background: url("../images/triangledownblue.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.status_nav_options .downarrow {
+    background: url("../images/triangleup.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.status_nav_con_mask {
+    display: none;
+    position: absolute;
+    top: 2.8rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*padding-top: 3rem;*/
+    background: rgba(43, 43, 43, 0.70);
+    z-index:88;
+}
+
+.status_nav_con {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 92%;
+    /*height: 13rem;*/
+    padding-top: .25rem;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.status_nav_con_list {
+    width: 100%;
+}
+
+.status_nav_con_list li {
+    width: 100%;
+    height: 1.6rem;
+    padding: 0 1rem;
+    line-height: 1.6rem;
+    border-bottom: 1px solid #e3e1e1;
+}
+
+.status_nav_con_list li span {
+    float: left;
+    width: 84%;
+    font-size: .7rem;
+    color: #666666;
+}
+
+.status_nav_con_list .tabconsel span {
+    color: #1b37a8;
+}
+
+.status_nav_con_sel .iconCorrect {
+    display: block;
+}
+
+/*筛选*/
+.tabnav {
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*bottom: -1.25rem;*/
+    width: 92%;
+    height: 2rem;
+    /*margin-left: -46%;*/
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 6px 1px rgba(27, 55, 168, 0.27);
+    border-radius: 4px;
+    z-index: 99;
+    margin-bottom: .5rem;
+}
+
+.tabnav a {
+    overflow: hidden;
+    float: left;
+    width: 33.33%;
+    height: 2rem;
+    line-height: 2rem;
+}
+
+.tabnavitem span {
+    display: block;
+    text-align: center;
+    font-size: .7rem;
+    color: #666;
+}
+
+.downarrow {
+    display: inline-block;
+    width: 0.4rem;
+    height: 0.2rem;
+    margin-left: 0.1rem;
+    background: url("../images/triangledown.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+    vertical-align: middle;
+}
+
+.tabanvsel span {
+    color: #1b37a8;
+}
+
+.tabanvsel .downarrow {
+    background: url("../images/triangle.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.tabnavoptions.tabanvsel .downarrow {
+    background: url("../images/triangledownblue.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.tabnavoptions .downarrow {
+    background: url("../images/triangleup.png") 0 0 no-repeat;
+    background-size: 100% 100%;
+}
+
+.tabconmask {
+    display: none;
+    position: absolute;
+    top: 2.8rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*padding-top: 3rem;*/
+    background: rgba(43, 43, 43, 0.70);
+    z-index:88;
+}
+
+.tabcon {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 92%;
+    /*height: 13rem;*/
+    padding-top: .25rem;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.tabconlist {
+    width: 100%;
+}
+
+.tabconlist li {
+    width: 100%;
+    height: 1.6rem;
+    padding: 0 1rem;
+    line-height: 1.6rem;
+    border-bottom: 1px solid #e3e1e1;
+}
+
+.tabconlist li span {
+    float: left;
+    width: 84%;
+    font-size: .7rem;
+    color: #666666;
+}
+
+.iconCorrect {
+    display: none;
+    float: right;
+    width: 14%;
+    height: 1.6rem;
+    background: url("../images/correct.png") center center no-repeat;
+    background-size: 0.95rem auto;
+}
+
+.tabconlist .tabconsel span {
+    color: #1b37a8;
+}
+
+.tabconsel .iconCorrect {
+    display: block;
+}
+
+/*会议室列表*/
+.boardroomwrap {
+    width: 100%;
+    padding-top: 0rem;
+    background-color: #fff;
+}
+
+.boardroomwrap .boardroomlist {
+    width: 100%;
+}
+
+.boardroomitem {
+    width: 100%;
+    padding: 0.5rem .75rem;
+    border-bottom: 1px solid #c8c8c8;
+    background-color: #fff;;
+}
+
+.boardroomlist .boardroomitem:last-child {
+    border-bottom: 0;
+}
+
+.boardroominfo {
+    position: relative;
+    width: 100%;
+}
+
+.roomimg {
+    float: left;
+    width: 20%;
+    height: 3.5rem;
+    margin-right: 3%;
+}
+
+.roomname {
+    float: left;
+    width: 77%;
+    font-size: .7rem;
+    font-weight: 600;
+    line-height: 1rem;
+    color: #333333;
+    margin-bottom: 0.25rem;
+}
+
+.roomprice {
+    float: right;
+    font-size: .7rem;
+    line-height: 1rem;
+    margin-bottom: 0.5rem;
+    color: #333333;
+}
+
+.roominfo {
+    float: left;
+}
+
+.roominfo em {
+    display: block;
+    font-size: .6rem;
+    line-height: 0.85rem;
+    color: #666666;
+}
+
+.roominfo em:nth-child(1) {
+    margin-bottom: 0.25rem;
+}
+
+.roomdesk span {
+    float: left;
+}
+
+.roomdesk i {
+    float: left;
+}
+
+.deskicon {
+    width: 0.7rem;
+    height: .7rem;
+    margin-right: 0.2rem;
+    background: url("../images/desk.png") 0 center no-repeat;
+    background-size: 100% .55rem;
+}
+
+.sofaicon {
+    width: 0.7rem;
+    height: .7rem;
+    margin-left: 0.7rem;
+    margin-right: 0.2rem;
+    background: url("../images/sofa.png") 0 center no-repeat;
+    background-size: 100% .55rem;
+}
+
+.dateline {
+    display: block;
+    font-size: .6rem;
+    color: #1b37a8;
+    margin-bottom: .2rem;
+}
+
+.room-reserve {
+    position: absolute;
+    top: 1.25rem;
+    right: 0;
+    width: 3.1rem;
+    height: 1.5rem;
+    border-radius: 4px;
+    color: #fff;
+    line-height: 1.5rem;
+    text-align: center;
+    background-color: #1b37a8;
+    font-size: .7rem;
+}
+
+.reserve-disable {
+    opacity: .2;
+}
+
+.boardroomtime {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.boardroomtimebar {
+    width: 100%;
+}
+
+.boardroomtimebar li {
+    float: left;
+    width: 7.69%;
+    height: .9rem;
+    box-shadow: 0 1px 2px 0 #fff;
+}
+
+.roomtime {
+    position: relative;
+
+}
+
+.roomtime button {
+    float: left;
+    width: 50%;
+    height: .9rem;
+}
+
+.roomtime span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: .9rem;
+    text-align: center;
+    line-height: .9rem;
+    color: #333;
+    font-size: .6rem;
+}
+
+.roomtimeam {
+    background-color: #CADAF3;
+    font-size: .5rem;
+    text-align: center;
+    color: #333333;
+}
+
+.roomtimepm {
+    background-color: #CADAF3;
+    font-size: .5rem;
+    text-align: center;
+    color: #333333;
+}
+
+.occupygrid {
+    background-color: #7BA9FF;
+}
+
+.occupygrid_normal{
+    background-color: #C1FA83;
+}
+
+.occupygrid_overdue {
+    background-color: #DFDFDF;
+}
+
+
+
+.pagetoplogo {
+    background-color: #fff;
+}
+
+.pagebottomlogo {
+    background-color: #fff;
+}

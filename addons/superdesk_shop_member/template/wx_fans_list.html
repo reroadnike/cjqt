@@ -1,0 +1,235 @@
+{template 'common/header'}
+
+{template '__nav-tabs_user__'}
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Table::wx_fans
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:8%;">wx_fans_id</th>
+                        <th style="width:8%;">头像<br/>没导入意义</th>
+
+                        <th style="width:40%;">微信openid<br/>没导入意义</th>
+                        <th style="width:20%;">昵称<br/>没导入意义</th>
+
+
+                        <!--<th style="width:10%;">手机号码</th>-->
+                        <!--<th style="width:10%;">登陆密码</th>-->
+
+                        <!--<th style="width:10%;"></th>-->
+                        <th style="width:10%;">所在城市<br/>没导入意义</th>
+
+
+                        <!--<th style="width:10%;">1:男性<br/>2:女性<br/>0:未知</th>-->
+                        <!--<th style="width:10%;">是否关注:<br/>0否<br/>1是</th>-->
+
+                        <!--<th style="width:10%;">是否已登陆用户:<br/>0否<br/>1是</th>-->
+
+
+                        <!--<th style="width:10%;">版本号</th>-->
+
+
+                        <!--<th style="width:10%;">创建时间</th>-->
+                        <!--<th style="width:10%;">修改时间</th>-->
+
+
+                        <!--<th style="width:10%;">来源</th>-->
+                        <!--<th style="width:10%;">打标时间</th>-->
+
+
+                        <!--<th style="width:10%;">推荐码/水店ID</th>-->
+                        <!--<th style="width:10%;">0:微信会员<br/>1:pc端会员<br/>2:导入</th>-->
+
+                        <!--<th style="width:10%;">语言</th>-->
+
+                        <!--<th style="width:10%;">角色<br/>0:普通客户<br/>1:经销商<br/>2:其他</th>-->
+                        <!--<th style="width:10%;">会员名称</th>-->
+
+
+                        <!--<th style="width:10%;">帐号</th>-->
+                        <!--<th style="width:10%;">密码</th>-->
+
+
+                        <!--<th style="width:10%;">所属销售ID</th>-->
+                        <!--<th style="width:10%;">登陆类型<br/>0:手机<br/>1:后台</th>-->
+                        <!--<th style="width:10%;">1:正常<br/>2:黑名单</th>-->
+
+
+                        <!--<th style="width:10%;">积分密码</th>-->
+                        <!--<th style="width:10%;">用户基本信息地址</th>-->
+                        <!--<th style="width:10%;">店铺二维码</th>-->
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+                        <td>{$item['fansId']}</td>
+                        <td><img src="{$item['headImgUrl']}" style="width: 5rem;"/></td>
+
+                        <td>{$item['openId']}</td>
+                        <td>{php echo urldecode($item['nickName'])}</td>
+
+
+                        <!--
+                        <td>{$item['telePhone']} 查过为空
+                            SELECT count(0) FROM membershop.wx_fans where telePhone = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where telePhone is null 1079
+                        </td>
+                        <td>{$item['password']} 查过为空
+                            SELECT count(0) FROM membershop.wx_fans where password = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where password is null 1079
+                        </td>
+                        -->
+
+                        <!--
+                        <td>{$item['wxProvince']} 查过为空
+                            SELECT count(0) FROM membershop.wx_fans where wxProvince = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where wxProvince is null 1079
+                        </td>
+                        -->
+
+                        <td>{$item['city']}</td>
+
+                        <!--
+                        <td>{$item['sex']} 没用的数据 都为0
+                            SELECT count(0) FROM membershop.wx_fans where sex =0 1079
+                        </td>
+                        -->
+
+                        <!--
+                        <td>{$item['is_subscribed']} 没用的数据 都为0
+                            SELECT count(0) FROM membershop.wx_fans where is_subscribed =0 1079
+                        </td>
+                        -->
+
+                        <!--
+                        <td>{$item['is_wsd_user']} 查过为空
+                            SELECT count(0) FROM membershop.wx_fans where is_wsd_user is null 1079
+                        </td>
+                        -->
+
+
+                        <!--
+                        <td>{$item['version']} 没用的数据 都为0
+                            SELECT count(0) FROM membershop.wx_fans where version = 0 1079
+                        </td>
+                        -->
+
+
+                        <!--<td>{$item['created_time']}</td>-->
+                        <!--<td>{$item['modified_time']}</td>-->
+
+                        <!--
+                        <td>{$item['token']}
+                            SELECT count(0) FROM membershop.wx_fans where token = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where token is null 1079
+                        </td>
+                        <td>{$item['marking_time']}
+                            SELECT count(0) FROM membershop.wx_fans where marking_time = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where marking_time is null 0
+                            SELECT marking_time FROM membershop.wx_fans where marking_time is not null
+                            SELECT count(marking_time) FROM membershop.wx_fans where marking_time = '0000-00-00 00:00:00' 1079
+                        </td>
+                        -->
+
+                        <!--
+                        <td>{$item['scene_str']} 查过为空
+                            SELECT count(0) FROM membershop.wx_fans where scene_str = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where scene_str is null 1079
+                        </td>
+                        -->
+
+
+                        <!--
+                        <td>{$item['fansType']} 没用的数据 都为0
+                            SELECT count(0) FROM membershop.wx_fans where fansType=0 1079
+                        </td>
+                        -->
+
+
+                        <!--
+                        <td>{$item['language']} 查过为空
+                            SELECT count(0) FROM membershop.wx_fans where language = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where language is null 1079
+                        </td>
+                        -->
+
+                        <!--
+                        <td>{$item['levelid']} 没用的数据 都为0
+                            SELECT count(0) FROM membershop.wx_fans where levelid=0 1079
+                        </td>
+                        -->
+
+                        <!--
+                        <td>{$item['userName']} 查过为空
+                            SELECT count(0) FROM membershop.wx_fans where userName = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where userName is null 1079
+                        </td>
+                        -->
+
+                        <!--
+                        <td>{$item['account']} 查过为空
+                            SELECT count(0) FROM membershop.wx_fans where account = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where account is null 1079
+                        </td>
+                        <td>{$item['pwd']} 查过为空
+                            SELECT count(0) FROM membershop.wx_fans where pwd = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where pwd is null 1079
+                        </td>
+
+                        <td>{$item['salerid']} 查过为空
+                            SELECT count(0) FROM membershop.wx_fans where salerid = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where salerid is null 1079
+                        </td>
+                        <td>{$item['logintype']} 查过为空
+                            SELECT count(0) FROM membershop.wx_fans where logintype = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where logintype is null 1079
+                        </td>
+                        -->
+
+                        <!--
+                        <td>{$item['stated']} 没用的数据 都为1
+                            SELECT count(0) FROM membershop.wx_fans where stated=1 1079
+                        </td>
+                        -->
+
+                        <!--
+                        <td>{$item['pointPwd']} 查过为空
+                            SELECT count(0) FROM membershop.wx_fans where pointPwd = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where pointPwd is null 1079
+                        </td>
+                        <td>{$item['userInfoAddress']} 查过为空
+                            SELECT count(0) FROM membershop.wx_fans where userInfoAddress = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where userInfoAddress is null 1079
+                        </td>
+                        <td>{$item['storeQRCode']} 查过为空
+                            SELECT count(0) FROM membershop.wx_fans where storeQRCode = '' 0
+                            SELECT count(0) FROM membershop.wx_fans where storeQRCode is null 1079
+                        </td>
+                        -->
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                            {$total}
+                        </td>
+                        <td colspan="4">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

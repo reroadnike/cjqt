@@ -1,0 +1,294 @@
+{template '_header'}
+
+<style type='text/css' xmlns="http://www.w3.org/1999/html">
+    .dd-handle { height: 40px; line-height: 30px}
+    .dd-list { width:860px;}
+</style>
+<div class="page-heading">
+    <span class="pull-right">
+        {if !empty($_GPC['core_enterprise']) &&  !empty($_GPC['merchid'])}
+        <a class="btn btn-danger" data-toggle="ajaxPost" href="{php echo webUrl('sale/category_enterprise_discount/delMerchDiscount', array('core_enterprise' => $_GPC['core_enterprise'], 'merchid' => $_GPC['merchid']))}" data-confirm="确认删除针对商户折扣吗？">删除针对商户折扣</a>
+        {/if}
+        <button type="button" id='btnExpand' class="btn btn-default" data-action='collapse'><i class='fa fa-angle-up'></i> 展开所有</button>
+    </span>
+    <h2>商品分类</h2>
+</div>
+<div class="alert alert-info">
+    功能介绍: 选择企业,设置折扣.客户端商品列表详情购物车订单等地方会显示折扣后的价格
+    <br><span style="padding-left: 60px;">折扣会向下继承覆盖,如设置一级后二级三级都会变成一级的折扣,无论二三级原本是否已经设置，请谨慎使用</span>
+    <br><span style="padding-left: 60px;">折扣设置为空或为0即不打折,精度为3个小数点,例:0.123</span>
+    <br><span style="padding-left: 60px;">折扣计算公式为 ( 标准价 * 折扣 ),</span>
+    <br><span style="padding-left: 60px;">例: 现价100元 , 填写的折扣为0.970 (相当于9.7折), 则折扣后实际价格为 100 * 0.970 = 97元 , 优惠了3元</span>
+    <br>
+    <br><span style="padding-left: 60px;">注: 企业必选,商户非必选,不选择商户时为通用折扣,选择商户时为针对该商户的单独折扣</span>
+    <br><span style="padding-left: 60px;">注解: 优先判断是否有针对商户的单独折扣,没有时查找通用折扣,若是也没有代表该企业没有折扣</span>
+
+</div>
+
+<form action="" method="post" class="form-validate">
+
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <!--mark welfare-->
+            <h4>选择客户:</h4>
+            {if SUPERDESK_SHOPV2_MODE_USER == 1}
+            <div class="col-sm-5">
+
+                <!-- 项目 -->
+                <select name="organization_id" class='form-control input-sm select-md select2' style="width:100%">
+                    <option value="">请选择项目</option>
+                    {loop $selector_organization $row}
+                    <option value="{$row['ID']}" {if $_GPC['organization_id'] == $row['ID']}selected = selected {/if}>{$row['ID']} - {$row['name']}</option>
+                    {/loop}
+                </select>
+            </div>
+            {/if}
+
+            <div class="col-sm-5">
+                <!-- 企业 -->
+                <select name="core_enterprise" class='form-control input-sm select-md select2' style="width:100%">
+                    <option value="">请选择企业</option>
+                    {loop $selector_virtuals $row}
+
+                    {if SUPERDESK_SHOPV2_MODE_USER == 1}
+                    <option value="{$row['id']}" {if $_GPC['core_enterprise'] == $row['id']}selected = selected {/if}>{$row['organizationId']} - {$row['id']} - {$row['name']}</option>
+                    {else}
+                    <option value="{$row['id']}" {if $_GPC['core_enterprise'] == $row['id']}selected = selected {/if}>{$row['id']} - {$row['enterprise_name']}</option>
+                    {/if}
+                    {/loop}
+
+
+
+                </select>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <h4>选择商户:</h4>
+            <div class="col-sm-5">
+                <!-- 商户 -->
+                <select name="merchid" class='form-control input-sm select-md select2' style="width:100%">
+                    <option value="">请选择商户</option>
+                    {loop $merchList $row}
+                    <option value="{$row['id']}" {if $_GPC['merchid'] == $row['id']}selected = selected {/if}>{$row['id']} - {$row['merchname']}</option>
+                    {/loop}
+                </select>
+            </div>
+
+            <div class="col-sm-5">
+                <!-- 是否成本价 -->
+                <label class='checkbox-inline'>
+                    <input type='checkbox' name='type' value="2" {if $currentType==2}checked{/if} /> 成本价购买
+                </label>
+            </div>
+        </div>
+
+
+        {php $viewPerm = false;$addPerm = false;$editPerm = false;$delPerm = false;}
+        {ifp 'category.view'}{php $viewPerm = true;}{/if}
+        {ifp 'category.add'}{php $addPerm = true;}{/if}
+        {ifp 'category.edit'}{php $editPerm = true;}{/if}
+        {ifp 'category.delete'}{php $delPerm = true;}{/if}
+
+        <div class="dd" id="div_nestable" style="margin-left:10px;">
+            <h4>设置品类折扣:</h4>
+            <ol class="dd-list">
+                {loop $category $row}
+                {if empty($row['parentid'])}
+                <li class="dd-item full" data-id="{$row['id']}">
+                    <div class="dd-handle" >[ID: {$row['id']}] {$row['name']}
+                        <span class="pull-right">
+							<input type="text" name="discounts[{$row['id']}]" class="form-control discounts-input" {if $currentType==2} style="display: none;" {/if} value="{$category_enterprise_discount[$row['id']]['discount']}" />
+						</span>
+                    </div>
+                    {if count($children[$row['id']])>0}
+
+                    <ol class="dd-list">
+                        {loop $children[$row['id']] $child}
+                        <li class="dd-item full" data-id="{$child['id']}">
+                            <div class="dd-handle" style="width:100%;">
+                                <!--<img src="{php echo tomedia($child['thumb']);}" width='30' height="30" onerror="$(this).remove()" style='padding:1px;border: 1px solid #ccc;float:left;' /> &nbsp;-->
+                                [ID: {$child['id']}] {$child['name']}
+                                <span class="pull-right">
+									<input type="text" name="discounts[{$child['id']}]" class="form-control discounts-input" {if $currentType==2} style="display: none;" {/if} value="{$category_enterprise_discount[$child['id']]['discount']}" />
+								</span>
+                            </div>
+                            {if count($children[$child['id']])>0 && intval($_W['shopset']['category']['level'])==3}
+
+                            <ol class="dd-list"  style='width:100%;'>
+                                {loop $children[$child['id']] $third}
+                                <li class="dd-item" data-id="{$third['id']}">
+                                    <div class="dd-handle">
+                                        <!--<img src="{php echo tomedia($third['thumb']);}" width='30' height="30" onerror="$(this).remove()" style='padding:1px;border: 1px solid #ccc;float:left;' /> &nbsp;-->
+                                        [ID: {$third['id']}] {$third['name']}
+                                        <span class="pull-right">
+											<input type="text" name="discounts[{$third['id']}]" class="form-control discounts-input" {if $currentType==2} style="display: none;" {/if} value="{$category_enterprise_discount[$third['id']]['discount']}" />
+										</span>
+                                    </div>
+                                </li>
+                                {/loop}
+                            </ol>
+                            {/if}
+                        </li>
+                        {/loop}
+                    </ol>
+                    {/if}
+                </li>
+                {/if}
+                {/loop}
+            </ol>
+            <table class='table'>
+                <tbody>
+                <tr>
+                    <td>
+                        {ifp 'category.edit'}
+                        <input id="save_category" type="submit" class="btn btn-primary" value="保存">
+                        {/if}
+                        <input type="hidden" name="token" value="{$_W['token']}" />
+                        <input type="hidden" name="datas" value="" />
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</form>
+
+<script language='javascript'>
+
+    $(function(){
+        myrequire(['jquery.nestable'], function () {
+
+            var depth = {php echo intval($_W['shopset']['category']['level'])};
+
+            if (depth <= 0) {
+                depth = 2;
+            }
+
+            try{
+                $('#div_nestable').nestable({maxDepth: depth});
+                $('#div_nestable').nestable('collapseAll');
+            } catch(e){
+                alert('js加载失败,点击确认自动刷新');
+                window.location.reload();
+            }
+
+            $('#btnExpand').click(function () {
+                var action = $(this).data('action');
+                if (action === 'expand') {
+                    $('#div_nestable').nestable('collapseAll');
+                    $(this).data('action', 'collapse').html('<i class="fa fa-angle-up"></i> 展开所有');
+
+                } else {
+                    $('#div_nestable').nestable('expandAll');
+                    $(this).data('action', 'expand').html('<i class="fa fa-angle-down"></i> 折叠所有');
+                }
+            });
+
+            $('.dd-item').addClass('full');
+
+            $("input").mousedown(function (e) {
+                e.stopPropagation();
+            });
+
+            $("input").on('blur',function () {
+
+                var _this = $(this);
+
+                if($(this).val() < 0 || $(this).val() > 5){
+                    $(this).val(0);
+                    alert('折扣要在0到5之间');
+                }
+
+                $(this).closest('li').find('input').val($(this).val());
+
+                //以下为不覆盖已设置的子分类
+//                $(this).closest('li').find('input').each(function(){
+//                    if($(this).val() == ''){
+//                        $(this).val(_this.val())
+//                    }
+//                });
+            });
+
+            $('form').submit(function () {
+//                var json = window.JSON.stringify($('#div_nestable').nestable("serialize"));
+
+//        console.log('discounts',$(this).serializeArray());
+//        console.log('json',json);
+//        return;
+
+//                $(':input[name=datas]').val(json);
+            });
+
+            $(document).on('change', 'select[name="organization_id"]',
+                function () {
+
+                    var organization_id = $('select[name="organization_id"]').val();
+
+                    console.log(organization_id);
+
+                    if (organization_id != '') {
+
+                        $.getJSON(
+                            "{php echo webUrl('merch/enterprise/ajax')}",
+                            {organization_id: organization_id},
+                            function (data) {
+
+                                console.log(data);
+
+                                var content = "";
+
+                                for (var index in data) {
+
+                                    content += "<option value=" + data[index].id + " >" + data[index].organizationId + " - " + data[index].id + " - " + data[index].name + "</option>";
+                                    console.log(content);
+                                }
+                                $('select[name="core_enterprise"]').empty();
+                                $('select[name="core_enterprise"]').append("<option value=''>请选择企业</option>");
+                                $('select[name="core_enterprise"]').append(content);
+
+                                $('select[name="core_enterprise"]').select2({});
+                            });
+                    } else {
+                    }
+                });
+
+            $(document).on('change', 'select[name="core_enterprise"]',function(){
+                let organization_id = $('select[name="organization_id"]').val();
+                let core_enterprise = $(this).val();
+
+                let url = "{php echo webUrl('sale/category_enterprise_discount');}" + '&core_enterprise=' + core_enterprise + '&organization_id=' + organization_id;
+
+                window.location.href = url;
+            });
+
+            $(document).on('change', 'select[name="merchid"]',function(){
+                let organization_id = $('select[name="organization_id"]').val();
+                let core_enterprise = $('select[name="core_enterprise"]').val();
+                let merchid = $(this).val();
+
+                let url = "{php echo webUrl('sale/category_enterprise_discount');}" + '&core_enterprise=' + core_enterprise + '&organization_id=' + organization_id + '&merchid=' + merchid;
+
+                window.location.href = url;
+            });
+
+            $(document).on('change', 'input[name="type"]',function(){
+                let type = $(this).is(':checked');
+
+                if(type){
+                    $('.discounts-input').hide();
+                }else{
+                    $('.discounts-input').show();
+                }
+
+            });
+
+        });
+
+    });
+
+</script>
+
+{template '_footer'}
+

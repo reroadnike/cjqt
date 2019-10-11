@@ -1,0 +1,19 @@
+<div class="row" >
+{loop $rows['navlist'] $row}
+    {if !empty($row['wechat_url']) }
+<a href="{$row['wechat_url']}" style="">
+<div class="col-xs-4 col-md-4 padding_1 bottomLine">
+        <img alt="" class="center-block " src="{$row['icon']}" />
+        <p>{$row['name']}</p>
+</div>
+
+</a>
+    {else}
+    <div class="col-xs-4 col-md-4 padding_1 bottomLine" >
+        <img alt="" class="center-block " src="{$row['icon']}" style="visibility: hidden; "/>
+        <p style="visibility: hidden; ">{$row['name']}</p>
+    </div>
+    {/if}
+
+{/loop}
+</div>

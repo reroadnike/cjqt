@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="46px" viewBox="0 0 29 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>收货地址</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="手机端" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="我的" transform="translate(-48.000000, -1239.000000)" stroke="#555555" stroke-width="2">
+            <g id="Group-2" transform="translate(49.000000, 1234.666667)">
+                <g id="收货地址" transform="translate(0.000000, 6.000000)">
+                    <path d="M25.6401855,7.58827096 C23.4482369,3.09533633 18.8355957,0 13.5,0 C6.04415588,0 0,6.04415588 0,13.5 C0,18.1831641 3.994663,25.1671984 11.983989,34.4521029 L11.9840023,34.4520914 C12.704442,35.2893602 13.9672142,35.384069 14.804483,34.6636293 C14.8801779,34.5984966 14.9508883,34.5277862 15.016021,34.4520913 C23.0053403,25.1671926 27,18.1831622 27,13.5" id="Oval-12" stroke-linecap="round"></path>
+                    <circle id="Oval-13" cx="14" cy="13" r="6"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

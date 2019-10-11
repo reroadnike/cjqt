@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>个人首页</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <!-- 引入 Bootstrap -->
+    <link href="{$_W['siteroot']}app/resource/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{$_W['siteroot']}addons/site_bc/template/mobile/assets/css/homepage.css" rel="stylesheet">
+
+    
+    <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+    <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+    <!--[if lt IE 9]>
+    <!--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>-->
+    <!--<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>-->
+    <!--<![endif]&ndash;&gt;-->
+</head>
+<body>
+
+<style type="text/css">
+    a  {
+        color: black;
+    }
+</style>
+<header>
+
+
+
+    <div id="myCarousel" class="carousel slide">
+        <!-- 轮播（Carousel）指标 -->
+        {php $slides = app_slide(array('multiid'=>$multiid));$i_1=0;$i_2=0;}
+        <ol class="carousel-indicators">
+            {loop $slides $row}
+                <li data-target="#myCarousel" {if $i_1==0}class="active"{/if} data-slide-to="{php echo $i_1++;}" ></li>
+            {/loop}
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+            {loop $slides $row}
+            <div class="item {if $i_2==0}{php $i_2++;}active{/if}">
+
+                <img src="{$row['thumb']}" alt="First slide">
+            </div>
+            {/loop}
+        </div>
+    </div>
+</header>
+
+
+<div class="content">
+        <div class="container-fluid">
+            <div class="row">
+
+                {data func="site_navs" item="row" }
+                    <a href="{$row['url']}">
+                        <div class="col-xs-4 col-md-4 padding_1" >
+                            <img alt="140x140" class="center-block " src="{php echo tomedia($row['icon'])}" />
+                            <p>{$row['name']}</p>
+                        </div>
+                    </a>
+                {/data}
+            </div>
+        </div>
+
+        <div style="height: 50px;clear: both;background-color: #efefef" ></div>
+
+
+</div>
+
+
+<div class="col-xs-12 footer text-center">
+    <a href="#">
+        <div class="col-xs-4 ">
+            <img  src="{$_W['siteroot']}addons/site_bc/template/mobile/assets/images/personal.png"/>
+        </div>
+    </a>
+    <a href="{php echo $api_page_company;}">
+        <div class="col-xs-4 ">
+            <img  src="{$_W['siteroot']}addons/site_bc/template/mobile/assets/images/company_chosen.png"/>
+
+        </div>
+    </a>
+    <a href="{php echo $api_page_mine;}">
+        <div class="col-xs-4 ">
+            <img  src="{$_W['siteroot']}addons/site_bc/template/mobile/assets/images/user.png"/>
+        </div>
+    </a>
+</div>
+<script src="{$_W['siteroot']}app/resource/js/lib/jquery-1.11.1.min.js"></script>
+    <script src="{$_W['siteroot']}app/resource/js/lib/bootstrap.min.js"></script>
+<script>
+    $('#myCarousel').carousel({
+        interval: 3000
+    })
+
+    $('.content img').each(function () {
+        $(this).css('height', $(this).css('width'));
+    })
+
+    $(".carousel").on('touchstart',
+            function (e) {
+                var that = $(this);
+                var touch = e.originalEvent.changedTouches[0];
+                var startX = touch.pageX;
+                var startY = touch.pageY;
+                $(this).on('touchmove',
+                        function (e) {
+                            touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+                            var endX = touch.pageX - startX;
+                            var endY = touch.pageY - startY;
+                            if (Math.abs(endY) < Math.abs(endX)) {
+                                if (endX > 10) {
+                                    $(this).off('touchmove');
+                                    that.carousel('prev');
+                                } else if (endX < -10) {
+                                    $(this).off('touchmove');
+                                    that.carousel('next');
+                                }
+                                return false;
+                            }
+                        });
+            });
+</script>
+
+</body>
+</html>

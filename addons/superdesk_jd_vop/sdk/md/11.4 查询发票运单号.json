@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "resultMessage": "",
+  "resultCode": "0005",
+  "result": [ // Array | 发票信息列表
+    {
+      "ivcPostId": 61235462389, // Long | 邮寄 ID
+      "deliveryId": "VA361234524972", // String | 运单号
+      "postCompany": "", // String | 配送公司
+      "postTime": "2017-07-21 21:16:43", // Date | 配送时间
+      "state": 1  // Integer | 配送状态（1 已邮寄; 2 已取消;）
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{template '__header'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/booksuccess.css" />
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/popup.js"></script>
+<script type="text/javascript" src="{MODULE_URL}template/mobile/js/bookingSuccess.js"></script>
+<div class="pagetoplogo"></div>
+<div class="pagebottomlogo"></div>
+
+
+<div class="headImg">
+    <h3>预定成功</h3>
+    <!--<p class="headtext">离您使用会议室的时间还有：<em>一天21时27分20秒</em></p>-->
+    <i class="headokicon"></i>
+</div>
+
+<div class="centerContent">
+
+
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">订单号:</P>
+        <p class="mediaRoomRight">{$out_trade_no}</p>
+    </div>
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">会议室:</P>
+        <p class="mediaRoomRight">{$_boardroom_appointment['boardroom']['name']}</p>
+    </div>
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">地址:</P>
+        <p class="mediaRoomRight">{$_boardroom_appointment['boardroom']['address']}</p>
+    </div>
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">日期:</P>
+        <p class="mediaRoomRight">{$_boardroom_appointment['lable_ymd']} {$_boardroom_appointment['lable_time']}</p>
+    </div>
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">人数:</P>
+        <p class="mediaRoomRight">{$_boardroom_appointment['people_num']}人</p>
+    </div>
+
+    {if $goods}
+    <div class="mediaRoom clearfix">
+        <P class="mediaRoomLeft">附加服务:</P>
+        {loop $goods $_goods}
+        <p class="mediaRoomRight">
+            <em class="ellipsis">{$_goods['g']['title']}</em>
+            <span>x {$_goods['total']}</span>
+        </p>
+        {/loop}
+    </div>
+    {/if}
+
+</div>
+<div class="footertext">
+    <div class="prompt">*该预定可在使用前24小时取消</div>
+    <div class="twoText clearfix">
+        <a href="{php echo $this->createMobileUrl('boardroom')}" id="goto_index" title="回到首页">回到首页</a>
+        <a href="{php echo $this->createMobileUrl('profile')}" title="个人中心">个人中心</a>
+    </div>
+    <!--
+    <div class="twoText clearfix">
+        <a href="javascipt: void(0);" class="js_cancelorder" title="取消订单">取消订单</a>
+        <a href="selectTime.html" title="再次预定">再次预定</a>
+    </div>
+    -->
+</div>
+
+<!-- 弹窗 -->
+<div class="popupmask">
+    <div class="popup">
+        <h3>取消订单？</h3>
+        <p>只可以在使用前24小时取消预定</p>
+
+        <div class="popupbtns clearfix">
+            <a href="javascipt: void(0);" title="取消" class="popupbtn js_cancel">取消</a>
+            <a href="javascipt: void(0);" title="确认" class="popupbtn js_confirm">确认</a>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery.storageapi.min.js"></script>
+<script type="text/javascript">
+    var initPage = function () {
+        var userMobile = $.localStorage.get('userMobile');
+        $("#goto_index").attr("href",$("#goto_index").attr("href")+"&userMobile="+userMobile);
+    };
+    initPage();
+</script>
+{template '__footer'}

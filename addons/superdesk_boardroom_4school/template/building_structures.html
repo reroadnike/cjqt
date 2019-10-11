@@ -1,0 +1,233 @@
+{template 'common/header'}
+{template 'common'}
+
+<ul class="nav nav-tabs">
+	<li {if $operation == 'display'}class="active"{/if}><a href="{php echo $this->createWebUrl('building_structures', array('op' => 'display'))}">管理楼宇/楼层</a></li>
+	<li {if $operation == 'post'}class="active"{/if}><a href="{php echo $this->createWebUrl('building_structures', array('op' => 'post'))}">添加楼宇/楼层</a></li>
+</ul>
+<script>
+	require(['bootstrap'],function($){
+		$('.btn').hover(function(){
+			$(this).tooltip('show');
+		},function(){
+			$(this).tooltip('hide');
+		});
+	});
+</script>
+{if $operation == 'post'}
+<div class="main">
+	<form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				楼宇/楼层
+			</div>
+			<div class="panel-body">
+                {if $core_user}
+                <!-- -->
+                {$item['organization_code']}
+                {$item['virtual_code']}
+                {$core_user['organization_code']}
+                {$core_user['virtual_code']}
+
+                {else}
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-2 col-md-2 col-lg-2 control-label">所属项目/企业</label>
+                    <div class="col-sm-10 col-lg-3 col-xs-3">
+                        <select name="organization_code" class="form-control" id="organization_code">
+                            <option value="">请选择所属项目</option>
+                            {loop $selector_organization $row}
+                            <option value="{$row['code']}" {if $item['organization_code'] == $row['code']}selected = selected {/if}>{$row['name']}</option>
+                            {/loop}
+                        </select>
+                    </div>
+                    <div class="col-sm-10 col-lg-3 col-xs-3">
+                        <select name="virtual_code" class="form-control" id="virtual_code">
+                            <option value="">请选择所属企业</option>
+                            {loop $selector_virtuals $row}
+                            <option value="{$row['codeNumber']}" {if $item['virtual_code'] == $row['codeNumber']}selected = selected {/if}>{$row['name']}</option>
+                            {/loop}
+                        </select>
+                        <span class="help-block"></span>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $("#organization_code").change(function () {
+                                var organization_code = $("#organization_code option:selected").val();
+                                if (organization_code != '') {
+                                    $.getJSON("{php echo wurl('site/entry', array('m'=>'superdesk_core','do'=>'users','op' => 'ajax'))}", {organization_code : organization_code}, function (data) {
+                                        var content = "";
+                                        for (var o in data) {
+                                            content += "<option value=" + data[o].codeNumber + " >" + data[o].name + "</option>";
+                                        }
+                                        $("#virtual_code").empty();
+                                        $("#virtual_code").append("<option value=''>请选择所属企业</option>");
+                                        $("#virtual_code").append(content);
+                                    });
+                                } else {}
+                            });
+                        });
+                    </script>
+
+                </div>
+                {/if}
+
+				{if !empty($parentid)}
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">楼宇名字</label>
+					<div class="col-sm-9 col-xs-12 control-label" style="text-align:left;">{$parent['name']}</div>
+				</div>
+				{/if}
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">排序</label>
+					<div class="col-sm-9 col-xs-12">
+						<input type="text" name="displayorder" class="form-control" value="{$item['displayorder']}" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label"><span style="color:red">*</span>楼宇/楼层名称</label>
+					<div class="col-sm-9 col-xs-12">
+						<input type="text" name="catename" class="form-control" value="{$item['name']}" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">楼宇/楼层图片</label>
+					<div class="col-sm-9 col-xs-12">
+						{php echo tpl_form_field_image('thumb', $item['thumb'])}
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">楼宇/楼层描述</label>
+					<div class="col-sm-9 col-xs-12">
+						<textarea name="description" class="form-control" cols="70">{$item['description']}</textarea>
+					</div>
+				</div>
+
+				<!--
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">首页推荐</label>
+					<div class="col-sm-9 col-xs-12">
+						 <label class='radio-inline'>
+							 <input type='radio' name='isrecommand' value=1' {if $item['isrecommand']==1}checked{/if} /> 是
+						 </label>
+						 <label class='radio-inline'>
+							 <input type='radio' name='isrecommand' value=0' {if $item['isrecommand']==0}checked{/if} /> 否
+						 </label>
+					</div>
+				</div>
+				-->
+
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">是否显示</label>
+					<div class="col-sm-9 col-xs-12">
+						<label class='radio-inline'>
+							<input type='radio' name='enabled' value='1' {if $item['enabled']==1}checked{/if} /> 是
+						</label>
+						<label class='radio-inline'>
+							<input type='radio' name='enabled' value='0' {if $item['enabled']==0}checked{/if} /> 否
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group col-sm-12">
+			<input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" />
+			<input type="hidden" name="token" value="{$_W['token']}" />
+		</div>
+	</form>
+</div>
+
+{elseif $operation == 'display'}
+<div class="main">
+	<div class="building_structures">
+		<form action="" method="post" onsubmit="return formcheck(this)">
+			<div class="panel panel-default">
+				<div class="panel-body table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+
+								<th style="width:3%;"></th>
+								<th style="width:10%;">显示顺序</th>
+								<th style="width:10%;">项目码</th>
+								<th style="width:10%;">企业码</th>
+								<th style="width:27%;">楼宇/楼层名称</th>
+								<th style="width:5%;">状态</th>
+								<th style="width:15%;text-align: right">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+						{loop $building_structures $row}
+						<tr>
+							<td>{if count($children[$row['id']]) > 0}<a href="javascript:;"><i class="fa fa-chevron-down"></i></a>{/if}</td>
+							<td><input type="text" class="form-control" name="displayorder[{$row['id']}]" value="{$row['displayorder']}" style="width:6rem;"></td>
+							<td>{$row['organization_code']}</td>
+							<td>{$row['virtual_code']}</td>
+							<td>
+								<img src="{php echo tomedia($row['thumb']);}" width='30' height="30" onerror="$(this).remove()" style='padding:1px;border: 1px solid #ccc;float:left;' />
+								<div class="type-parent">{$row['name']}
+									{if empty($row['parentid'])}
+									<a href="{php echo $this->createWebUrl('building_structures', array('parentid' => $row['id'], 'op' => 'post'))}"><i class="fa fa-plus-circle"></i> 添加楼层</a>{/if}
+								</div>
+							</td>
+							<td>
+								{if $row['enabled']==1}
+								<span class='label label-success'>显示</span>
+								{else}
+								<span class='label label-danger'>隐藏</span>
+								{/if}
+							</td>
+							<td style="text-align: right">
+								<a href="{php echo $this->createWebUrl('building_structures', array('op' => 'post', 'id' => $row['id']))}" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="编辑"><i class="fa fa-edit">&nbsp;编辑</i></a>&nbsp;&nbsp;
+								<a href="{php echo $this->createWebUrl('building_structures', array('op' => 'delete', 'id' => $row['id']))}" onclick="return confirm('确认删除此楼宇/楼层吗？');return false;" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="fa fa-times">&nbsp;删除</i></a>
+							</td>
+						</tr>
+						{loop $children[$row['id']] $row}
+						<tr>
+							<td></td>
+							<td>
+								<input type="text" class="form-control col-lg-2" name="displayorder[{$row['id']}]" value="{$row['displayorder']}" style="width:6rem;">
+							</td>
+							<td>{$row['organization_code']}</td>
+							<td>{$row['virtual_code']}</td>
+							<td>
+								<div style="padding-left:50px;height:30px;line-height:30px;background:url('./resource/images/bg_repno.gif') no-repeat -245px -545px;">{$row['name']}
+									<img src="{php echo tomedia($row['thumb']);}" width='30' height="30" onerror="$(this).remove()" style='padding:1px;border: 1px solid #ccc;float:left;' />&nbsp;&nbsp;
+								</div>
+							</td>
+							<td>
+								{if $row['enabled']==1}
+								<span class='label label-success'>显示</span>
+								{else}
+								<span class='label label-danger'>隐藏</span>
+								{/if}
+							</td>
+							<td style="text-align: right">
+								<a href="{php echo $this->createWebUrl('building_structures', array('op' => 'post', 'id' => $row['id']))}" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="编辑"><i class="fa fa-edit">&nbsp;编辑</i></a>&nbsp;&nbsp;
+								<a href="{php echo $this->createWebUrl('building_structures', array('op' => 'delete', 'id' => $row['id']))}" onclick="return confirm('确认删除此楼宇/楼层吗？');return false;" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="bottom" title="删除"><i class="fa fa-times">&nbsp;删除</i></a>
+							</td>
+						</tr>
+						{/loop}
+						{/loop}
+						<tr>
+							<td></td>
+							<td colspan="6">
+								<a href="{php echo $this->createWebUrl('building_structures', array('op' => 'post'))}"><i class="fa fa-plus-sign-alt"></i> 添加新楼宇/楼层</a>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td colspan="6">
+								<input name="submit" type="submit" class="btn btn-primary" value="提交">
+								<input type="hidden" name="token" value="{$_W['token']}" />
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{/if}
+{template 'common/footer'}

@@ -1,0 +1,96 @@
+{template 'common/header'}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="{php echo $this->createWebUrl('task_cron', array('op' => 'list'))}">京东计划任务</a></li>
+    <li><a href="{php echo $this->createWebUrl('task_cron', array('op' => 'edit'))}">添加新计划任务</a></li>
+</ul>
+
+
+<div class="alert alert-info" id="tb_num">
+    当前共有 {$total} 个计划任务，您需要添加根目录下 do.php 到您主机的计划任务后，下面的任务才能被执行<br/>
+    <a href="{php echo $this->createWebUrl('task_cron', array('op' => 'edit'))}">添加新计划任务</a> | <a href="">运行全部计划任务</a>
+</div>
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <!--<div class="panel-heading"></div>-->
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width: 60%">任务描述/文件</th>
+                        <th>其他信息</th>
+                        <th>状态/操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+                        <td>
+                            {$item['name']}<br/>
+                            {$item['file']}<br/>
+                            {$item['desc']}
+                        </td>
+                        <td>
+                            {if $item['freq'] == '-1'}
+                            一次性任务
+                            {elseif $item['freq'] == '0'}
+                            始终运行的任务
+                            {else}
+                            执行间隔：{$item['freq']} 秒
+                            {/if}
+
+                            <br/>
+                            {if !empty($item['lastdo'])}
+                            {php echo date('Y-m-d H:i:s',$item['lastdo'])}
+                            {else}
+                            从未运行
+                            {/if}
+
+                        </td>
+
+                        <td>
+                            {if $item['no'] != 1}
+                            <font color="green">有效</font> | <a href="{php echo $this->createWebUrl('task_cron', array('name' => $item['name'], 'op' => 'dis'));}">忽略任务</a>
+                            {else}
+                            <font color="blue">忽略</font> | <a href="{php echo $this->createWebUrl('task_cron', array('name' => $item['name'], 'op' => 'act'));}">取消忽略</a>
+                            {/if}
+
+                            <br/><a href="{php echo $this->createWebUrl('task_cron', array('name' => $item['name'], 'op' => 'run'));}">运行</a>
+                            | <a href="{php echo $this->createWebUrl('task_cron', array('name' => $item['name'], 'op' => 'edit'));}">编辑</a>
+                            | <a href="{php echo $this->createWebUrl('task_cron', array('name' => $item['name'], 'op' => 'uninst'));}" style="color:red; " onclick="return confirm('你想要卸载此计划任务吗？');">卸载</a>
+
+                            {if empty($item['log'])}
+                            <br/>没有日志可查看
+                            {else}
+                            <br/><a href="javascript:;" onclick="alert({php echo str_replace('\'','\\\'',str_replace('"', '&quot;', str_replace("\n", '<br/>', str_replace("\r", '',  $item['log']))))});">点击查看此任务的日志</a>
+                            {/if}
+
+                            <br/>运行顺序：<input required class="form-control input-sm" style="width:9rem; display:inline" type="number" name="order[{$item[name]}]" value="{$item['orde']}">
+
+
+                            <!--<a href="{php echo $this->createWebUrl('task_cron', array('id' => $item['id'], 'op' => 'delete'));}"-->
+                               <!--class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title=""-->
+                               <!--onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" data-original-title="删除"><i-->
+                                    <!--class="fa fa-times">&nbsp;删除</i> </a>-->
+                        </td>
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            <input name="submit" type="submit" class="btn btn-primary" value="提交">
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                        </td>
+                        <td colspan="2">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

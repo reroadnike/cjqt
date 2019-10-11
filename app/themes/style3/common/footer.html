@@ -1,0 +1,126 @@
+		{if empty($footer_off)}
+			<div class="text-center footer" style="margin:10px 0; width:100%; text-align:center; word-break:break-all;">
+				{if !empty($detail['title'])}
+		<p style="white-space: normal; text-align: center;">
+		<span style="color: rgb(217, 150, 148);">
+			<strong>-To Be Continued-</strong>
+		</span>		
+		</p>
+		<p><span>-------------------------------------------◄</span></p>
+		<p>►	<span class="label label-primary"> Sina Weibo </span></p>
+		<p><br></p>
+		<p><span>色调T-salon</span></p>
+		<p><br></p>
+		<p>►	<span class="label label-success"> WeChat </span></p>
+		<p><br></p>
+		<p><span>服务号 Id:tone-salon</span></p>
+		<p><span>订阅号 Id:T22553035</span></p>
+		<p><br></p>
+		<p>►	<span class="label label-info"> Tel </span></p>
+		<p><br></p>
+		<p><span>【小榄店】0760-22553035</span></p>
+		<p><span>【利和店】0760-88363805</span></p>
+		<p><br></p>
+		<p>►	<span class="label label-warning"> Adress </span></p>
+		<p><br></p>
+		<p><span>【小榄店】小榄基头路16号二楼即七叔公二楼</span></p>
+		<p><span>【利和店】东区利和国际公馆1座1101</span></p>
+		<p><br></p>
+				{else}
+					{if !empty($_W['page']['footer'])}{$_W['page']['footer']}{else}{/if}
+				{/if}
+				&nbsp;&nbsp;{$_W['setting']['copyright']['statcode']}
+			</div>
+		{/if}
+		{if !empty($_W['quickmenu']['menus']) && empty($_W['quickmenu']['disabled'])}
+			<?php include_once template($_W['quickmenu']['template'], TEMPLATE_INCLUDEPATH);?>
+		{/if}
+		<script>require(['bootstrap']);</script>
+		
+		
+	</div>
+	<style>
+		h5{color:#555;}
+		a{color:#555;}
+	</style>
+	<script type="text/javascript">
+		//对分享时的数据处理
+		function _removeHTMLTag(str) {
+			str = str.replace(/<script[^>]*?>[\s\S]*?<\/script>/g,'');
+			str = str.replace(/<style[^>]*?>[\s\S]*?<\/style>/g,'');
+			str = str.replace(/<\/?[^>]*>/g,'');
+			str = str.replace(/\s+/g,'');
+			str = str.replace(/&nbsp;/ig,'');
+			return str;
+		}
+		
+			
+				
+		require(['WeixinApi','jquery'], function(WeixinApi, $){
+			<?php
+				$_share['title'] = !empty($_share['title']) ? $_share['title'] : $_W['account']['name'];
+				$_share['link'] = !empty($_share['link']) ? $_share['link'] : 'http://'.$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '&u=' . $_W['member']['uid']. '&wxref=mp.weixin.qq.com';
+			?>
+			//图片地址
+			{if !empty($_share['imgUrl'])} 
+				var _share_img = "{$_share['imgUrl']}";
+				if(_share_img.indexOf("http://") == -1 && _share_img.indexOf("https://") == -1 ) _share_img = "{$_W['attachurl']}" + _share_img;
+			{else}
+				var _share_img = $('body img:eq(0)').attr("src");
+				if(typeof(_share_img) == "undefined") _share_img = "{$_share['imgUrl']}";
+				if(_share_img.indexOf("http://") == -1 && _share_img.indexOf("https://") == -1 ) _share_img = "{$_W['attachurl']}" + _share_img;
+			{/if}
+			//分享内容
+			{if empty($_share['content'])}
+				var _share_content = _removeHTMLTag($('body').html()).replace("{$_share['title']}", '');
+			{else}
+				//var _share_content = "{php echo preg_replace('/\s/i', '', str_replace('	', '', cutstr(str_replace('&nbsp;', '', ihtmlspecialchars(strip_tags($_share['content']))), 60)));}";
+				var _share_content = "{php echo $_share['content'];}";
+			{/if}
+			
+				window.onshared = ''; 
+				window.sharedata = {
+					'appId': 'wxcb965730e74a2b56', // 服务号可以填写appId
+					'imgUrl' : '{php echo $detail['thumb']}', // 缩略图
+					'link': '{$_share['link']}', // 内容链接
+					'title': '{php echo $detail['title']}', // 内容标题
+					'desc': '{php echo $detail['description']}' // 内容简介
+				};
+
+			WeixinApi.ready(function(Api) {
+				
+				// 微信分享的数据
+				var wxData = {
+					"appId": "wxcb965730e74a2b56", // 服务号可以填写appId
+					"imgUrl" : _share_img,
+					"link" : "{$_share['link']}",
+					"desc" : _share_content,
+					"title" : "{$_share['title']}"
+				};
+				if(window.sharedata && window.sharedata['link']){
+					wxData['appId'] = window.sharedata['appId'];
+					wxData['imgUrl'] = window.sharedata['imgUrl'];
+					wxData['link'] = window.sharedata['link'];
+					wxData['desc'] = window.sharedata['desc'];
+					wxData['title'] = window.sharedata['title'];
+				}
+				
+				
+				var wxCallbacks = {
+					confirm : function(resp) {
+						// todo: 
+						if(window['onshared'] && typeof(window['onshared']) == 'function'){
+							window['onshared']();
+						}
+					}
+				};
+				Api.shareToFriend(wxData, wxCallbacks);
+				Api.shareToTimeline(wxData, wxCallbacks);
+				Api.shareToWeibo(wxData, wxCallbacks);
+				Api.generalShare(wxData,wxCallbacks);
+			});
+		});
+	</script>
+	{CNZZ}
+</body>
+</html>

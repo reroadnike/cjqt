@@ -1,0 +1,7 @@
+<ul class="nav nav-tabs">
+    <li {if $active == 'wx_fans'}class="active"{/if}><a href="{php echo $this->createWebUrl('wx_fans', array('op' => 'list'))}">#wx_fans#</a></li>
+    <li {if $active == 'zc_import_member'}class="active"{/if}><a href="{php echo $this->createWebUrl('zc_import_member', array('op' => 'list'))}">#zc_import_member#</a></li>
+    <li {if $active == 'zc_invoice'}class="active"{/if}><a href="{php echo $this->createWebUrl('zc_invoice', array('op' => 'list'))}">#zc_invoice#</a></li>
+    <li {if $active == 'sll_address'}class="active"{/if}><a href="{php echo $this->createWebUrl('sll_address', array('op' => 'list'))}">#sll_address#</a></li>
+    <li {if $active == 'js_update_shop_member'}class="active"{/if}><a target="_blank" href="{php echo $this->createMyJsUrl('js_update_shop_member',array(),'superdesk_shop_member');}" title="懒!不做界面"><i class="fa fa-cog">&nbsp;&nbsp;同步处理</i></a></li>
+</ul>

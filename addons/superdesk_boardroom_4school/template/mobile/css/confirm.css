@@ -1,0 +1,55 @@
+/* 
+* @Author: anchen
+* @Date:   2017-08-10 09:43:27
+* @Last Modified by:   anchen
+* @Last Modified time: 2017-08-10 15:13:24
+*/
+@charset "utf-8";
+body {padding-bottom: 3.25rem;}
+.confirminfowrap {position: relative; width: 100%; height: 10.5rem;}
+.confirmimg {width: 100%; height: 10.5rem;}
+.confirmimgmask {display: block; width: 100%; height: 100%; background:rgba(74,74,74,0.50);}
+.confirminfo {position: absolute; top: 5.6rem; left: 50%; width: 92%; height: 21.4rem; margin-left: -46%; padding: 0.7rem 0.75rem; background-color: #fff; box-shadow:0 5px 8px 2px rgba(214,221,250,0.27); border-radius:4px;}
+.label {display: block; font-size: .7rem; color:#999999;}
+
+.cftimeinfo {
+    width: 100%;
+    /*border-bottom: 1px solid #bfbfbf;*/
+    padding: .6rem 0 .3rem;
+    margin-bottom: 1.2rem;
+}
+
+.cftimeinfo span {
+    float: left;
+    font-size: .7rem;
+    color: #333333;
+    width: 92%;
+}
+.cfdateicon {float: left; width: 0.8rem; height: 0.8rem; margin-right: 0.2rem; background: url("../images/date.png") 0 0 no-repeat; background-size: 100% 100%;}
+.cftimeicon {float: left; width: 0.8rem; height: 0.8rem; margin-left: 0rem; margin-right: 0.2rem;background: url("../images/time.png") 0 0 no-repeat; background-size: 100% 100%;}
+@media (max-width: 320px){
+    .cfdateicon {margin-right: 0.1rem;}
+    .cftimeicon {margin-left: .1rem; margin-right: 0.1rem;}
+}
+.meeting-theme {width: 100%; height: 2.1rem; border-bottom: 1px solid #bfbfbf; margin-bottom: 1.2rem;}
+.meeting-theme input, .organiserentry input {width: 100%; height: 2rem; padding: .7rem 0 .5rem; font-size:.7rem; color:#333; background-color: rgba(0, 0, 0, 0);}
+.meeting-theme input::-webkit-input-placeholder, .organiserentry input::-webkit-input-placeholder {color: #d9d9d9;}
+.organiserinfo {width: 100%; }
+.organisername, .organisertel, .organisernum {float: left; width: 40%; margin-bottom: 1.2rem;}
+.organiserinfo .organisertel {float: right;}
+.organiserentry {width: 100%; height: 2.1rem; border-bottom: 1px solid #bfbfbf;}
+.goodswrap {width: 92%; margin: 0 auto; padding-top: 17.4rem;}
+.goodslist {width: 100%; background-color: #fff; box-shadow:0 5px 8px 2px rgba(214,221,250,0.27); border-radius:4px;}
+.goodsitem {width: 100%; padding: .7rem .75rem;}
+.goodsitemimg {float: left; width: 19%; height: 3rem; margin-right: 3%;}
+.goodsname {float: left; width: 78%; font-size: .7rem; color:#333333; font-weight: 600;}
+.goodsspec {float: left; width: 78%; font-size:.6rem; color:#999999;}
+.goodsprice {float: left; font-size: .7rem; color: #333; padding-top: .35rem;}
+
+.popupmaskinfo {width: 100%;}
+.popup h3 {margin-bottom: 1rem;}
+.infoaddress, .infotime {width: 100%; padding: 0 1.5rem; font-size: .7rem; color: #333;}
+.infotime {margin: .7rem 0 1rem;}
+.infoaddress label, .infotime label {float: left; height: 100%; margin-right: 0.3rem;}
+.infoaddress span, .infotime span {float: left; width: 80%;}
+.auonttime {font-size: .6rem; color:#90a0e3; margin-left: 1rem;}

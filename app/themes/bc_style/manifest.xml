@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest versionCode="0.52,0.6">
+	<identifie><![CDATA[bc_style]]></identifie>
+	<title><![CDATA[本创风格]]></title>
+	<type><![CDATA[often]]></type>
+	<description><![CDATA[bc_style]]></description>
+	<author><![CDATA[bc_style]]></author>
+	<url><![CDATA[http://bbs.we7.cc/]]></url>
+	<sections><![CDATA[10]]></sections>
+	<settings>
+	</settings>
+</manifest>

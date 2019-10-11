@@ -1,0 +1,38 @@
+检测成功返回示例：
+{
+"success": true,
+"resultMessage": "",
+"resultCode": null,
+"result": true
+}
+
+检测失败返回示例：
+
+
+参数有误：
+{
+"success": true,
+"resultMessage": "商品[102194]不在商品池中!",
+"resultCode": "PARAM_VALUE_ERROR",
+"result": false
+}
+参数未空：
+{
+"success": true,
+"resultMessage": "sku为空或非法",
+"resultCode": "PARAM_NOT_NULL",
+"result": false
+}
+大家电商品不支持货到付款：
+{
+"success": true,
+"resultMessage": "大家电商品不支持在区域货到付款，不支持的大家电商品sku=[782200]",
+"resultCode": "BIG_NOT_COD",
+"result": false
+}
+{
+"success": true,
+"resultMessage": "地址不支持货到付款!",
+"resultCode": "ADDRESS_HUODAOFUKUAN_UNSUPPORT",
+"result": false
+}

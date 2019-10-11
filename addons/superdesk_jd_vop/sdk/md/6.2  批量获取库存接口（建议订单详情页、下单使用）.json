@@ -1,0 +1,18 @@
+{"result":
+[
+  {
+    "skuId":569172,
+    "areaId":"1_0_0",
+    "stockStateId":33,
+    "stockStateDesc":"有货",
+    "remainNum":-1
+  },
+  {
+    "skuId":102194,
+    "areaId":"1_0_0",
+    "stockStateId":33,
+    "stockStateDesc":"有货",
+    "remainNum":-1
+  }
+]
+}

@@ -1,0 +1,133 @@
+{template '_header'}
+
+<div class="page-heading"> <h2>职能架构管理</h2> </div>
+
+<form action="./index.php" method="get" class="form-horizontal form-search" role="form">
+    <input type="hidden" name="c" value="site" />
+    <input type="hidden" name="a" value="entry" />
+    <input type="hidden" name="m" value="superdesk_shopv2" />
+    <input type="hidden" name="do" value="web" />
+    <input type="hidden" name="r"  value="member.structure" />
+
+    <div class="page-toolbar row m-b-sm m-t-sm">
+
+        <div class="col-sm-12">
+
+
+            <select name="addManager" class='form-control input-sm select-md'>
+                <option value="" {if $_GPC['addManager'] == ''} selected{/if}>已添加经理?</option>
+                <option value="1" {if $_GPC['addManager']== '1'} selected{/if}>是</option>
+                <option value="0" {if $_GPC['addManager'] == '0'} selected{/if}>否</option>
+            </select>
+            <select name="addMan" class='form-control input-sm select-md'>
+                <option value="" {if $_GPC['addMan'] == ''} selected{/if}>已添加专员?</option>
+                <option value="1" {if $_GPC['addMan']== '1'} selected{/if}>是</option>
+                <option value="0" {if $_GPC['addMan'] == '0'} selected{/if}>否</option>
+            </select>
+            <select name="noSet" class='form-control input-sm select-md'>
+                <option value="" {if $_GPC['noSet'] == ''} selected{/if}>未设置人员?</option>
+                <option value="1" {if $_GPC['noSet']== '1'} selected{/if}>有</option>
+                <option value="0" {if $_GPC['noSet'] == '0'} selected{/if}>没</option>
+            </select>
+            <select name="organization_id" class='form-control input-sm select-md select2' style="width:200px" >
+                <option value="">请选择项目</option>
+                {loop $selector_organization $row}
+                <option value="{$row['ID']}" {if $_GPC['organization_id'] == $row['ID']}selected = selected {/if}>{$row['ID']} - {$row['name']}</option>
+                {/loop}
+            </select>
+            <select name="enterprise_id" class='form-control input-sm select-md select2' style="width:200px">
+                <option value="">请选择企业</option>
+                {loop $selector_virtuals $row}
+                <option value="{$row['id']}" {if $_GPC['enterprise_id'] == $row['id']}selected = selected {/if}>{$row['organizationId']} - {$row['id']} - {$row['name']}</option>
+                {/loop}
+            </select>
+            <div class="input-group">
+                <button class="btn btn-sm btn-primary" type="submit"> 搜索</button> </span>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<form action="" method="post" onsubmit="return formcheck(this)">
+
+
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+                <th style="width: 10%;">项目<br/>#ID</th>
+                <th style="width: 20%;">项目<br/>名称</th>
+                <th style="width: 10%;">企业<br/>#ID</th>
+                <th style="width: 30%;">企业<br/>名称</th>
+                <th style="width: 8%; text-align: center;">采购经理<br/>人数</th>
+                <th style="width: 8%; text-align: center;">采购专员<br/>人数</th>
+                <th style="width: 8%; text-align: center;">未设置<br/>人数</th>
+            </tr>
+        </thead>
+        <tbody>
+            {loop $list $row}
+            <tr>
+                <td>{$row['core_organization']}</td>
+                <td>{$row['core_organization_name']}</td>
+                <td>{$row['core_enterprise']}</td>
+                <td>{$row['core_enterprise_name']}</td>
+                <td><a href="{php echo webUrl('member/list', array('cash_role_id' => 2,'enterprise_id' => $row['core_enterprise']))}">{$row['manager_count']}</a></td>
+                <td><a href="{php echo webUrl('member/list', array('cash_role_id' => 1,'enterprise_id' => $row['core_enterprise']))}">{$row['man_count']}</a></td>
+                <td><a href="{php echo webUrl('member/list', array('cash_role_id' => 0,'enterprise_id' => $row['core_enterprise']))}">{$row['noset_count']}</a></td>
+            </tr>
+            {/loop}
+
+        </tbody>
+    </table>
+    {$pager}
+
+</form>
+
+<script language="javascript">
+
+require(['bootstrap'], function () {
+    $('#myTab a').click(function (e) {
+        $('#tab').val($(this).attr('href'));
+        e.preventDefault();
+        $(this).tab('show');
+    });
+
+    $(document).on('change', 'select[name="organization_id"]',
+        function () {
+
+            var organization_id = $('select[name="organization_id"]').val();
+
+            console.log(organization_id);
+
+            if (organization_id != '') {
+
+                $.getJSON(
+                    "{php echo webUrl('merch/enterprise/ajax')}",
+                    {organization_id: organization_id},
+                    function (data) {
+
+                        console.log(data);
+
+                        var content = "";
+
+                        for (var index in data) {
+
+                            content += "<option value=" + data[index].id + " >" + data[index].organizationId + " - " + data[index].id + " - " + data[index].name + "</option>";
+                            console.log(content);
+                        }
+                        $('select[name="enterprise_id"]').empty();
+                        $('select[name="enterprise_id"]').append("<option value=''>请选择企业</option>");
+                        $('select[name="enterprise_id"]').append(content);
+
+                        $('select[name="enterprise_id"]').select2({});
+                    });
+            } else {
+            }
+        });
+});
+
+
+</script>
+{template '_footer'}
+
+

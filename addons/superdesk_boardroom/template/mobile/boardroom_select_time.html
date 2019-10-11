@@ -1,0 +1,263 @@
+{template '__header'}
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/selectTime.css"/>
+<div class="pagetoplogo"></div>
+<div class="pagebottomlogo"></div>
+
+<div class="meeting-number">
+    <span>会议人数（人）</span>
+
+    <div class="counter">
+        <a href="javascript: void(0);" title="减" onclick="reduceNum('')" class="reduce"></a>
+        <div class="couterentry">
+            <input type="number" value="1" id="people_num"/>
+        </div>
+        <a href="javascript: void(0);" title="加" onclick="addNum('',{$item['max_num']})" class="plus"></a>
+    </div>
+</div>
+<a href="javascript:void(0);"
+   class="additional"
+   id="btn_boardroom_accessorial_service"
+   data-url="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'boardroom_accessorial_service'))}">
+    <span>附加服务选择</span>
+    <i class="arrow-right"></i>
+    <em>已选择 <i id="num_accessorial_service">0</i> 种</em>
+</a>
+<h3 class="subtitseltime">{$Ymd} 请选择时间（选择会议开始时间与结束时间即可）</h3>
+<ul class="selecttimelist">
+
+    <!--
+    selecttimebar(可选择)
+    noselecttime 类名(已过期或不可预订)
+    yesselecttime 类名(已选择)
+    -->
+    {loop $item['situation']['am'] $time_am}
+    <li class="selecttimebar clearfix
+        {if $time_am['is_use']==1 || $time_am['timestamp'] < $now}noselecttime{/if}"
+        id="{$time_am['index']}"
+        data-index="{$time_am['index']}"
+        data-key="{$time_am['key']}"
+        data-timestamp="{$time_am['timestamp']}"
+        data-is_use="{$time_am['is_use']}"
+        data-lable="{$time_am['lable']}">
+        <strong class="circletime"></strong>
+        <em>{$time_am['lable']}</em>
+        <span class="statustext">
+            {if $time_am['is_use'] == 1 }
+            （不可预订）
+            {elseif $time_am['timestamp'] < $now}
+            （已过期）
+            {else}
+            （可选择）
+            {/if}
+        </span>
+    </li>
+    {/loop}
+    {loop $item['situation']['pm'] $time_pm}
+    <li class="selecttimebar clearfix
+        {if $time_pm['is_use']==1 || $time_pm['timestamp'] < $now}noselecttime{/if}"
+        id="{$time_pm['index']}"
+        data-index="{$time_pm['index']}" data-key="{$time_pm['key']}"
+        data-timestamp="{$time_pm['timestamp']}"
+        data-is_use="{$time_pm['is_use']}"
+        data-lable="{$time_pm['lable']}">
+        <strong class="circletime"></strong>
+        <em>{$time_pm['lable']}</em>
+        <span class="statustext">
+            {if $time_pm['is_use'] == 1 }
+            （不可预订）
+            {elseif $time_pm['timestamp'] < $now}
+            （已过期）
+            {else}
+            （可选择）
+            {/if}
+        </span>
+    </li>
+    {/loop}
+
+</ul>
+<div class="suspendBtn">
+    <a href="javascript:void(0);" id="btn_submit" data-url="" title="确定预订" class="suspend-btn">确定预订</a>
+</div>
+
+<style>
+
+    /* 背景图 */
+    .full_screen {
+        top:0;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+        background: #f6f6f6;
+
+        /*background-color: #000;*/
+        /*background-color:#000000;!* IE6和部分IE7内核的浏览器(如QQ浏览器)下颜色被覆盖 *!*/
+        /*background-color:rgba(0,0,0,0.3); !* IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂，但解析为透明 *!*/
+    }
+</style>
+
+<div id="syn_loading" class="full_screen" style="display: none;">
+</div>
+
+<form action="{php echo murl('entry' , array('m'=>'superdesk_boardroom' , 'do'=>'boardroom_firm_order'))}" method="post" id="form_appointment" style="width: 0px;height: 0px;">
+    <input type="hidden" name="id" value="{$id}"/>
+    <input type="hidden" name="select_time_bar" value=""/>
+    <input type="hidden" name="order_goodsid" value=""/>
+</form>
+
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery/jquery.gcjs.js"></script>
+<script type="text/javascript">
+
+    function addNum(id,maxbuy){
+        var mb = maxbuy;
+        var num = parseInt( $("#people_num" + id).val() ) + 1;
+        if(num>mb && mb>0){
+            $.alert("会议室最多只能容纳 " + mb + " 人", 1500);
+            return;
+        }
+        $("#people_num" + id).val(num);
+    }
+    function reduceNum(id){
+        var num = parseInt( $("#people_num" + id).val() );
+        if(num-1<=0){
+            return;
+        }
+        num--;
+        $("#people_num" + id).val(num);
+    }
+
+    $(function () {
+        $("#btn_boardroom_accessorial_service").bind('click', function(event) {
+
+            var that_url = $(this).data('url');
+            $.alert("加载中...", 250);
+            $("#syn_loading").load(that_url,function () {
+
+                // 内页提交
+                $('#confirm').click(function() {
+                    var ids =  new Array();
+                    var i = 0;
+                    $('[name="goodsid"]').each(function () {
+                        if($(this).val() > 0){
+                            ids[i] = $(this).data('id');
+                            i++;
+                        }
+                    });
+
+                    console.log("// TODO set goodids : "+ids);
+                    $("#num_accessorial_service").html(i);
+                    $.alert("已选择 " + i + "项附加服务", 1500);
+                    $("input[name='order_goodsid']").val(ids);
+                    $(".full_screen").fadeOut("slow");
+                });
+
+
+            });
+
+            $(".full_screen").fadeIn("slow");
+        });
+        var select_time_bar = {$select_time_bar};
+        var len = select_time_bar.length;
+
+        function check_checked_select_time() {
+            var checked_num = 0;
+            for (var i = 0; i < len; ++i) {
+
+                if(select_time_bar[i]['checked'] == 1){
+                    checked_num++;
+                }
+            }
+
+            if (checked_num == 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        function set_checked_select_time_bar(index,checked) {
+            var record_start = -1;
+
+            select_time_bar[index]['checked'] = checked;
+
+            for (var i = 0; i < len; ++i) {
+//                console.log(JSON.stringify(select_time_bar[i]));
+
+                if(checked == 1){
+                    if(select_time_bar[i]['checked'] == 1){
+                        record_start = i;
+                    }
+                    if(record_start != -1 && i <= index){
+                        if(select_time_bar[i]['is_use'] == 0){
+                            select_time_bar[i]['checked'] = 1;
+                            $("#"+i).addClass('yesselecttime');
+                        }
+                    } else if (record_start != -1 && index <= record_start){
+                        for (var f_i = record_start ; f_i >= index; f_i-- ){
+                            if(select_time_bar[f_i]['is_use'] == 0) {
+                                select_time_bar[f_i]['checked'] = 1;
+                                $("#" + f_i).addClass('yesselecttime');
+                            }
+
+                        }
+                    }
+                } else if(checked == 0){
+                    if(i>=index){
+                        if(select_time_bar[i]['is_use'] == 0 && !$("#"+i).hasClass('noselecttime')){
+                            select_time_bar[i]['checked'] = 0;
+                            $("#"+i).removeClass('yesselecttime');
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+        function to_string_select_time_bar() {
+            for (var i = 0; i < len; ++i) {
+                console.log(JSON.stringify(select_time_bar[i]));
+            }
+        }
+
+        $("#btn_submit").bind('click', function(event) {
+
+            if(check_checked_select_time() == false){
+                $.alert("请选择会议时间", 1500);
+                return;
+            }
+
+            $("input[name='select_time_bar']").val(JSON.stringify(select_time_bar));
+            $("#form_appointment").get(0).submit(function(e){});
+        });
+
+        $(".selecttimebar").each(function(index,element){
+
+            $(this).bind('click', function(event) {
+
+//                {"index":0,"key":"2017-07-31 00:00:00","timestamp":1501432200,"is_use":0,"lable":"00:00-00:30"}
+                var that_index      = $(this).data('index');
+                var that_key        = $(this).data('key');
+                var that_timestamp  = $(this).data('timestamp');
+                var that_is_use     = $(this).data('is_use');
+                var that_lable      = $(this).data('lable');
+
+                if($(this).hasClass('noselecttime')){
+
+                } else{
+                    if($(this).hasClass('yesselecttime')){
+                        set_checked_select_time_bar(that_index,0);
+                    }else{
+                        set_checked_select_time_bar(that_index,1);
+                    }
+//                    to_string_select_time_bar();
+                }
+            });
+        });
+    });
+</script>
+
+
+
+{template '__footer'}

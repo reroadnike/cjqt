@@ -1,0 +1,1 @@
+ALTER TABLE `ims_superdesk_shop_category` CHANGE `advurl` `advurl` VARCHAR(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '';

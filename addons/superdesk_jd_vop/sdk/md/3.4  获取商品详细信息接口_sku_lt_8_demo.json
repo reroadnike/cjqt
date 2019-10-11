@@ -1,0 +1,26 @@
+
+{
+  "success": true,
+  "resultMessage": "",
+  "resultCode": "0000",
+  "result": {
+    "saleUnit": "套",
+    "weight": "0.42",
+    "productArea": "中国大陆",
+    "wareQD": "6米犀牛皮套装 × 1",
+    "imagePath": "jfs/t1990/277/2408809919/349543/cb3ba9e0/56da4f7bN62342621.jpg",
+    "param": "<table cellpadding=\"0\" cellspacing=\"1\" width=\"100%\" border=\"0\" class=\"Ptable\"><tr><th class=\"tdTitle\" colspan=\"2\">主体</th><tr><tr><td class=\"tdTitle\">产品品牌 </td><td>沿途</td></tr><tr><td class=\"tdTitle\">类别</td><td>犀牛皮保护膜</td></tr><tr><td class=\"tdTitle\">适用车型 </td><td>通用 </td></tr><tr><td class=\"tdTitle\">产地</td><td>中国大陆</td></tr></table>",
+    "state": 1,
+    "sku": 1572026,
+    "shouhou": null,
+    "brandName": "沿途",
+    "upc": "6932340113529;6959828280474",
+    "appintroduce": "html",
+    "category": "6728;6745;13995",
+    "name": "沿途 Q45 6米汽车犀牛皮保护膜仪表盘保护膜汽车门把手贴膜门腕/碗贴",
+    "introduction": "html"
+  },
+  "code": 200
+}
+
+ims_superdesk_jd_vop_product_detail

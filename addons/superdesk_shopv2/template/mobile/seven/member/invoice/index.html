@@ -1,0 +1,109 @@
+{template '_header'}
+
+{template 'member/____fui-header'}
+
+<style>
+
+	.companyName{
+		font-size: .7rem;
+		height: 1.2rem;
+		line-height: 1.2rem;
+	}
+	.taxpayersIDcode{
+		font-size: .6rem;
+	}
+	.btn-xs{
+		height: 1rem;
+		line-height: .9rem;
+		margin: 0;
+		font-size: 0.6rem;
+	}
+</style>
+
+<div class='fui-page  fui-page-current'>
+    <div class="fui-header">
+	<div class="fui-header-left">
+	    <a class="back"></a>
+	</div>
+	<div class="title title_text_white">发票</div>
+	<div class="fui-header-right">&nbsp;</div>
+    </div>
+    <div class='fui-content navbar' >
+
+	
+	<div class='content-empty' {if !empty($list)}style='display:none'{/if}>
+	    <i class='icon icon-location'></i>
+	    <br/>您还没有任何发票
+	</div>
+	
+	{loop $list $invoice}
+	<div class="fui-list-group invoice-item" style='margin-top:5px;'
+	     data-invoiceid="{$invoice['id']}">
+	    <div  class="fui-list" >
+		<div class="fui-list-inner">
+		    <div class="title">
+				<span class='companyName'>{$invoice['companyName']}</span>
+				<span class='taxpayersIDcode'>{$invoice['taxpayersIDcode']}</span>
+			</div>
+		    <div class="text">
+				<span class='invoice'>
+					<span class="btn btn-default btn-xs disabled">{$view_selectedInvoiceTitle[$invoice['selectedInvoiceTitle']]}</span>
+					<span class="btn btn-default btn-xs disabled">{$view_invoiceType[$invoice['invoiceType']]}</span>
+					<span class="btn btn-default btn-xs disabled">{$view_invoiceContent[$invoice['invoiceContent']]}</span>
+				</span>
+		    </div>
+		    <div class='bar' >
+			<span class='pull-right'>
+			    <a class="external" href="{php echo mobileUrl('member/invoice/post',array('id'=>$invoice['id']))}" data-nocache="true">
+				<i class='icon icon-edit2'></i>&nbsp;编辑</a>
+			    &nbsp;&nbsp;
+			    <a data-toggle='delete' class='external'>
+				<i class='icon icon-delete'></i>&nbsp;删除</a>
+			</span>
+
+			<label class='radio-inline'>
+			    <input type="radio" name='setdefault' data-toggle='setdefault'  class="fui-radio  fui-radio-danger" {if $invoice['isdefault']}checked{/if} /> 设置默认
+			</label>
+		    </div>
+		</div>
+	    </div>
+	</div> 
+	{/loop}
+
+    </div>
+    <div class='fui-navbar'>
+	<a href="{php echo mobileUrl('member/invoice/post')}" class='nav-item btn btn-danger external' data-nocache="true"><i class="icon icon-add"></i> 新建发票</a>
+    </div>
+
+
+<script id="tpl_invoice_item" type="text/html">
+<div class="fui-list-group invoice-item" style='margin-top:5px;' data-invoiceid="<%invoice.id%>">
+	<div  class="fui-list" >
+	<div class="fui-list-inner">
+		<div class="title"><span class='realname'><%invoice.realname%></span> <span class='mobile'><%invoice.mobile%></span></div>
+		<div class="text">
+		<span class='invoice'><%invoice.areas%> <%invoice.invoice%></span>
+		</div>
+		<div class='bar' >
+		<span class='pull-right'>
+			<a class="external" href="{php echo mobileUrl('member/invoice/post')}&id=<%invoice.id%>" data-nocache='true'>
+			<i class='icon icon-edit'></i> 编辑
+			</a>
+			&nbsp;&nbsp;
+			<a data-toggle='delete' class='external'>
+			<i class='icon icon-delete'></i> 删除
+			</a>
+		</span>
+		<label class='radio-inline'>
+			<input type="radio" data-toggle='setdefault' class="fui-radio  fui-radio-danger" <%if invoice.isdefault==1%>checked<%/if%> /> 设置默认
+		</label>
+		</div>
+	</div>
+	</div>
+</div>
+</script>
+<script language='javascript'>require(['biz/member/invoice'], function (modal) {
+	modal.initList();
+});</script>
+</div> 
+{template '_footer'}

@@ -1,0 +1,414 @@
+{template '__header'}
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}template/mobile/css/confirm.css" />
+
+<div class="pagetoplogo"></div>
+<div class="pagebottomlogo"></div>
+<div class="confirminfowrap">
+    <div class="confirmimg" style="background: url('{MODULE_URL}template/mobile/images/demo/5.png') center center no-repeat;background-size: auto 100%;">
+        <i class="confirmimgmask"></i>
+    </div>
+    <div class="confirminfo">
+        <!--*共三天，每天3小时-->
+        <label class="label">会议日期 <em class="auonttime"></em></label>
+        <div class="cftimeinfo clearfix">
+            <i class="cfdateicon"></i>
+            <span id="show_date_selected"></span>
+        </div>
+        <label class="label">会议时间 <em class="auonttime"></em></label>
+        <div class="cftimeinfo clearfix">
+            <i class="cftimeicon"></i>
+            <span id="show_time_start_end"></span>
+        </div>
+        <label class="label">会议主题</label>
+        <div class="meeting-theme">
+            <input type="text" name="form_subject" value="" placeholder="请输入会议主题"/>
+        </div>
+        <div class="organiserinfo clearfix">
+            <div class="organisername">
+                <label class="label">会议组织人</label>
+                <div class="organiserentry">
+                    <input type="text" name="form_client_name" value="" placeholder="请输入会议组织人"/>
+                </div>
+            </div>
+            <div class="organisertel">
+                <label class="label">联系手机</label>
+                <div class="organiserentry">
+                    <input type="number" name="form_client_telphone" value="" maxlength="11" placeholder="请输入联系手机"/>
+                </div>
+            </div>
+            <div class="organisernum">
+                <label class="label">会议人数</label>
+                <div class="organiserentry">
+                    <input type="number" name="form_people_num" value="{$_boardroom['max_num']}"/>
+                    <!--<input type="number" name="form_people_num" value="11" placeholder="会议人数"/>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="goodswrap">
+    <label class="label" style="padding: 0 .7rem;    margin-bottom: .7rem;">附加服务</label>
+    <ul class="goodslist">
+
+        {loop $cart_list $cart_item}
+        {php $price += $cart_item['totalprice'];}
+        {php $goods = $cart_item['goods']}
+        <span id="stock_{$cart_item['id']}" style='display:none'>{$goods['total']}</span>
+        <li class="goodsitem clearfix">
+            <div class="goodsitemimg" style="background: url({php echo tomedia($goods['thumb']);}) center center no-repeat;background-size: auto 100%;"></div>
+            <h3 class="goodsname ellipsis">{$goods['title']}{if $goods['unit']}{/if}</h3>
+            <span class="goodsspec ellipsis">{if !empty($goods['unit'])} / {$goods['unit']}{/if}</span>
+            <em class="goodsprice" id="singleprice_{$cart_item['id']}">￥{$goods['marketprice']}</em>
+
+            <div class="counter">
+                <a href="javascript: void(0);" title="减" onclick="reduceNum({$cart_item['id']})" class="reduce"></a>
+                <div class="couterentry">
+                    <input type="number"
+                           name="goodsid"
+                           value="{$cart_item['total']}"
+                           id="goodsnum_{$cart_item['id']}"
+                           data-id="{$cart_item['id']}"
+                           price="{$goods['marketprice']}"
+                           pricetotal="{$cart_item['totalprice']}"
+                           cartid="{$cart_item['id']}"
+                           maxbuy="{$goods['maxbuy']}"/>
+                </div>
+                <a href="javascript: void(0);" title="加" onclick="addNum({$cart_item['id']},{if $goods['maxbuy'] == 0}{$goods['total']}{else}{php echo min($goods['total'], $goods['maxbuy'])}{/if})" class="plus"></a>
+            </div>
+            <em style="display: none;" class="ellipsis">小计：<span class='singletotalprice' id="goodsprice_{$cart_item['id']}">{$cart_item['totalprice']}</span> 元</em>
+        </li>
+        {php $n++;}
+        {/loop}
+
+        <!-- -->
+
+
+    </ul>
+</div>
+
+<div class="amount" {if count($list)<=0}style="display:none"{else}style="z-index:3;"{/if}>
+<em style="display: none;">合计：￥<span id="pricetotal">{$price}</span> 元</em>
+<!--<a href="javascript:void(0);" title="完成添加" id="confirm">完成添加</a>-->
+</div>
+
+<div class="suspendBtn">
+    <a href="javascript:void(0);" title="确定预订" class="suspend-btn js_confirmOrder">确定预订</a>
+</div>
+
+<!-- 弹窗 -->
+<div class="popupmask">
+    <div class="popup">
+        <h3>确定预定？</h3>
+        <div class="popupmaskinfo">
+            <div class="infoaddress clearfix">
+                <label>地点:</label>
+                <span class="ellipsis">{$_boardroom['name']}</span>
+            </div>
+            <div class="infotime clearfix">
+                <label>时间:</label>
+                <span id="popup_date_time_full"></span>
+            </div>
+        </div>
+        <div class="popupbtns clearfix">
+            <a href="javascipt: void(0);" title="取消" class="popupbtn js_cancel">取消</a>
+            <a href="javascript:void(0);" title="确认" class="popupbtn js_confirm">确认</a>
+        </div>
+    </div>
+</div>
+
+<form action="{php echo murl('entry' , array('m'=>'superdesk_boardroom_4school' , 'do'=>'boardroom_firm_order'))}" method="post" id="form_submit">
+
+    <input type="hidden" name="id" value="{$id}"/>
+    <input type="hidden" name="select_time_bar" value=""/>
+    <input type="hidden" name="order_goodsid" value="{$order_goodsid}"/>
+
+    <input type="hidden" name="date_selected" value=""/>
+    <input type="hidden" name="time_start" value=""/>
+    <input type="hidden" name="time_end" value=""/>
+
+    <input type="hidden" name="client_name" value=""/>
+    <input type="hidden" name="client_telphone" value=""/>
+    <input type="hidden" name="people_num" value=""/>
+    <input type="hidden" name="subject" value=""/>
+
+    <input type="hidden" name="userMobile" value=""/>
+
+
+</form>
+
+
+
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery/jquery.gcjs.js"></script>
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery.storageapi.min.js"></script>
+<script type="text/javascript" src="{$_W['siteroot']}/app/resource/js/lib/moment.js"></script>
+<script type="text/javascript">
+
+    // TODO 这里 把返回链接压入历史记录里面，应急处理后退跳转失效廉价的问题，但流程可以正常进行
+//    pushHistory();
+//    window.addEventListener("popstate", function(e) {
+//        window.location.href="{php echo $this->createMobileUrl('boardroom')}"
+//    }, false);
+
+    var initPage = function () {
+
+        var boardroom_id = $.localStorage.get('id');
+        var select_time_bar = $.localStorage.get('select_time_bar');
+        var date_selected = $.localStorage.get('date_selected');
+        var time_start = $.localStorage.get('time_start');
+        var time_end = $.localStorage.get('time_end');
+
+        var userMobile = $.localStorage.get('userMobile');
+
+        $("input[name='select_time_bar']").val(JSON.stringify(select_time_bar));
+        $("input[name='date_selected']").val(date_selected);
+        $("input[name='time_start']").val(time_start);
+        $("input[name='time_end']").val(time_end);
+
+        $("input[name='userMobile']").val(userMobile);
+
+
+        $("#popup_date_time_full").html(
+                date_selected +
+                "<br/>每天 " +
+                time_start + " - " + time_end);
+
+
+        // 转换 start
+        var kk = date_selected.split(",");
+        var tmp_span_html = "";
+        var shw_span_html =  new Array();
+        for(var i = 0; i<kk.length;i++){
+            if(kk[i] !== ''){
+                shw_span_html[i] = moment(kk[i]).format('MM-DD');
+            }
+        }
+        console.log(shw_span_html);//为数组
+        $.each(shw_span_html, function(index, value, array) {
+            var __spile__ = ",";
+            if(index == (shw_span_html.length-1) ){__spile__ = ""; }
+            tmp_span_html = tmp_span_html + value + __spile__;
+        });
+        // 转换 end
+
+        $('#show_date_selected').html(tmp_span_html);
+//        $("#show_date_selected").html(date_selected);
+        $("#show_time_start_end").html(time_start + " - " + time_end);
+
+    };
+    initPage();
+
+    function pushHistory() {
+        var state = {
+            title: "title",
+            url: "{php echo $this->createMobileUrl('boardroom')}"
+        };
+        window.history.pushState(state, "title", "{php echo $this->createMobileUrl('boardroom')}");
+    }
+
+    $(".js_confirmOrder").click(function(event) {
+
+        /** 附加服务 start **/
+        var ids =  new Array();
+        var i = 0;
+        $('[name="goodsid"]').each(function () {
+            if($(this).val() > 0){
+                ids[i] = $(this).data('id');
+                i++;
+            }
+        });
+        console.log("// TODO set goodids : "+ids);
+//        $("#num_accessorial_service").html(i);
+//        $.alert("已选择 " + i + "项附加服务", 1500);
+        $("input[name='order_goodsid']").val(ids);
+//        $(".full_screen").fadeOut("slow");
+        /** 附加服务 end **/
+
+
+        /** 会议室定单 start **/
+        var form_client_name = $("input[name='form_client_name']").val();
+        var form_client_telphone = $("input[name='form_client_telphone']").val();
+        var form_people_num = $("input[name='form_people_num']").val();
+        var form_subject = $("input[name='form_subject']").val();
+
+
+
+
+
+
+        if($("input[name='form_subject']").isEmpty()){
+            $.alert("请填写会议主题", 2000);
+            return false;
+        }
+        if($("input[name='form_client_name']").isEmpty()){
+            $.alert("请填写会议组织人", 2000);
+            return false;
+        }
+        if($("input[name='form_client_telphone']").isEmpty()
+//                || !$("input[name='form_client_telphone']").isMobile()
+        ){
+//            $.alert("手机号码有误，请重填", 2000);
+            $.alert("请填写联系手机", 2000);
+
+            return false;
+        }
+
+        if($("input[name='form_people_num']").isEmpty()){
+            $.alert("请填写会议人数", 2000);
+            return false;
+        }
+
+
+
+
+
+
+
+
+
+
+
+        $("input[name='client_name']").val(form_client_name);
+        $("input[name='client_telphone']").val(form_client_telphone);
+        $("input[name='people_num']").val(form_people_num);
+        $("input[name='subject']").val(form_subject);
+
+
+
+        /** 会议室定单 end **/
+
+
+
+
+
+        $(".popupmask").show();
+    });
+
+
+    $(".js_confirm").click(function(){
+        $("#form_submit").get(0).submit(function(e){});
+    });
+
+
+    $(".js_cancel").click(function(){
+        $(".popupmask").hide();
+    });
+
+
+    //    $('#confirm').click(function() {
+    //        var ids =  new Array();
+    //        var i = 0;
+    //        $('[name="goodsid"]').each(function () {
+    //            if($(this).val() > 0){
+    //                ids[i] = $(this).data('id');
+    //                i++;
+    //            }
+    //        });
+    ////        location.href = "{php echo murl('entry//confirm',array('m'=>'superdesk_boardroom'))}&goodids="+ids;
+    //
+    //        console.log("// TODO set goodids : "+ids);
+    //    });
+
+//    var select_time_bar_submit = {php echo htmlspecialchars_decode($select_time_bar)};
+
+    $(function(){
+        $(".goodsnum").blur(function(){
+            var id = $(this).attr("cartid");
+            if($(this).isInt()){
+                var num = parseInt( $("#goodsnum_" + id).val() );
+                var maxbuy = parseInt( $(this).attr("maxbuy") );
+                var mb = maxbuy;
+                var stock =$("#stock_" + id).html()==''?-1:parseInt($("#stock_" + id).html());
+                if(mb>stock && stock!=-1){
+                    mb = stock;
+                }
+
+                if(num>mb && mb>0){
+                    $.alert("最多只能选择 " + mb + "件", 1500);
+                    $("#goodsnum_" + id).val(mb);
+                    return;
+                }
+                updateCart(id,num);
+            }else{
+                $(this).val("1");
+                updateCart(id,1);
+            }
+        })
+    });
+    function clearCart(){
+        if (confirm('确定要清空购物车吗？')) {
+            tip("正在处理数据...");
+            $.getJSON("{php echo $this->createMobileUrl('mycart',array('op'=>'clear'));}", function(s){
+                $(".shopcart-item").remove();
+                $("#cartempty").show();
+                $("#cartfooter").hide();
+                tip_close();
+            });
+        }
+    }
+    function removeCart(id){
+        if (confirm('您确定要删除此商品吗？')) {
+            tip("正在处理数据...");
+            var url = "{php echo murl('entry//mycart',array('m'=>'superdesk_boardroom','op'=>'remove'), true)}"+ "&id=" + id;
+            $.getJSON(url, function(s){
+                $("#item_" + s.cartid).remove();
+                if($(".shopcart-item").length<=0){
+                    $("#cartempty").show();
+                    $("#cartfooter").hide();
+                }
+                tip_close();
+                canculate();
+            });
+        }
+    }
+    function updateCart(id,num){
+        var url = "{php echo murl('entry//mycart',array('m'=>'superdesk_boardroom_4school','op'=>'update'), true)}"+ "&id=" + id+"&num=" + num;
+        $.getJSON(url, function(s){
+
+        });
+    }
+    function checkMaxBuy(id, maxbuy){
+
+    }
+    function addNum(id,maxbuy){
+        var mb = maxbuy;
+        var stock =$("#stock_" + id).html()==''?-1:parseInt($("#stock_" + id).html());
+        if(mb>stock && stock!=-1){
+            mb = stock;
+        }
+        var num = parseInt( $("#goodsnum_" + id).val() ) + 1;
+        if(num>mb && mb>0){
+//            tip("最多只能购买 " + mb + " 件!",true);
+            $.alert("最多只能选择 " + mb + "件", 1500);
+            return;
+        }
+        $("#goodsnum_" + id).val(num);
+        var price = parseFloat( $("#singleprice_"+id).html() ) * num;
+        $("#goodsprice_" + id).html(price);
+        canculate();
+        updateCart(id,num);
+    }
+    function reduceNum(id){
+        var num = parseInt( $("#goodsnum_" + id).val() );
+        if(num-1<=-1){
+            return;
+        }
+        num--;
+        $("#goodsnum_" + id).val(num);
+        var price = parseFloat( $("#singleprice_"+id).html() ) * num;
+        $("#goodsprice_" + id).html(price);
+        canculate();
+        updateCart(id,num);
+    }
+    function canculate(){
+        var total = 0;
+        $(".singletotalprice").each(function(){
+            total+=parseFloat( $(this).html() );
+        });
+
+        $("#pricetotal").html(total);
+    }
+
+
+</script>
+{template '__footer'}

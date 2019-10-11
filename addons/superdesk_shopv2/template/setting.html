@@ -1,0 +1,73 @@
+{template 'common/header'}
+
+
+<style>
+
+    .help-block {
+        display: block;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        color: #737373;
+    }
+</style>
+
+
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" id="form1">
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                参数设置
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-3 col-lg-3 control-label">
+                        京东VOP_订单提交_是否需要增品
+
+                    </label>
+                    <div class="col-xs-12 col-sm-9">
+
+                        <input type="checkbox" name="jd_vop_order_submit_bNeedGift" value="{php echo !empty($settings['jd_vop_order_submit_bNeedGift']) ? $settings['jd_vop_order_submit_bNeedGift'] : 0 }" {if !empty($settings['jd_vop_order_submit_bNeedGift'])} checked="checked" {/if} data-on-text="是" data-off-text="否"/>
+                        <!--//   表示是否需要增品，默认不给增品，默认值为：false，如果需要增品bNeedGift请给true,建议该参数都给true,但如果实在不需要增品可以给false;-->
+                        <span class="help-block">
+                            <p>是:表示需要增品; 否:表示不需要增品; 全局开关</p>
+                            <p>场景:当做活动时大面积出现赠品没货时,能让运营临时操作</p>
+                        </span>
+                        <!--<input type="text" name="jd_vop_order_submit_bNeedGift" class="form-control" value="<?php if(!empty($settings['jd_vop_order_submit_bNeedGift'])){echo $settings['jd_vop_order_submit_bNeedGift'];} ?>"/>-->
+
+
+                        {php // echo tpl_ueditor('content_introduce', $settings['content_introduce']);}
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-12">
+                    <label class="col-xs-12 col-sm-3 col-md-3 col-lg-3 control-label"></label>
+                    <div class="col-xs-12 col-sm-9">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" />
+                        <input type="hidden" name="token" value="{$_W['token']}" />
+                        <input type="hidden" name="id" value="{$data['id']}" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+
+        require(['bootstrap.switch'], function() {
+
+            $(":checkbox[name='jd_vop_order_submit_bNeedGift']").bootstrapSwitch();
+
+            $(":checkbox[name='jd_vop_order_submit_bNeedGift']").on('switchChange.bootstrapSwitch', function(e, is_default){
+
+                $(this).val(this.checked ? 1 : 0);
+            });
+
+        });
+    });
+</script>
+
+{template 'common/footer'}

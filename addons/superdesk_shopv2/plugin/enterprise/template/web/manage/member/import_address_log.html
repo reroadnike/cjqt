@@ -1,0 +1,87 @@
+{template '_header'}
+<div class="page-heading">
+    <h2>导入日志 <small>总数: <span class='text-danger'>{$total}</span></small></h2>
+</div>
+
+
+<form action="./superdesk_shopv2_enterprise.php" method="get" class="form-horizontal" plugins="form">
+    <input type="hidden" name="c" value="site" />
+    <input type="hidden" name="a" value="entry" />
+    <input type="hidden" name="m" value="superdesk_shopv2" />
+    <input type="hidden" name="do" value="web" />
+    <input type="hidden" name="r"  value="member.import_address_log" />
+    <div class="page-toolbar row m-b-sm m-t-sm">
+        <div class="col-sm-1">
+
+            <div class="input-group-btn">
+                <button class="btn btn-default btn-sm"  type="button" data-toggle='refresh'><i class='fa fa-refresh'></i></button>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="col-sm-6 pull-right">
+            <div class='input-group input-group-sm' style='float:left;'   >
+                {php echo tpl_daterange('time', array('placeholder'=>'操作时间'),true);}
+            </div>
+
+            <div class="input-group">
+                <input type="text" class="input-sm form-control" name='keyword' value="{$_GPC['keyword']}" placeholder="可搜索操作员用户名/操作内容">
+                <span class="input-group-btn">
+                    <button class="btn btn-sm btn-primary" type="submit"> 搜索</button>
+                </span>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+
+<table class="table table-hover table-responsive">
+    <thead>
+    <tr>
+        <th style='width:50px;'>ID</th>
+        <th style='width:180px;'>导入编号</th>
+        <th style='width:80px;'>操作员</th>
+        <td style='width:80px;'>收件人</td>
+        <td style='width:100px;'>收件人电话</td>
+        <td style='width:80px;'>一级地址</td>
+        <td style='width:80px;'>二级地址</td>
+        <td style='width:80px;'>三级地址</td>
+        <td style='width:80px;'>四级地址</td>
+        <td style='width:200px;'>详细地址</td>
+        <td style='width:100px;'>创建时间</td>
+
+    </tr>
+    </thead>
+    <tbody>
+    {loop $list $row}
+    <tr  data-toggle='popover' data-html='true' data-placement='top' data-trigger='hover' data-content='{$row['op']}'>
+    <td>{$row['id']}</td>
+    <td>{$row['import_sn']}</td>
+    <td>{$row['username']}</td>
+    <td>{$row['realname']}</td>
+    <td>{$row['mobile']}</td>
+    <td>{$row['province']}</td>
+    <td>{$row['city']}</td>
+    <td>{$row['area']}</td>
+    <td>{$row['town']}</td>
+    <td>{$row['address']}</td>
+    <td>{php echo date('Y-m-d', $row['createtime'])}<br/>{php echo date('H:i:s', $row['createtime'])}</td>
+    </tr>
+    {/loop}
+
+    </tbody>
+</table>
+{$pager}
+
+
+
+</div>
+</form>
+
+{template '_footer'}
+ 

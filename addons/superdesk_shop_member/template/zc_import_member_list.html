@@ -1,0 +1,145 @@
+{template 'common/header'}
+
+{template '__nav-tabs_user__'}
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Table::zc_import_member
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:8%;">wx_fans_id</th>
+                        <th style="width:8%;">ID<br/>没导入意义</th>
+                        <th style="width:10%;">会员名称</th>
+                        <th style="width:10%;">会员帐号</th>
+                        <th style="width:10%;">手机号码<br/>只有一些测试数据与两个用户是对不上的</th>
+
+                        <!--<th style="width:10%;">身份证</th>-->
+
+                        <!--<th style="width:10%;">会员状态<br/>0:黑名单<br/>1:正常<br/>2:未注册</th>-->
+
+                        <!--<th style="width:10%;">注册时间</th>-->
+
+                        <!--<th style="width:10%;">帐号<br/>注册码</th>-->
+
+                        <!--<th style="width:10%;">帐号密码</th>-->
+
+
+                        <th style="width:10%;">所属<br/>企业id<br/>外键:<a href="{php echo $this->createWebUrl('zc_enterprise', array('op' => 'list'))}">zc_enterprise</a></th>
+                        <th style="width:10%;">所属<br/>企业名称<br/>没导入意义</th>
+                        <th style="width:10%;">所属<br/>分公司<br/>没导入意义</th>
+
+                        <!--<th style="width:10%;">所属部门</th>-->
+                        <!--<th style="width:10%;">所属小组</th>-->
+                        <!--<th style="width:10%;">所属职务</th>-->
+                        <!--<th style="width:10%;">所属福利等级</th>-->
+
+                        <!--<th style="width:10%;">导入时间</th>-->
+                        <!--<th style="width:10%;">福利卡号</th>-->
+                        <!--<th style="width:10%;">工号</th>-->
+                        <!--<th style="width:10%;">企业编号</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+                        <td>{$item['m_fansId']}</td>
+                        <td>{$item['m_id']}</td>
+                        <td>{$item['m_name']}</td>
+                        <td>{$item['m_mobile']}</td>
+                        <td>{$item['m_account']}</td>
+
+                        <!--
+                        <td>{$item['m_id_card']} 查过为空
+                            SELECT count(0) FROM membershop.zc_import_member where m_id_card  = '' 1004
+                            SELECT count(0) FROM membershop.zc_import_member where m_id_card  is null 0
+                        </td>
+                        -->
+
+                        <!--
+                        <td>{$item['m_status']}
+                            SELECT count(0) FROM membershop.zc_import_member where m_status  = 1 1004
+                        </td>
+                        -->
+
+                        <!--<td>{$item['m_registration_time']} 注册时间</td>-->
+
+
+                        <!--<td>{$item['m_poll_code']}</td>-->
+
+                        <!--
+                        <td>{$item['m_account_pwd']} 查过为空
+                            SELECT count(0) FROM membershop.zc_import_member where m_account_pwd  = '' 3
+                            SELECT count(0) FROM membershop.zc_import_member where m_account_pwd  is null 1001
+                            SELECT count(0) FROM membershop.zc_import_member where m_account_pwd  is not null 3
+                        </td>
+                        -->
+
+
+
+                        <td>{$item['m_e_id']}</td>
+                        <td>{$item['m_company']}</td>
+                        <td>{$item['m_branch_company']}</td>
+
+                        <!--
+                        <td>{$item['m_department']} 查过为空
+                            SELECT count(0) FROM membershop.zc_import_member where m_department  = ''
+                        </td>
+                        <td>{$item['m_team']} 查过为空
+                            SELECT count(0) FROM membershop.zc_import_member where m_team  = '' 43
+                            SELECT count(0) FROM membershop.zc_import_member where m_team  is null 961
+                        </td>
+                        <td>{$item['m_position']} 查过为空
+                            SELECT count(0) FROM membershop.zc_import_member where m_position  = '' 1004
+                            SELECT count(0) FROM membershop.zc_import_member where m_position  is null 0
+                        </td>
+                        <td>{$item['m_welfare_level']} 查过为空
+                            SELECT count(0) FROM membershop.zc_import_member where m_welfare_level  = '' 43
+                            SELECT count(0) FROM membershop.zc_import_member where m_welfare_level  is null 961
+                        </td>
+
+
+                        <td>{$item['m_import_time']} 没用
+                            SELECT count(0) FROM membershop.zc_import_member where m_import_time  = '' 0
+                            SELECT count(0) FROM membershop.zc_import_member where m_import_time  is null 1001
+                            SELECT count(0) FROM membershop.zc_import_member where m_import_time  is not null 3
+                        </td>
+                        <td>{$item['m_card_num']} 查过为空
+                            SELECT count(0) FROM membershop.zc_import_member where m_card_num  = '' 1004
+                            SELECT count(0) FROM membershop.zc_import_member where m_card_num  is null 0
+                            SELECT count(0) FROM membershop.zc_import_member where m_card_num  is not null 1004
+                        </td>
+                        <td>{$item['m_job_num']} 查过为空
+                            SELECT count(0) FROM membershop.zc_import_member where m_job_num  = '' 1004
+                            SELECT count(0) FROM membershop.zc_import_member where m_job_num  is null 0
+                            SELECT count(0) FROM membershop.zc_import_member where m_job_num  is not null 1004
+                        </td>
+                        <td>{$item['m_e_code']} 查过为空
+                            SELECT count(0) FROM membershop.zc_import_member where m_e_code  = '' 3
+                            SELECT count(0) FROM membershop.zc_import_member where m_e_code  is null 1001
+                            SELECT count(0) FROM membershop.zc_import_member where m_e_code  is not null 3
+                        </td>
+                        -->
+                    </tr>
+                    {/loop}
+                    <tr>
+                        <td>
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                            {$total}
+                        </td>
+                        <td colspan="7">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

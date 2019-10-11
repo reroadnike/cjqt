@@ -1,0 +1,1 @@
+Warning: Invalid argument supplied for foreach() in /data/wwwroot/default/superdesk/addons/superdesk_boardroom_4school/site.php on line 622

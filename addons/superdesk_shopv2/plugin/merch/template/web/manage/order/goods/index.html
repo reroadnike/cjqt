@@ -1,0 +1,83 @@
+{template '_header'}
+<div class="page-heading">
+
+</div>
+<ul class="nav nav-arrow-next nav-tabs" id="myTab">
+    <li {if $_GPC['r']=='order.comment'} class="active" {/if}>
+        <a href="{php echo webUrl('order/comment')}">评价管理</a>
+    </li>
+    <li {if $_GPC['r']=='order.report'} class="active" {/if}>
+        <a href="{php echo webUrl('order/report')}">商户报表</a>
+    </li>
+    <li {if $_GPC['r']=='order.goods'} class="active" {/if}>
+    <a href="{php echo webUrl('order/goods')}">商品报表</a>
+    </li>
+</ul>
+<form action="" method="get" class="form-horizontal form-search" role="form">
+    <input type="hidden" name="c" value="site" />
+    <input type="hidden" name="a" value="entry" />
+    <input type="hidden" name="m" value="superdesk_shopv2" />
+    <input type="hidden" name="do" value="web" />
+    <input type="hidden" name="r"  value="order.goods" />
+    <div class="page-toolbar row m-b-sm m-t-sm">
+        <div class='col-sm-4' style=''>
+            {php echo tpl_daterange('time', array('sm'=>true,'placeholder'=>'统计时间'),true);}
+        </div>
+        <div class="col-sm-4 pull-right">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-sm btn-primary" style="margin-left: 290px;" type="submit"> 搜索</button>
+                    <button type="submit" name="export" value="1" class="btn btn-success btn-sm">导出</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>
+<form action="" method="post" >
+    {if count($goods)>0}
+    <table class="table table-hover table-responsive">
+        <thead>
+        <tr>
+            <th style="width:25px;"><input type='checkbox' /></th>
+            <th style="width:80px;">商户名</th>
+            <th style="width:120px;">商品名</th>
+            <th style="width:66px;">图片</th>
+            <th style="width:50px;">质量评分</th>
+            <th style="width:80px;">备注</th>
+            <th style="width:90px;">统计时间</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {loop $goods $row}
+        <tr>
+            <td>
+                {if $row['id']!='default'}
+                <input type='checkbox' value="{$row['id']}"/>
+                {/if}
+            </td>
+            <td>{$row['merchname']}</td>
+            <td>{$row['title']}%</td>
+            <td><img src="{$row['thumb']}" style="width:66px;"/></td>
+            <td>{$row['com_level']}%</td>
+            <td>{$row['remark']}</td>
+            <td>{php echo date('Y-m-d H:i:s',$row['createtime'])}</td>
+
+        </tr>
+        {/loop}
+
+        </tbody>
+    </table>
+    <div style="text-align:right;width:100%;">
+        {$pager}
+    </div>
+    {else}
+    <div class='panel panel-default'>
+        <div class='panel-body' style='text-align: center;padding:30px;'>
+            暂时没有任何报表!
+        </div>
+    </div>
+    {/if}
+</form>
+
+{template '_footer'}

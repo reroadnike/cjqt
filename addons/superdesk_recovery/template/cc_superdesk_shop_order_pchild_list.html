@@ -1,0 +1,65 @@
+{template 'common/header'}
+
+<div class="main">
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                没显示才是好事情
+            </div>
+            <div class="panel-body table-responsive">
+                <table class="table table-hover">
+                    <thead class="navbar-inner">
+                    <tr>
+                        <th style="width:10%;">订单/子订单ID</th>
+                        <th style="width:20%;">订单SN</th>
+                        <th style="width:15%;">jdOrderId</th>
+                        <th style="width:20%;">买家信息</th>
+                        <th style="width:15%;">下单时间</th>
+                        <th style="width:10%;">订单金额</th>
+                        <th style="width:10%;">子订单总额</th>
+                        <th style="width:10%;">差价</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {loop $list $item}
+                    <tr>
+                        <td>{$item['id']}</td>
+                        <td>{$item['ordersn']}</td>
+                        <td>{$item['expresssn']}</td>
+                        <td>{$item['arealname']}<br/>{$item['amobile']}</td>
+                        <td>{$item['createtime']}</td>
+                        <td>{$item['price']}</td>
+                        <td>{$item['sumprice']}</td>
+                        <td>{php echo ($item['price'] - $item['sumprice'])}</td>
+                    </tr>
+
+                    {loop $item['child'] $child_item}
+                    <tr>
+                        <td>|---- {$child_item['id']}</td>
+                        <td>{$child_item['ordersn']}</td>
+                        <td>{$child_item['expresssn']}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{$child_item['price']}</td>
+                        <td></td>
+                    </tr>
+                    {/loop}
+
+                    {/loop}
+                    <tr>
+                        <td>
+                            <input type="hidden" name="token" value="{$_W['token']}"/>
+                        </td>
+                        <td colspan="7">
+                            {$pager}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+{template 'common/footer'}

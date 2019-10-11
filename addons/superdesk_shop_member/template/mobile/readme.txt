@@ -1,0 +1,1 @@
+http://192.168.1.124/superdesk/addons/superdesk_shop_member/template/mobile/%E5%BE%AE%E6%93%8E%E8%BF%9E%E6%8E%A5%E5%85%B6%E5%AE%83%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%A6%E8%A7%A3%E6%95%99%E7%A8%8B.html

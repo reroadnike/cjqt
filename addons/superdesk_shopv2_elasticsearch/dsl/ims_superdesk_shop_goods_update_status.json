@@ -1,0 +1,9 @@
+{
+  "ims_superdesk_shop_goods": {
+    "properties": {
+      "status": {
+        "type": "long"
+      }
+    }
+  }
+}

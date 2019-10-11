@@ -1,0 +1,163 @@
+{template 'common/header'}
+
+<link rel="stylesheet" type="text/css" href="{MODULE_URL}static/js/nestable/nestable.css" />
+
+<ul class="nav nav-tabs">
+    <li class="active"><a
+            href="{php echo $this->createWebUrl('elasticsearch_dictionary_category', array('op' => 'list'))}">#list#</a>
+    </li>
+    <li><a href="{php echo $this->createWebUrl('elasticsearch_dictionary_category', array('op' => 'edit'))}">#add#</a>
+    </li>
+    <li><button type="button" id="btnExpand" data-action="expand"><i class="fa fa-angle-down"></i> 折叠所有</button>
+    </li>
+</ul>
+
+<form action="" method="post" class="form-validate">
+    <div class="dd" id="div_nestable">
+        <ol class="dd-list">
+            {loop $category $row}
+            {if empty($row['parentid'])}
+            <li class="dd-item full" data-id="{$row['id']}">
+                <div class="dd-handle" >[ID: {$row['id']}] {$row['name']}
+                    <span class="pull-right">
+
+                        <div class='label change-enabled {if $row['enabled']==1}label-success{else}label-default{/if}' style="cursor:pointer;" data-id="{$row['id']}" data-enabled="{$row['enabled']}">
+                             {if $row['enabled']==1}显示{else}隐藏{/if}</div>
+
+                <a class='btn btn-default btn-sm' href="{php echo $this->createWebUrl('elasticsearch_dictionary_category', array('op' => 'edit','parentid' => $row['id']))}" title='添加子分类' ><i class="fa fa-plus"></i></a>
+
+                <a class='btn btn-default btn-sm' href="{php echo $this->createWebUrl('elasticsearch_dictionary_category', array('op' => 'edit','id' => $row['id']))}" title="修改" ><i class="fa fa-edit"></i></a>
+
+                <a class='btn btn-default btn-sm' data-toggle='ajaxPost' href="{php echo $this->createWebUrl('elasticsearch_dictionary_category', array('op' => 'delete','id' => $row['id']))}" onclick="if(!confirm('确定要删除吗?')) return false;"><i class="fa fa-remove"></i></a>
+                </span>
+    </div>
+    {if count($children[$row['id']])>0}
+
+    <ol class="dd-list">
+        {loop $children[$row['id']] $child}
+        <li class="dd-item full" data-id="{$child['id']}">
+            <div class="dd-handle" style="width:100%;">
+                <img src="{php echo tomedia($child['thumb']);}" width='30' height="30" onerror="$(this).remove()" style='padding:1px;border: 1px solid #ccc;float:left;' /> &nbsp;
+                [ID: {$child['id']}] {$child['name']}
+                            <span class="pull-right">
+                                <div class='label change-enabled {if $child['enabled']==1}label-success{else}label-default{/if}' style="cursor:pointer;" data-id="{$child['id']}" data-enabled="{$child['enabled']}" >
+                                     {if $child['enabled']==1}显示{else}隐藏{/if}</div>
+
+            <a class='btn btn-default btn-sm' href="{php echo $this->createWebUrl('elasticsearch_dictionary_category', array('op' => 'edit','parentid' => $child['id']))}" title='添加子分类' ><i class="fa fa-plus"></i></a>
+            <a class='btn btn-default btn-sm' href="{php echo $this->createWebUrl('elasticsearch_dictionary_category', array('op' => 'edit','id' => $child['id']))}" title="修改" ><i class="fa fa-edit"></i></a>
+            <a class='btn btn-default btn-sm'  data-toggle='ajaxPost'  href="{php echo $this->createWebUrl('elasticsearch_dictionary_category', array('op' => 'delete','id' => $child['id']))}" onclick="if(!confirm('确定要删除吗?')) return false;"><i class="fa fa-remove"></i></a>
+            </span>
+            </div>
+            {if count($children[$child['id']])>0}
+
+            <ol class="dd-list"  style='width:100%;'>
+                {loop $children[$child['id']] $third}
+                <li class="dd-item" data-id="{$third['id']}">
+                    <div class="dd-handle">
+                        <img src="{php echo tomedia($third['thumb']);}" width='30' height="30" onerror="$(this).remove()" style='padding:1px;border: 1px solid #ccc;float:left;' /> &nbsp;
+                        [ID: {$third['id']}] {$third['name']}
+                                    <span class="pull-right">
+                                        <div class='label change-enabled {if $third['enabled']==1}label-success{else}label-default{/if}' style="cursor:pointer;" data-id="{$third['id']}" data-enabled="{$third['enabled']}" >
+                                        {if $third['enabled']==1}显示{else}隐藏{/if}
+                    </div>
+
+                    <a class='btn btn-default btn-sm' href="{php echo $this->createWebUrl('elasticsearch_dictionary_category', array('op' => 'edit','id' => $third['id']))}" title="修改" ><i class="fa fa-edit"></i></a>
+                    <a class='btn btn-default btn-sm'  data-toggle='ajaxPost'  href="{php echo $this->createWebUrl('elasticsearch_dictionary_category', array('op' => 'delete','id' => $third['id']))}" onclick="if(!confirm('确定要删除吗?')) return false;"><i class="fa fa-remove"></i></a>
+                    </span>
+                    </div>
+                </li>
+                {/loop}
+            </ol>
+            {/if}
+        </li>
+        {/loop}
+    </ol>
+    {/if}
+    </li>
+    {/if}
+    {/loop}
+    </ol>
+    <table class='table'>
+        <tbody>
+        <tr>
+            <td>
+
+                <input id="save_category" type="submit" class="btn btn-primary" value="保存">
+
+                <input type="hidden" name="token" value="{$_W['token']}" />
+                <input type="hidden" name="datas" value="" />
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</form>
+
+<script type="text/javascript" src="{MODULE_URL}static/js/nestable/jquery.nestable.js"></script>
+<script language='javascript'>
+    var div_netstable = null;
+
+    $(function(){
+        div_netstable = $('#div_nestable');
+
+        div_netstable.nestable({maxDepth: 3});
+        console.log(div_netstable.nestable("serialize"));
+
+
+        $('form').submit(function () {
+            var json = window.JSON.stringify(div_netstable.nestable("serialize"));
+            $(':input[name=datas]').val(json);
+        });
+    })
+
+    $('#btnExpand').click(function () {
+        var action = $(this).data('action');
+        if (action === 'expand') {
+            div_netstable.nestable('collapseAll');
+            $(this).data('action', 'collapse').html('<i class="fa fa-angle-up"></i> 展开所有');
+
+        } else {
+            div_netstable.nestable('expandAll');
+            $(this).data('action', 'expand').html('<i class="fa fa-angle-down"></i> 折叠所有');
+        }
+    });
+
+    $('.dd-item').addClass('full');
+
+    $(".dd-handle a,.dd-handle div").mousedown(function (e) {
+        e.stopPropagation();
+    });
+
+    $('.change-enabled').click(function(){
+        var obj = $(this);
+        var url = "{php echo $this->createWebUrl('elasticsearch_dictionary_category', array('op' => 'enabled'))}";
+        var id = obj.data('id');
+        var enabled = obj.data('enabled') == 1 ? 0 : 1;
+        $.ajax({
+            url: url,
+            data:{
+              id:id,
+              enabled:enabled
+            },
+            success: function(data) {
+                data = window.JSON.parse(data);
+                if (data.status > 0) {
+                    if(enabled == 1){
+                        obj.removeClass('label-default');
+                        obj.addClass('label-success');
+                        obj.data('enabled',1);
+                        obj.html('显示');
+                    }else{
+                        obj.removeClass('label-success');
+                        obj.addClass('label-default');
+                        obj.data('enabled',0);
+                        obj.html('隐藏');
+                    }
+
+                }
+            }
+        })
+    });
+</script>
+
+{template 'common/footer'}

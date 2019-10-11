@@ -1,0 +1,150 @@
+{template 'common/header'}
+<link rel="stylesheet" href="{MODULE_URL}static/js/dist/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+
+<style>
+    .btn-tags{
+        margin-bottom: 0.5rem;
+    }
+
+    .bootstrap-tagsinput {
+        box-shadow: none;
+        display: inline-block;
+        min-height: 9rem;
+        color: #555;
+        vertical-align: middle;
+        border-radius: 4px;
+        width: 100%;
+        max-width: 100%;
+        line-height: 22px;
+        cursor: text;
+    }
+
+    .bootstrap-tagsinput input[type='text']{
+        display: none;
+    }
+
+    .bootstrap-tagsinput input{
+        width: 100%;
+    }
+</style>
+<ul class="nav nav-tabs">
+    <li><a href="{php echo $this->createWebUrl('boardroom_manage', array('op' => 'list'))}">会议室列表</a></li>
+    <li class="active"><a href="{php echo $this->createWebUrl('boardroom_set_equipment', array('op' => 'edit','id'=> $id ))}">{if
+        isset($item[id])}编辑{else}添加{/if}会议室 - 设备设置</a></li>
+</ul>
+<div class="main">
+    <form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {if isset($item[id])}编辑{else}添加{/if}会议室 - 设备设置
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">设备</label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="text" name="equipment" class="form-control" value="{$item['equipment']}"/>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 1rem;">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        {loop $list $index $equipment}
+                        <span class="btn btn-default btn-xs btn-tags" data-value="{$equipment['value']}" data-text="{$equipment['text']}">{$equipment['text']}</span>
+                        {/loop}
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+                    <div class="col-sm-9 col-xs-12">
+                        <input type="submit" name="submit" value="提交" class="btn btn-primary col-lg-1" id="submit"/>
+                        <input type="hidden" name="token" value="{$_W['token']}"/>
+                        <input type="hidden" name="id" value="{$item['id']}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="{MODULE_URL}static/js/dist/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+<!--<script type="text/javascript" src="{MODULE_URL}static/js/dist/bootstrap-tagsinput/lib/typeahead.js/bloodhound.js"></script>-->
+<!--<script type="text/javascript" src="{MODULE_URL}static/js/dist/bootstrap-tagsinput/lib/typeahead.js/typeahead.bundle.min.js"></script>-->
+
+
+
+
+<script type="text/javascript">
+
+//    var equipments = new Bloodhound({
+//        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+//        queryTokenizer: Bloodhound.tokenizers.whitespace,
+//        prefetch: '{$url_boardroom_api_equipment}'
+//    });
+//    equipments.initialize();
+
+    $("input[name='equipment']").tagsinput({
+//        maxTags: 1,
+//        tagClass: 'big',
+//        itemValue: 'value',
+        itemText: 'text',
+//        typeaheadjs: {
+//            name: 'equipments',
+//            displayKey: 'text',
+//            source: equipments.ttAdapter()
+//        },
+        itemValue: function(item) {
+            console.log(item);
+            return JSON.stringify(item);
+        }
+    });
+
+//    $("input[name='equipment']").tagsinput();
+
+
+    $(".btn-tags").each(function(index,element){
+
+        $(this).bind('click', function(event) {
+
+//            console.log("btn-tags - click");
+
+            var _value = $(this).data('value');
+            var _text  = $(this).data('text');
+
+//            console.log(_value);
+//            console.log(_text);
+//            console.log($("input[name='equipment']"));
+
+    //            $("input[name='equipment']").tagsinput('add',$(this).html());
+            $("input[name='equipment']").tagsinput('add', { value: _value, text: _text });
+        });
+    });
+
+    $("input[name='equipment']").on('itemAdded', function(event) {
+        var tag = event.item;
+        console.log('itemAdded'+JSON.stringify(tag));
+
+        console.log(JSON.stringify($("input[name='equipment']").tagsinput('items')));
+    });
+
+    $("input[name='equipment']").on('itemRemoved', function(event) {
+        var tag = event.item;
+        console.log('itemRemoved'+JSON.stringify(tag));
+    });
+
+
+    var init_equipment = {php echo htmlspecialchars_decode($init_equipment)};
+
+    for (var _equipment in init_equipment) {
+//        console.log(JSON.stringify(_equipment));
+
+        console.log(init_equipment[_equipment]);
+        $("input[name='equipment']").tagsinput('add', init_equipment[_equipment]);
+    }
+</script>
+
+{template 'common/footer'}

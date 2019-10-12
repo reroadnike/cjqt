@@ -23,7 +23,7 @@ $yesterday = strtotime('-1 day', time());
 $yesterday = date('Y-m-d 00:00:00',$yesterday);
 $yesterday = strtotime($yesterday);
 
-$goods = pdo_fetchall('SELECT g.merchid , g.goodsid , AVG (g.level) l FROM ' . tablename('superdesk_shop_comments_goods') . ' g ' . ' WHERE ' . ' g.createtime >= :yesterday ' . ' AND ' . ' g.createtime <= :today ' . ' GROUP BY ' . ' g.merchid , g.goodsid ',array(':yesterday'=>$yesterday,':today'=>$today) );
+$goods = pdo_fetchall('SELECT g.merchid , g.orderid , g.goodsid , AVG (g.level) l FROM ' . tablename('superdesk_shop_comments_goods') . ' g ' . ' WHERE ' . ' g.createtime >= :yesterday ' . ' AND ' . ' g.createtime <= :today ' . ' GROUP BY ' . ' g.merchid , g.goodsid ',array(':yesterday'=>$yesterday,':today'=>$today) );
 
 foreach($goods as $v) {
     $data['merchid'] = $v['merchid'];

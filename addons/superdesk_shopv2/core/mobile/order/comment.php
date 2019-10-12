@@ -210,10 +210,9 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
             $good_app = json_encode($good_app);
 
             //接口图片拼接
-            if(is_array($_GPC['images'])) {
-                $url = "www.cjqt.com";  //图片链接需要修改
+             if(is_array($_GPC['images'])) {
                 foreach ($_GPC['images'] as $k => $v) {
-                    $urls[] = $url . '/' . $v;
+                    $urls[] = $_SERVER['HTTP_HOST'] . '/attachment/' . $v;
                 }
                 $urls = implode(',', $urls);
             }
@@ -259,9 +258,8 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
 
             //接口图片拼接
  /*           if(is_array($_GPC['append_images'])) {
-                $url = "www.cjqt.com";
                 foreach ($_GPC['append_images'] as $k => $v) {
-                    $urls[] = $url . '/' . $v;
+                    $urls[] = $_SERVER['HTTP_HOST'] . '/attachment/' . $v;
                 }
                 $urls = implode(',', $urls);
             }

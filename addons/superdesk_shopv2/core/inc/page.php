@@ -47,7 +47,7 @@ class Page extends WeModuleSite
             $interval = 60;
         }
         $interval *=60;
-        //$interval *=24;
+        $interval *=24;
         $current  = time();
         if (($lasttime + $interval) <= $current) {
             m('cache')->set('report', date('Y-m-d H:i:s', $current), 'global');
@@ -61,7 +61,7 @@ class Page extends WeModuleSite
             $interval = 60;
         }
         $interval *=60;
-        //$interval *=24;
+        $interval *=24;
         $current  = time();
         if (($lasttime + $interval) <= $current) {
             m('cache')->set('goods', date('Y-m-d H:i:s', $current), 'global');

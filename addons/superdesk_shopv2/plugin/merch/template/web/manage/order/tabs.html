@@ -50,7 +50,7 @@
     {/if}
 
     {ifp 'order.list.comment'}
-    <li {if $_W['routes']=='order.comment'}class="active"{/if}>
+    <li {if $_W['routes']=='order.comment' || $_W['routes'] == 'order.report' || $_W['routes'] == 'order.goods' }class="active"{/if}>
     <a href="{php echo merchUrl('order/comment')}" >评价管理<span class="all">--</span></a>
     </li>
     {/if}

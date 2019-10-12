@@ -50,7 +50,7 @@
     {/if}
 
 
-    <li {if $_W['action'] == 'order.comment'} class="active" {/if}><a href="{php echo webUrl('order/comment')}">评价管理</a></li>
+    <li {if $_W['action'] == 'order.comment' || $_W['action'] == 'order.report' || $_W['action'] == 'order.goods' } class="active" {/if}><a href="{php echo webUrl('order/comment')}">评价管理</a></li>
     
     {if $operation == 'detail'}
     <li class="active">

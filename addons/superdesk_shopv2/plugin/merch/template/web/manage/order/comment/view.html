@@ -362,7 +362,7 @@
 		<div class="col-sm-9 col-xs-12">
 
 			{ifp 'order.comment.edit'}
-			<input type="button" {if !empty($comment['append_reply_content']) || empty($comment['append_content']) } disabled="disabled" {/if}  value="提交" class="btn btn-primary"  id="btn" />
+			<input type="button" {if !empty($comment['append_reply_content']) } disabled="disabled" {elseif !empty($comment['reply_content']) && empty($comment['append_content']) } disabled="disabled" {else}  {/if}  value="提交" class="btn btn-primary"  id="btn" />
 			{/if}
 			<input type="button" class="btn btn-default" name="submit" onclick="history.go(-1)" value="返回列表" style='margin-left:10px;' />
 		</div>

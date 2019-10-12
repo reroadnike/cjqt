@@ -89,14 +89,23 @@ define(['core', 'tpl'],
                         'images': default_images
                     };
                     var goods = [];
+                    var good_result = false;
                     $('.goods-list').each(function () {
                         var levels = $(this).find('.levels').data('star');
+                        if(!levels) {
+                            FoxUI.toast.show('商品还未评分');
+                            good_result = true;
+                            return false;
+                        }
                         goods.push({
                             'goodsid': $(this).data('goodsid'),
                             'level': levels
                         });
 
                     });
+                    if(good_result) {
+                        return false;
+                    }
                     $(this).html('正在处理...').attr('stop', 1);
                     core.json('order/comment/submit', {
                         'orderid': modal.params.orderid,

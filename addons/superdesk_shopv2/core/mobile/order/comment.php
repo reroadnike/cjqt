@@ -127,7 +127,7 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
         $orderid = intval($_GPC['orderid']);
 
         $order = pdo_fetch(
-            ' select id,status,merchid ' .
+            ' select id,status,merchid,ordersn ' .
             ' from ' . tablename('superdesk_shop_order') .// TODO 标志 楼宇之窗 openid shop_order 已处理
             ' where id=:id and uniacid=:uniacid and openid=:openid and core_user=:core_user limit 1',
             array(
@@ -200,43 +200,45 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
 
             $data = pdo_insert('superdesk_shop_order_comment', $comment);// TODO 标志 楼宇之窗 openid superdesk_shop_order_comment 已处理
 
-/*            //调用传接口
+            //调用传接口
 
-            $_GPC['comments'] = json_encode($_GPC['comments']);
+ /*           foreach($_GPC['comments'] as $k=>$v) {
+                $good_app[$k]['goods_id'] = $v['goodsid'];
+                $good_app[$k]['appraise_level'] = $v['level']*2;
+            }
+
+            $good_app = json_encode($good_app);
 
             //接口图片拼接
             if(is_array($_GPC['images'])) {
-                $url = "www.cjqt.com";
+                $url = "www.cjqt.com";  //图片链接需要修改
                 foreach ($_GPC['images'] as $k => $v) {
                     $urls[] = $url . '/' . $v;
                 }
                 $urls = implode(',', $urls);
             }
 
-            $sentapi = "http://119.23.39.237:8089/web/unifiedorder/appraise";
+            $sentapi = "http://119.23.39.237:8089/web/unifiedorder/appraise";  //接口地址是否正确
             $apidata = array(
-                'version'   => '1.0',
-                'timestamp' => time(),
-                'charset'   => 'utf-8',
-                'nonce_str' => '',
-                'sn'        => $orderid,
-                //'appraise_level' => '',
+                //'version'   => '1.0',
+                //'timestamp' => time(),
+                //'charset'   => 'utf-8',
+                //'nonce_str' => '',
+                'sn'        => $order['ordersn'],  //订单号
                 'appraise_content' => trim($_GPC['content']),
                 'pics'    => $urls,
-                'tran_level'  =>  $_GPC['logis'],//物流服务评分
-                //'tran_content'  => '',
-                'service_level'  => $_GPC['service'],//客服服务评分
-               // 'service_content' => '',
-                'describes_level'  => $_GPC['describes'],//描述相符评分
+                'tran_level'  =>  $_GPC['logis']*2,//物流服务评分
+                'service_level'  => $_GPC['service']*2,//客服服务评分
+                'describes_level'  => $_GPC['describes']*2,//描述相符评分
                 'user_id'  =>  $_W['core_user'],
                 'user_name'   => $member['nickname'],
                 'append_state' => 2,
                 //goodsid 商品id   level 商品评分
-                'goods' => $_GPC['comments'],//商品json格式  例：[{"goodsid":"2479885","level":"4"},{"goodsid":"2479917","level":"5"}]
-                'sign'   => ''
+                'goods_json' => $good_app,//商品json格式  例：[{"goods_id":"2479885","appraise_level":"4"},{"goods_id":"2479917","appraise_level":"5"}]
+                //'sign'   => ''
             );
             load()->func('communication');
-            $response = ihttp_post($sentapi, $apidata);*/
+            $response = ihttp_post($sentapi, $apidata);   */
 
         } else {
             $comment = array(
@@ -255,8 +257,8 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
                 )
             );
 
-/*            //接口图片拼接
-            if(is_array($_GPC['append_images'])) {
+            //接口图片拼接
+ /*           if(is_array($_GPC['append_images'])) {
                 $url = "www.cjqt.com";
                 foreach ($_GPC['append_images'] as $k => $v) {
                     $urls[] = $url . '/' . $v;
@@ -264,32 +266,26 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
                 $urls = implode(',', $urls);
             }
 
-            //调用传接口
+            //调用接口
             $sentapi = "http://119.23.39.237:8089/web/unifiedorder/appraise";
             $apidata = array(
-                'version'   => '1.0',
-                'timestamp' => time(),
-                'charset'   => 'utf-8',
-                'nonce_str' => '',
-                'sn'        => $orderid,
-                //'appraise_level' => '',
+                //'version'   => '1.0',
+                //'timestamp' => time(),
+                //'charset'   => 'utf-8',
+                //'nonce_str' => '',
+                'sn'        => $order['ordersn'],
                 'appraise_content' => trim($_GPC['append_content']),
                 'pics'    => $urls,
-               // 'tran_level'  =>  '',
-               // 'tran_content'  => '',
-               // 'service_level'  => '',
-               // 'service_content' => '',
                 'user_id'  =>  $_W['core_user'],
                 'user_name'   => $member['nickname'],
                 'append_state' => 1,
-                'sign'   => ''
+                //'sign'   => ''
             );
             load()->func('communication');
-            $response = ihttp_post($sentapi, $apidata);*/
+            $response = ihttp_post($sentapi, $apidata);  */
 
         }
 
-        //http->
 
         if($data==1) {
             show_json(1,array('message'=>'评价成功','success'=>1));

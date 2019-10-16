@@ -1,4 +1,13 @@
 <?php
+/**
+ * Created by phpstorm.
+ * User: LZP
+ * Date: 2019/9/19
+ * Time: 10:50
+ * 评价
+ */
+
+
 if (!defined('IN_IA')) {
     exit('Access Denied');
 }
@@ -169,7 +178,7 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
             if(!$_GPC['logis'] || !$_GPC['service'] || !$_GPC['describes'] || !$_GPC['content'] || !is_array($_GPC['comments'])) {
                 show_json('数据出错，请重试!');
             }
-            //$goods = json_encode($_GPC['comments']);
+
             foreach($_GPC['comments'] as $k=>$v) {
                 $comgoods = array(
                     'merchid'    => $order['merchid'],
@@ -202,7 +211,7 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
 
             //调用传接口
 
- /*           foreach($_GPC['comments'] as $k=>$v) {
+            foreach($_GPC['comments'] as $k=>$v) {
                 $good_app[$k]['goods_id'] = $v['goodsid'];
                 $good_app[$k]['appraise_level'] = $v['level']*2;
             }
@@ -217,12 +226,13 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
                 $urls = implode(',', $urls);
             }
 
-            $sentapi = "http://119.23.39.237:8089/web/unifiedorder/appraise";  //接口地址是否正确
+            $sentapi = "http://192.168.1.170:8089/web/unifiedorder/appraisesm";  //上线时接口地址需改为正式环境
             $apidata = array(
                 //'version'   => '1.0',
                 //'timestamp' => time(),
                 //'charset'   => 'utf-8',
                 //'nonce_str' => '',
+                'appraise_level' => 10,
                 'sn'        => $order['ordersn'],  //订单号
                 'appraise_content' => trim($_GPC['content']),
                 'pics'    => $urls,
@@ -236,8 +246,10 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
                 'goods_json' => $good_app,//商品json格式  例：[{"goods_id":"2479885","appraise_level":"4"},{"goods_id":"2479917","appraise_level":"5"}]
                 //'sign'   => ''
             );
+
             load()->func('communication');
-            $response = ihttp_post($sentapi, $apidata);   */
+
+            $response = ihttp_post($sentapi, $apidata);
 
         } else {
             $comment = array(
@@ -257,7 +269,7 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
             );
 
             //接口图片拼接
- /*           if(is_array($_GPC['append_images'])) {
+            if(is_array($_GPC['append_images'])) {
                 foreach ($_GPC['append_images'] as $k => $v) {
                     $urls[] = $_SERVER['HTTP_HOST'] . '/attachment/' . $v;
                 }
@@ -265,7 +277,8 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
             }
 
             //调用接口
-            $sentapi = "http://119.23.39.237:8089/web/unifiedorder/appraise";
+            //$sentapi = "http://119.23.39.237:8089/web/unifiedorder/appraisesm";//上线时接口地址需改为正式环境
+            $sentapi = "http://192.168.1.170:8089/web/unifiedorder/appraisesm"; //线下测试环境
             $apidata = array(
                 //'version'   => '1.0',
                 //'timestamp' => time(),
@@ -280,7 +293,7 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
                 //'sign'   => ''
             );
             load()->func('communication');
-            $response = ihttp_post($sentapi, $apidata);  */
+            $response = ihttp_post($sentapi, $apidata);
 
         }
 
@@ -292,5 +305,169 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
         }
 
     }
+
+    //调用评价接口--lzp编写 可用
+/*    public function http_comment_request($url,$post_data=null) {
+
+        $curl = curl_init();
+
+        curl_setopt($curl, CURLOPT_URL, $url);
+
+        //curl_setopt($curl, CURLOPT_HEADER, 1);
+
+        curl_setopt($curl, CURLOPT_POST, 1);
+
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 60);
+        //curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Content-Length:' . strlen($post_data)));
+
+        $a = curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($post_data));
+
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+        $data = curl_exec($curl);
+
+        curl_close($curl);
+
+    }*/
+
+    /**
+     * Created by phpstorm.
+     * User: LZP
+     * Date: 2019/10/16
+     * Time: 10:50
+     * 一键购买 加入购物车
+     */
+
+    public function one_click() {
+
+        global $_W;
+        global $_GPC;
+
+        $order_id = $_GPC['id'];
+
+        $order = pdo_fetchall(' SELECT id,orderid,goodsid,total FROM ' . tablename('superdesk_shop_order_goods') . ' WHERE ' . ' orderid=:orderid ',array(':orderid'=>$order_id) );
+
+        $member = m('member')->getMember($_W['openid'], $_W['core_user']);
+
+        if (!empty($_W['shopset']['wap']['open']) && !empty($_W['shopset']['wap']['mustbind']) && empty($member['mobileverify'])) {
+            show_json(0, array('message' => '请先绑定手机', 'url' => mobileUrl('member/bind', NULL, true)));
+        }
+
+        foreach($order as $k=>$v) {
+            $goods = pdo_fetch(
+                'select ' .
+                '       id,marketprice,diyformid,diyformtype,diyfields, isverify, `type`,merchid, cannotrefund ' .
+                ' from ' . tablename('superdesk_shop_goods') .
+                ' where id=:id and uniacid=:uniacid limit 1',
+                array(
+                    ':id'      => $v['goodsid'],
+                    ':uniacid' => $_W['uniacid']
+                )
+            );
+
+            if (empty($goods)) {
+                show_json(0, '商品未找到或已经下架');
+            }
+
+            if (($goods['isverify'] == 2) || ($goods['type'] == 2) || ($goods['type'] == 3) || !empty($goods['cannotrefund'])) {
+                show_json(0, '此商品不可加入购物车<br>请直接点击立刻购买');
+            }
+
+            $diyform_plugin = p('diyform');
+            $diyformid      = 0;
+            $diyformfields  = iserializer(array());
+            $diyformdata    = iserializer(array());
+
+            if ($diyform_plugin) {
+
+                $diyformdata = $_GPC['diyformdata'];
+
+                if (!empty($diyformdata) && is_array($diyformdata)) {
+
+                    $diyformfields = false;
+
+                    if ($goods['diyformtype'] == 1) {
+                        $diyformid = intval($goods['diyformid']);
+                        $formInfo  = $diyform_plugin->getDiyformInfo($diyformid);
+                        if (!empty($formInfo)) {
+                            $diyformfields = $formInfo['fields'];
+                        }
+                    } else if ($goods['diyformtype'] == 2) {
+                        $diyformfields = iunserializer($goods['diyfields']);
+                    }
+
+                    if (!empty($diyformfields)) {
+                        $insert_data   = $diyform_plugin->getInsertData($diyformfields, $diyformdata);
+                        $diyformdata   = $insert_data['data'];
+                        $diyformfields = iserializer($diyformfields);
+                    }
+                }
+            }
+
+            $car = pdo_fetch(
+                'select ' .
+                '       id,total,diyformid ' .
+                ' from ' . tablename('superdesk_shop_member_cart') . // TODO 标志 楼宇之窗 openid superdesk_shop_member_cart 已处理
+                ' where ' .
+                '       goodsid=:id ' .
+                '       and openid=:openid ' .
+                '       and core_user=:core_user ' .
+                '       and deleted=0 ' .
+                '       and uniacid=:uniacid ' .
+                '       and deleted=:deleted ' .
+                ' limit 1',
+                array(
+                    ':uniacid'   => $_W['uniacid'],
+                    ':openid'    => $_W['openid'],
+                    ':core_user' => $_W['core_user'],
+                    ':id'        => $v['goodsid'],
+                    ':deleted'   => 0
+                )
+            );
+
+            if (empty($car)) {
+
+                $data = array(
+                    'uniacid'       => $_W['uniacid'],
+                    'openid'        => $_W['openid'],
+                    'core_user'     => $_W['core_user'],
+                    'goodsid'       => $goods['id'],
+                    'merchid'       => $goods['merchid'],
+                    'marketprice'   => $goods['marketprice'],
+                    'total'         => $v['total'],
+                    'selected'      => 1,
+                    'diyformid'     => $diyformid,
+                    'diyformdata'   => $diyformdata,
+                    'diyformfields' => $diyformfields,
+                    'createtime'    => time()
+                );
+
+                $result = pdo_insert('superdesk_shop_member_cart', $data); // TODO 标志 楼宇之窗 openid superdesk_shop_member_cart 已处理
+
+            } else {
+
+                $data['diyformid']     = $diyformid;
+                $data['diyformdata']   = $diyformdata;
+                $data['diyformfields'] = $diyformfields;
+                $data['total']         = $car['total']+$v['total'];
+
+                $result = pdo_update(
+                    'superdesk_shop_member_cart', // TODO 标志 楼宇之窗 openid superdesk_shop_member_cart 不处理
+                    $data,
+                    array(
+                        'id' => $car['id']
+                    )
+                );
+            }
+
+        }
+
+        if($result) {
+            header('location: ' . mobileUrl('member/cart'));
+            exit();
+        }
+
+    }
+
 
 }

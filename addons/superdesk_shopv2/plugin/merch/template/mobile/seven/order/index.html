@@ -86,7 +86,11 @@
             </a>
             <div class='fui-list-group-title lineblock opblock' style="height: auto;">
                 <span class='status'>
-
+                <%if order.userdeleted==0%>
+                    <%if order.status==3 || order.status==-1%>
+                    <a class="btn btn-default btn-default-o" data-nocache="true" href="{php echo mobileUrl('order/comment/one_click')}&id=<%order.id%>">一键购买</a>
+                    <%/if%>
+                <%/if%>
                 <%if order.userdeleted==1%>
                     <%if order.status==3 || order.status==-1%>
                     <div class="btn btn-default btn-default-o order-deleted" data-orderid="<%order.id%>">彻底删除订单</div>

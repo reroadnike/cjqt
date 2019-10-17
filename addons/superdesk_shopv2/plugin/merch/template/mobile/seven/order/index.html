@@ -88,7 +88,8 @@
                 <span class='status'>
                 <%if order.userdeleted==0%>
                     <%if order.status==3 || order.status==-1%>
-                    <a class="btn btn-default btn-default-o" data-nocache="true" href="{php echo mobileUrl('order/comment/one_click')}&id=<%order.id%>">一键购买</a>
+<!--                    <a class="btn btn-default btn-default-o" href="{php echo mobileUrl('order/comment/one_click')}&id=<%order.id%>" data-nocache="true" >一键购买</a>-->
+                    <div class="btn btn-default btn-default-o " onclick='oneClick("<%order.id%>")'  id="oneClick" >一键购买</div>
                     <%/if%>
                 <%/if%>
                 <%if order.userdeleted==1%>
@@ -163,9 +164,62 @@
     {if com('verify')}
     {template 'order/verify'}
     {/if}
-    <script language='javascript'>require(['biz/order/list'], function (modal) {
-        modal.init({fromDetail:false,status:"{$_GPC['status']}",merchid:{php echo intval($_GPC['merchid'])}});
-    });</script>
+    <script language='javascript'>
+        require(['biz/order/list'], function (modal) {
+            modal.init({fromDetail:false,status:"{$_GPC['status']}",merchid:{php echo intval($_GPC['merchid'])}});
+        });
+
+        function oneClick(orderid) {
+            FoxUI.confirm('要前往购物车吗?', '提示',
+                function () {
+                    core.json('order/comment/one_click', {
+                            orderid: orderid
+                        },
+                        function (data) {
+                            if (data.status == 1) {
+                                    location.href = core.getUrl('member/cart')
+                                return
+                            }
+                            FoxUI.toast.show(data.result.message)
+                        })
+                }
+            )
+
+        }
+
+/*                core.json('order/comment/one_click', {
+                        orderid:orderid
+                    },
+                    function (pay_json) {
+                        if (pay_json.status == 1) {
+                            if (modal.fromDetail) {
+                                location.href = core.getUrl('groups/orders')
+                            } else {
+                                $(".order-item[data-orderid='" + id + "']").remove()
+                            }
+                            return
+                        }
+                        FoxUI.toast.show(pay_json.result)
+                    },
+                    true, true)*/
+
+ /*           function() {
+                $.post("{php echo mobileUrl('order/comment/one_click')}",{orderid:orderid},function(data) {
+                    console.log(data)
+                    if(datstatus==1) {
+                        location.href = core.getUrl('member/cart')
+                    }
+                    FoxUI.toast.show(data.result)
+                })
+            }*/
+
+
+
+
+
+    </script>
+
 </div>
+
 {php $this->footerMenus()}
 {template '_footer'}

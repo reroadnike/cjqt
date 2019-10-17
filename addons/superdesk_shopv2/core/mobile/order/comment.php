@@ -343,7 +343,7 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
         global $_W;
         global $_GPC;
 
-        $order_id = $_GPC['id'];
+        $order_id = $_GPC['orderid'];
 
         $order = pdo_fetchall(' SELECT id,orderid,goodsid,total FROM ' . tablename('superdesk_shop_order_goods') . ' WHERE ' . ' orderid=:orderid ',array(':orderid'=>$order_id) );
 
@@ -446,6 +446,7 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
 
             } else {
 
+                $data['goodsid']       = $goods['id'];
                 $data['diyformid']     = $diyformid;
                 $data['diyformdata']   = $diyformdata;
                 $data['diyformfields'] = $diyformfields;
@@ -463,8 +464,9 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
         }
 
         if($result) {
-            header('location: ' . mobileUrl('member/cart'));
-            exit();
+            show_json(1,array('message'=>'加入购物车成功','success'=>1));
+        } else {
+            show_json(-1,array('message'=>'加入购物车失败','success'=>-1));
         }
 
     }

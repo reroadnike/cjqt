@@ -51,9 +51,9 @@ class Goods_SuperdeskShopV2Page extends MerchWebPage {
         $wherecondition .= ' AND g.merchid = :merchid ';
 
         if (empty($_GPC['export'])) {
-            $goods = pdo_fetchall('SELECT g.*,m.uniacid,m.merchname,go.title,go.thumb FROM ' . tablename('superdesk_shop_comments_report_goods') . ' g ' . $condition . ' WHERE ' . ' m.uniacid = :uniacid ' . $wherecondition . ' LIMIT ' . (($pindex - 1) * $psize) . ',' . $psize, $params);
+            $goods = pdo_fetchall('SELECT g.*,m.uniacid,m.merchname,go.title,go.thumb FROM ' . tablename('superdesk_shop_comments_report_goods') . ' g ' . $condition . ' WHERE ' . ' m.uniacid = :uniacid ' . $wherecondition . ' ORDER BY id desc ' . ' LIMIT ' . (($pindex - 1) * $psize) . ',' . $psize, $params);
         } else {
-            $goods = pdo_fetchall('SELECT g.*,m.uniacid,m.merchname,go.title,go.thumb FROM ' . tablename('superdesk_shop_comments_report_goods') . ' g ' . $condition . ' WHERE ' . ' m.uniacid = :uniacid ' . $wherecondition , $params);
+            $goods = pdo_fetchall('SELECT g.*,m.uniacid,m.merchname,go.title,go.thumb FROM ' . tablename('superdesk_shop_comments_report_goods') . ' g ' . $condition . ' WHERE ' . ' m.uniacid = :uniacid ' . $wherecondition . ' ORDER BY id desc ' , $params);
         }
 
         //导出excel

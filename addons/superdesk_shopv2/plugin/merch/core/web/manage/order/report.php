@@ -44,9 +44,9 @@ class Report_SuperdeskShopV2Page extends MerchWebPage
         $wherecondition .= ' AND r.merchid = :merchid ';
 
         if(empty($_PGC['export'])) {
-            $report = pdo_fetchall('SELECT r.*,m.uniacid,m.merchname FROM ' . tablename('superdesk_shop_comments_report') . ' r ' . $condition . ' WHERE ' . ' m.uniacid = :uniacid ' . $wherecondition . ' LIMIT ' . (($pindex - 1) * $psize) . ',' . $psize, $params);
+            $report = pdo_fetchall('SELECT r.*,m.uniacid,m.merchname FROM ' . tablename('superdesk_shop_comments_report') . ' r ' . $condition . ' WHERE ' . ' m.uniacid = :uniacid ' . $wherecondition . ' ORDER BY id desc ' .  ' LIMIT ' . (($pindex - 1) * $psize) . ',' . $psize, $params);
         } else {
-            $report = pdo_fetchall('SELECT r.*,m.uniacid,m.merchname FROM ' . tablename('superdesk_shop_comments_report') . ' r ' . $condition . ' WHERE ' . ' m.uniacid = :uniacid ' . $wherecondition , $params);
+            $report = pdo_fetchall('SELECT r.*,m.uniacid,m.merchname FROM ' . tablename('superdesk_shop_comments_report') . ' r ' . $condition . ' WHERE ' . ' m.uniacid = :uniacid ' . $wherecondition . ' ORDER BY id desc ', $params);
 
         }
 

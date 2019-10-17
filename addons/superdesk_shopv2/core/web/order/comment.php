@@ -86,11 +86,10 @@ class Comment_SuperdeskShopV2Page extends WebPage
             ' c.uniacid = :uniacid ' .
             $condition .
             $groupcondition .
- //           ' order by id ' .
+            ' order by id desc' .
             ' LIMIT ' . (($pindex - 1) * $psize) . ',' . $psize,
             $params
         );
-//        pdo_debug();
 
         foreach($comment as $k=>$v) {
             foreach($orders as $kk=>$vv) {

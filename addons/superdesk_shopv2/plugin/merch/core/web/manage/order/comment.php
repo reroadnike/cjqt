@@ -77,6 +77,7 @@ class Comment_SuperdeskShopV2Page extends MerchWebPage
             ' c.uniacid = :uniacid ' . ' AND ' . ' c.merchid = :merchid ' . ' AND ' . ' c.state = :state ' .
             $condition .
             $groupcondition .
+            ' order by id desc' .
             ' LIMIT ' . (($pindex - 1) * $psize) . ',' . $psize,
             $params
         );

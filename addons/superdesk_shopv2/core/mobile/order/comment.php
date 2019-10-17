@@ -353,15 +353,163 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
             show_json(0, array('message' => '请先绑定手机', 'url' => mobileUrl('member/bind', NULL, true)));
         }
 
+        $oknum = 0;
+        $oktotal = count($order);
         foreach($order as $k=>$v) {
             $goods = pdo_fetch(
                 'select ' .
                 '       id,marketprice,diyformid,diyformtype,diyfields, isverify, `type`,merchid, cannotrefund ' .
                 ' from ' . tablename('superdesk_shop_goods') .
-                ' where id=:id and uniacid=:uniacid limit 1',
+                ' where id=:id and uniacid=:uniacid and status=:status and checked=:checked and deleted=:deleted limit 1',
                 array(
                     ':id'      => $v['goodsid'],
-                    ':uniacid' => $_W['uniacid']
+                    ':uniacid' => $_W['uniacid'],
+                    ':status'  => 1,
+                    ':checked' => 0,
+                    ':deleted' => 0
+                )
+            );
+
+            if (($goods['isverify'] == 2) || ($goods['type'] == 2) || ($goods['type'] == 3) || !empty($goods['cannotrefund'])) {
+                show_json(0, '此商品不可加入购物车<br>请直接点击立刻购买');
+            }
+
+            $diyform_plugin = p('diyform');
+            $diyformid      = 0;
+            $diyformfields  = iserializer(array());
+            $diyformdata    = iserializer(array());
+
+            if ($diyform_plugin) {
+
+                $diyformdata = $_GPC['diyformdata'];
+
+                if (!empty($diyformdata) && is_array($diyformdata)) {
+
+                    $diyformfields = false;
+
+                    if ($goods['diyformtype'] == 1) {
+                        $diyformid = intval($goods['diyformid']);
+                        $formInfo  = $diyform_plugin->getDiyformInfo($diyformid);
+                        if (!empty($formInfo)) {
+                            $diyformfields = $formInfo['fields'];
+                        }
+                    } else if ($goods['diyformtype'] == 2) {
+                        $diyformfields = iunserializer($goods['diyfields']);
+                    }
+
+                    if (!empty($diyformfields)) {
+                        $insert_data   = $diyform_plugin->getInsertData($diyformfields, $diyformdata);
+                        $diyformdata   = $insert_data['data'];
+                        $diyformfields = iserializer($diyformfields);
+                    }
+                }
+            }
+
+            $car = pdo_fetch(
+                'select ' .
+                '       id,total,diyformid ' .
+                ' from ' . tablename('superdesk_shop_member_cart') . // TODO 标志 楼宇之窗 openid superdesk_shop_member_cart 已处理
+                ' where ' .
+                '       goodsid=:id ' .
+                '       and openid=:openid ' .
+                '       and core_user=:core_user ' .
+                '       and deleted=0 ' .
+                '       and uniacid=:uniacid ' .
+                '       and deleted=:deleted ' .
+                ' limit 1',
+                array(
+                    ':uniacid'   => $_W['uniacid'],
+                    ':openid'    => $_W['openid'],
+                    ':core_user' => $_W['core_user'],
+                    ':id'        => $v['goodsid'],
+                    ':deleted'   => 0
+                )
+            );
+
+            if($goods) {
+                if (empty($car)) {
+
+                    $data = array(
+                        'uniacid' => $_W['uniacid'],
+                        'openid' => $_W['openid'],
+                        'core_user' => $_W['core_user'],
+                        'goodsid' => $goods['id'],
+                        'merchid' => $goods['merchid'],
+                        'marketprice' => $goods['marketprice'],
+                        'total' => $v['total'],
+                        'selected' => 1,
+                        'diyformid' => $diyformid,
+                        'diyformdata' => $diyformdata,
+                        'diyformfields' => $diyformfields,
+                        'createtime' => time()
+                    );
+
+                     $result = pdo_insert('superdesk_shop_member_cart', $data); // TODO 标志 楼宇之窗 openid superdesk_shop_member_cart 已处理
+
+                } else {
+
+                    $data['goodsid'] = $goods['id'];
+                    $data['diyformid'] = $diyformid;
+                    $data['diyformdata'] = $diyformdata;
+                    $data['diyformfields'] = $diyformfields;
+                    $data['total'] = $car['total'] + $v['total'];
+
+                    $result = pdo_update(
+                        'superdesk_shop_member_cart', // TODO 标志 楼宇之窗 openid superdesk_shop_member_cart 不处理
+                        $data,
+                        array(
+                            'id' => $car['id']
+                        )
+                    );
+                }
+                if($result) {
+                    $oknum++;
+                }
+            }
+        }
+
+        if($oknum == $oktotal) {
+            show_json(1,array('message'=>'加入购物车成功','success'=>1));
+        } elseif ($oknum > 0) {
+            show_json(2,array('message'=>'部分商品加入购物车成功','success'=>1));
+        }else {
+            show_json(-1,array('message'=>'商品已下架,无法加入购物车','success'=>-1));
+        }
+
+    }
+
+    public function pass_car() {
+        show_json(1);
+    }
+
+
+/*    public function one_click() {
+
+        global $_W;
+        global $_GPC;
+
+        $order_id = $_GPC['orderid'];
+
+        $order = pdo_fetchall(' SELECT id,orderid,goodsid,total FROM ' . tablename('superdesk_shop_order_goods') . ' WHERE ' . ' orderid=:orderid ',array(':orderid'=>$order_id) );
+
+        $member = m('member')->getMember($_W['openid'], $_W['core_user']);
+
+        if (!empty($_W['shopset']['wap']['open']) && !empty($_W['shopset']['wap']['mustbind']) && empty($member['mobileverify'])) {
+            show_json(0, array('message' => '请先绑定手机', 'url' => mobileUrl('member/bind', NULL, true)));
+        }
+
+        foreach($order as $k=>$v) {
+            $goods = pdo_fetch(
+                'select ' .
+                '       id,marketprice,diyformid,diyformtype,diyfields, isverify, `type`,merchid, cannotrefund ' .
+                ' from ' . tablename('superdesk_shop_goods') .
+                ' where id=:id and uniacid=:uniacid and status=:status and checked=:checked and deleted=:deleted limit 1',
+                array(
+                    ':id'      => $v['goodsid'],
+                    ':uniacid' => $_W['uniacid'],
+                    ':status'  => 1,
+                    ':checked' => 0,
+                    ':deleted' => 0
                 )
             );
 
@@ -469,7 +617,7 @@ class Comment_SuperdeskShopV2Page extends MobileLoginPage
             show_json(-1,array('message'=>'加入购物车失败','success'=>-1));
         }
 
-    }
+    }*/
 
 
 }

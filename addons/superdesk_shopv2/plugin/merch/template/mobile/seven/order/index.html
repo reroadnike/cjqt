@@ -89,7 +89,7 @@
                 <%if order.userdeleted==0%>
                     <%if order.status==3 || order.status==-1%>
 <!--                    <a class="btn btn-default btn-default-o" href="{php echo mobileUrl('order/comment/one_click')}&id=<%order.id%>" data-nocache="true" >一键购买</a>-->
-                    <div class="btn btn-default btn-default-o " onclick='oneClick("<%order.id%>")'  id="oneClick" >一键购买</div>
+                    <div class="btn btn-default btn-default-o " onclick='oneClick("<%order.id%>")' >一键购买</div>
                     <%/if%>
                 <%/if%>
                 <%if order.userdeleted==1%>
@@ -169,6 +169,47 @@
             modal.init({fromDetail:false,status:"{$_GPC['status']}",merchid:{php echo intval($_GPC['merchid'])}});
         });
 
+                //确定加入购物车时才把商品加入
+                function oneClick(orderid) {
+
+                    $.post("{php echo mobileUrl('order/comment/one_click')}",{orderid:orderid},function(data) {
+
+                        if(data.status==1) {
+                            FoxUI.confirm('商品添加成功，是否前往购物车结算？', '提示',
+                                function () {
+                                    core.json('order/comment/pass_car', {
+                                        },
+                                        function (data) {
+                                            if (data.status == 1) {
+                                                location.href = core.getUrl('member/cart')
+                                                return
+                                            }
+                                        })
+                                }
+                            )
+                        } else if (data.status==2) {
+                            FoxUI.confirm('部分商品添加成功，是否前往购物车结算？', '提示',
+                                function () {
+                                    core.json('order/comment/pass_car', {
+                                        },
+                                        function (data) {
+                                            if (data.status == 1) {
+                                                location.href = core.getUrl('member/cart')
+                                                return
+                                            }
+                                        })
+                                }
+                            )
+                        } else {
+                            FoxUI.toast.show(data.result.message)
+                        }
+                    },"json");
+
+                }
+
+
+
+/*        //确定加入购物车时才把商品加入
         function oneClick(orderid) {
             FoxUI.confirm('要前往购物车吗?', '提示',
                 function () {
@@ -185,36 +226,7 @@
                 }
             )
 
-        }
-
-/*                core.json('order/comment/one_click', {
-                        orderid:orderid
-                    },
-                    function (pay_json) {
-                        if (pay_json.status == 1) {
-                            if (modal.fromDetail) {
-                                location.href = core.getUrl('groups/orders')
-                            } else {
-                                $(".order-item[data-orderid='" + id + "']").remove()
-                            }
-                            return
-                        }
-                        FoxUI.toast.show(pay_json.result)
-                    },
-                    true, true)*/
-
- /*           function() {
-                $.post("{php echo mobileUrl('order/comment/one_click')}",{orderid:orderid},function(data) {
-                    console.log(data)
-                    if(datstatus==1) {
-                        location.href = core.getUrl('member/cart')
-                    }
-                    FoxUI.toast.show(data.result)
-                })
-            }*/
-
-
-
+        }*/
 
 
     </script>
